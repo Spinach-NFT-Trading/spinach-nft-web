@@ -1,0 +1,18 @@
+apps:
+  - namespace: 'Spinach.NFT'
+    name: 'Spinach.NFT.Server'
+    # Entry point
+    script: './dist/main.js'
+    # Execution configs
+    exec_mode: 'cluster'
+    instances: max
+    # Environments
+    env:
+      NODE_ENV: 'production'
+      NODE_OPTIONS: '--max-old-space-size=8192'
+    # Restart options
+    min_uptime: 30000
+    max_restarts: 5
+    restart_delay: 10000
+    # Others
+    time: true  # Log timestamp in logs

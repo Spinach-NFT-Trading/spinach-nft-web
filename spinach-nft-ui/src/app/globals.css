@@ -1,0 +1,332 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .theme-light {
+    --foreground-rgb: theme('colors.neutral.900');
+    --background-start-rgb: theme('colors.slate.200');
+    --background-end-rgb: theme('colors.slate.300');
+  }
+  
+  .theme-dark {
+    --foreground-rgb: theme('colors.neutral.100');
+    --background-start-rgb: theme('colors.slate.900');
+    --background-end-rgb: theme('colors.slate.950');
+  }
+  
+  :root {
+    @apply theme-light;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      @apply theme-dark;
+    }
+  }
+  
+  html {
+    &.light {
+      @apply theme-light;
+    }
+    
+    &.dark {
+      @apply theme-dark;
+    }
+    
+    @apply overflow-x-hidden;
+  }
+  
+  body {
+    color: var(--foreground-rgb);
+    background-image: radial-gradient(var(--background-start-rgb), var(--background-end-rgb));
+  }
+  
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+}
+
+@layer components {
+  .width-with-gap-base {
+    --items-count: 1;
+    --gaps-count: calc(var(--items-count) - 1);
+    
+    width: calc(100% / var(--items-count) - (var(--gap) * var(--gaps-count) / var(--items-count)));
+  }
+  
+  /* region Button styling (button-*) */
+  
+  .button-border {
+    @apply border border-slate-700 dark:border-slate-300;
+  }
+  
+  .button-bg-hover {
+    @apply hover:bg-slate-700 hover:dark:bg-slate-300;
+  }
+  
+  .button-text-hover {
+    @apply hover:text-slate-200 dark:hover:text-slate-800;
+  }
+  
+  /* endregion */
+  
+  .invert-base {
+    @apply duration-200;
+  }
+  
+  .bg-blink-base {
+    @apply rounded-lg;
+    
+    @keyframes bg-blink-animation {
+      0% {
+        background-color: var(--bg-highlight);
+      }
+      
+      50% {
+        background-color: transparent;
+      }
+      
+      100% {
+        background-color: var(--bg-highlight);
+      }
+    }
+    
+    animation: bg-blink-animation 3s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  .transform-smooth {
+    @apply transform-gpu transition-all;
+  }
+  
+  .scrollbar-hide {
+    scrollbar-width: none;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  
+  /* region Fixed count of element in row (width-with-gap-*) */
+  
+  .width-with-gap-xs {
+    --gap: theme('gap[1]') !important;
+    
+    @apply width-with-gap-base;
+  }
+  
+  .width-with-gap-sm {
+    --gap: theme('gap[1.5]') !important;
+    
+    @apply width-with-gap-base;
+  }
+  
+  .width-with-gap {
+    --gap: theme('gap[2]');
+    
+    @apply width-with-gap-base;
+  }
+  
+  .width-with-gap-2-items {
+    --items-count: 2;
+  }
+  
+  .width-with-gap-3-items {
+    --items-count: 3;
+  }
+  
+  .width-with-gap-4-items {
+    --items-count: 4;
+  }
+  
+  .width-with-gap-5-items {
+    --items-count: 5;
+  }
+  
+  .width-with-gap-6-items {
+    --items-count: 6;
+  }
+  
+  .width-with-gap-7-items {
+    --items-count: 7;
+  }
+  
+  .width-with-gap-8-items {
+    --items-count: 8;
+  }
+  
+  .width-with-gap-12-items {
+    --items-count: 12;
+  }
+  
+  /* endregion */
+  
+  /* region Info section styling (info-*) */
+  
+  .info-in-image {
+    @apply rounded-full bg-slate-400/80 dark:bg-slate-500/80;
+  }
+  
+  .info-section {
+    @apply
+    gap-2 rounded-lg p-4 self-stretch
+    bg-gradient-to-br
+    from-slate-200/80 to-slate-100/60
+    dark:from-black/60 dark:to-slate-950/75
+    ;
+  }
+  
+  .info-section-md-fit {
+    @apply info-section md:w-fit;
+  }
+  
+  /* endregion */
+  
+  /* region Image inverting (invert-*) */
+  
+  .invert-on-light {
+    @apply invert-base invert dark:invert-0;
+  }
+  
+  .invert-on-dark {
+    @apply invert-base dark:invert;
+  }
+  
+  .invert-hoverable {
+    @apply invert-on-light group-hover:invert-0 group-hover:dark:invert;
+  }
+  
+  /* endregion */
+  
+  /* region Button styling (button-*) */
+  
+  .button-base {
+    @apply rounded-lg transform-smooth;
+  }
+  
+  .button-bg {
+    @apply bg-slate-50/70 dark:bg-slate-700/50;
+  }
+  
+  .button-text {
+    @apply text-slate-700 dark:text-slate-300;
+  }
+  
+  .button-clickable {
+    @apply button-base button-bg-hover button-text button-text-hover;
+  }
+  
+  .button-clickable-border {
+    @apply button-clickable button-border;
+  }
+  
+  .button-clickable-bg {
+    @apply button-clickable button-bg;
+  }
+  
+  .button-disabled {
+    @apply button-base bg-slate-400/50 dark:bg-slate-800/30 text-slate-500/70 dark:text-slate-500;
+  }
+  
+  .button-disabled-border {
+    @apply button-disabled border border-slate-400/50 dark:border-slate-500/50;
+  }
+  
+  /* endregion */
+  
+  /* region Toggle button styling (button-toggle-*) */
+  
+  .button-toggle-inactive-hover {
+    @apply hover:bg-slate-400 dark:hover:bg-slate-500 hover:text-slate-900 dark:hover:text-slate-100;
+  }
+  
+  .button-toggle-inactive-bg {
+    @apply bg-slate-400/20 dark:bg-slate-700/50;
+  }
+  
+  .button-toggle-inactive {
+    @apply button-toggle-inactive-hover button-toggle-inactive-bg;
+  }
+  
+  .button-toggle-active-hover {
+    @apply hover:bg-slate-500 dark:hover:bg-slate-400 hover:text-slate-100 dark:hover:text-slate-800;
+  }
+  
+  .button-toggle-active-bg {
+    @apply bg-slate-800 text-slate-100 dark:bg-slate-50 dark:text-slate-800;
+  }
+  
+  .button-toggle-active {
+    @apply button-toggle-active-hover button-toggle-active-bg;
+  }
+  
+  /* endregion */
+  
+  /* region Input row styling (input-row-*) */
+  
+  .input-row-normal {
+    @apply bg-slate-50/40 dark:bg-slate-700/20;
+  }
+  
+  .input-row-highlight {
+    @apply bg-slate-50 dark:bg-slate-700/50;
+  }
+  
+  /* endregion */
+  
+  /* region Miscellaneous text styling (text-*) */
+  
+  .text-shadow-preset {
+    @apply shadow-slate-200 text-shadow dark:shadow-slate-900;
+  }
+  
+  /* endregion */
+  
+  /* region Blink styling (bg-blink-on-*) */
+  
+  .bg-blink-light {
+    @apply bg-blink-base;
+    
+    --bg-highlight: theme('colors.slate.300');
+  }
+  
+  .bg-blink-dark {
+    @apply bg-blink-base;
+    
+    --bg-highlight: theme('colors.slate.700');
+  }
+  
+  .bg-blink {
+    @apply bg-blink-light dark:bg-blink-dark
+  }
+  
+  /* endregion */
+  
+  /* region Border styling (border-*) */
+  
+  .border-button-clickable {
+    @apply border-slate-50/70 dark:border-slate-700/50;
+  }
+  
+  /* endregion */
+  
+  /* region Navbar styling (nav-*) */
+  
+  .nav-height {
+    @apply h-8;
+  }
+  
+  .nav-button {
+    @apply nav-height py-1;
+  }
+  
+  .nav-button-text {
+    @apply nav-button button-clickable-bg text-sm whitespace-nowrap px-2.5;
+  }
+  
+  /* endregion */
+}

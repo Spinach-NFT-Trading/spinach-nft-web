@@ -1,0 +1,7 @@
+# Ensure all given file extensions use LF EOL
+*.ts    eol=lf
+*.tsx   eol=lf
+*.js    eol=lf
+*.jsx   eol=lf
+*.scss  eol=lf
+*.css   eol=lf

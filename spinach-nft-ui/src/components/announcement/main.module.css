@@ -1,0 +1,37 @@
+@tailwind utilities;
+
+@layer utilities {
+  div.announcement-animation {
+    @keyframes marquee {
+      0% {
+        transform: translate(0, 100%);
+      }
+      
+      7% {
+        transform: translate(0, 0);
+      }
+      
+      93% {
+        transform: translate(0, 0);
+      }
+      
+      100% {
+        transform: translate(0, -100%);
+      }
+    }
+    
+    & > div {
+      @apply rounded-none table-cell align-middle w-full transform-gpu;
+      
+      animation: marquee 4s linear infinite;
+    }
+  }
+  
+  div.announcement {
+    @apply h-10 overflow-hidden md:h-5 text-sm;
+  }
+  
+  div.announcement-lg {
+    @apply h-40 overflow-hidden md:h-20 text-lg;
+  }
+}
