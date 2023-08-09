@@ -9,7 +9,10 @@ export const CorsAllowedOrigins = env.get('SPINACH_CORS_ORIGINS')
   .required(!isCi())
   .asArray();
 
-export const LogDir = env.get('SPINACH_LOG_DIR').required().asString();
+export const LogDir = env.get('SPINACH_LOG_DIR')
+  .default('')
+  .required(!isCi())
+  .asString();
 
 export const ApiHost = env.get('SPINACH_API_HOST').required().asString();
 
