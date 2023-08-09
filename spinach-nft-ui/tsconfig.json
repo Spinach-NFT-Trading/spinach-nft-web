@@ -22,6 +22,11 @@
     /* Module Resolution Options */
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
+    "typeRoots": [
+      "../node_modules/@types",
+      "../spinach-nft-common/typess",
+      "types"
+    ],
     /* Advanced Options */
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -33,7 +38,10 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*",
+        "../spinach-nft-common/*"
+      ]
     }
   },
   "include": [

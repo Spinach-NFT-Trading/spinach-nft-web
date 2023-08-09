@@ -1,6 +1,6 @@
-import {initAuth} from '@/init/auth/main';
+import {addRoutes} from '@/route/main';
 
 
 export const initApp = () => {
-  initAuth();
+  addRoutes();
 };
