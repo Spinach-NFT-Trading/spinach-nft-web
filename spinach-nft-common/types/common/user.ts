@@ -5,8 +5,7 @@ import {UsernameSchemaBase} from '@/types/api/auth/common';
 
 export const BankDetailsSchemaBase = {
   code: Type.String({pattern: '[0-9]{3}'}),
-  // TODO: Bank account format?
-  account: Type.String({pattern: '[0-9]'}),
+  account: Type.String({pattern: '\\w+'}),
 };
 
 export const BankDetailsSchema = Type.Object(
@@ -32,8 +31,8 @@ export const UserInfoSchemaBase = {
   phone: Type.String({pattern: '[0-9]+'}),
   email: Type.String({format: 'email'}),
   lineId: Type.String({pattern: '[a-zA-Z0-9]+'}),
-  // TODO: Crypto wallet format?
-  wallet: Type.String({pattern: '[0-9a-f]+'}),
+  // TRC20 address regex
+  wallet: Type.String({pattern: 'T[A-Za-z1-9]{33}'}),
 };
 
 export const UserInfoSchema = Type.Object(
