@@ -1,8 +1,10 @@
 'use client';
 import React from 'react';
 
-import {useSearchParams} from 'next/navigation';
+import {AuthErrorCode} from '@/types/api/auth/error';
+import Link from 'next/link';
 import {signIn} from 'next-auth/react';
+import {passwordPattern, usernamePattern} from 'spinach-nft-common/const/auth';
 import {translateAuthError} from 'spinach-nft-common/utils/translate/authError';
 
 import {Flex} from '@/components/layout/flex';
@@ -11,9 +13,11 @@ import {InputFloatingLabel} from '@/components/shared/common/input/field';
 import {AccountLoginInput} from '@/ui/account/login/type';
 
 
-export const AccountLoginClient = () => {
-  const searchParams = useSearchParams();
-  const error = searchParams.get('error');
+type Props = {
+  error: AuthErrorCode | undefined,
+};
+
+export const AccountLoginClient = ({error}: Props) => {
   const [input, setInput] = React.useState<AccountLoginInput>({
     username: '',
     password: '',
@@ -22,7 +26,7 @@ export const AccountLoginClient = () => {
 
   return (
     <Flex direction="col" className="gap-2 md:p-10">
-      <Flex direction="col" className="info-section gap-2 self-center md:w-1/2">
+      <Flex direction="col" className="gap-2 self-center md:w-1/2">
         {
           error &&
           <Alert>
@@ -34,7 +38,7 @@ export const AccountLoginClient = () => {
           await signIn('Spinach', {username, password});
         }}>
           <InputFloatingLabel
-            id="account"
+            id="username"
             placeholder="帳號"
             type="text"
             value={username}
@@ -44,7 +48,7 @@ export const AccountLoginClient = () => {
             } satisfies AccountLoginInput))}
             autoComplete="username"
             required
-            pattern="[a-zA-Z0-9]{6,}"
+            pattern={usernamePattern}
           />
           <InputFloatingLabel
             id="password"
@@ -57,12 +61,12 @@ export const AccountLoginClient = () => {
             } satisfies AccountLoginInput))}
             autoComplete="current-password"
             required
-            pattern="[a-zA-Z0-9]{6,}"
+            pattern={passwordPattern}
           />
           <Flex direction="row" className="gap-2">
-            <button className="button-clickable-bg w-full p-2">
+            <Link href="/account/register" className="button-clickable-bg w-full p-2 text-center">
               註冊
-            </button>
+            </Link>
             <button type="submit" className="button-clickable-bg w-full p-2">
               登入
             </button>

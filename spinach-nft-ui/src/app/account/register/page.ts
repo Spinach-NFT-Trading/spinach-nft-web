@@ -1,4 +1,4 @@
-import {Constructing} from '@/ui/placeholder/constructing';
+import {AccountRegister} from '@/ui/account/register/main';
 
 
-export default Constructing;
+export default AccountRegister;

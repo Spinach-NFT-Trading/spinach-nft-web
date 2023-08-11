@@ -1,11 +1,19 @@
 import {Static, Type} from '@sinclair/typebox';
 
+import {
+  bankAccountPattern,
+  bankCodePattern,
+  lineIdPattern,
+  namePattern,
+  phonePattern,
+  walletPattern,
+} from '@/const/auth';
 import {UsernameSchemaBase} from '@/types/api/auth/common';
 
 
 export const BankDetailsSchemaBase = {
-  code: Type.String({pattern: '[0-9]{3}'}),
-  account: Type.String({pattern: '\\w+'}),
+  code: Type.String({pattern: bankCodePattern}),
+  account: Type.String({pattern: bankAccountPattern}),
 };
 
 export const BankDetailsSchema = Type.Object(
@@ -27,12 +35,11 @@ export type UserBankDetails = Static<typeof UserBankDetailsSchema>;
 
 export const UserInfoSchemaBase = {
   username: UsernameSchemaBase,
-  name: Type.String({pattern: '\\w+'}),
-  phone: Type.String({pattern: '[0-9]+'}),
+  name: Type.String({pattern: namePattern}),
+  phone: Type.String({pattern: phonePattern}),
   email: Type.String({format: 'email'}),
-  lineId: Type.String({pattern: '[a-zA-Z0-9]+'}),
-  // TRC20 address regex
-  wallet: Type.String({pattern: 'T[A-Za-z1-9]{33}'}),
+  lineId: Type.String({pattern: lineIdPattern}),
+  wallet: Type.String({pattern: walletPattern}),
 };
 
 export const UserInfoSchema = Type.Object(

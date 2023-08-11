@@ -3,6 +3,7 @@ import {Static, TString, Type} from '@sinclair/typebox';
 
 export const authErrorCode = [
   'accountNotFound',
+  'passwordMismatch',
 ] as const;
 
 export interface TAuthErrorCode extends TString {

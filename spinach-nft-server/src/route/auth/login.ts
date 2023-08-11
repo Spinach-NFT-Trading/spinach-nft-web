@@ -24,10 +24,10 @@ export const addAuthLogin = () => {
     async ({body}): Promise<UserLoginResponse> => {
       const data = await getUserInfo(body);
 
-      if (!data) {
+      if (typeof data === 'string') {
         return {
           success: false,
-          error: 'accountNotFound',
+          error: data,
         };
       }
 

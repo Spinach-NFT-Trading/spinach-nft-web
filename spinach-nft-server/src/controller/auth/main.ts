@@ -1,7 +1,8 @@
+import {AuthErrorCode} from '@/types/api/auth/error';
 import {UserLoginRequest} from 'spinach-nft-common/types/api/auth/login';
 import {UserRegisterRequest} from 'spinach-nft-common/types/api/auth/register';
 import {UserInfo} from 'spinach-nft-common/types/common/user';
-import {hashPassword} from 'spinach-nft-common/utils/password';
+import {hashPassword, verifyPasswordOrThrow} from 'spinach-nft-common/utils/password';
 
 import {userBankDetailsCollection, userInfoCollection} from '@/controller/auth/const';
 
@@ -20,14 +21,19 @@ export const registerUser = async (request: UserRegisterRequest): Promise<string
   return result.insertedId.toHexString();
 };
 
-export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo | null> => {
+export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo | AuthErrorCode> => {
   const info = await userInfoCollection.findOne({
     username: request.username,
-    passwordHash: await hashPassword(request.password),
   });
 
   if (!info) {
-    return null;
+    return 'accountNotFound';
+  }
+
+  try {
+    await verifyPasswordOrThrow(request.password, info.passwordHash);
+  } catch (e) {
+    return 'passwordMismatch';
   }
 
   return {

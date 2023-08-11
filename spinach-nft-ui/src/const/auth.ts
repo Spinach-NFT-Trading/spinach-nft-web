@@ -1,21 +1,14 @@
-import {MongoDBAdapter as mongoDBAdapter} from '@next-auth/mongodb-adapter';
 import * as env from 'env-var';
 import {AuthOptions} from 'next-auth';
 import credentialsProvider, {CredentialInput} from 'next-auth/providers/credentials';
 import {apiPath} from 'spinach-nft-common/const/path';
 import {UserLoginRequest, UserLoginResponse} from 'spinach-nft-common/types/api/auth/login';
 
-import mongoPromise from '@/lib/mongodb';
 
-
-const authApi = env.get('NEXTAUTH_AUTH_API').required().asString();
+const authApi = env.get('NEXT_PUBLIC_SERVER_API').required().asString();
 
 export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
-  adapter: mongoDBAdapter(
-    mongoPromise,
-    {databaseName: 'auth'},
-  ),
   session: {
     strategy: 'jwt',
     maxAge: 30 * 24 * 60 * 60, // 30 days
