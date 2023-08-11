@@ -22,12 +22,19 @@ export const addAuthRegister = () => {
       },
     },
     async ({body}): Promise<UserRegisterResponse> => {
-      const registeredId = await registerUser(body);
+      const errorOrUserId = await registerUser(body);
+
+      if (typeof errorOrUserId === 'string') {
+        return {
+          success: false,
+          error: errorOrUserId,
+        };
+      }
 
       return {
         success: true,
         data: {
-          id: registeredId,
+          id: errorOrUserId.toHexString(),
           name: body.name,
           email: body.email,
           username: body.username,

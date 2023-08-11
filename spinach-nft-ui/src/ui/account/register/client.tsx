@@ -100,7 +100,7 @@ export const AccountRegisterClient = () => {
           />
           <InputFloatingLabel
             id="phone"
-            placeholder="電話號碼"
+            placeholder="手機號碼"
             type="text"
             value={phone}
             onChange={({target}) => setInput((original) => ({

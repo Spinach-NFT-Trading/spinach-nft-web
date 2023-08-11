@@ -1,4 +1,5 @@
 import {AuthErrorCode} from '@/types/api/auth/error';
+import {ObjectId} from 'mongodb';
 import {UserLoginRequest} from 'spinach-nft-common/types/api/auth/login';
 import {UserRegisterRequest} from 'spinach-nft-common/types/api/auth/register';
 import {UserInfo} from 'spinach-nft-common/types/common/user';
@@ -7,18 +8,50 @@ import {hashPassword, verifyPasswordOrThrow} from 'spinach-nft-common/utils/pass
 import {userBankDetailsCollection, userInfoCollection} from '@/controller/auth/const';
 
 
-export const registerUser = async (request: UserRegisterRequest): Promise<string> => {
+export const registerUser = async ({
+  name,
+  email,
+  phone,
+  lineId,
+  wallet,
+  username,
+  password,
+}: UserRegisterRequest): Promise<AuthErrorCode | ObjectId> => {
+  if (await userInfoCollection.findOne({username})) {
+    return 'takenUsername';
+  }
+
+  if (await userInfoCollection.findOne({name})) {
+    return 'takenName';
+  }
+
+  if (await userInfoCollection.findOne({email})) {
+    return 'takenEmail';
+  }
+
+  if (await userInfoCollection.findOne({phone})) {
+    return 'takenPhone';
+  }
+
+  if (await userInfoCollection.findOne({lineId})) {
+    return 'takenLineId';
+  }
+
+  if (await userInfoCollection.findOne({wallet})) {
+    return 'takenWallet';
+  }
+
   const result = await userInfoCollection.insertOne({
-    username: request.username,
-    passwordHash: await hashPassword(request.password),
-    name: request.name,
-    email: request.email,
-    phone: request.phone,
-    lineId: request.lineId,
-    wallet: request.wallet,
+    username,
+    passwordHash: await hashPassword(password),
+    name,
+    email,
+    phone,
+    lineId,
+    wallet,
   });
 
-  return result.insertedId.toHexString();
+  return result.insertedId;
 };
 
 export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo | AuthErrorCode> => {
