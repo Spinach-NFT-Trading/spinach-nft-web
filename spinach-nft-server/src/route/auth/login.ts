@@ -27,7 +27,7 @@ export const addAuthLogin = () => {
       if (!data) {
         return {
           success: false,
-          error: '找不到對應的帳號。',
+          error: 'accountNotFound',
         };
       }
 

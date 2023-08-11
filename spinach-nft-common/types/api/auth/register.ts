@@ -1,6 +1,7 @@
 import {Static, Type} from '@sinclair/typebox';
 
 import {PasswordSchemaBase} from '@/types/api/auth/common';
+import {AuthErrorCodeSchema} from '@/types/api/auth/error';
 import {UserInfoSchema, UserInfoSchemaBase} from '@/types/common/user';
 import {BoolFalseSchema, BoolTrueSchema} from '@/types/typebox';
 
@@ -26,7 +27,7 @@ export const UserRegisterResponseSchema = Type.Union([
   Type.Object(
     {
       success: BoolFalseSchema,
-      error: Type.String({minLength: 1}),
+      error: AuthErrorCodeSchema,
     },
     {additionalProperties: false},
   ),

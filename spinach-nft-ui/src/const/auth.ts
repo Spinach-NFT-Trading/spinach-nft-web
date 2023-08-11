@@ -31,9 +31,13 @@ export const authOptions: AuthOptions = {
       return token;
     },
   },
+  pages: {
+    signIn: '/account/login',
+    error: '/account/login',
+  },
   providers: [
     credentialsProvider({
-      id: 'spinach',
+      id: 'Spinach',
       type: 'credentials',
       credentials: {
         username: {label: 'username', type: 'text'},
