@@ -2,8 +2,6 @@ import {isCi} from '@spinach/common/utils/env';
 import * as env from 'env-var';
 
 
-export const MongoUri = env.get('MONGODB_URI').required().asString();
-
 export const CorsAllowedOrigins = env.get('SPINACH_CORS_ORIGINS')
   .default('')
   .required(!isCi())

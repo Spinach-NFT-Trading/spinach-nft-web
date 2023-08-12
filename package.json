@@ -12,6 +12,7 @@
   "workspaces":[
     "spinach-nft-common",
     "spinach-nft-server",
+    "spinach-nft-service",
     "spinach-nft-ui"
   ],
   "scripts": {
@@ -34,7 +35,9 @@
     "eslint-config-google": "^0.14.0",
     "eslint-import-resolver-typescript":"^3.5.5",
     "eslint-plugin-import": "^2.28.0",
+    "nodemon": "^3.0.1",
     "pm2": "^5.3.0",
+    "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "spinach-nft-server",
+  "name": "spinach-nft-service",
   "version": "1.0.0",
   "private": true,
   "engines": {
@@ -16,18 +16,14 @@
   "author": "RaenonX",
   "license": "ISC",
   "dependencies": {
-    "@fastify/cors": "^8.3.0",
-    "@fastify/helmet": "^11.0.0",
-    "fastify": "^4.21.0",
-    "pino": "^8.15.0",
-    "spinach-nft-common": "*"
+    "decimal.js": "^10.4.3",
+    "spinach-nft-common": "*",
+    "ws": "^8.13.0"
   },
   "devDependencies": {
-    "pino-pretty": "^10.2.0"
+    "@types/ws": "^8.5.5"
   },
   "peerDependencies": {
-    "@fastify/type-provider-typebox": "*",
-    "@sinclair/typebox": "*",
     "@types/node": "*",
     "@typescript-eslint/eslint-plugin": "*",
     "@typescript-eslint/parser": "*",

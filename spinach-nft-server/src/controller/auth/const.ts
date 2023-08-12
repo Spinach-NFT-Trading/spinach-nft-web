@@ -1,7 +1,6 @@
+import {Mongo} from '@spinach/common/controller/const';
 import {UserInfoSchemaBase} from '@spinach/common/types/common/user';
 import {UserBankDetailModel, UserModel} from '@spinach/common/types/data/user';
-
-import {Mongo} from '@spinach/server/controller/const';
 
 
 const userDb = Mongo.db('user');
