@@ -4,6 +4,9 @@ import * as env from 'env-var';
 import {AuthOptions} from 'next-auth';
 import credentialsProvider, {CredentialInput} from 'next-auth/providers/credentials';
 
+import {apiActionCode} from '@spinach/next/const/apiAction';
+import {recordGoldPendingExchange} from '@spinach/next/controller/gold';
+
 
 const authApi = env.get('NEXT_PUBLIC_SERVER_API').required().asString();
 
@@ -14,11 +17,15 @@ export const authOptions: AuthOptions = {
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   callbacks: {
-    jwt: async ({token, user}) => {
+    jwt: async ({token, user, trigger, session}) => {
       if (user) {
         token.username = user.username;
         token.name = user.name;
         token.email = user.email;
+      }
+
+      if (trigger === 'update' && token.sub && session === apiActionCode.pendingGoldExchange) {
+        await recordGoldPendingExchange({account: token.sub});
       }
 
       return token;

@@ -1,4 +1,4 @@
-import {currentFxCollection} from '@spinach/common/controller/fx/const';
+import {currentFxCollection} from '@spinach/common/controller/fx';
 import {CurrentFx} from '@spinach/common/types/data/fx';
 
 

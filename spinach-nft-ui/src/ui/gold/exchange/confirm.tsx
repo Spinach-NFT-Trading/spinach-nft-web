@@ -1,10 +1,11 @@
 import React from 'react';
 
 import {Session} from 'next-auth';
-import {signIn} from 'next-auth/react';
+import {signIn, useSession} from 'next-auth/react';
 
 import {Flex} from '@spinach/next/components/layout/flex';
 import {Popup} from '@spinach/next/components/popup';
+import {apiActionCode} from '@spinach/next/const/apiAction';
 import {ExchangeAmount} from '@spinach/next/ui/gold/exchange/type';
 
 
@@ -16,11 +17,15 @@ type Props = {
 };
 
 export const GoldExchangeConfirmPopup = ({session, amount, show, setShow}: Props) => {
+  const {update} = useSession();
+
   const onClick = async () => {
     if (!session) {
       await signIn();
       return;
     }
+
+    await update(apiActionCode.pendingGoldExchange);
   };
 
   return (
