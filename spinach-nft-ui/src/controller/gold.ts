@@ -1,5 +1,6 @@
 import {userInfoCollection} from '@spinach/common/controller/auth';
 import {goldPendingCollection} from '@spinach/common/controller/gold';
+import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {MongoError, ObjectId} from 'mongodb';
 
 
@@ -7,13 +8,15 @@ type RecordGoldPendingExchangeOpts = {
   account: string,
 };
 
-export const recordGoldPendingExchange = async ({account}: RecordGoldPendingExchangeOpts) => {
+export const recordGoldPendingExchange = async ({
+  account,
+}: RecordGoldPendingExchangeOpts): Promise<ApiErrorCode | null> => {
   const accountId = new ObjectId(account);
 
   const userInfo = await userInfoCollection.findOne({_id: accountId});
 
   if (!userInfo) {
-    return false;
+    return 'accountNotFound';
   }
 
   try {
@@ -25,11 +28,11 @@ export const recordGoldPendingExchange = async ({account}: RecordGoldPendingExch
     });
   } catch (e) {
     if (e instanceof MongoError && e.code === 11000) {
-      return false;
+      return 'goldExchangeInProgress';
     }
 
     throw e;
   }
 
-  return true;
+  return null;
 };

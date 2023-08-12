@@ -10,6 +10,7 @@ const apiErrorStringMap: {[code in ApiErrorCode]: string} = {
   takenPhone: '手機號碼已被使用。',
   takenUsername: '帳號 ID 已被使用。',
   takenWallet: 'MAX 錢包已被使用。',
+  goldExchangeInProgress: 'GOLD 購買程序已在進行中，請稍後再試。',
 };
 
 export const translateApiError = (error: string): string => {

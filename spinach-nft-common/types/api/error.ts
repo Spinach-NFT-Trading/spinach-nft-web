@@ -10,6 +10,7 @@ export const apiErrorCode = [
   'takenPhone',
   'takenLineId',
   'takenWallet',
+  'goldExchangeInProgress',
 ] as const;
 
 export interface TApiErrorCode extends TString {

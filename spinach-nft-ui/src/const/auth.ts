@@ -25,10 +25,17 @@ export const authOptions: AuthOptions = {
       }
 
       if (trigger === 'update' && token.sub && session === apiActionCode.pendingGoldExchange) {
-        await recordGoldPendingExchange({account: token.sub});
+        token.jwtUpdateError = await recordGoldPendingExchange({account: token.sub});
       }
 
       return token;
+    },
+    session: async ({session, token}) => {
+      // Needs to add the properties on `token` JWT, or it won't be exposed to the UI
+      session.user.username = token.username;
+      session.user.jwtUpdateError = token.jwtUpdateError;
+
+      return session;
     },
   },
   pages: {

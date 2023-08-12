@@ -24,7 +24,7 @@ export const GoldExchangeClient = ({session, exchangeRate, cashbackRate}: Props)
   const [show, setShow] = React.useState(false);
   const [amount, setAmount] = React.useState<ExchangeAmount>({
     usdt: defaultUsdt,
-    gold: defaultUsdt * exchangeRate * (1 + cashbackRate),
+    gold: parseFloat((defaultUsdt * exchangeRate * (1 + cashbackRate)).toFixed(2)),
   });
 
   return (
