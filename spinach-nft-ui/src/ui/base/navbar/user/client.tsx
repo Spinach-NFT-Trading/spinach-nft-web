@@ -17,7 +17,7 @@ type Props = {
 export const UserControlClient = ({session}: Props) => {
   if (!session) {
     return (
-      <button className="nav-button-text group" onClick={() => signIn('google')}>
+      <button className="nav-button-text group" onClick={() => signIn()}>
         <Flex direction="row" className="gap-1">
           <div className={clsx(
             'transform-smooth relative h-5 w-5',

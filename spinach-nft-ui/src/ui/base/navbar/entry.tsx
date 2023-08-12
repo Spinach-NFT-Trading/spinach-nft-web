@@ -4,14 +4,21 @@ import React from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
+import {Session} from 'next-auth';
 
 import {NavEntry} from '@spinach/next/types/nav';
 
 
-type Props = NavEntry;
+type Props = NavEntry & {
+  session: Session | null,
+};
 
-export const NavEntryUI = ({href, text}: Props) => {
+export const NavEntryUI = ({href, text, showOnlyIfLoggedIn, session}: Props) => {
   const pathname = usePathname();
+
+  if (showOnlyIfLoggedIn && !session) {
+    return <></>;
+  }
 
   const isCurrent = href === pathname;
 

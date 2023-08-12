@@ -1,4 +1,4 @@
-import {Constructing} from '@spinach/next/ui/placeholder/constructing';
+import {GoldExchange} from '@spinach/next/ui/gold/exchange/main';
 
 
-export default Constructing;
+export default GoldExchange;

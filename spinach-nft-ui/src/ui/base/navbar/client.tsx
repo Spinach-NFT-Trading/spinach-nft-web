@@ -2,6 +2,7 @@
 import React from 'react';
 
 import clsx from 'clsx';
+import {Session} from 'next-auth';
 
 import {Flex} from '@spinach/next/components/layout/flex';
 import {useNavEntries} from '@spinach/next/hooks/nav';
@@ -10,7 +11,11 @@ import {NavEntryUI} from '@spinach/next/ui/base/navbar/entry';
 import {NavHomepage} from '@spinach/next/ui/base/navbar/home';
 
 
-export const NavBarClient = () => {
+type Props = {
+  session: Session | null;
+};
+
+export const NavBarClient = ({session}: Props) => {
   const entries = useNavEntries();
 
   return (
@@ -21,7 +26,7 @@ export const NavBarClient = () => {
       )}>
         {entries.map((entry) => (
           <div key={entry.href} className="nav-height">
-            <NavEntryUI {...entry}/>
+            <NavEntryUI session={session} {...entry}/>
           </div>
         ))}
       </Flex>
