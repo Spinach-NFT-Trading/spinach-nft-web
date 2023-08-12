@@ -1,7 +1,7 @@
 import {userBankDetailsCollection, userInfoCollection} from '@spinach/common/controller/auth';
-import {AuthErrorCode} from '@spinach/common/types/api/auth/error';
 import {UserLoginRequest} from '@spinach/common/types/api/auth/login';
 import {UserRegisterRequest} from '@spinach/common/types/api/auth/register';
+import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {UserInfo} from '@spinach/common/types/common/user';
 import {hashPassword, verifyPasswordOrThrow} from '@spinach/common/utils/password';
 import {ObjectId} from 'mongodb';
@@ -15,7 +15,7 @@ export const registerUser = async ({
   wallet,
   username,
   password,
-}: UserRegisterRequest): Promise<AuthErrorCode | ObjectId> => {
+}: UserRegisterRequest): Promise<ApiErrorCode | ObjectId> => {
   if (await userInfoCollection.findOne({username})) {
     return 'takenUsername';
   }
@@ -53,7 +53,7 @@ export const registerUser = async ({
   return result.insertedId;
 };
 
-export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo | AuthErrorCode> => {
+export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo | ApiErrorCode> => {
   const info = await userInfoCollection.findOne({
     username: request.username,
   });

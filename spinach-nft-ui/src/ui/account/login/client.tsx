@@ -2,8 +2,8 @@
 import React from 'react';
 
 import {passwordPattern, usernamePattern} from '@spinach/common/const/auth';
-import {AuthErrorCode} from '@spinach/common/types/api/auth/error';
-import {translateAuthError} from '@spinach/common/utils/translate/authError';
+import {ApiErrorCode} from '@spinach/common/types/api/error';
+import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import Link from 'next/link';
 import {signIn} from 'next-auth/react';
 
@@ -14,7 +14,7 @@ import {AccountLoginInput} from '@spinach/next/ui/account/login/type';
 
 
 type Props = {
-  error: AuthErrorCode | undefined,
+  error: ApiErrorCode | undefined,
 };
 
 export const AccountLoginClient = ({error}: Props) => {
@@ -27,12 +27,7 @@ export const AccountLoginClient = ({error}: Props) => {
   return (
     <Flex direction="col" className="gap-2 md:p-10">
       <Flex direction="col" className="gap-2 self-center md:w-1/2">
-        {
-          error &&
-          <Alert>
-            {translateAuthError(error)}
-          </Alert>
-        }
+        {error && <Alert>{translateApiError(error)}</Alert>}
         <form className="flex flex-col gap-2" onSubmit={async (e) => {
           e.preventDefault();
           await signIn('Spinach', {username, password});

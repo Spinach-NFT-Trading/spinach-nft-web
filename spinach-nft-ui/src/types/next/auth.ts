@@ -1,10 +1,10 @@
-import {AuthErrorCode} from '@spinach/common/types/api/auth/error';
+import {ApiErrorCode} from '@spinach/common/types/api/error';
 
 
 export type LoginPageParams = {
   params: {},
   searchParams: {
-    error?: AuthErrorCode,
+    error?: ApiErrorCode,
     callbackUrl?: string,
   },
 };

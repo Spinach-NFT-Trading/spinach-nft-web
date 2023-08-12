@@ -1,11 +1,11 @@
 import {apiPath} from '@spinach/common/const/path';
-import {isAuthError} from '@spinach/common/types/api/auth/error';
 import {
   UserRegisterRequest,
   UserRegisterRequestSchema,
   UserRegisterResponse,
   UserRegisterResponseSchema,
 } from '@spinach/common/types/api/auth/register';
+import {isApiError} from '@spinach/common/types/api/error';
 
 import {Server} from '@spinach/server/const';
 import {registerUser} from '@spinach/server/controller/auth/main';
@@ -25,7 +25,7 @@ export const addAuthRegister = () => {
     async ({body}): Promise<UserRegisterResponse> => {
       const errorOrUserId = await registerUser(body);
 
-      if (isAuthError(errorOrUserId)) {
+      if (isApiError(errorOrUserId)) {
         return {
           success: false,
           error: errorOrUserId,

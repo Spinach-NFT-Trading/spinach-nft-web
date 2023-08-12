@@ -10,9 +10,9 @@ import {
   walletPattern,
 } from '@spinach/common/const/auth';
 import {apiPath} from '@spinach/common/const/path';
-import {AuthErrorCode} from '@spinach/common/types/api/auth/error';
 import {UserRegisterResponse} from '@spinach/common/types/api/auth/register';
-import {translateAuthError} from '@spinach/common/utils/translate/authError';
+import {ApiErrorCode} from '@spinach/common/types/api/error';
+import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {signIn} from 'next-auth/react';
 
 import {Flex} from '@spinach/next/components/layout/flex';
@@ -23,7 +23,7 @@ import {sendApiPost} from '@spinach/next/utils/api';
 
 
 export const AccountRegisterClient = () => {
-  const [error, setError] = React.useState<AuthErrorCode | null>(null);
+  const [error, setError] = React.useState<ApiErrorCode | null>(null);
   const [input, setInput] = React.useState<AccountRegisterInput>({
     name: '',
     email: '',
@@ -54,12 +54,7 @@ export const AccountRegisterClient = () => {
   return (
     <Flex direction="col" className="gap-2 md:p-10">
       <Flex direction="col" className="gap-2 self-center md:w-1/2">
-        {
-          error &&
-          <Alert>
-            {translateAuthError(error)}
-          </Alert>
-        }
+        {error && <Alert>{translateApiError(error)}</Alert>}
         <form className="flex flex-col gap-2" onSubmit={onSubmit}>
           <InputFloatingLabel
             id="name"

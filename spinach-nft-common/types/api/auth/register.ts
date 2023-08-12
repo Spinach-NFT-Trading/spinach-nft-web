@@ -1,7 +1,7 @@
 import {Static, Type} from '@sinclair/typebox';
 
 import {PasswordSchemaBase} from '@spinach/common/types/api/auth/common';
-import {AuthErrorCodeSchema} from '@spinach/common/types/api/auth/error';
+import {ApiErrorCodeSchema} from '@spinach/common/types/api/error';
 import {UserInfoSchema, UserInfoSchemaBase} from '@spinach/common/types/common/user';
 import {BoolFalseSchema, BoolTrueSchema} from '@spinach/common/types/typebox';
 
@@ -27,7 +27,7 @@ export const UserRegisterResponseSchema = Type.Union([
   Type.Object(
     {
       success: BoolFalseSchema,
-      error: AuthErrorCodeSchema,
+      error: ApiErrorCodeSchema,
     },
     {additionalProperties: false},
   ),
