@@ -1,4 +1,4 @@
-import {AccountRegister} from '@/ui/account/register/main';
+import {AccountRegister} from '@spinach/next/ui/account/register/main';
 
 
 export default AccountRegister;

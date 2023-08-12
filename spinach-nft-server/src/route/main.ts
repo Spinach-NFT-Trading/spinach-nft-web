@@ -1,4 +1,4 @@
-import {addAuth} from '@/route/auth/main';
+import {addAuth} from '@spinach/server/route/auth/main';
 
 
 export const addRoutes = () => {

@@ -7,8 +7,8 @@ import {
   namePattern,
   phonePattern,
   walletPattern,
-} from '@/const/auth';
-import {UsernameSchemaBase} from '@/types/api/auth/common';
+} from '@spinach/common/const/auth';
+import {UsernameSchemaBase} from '@spinach/common/types/api/auth/common';
 
 
 export const BankDetailsSchemaBase = {

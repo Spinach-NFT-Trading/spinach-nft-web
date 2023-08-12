@@ -26,7 +26,7 @@
     "isolatedModules": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./*"]
+      "@spinach/common/*": ["./*"]
     },
     /* Advanced Options */
     "skipLibCheck": true,

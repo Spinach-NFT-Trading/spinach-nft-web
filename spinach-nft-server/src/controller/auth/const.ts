@@ -1,7 +1,7 @@
-import {UserInfoSchemaBase} from '@/types/common/user';
-import {UserBankDetailModel, UserModel} from 'spinach-nft-common/types/data/user';
+import {UserInfoSchemaBase} from '@spinach/common/types/common/user';
+import {UserBankDetailModel, UserModel} from '@spinach/common/types/data/user';
 
-import {Mongo} from '@/controller/const';
+import {Mongo} from '@spinach/server/controller/const';
 
 
 const userDb = Mongo.db('user');

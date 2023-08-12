@@ -1,4 +1,4 @@
-import {PageLayout} from '@/ui/base/layout';
+import {PageLayout} from '@spinach/next/ui/base/layout';
 
 
 export const Home = () => {

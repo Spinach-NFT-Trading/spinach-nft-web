@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 
-import {signIn} from 'next-auth/react';
 import {
   lineIdPattern,
   namePattern,
@@ -9,17 +8,18 @@ import {
   phonePattern,
   usernamePattern,
   walletPattern,
-} from 'spinach-nft-common/const/auth';
-import {apiPath} from 'spinach-nft-common/const/path';
-import {AuthErrorCode} from 'spinach-nft-common/types/api/auth/error';
-import {UserRegisterResponse} from 'spinach-nft-common/types/api/auth/register';
-import {translateAuthError} from 'spinach-nft-common/utils/translate/authError';
+} from '@spinach/common/const/auth';
+import {apiPath} from '@spinach/common/const/path';
+import {AuthErrorCode} from '@spinach/common/types/api/auth/error';
+import {UserRegisterResponse} from '@spinach/common/types/api/auth/register';
+import {translateAuthError} from '@spinach/common/utils/translate/authError';
+import {signIn} from 'next-auth/react';
 
-import {Flex} from '@/components/layout/flex';
-import {Alert} from '@/components/shared/common/alert';
-import {InputFloatingLabel} from '@/components/shared/common/input/field';
-import {AccountRegisterInput} from '@/ui/account/register/type';
-import {sendApiPost} from '@/utils/api';
+import {Flex} from '@spinach/next/components/layout/flex';
+import {Alert} from '@spinach/next/components/shared/common/alert';
+import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
+import {AccountRegisterInput} from '@spinach/next/ui/account/register/type';
+import {sendApiPost} from '@spinach/next/utils/api';
 
 
 export const AccountRegisterClient = () => {

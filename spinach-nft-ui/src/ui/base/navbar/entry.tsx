@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 
-import {NavEntry} from '@/types/nav';
+import {NavEntry} from '@spinach/next/types/nav';
 
 
 type Props = NavEntry;

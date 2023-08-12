@@ -110,4 +110,5 @@ settings:
   import/resolver:
     typescript:
       alwaysTryTypes: true
-      project: spinach-nft-common
+      project:
+        - spinach-nft-common

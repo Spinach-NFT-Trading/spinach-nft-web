@@ -5,8 +5,9 @@ import type {Metadata} from 'next';
 // eslint-disable-next-line camelcase
 import {Noto_Sans} from 'next/font/google';
 
-import {PageLayoutParams} from '@/types/next/layout';
-import {Providers} from '@/ui/base/providers';
+import {PageLayoutParams} from '@spinach/next/types/next/layout';
+import {Providers} from '@spinach/next/ui/base/providers';
+
 import './globals.css';
 
 

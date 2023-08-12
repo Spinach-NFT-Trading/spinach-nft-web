@@ -1,16 +1,16 @@
 'use client';
 import React from 'react';
 
-import {AuthErrorCode} from '@/types/api/auth/error';
+import {passwordPattern, usernamePattern} from '@spinach/common/const/auth';
+import {AuthErrorCode} from '@spinach/common/types/api/auth/error';
+import {translateAuthError} from '@spinach/common/utils/translate/authError';
 import Link from 'next/link';
 import {signIn} from 'next-auth/react';
-import {passwordPattern, usernamePattern} from 'spinach-nft-common/const/auth';
-import {translateAuthError} from 'spinach-nft-common/utils/translate/authError';
 
-import {Flex} from '@/components/layout/flex';
-import {Alert} from '@/components/shared/common/alert';
-import {InputFloatingLabel} from '@/components/shared/common/input/field';
-import {AccountLoginInput} from '@/ui/account/login/type';
+import {Flex} from '@spinach/next/components/layout/flex';
+import {Alert} from '@spinach/next/components/shared/common/alert';
+import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
+import {AccountLoginInput} from '@spinach/next/ui/account/login/type';
 
 
 type Props = {

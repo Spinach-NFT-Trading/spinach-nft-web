@@ -2,8 +2,8 @@ import React from 'react';
 
 import {getServerSession} from 'next-auth';
 
-import {authOptions} from '@/const/auth';
-import {UserControlClient} from '@/ui/base/navbar/user/client';
+import {authOptions} from '@spinach/next/const/auth';
+import {UserControlClient} from '@spinach/next/ui/base/navbar/user/client';
 
 
 export const UserControl = () => {

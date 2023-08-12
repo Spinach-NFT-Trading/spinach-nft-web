@@ -1,10 +1,10 @@
 import * as path from 'path';
 
+import {getEnvironment} from '@spinach/common/utils/env';
 import {FastifyLoggerOptions, FastifyServerOptions} from 'fastify';
 // eslint-disable-next-line import/no-unresolved
 import {PinoLoggerOptions} from 'fastify/types/logger';
 import {TransportTargetOptions} from 'pino';
-import {getEnvironment} from 'spinach-nft-common/utils/env';
 
 
 type GetPinoFileTransportOpts = {

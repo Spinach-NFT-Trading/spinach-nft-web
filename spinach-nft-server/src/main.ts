@@ -4,10 +4,10 @@ import * as dotenv from 'dotenv';
 
 dotenv.config({path: '.env.local', override: true});
 
-import {Logger, Server} from '@/const';
-import {ApiHost, ApiPort} from '@/env';
-import {initApp} from '@/init/main';
-import {runFastify} from '@/run/server';
+import {Logger, Server} from '@spinach/server/const';
+import {ApiHost, ApiPort} from '@spinach/server/env';
+import {initApp} from '@spinach/server/init/main';
+import {runFastify} from '@spinach/server/run/server';
 
 
 (async () => {

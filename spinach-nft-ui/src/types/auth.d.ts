@@ -1,6 +1,6 @@
+import {UserInfo} from '@spinach/common/types/common/user';
 import {DefaultSession, DefaultUser} from 'next-auth';
 import {DefaultJWT} from 'next-auth/jwt';
-import {UserInfo} from 'spinach-nft-common/types/common/user';
 
 
 declare module 'next-auth' {

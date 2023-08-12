@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import {useTheme} from 'next-themes';
 import {DarkModeSwitch} from 'react-toggle-dark-mode';
 
-import {useMounted} from '@/hooks/mounted';
+import {useMounted} from '@spinach/next/hooks/mounted';
 
 
 export const ThemeSwitcher = () => {

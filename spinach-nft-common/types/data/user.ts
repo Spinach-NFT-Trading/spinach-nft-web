@@ -1,7 +1,7 @@
 import {Static, Type} from '@sinclair/typebox';
 
-import {UsernameSchemaBase} from '@/types/api/auth/common';
-import {BankDetailsSchemaBase, UserInfoSchemaBase} from '@/types/common/user';
+import {UsernameSchemaBase} from '@spinach/common/types/api/auth/common';
+import {BankDetailsSchemaBase, UserInfoSchemaBase} from '@spinach/common/types/common/user';
 
 
 export const UserModelSchema = Type.Object(

@@ -14,9 +14,7 @@
     "allowJs": false,
     "removeComments": true,
     "typeRoots": [
-      "../node_modules/@types",
-      "../spinach-nft-common/typess",
-      "types"
+      "../node_modules/@types"
     ],
     /* Strict Type-Checking Options */
     "strict": true,
@@ -28,10 +26,8 @@
     "isolatedModules": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "./src/*",
-        "../spinach-nft-common/*"
-      ]
+      "@spinach/server/*": ["./src/*"],
+      "@spinach/common/*": ["../spinach-nft-common/*"]
     },
     /* Advanced Options */
     "skipLibCheck": true,

@@ -1,5 +1,5 @@
-import {addAuthLogin} from '@/route/auth/login';
-import {addAuthRegister} from '@/route/auth/register';
+import {addAuthLogin} from '@spinach/server/route/auth/login';
+import {addAuthRegister} from '@spinach/server/route/auth/register';
 
 
 export const addAuth = () => {

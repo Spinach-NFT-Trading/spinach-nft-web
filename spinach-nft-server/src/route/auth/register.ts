@@ -1,13 +1,14 @@
-import {apiPath} from 'spinach-nft-common/const/path';
+import {apiPath} from '@spinach/common/const/path';
+import {isAuthError} from '@spinach/common/types/api/auth/error';
 import {
   UserRegisterRequest,
   UserRegisterRequestSchema,
   UserRegisterResponse,
   UserRegisterResponseSchema,
-} from 'spinach-nft-common/types/api/auth/register';
+} from '@spinach/common/types/api/auth/register';
 
-import {Server} from '@/const';
-import {registerUser} from '@/controller/auth/main';
+import {Server} from '@spinach/server/const';
+import {registerUser} from '@spinach/server/controller/auth/main';
 
 
 export const addAuthRegister = () => {
@@ -24,7 +25,7 @@ export const addAuthRegister = () => {
     async ({body}): Promise<UserRegisterResponse> => {
       const errorOrUserId = await registerUser(body);
 
-      if (typeof errorOrUserId === 'string') {
+      if (isAuthError(errorOrUserId)) {
         return {
           success: false,
           error: errorOrUserId,

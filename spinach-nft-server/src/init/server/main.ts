@@ -1,9 +1,9 @@
 import {TypeBoxTypeProvider} from '@fastify/type-provider-typebox';
+import {getEnvironment} from '@spinach/common/utils/env';
 import {fastify, FastifyInstance} from 'fastify';
-import {getEnvironment} from 'spinach-nft-common/utils/env';
 
-import {getLogOptions} from '@/init/server/loggerOpts';
-import {registerMiddlewares} from '@/init/server/middleware';
+import {getLogOptions} from '@spinach/server/init/server/loggerOpts';
+import {registerMiddlewares} from '@spinach/server/init/server/middleware';
 
 
 type InitServerOpts = {

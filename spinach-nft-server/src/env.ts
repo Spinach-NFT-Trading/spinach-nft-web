@@ -1,5 +1,5 @@
+import {isCi} from '@spinach/common/utils/env';
 import * as env from 'env-var';
-import {isCi} from 'spinach-nft-common/utils/env';
 
 
 export const MongoUri = env.get('MONGODB_URI').required().asString();

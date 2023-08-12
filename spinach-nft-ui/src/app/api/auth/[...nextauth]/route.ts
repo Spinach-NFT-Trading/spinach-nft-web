@@ -1,6 +1,6 @@
 import nextAuth from 'next-auth';
 
-import {authOptions} from '@/const/auth';
+import {authOptions} from '@spinach/next/const/auth';
 
 
 const handler = nextAuth(authOptions);

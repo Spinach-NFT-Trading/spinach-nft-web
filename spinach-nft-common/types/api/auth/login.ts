@@ -1,9 +1,9 @@
 import {Static, Type} from '@sinclair/typebox';
 
-import {PasswordSchemaBase, UsernameSchemaBase} from '@/types/api/auth/common';
-import {AuthErrorCodeSchema} from '@/types/api/auth/error';
-import {UserInfoSchema} from '@/types/common/user';
-import {BoolFalseSchema, BoolTrueSchema} from '@/types/typebox';
+import {PasswordSchemaBase, UsernameSchemaBase} from '@spinach/common/types/api/auth/common';
+import {AuthErrorCodeSchema} from '@spinach/common/types/api/auth/error';
+import {UserInfoSchema} from '@spinach/common/types/common/user';
+import {BoolFalseSchema, BoolTrueSchema} from '@spinach/common/types/typebox';
 
 
 export const UserLoginRequestSchema = Type.Object(

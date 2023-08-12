@@ -1,13 +1,13 @@
-import {apiPath} from 'spinach-nft-common/const/path';
+import {apiPath} from '@spinach/common/const/path';
 import {
   UserLoginRequest,
   UserLoginRequestSchema,
   UserLoginResponse,
   UserLoginResponseSchema,
-} from 'spinach-nft-common/types/api/auth/login';
+} from '@spinach/common/types/api/auth/login';
 
-import {Server} from '@/const';
-import {getUserInfo} from '@/controller/auth/main';
+import {Server} from '@spinach/server/const';
+import {getUserInfo} from '@spinach/server/controller/auth/main';
 
 
 export const addAuthLogin = () => {

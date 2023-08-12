@@ -1,7 +1,7 @@
 import {Collection} from 'mongodb';
 
-import mongoPromise from '@/lib/mongodb';
-import {Announcement, announcementLevels} from '@/types/mongo/announcement';
+import mongoPromise from '@spinach/next/lib/mongodb';
+import {Announcement, announcementLevels} from '@spinach/next/types/mongo/announcement';
 
 
 const getCollection = async (): Promise<Collection<Announcement>> => {

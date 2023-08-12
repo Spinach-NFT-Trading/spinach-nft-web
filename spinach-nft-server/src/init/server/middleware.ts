@@ -2,7 +2,7 @@ import {fastifyCors} from '@fastify/cors';
 import {fastifyHelmet} from '@fastify/helmet';
 import {FastifyInstance} from 'fastify';
 
-import {CorsAllowedOrigins} from '@/env';
+import {CorsAllowedOrigins} from '@spinach/server/env';
 
 
 export const registerMiddlewares = (server: FastifyInstance) => {

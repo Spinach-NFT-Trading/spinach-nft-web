@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-import {navEntries} from '@/const/website';
+import {navEntries} from '@spinach/next/const/website';
 
 
 // Need to "cache" the nav entries (effectively making whatever using nav entries a client component)

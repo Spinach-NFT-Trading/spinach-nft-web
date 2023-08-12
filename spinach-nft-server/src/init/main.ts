@@ -1,4 +1,4 @@
-import {addRoutes} from '@/route/main';
+import {addRoutes} from '@spinach/server/route/main';
 
 
 export const initApp = () => {

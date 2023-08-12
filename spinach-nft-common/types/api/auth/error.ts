@@ -20,6 +20,6 @@ export const AuthErrorCodeSchema = Type.Unsafe<Static<TAuthErrorCode>>(Type.Stri
 
 export type AuthErrorCode = Static<typeof AuthErrorCodeSchema>;
 
-export const isAuthError = (error: string): error is AuthErrorCode => {
+export const isAuthError = (error: unknown): error is AuthErrorCode => {
   return authErrorCode.includes(error as AuthErrorCode);
 };

@@ -3,8 +3,8 @@ import React from 'react';
 
 import {ThemeProvider} from 'next-themes';
 
-import {LoadingFullScreen} from '@/components/icons/loading';
-import {useMounted} from '@/hooks/mounted';
+import {LoadingFullScreen} from '@spinach/next/components/icons/loading';
+import {useMounted} from '@spinach/next/hooks/mounted';
 
 
 export const Providers = ({children}: React.PropsWithChildren) => {

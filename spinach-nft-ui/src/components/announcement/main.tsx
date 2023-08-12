@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {AnnouncementsClient} from '@/components/announcement/client';
-import {AnnouncementProps} from '@/components/announcement/type';
-import {getAllAnnouncements} from '@/controller/announcement';
+import {AnnouncementsClient} from '@spinach/next/components/announcement/client';
+import {AnnouncementProps} from '@spinach/next/components/announcement/type';
+import {getAllAnnouncements} from '@spinach/next/controller/announcement';
 
 
 export const Announcements = (props: AnnouncementProps) => {

@@ -1,8 +1,8 @@
+import {apiPath} from '@spinach/common/const/path';
+import {UserLoginRequest, UserLoginResponse} from '@spinach/common/types/api/auth/login';
 import * as env from 'env-var';
 import {AuthOptions} from 'next-auth';
 import credentialsProvider, {CredentialInput} from 'next-auth/providers/credentials';
-import {apiPath} from 'spinach-nft-common/const/path';
-import {UserLoginRequest, UserLoginResponse} from 'spinach-nft-common/types/api/auth/login';
 
 
 const authApi = env.get('NEXT_PUBLIC_SERVER_API').required().asString();

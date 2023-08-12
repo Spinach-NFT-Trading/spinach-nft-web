@@ -1,4 +1,4 @@
-import {AuthErrorCode, isAuthError} from '@/types/api/auth/error';
+import {AuthErrorCode, isAuthError} from '@spinach/common/types/api/auth/error';
 
 
 const authErrorStringMap: {[code in AuthErrorCode]: string} = {

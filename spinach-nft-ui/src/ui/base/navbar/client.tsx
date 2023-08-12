@@ -3,11 +3,11 @@ import React from 'react';
 
 import clsx from 'clsx';
 
-import {Flex} from '@/components/layout/flex';
-import {useNavEntries} from '@/hooks/nav';
-import {ThemeSwitcher} from '@/ui/base/navbar/darkMode/main';
-import {NavEntryUI} from '@/ui/base/navbar/entry';
-import {NavHomepage} from '@/ui/base/navbar/home';
+import {Flex} from '@spinach/next/components/layout/flex';
+import {useNavEntries} from '@spinach/next/hooks/nav';
+import {ThemeSwitcher} from '@spinach/next/ui/base/navbar/darkMode/main';
+import {NavEntryUI} from '@spinach/next/ui/base/navbar/entry';
+import {NavHomepage} from '@spinach/next/ui/base/navbar/home';
 
 
 export const NavBarClient = () => {

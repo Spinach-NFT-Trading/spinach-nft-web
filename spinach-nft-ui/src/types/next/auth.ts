@@ -1,4 +1,4 @@
-import {AuthErrorCode} from 'spinach-nft-common/types/api/auth/error';
+import {AuthErrorCode} from '@spinach/common/types/api/auth/error';
 
 
 export type LoginPageParams = {

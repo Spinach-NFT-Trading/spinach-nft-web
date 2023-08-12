@@ -2,7 +2,7 @@ import React from 'react';
 
 import WrenchIcon from '@heroicons/react/24/solid/WrenchIcon';
 
-import {Flex} from '@/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex';
 
 
 export const Constructing = () => {

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {Announcements} from '@/components/announcement/main';
-import {Flex} from '@/components/layout/flex';
-import {NavBar} from '@/ui/base/navbar/main';
+import {Announcements} from '@spinach/next/components/announcement/main';
+import {Flex} from '@spinach/next/components/layout/flex';
+import {NavBar} from '@spinach/next/ui/base/navbar/main';
 
 
 type Props = {

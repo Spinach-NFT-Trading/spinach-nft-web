@@ -1,6 +1,6 @@
 import {Type} from '@sinclair/typebox';
 
-import {passwordPattern, usernamePattern} from '@/const/auth';
+import {passwordPattern, usernamePattern} from '@spinach/common/const/auth';
 
 
 export const UsernameSchemaBase = Type.String({pattern: usernamePattern});

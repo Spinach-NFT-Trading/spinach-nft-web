@@ -1,5 +1,5 @@
-import {LogDir} from '@/env';
-import {initServer} from '@/init/server/main';
+import {LogDir} from '@spinach/server/env';
+import {initServer} from '@spinach/server/init/server/main';
 
 
 export const Server = initServer({

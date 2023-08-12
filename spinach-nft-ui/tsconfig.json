@@ -24,7 +24,6 @@
     "allowSyntheticDefaultImports": true,
     "typeRoots": [
       "../node_modules/@types",
-      "../spinach-nft-common/typess",
       "types"
     ],
     /* Advanced Options */
@@ -37,11 +36,10 @@
         "name": "next"
       }
     ],
+    "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "./src/*",
-        "../spinach-nft-common/*"
-      ]
+      "@spinach/next/*": ["./src/*"],
+      "@spinach/common/*": ["../spinach-nft-common/*"]
     }
   },
   "include": [

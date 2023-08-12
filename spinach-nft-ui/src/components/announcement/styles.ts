@@ -1,4 +1,4 @@
-import {AnnouncementLevel} from '@/types/mongo/announcement';
+import {AnnouncementLevel} from '@spinach/next/types/mongo/announcement';
 
 
 export const announcementTextClasses: {[level in AnnouncementLevel]: string} = {

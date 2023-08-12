@@ -1,11 +1,11 @@
-import {AuthErrorCode} from '@/types/api/auth/error';
+import {AuthErrorCode} from '@spinach/common/types/api/auth/error';
+import {UserLoginRequest} from '@spinach/common/types/api/auth/login';
+import {UserRegisterRequest} from '@spinach/common/types/api/auth/register';
+import {UserInfo} from '@spinach/common/types/common/user';
+import {hashPassword, verifyPasswordOrThrow} from '@spinach/common/utils/password';
 import {ObjectId} from 'mongodb';
-import {UserLoginRequest} from 'spinach-nft-common/types/api/auth/login';
-import {UserRegisterRequest} from 'spinach-nft-common/types/api/auth/register';
-import {UserInfo} from 'spinach-nft-common/types/common/user';
-import {hashPassword, verifyPasswordOrThrow} from 'spinach-nft-common/utils/password';
 
-import {userBankDetailsCollection, userInfoCollection} from '@/controller/auth/const';
+import {userBankDetailsCollection, userInfoCollection} from '@spinach/server/controller/auth/const';
 
 
 export const registerUser = async ({

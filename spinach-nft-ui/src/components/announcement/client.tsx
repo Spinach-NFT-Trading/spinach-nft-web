@@ -3,10 +3,10 @@ import React from 'react';
 
 import clsx from 'clsx';
 
-import {announcementTextClasses} from '@/components/announcement/styles';
-import {AnnouncementProps} from '@/components/announcement/type';
-import {HorizontalSplitter} from '@/components/shared/common/splitter';
-import {Announcement} from '@/types/mongo/announcement';
+import {announcementTextClasses} from '@spinach/next/components/announcement/styles';
+import {AnnouncementProps} from '@spinach/next/components/announcement/type';
+import {HorizontalSplitter} from '@spinach/next/components/shared/common/splitter';
+import {Announcement} from '@spinach/next/types/mongo/announcement';
 
 import styles from './main.module.css';
 

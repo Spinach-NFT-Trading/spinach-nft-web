@@ -1,4 +1,4 @@
-import {NavEntry} from '@/types/nav';
+import {NavEntry} from '@spinach/next/types/nav';
 
 
 export const navEntries: NavEntry[] = [

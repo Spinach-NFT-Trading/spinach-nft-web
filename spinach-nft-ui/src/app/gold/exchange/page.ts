@@ -1,4 +1,4 @@
-import {Constructing} from '@/ui/placeholder/constructing';
+import {Constructing} from '@spinach/next/ui/placeholder/constructing';
 
 
 export default Constructing;

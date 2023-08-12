@@ -3,9 +3,9 @@ import React from 'react';
 import {redirect} from 'next/navigation';
 import {getServerSession} from 'next-auth';
 
-import {authOptions} from '@/const/auth';
-import {AccountRegisterClient} from '@/ui/account/register/client';
-import {PageLayout} from '@/ui/base/layout';
+import {authOptions} from '@spinach/next/const/auth';
+import {AccountRegisterClient} from '@spinach/next/ui/account/register/client';
+import {PageLayout} from '@spinach/next/ui/base/layout';
 
 
 export const AccountRegister = () => {

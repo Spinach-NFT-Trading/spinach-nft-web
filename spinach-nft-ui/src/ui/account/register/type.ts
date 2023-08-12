@@ -1,4 +1,4 @@
-import {UserRegisterRequest} from 'spinach-nft-common/types/api/auth/register';
+import {UserRegisterRequest} from '@spinach/common/types/api/auth/register';
 
 
 export type AccountRegisterInput = UserRegisterRequest;

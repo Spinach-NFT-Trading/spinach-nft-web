@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import {Session} from 'next-auth';
 import {signIn, signOut} from 'next-auth/react';
 
-import {Flex} from '@/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex';
 
 
 type Props = {

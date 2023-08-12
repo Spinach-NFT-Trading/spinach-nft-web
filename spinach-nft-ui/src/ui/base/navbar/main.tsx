@@ -1,8 +1,8 @@
 import React from 'react';
 
-import {Flex} from '@/components/layout/flex';
-import {NavBarClient} from '@/ui/base/navbar/client';
-import {UserControl} from '@/ui/base/navbar/user/main';
+import {Flex} from '@spinach/next/components/layout/flex';
+import {NavBarClient} from '@spinach/next/ui/base/navbar/client';
+import {UserControl} from '@spinach/next/ui/base/navbar/user/main';
 
 
 export const NavBar = () => {
