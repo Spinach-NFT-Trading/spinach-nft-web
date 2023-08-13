@@ -3,11 +3,11 @@ import {UserInfoSchemaBase} from '@spinach/common/types/common/user';
 import {UserBankDetailModel, UserModel} from '@spinach/common/types/data/user';
 
 
-const userDb = Mongo.db('user');
+const db = Mongo.db('user');
 
-export const userInfoCollection = userDb.collection<UserModel>('info');
+export const userInfoCollection = db.collection<UserModel>('info');
 
-export const userBankDetailsCollection = userDb.collection<UserBankDetailModel>('bankDetails');
+export const userBankDetailsCollection = db.collection<UserBankDetailModel>('bankDetails');
 
 const initUserIndex = async () => {
   return Promise.all([

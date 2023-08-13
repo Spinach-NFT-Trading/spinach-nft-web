@@ -13,7 +13,7 @@ export const recordGoldPendingExchange = async ({
 }: RecordGoldPendingExchangeOpts): Promise<ApiErrorCode | null> => {
   const accountId = new ObjectId(account);
 
-  const userInfo = await userInfoCollection.findOne({_id: accountId});
+  const userInfo = await userInfoCollection.findOne({_id: accountId}, {projection: {_id: false}});
 
   if (!userInfo) {
     return 'accountNotFound';

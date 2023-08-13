@@ -6,5 +6,5 @@ type GetFxRateOpts = {
 };
 
 export const getFxRate = ({market}: GetFxRateOpts) => {
-  return currentFxCollection.findOne({market});
+  return currentFxCollection.findOne({market}, {projection: {_id: false}});
 };

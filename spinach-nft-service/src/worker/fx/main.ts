@@ -3,7 +3,7 @@ import {getMaxWebsocketClient} from '@spinach/service/worker/fx/client';
 import {MaxWsMessage} from '@spinach/service/worker/fx/type';
 
 
-export const maxTrackUsdtTwd = () => {
+export const trackFxRateOnMax = () => {
   const ws = getMaxWebsocketClient()
     .once('open', () => {
       ws.send(JSON.stringify({
