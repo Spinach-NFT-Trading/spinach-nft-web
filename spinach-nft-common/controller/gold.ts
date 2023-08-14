@@ -16,8 +16,7 @@ export const txnWalletCollection = db.collection<GoldWallet>('wallet');
 const initTxnDatabaseIndex = () => {
   return Promise.all([
     txnTrackedCollection.createIndex({hash: 1}, {unique: true}),
-    txnTrackedCollection.createIndex({from: 1}),
-    txnTrackedCollection.createIndex({blockEpoch: -1}),
+    txnTrackedCollection.createIndex({from: 1, blockEpoch: -1}),
     txnCompletedCollection.createIndex({hash: 1}, {unique: true}),
     txnCompletedCollection.createIndex({accountId: 1}),
     txnWalletCollection.createIndex({wallet: 1}, {unique: true}),

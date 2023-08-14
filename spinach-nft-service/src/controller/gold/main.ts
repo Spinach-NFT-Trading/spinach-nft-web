@@ -2,7 +2,7 @@ import {userInfoCollection} from '@spinach/common/controller/auth';
 import {txnCompletedCollection, txnTrackedCollection, txnWalletCollection} from '@spinach/common/controller/gold';
 import {GoldCompletedTxn, GoldTrackedTxn} from '@spinach/common/types/data/gold';
 import {isNotNullish} from '@spinach/common/utils/type';
-import {MongoError, SortDirection} from 'mongodb';
+import {AnyBulkWriteOperation, MongoBulkWriteError, SortDirection} from 'mongodb';
 
 import {TrxWalletTransferResponseData} from '@spinach/service/type/tron/transfer';
 
@@ -11,7 +11,12 @@ export const getOwnedWallets = async () => {
   return txnWalletCollection.find().map(({wallet}) => wallet).toArray();
 };
 
-export const recordTxnTracked = async (txn: TrxWalletTransferResponseData[]) => {
+type RecordTxnTrackedResult = {
+  trackedTxn: GoldTrackedTxn[],
+  newTxnCount: number,
+};
+
+export const recordTxnTracked = async (txn: TrxWalletTransferResponseData[]): Promise<RecordTxnTrackedResult> => {
   const trackedTxn = txn.map((txn) => ({
     amount: parseFloat(txn.amount),
     decimals: txn.decimals,
@@ -23,20 +28,23 @@ export const recordTxnTracked = async (txn: TrxWalletTransferResponseData[]) => 
 
   if (!trackedTxn.length) {
     console.warn('No tracked TxN to record');
-    return [];
+    return {trackedTxn: [], newTxnCount: 0};
   }
 
   try {
-    await txnTrackedCollection.insertMany(trackedTxn, {ordered: false});
+    const result = await txnTrackedCollection.bulkWrite(
+      trackedTxn.map((txn) => ({insertOne: {document: txn}} satisfies AnyBulkWriteOperation<GoldTrackedTxn>)),
+      {ordered: false},
+    );
+
+    return {trackedTxn, newTxnCount: result.insertedCount};
   } catch (e) {
-    if (!(e instanceof MongoError) || e.code !== 11000) {
+    if (!(e instanceof MongoBulkWriteError)) {
       throw e;
     }
 
-    // Duplicated key error - ignore, because we got documents inserted already because of `{ordered: false}`
+    return {trackedTxn, newTxnCount: e.result.insertedCount};
   }
-
-  return trackedTxn;
 };
 
 const makeTrackedTxnCompleted = async (trackedTxn: GoldTrackedTxn): Promise<GoldCompletedTxn | null> => {
@@ -64,9 +72,9 @@ export const recordTxnCompleted = async (trackedTxn: GoldTrackedTxn[]) => {
   await txnCompletedCollection.insertMany(completedTxn);
 };
 
-export const getLastTrackedTxnEpoch = async () => {
+export const getLastTrackedTxnEpoch = async (wallet: string) => {
   const last = await txnTrackedCollection.findOne(
-    {},
+    {to: wallet},
     {sort: {blockEpoch: 'desc'} satisfies {[key in keyof GoldTrackedTxn]?: SortDirection}},
   );
 
