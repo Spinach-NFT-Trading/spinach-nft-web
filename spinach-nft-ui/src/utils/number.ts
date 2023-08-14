@@ -1,4 +1,4 @@
-import {isNotNullish} from '@spinach/next/utils/type';
+import {isNotNullish} from '@spinach/common/utils/type';
 
 
 const formatter = {

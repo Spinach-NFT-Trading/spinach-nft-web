@@ -5,7 +5,7 @@ import {AuthOptions} from 'next-auth';
 import credentialsProvider, {CredentialInput} from 'next-auth/providers/credentials';
 
 import {apiActionCode} from '@spinach/next/const/apiAction';
-import {recordGoldPendingExchange} from '@spinach/next/controller/gold';
+import {recordPendingTxN} from '@spinach/next/controller/gold';
 
 
 const authApi = env.get('NEXT_PUBLIC_SERVER_API').required().asString();
@@ -25,7 +25,7 @@ export const authOptions: AuthOptions = {
       }
 
       if (trigger === 'update' && token.sub && session === apiActionCode.pendingGoldExchange) {
-        token.jwtUpdateError = await recordGoldPendingExchange({account: token.sub});
+        token.jwtUpdateError = await recordPendingTxN({account: token.sub});
       }
 
       return token;

@@ -6,9 +6,9 @@ import {
   lineIdPattern,
   namePattern,
   phonePattern,
-  walletPattern,
 } from '@spinach/common/const/auth';
 import {UsernameSchemaBase} from '@spinach/common/types/api/auth/common';
+import {WalletSchemaBase} from '@spinach/common/types/common/wallet';
 
 
 export const BankDetailsSchemaBase = {
@@ -39,7 +39,7 @@ export const UserInfoSchemaBase = {
   phone: Type.String({pattern: phonePattern}),
   email: Type.String({format: 'email'}),
   lineId: Type.String({pattern: lineIdPattern}),
-  wallet: Type.String({pattern: walletPattern}),
+  wallet: WalletSchemaBase,
 };
 
 export const UserInfoSchema = Type.Object(

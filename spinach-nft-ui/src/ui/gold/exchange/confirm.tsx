@@ -32,7 +32,7 @@ export const GoldExchangeConfirmPopup = ({session, amount, show, setShow}: Props
 
     const error = (await update(apiActionCode.pendingGoldExchange))?.user.jwtUpdateError;
     if (!error) {
-      push('/');
+      push('/gold/confirm');
       return;
     }
     setError(error);
