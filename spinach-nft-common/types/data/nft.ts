@@ -1,10 +1,17 @@
-import {Static, Type} from '@sinclair/typebox';
+import {ObjectId} from 'mongodb';
 
 
-export const NftSchema = Type.Object({
-  id: Type.String({pattern: '^[a-f\\d]{24}$'}),
-  price: Type.Integer({minimum: 0}),
-  image: Type.String({format: 'uri'}),
-});
+export type NftInfoModel = {
+  image: string,
+};
 
-export type Nft = Static<typeof NftSchema>;
+export type NftOnSaleModel = {
+  id: ObjectId,
+  price: number,
+};
+
+export type NftTxnModel = {
+  from: ObjectId,
+  to: ObjectId,
+  price: number,
+};

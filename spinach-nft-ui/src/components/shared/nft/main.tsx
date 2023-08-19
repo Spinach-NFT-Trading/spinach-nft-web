@@ -1,13 +1,12 @@
 import React from 'react';
 
-import {Nft} from '@spinach/common/types/data/nft';
-
 import {Flex} from '@spinach/next/components/layout/flex';
 import {NftListingSingle} from '@spinach/next/components/shared/nft/single';
+import {NftListingData} from '@spinach/next/ui/home/type';
 
 
 type Props = {
-  nfts: Nft[]
+  nfts: NftListingData[]
 };
 
 export const NftListing = ({nfts}: Props) => {

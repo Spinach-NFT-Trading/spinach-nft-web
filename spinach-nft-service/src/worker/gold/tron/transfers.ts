@@ -9,16 +9,16 @@ type GetTrc20IncomingTxnOpts = {
 };
 
 export const getTrc20IncomingTxn = async ({wallet, trc20Id, startEpoch}: GetTrc20IncomingTxnOpts) => {
-  const response = await tronGetRequest({
-    endpoint: 'https://apilist.tronscanapi.com/api/transfer/trc20?' + new URLSearchParams({
-      address: wallet,
-      start: startEpoch ? '0' : '',
-      start_timestamp: startEpoch?.toString() ?? '',
-      limit: '50', // Max 50
-      trc20Id,
-      direction: '2', // Incoming
-    }).toString(),
-  });
+  const endpoint = 'https://apilist.tronscanapi.com/api/transfer/trc20?' + new URLSearchParams({
+    address: wallet,
+    start: startEpoch ? '0' : '',
+    start_timestamp: startEpoch?.toString() ?? '',
+    limit: '50', // Max 50
+    trc20Id,
+    direction: '2', // Incoming
+  }).toString();
+
+  const response = await tronGetRequest({endpoint});
 
   return (await response.json()) as TrxWalletTransferResponse;
 };

@@ -27,6 +27,7 @@ const checkSingleWallet = async (wallet: string) => {
     const {trackedTxn, newTxnCount} = await recordTxnTracked(confirmedData);
 
     if (newTxnCount > 0) {
+      // TODO: Update account balance also (get account balance function could use calculation now?)
       await recordTxnCompleted(trackedTxn);
     }
 
