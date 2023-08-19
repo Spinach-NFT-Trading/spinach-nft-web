@@ -69,7 +69,13 @@ export const recordTxnCompleted = async (trackedTxn: GoldTrackedTxn[]) => {
     return;
   }
 
-  await txnCompletedCollection.insertMany(completedTxn);
+  try {
+    await txnCompletedCollection.insertMany(completedTxn, {ordered: false});
+  } catch (e) {
+    if (!(e instanceof MongoBulkWriteError)) {
+      throw e;
+    }
+  }
 };
 
 export const getLastTrackedTxnEpoch = async (wallet: string) => {
