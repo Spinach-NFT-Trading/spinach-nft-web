@@ -41,16 +41,18 @@ export const NftPurchase = async ({params}: NextPageProps<PageParams>) => {
 
   return (
     <LoginRequiredPageLayout>
-      <Flex direction="col" center className="gap-1">
-        <pre>{onSale.id.toString()}</pre>
-        <div className="relative h-60 w-60">
-          <NextImage src={info.image} alt={`NFT #${onSale.id}`}/>
-        </div>
-        <Flex direction="col" className="items-end">
-          {onSale.price}&nbsp;GOLD
-        </Flex>
-        <Flex direction="col">
-          <NftPurchaseButton/>
+      <Flex direction="col" center className="py-5">
+        <Flex direction="col" center className="gap-1 sm:w-1/2 lg:w-1/3">
+          <pre>{onSale.id.toString()}</pre>
+          <div className="relative h-60 w-60">
+            <NextImage src={info.image} alt={`NFT #${onSale.id}`}/>
+          </div>
+          <Flex direction="col" className="items-end">
+            {onSale.price}&nbsp;GOLD
+          </Flex>
+          <Flex direction="col">
+            <NftPurchaseButton/>
+          </Flex>
         </Flex>
       </Flex>
     </LoginRequiredPageLayout>

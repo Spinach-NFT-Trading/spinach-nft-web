@@ -9,7 +9,7 @@ export const NftPurchaseButton = () => {
 
   return (
     <button
-      className="button-clickable-bg" disabled={!isPending}
+      className="button-clickable-bg p-2" disabled={isPending}
       onClick={() => startTransition(() => recordNftTxn())}
     >
       確認購買
