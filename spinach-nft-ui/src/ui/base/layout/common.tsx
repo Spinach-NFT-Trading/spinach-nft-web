@@ -2,14 +2,11 @@ import React from 'react';
 
 import {Announcements} from '@spinach/next/components/announcement/main';
 import {Flex} from '@spinach/next/components/layout/flex';
+import {PageLayoutProps} from '@spinach/next/ui/base/layout/type';
 import {NavBar} from '@spinach/next/ui/base/navbar/main';
 
 
-type Props = {
-  announcement?: boolean,
-};
-
-export const PageLayout = ({announcement = true, children}: React.PropsWithChildren<Props>) => {
+export const PageLayout = ({announcement = true, children}: React.PropsWithChildren<PageLayoutProps>) => {
   return (
     <main className="min-h-full w-full">
       <NavBar/>

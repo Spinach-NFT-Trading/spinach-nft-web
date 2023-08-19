@@ -6,7 +6,7 @@ import {Failed} from '@spinach/next/components/icons/failed';
 import {Flex} from '@spinach/next/components/layout/flex';
 import {authOptions} from '@spinach/next/const/auth';
 import {getDepositWallet} from '@spinach/next/controller/gold';
-import {PageLayout} from '@spinach/next/ui/base/layout';
+import {PageLayout} from '@spinach/next/ui/base/layout/common';
 
 
 export const GoldExchangeConfirm = () => {

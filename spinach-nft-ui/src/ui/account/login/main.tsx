@@ -7,7 +7,7 @@ import {authOptions} from '@spinach/next/const/auth';
 import {AuthProvider} from '@spinach/next/contexts/auth';
 import {LoginPageParams} from '@spinach/next/types/next/auth';
 import {AccountLoginClient} from '@spinach/next/ui/account/login/client';
-import {PageLayout} from '@spinach/next/ui/base/layout';
+import {PageLayout} from '@spinach/next/ui/base/layout/common';
 
 
 export const AccountLogin = ({searchParams}: LoginPageParams) => {

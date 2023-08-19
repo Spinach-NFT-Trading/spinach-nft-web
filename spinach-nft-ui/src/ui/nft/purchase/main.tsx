@@ -9,7 +9,8 @@ import {Flex} from '@spinach/next/components/layout/flex';
 import {NextImage} from '@spinach/next/components/shared/common/image';
 import {authOptions} from '@spinach/next/const/auth';
 import {getNftInfo, getNftOnSale} from '@spinach/next/controller/nft';
-import {PageProps} from '@spinach/next/types/next/page';
+import {NextPageProps} from '@spinach/next/types/next/page';
+import {LoginRequiredPageLayout} from '@spinach/next/ui/base/layout/loginRequired';
 import {NftPurchaseButton} from '@spinach/next/ui/nft/purchase/button';
 
 
@@ -17,7 +18,7 @@ type PageParams = {
   id: string,
 };
 
-export const NftPurchase = async ({params}: PageProps<PageParams>) => {
+export const NftPurchase = async ({params}: NextPageProps<PageParams>) => {
   const session = await getServerSession(authOptions);
 
   if (!session) {
@@ -39,17 +40,19 @@ export const NftPurchase = async ({params}: PageProps<PageParams>) => {
   }
 
   return (
-    <Flex direction="col" center className="gap-1">
-      <pre>{onSale.id.toString()}</pre>
-      <div className="relative h-60 w-60">
-        <NextImage src={info.image} alt={`NFT #${onSale.id}`}/>
-      </div>
-      <Flex direction="col" className="items-end">
-        {onSale.price}&nbsp;GOLD
+    <LoginRequiredPageLayout>
+      <Flex direction="col" center className="gap-1">
+        <pre>{onSale.id.toString()}</pre>
+        <div className="relative h-60 w-60">
+          <NextImage src={info.image} alt={`NFT #${onSale.id}`}/>
+        </div>
+        <Flex direction="col" className="items-end">
+          {onSale.price}&nbsp;GOLD
+        </Flex>
+        <Flex direction="col">
+          <NftPurchaseButton/>
+        </Flex>
       </Flex>
-      <Flex direction="col">
-        <NftPurchaseButton/>
-      </Flex>
-    </Flex>
+    </LoginRequiredPageLayout>
   );
 };

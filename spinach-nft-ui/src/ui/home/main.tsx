@@ -2,7 +2,7 @@ import React from 'react';
 
 import {NftListing} from '@spinach/next/components/shared/nft/main';
 import {getNftInfoMap, getNftOnSaleList} from '@spinach/next/controller/nft';
-import {PageLayout} from '@spinach/next/ui/base/layout';
+import {PageLayout} from '@spinach/next/ui/base/layout/common';
 import {NftListingData} from '@spinach/next/ui/home/type';
 
 

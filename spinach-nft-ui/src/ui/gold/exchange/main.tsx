@@ -5,7 +5,7 @@ import {getServerSession} from 'next-auth';
 import {authOptions} from '@spinach/next/const/auth';
 import {AuthProvider} from '@spinach/next/contexts/auth';
 import {getFxRate} from '@spinach/next/controller/fx';
-import {PageLayout} from '@spinach/next/ui/base/layout';
+import {PageLayout} from '@spinach/next/ui/base/layout/common';
 import {GoldExchangeClient} from '@spinach/next/ui/gold/exchange/client';
 
 
