@@ -1,3 +1,5 @@
+import {fxMarket} from '@spinach/common/const/fx';
+
 import {updateFxRate} from '@spinach/service/controller/fx/main';
 import {getMaxWebsocketClient} from '@spinach/service/worker/fx/client';
 import {MaxWsMessage} from '@spinach/service/worker/fx/type';
@@ -9,7 +11,7 @@ export const trackFxRateOnMax = () => {
       ws.send(JSON.stringify({
         action: 'sub',
         subscriptions: [
-          {'channel': 'trade', 'market': 'usdttwd'},
+          {'channel': 'trade', 'market': fxMarket},
         ],
         id: 'USDT-TWD FX check',
       }));

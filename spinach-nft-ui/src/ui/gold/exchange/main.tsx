@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {fxMarket} from '@spinach/common/const/fx';
 import {getServerSession} from 'next-auth';
 
 import {authOptions} from '@spinach/next/const/auth';
@@ -11,7 +12,7 @@ import {GoldExchangeClient} from '@spinach/next/ui/gold/exchange/client';
 
 export const GoldExchange = () => {
   const session = React.use(getServerSession(authOptions));
-  const currentFx = React.use(getFxRate({market: 'usdttwd'}));
+  const currentFx = React.use(getFxRate({market: fxMarket}));
 
   return (
     <PageLayout>
