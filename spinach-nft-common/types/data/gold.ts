@@ -12,6 +12,8 @@ export type GoldTrackedTxn = {
 
 export type GoldCompletedTxn = GoldTrackedTxn & {
   accountId: ObjectId,
+  fx: string,
+  goldEquivalent: number,
 };
 
 export type GoldWallet = {

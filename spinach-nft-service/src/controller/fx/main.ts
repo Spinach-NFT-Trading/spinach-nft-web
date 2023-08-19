@@ -9,3 +9,5 @@ export const updateFxRate = ({market, px, lastUpdateEpoch}: CurrentFx) => {
     {upsert: true},
   );
 };
+
+export const getFxRate = async (market: string) => (await currentFxCollection.findOne({market}))?.px;

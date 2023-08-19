@@ -1,9 +1,11 @@
+import {fxMarket} from '@spinach/common/const/fx';
 import {userInfoCollection} from '@spinach/common/controller/auth';
 import {txnCompletedCollection, txnTrackedCollection, txnWalletCollection} from '@spinach/common/controller/gold';
 import {GoldCompletedTxn, GoldTrackedTxn} from '@spinach/common/types/data/gold';
 import {isNotNullish} from '@spinach/common/utils/type';
 import {AnyBulkWriteOperation, MongoBulkWriteError, SortDirection} from 'mongodb';
 
+import {getFxRate} from '@spinach/service/controller/fx/main';
 import {TrxWalletTransferResponseData} from '@spinach/service/type/tron/transfer';
 
 
@@ -47,7 +49,11 @@ export const recordTxnTracked = async (txn: TrxWalletTransferResponseData[]): Pr
   }
 };
 
-const makeTrackedTxnCompleted = async (trackedTxn: GoldTrackedTxn): Promise<GoldCompletedTxn | null> => {
+const makeTrackedTxnCompleted = (
+  fx: string,
+) => async (
+  trackedTxn: GoldTrackedTxn,
+): Promise<GoldCompletedTxn | null> => {
   const account = await userInfoCollection.findOne({wallet: trackedTxn.from});
 
   if (!account) {
@@ -57,12 +63,21 @@ const makeTrackedTxnCompleted = async (trackedTxn: GoldTrackedTxn): Promise<Gold
   console.log(`Found completed TxN for account [${account.username}] - ${trackedTxn.hash}`);
   return {
     ...trackedTxn,
+    fx,
+    goldEquivalent: trackedTxn.amount * parseFloat(fx) / (10 ** trackedTxn.decimals),
     accountId: account._id,
   };
 };
 
 export const recordTxnCompleted = async (trackedTxn: GoldTrackedTxn[]) => {
-  const completedTxn = (await Promise.all(trackedTxn.map(makeTrackedTxnCompleted)))
+  const fx = await getFxRate(fxMarket);
+
+  if (!fx) {
+    console.warn('Not recording TxN - FX rate unavailable');
+    return;
+  }
+
+  const completedTxn = (await Promise.all(trackedTxn.map(makeTrackedTxnCompleted(fx))))
     .filter(isNotNullish);
 
   if (!completedTxn.length) {
