@@ -22,6 +22,6 @@ export const recordBalanceDeposit = async (txns: GoldCompletedTxn[]) => {
   }
 
   if (newRecords.length) {
-    await userBalanceCollection.insertMany(newRecords);
+    await userBalanceCollection.insertMany(newRecords, {ordered: false});
   }
 };

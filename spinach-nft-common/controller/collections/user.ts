@@ -15,6 +15,7 @@ const initUserIndex = async () => {
   return Promise.all([
     ...Object.keys(UserInfoSchemaBase).map((key) => userInfoCollection.createIndex({[key]: 1}, {unique: true})),
     userBalanceCollection.createIndex({userId: 1}),
+    userBalanceCollection.createIndex({txnHash: 1}, {unique: true}),
   ]);
 };
 

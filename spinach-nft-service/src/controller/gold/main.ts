@@ -81,14 +81,18 @@ export const recordTxnCompleted = async (trackedTxn: GoldTrackedTxn[]): Promise<
   }
 
   try {
-    await txnCompletedCollection.insertMany(completedTxn, {ordered: false});
+    const result = await txnCompletedCollection.insertMany(completedTxn, {ordered: false});
+    const insertedIds = Object.values(result.insertedIds);
+
+    return txnCompletedCollection.find({_id: {$in: insertedIds}}).toArray();
   } catch (e) {
     if (!(e instanceof MongoBulkWriteError)) {
       throw e;
     }
-  }
 
-  return completedTxn;
+    const insertedIds = Object.values(e.insertedIds);
+    return txnCompletedCollection.find({_id: {$in: insertedIds}}).toArray();
+  }
 };
 
 export const getLastTrackedTxnEpoch = async (wallet: string) => {
