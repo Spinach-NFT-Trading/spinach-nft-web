@@ -1,9 +1,7 @@
-import {nftInfoCollection, nftOnSaleCollection} from '@spinach/common/controller/nft';
+import {nftInfoCollection, nftOnSaleCollection} from '@spinach/common/controller/collections/nft';
 import {NftInfoModel} from '@spinach/common/types/data/nft';
 import {ObjectId} from 'mongodb';
 
-
-export const getOnSaleNftCount = () => nftOnSaleCollection.countDocuments({});
 
 export const mintNewNft = (nft: NftInfoModel) => nftInfoCollection.insertOne(nft);
 

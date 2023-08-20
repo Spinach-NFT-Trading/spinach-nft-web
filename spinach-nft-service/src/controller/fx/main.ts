@@ -1,4 +1,4 @@
-import {currentFxCollection} from '@spinach/common/controller/fx';
+import {currentFxCollection} from '@spinach/common/controller/collections/fx';
 import {CurrentFx} from '@spinach/common/types/data/fx';
 
 
@@ -9,5 +9,3 @@ export const updateFxRate = ({market, px, lastUpdateEpoch}: CurrentFx) => {
     {upsert: true},
   );
 };
-
-export const getFxRate = async (market: string) => (await currentFxCollection.findOne({market}))?.px;

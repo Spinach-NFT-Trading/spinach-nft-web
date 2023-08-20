@@ -1,5 +1,5 @@
 'use server';
-import {nftInfoCollection, nftOnSaleCollection} from '@spinach/common/controller/nft';
+import {nftInfoCollection, nftOnSaleCollection} from '@spinach/common/controller/collections/nft';
 import {ObjectId} from 'mongodb';
 
 import {NftInfoMap} from '@spinach/next/types/mongo/nft';

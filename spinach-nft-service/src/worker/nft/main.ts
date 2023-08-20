@@ -1,4 +1,6 @@
-import {getOnSaleNftCount, mintNewNft, putNftOnSale} from '@spinach/service/controller/nft/main';
+import {getOnSaleNftCount} from '@spinach/common/controller/common/nft';
+
+import {mintNewNft, putNftOnSale} from '@spinach/service/controller/nft/main';
 import {generateNft, generateSalePrice} from '@spinach/service/controller/nft/utils';
 import {nftOnSaleMinimum} from '@spinach/service/env';
 

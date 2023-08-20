@@ -1,16 +1,16 @@
-import {txnWalletCollection} from '@spinach/common/controller/gold';
-import {userInfoCollection} from '@spinach/common/controller/user';
+import {txnWalletCollection} from '@spinach/common/controller/collections/gold';
+import {userInfoCollection} from '@spinach/common/controller/collections/user';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {ObjectId} from 'mongodb';
 
 
-type RecordGoldPendingExchangeOpts = {
+type RecordGoldPendingTxnOpts = {
   account: string,
 };
 
 export const recordPendingTxN = async ({
   account,
-}: RecordGoldPendingExchangeOpts): Promise<ApiErrorCode | null> => {
+}: RecordGoldPendingTxnOpts): Promise<ApiErrorCode | null> => {
   const accountId = new ObjectId(account);
 
   const userInfo = await userInfoCollection.findOne({_id: accountId}, {projection: {_id: false}});
