@@ -1,10 +1,9 @@
 'use server';
+import {getCurrentBalance, recordBalanceAfterNftTxn} from '@spinach/common/controller/actors/user';
 import {nftInfoCollection, nftOnSaleCollection, nftTxnCollection} from '@spinach/common/controller/collections/nft';
-import {getCurrentBalance} from '@spinach/common/controller/common/user';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {NftTxnModel} from '@spinach/common/types/data/nft';
 import {ObjectId} from 'mongodb';
-import {recordBalanceAfterNftTxn} from 'spinach-nft-service/src/controller/user/main';
 
 import mongoPromise from '@spinach/next/lib/mongodb';
 import {NftInfoMap} from '@spinach/next/types/mongo/nft';

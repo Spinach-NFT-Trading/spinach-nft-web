@@ -1,5 +1,5 @@
 import {NftMinterAccount} from '@spinach/common/const/nft';
-import {getOnSaleNftCount} from '@spinach/common/controller/common/nft';
+import {getOnSaleNftCount} from '@spinach/common/controller/actors/nft';
 
 import {mintNewNft, putNftOnSale} from '@spinach/service/controller/nft/main';
 import {generateNft, generateSalePrice} from '@spinach/service/controller/nft/utils';

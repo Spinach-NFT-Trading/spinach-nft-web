@@ -1,5 +1,5 @@
 import {usdtContractInTrc20} from '@spinach/common/const/tron';
-import {getOwnedWallets} from '@spinach/common/controller/common/gold';
+import {getOwnedWallets} from '@spinach/common/controller/actors/gold';
 
 import {getLastTrackedTxnEpoch, recordTxnCompleted, recordTxnTracked} from '@spinach/service/controller/gold/main';
 import {recordBalanceAfterDeposit} from '@spinach/service/controller/user/main';
