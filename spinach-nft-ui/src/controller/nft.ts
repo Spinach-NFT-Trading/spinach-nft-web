@@ -1,5 +1,5 @@
 'use server';
-import {getCurrentBalance, recordBalanceAfterNftTxn} from '@spinach/common/controller/actors/user';
+import {getCurrentBalance, recordUserDataAfterNftTxn} from '@spinach/common/controller/actors/user';
 import {nftInfoCollection, nftOnSaleCollection, nftTxnCollection} from '@spinach/common/controller/collections/nft';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {NftTxnModel} from '@spinach/common/types/data/nft';
@@ -63,7 +63,7 @@ export const buyNft = async ({buyer, nftId}: NftBuyOpts): Promise<ApiErrorCode |
     await session.withTransaction(async () => {
       const nftTxn = await nftTxnCollection.insertOne(txn, {session});
 
-      await recordBalanceAfterNftTxn({
+      await recordUserDataAfterNftTxn({
         nftTxnId: nftTxn.insertedId,
         nftTxn: txn,
         session,

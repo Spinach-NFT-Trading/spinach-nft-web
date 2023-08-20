@@ -1,6 +1,6 @@
 import {ClientSession, ObjectId} from 'mongodb';
 
-import {userBalanceCollection} from '@spinach/common/controller/collections/user';
+import {userBalanceCollection, userNftPositionCollection} from '@spinach/common/controller/collections/user';
 import {NftTxnModel} from '@spinach/common/types/data/nft';
 import {UserBalanceHistoryModelRequired} from '@spinach/common/types/data/user';
 
@@ -28,10 +28,10 @@ export const getCurrentBalance = (userId: ObjectId) => userBalanceCollection.fin
 type RecordBalanceAfterNftTxnOpts = {
   nftTxnId: ObjectId,
   nftTxn: NftTxnModel,
-  session?: ClientSession,
+  session: ClientSession,
 };
 
-export const recordBalanceAfterNftTxn = async ({nftTxnId, nftTxn, session}: RecordBalanceAfterNftTxnOpts) => {
+export const recordUserDataAfterNftTxn = async ({nftTxnId, nftTxn, session}: RecordBalanceAfterNftTxnOpts) => {
   await userBalanceCollection.insertMany([
     {
       ...(await getNewBalance({
@@ -50,4 +50,9 @@ export const recordBalanceAfterNftTxn = async ({nftTxnId, nftTxn, session}: Reco
       nftTxnId,
     },
   ], {session});
+  await userNftPositionCollection.updateOne(
+    {nftId: nftTxn.nftId},
+    {$set: {owner: nftTxn.to}},
+    {upsert: true, session},
+  );
 };

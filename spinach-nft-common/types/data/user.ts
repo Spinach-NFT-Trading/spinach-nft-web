@@ -41,3 +41,8 @@ export type UserBalanceHistoryModel = UserBalanceHistoryModelRequired & ({
   type: 'nftSell',
   nftTxnId: ObjectId,
 });
+
+export type UserNftPositionModel = {
+  owner: ObjectId,
+  nftId: ObjectId,
+};

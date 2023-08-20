@@ -3,7 +3,7 @@ import {NavEntry} from '@spinach/next/types/nav';
 
 export const navEntries: NavEntry[] = [
   {
-    href: '/profile',
+    href: '/account/profile',
     text: '個人資料',
   },
   {

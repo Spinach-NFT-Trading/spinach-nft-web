@@ -19,7 +19,7 @@ export const NftListingSingle = ({nft}: Props) => {
       'info-section width-with-gap-sm width-with-gap-2-items sm:width-with-gap-3-items',
       'md:width-with-gap-4-items lg:width-with-gap-5-items',
     )}>
-      <pre>
+      <pre className="text-xs">
         {nft.id}
       </pre>
       <div className="relative h-40 w-40">

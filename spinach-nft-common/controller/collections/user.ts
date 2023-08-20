@@ -1,6 +1,11 @@
 import {Mongo} from '@spinach/common/controller/const';
 import {UserInfoSchemaBase} from '@spinach/common/types/common/user';
-import {UserBalanceHistoryModel, UserBankDetailModel, UserModel} from '@spinach/common/types/data/user';
+import {
+  UserBalanceHistoryModel,
+  UserBankDetailModel,
+  UserModel,
+  UserNftPositionModel,
+} from '@spinach/common/types/data/user';
 
 
 const db = Mongo.db('user');
@@ -9,12 +14,15 @@ export const userInfoCollection = db.collection<UserModel>('info');
 
 export const userBalanceCollection = db.collection<UserBalanceHistoryModel>('balance');
 
+export const userNftPositionCollection = db.collection<UserNftPositionModel>('nft');
+
 export const userBankDetailsCollection = db.collection<UserBankDetailModel>('bankDetails');
 
 const initUserIndex = async () => {
   return Promise.all([
     ...Object.keys(UserInfoSchemaBase).map((key) => userInfoCollection.createIndex({[key]: 1}, {unique: true})),
     userBalanceCollection.createIndex({userId: 1}),
+    userNftPositionCollection.createIndex({owner: 1, nftId: 1}, {unique: true}),
     userBalanceCollection.createIndex(
       {txnHash: 1},
       {unique: true, partialFilterExpression: {type: 'deposit'}, name: 'depositTxnHash'},
