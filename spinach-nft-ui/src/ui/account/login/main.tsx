@@ -16,7 +16,7 @@ export const AccountLogin = ({searchParams}: LoginPageParams) => {
   }
 
   return (
-    <PageLayout>
+    <PageLayout hideUserControl>
       <AccountLoginClient error={searchParams.error}/>
     </PageLayout>
   );
