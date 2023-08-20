@@ -8,6 +8,8 @@
     /* Compiling Options */
     "outDir": "./dist",
     "lib": [
+      // "Hack" to include node native `fetch`
+      "dom",
       "esnext"
     ],
     "sourceMap": true,
