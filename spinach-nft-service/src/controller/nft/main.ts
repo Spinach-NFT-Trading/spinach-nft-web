@@ -5,7 +5,14 @@ import {ObjectId} from 'mongodb';
 
 export const mintNewNft = (nft: NftInfoModel) => nftInfoCollection.insertOne(nft);
 
-export const putNftOnSale = (nftId: ObjectId, price: number) => nftOnSaleCollection.insertOne({
+type PutNftOnSaleOpts = {
+  seller: ObjectId,
+  nftId: ObjectId,
+  price: number
+};
+
+export const putNftOnSale = ({nftId, seller, price}: PutNftOnSaleOpts) => nftOnSaleCollection.insertOne({
   id: nftId,
+  seller,
   price,
 });

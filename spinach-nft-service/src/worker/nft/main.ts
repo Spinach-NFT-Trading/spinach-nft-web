@@ -1,3 +1,4 @@
+import {NftMinterAccount} from '@spinach/common/const/nft';
 import {getOnSaleNftCount} from '@spinach/common/controller/common/nft';
 
 import {mintNewNft, putNftOnSale} from '@spinach/service/controller/nft/main';
@@ -22,7 +23,11 @@ const checkNftInventory = async () => {
 
     console.log(`New NFT [${insertResult.insertedId}] minted and put on sale for ${price} GOLD`);
 
-    await putNftOnSale(insertResult.insertedId, price);
+    await putNftOnSale({
+      seller: NftMinterAccount,
+      nftId: insertResult.insertedId,
+      price,
+    });
   }
 };
 
