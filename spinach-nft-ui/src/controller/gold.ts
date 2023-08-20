@@ -1,5 +1,5 @@
-import {userInfoCollection} from '@spinach/common/controller/auth';
 import {txnWalletCollection} from '@spinach/common/controller/gold';
+import {userInfoCollection} from '@spinach/common/controller/user';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {ObjectId} from 'mongodb';
 

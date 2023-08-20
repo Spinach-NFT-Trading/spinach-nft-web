@@ -6,6 +6,7 @@ import {
   recordTxnCompleted,
   recordTxnTracked,
 } from '@spinach/service/controller/gold/main';
+import {recordBalanceDeposit} from '@spinach/service/controller/user/main';
 import {getTrc20IncomingTxn} from '@spinach/service/worker/gold/tron/transfers';
 
 
@@ -27,11 +28,12 @@ const checkSingleWallet = async (wallet: string) => {
     const {trackedTxn, newTxnCount} = await recordTxnTracked(confirmedData);
 
     if (newTxnCount > 0) {
-      // TODO: Update account balance also (get account balance function could use calculation now?)
-      await recordTxnCompleted(trackedTxn);
+      const completedTxN = await recordTxnCompleted(trackedTxn);
+      await recordBalanceDeposit(completedTxN);
     }
 
     if (newTxnCount === 0) {
+      console.log(`Done checking wallet ${wallet}`);
       break;
     }
 

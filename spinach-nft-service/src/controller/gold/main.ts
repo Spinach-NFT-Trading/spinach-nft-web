@@ -1,6 +1,6 @@
 import {fxMarket} from '@spinach/common/const/fx';
-import {userInfoCollection} from '@spinach/common/controller/auth';
 import {txnCompletedCollection, txnTrackedCollection, txnWalletCollection} from '@spinach/common/controller/gold';
+import {userInfoCollection} from '@spinach/common/controller/user';
 import {GoldCompletedTxn, GoldTrackedTxn} from '@spinach/common/types/data/gold';
 import {isNotNullish} from '@spinach/common/utils/type';
 import {AnyBulkWriteOperation, MongoBulkWriteError, SortDirection} from 'mongodb';
@@ -69,19 +69,19 @@ const makeTrackedTxnCompleted = (
   };
 };
 
-export const recordTxnCompleted = async (trackedTxn: GoldTrackedTxn[]) => {
+export const recordTxnCompleted = async (trackedTxn: GoldTrackedTxn[]): Promise<GoldCompletedTxn[]> => {
   const fx = await getFxRate(fxMarket);
 
   if (!fx) {
     console.warn('Not recording TxN - FX rate unavailable');
-    return;
+    return [];
   }
 
   const completedTxn = (await Promise.all(trackedTxn.map(makeTrackedTxnCompleted(fx))))
     .filter(isNotNullish);
 
   if (!completedTxn.length) {
-    return;
+    return [];
   }
 
   try {
@@ -91,6 +91,8 @@ export const recordTxnCompleted = async (trackedTxn: GoldTrackedTxn[]) => {
       throw e;
     }
   }
+
+  return completedTxn;
 };
 
 export const getLastTrackedTxnEpoch = async (wallet: string) => {
