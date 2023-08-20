@@ -27,8 +27,8 @@ const getNewAccountBalance = async ({
 export const recordBalanceAfterDeposit = async (txns: GoldCompletedTxn[]) => {
   const newRecords: UserBalanceHistoryModel[] = [];
 
-  for (const {accountId, amount, decimals, hash} of txns) {
-    const diff = amount / decimals;
+  for (const {accountId, hash, goldEquivalent} of txns) {
+    const diff = goldEquivalent;
 
     newRecords.push({
       ...(await getNewAccountBalance({accountId, diff})),
