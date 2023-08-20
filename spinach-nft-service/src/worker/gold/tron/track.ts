@@ -20,6 +20,11 @@ const checkSingleWallet = async (wallet: string) => {
       startEpoch: lastTrackedEpoch,
     });
 
+    if ('message' in transfers) {
+      console.error(`Error checking wallet ${wallet} - ${transfers.message}`);
+      return;
+    }
+
     const confirmedData = transfers.data.filter(({confirmed}) => confirmed === 1);
     const {trackedTxn, newTxnCount} = await recordTxnTracked(confirmedData);
 

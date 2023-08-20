@@ -4,6 +4,7 @@ import {UserRegisterRequest} from '@spinach/common/types/api/auth/register';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {UserInfo} from '@spinach/common/types/common/user';
 import {hashPassword, verifyPasswordOrThrow} from '@spinach/common/utils/password';
+import {checkTrxAddress} from '@spinach/common/utils/tron/address';
 import {ObjectId} from 'mongodb';
 
 
@@ -38,6 +39,16 @@ export const registerUser = async ({
 
   if (await userInfoCollection.findOne({wallet})) {
     return 'takenWallet';
+  }
+
+  const checkResult = await checkTrxAddress({wallet});
+  console.log(checkResult);
+  if ('message' in checkResult) {
+    return 'walletNotExist';
+  }
+
+  if (checkResult.isToken || checkResult.isContract) {
+    return 'walletInvalid';
   }
 
   const result = await userInfoCollection.insertOne({

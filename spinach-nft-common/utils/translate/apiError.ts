@@ -11,6 +11,10 @@ const apiErrorStringMap: {[code in ApiErrorCode]: string} = {
   takenUsername: '帳號 ID 已被使用。',
   takenWallet: 'MAX 錢包已被使用。',
   goldExchangeInProgress: 'GOLD 購買程序已在進行中，請稍後再試。',
+  goldNotEnough: 'GOLD 不足。',
+  nftNotOnSale: 'NFT 不在販賣中。',
+  walletInvalid: '錢包地址無效。',
+  walletNotExist: '錢包地址不存在。',
 };
 
 export const translateApiError = (error: string): string => {

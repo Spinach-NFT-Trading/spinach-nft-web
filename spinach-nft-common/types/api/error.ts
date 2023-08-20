@@ -13,6 +13,8 @@ export const apiErrorCode = [
   'goldExchangeInProgress',
   'goldNotEnough',
   'nftNotOnSale',
+  'walletInvalid',
+  'walletNotExist',
 ] as const;
 
 export interface TApiErrorCode extends TString {

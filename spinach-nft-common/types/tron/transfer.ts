@@ -1,3 +1,6 @@
+import {TrxErrorResponse} from '@spinach/common/types/tron/error';
+
+
 export type TrxWalletTransferResponseData = {
   amount: string,
   block_timestamp: number,
@@ -8,6 +11,6 @@ export type TrxWalletTransferResponseData = {
   decimals: number,
 };
 
-export type TrxWalletTransferResponse = {
+export type TrxWalletTransferResponse = TrxErrorResponse | {
   data: TrxWalletTransferResponseData[],
 };

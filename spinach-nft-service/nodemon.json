@@ -5,7 +5,8 @@
     "node_modules"
   ],
   "watch": [
-    "./src/**"
+    "./src/**",
+    "../spinach-nft-common/**"
   ],
   "exec": "ts-node -r tsconfig-paths/register --transpile-only ./src/main.ts",
   "ext": "ts,json"
