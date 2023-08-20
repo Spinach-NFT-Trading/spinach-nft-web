@@ -3,7 +3,6 @@ import React from 'react';
 
 import ArrowDownCircleIcon from '@heroicons/react/24/outline/ArrowDownCircleIcon';
 import ArrowRightIcon from '@heroicons/react/24/outline/ArrowRightIcon';
-import {Session} from 'next-auth';
 
 import {Flex} from '@spinach/next/components/layout/flex';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
@@ -15,12 +14,11 @@ import {formatFloat2, formatFloat3} from '@spinach/next/utils/number';
 const defaultUsdt = 1000;
 
 type Props = {
-  session: Session | null,
   exchangeRate: number,
   cashbackRate: number,
 };
 
-export const GoldExchangeClient = ({session, exchangeRate, cashbackRate}: Props) => {
+export const GoldExchangeClient = ({exchangeRate, cashbackRate}: Props) => {
   const [show, setShow] = React.useState(false);
   const [amount, setAmount] = React.useState<ExchangeAmount>({
     usdt: defaultUsdt,
@@ -29,7 +27,7 @@ export const GoldExchangeClient = ({session, exchangeRate, cashbackRate}: Props)
 
   return (
     <>
-      <GoldExchangeConfirmPopup session={session} amount={amount} show={show} setShow={setShow}/>
+      <GoldExchangeConfirmPopup amount={amount} show={show} setShow={setShow}/>
       <Flex direction="col" center>
         <Flex direction="col" center className="gap-3 md:w-1/2 md:p-7">
           <InputFloatingLabel

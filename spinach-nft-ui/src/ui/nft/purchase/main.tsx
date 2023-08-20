@@ -51,7 +51,7 @@ export const NftPurchase = async ({params}: NextPageProps<PageParams>) => {
             {onSale.price}&nbsp;GOLD
           </Flex>
           <Flex direction="col">
-            <NftPurchaseButton/>
+            <NftPurchaseButton nftId={nftId.toString()}/>
           </Flex>
         </Flex>
       </Flex>

@@ -11,6 +11,7 @@ export const apiErrorCode = [
   'takenLineId',
   'takenWallet',
   'goldExchangeInProgress',
+  'goldNotEnough',
 ] as const;
 
 export interface TApiErrorCode extends TString {

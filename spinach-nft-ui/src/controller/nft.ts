@@ -1,5 +1,6 @@
 'use server';
 import {nftInfoCollection, nftOnSaleCollection} from '@spinach/common/controller/collections/nft';
+import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {ObjectId} from 'mongodb';
 
 import {NftInfoMap} from '@spinach/next/types/mongo/nft';
@@ -27,6 +28,16 @@ export const getNftInfoMap = async (nftIds: ObjectId[]): Promise<NftInfoMap> => 
   return ret;
 };
 
-export const recordNftTxn = () => {
+type NftBuyOpts = {
+  account: ObjectId,
+  nftId: ObjectId,
+};
+
+export const buyNft = async ({}: NftBuyOpts): Promise<ApiErrorCode | null> => {
+  return null;
+  // 'goldNotEnough';
+  // getCurrentBalance();
+  //
+  // nftTxnCollection.insertOne();
   // TODO: Check balance, if enough: record txn and buy it; if not: exit
 };

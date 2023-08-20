@@ -2,35 +2,34 @@ import React from 'react';
 
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {useRouter} from 'next/navigation';
-import {Session} from 'next-auth';
-import {signIn, useSession} from 'next-auth/react';
+import {signIn} from 'next-auth/react';
 
 import {Flex} from '@spinach/next/components/layout/flex';
 import {Popup} from '@spinach/next/components/popup';
 import {Alert} from '@spinach/next/components/shared/common/alert';
-import {apiActionCode} from '@spinach/next/const/apiAction';
+import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {ExchangeAmount} from '@spinach/next/ui/gold/exchange/type';
 
 
 type Props = {
-  session: Session | null,
   show: boolean,
   setShow: (show: boolean) => void,
   amount: ExchangeAmount,
 };
 
-export const GoldExchangeConfirmPopup = ({session, amount, show, setShow}: Props) => {
+export const GoldExchangeConfirmPopup = ({amount, show, setShow}: Props) => {
   const [error, setError] = React.useState<string | null>(null);
-  const {update} = useSession();
+  const {act} = useUserDataActor();
   const {push} = useRouter();
 
   const onClick = async () => {
-    if (!session) {
+    if (!act) {
       await signIn();
       return;
     }
 
-    const error = (await update(apiActionCode.pendingGoldExchange))?.user.jwtUpdateError;
+    const session = await act({action: 'request', options: {type: 'exchangeGold', data: null}});
+    const error = session?.user.jwtUpdateError;
     if (!error) {
       push('/gold/confirm');
       return;

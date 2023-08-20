@@ -4,8 +4,9 @@ import * as env from 'env-var';
 import {AuthOptions} from 'next-auth';
 import credentialsProvider, {CredentialInput} from 'next-auth/providers/credentials';
 
-import {apiActionCode} from '@spinach/next/const/apiAction';
-import {recordPendingTxN} from '@spinach/next/controller/gold';
+import {handleUserLoad} from '@spinach/next/controller/userData/load';
+import {handleUserRequest} from '@spinach/next/controller/userData/request';
+import {UserDataAction} from '@spinach/next/types/userData/main';
 
 
 const authApi = env.get('NEXT_PUBLIC_SERVER_API').required().asString();
@@ -24,8 +25,21 @@ export const authOptions: AuthOptions = {
         token.email = user.email;
       }
 
-      if (trigger === 'update' && token.sub && session === apiActionCode.pendingGoldExchange) {
-        token.jwtUpdateError = await recordPendingTxN({account: token.sub});
+      const accountId = token.sub;
+      const {action, options} = session as UserDataAction;
+
+      if (trigger === 'update' && accountId) {
+        if (action === 'request') {
+          token.jwtUpdateError = await handleUserRequest({accountId, options});
+          return token;
+        }
+
+        if (action === 'load') {
+          await handleUserLoad({accountId, options});
+          return token;
+        }
+
+        console.error(`Unhandled user data action [${action satisfies never}]`);
       }
 
       return token;
