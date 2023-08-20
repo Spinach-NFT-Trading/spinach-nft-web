@@ -31,6 +31,8 @@ export const getNftInfoMap = async (nftIds: ObjectId[]): Promise<NftInfoMap> => 
   return ret;
 };
 
+const markNftSold = (nftId: ObjectId) => nftOnSaleCollection.deleteOne({id: nftId});
+
 type NftBuyOpts = {
   buyer: ObjectId,
   nftId: ObjectId,
@@ -66,6 +68,8 @@ export const buyNft = async ({buyer, nftId}: NftBuyOpts): Promise<ApiErrorCode |
         nftTxn: txn,
         session,
       });
+
+      await markNftSold(nftOnSale.id);
     });
   });
 
