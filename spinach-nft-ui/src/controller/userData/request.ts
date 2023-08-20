@@ -19,7 +19,7 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
   }
 
   if (type === 'nftBuy') {
-    return buyNft({account: new ObjectId(accountId), nftId: new ObjectId(data.nftId)});
+    return buyNft({buyer: new ObjectId(accountId), nftId: new ObjectId(data.nftId)});
   }
 
   console.error(`Unhandled user request type [${type satisfies never}]`);

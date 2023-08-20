@@ -1,8 +1,12 @@
 'use server';
-import {nftInfoCollection, nftOnSaleCollection} from '@spinach/common/controller/collections/nft';
+import {nftInfoCollection, nftOnSaleCollection, nftTxnCollection} from '@spinach/common/controller/collections/nft';
+import {getCurrentBalance} from '@spinach/common/controller/common/user';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
+import {NftTxnModel} from '@spinach/common/types/data/nft';
 import {ObjectId} from 'mongodb';
+import {recordBalanceAfterNftTxn} from 'spinach-nft-service/src/controller/user/main';
 
+import mongoPromise from '@spinach/next/lib/mongodb';
 import {NftInfoMap} from '@spinach/next/types/mongo/nft';
 
 
@@ -29,15 +33,39 @@ export const getNftInfoMap = async (nftIds: ObjectId[]): Promise<NftInfoMap> => 
 };
 
 type NftBuyOpts = {
-  account: ObjectId,
+  buyer: ObjectId,
   nftId: ObjectId,
 };
 
-export const buyNft = async ({}: NftBuyOpts): Promise<ApiErrorCode | null> => {
+export const buyNft = async ({buyer, nftId}: NftBuyOpts): Promise<ApiErrorCode | null> => {
+  const [balance, nftOnSale] = await Promise.all([
+    getCurrentBalance(buyer),
+    getNftOnSale(nftId),
+  ]);
+
+  if (!nftOnSale) {
+    return 'nftNotOnSale';
+  }
+
+  if (!balance || balance.current <= nftOnSale.price) {
+    return 'goldNotEnough';
+  }
+
+  const txn: NftTxnModel = {
+    nftId: nftOnSale.id,
+    from: nftOnSale.seller,
+    to: buyer,
+    price: nftOnSale.price,
+  };
+
+  await (await mongoPromise).withSession(async (session) => {
+    await session.withTransaction(async () => {
+      await Promise.all([
+        nftTxnCollection.insertOne(txn, {session}),
+        recordBalanceAfterNftTxn(txn, session),
+      ]);
+    });
+  });
+
   return null;
-  // 'goldNotEnough';
-  // getCurrentBalance();
-  //
-  // nftTxnCollection.insertOne();
-  // TODO: Check balance, if enough: record txn and buy it; if not: exit
 };

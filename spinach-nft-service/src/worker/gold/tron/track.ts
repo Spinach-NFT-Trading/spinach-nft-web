@@ -2,7 +2,7 @@ import {usdtContractInTrc20} from '@spinach/common/const/tron';
 import {getOwnedWallets} from '@spinach/common/controller/common/gold';
 
 import {getLastTrackedTxnEpoch, recordTxnCompleted, recordTxnTracked} from '@spinach/service/controller/gold/main';
-import {recordBalanceDeposit} from '@spinach/service/controller/user/main';
+import {recordBalanceAfterDeposit} from '@spinach/service/controller/user/main';
 import {getTrc20IncomingTxn} from '@spinach/service/worker/gold/tron/transfers';
 
 
@@ -25,7 +25,7 @@ const checkSingleWallet = async (wallet: string) => {
 
     if (newTxnCount > 0) {
       const completedTxN = await recordTxnCompleted(trackedTxn);
-      await recordBalanceDeposit(completedTxN);
+      await recordBalanceAfterDeposit(completedTxN);
     }
 
     if (newTxnCount === 0) {

@@ -6,6 +6,7 @@ export type NftInfoModel = {
 };
 
 export type NftOnSaleModel = {
+  seller: ObjectId,
   id: ObjectId,
   price: number,
 };

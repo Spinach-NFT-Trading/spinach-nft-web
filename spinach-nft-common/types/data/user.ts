@@ -25,14 +25,19 @@ export const UserBankDetailModelSchema = Type.Object(
 
 export type UserBankDetailModel = Static<typeof UserBankDetailModelSchema>;
 
-export type UserBalanceHistoryModel = {
+export type UserBalanceHistoryModelRequired = {
   userId: ObjectId,
   diff: number,
   current: number,
-} & ({
+};
+
+export type UserBalanceHistoryModel = UserBalanceHistoryModelRequired & ({
   type: 'deposit',
   txnHash: string,
-} | ({
+} | {
   type: 'nftBuy',
   nftTxnId: ObjectId,
-}));
+} | {
+  type: 'nftSell',
+  nftTxnId: ObjectId,
+});
