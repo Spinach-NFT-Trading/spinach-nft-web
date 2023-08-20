@@ -42,7 +42,13 @@ export const recordBalanceAfterDeposit = async (txns: GoldCompletedTxn[]) => {
   }
 };
 
-export const recordBalanceAfterNftTxn = async (nftTxn: NftTxnModel, session?: ClientSession) => {
+type RecordBalanceAfterNftTxnOpts = {
+  nftTxnId: ObjectId,
+  nftTxn: NftTxnModel,
+  session?: ClientSession,
+};
+
+export const recordBalanceAfterNftTxn = async ({nftTxnId, nftTxn, session}: RecordBalanceAfterNftTxnOpts) => {
   await userBalanceCollection.insertMany([
     {
       ...(await getNewAccountBalance({
@@ -50,7 +56,7 @@ export const recordBalanceAfterNftTxn = async (nftTxn: NftTxnModel, session?: Cl
         diff: nftTxn.price,
       })),
       type: 'nftSell',
-      nftTxnId: nftTxn.nftId,
+      nftTxnId,
     },
     {
       ...(await getNewAccountBalance({
@@ -58,7 +64,7 @@ export const recordBalanceAfterNftTxn = async (nftTxn: NftTxnModel, session?: Cl
         diff: -nftTxn.price,
       })),
       type: 'nftBuy',
-      nftTxnId: nftTxn.nftId,
+      nftTxnId,
     },
   ], {session});
 };

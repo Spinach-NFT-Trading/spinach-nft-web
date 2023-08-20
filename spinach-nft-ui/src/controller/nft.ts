@@ -60,10 +60,13 @@ export const buyNft = async ({buyer, nftId}: NftBuyOpts): Promise<ApiErrorCode |
 
   await (await mongoPromise).withSession(async (session) => {
     await session.withTransaction(async () => {
-      await Promise.all([
-        nftTxnCollection.insertOne(txn, {session}),
-        recordBalanceAfterNftTxn(txn, session),
-      ]);
+      const nftTxn = await nftTxnCollection.insertOne(txn, {session});
+
+      await recordBalanceAfterNftTxn({
+        nftTxnId: nftTxn.insertedId,
+        nftTxn: txn,
+        session,
+      });
     });
   });
 

@@ -15,7 +15,18 @@ const initUserIndex = async () => {
   return Promise.all([
     ...Object.keys(UserInfoSchemaBase).map((key) => userInfoCollection.createIndex({[key]: 1}, {unique: true})),
     userBalanceCollection.createIndex({userId: 1}),
-    userBalanceCollection.createIndex({txnHash: 1}, {unique: true}),
+    userBalanceCollection.createIndex(
+      {txnHash: 1},
+      {unique: true, partialFilterExpression: {type: 'deposit'}, name: 'depositTxnHash'},
+    ),
+    userBalanceCollection.createIndex(
+      {nftTxnId: 1},
+      {unique: true, partialFilterExpression: {type: 'nftBuy'}, name: 'nftBuyTxn'},
+    ),
+    userBalanceCollection.createIndex(
+      {nftTxnId: 1},
+      {unique: true, partialFilterExpression: {type: 'nftSell'}, name: 'nftSellTxn'},
+    ),
   ]);
 };
 

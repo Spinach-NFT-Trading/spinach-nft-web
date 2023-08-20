@@ -26,9 +26,10 @@ export const authOptions: AuthOptions = {
       }
 
       const accountId = token.sub;
-      const {action, options} = session as UserDataAction;
 
       if (trigger === 'update' && accountId) {
+        const {action, options} = session as UserDataAction;
+
         if (action === 'request') {
           token.jwtUpdateError = await handleUserRequest({accountId, options});
           return token;
