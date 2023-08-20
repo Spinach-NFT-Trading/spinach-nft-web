@@ -1,1 +1,3 @@
-export type UserPreloadedContent = {};
+export type UserPreloadedContent = {
+  balance: number,
+};
