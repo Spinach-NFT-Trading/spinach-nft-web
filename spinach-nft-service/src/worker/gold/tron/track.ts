@@ -1,9 +1,9 @@
 import {usdtContractInTrc20} from '@spinach/common/const/tron';
 import {getOwnedWallets} from '@spinach/common/controller/actors/gold';
+import {getTrc20IncomingTxn} from '@spinach/common/utils/tron/transfers';
 
 import {getLastTrackedTxnEpoch, recordTxnCompleted, recordTxnTracked} from '@spinach/service/controller/gold/main';
 import {recordBalanceAfterDeposit} from '@spinach/service/controller/user/main';
-import {getTrc20IncomingTxn} from '@spinach/service/worker/gold/tron/transfers';
 
 
 const checkSingleWallet = async (wallet: string) => {

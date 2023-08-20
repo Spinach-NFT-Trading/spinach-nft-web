@@ -1,5 +1,5 @@
-import {TrxWalletTransferResponse} from '@spinach/service/type/tron/transfer';
-import {tronGetRequest} from '@spinach/service/worker/gold/tron/base';
+import {TrxWalletTransferResponse} from '@spinach/common/types/tron/transfer';
+import {tronGetRequest} from '@spinach/common/utils/tron/base';
 
 
 type GetTrc20IncomingTxnOpts = {

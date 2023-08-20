@@ -3,10 +3,9 @@ import {getFxRate} from '@spinach/common/controller/actors/fx';
 import {txnCompletedCollection, txnTrackedCollection} from '@spinach/common/controller/collections/gold';
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
 import {GoldCompletedTxn, GoldTrackedTxn} from '@spinach/common/types/data/gold';
+import {TrxWalletTransferResponseData} from '@spinach/common/types/tron/transfer';
 import {isNotNullish} from '@spinach/common/utils/type';
 import {AnyBulkWriteOperation, MongoBulkWriteError, SortDirection} from 'mongodb';
-
-import {TrxWalletTransferResponseData} from '@spinach/service/type/tron/transfer';
 
 
 type RecordTxnTrackedResult = {
