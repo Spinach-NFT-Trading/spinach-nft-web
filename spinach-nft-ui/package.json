@@ -9,6 +9,7 @@
   },
   "scripts": {
     "dev": "next dev -p 3005",
+    "devops": "node scripts/discord-webhook.js",
     "build": "next build",
     "start": "next start",
     "tsc": "tsc --noemit",
