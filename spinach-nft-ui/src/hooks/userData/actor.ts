@@ -20,7 +20,8 @@ export const useUserDataActor = (): UseUserDataActorReturn => {
 
     try {
       const updated = await session.update(action);
-      setStatus('completed');
+
+      setStatus(!!updated?.user.jwtUpdateError ? 'failed' : 'completed');
 
       return updated;
     } catch (err) {
