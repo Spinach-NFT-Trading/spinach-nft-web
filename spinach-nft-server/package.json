@@ -9,8 +9,8 @@
   "scripts": {
     "dev": "nodemon",
     "devops": "node scripts/discord-webhook.js",
-    "build": "tsc -p .",
-    "start": "node ./dist/main.js",
+    "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+    "start": "node ./dist/spinach-nft-server/src/main.js",
     "lint": "eslint src/ --ext .ts,.tsx",
     "lint:fix": "eslint src/ --ext .ts,.tsx --fix"
   },
@@ -42,6 +42,7 @@
     "nodemon": "*",
     "pm2": "*",
     "ts-node": "*",
+    "tsc-alias": "*",
     "typescript": "*"
   }
 }

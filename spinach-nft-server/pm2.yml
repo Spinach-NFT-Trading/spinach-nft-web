@@ -2,7 +2,7 @@ apps:
   - namespace: 'Spinach.NFT'
     name: 'Spinach.NFT.Server'
     # Entry point
-    script: './dist/main.js'
+    script: './dist/spinach-nft-server/src/main.js'
     # Execution configs
     exec_mode: 'cluster'
     instances: 2
