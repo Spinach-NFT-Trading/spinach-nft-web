@@ -16,10 +16,7 @@ export type Props = {
 
 export const NftListingSingle = ({nft}: Props) => {
   return (
-    <Flex direction="col" center className={clsx(
-      'info-section width-with-gap-sm width-with-gap-2-items sm:width-with-gap-3-items',
-      'md:width-with-gap-4-items lg:width-with-gap-5-items',
-    )}>
+    <Flex direction="col" center className="info-section">
       <pre className="text-xs">
         {nft.id}
       </pre>

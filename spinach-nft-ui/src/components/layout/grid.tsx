@@ -6,22 +6,12 @@ import {LayoutProps} from '@spinach/next/components/layout/type';
 import {getLayoutClassNames} from '@spinach/next/components/layout/util';
 
 
-type Props = LayoutProps & {
-  direction: 'row' | 'col',
-  wrap?: boolean,
-};
+type Props = LayoutProps;
 
-export const Flex = ({
-  direction,
-  wrap,
-  children,
-  ...props
-}: React.PropsWithChildren<Props>) => {
+export const Grid = ({children, ...props}: React.PropsWithChildren<Props>) => {
   return (
     <div className={clsx(
-      'flex',
-      direction === 'row' ? 'flex-row' : 'flex-col',
-      wrap && 'flex-wrap',
+      'grid',
       getLayoutClassNames(props),
     )}>
       {children}

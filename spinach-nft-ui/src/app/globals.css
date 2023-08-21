@@ -50,13 +50,6 @@
 }
 
 @layer components {
-  .width-with-gap-base {
-    --items-count: 1;
-    --gaps-count: calc(var(--items-count) - 1);
-    
-    width: calc(100% / var(--items-count) - (var(--gap) * var(--gaps-count) / var(--items-count)));
-  }
-  
   /* region Button styling (button-*) */
   
   .button-border {
@@ -110,60 +103,6 @@
       display: none;
     }
   }
-  
-  /* region Fixed count of element in row (width-with-gap-*) */
-  
-  .width-with-gap-xs {
-    --gap: theme('gap[1]') !important;
-    
-    @apply width-with-gap-base;
-  }
-  
-  .width-with-gap-sm {
-    --gap: theme('gap[1.5]') !important;
-    
-    @apply width-with-gap-base;
-  }
-  
-  .width-with-gap {
-    --gap: theme('gap[2]');
-    
-    @apply width-with-gap-base;
-  }
-  
-  .width-with-gap-2-items {
-    --items-count: 2;
-  }
-  
-  .width-with-gap-3-items {
-    --items-count: 3;
-  }
-  
-  .width-with-gap-4-items {
-    --items-count: 4;
-  }
-  
-  .width-with-gap-5-items {
-    --items-count: 5;
-  }
-  
-  .width-with-gap-6-items {
-    --items-count: 6;
-  }
-  
-  .width-with-gap-7-items {
-    --items-count: 7;
-  }
-  
-  .width-with-gap-8-items {
-    --items-count: 8;
-  }
-  
-  .width-with-gap-12-items {
-    --items-count: 12;
-  }
-  
-  /* endregion */
   
   /* region Info section styling (info-*) */
   
