@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 
 
-dotenv.config({path: '.env.local', override: true});
+dotenv.config();
 
 // eslint-disable-next-line import/order
 import {exit} from 'node:process';
