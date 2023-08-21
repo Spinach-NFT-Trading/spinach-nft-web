@@ -1,6 +1,8 @@
 'use client';
 import React from 'react';
 
+import {redirect} from 'next/navigation';
+
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 
 
@@ -10,6 +12,12 @@ type Props = {
 
 export const NftPurchaseButton = ({nftId}: Props) => {
   const {act, status} = useUserDataActor();
+
+  React.useEffect(() => {
+    if (status === 'completed') {
+      redirect('/account/profile');
+    }
+  }, [status]);
 
   return (
     <button
