@@ -16,6 +16,7 @@ export const getTrc20IncomingTxn = async ({wallet, trc20Id, startEpoch}: GetTrc2
     limit: '50', // Max 50
     trc20Id,
     direction: '2', // Incoming
+    reverse: 'false', // Needs to be sorted by timestamp ASC, so the last timestamp is always the latest confirmed
   }).toString();
 
   const response = await tronGetRequest({endpoint});
