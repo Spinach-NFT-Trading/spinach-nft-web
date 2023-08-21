@@ -1,12 +1,11 @@
 import React from 'react';
 
 import ShoppingCartIcon from '@heroicons/react/24/outline/ShoppingCartIcon';
-import clsx from 'clsx';
 import Link from 'next/link';
 
 import {Flex} from '@spinach/next/components/layout/flex';
 import {NextImage} from '@spinach/next/components/shared/common/image';
-import {NftListingData} from '@spinach/next/components/shared/nft/type';
+import {NftListingData} from '@spinach/next/types/nft';
 import {formatInt} from '@spinach/next/utils/number';
 
 

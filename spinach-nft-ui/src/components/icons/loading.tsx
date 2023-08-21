@@ -44,6 +44,14 @@ export const LoadingIcon = ({text}: Props) => {
   );
 };
 
+export const Loading = ({text}: Props) => {
+  return (
+    <div className="h-36">
+      <LoadingIcon text={text}/>
+    </div>
+  );
+};
+
 export const LoadingFullScreen = ({text}: Props) => {
   return (
     <div className="h-screen">

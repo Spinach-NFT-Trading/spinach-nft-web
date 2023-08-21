@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Grid} from '@spinach/next/components/layout/grid';
 import {NftListingSingle} from '@spinach/next/components/shared/nft/single';
-import {NftListingData} from '@spinach/next/components/shared/nft/type';
+import {NftListingData} from '@spinach/next/types/nft';
 
 
 type Props = {

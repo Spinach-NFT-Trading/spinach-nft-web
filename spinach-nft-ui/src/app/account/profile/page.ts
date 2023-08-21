@@ -1,4 +1,4 @@
-import {Constructing} from '@spinach/next/ui/placeholder/constructing';
+import {AccountProfile} from '@spinach/next/ui/account/profile/main';
 
 
-export default Constructing;
+export default AccountProfile;
