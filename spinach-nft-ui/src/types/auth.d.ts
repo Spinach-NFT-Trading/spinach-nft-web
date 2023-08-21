@@ -3,23 +3,21 @@ import {UserInfo} from '@spinach/common/types/common/user';
 import {DefaultSession, DefaultUser} from 'next-auth';
 import {DefaultJWT} from 'next-auth/jwt';
 
-import {UserPreloadedData} from '@spinach/next/types/userData/main';
+import {UserLazyLoadedData, UserPreloadedData} from '@spinach/next/types/userData/main';
 
 
-type CommonUserData = {
+export type CommonUserData = {
   username: UserInfo['username'],
   jwtUpdateError: ApiErrorCode | null,
-};
-
-type SessionUserAddons = CommonUserData & {
   preloaded: UserPreloadedData | null,
+  lazyLoaded: UserLazyLoadedData,
 };
 
 declare module 'next-auth' {
   interface User extends DefaultUser, UserInfo {}
 
   interface Session {
-    user: DefaultSession['user'] & SessionUserAddons;
+    user: DefaultSession['user'] & CommonUserData;
   }
 }
 

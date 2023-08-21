@@ -1,5 +1,5 @@
 export type UserDataLoadingOpts = {
-  type: never,
+  type: 'nftPosition',
 };
 
 export type UserDataLoader = (options: UserDataLoadingOpts) => void;

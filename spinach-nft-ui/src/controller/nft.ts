@@ -1,6 +1,7 @@
 'use server';
 import {getCurrentBalance, recordUserDataAfterNftTxn} from '@spinach/common/controller/actors/user';
 import {nftInfoCollection, nftOnSaleCollection, nftTxnCollection} from '@spinach/common/controller/collections/nft';
+import {userNftPositionCollection} from '@spinach/common/controller/collections/user';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {NftTxnModel} from '@spinach/common/types/data/nft';
 import {ObjectId} from 'mongodb';
@@ -21,17 +22,25 @@ export const getNftInfo = (nftId: ObjectId) => {
   return nftInfoCollection.findOne({_id: nftId});
 };
 
+export const getNftInfoMultiple = (nftIds: ObjectId[]) => {
+  return nftInfoCollection.find({_id: {$in: nftIds}});
+};
+
 export const getNftInfoMap = async (nftIds: ObjectId[]): Promise<NftInfoMap> => {
   const ret: NftInfoMap = {};
 
-  for await (const nftInfo of nftInfoCollection.find({_id: {$in: nftIds}})) {
+  for await (const nftInfo of getNftInfoMultiple(nftIds)) {
     ret[nftInfo._id.toString()] = nftInfo;
   }
 
   return ret;
 };
 
-const markNftSold = (nftId: ObjectId) => nftOnSaleCollection.deleteOne({id: nftId});
+export const getNftPositionInfo = async (owner: ObjectId) => {
+  const positionNftIds = await userNftPositionCollection.find({owner}).map(({nftId}) => nftId).toArray();
+
+  return getNftInfoMultiple(positionNftIds);
+};
 
 type NftBuyOpts = {
   buyer: ObjectId,
@@ -69,7 +78,8 @@ export const buyNft = async ({buyer, nftId}: NftBuyOpts): Promise<ApiErrorCode |
         session,
       });
 
-      await markNftSold(nftOnSale.id);
+      // Mark NFT sold
+      await nftOnSaleCollection.deleteOne({id: nftOnSale.id});
     });
   });
 

@@ -7,7 +7,7 @@ import credentialsProvider, {CredentialInput} from 'next-auth/providers/credenti
 import {handleUserLoad} from '@spinach/next/controller/userData/load';
 import {getUserPreloadedData} from '@spinach/next/controller/userData/preload';
 import {handleUserRequest} from '@spinach/next/controller/userData/request';
-import {SessionUserAddons} from '@spinach/next/types/auth';
+import {CommonUserData} from '@spinach/next/types/auth';
 import {UserDataAction} from '@spinach/next/types/userData/main';
 
 
@@ -38,7 +38,11 @@ export const authOptions: AuthOptions = {
         }
 
         if (action === 'load') {
-          await handleUserLoad({accountId, options});
+          token.lazyLoaded = await handleUserLoad({
+            initialData: token.lazyLoaded,
+            accountId,
+            type: options.type,
+          });
           return token;
         }
 
@@ -49,10 +53,11 @@ export const authOptions: AuthOptions = {
     },
     session: async ({session, token}) => {
       // Needs to add the properties on `token` JWT, or it won't be exposed to the UI
-      const addon: SessionUserAddons = {
+      const addon: CommonUserData = {
         username: token.username,
         jwtUpdateError: token.jwtUpdateError,
         preloaded: await getUserPreloadedData(token.sub),
+        lazyLoaded: token.lazyLoaded,
       };
 
       session.user = {
