@@ -2,7 +2,9 @@ apps:
   - namespace: 'Spinach.NFT'
     name: 'Spinach.NFT.UI'
     # Entry point
-    script: './dist/main.js'
+    # `yarn run start` / `npm run start` won't work here - or additional work required
+    script: './node_modules/next/dist/bin/next'
+    args: 'start'
     # Execution configs
     exec_mode: 'cluster'
     instances: 2
