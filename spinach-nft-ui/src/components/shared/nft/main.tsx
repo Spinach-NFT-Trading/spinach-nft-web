@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Flex} from '@spinach/next/components/layout/flex';
 import {NftListingSingle} from '@spinach/next/components/shared/nft/single';
-import {NftListingData} from '@spinach/next/ui/home/type';
+import {NftListingData} from '@spinach/next/components/shared/nft/type';
 
 
 type Props = {
