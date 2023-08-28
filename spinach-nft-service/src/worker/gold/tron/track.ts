@@ -1,5 +1,6 @@
 import {usdtContractInTrc20} from '@spinach/common/const/tron';
 import {getOwnedWallets} from '@spinach/common/controller/actors/gold';
+import {sleep} from '@spinach/common/utils/execution';
 import {getTrc20IncomingTxn} from '@spinach/common/utils/tron/transfers';
 
 import {getLastTrackedTxnEpoch, recordTxnCompleted, recordTxnTracked} from '@spinach/service/controller/gold/main';
@@ -39,6 +40,7 @@ const checkSingleWallet = async (wallet: string) => {
     }
 
     console.log(`Detected ${newTxnCount} new TxN, rerunning TxN checks`);
+    await sleep(500); // Avoid hitting Tronscan reading rate limit
   }
 };
 
