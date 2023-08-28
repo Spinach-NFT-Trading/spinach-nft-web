@@ -3,7 +3,10 @@ import React from 'react';
 import CurrencyDollarIcon from '@heroicons/react/24/outline/CurrencyDollarIcon';
 import EnvelopeIcon from '@heroicons/react/24/outline/EnvelopeIcon';
 import IdentificationIcon from '@heroicons/react/24/outline/IdentificationIcon';
+import PlusCircleIcon from '@heroicons/react/24/outline/PlusCircleIcon';
 import UserCircleIcon from '@heroicons/react/24/outline/UserCircleIcon';
+import clsx from 'clsx';
+import Link from 'next/link';
 import {Session} from 'next-auth';
 
 import {Flex} from '@spinach/next/components/layout/flex';
@@ -56,6 +59,18 @@ export const AccountMeta = ({session}: Props) => {
         <div>
           {formatFloat2(preloaded?.balance)}
         </div>
+        <Link href="/gold/exchange" className={clsx(
+          'button-base button-text-hover button-bg p-1 px-1.5 text-base hover:bg-amber-600 dark:hover:bg-amber-400',
+        )}>
+          <Flex direction="row" className="gap-1">
+            <div className="relative h-6 w-6">
+              <PlusCircleIcon/>
+            </div>
+            <div>
+              購買 GOLD
+            </div>
+          </Flex>
+        </Link>
       </Flex>
     </Flex>
   );

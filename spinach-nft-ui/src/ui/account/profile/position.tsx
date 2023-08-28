@@ -6,7 +6,7 @@ import {NftListing} from '@spinach/next/components/shared/nft/main';
 import {UserDataLazyLoad} from '@spinach/next/components/shared/userData/lazyLoad';
 
 
-export const AccountProfileClient = () => {
+export const AccountNftPosition = () => {
   return (
     <Flex direction="col" className="gap-2">
       <div className="text-lg">NFT</div>

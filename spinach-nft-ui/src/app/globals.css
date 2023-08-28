@@ -264,7 +264,7 @@
   }
   
   .nav-button-text {
-    @apply nav-button button-clickable-bg text-sm whitespace-nowrap px-2.5;
+    @apply nav-button flex items-center justify-center button-clickable-bg text-sm whitespace-nowrap px-2.5;
   }
   
   /* endregion */
