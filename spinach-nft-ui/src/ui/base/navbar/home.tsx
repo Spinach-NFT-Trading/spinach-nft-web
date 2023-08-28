@@ -1,23 +1,24 @@
 import React from 'react';
 
-import HomeIcon from '@heroicons/react/24/solid/HomeIcon';
 import clsx from 'clsx';
 import Link from 'next/link';
+
+import {NextImage} from '@spinach/next/components/shared/common/image';
+import {imageGallerySizes} from '@spinach/next/styles/image';
 
 
 export const NavHomepage = () => {
   return (
     <Link href="/" className={clsx(
-      'transform-smooth nav-height sticky left-0 flex flex-row items-center gap-1 rounded-lg px-1.5',
-      'button-clickable-bg',
+      'transform-smooth nav-height button-bg-hover group sticky left-0 flex items-center rounded-lg px-1.5',
     )}>
-      <div className="whitespace-nowrap">
-        <span className="hidden md:block">菠菜 NFT 交易平台</span>
-        <span className="block md:hidden">
-          <div className="h-6 w-6">
-            <HomeIcon/>
-          </div>
-        </span>
+      <div className="relative h-8 w-36">
+        <NextImage
+          src="/logo.png"
+          alt="NFT Market 3.0"
+          sizes={imageGallerySizes}
+          className="invert-hoverable object-cover"
+        />
       </div>
     </Link>
   );
