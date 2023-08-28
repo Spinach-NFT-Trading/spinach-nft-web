@@ -12,7 +12,7 @@ export const NavHomepage = () => {
     <Link href="/" className={clsx(
       'transform-smooth nav-height button-bg-hover group sticky left-0 flex items-center rounded-lg px-1.5',
     )}>
-      <div className="relative h-8 w-36">
+      <div className="relative h-8 w-60">
         <NextImage
           src="/logo.png"
           alt="NFT Market 3.0"
