@@ -6,8 +6,8 @@ import {imageIconSizes} from '@spinach/next/styles/image';
 
 export const ProfileIcon = () => {
   return (
-    <div className="rounded-full bg-blue-900 p-1.5">
-      <div className="relative h-12 w-12">
+    <div className="rounded-full bg-blue-900 p-2">
+      <div className="relative h-20 w-20">
         <NextImage
           src="/logo-half.png"
           alt="NFT Market 3.0"
