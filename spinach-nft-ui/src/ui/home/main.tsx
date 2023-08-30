@@ -1,7 +1,12 @@
 import React from 'react';
 
+import {fxMarket} from '@spinach/common/const/fx';
+import {getFxRate} from '@spinach/common/controller/actors/fx';
+import {getServerSession} from 'next-auth';
+
 import {Flex} from '@spinach/next/components/layout/flex';
 import {NftListing} from '@spinach/next/components/shared/nft/main';
+import {authOptions} from '@spinach/next/const/auth';
 import {getNftInfoMap, getNftOnSaleList} from '@spinach/next/controller/nft';
 import {NftListingData} from '@spinach/next/types/nft';
 import {PageLayout} from '@spinach/next/ui/base/layout/common';
@@ -24,12 +29,20 @@ const getNftListing = async (): Promise<NftListingData[]> => {
 };
 
 export const Home = async () => {
-  const nfts = await getNftListing();
+  const [
+    session,
+    nfts,
+    currentFx,
+  ] = await Promise.all([
+    getServerSession(authOptions),
+    getNftListing(),
+    getFxRate(fxMarket),
+  ]);
 
   return (
     <PageLayout>
       <Flex direction="col" className="gap-2 lg:px-32">
-        <HomeHeader/>
+        <HomeHeader session={session} currentFx={currentFx}/>
         <NftListing nfts={nfts}/>
       </Flex>
     </PageLayout>
