@@ -4,13 +4,15 @@ import clsx from 'clsx';
 import Image, {ImageProps} from 'next/image';
 
 
-export type NextImageProps = Omit<ImageProps, 'fill' | 'title'>;
+export type NextImageProps = Omit<ImageProps, 'fill' | 'title'> & {
+  noCover?: boolean,
+};
 
-export const NextImage = ({src, alt, sizes, className}: NextImageProps) => {
+export const NextImage = ({src, alt, noCover, sizes, className}: NextImageProps) => {
   return (
     <Image
       src={src} alt={alt} fill title={alt} sizes={sizes}
-      className={clsx(className, 'object-cover')} unoptimized
+      className={clsx(className, !noCover && 'object-cover')} unoptimized
     />
   );
 };

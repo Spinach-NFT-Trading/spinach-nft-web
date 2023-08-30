@@ -17,6 +17,7 @@ export const NavHomepage = () => {
           src="/logo-full.png"
           alt="NFT Market 3.0"
           sizes={imageGallerySizes}
+          noCover
           className="invert-hoverable object-contain"
         />
       </div>
@@ -25,6 +26,7 @@ export const NavHomepage = () => {
           src="/logo-half.png"
           alt="NFT Market 3.0"
           sizes={imageGallerySizes}
+          noCover
           className="invert-hoverable object-contain"
         />
       </div>
