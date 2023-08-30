@@ -14,8 +14,9 @@ const staticImageUrls = [
 export const generateNft = async (): Promise<NftInfoModel> => {
   const seqId = await getNewSeqId();
   const imageIdx = Math.floor(Math.random() * 100000 % staticImageUrls.length);
+  const isLimited = Math.random() < 0.5;
 
-  return {seqId, image: staticImageUrls[imageIdx]};
+  return {seqId, image: staticImageUrls[imageIdx], isLimited};
 };
 
 export const generateSalePrice = () => {
