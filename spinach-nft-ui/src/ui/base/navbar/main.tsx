@@ -13,10 +13,7 @@ export const NavBar = ({hideUserControl}: NavBarProps) => {
   const session = React.use(getServerSession(authOptions));
 
   return (
-    <Flex
-      direction="row" center
-      className="sticky top-0 z-30 gap-1.5 border-b border-b-gray-700 bg-slate-300/90 p-2 dark:bg-slate-900/90"
-    >
+    <Flex direction="row" center className="sticky top-0 z-30 gap-1.5 border-b border-b-gray-700 p-2 backdrop-blur-lg">
       <NavBarClient session={session}/>
       {!hideUserControl && <UserControl/>}
     </Flex>

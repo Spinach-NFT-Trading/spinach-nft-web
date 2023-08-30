@@ -26,8 +26,8 @@ export const NavEntryUI = ({href, text, showOnlyIfLoggedIn, session}: Props) => 
     <Link
       href={isCurrent ? '#' : href}
       className={clsx(
-        'nav-height button-base button-text relative flex items-center justify-center px-2',
-        isCurrent ? 'cursor-auto bg-slate-700/30 dark:bg-slate-300/30' : 'button-clickable group',
+        'nav-height button-base relative flex items-center justify-center px-2',
+        isCurrent ? 'cursor-auto bg-slate-700/30' : 'button-clickable group',
       )}
     >
       {text}

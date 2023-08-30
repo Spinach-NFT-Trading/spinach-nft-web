@@ -3,38 +3,16 @@
 @tailwind utilities;
 
 @layer base {
-  .theme-light {
-    --foreground-rgb: theme('colors.neutral.900');
-    --background-start-rgb: theme('colors.slate.200');
-    --background-end-rgb: theme('colors.slate.300');
-  }
-  
-  .theme-dark {
+  .theme {
     --foreground-rgb: theme('colors.neutral.100');
-    --background-start-rgb: theme('colors.slate.900');
-    --background-end-rgb: theme('colors.slate.950');
   }
   
   :root {
-    @apply theme-light;
-  }
-  
-  @media (prefers-color-scheme: dark) {
-    :root {
-      @apply theme-dark;
-    }
+    @apply theme;
   }
   
   html {
-    &.light {
-      @apply theme-light;
-    }
-    
-    &.dark {
-      @apply theme-dark;
-    }
-    
-    @apply overflow-x-hidden;
+    @apply theme overflow-x-hidden;
   }
   
   body {
@@ -54,15 +32,15 @@
   /* region Button styling (button-*) */
   
   .button-border {
-    @apply border border-slate-700 dark:border-slate-300;
+    @apply border border-slate-700;
   }
   
   .button-bg-hover {
-    @apply hover:bg-slate-700 hover:dark:bg-slate-300;
+    @apply hover:bg-slate-200;
   }
   
   .button-text-hover {
-    @apply hover:text-slate-200 dark:hover:text-slate-800;
+    @apply hover:text-slate-700;
   }
   
   /* endregion */
@@ -107,10 +85,6 @@
   
   /* region Info section styling (info-*) */
   
-  .info-in-image {
-    @apply rounded-full bg-slate-400/80 dark:bg-slate-500/80;
-  }
-  
   .info-section {
     @apply rounded-lg p-4 bg-gradient-to-br from-slate-200/25 to-slate-100/10;
   }
@@ -119,16 +93,8 @@
   
   /* region Image inverting (invert-*) */
   
-  .invert-on-light {
-    @apply invert-base invert dark:invert-0;
-  }
-  
-  .invert-on-dark {
-    @apply invert-base dark:invert;
-  }
-  
   .invert-hoverable {
-    @apply invert-on-light group-hover:invert-0 group-hover:dark:invert;
+    @apply group-hover:invert;
   }
   
   /* endregion */
@@ -140,15 +106,11 @@
   }
   
   .button-bg {
-    @apply bg-slate-50/70 dark:bg-slate-700/50;
-  }
-  
-  .button-text {
-    @apply text-slate-700 dark:text-slate-300;
+    @apply bg-slate-50/20;
   }
   
   .button-clickable {
-    @apply button-base button-bg-hover button-text button-text-hover;
+    @apply button-base button-bg-hover button-text-hover;
   }
   
   .button-clickable-border {
@@ -160,11 +122,11 @@
   }
   
   .button-disabled {
-    @apply button-base bg-slate-400/50 dark:bg-slate-800/30 text-slate-500/70 dark:text-slate-500;
+    @apply button-base bg-slate-400/30 text-slate-500/50;
   }
   
   .button-disabled-border {
-    @apply button-disabled border border-slate-400/50 dark:border-slate-500/50;
+    @apply button-disabled border border-slate-400/40;
   }
   
   /* endregion */
@@ -172,11 +134,11 @@
   /* region Toggle button styling (button-toggle-*) */
   
   .button-toggle-inactive-hover {
-    @apply hover:bg-slate-400 dark:hover:bg-slate-500 hover:text-slate-900 dark:hover:text-slate-100;
+    @apply hover:bg-slate-400 hover:text-slate-900;
   }
   
   .button-toggle-inactive-bg {
-    @apply bg-slate-400/20 dark:bg-slate-700/50;
+    @apply bg-slate-400/20;
   }
   
   .button-toggle-inactive {
@@ -184,11 +146,11 @@
   }
   
   .button-toggle-active-hover {
-    @apply hover:bg-slate-500 dark:hover:bg-slate-400 hover:text-slate-100 dark:hover:text-slate-800;
+    @apply hover:bg-slate-500 hover:text-slate-100;
   }
   
   .button-toggle-active-bg {
-    @apply bg-slate-800 text-slate-100 dark:bg-slate-50 dark:text-slate-800;
+    @apply bg-slate-800 text-slate-100;
   }
   
   .button-toggle-active {
@@ -200,11 +162,11 @@
   /* region Input row styling (input-row-*) */
   
   .input-row-normal {
-    @apply bg-slate-50/40 dark:bg-slate-700/20;
+    @apply bg-slate-50/40;
   }
   
   .input-row-highlight {
-    @apply bg-slate-50 dark:bg-slate-700/50;
+    @apply bg-slate-50;
   }
   
   /* endregion */
@@ -212,27 +174,17 @@
   /* region Miscellaneous text styling (text-*) */
   
   .text-shadow-preset {
-    @apply shadow-slate-200 text-shadow dark:shadow-slate-900;
+    @apply shadow-slate-200 text-shadow;
   }
   
   /* endregion */
   
   /* region Blink styling (bg-blink-on-*) */
   
-  .bg-blink-light {
+  .bg-blink {
     @apply bg-blink-base;
     
     --bg-highlight: theme('colors.slate.300');
-  }
-  
-  .bg-blink-dark {
-    @apply bg-blink-base;
-    
-    --bg-highlight: theme('colors.slate.700');
-  }
-  
-  .bg-blink {
-    @apply bg-blink-light dark:bg-blink-dark
   }
   
   /* endregion */
@@ -240,7 +192,7 @@
   /* region Border styling (border-*) */
   
   .border-button-clickable {
-    @apply border-slate-50/70 dark:border-slate-700/50;
+    @apply border-slate-50/70;
   }
   
   /* endregion */
