@@ -12,15 +12,15 @@ type Props = {
 
 export const HomeStatsSection = ({icon, value, title}: Props) => {
   return (
-    <Flex direction="row" noFullWidth className="w-56 gap-1.5 text-justify">
-      <div className="relative h-10 w-10">
+    <Flex direction="row" noFullWidth className="gap-1.5 text-justify">
+      <div className="relative h-14 w-14">
         {icon}
       </div>
       <Flex direction="col">
-        <div className="text-2xl">
+        <div className="text-3xl font-semibold">
           {formatToAbbreviation({num: value})}
         </div>
-        <div className="text-sm">
+        <div className="text-slate-300">
           {title}
         </div>
       </Flex>

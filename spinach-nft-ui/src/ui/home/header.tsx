@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 import {UsdtIcon} from '@spinach/next/components/icons/usdt';
 import {Flex} from '@spinach/next/components/layout/flex';
+import {Grid} from '@spinach/next/components/layout/grid';
 import {NextImage} from '@spinach/next/components/shared/common/image';
 import {HomeStatsSection} from '@spinach/next/ui/home/stats';
 
@@ -22,20 +23,15 @@ export const HomeHeader = () => {
             登入
           </Link>
         </Flex>
-        <div className="relative h-32 sm:h-60 xl:h-80">
-          <NextImage src="/banner.png" alt="Banner" noCover className="bg-black object-contain object-left"/>
+        <div className="relative h-60 sm:h-96 xl:h-[30rem]">
+          <NextImage src="/banner.png" alt="Banner" className="rounded-lg bg-black object-cover"/>
         </div>
       </Flex>
-      <Flex direction="col" wrap center className="info-section gap-3 lg:flex-row">
-        <Flex direction="col" center className="text-lg">
-          全球最豪華 NFT 交易平台
-        </Flex>
-        <Flex direction="col" center noFullWidth className="gap-2 md:flex-row">
-          <HomeStatsSection icon={<RocketLaunchIcon/>} value={100} title="已交易 NFT 數量"/>
-          <HomeStatsSection icon={<UsdtIcon/>} value={9E6} title="24 小時 USDT 交易量"/>
-          <HomeStatsSection icon={<CurrencyDollarIcon/>} value={2.7E7} title="24 小時 GOLD 購買量"/>
-        </Flex>
-      </Flex>
+      <Grid center className="info-section grid-cols-1 gap-3 md:grid-cols-3">
+        <HomeStatsSection icon={<RocketLaunchIcon/>} value={100} title="已交易 NFT 數量"/>
+        <HomeStatsSection icon={<UsdtIcon/>} value={9E6} title="24 小時 USDT 交易量"/>
+        <HomeStatsSection icon={<CurrencyDollarIcon/>} value={2.7E7} title="24 小時 GOLD 購買量"/>
+      </Grid>
     </Flex>
   );
 };
