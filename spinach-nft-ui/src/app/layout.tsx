@@ -17,8 +17,8 @@ const font = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  title: '菠菜 NFT 交易平台',
-  description: 'Got a spinach in here!',
+  title: 'NFT 3.0 Market',
+  description: 'NFT 3.0 Market.',
 };
 
 const RootLayout = ({children}: React.PropsWithChildren<PageLayoutParams>) => {
