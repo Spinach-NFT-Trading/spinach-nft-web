@@ -12,12 +12,20 @@ export const NavHomepage = () => {
     <Link href="/" className={clsx(
       'transform-smooth nav-height button-bg-hover group sticky left-0 flex items-center rounded-lg px-1.5',
     )}>
-      <div className="relative h-8 w-60">
+      <div className="relative hidden h-8 w-60 md:block">
         <NextImage
-          src="/logo.png"
+          src="/logo-full.png"
           alt="NFT Market 3.0"
           sizes={imageGallerySizes}
-          className="invert-hoverable object-cover"
+          className="invert-hoverable object-contain"
+        />
+      </div>
+      <div className="relative block h-8 w-10 md:hidden">
+        <NextImage
+          src="/logo-half.png"
+          alt="NFT Market 3.0"
+          sizes={imageGallerySizes}
+          className="invert-hoverable object-contain"
         />
       </div>
     </Link>
