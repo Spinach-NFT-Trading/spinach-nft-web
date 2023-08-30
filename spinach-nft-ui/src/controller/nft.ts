@@ -7,7 +7,7 @@ import {NftTxnModel} from '@spinach/common/types/data/nft';
 import {ObjectId} from 'mongodb';
 
 import mongoPromise from '@spinach/next/lib/mongodb';
-import {NftInfoMap} from '@spinach/next/types/mongo/nft';
+import {NftInfoMap, NftPriceMap} from '@spinach/next/types/mongo/nft';
 
 
 export const getNftOnSale = (nftId: ObjectId) => {
@@ -24,6 +24,22 @@ export const getNftInfo = (nftId: ObjectId) => {
 
 export const getNftInfoMultiple = (nftIds: ObjectId[]) => {
   return nftInfoCollection.find({_id: {$in: nftIds}});
+};
+
+export const getNftLastTradedPriceMap = async (nftIds: ObjectId[]): Promise<NftPriceMap> => {
+  const nftPriceMap: NftPriceMap = {};
+
+  for await (const {nftId, price} of nftTxnCollection.find({nftId: {$in: nftIds}}, {sort: {_id: 'desc'}})) {
+    const nftIdString = nftId.toString();
+
+    if (nftIdString in nftPriceMap) {
+      continue;
+    }
+
+    nftPriceMap[nftIdString] = price;
+  }
+
+  return nftPriceMap;
 };
 
 export const getNftInfoMap = async (nftIds: ObjectId[]): Promise<NftInfoMap> => {
