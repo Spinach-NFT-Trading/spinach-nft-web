@@ -27,6 +27,12 @@ export const NftListing = ({nfts}: Props) => {
       return price === parseInt(priceSearch);
     })
     .sort((a, b) => {
+      const limitedCompareDiff = +b.isLimited - +a.isLimited;
+
+      if (limitedCompareDiff !== 0) {
+        return limitedCompareDiff;
+      }
+
       if (sort === 'asc') {
         return a.price - b.price;
       }
