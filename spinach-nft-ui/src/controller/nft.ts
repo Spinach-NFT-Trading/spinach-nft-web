@@ -54,7 +54,8 @@ export const getNftInfoMap = async (nftIds: ObjectId[]): Promise<NftInfoMap> => 
   const ret: NftInfoMap = {};
 
   for await (const nftInfo of getNftInfoMultiple(nftIds)) {
-    ret[nftInfo._id.toString()] = nftInfo;
+    const {_id, ...info} = nftInfo;
+    ret[nftInfo._id.toString()] = info;
   }
 
   return ret;
