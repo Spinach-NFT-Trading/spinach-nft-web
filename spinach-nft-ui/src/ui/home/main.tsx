@@ -10,6 +10,7 @@ import {authOptions} from '@spinach/next/const/auth';
 import {getNftInfoMap, getNftOnSaleList} from '@spinach/next/controller/nft';
 import {NftListingData} from '@spinach/next/types/nft';
 import {PageLayout} from '@spinach/next/ui/base/layout/common';
+import {HomeFooter} from '@spinach/next/ui/home/footer/main';
 import {HomeHeader} from '@spinach/next/ui/home/header';
 
 
@@ -44,6 +45,7 @@ export const Home = async () => {
       <Flex direction="col" className="gap-2">
         <HomeHeader session={session} currentFx={currentFx}/>
         <NftListing nfts={nfts}/>
+        <HomeFooter/>
       </Flex>
     </PageLayout>
   );
