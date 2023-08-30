@@ -22,7 +22,7 @@ export const NftListingSingle = ({nft}: Props) => {
         </div>
       </Flex>
       <Flex direction="col" className="text-xl font-semibold">
-        <Flex direction="col" className="">{nft.id.slice(-8)}</Flex>
+        <Flex direction="col" className="">#{nft.seqId}</Flex>
         <Flex direction="col" className="whitespace-nowrap text-yellow-300">
           {formatInt(nft.price)} GOLD
         </Flex>

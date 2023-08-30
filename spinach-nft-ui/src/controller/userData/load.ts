@@ -23,8 +23,8 @@ const loadData = async ({type, accountId} : GetUserLazyDataOpts) => {
 
     return nftInfo.map((data) => ({
       id: data._id.toString(),
-      image: data.image,
       price: nftPriceMap[data._id.toString()],
+      ...data,
     } satisfies NftListingData)) satisfies UserLazyLoadedData['nftPosition'];
   }
 

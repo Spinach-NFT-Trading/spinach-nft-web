@@ -1,5 +1,7 @@
-export type NftListingData = {
+import {NftInfoModel} from '@spinach/common/types/data/nft';
+
+
+export type NftListingData = NftInfoModel & {
   id: string,
-  image: string,
   price: number,
 };

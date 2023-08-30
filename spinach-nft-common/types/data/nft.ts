@@ -2,6 +2,7 @@ import {ObjectId} from 'mongodb';
 
 
 export type NftInfoModel = {
+  seqId: number,
   image: string,
 };
 

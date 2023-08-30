@@ -15,8 +15,8 @@ const getNftListing = async (): Promise<NftListingData[]> => {
 
     return {
       id: idString,
-      image: nftInfoMap[idString].image,
       price,
+      ...nftInfoMap[idString],
     } satisfies NftListingData;
   });
 };

@@ -17,7 +17,7 @@ const checkNftInventory = async () => {
   const nftNeededToFill = nftOnSaleMinimum - onSaleNftCount;
 
   for (const _ of Array(nftNeededToFill).keys()) {
-    const newNft = generateNft();
+    const newNft = await generateNft();
     const insertResult = await mintNewNft(newNft);
     const price = generateSalePrice();
 
