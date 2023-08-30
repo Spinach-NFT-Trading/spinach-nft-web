@@ -1,15 +1,19 @@
 import {NftInfoModel} from '@spinach/common/types/data/nft';
 
 
-const eeveeIds = [135, 196, 700, 136, 470, 134, 471, 197, 133];
+const staticImageUrls = [
+  'https://i.imgur.com/4LeEK8H.jpeg',
+  'https://i.imgur.com/9b1zecp.jpeg',
+  'https://i.imgur.com/c7MhIvG.jpeg',
+  'https://i.imgur.com/hFu6xni.jpeg',
+  'https://i.imgur.com/rgcSUK7.jpeg',
+];
 
 export const generateNft = (): NftInfoModel => {
-  const eeveeIdx = Math.floor(Math.random() * 100000 % eeveeIds.length);
-  const eeveeId = eeveeIds[eeveeIdx];
+  const imageIdx = Math.floor(Math.random() * 100000 % staticImageUrls.length);
 
   return {
-    // eslint-disable-next-line max-len
-    image: `https://raw.githubusercontent.com/RaenonX-PokemonSleep/pokemon-sleep-ui/main/public/images/pokemon/portrait/${eeveeId}.png`,
+    image: staticImageUrls[imageIdx],
   };
 };
 
