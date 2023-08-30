@@ -1,9 +1,9 @@
 'use client';
 import React from 'react';
 
+import {InputBox} from '@spinach/next/components/input/box';
 import {Flex} from '@spinach/next/components/layout/flex';
 import {Grid} from '@spinach/next/components/layout/grid';
-import {InputBox} from '@spinach/next/components/shared/nft/box';
 import {nftListingSortingIcon} from '@spinach/next/components/shared/nft/const';
 import {NftListingSingle} from '@spinach/next/components/shared/nft/single';
 import {NftListingSortType} from '@spinach/next/components/shared/nft/type';
