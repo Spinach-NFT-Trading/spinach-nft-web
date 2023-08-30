@@ -41,7 +41,7 @@ export const Home = async () => {
 
   return (
     <PageLayout>
-      <Flex direction="col" className="gap-2 lg:px-32">
+      <Flex direction="col" className="gap-2">
         <HomeHeader session={session} currentFx={currentFx}/>
         <NftListing nfts={nfts}/>
       </Flex>

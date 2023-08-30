@@ -17,7 +17,9 @@ export const PageLayout = ({announcement = true, children, ...props}: React.Prop
         <NavBar {...props}/>
         <Flex direction="col" className="gap-1.5 p-2">
           {announcement && <Announcements/>}
-          {children}
+          <div className="lg:px-32">
+            {children}
+          </div>
         </Flex>
       </main>
     </React.Suspense>
