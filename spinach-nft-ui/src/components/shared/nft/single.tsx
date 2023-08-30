@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ShoppingCartIcon from '@heroicons/react/24/outline/ShoppingCartIcon';
+import CheckBadgeIcon from '@heroicons/react/24/solid/CheckBadgeIcon';
 import Link from 'next/link';
 
 import {Flex} from '@spinach/next/components/layout/flex';
@@ -22,7 +23,12 @@ export const NftListingSingle = ({nft}: Props) => {
         </div>
       </Flex>
       <Flex direction="col" className="text-xl font-semibold">
-        <Flex direction="col" className="">#{nft.seqId}</Flex>
+        <Flex direction="row" className="items-center gap-1">
+          <div>#{nft.seqId}</div>
+          <div className="relative h-6 w-6 text-teal-400">
+            <CheckBadgeIcon/>
+          </div>
+        </Flex>
         <Flex direction="col" className="whitespace-nowrap text-yellow-300">
           {formatInt(nft.price)} GOLD
         </Flex>
