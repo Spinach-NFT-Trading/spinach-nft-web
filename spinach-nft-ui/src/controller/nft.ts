@@ -1,5 +1,5 @@
 'use server';
-import {getCurrentBalance, recordUserDataAfterNftTxn} from '@spinach/common/controller/actors/user';
+import {getGoldAsset, recordUserDataAfterNftTxn} from '@spinach/common/controller/actors/user';
 import {nftInfoCollection, nftOnSaleCollection, nftTxnCollection} from '@spinach/common/controller/collections/nft';
 import {userNftPositionCollection} from '@spinach/common/controller/collections/user';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
@@ -8,6 +8,7 @@ import {ObjectId} from 'mongodb';
 
 import mongoPromise from '@spinach/next/lib/mongodb';
 import {NftInfoMap, NftPriceMap} from '@spinach/next/types/mongo/nft';
+import {toSum} from '@spinach/next/utils/array';
 
 
 export const getNftOnSale = (nftId: ObjectId) => {
@@ -42,6 +43,13 @@ export const getNftLastTradedPriceMap = async (nftIds: ObjectId[]): Promise<NftP
   return nftPriceMap;
 };
 
+export const getNftAsset = async (accountId: ObjectId): Promise<number> => {
+  const nftInfo = await (await getNftPositionInfo(accountId)).toArray();
+  const nftPriceMap = await getNftLastTradedPriceMap(nftInfo.map(({_id}) => _id));
+
+  return toSum(nftInfo.map(({_id}) => nftPriceMap[_id.toString()]));
+};
+
 export const getNftInfoMap = async (nftIds: ObjectId[]): Promise<NftInfoMap> => {
   const ret: NftInfoMap = {};
 
@@ -65,7 +73,7 @@ type NftBuyOpts = {
 
 export const buyNft = async ({buyer, nftId}: NftBuyOpts): Promise<ApiErrorCode | null> => {
   const [balance, nftOnSale] = await Promise.all([
-    getCurrentBalance(buyer),
+    getGoldAsset(buyer),
     getNftOnSale(nftId),
   ]);
 

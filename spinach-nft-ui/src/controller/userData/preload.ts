@@ -1,21 +1,28 @@
-import {getCurrentBalance} from '@spinach/common/controller/actors/user';
+import {getGoldAsset} from '@spinach/common/controller/actors/user';
 import {ObjectId} from 'mongodb';
 
+import {getNftAsset} from '@spinach/next/controller/nft';
 import {UserPreloadedData} from '@spinach/next/types/userData/main';
 
 
-export const getUserPreloadedData = async (userId: string | undefined): Promise<UserPreloadedData | null> => {
-  if (!userId) {
+export const getUserPreloadedData = async (userIdString: string | undefined): Promise<UserPreloadedData | null> => {
+  if (!userIdString) {
     return null;
   }
 
+  const userId = new ObjectId(userIdString);
   const [
-    currentBalance,
+    goldAsset,
+    nftAsset,
   ] = await Promise.all([
-    getCurrentBalance(new ObjectId(userId)),
+    getGoldAsset(userId),
+    getNftAsset(userId),
   ]);
 
   return {
-    balance: currentBalance?.current,
+    assets: {
+      gold: goldAsset?.current,
+      nft: nftAsset,
+    },
   };
 };

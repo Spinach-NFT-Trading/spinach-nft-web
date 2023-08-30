@@ -1,3 +1,6 @@
 export type UserPreloadedContent = {
-  balance: number,
+  assets: {
+    nft: number,
+    gold: number,
+  },
 };

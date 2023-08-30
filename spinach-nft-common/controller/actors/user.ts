@@ -14,7 +14,7 @@ export const getNewBalance = async ({
   accountId,
   diff,
 }: GetNewAccountBalance): Promise<UserBalanceHistoryModelRequired> => {
-  const prev = await getCurrentBalance(accountId);
+  const prev = await getGoldAsset(accountId);
 
   return {
     userId: accountId,
@@ -23,7 +23,7 @@ export const getNewBalance = async ({
   };
 };
 
-export const getCurrentBalance = (userId: ObjectId) => userBalanceCollection.findOne({userId}, {sort: {_id: -1}});
+export const getGoldAsset = (userId: ObjectId) => userBalanceCollection.findOne({userId}, {sort: {_id: -1}});
 
 type RecordBalanceAfterNftTxnOpts = {
   nftTxnId: ObjectId,

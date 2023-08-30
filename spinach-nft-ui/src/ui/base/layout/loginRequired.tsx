@@ -9,7 +9,7 @@ import {PageLayoutProps} from '@spinach/next/ui/base/layout/type';
 
 
 type Props = PageLayoutProps & {
-  sessionOverride?: Session,
+  sessionOverride?: Session | null,
 };
 
 export const LoginRequiredPageLayout = ({announcement, sessionOverride, children}: React.PropsWithChildren<Props>) => {

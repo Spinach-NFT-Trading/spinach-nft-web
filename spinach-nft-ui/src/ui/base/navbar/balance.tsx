@@ -22,7 +22,7 @@ export const NavBarBalance = ({session}: Props) => {
         <CurrencyDollarIcon/>
       </div>
       <div>
-        {formatToAbbreviation({num: session.user.preloaded?.balance, decimals: 0})}
+        {formatToAbbreviation({num: session.user.preloaded?.assets?.gold, decimals: 0})}
       </div>
     </Flex>
   );
