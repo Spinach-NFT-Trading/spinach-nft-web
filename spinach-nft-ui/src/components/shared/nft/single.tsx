@@ -15,14 +15,16 @@ export type Props = {
 
 export const NftListingSingle = ({nft}: Props) => {
   return (
-    <Flex direction="row" center className="info-section gap-1">
-      <Flex direction="row" noFullWidth center className="gap-1">
+    <Flex direction="row" className="info-section items-center gap-4">
+      <Flex direction="col" noFullWidth>
         <div className="relative h-20 w-20">
-          <NextImage src={nft.image} alt={`NFT #${nft.id}`}/>
+          <NextImage src={nft.image} alt={`NFT #${nft.id}`} className="rounded-lg"/>
         </div>
-        <Flex direction="col" noFullWidth>
-          <pre className="text-xs">{nft.id.slice(-8)}</pre>
-          <div className="text-lg">{formatInt(nft.price)} GOLD</div>
+      </Flex>
+      <Flex direction="col" className="text-xl font-semibold">
+        <Flex direction="col" className="">{nft.id.slice(-8)}</Flex>
+        <Flex direction="col" className="whitespace-nowrap text-yellow-300">
+          {formatInt(nft.price)} GOLD
         </Flex>
       </Flex>
       <Flex direction="col" noFullWidth>
