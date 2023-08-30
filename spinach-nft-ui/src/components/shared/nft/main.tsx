@@ -11,7 +11,7 @@ type Props = {
 
 export const NftListing = ({nfts}: Props) => {
   return (
-    <Grid className="grid-cols-2 gap-1.5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+    <Grid className="grid-cols-1 gap-1.5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
       {nfts.map((nft) => <NftListingSingle key={nft.id} nft={nft}/>)}
     </Grid>
   );
