@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {getServerSession} from 'next-auth';
+import {getServerSession, Session} from 'next-auth';
 
 import {SignIn} from '@spinach/next/components/auth/signIn';
 import {authOptions} from '@spinach/next/const/auth';
@@ -8,8 +8,16 @@ import {PageLayout} from '@spinach/next/ui/base/layout/common';
 import {PageLayoutProps} from '@spinach/next/ui/base/layout/type';
 
 
-export const LoginRequiredPageLayout = ({announcement, children}: React.PropsWithChildren<PageLayoutProps>) => {
-  const session = React.use(getServerSession(authOptions));
+type Props = PageLayoutProps & {
+  sessionOverride?: Session,
+};
+
+export const LoginRequiredPageLayout = ({announcement, sessionOverride, children}: React.PropsWithChildren<Props>) => {
+  const session = React.use(
+    sessionOverride ?
+      Promise.resolve(sessionOverride) :
+      getServerSession(authOptions),
+  );
 
   return (
     <PageLayout announcement={announcement}>
