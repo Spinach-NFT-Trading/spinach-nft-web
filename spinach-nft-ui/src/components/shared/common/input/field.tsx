@@ -21,8 +21,7 @@ export const InputFloatingLabel = ({
       <input
         type={type} id={id} value={value} onChange={onChange}
         className={clsx(
-          'peer w-full bg-transparent text-slate-800 focus:outline-none',
-          'border-b border-slate-500',
+          'peer w-full rounded-lg border-b border-slate-500 bg-slate-700 p-1 focus:outline-none',
           inputClassName,
         )}
         placeholder=" "
@@ -32,7 +31,7 @@ export const InputFloatingLabel = ({
         htmlFor={id}
         className={clsx(
           'whitespace-nowrap bg-transparent text-sm',
-          'text-slate-600 peer-invalid:text-red-500 peer-focus:text-blue-700 peer-focus:peer-invalid:text-amber-600',
+          'text-slate-300 peer-invalid:text-red-400 peer-focus:text-blue-400 peer-focus:peer-invalid:text-amber-500',
         )}
       >
         {placeholder}
