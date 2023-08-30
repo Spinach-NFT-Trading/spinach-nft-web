@@ -65,7 +65,7 @@ export const NftListing = ({nfts}: Props) => {
           </div>
         </button>
       </Flex>
-      <Grid className="grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+      <Grid className="grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
         {filteredNfts.map((nft) => <NftListingSingle key={nft.id} nft={nft}/>)}
       </Grid>
     </Flex>

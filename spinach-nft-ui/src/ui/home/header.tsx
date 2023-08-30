@@ -22,15 +22,15 @@ export const HomeHeader = () => {
             登入
           </Link>
         </Flex>
-        <div className="relative h-32 sm:h-60 lg:h-80">
+        <div className="relative h-32 sm:h-60 xl:h-80">
           <NextImage src="/banner.png" alt="Banner" noCover className="bg-black object-contain object-left"/>
         </div>
       </Flex>
-      <Flex direction="row" className="info-section">
+      <Flex direction="col" wrap center className="info-section gap-3 lg:flex-row">
         <Flex direction="col" center className="text-lg">
           全球最豪華 NFT 交易平台
         </Flex>
-        <Flex direction="row" noFullWidth>
+        <Flex direction="col" center noFullWidth className="gap-2 md:flex-row">
           <HomeStatsSection icon={<RocketLaunchIcon/>} value={100} title="已交易 NFT 數量"/>
           <HomeStatsSection icon={<UsdtIcon/>} value={9E6} title="24 小時 USDT 交易量"/>
           <HomeStatsSection icon={<CurrencyDollarIcon/>} value={2.7E7} title="24 小時 GOLD 購買量"/>

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {Flex} from '@spinach/next/components/layout/flex';
 import {NftListing} from '@spinach/next/components/shared/nft/main';
 import {getNftInfoMap, getNftOnSaleList} from '@spinach/next/controller/nft';
 import {NftListingData} from '@spinach/next/types/nft';
@@ -27,8 +28,10 @@ export const Home = async () => {
 
   return (
     <PageLayout>
-      <HomeHeader/>
-      <NftListing nfts={nfts}/>
+      <Flex direction="col" className="gap-2 lg:px-32">
+        <HomeHeader/>
+        <NftListing nfts={nfts}/>
+      </Flex>
     </PageLayout>
   );
 };
