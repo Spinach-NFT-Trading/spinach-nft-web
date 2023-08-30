@@ -15,7 +15,7 @@ export const NavBar = ({hideUserControl}: NavBarProps) => {
 
   return (
     <Flex direction="row" center className={clsx(
-      'sticky top-0 z-30 gap-1.5 border-b border-b-gray-700 p-2 backdrop-blur-lg lg:px-32',
+      'sticky top-0 z-30 h-16 gap-1.5 border-b border-b-gray-700 p-2 text-lg backdrop-blur-lg lg:px-32',
     )}>
       <NavBarClient session={session}/>
       {!hideUserControl && <UserControl/>}

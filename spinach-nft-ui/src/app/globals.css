@@ -204,7 +204,7 @@
   /* region Navbar styling (nav-*) */
   
   .nav-height {
-    @apply h-8;
+    @apply h-12;
   }
   
   .nav-button {
@@ -212,7 +212,7 @@
   }
   
   .nav-button-text {
-    @apply nav-button flex items-center justify-center button-clickable-bg text-sm whitespace-nowrap px-2.5;
+    @apply nav-button flex items-center justify-center button-clickable-bg whitespace-nowrap px-3.5;
   }
   
   /* endregion */

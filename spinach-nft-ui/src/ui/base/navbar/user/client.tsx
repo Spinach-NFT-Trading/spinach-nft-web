@@ -9,7 +9,7 @@ import {UserControlCommonProps} from '@spinach/next/ui/base/navbar/user/type';
 
 export const UserControlClient = (props: UserControlCommonProps) => {
   return (
-    <Flex noFullWidth direction="row" className="gap-1.5">
+    <Flex noFullWidth direction="row" className="gap-2">
       <UserProfileButton {...props}/>
       <UserAuthButton {...props}/>
     </Flex>

@@ -6,7 +6,6 @@ import {Session} from 'next-auth';
 
 import {Flex} from '@spinach/next/components/layout/flex';
 import {useNavEntries} from '@spinach/next/hooks/nav';
-import {NavBarBalance} from '@spinach/next/ui/base/navbar/balance';
 import {NavEntryUI} from '@spinach/next/ui/base/navbar/entry';
 import {NavHomepage} from '@spinach/next/ui/base/navbar/home';
 
@@ -29,9 +28,6 @@ export const NavBarClient = ({session}: Props) => {
             <NavEntryUI session={session} {...entry}/>
           </div>
         ))}
-      </Flex>
-      <Flex direction="row" center noFullWidth className="ml-auto gap-1.5">
-        <NavBarBalance session={session}/>
       </Flex>
     </>
   );
