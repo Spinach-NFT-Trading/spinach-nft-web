@@ -46,9 +46,9 @@ export const Home = async () => {
         <HomeHeader session={session} currentFx={currentFx}/>
         <NftListing nfts={nfts}/>
         <HomeFooter/>
-        <Flex direction="col" className="text-sm md:flex-row">
+        <Flex direction="col" className="text-right text-sm md:flex-row md:justify-between">
           <div>&copy; 2018 - 2023 Ozone Networks, Inc.</div>
-          <div className="ml-auto border-b border-slate-300">
+          <div className="border-slate-300 md:ml-auto">
             隱私權政策服務條款
           </div>
         </Flex>
