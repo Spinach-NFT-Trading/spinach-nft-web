@@ -5,13 +5,14 @@ import {getServerSession} from 'next-auth';
 
 import {SignIn} from '@spinach/next/components/auth/signIn';
 import {Failed} from '@spinach/next/components/icons/failed';
-import {Flex} from '@spinach/next/components/layout/flex';
-import {NextImage} from '@spinach/next/components/shared/common/image';
+import {Grid} from '@spinach/next/components/layout/grid';
 import {authOptions} from '@spinach/next/const/auth';
 import {getNftInfo, getNftOnSale} from '@spinach/next/controller/nft';
 import {NextPageProps} from '@spinach/next/types/next/page';
 import {LoginRequiredPageLayout} from '@spinach/next/ui/base/layout/loginRequired';
-import {NftPurchaseButton} from '@spinach/next/ui/nft/purchase/button';
+import {NftPurchaseImage} from '@spinach/next/ui/nft/purchase/image';
+import {NftPurchaseInfo} from '@spinach/next/ui/nft/purchase/info';
+import {NftPurchaseSectionProps} from '@spinach/next/ui/nft/purchase/type';
 
 
 type PageParams = {
@@ -39,22 +40,16 @@ export const NftPurchase = async ({params}: NextPageProps<PageParams>) => {
     return <Failed text="NFT Info"/>;
   }
 
+  const onSaleTimestamp = onSale._id.getTimestamp();
+
+  const props: NftPurchaseSectionProps = {info, onSale};
+
   return (
     <LoginRequiredPageLayout>
-      <Flex direction="col" center className="py-5">
-        <Flex direction="col" center className="gap-1 sm:w-1/2 lg:w-1/3">
-          <pre>{onSale.id.toString()}</pre>
-          <div className="relative h-60 w-60">
-            <NextImage src={info.image} alt={`NFT #${onSale.id}`}/>
-          </div>
-          <Flex direction="col" className="items-end">
-            {onSale.price}&nbsp;GOLD
-          </Flex>
-          <Flex direction="col">
-            <NftPurchaseButton nftId={nftId.toString()}/>
-          </Flex>
-        </Flex>
-      </Flex>
+      <Grid className="grid-rows-2 gap-4 md:grid-cols-2">
+        <NftPurchaseImage {...props}/>
+        <NftPurchaseInfo nftId={nftId.toString()} onSaleTimestamp={onSaleTimestamp} {...props}/>
+      </Grid>
     </LoginRequiredPageLayout>
   );
 };
