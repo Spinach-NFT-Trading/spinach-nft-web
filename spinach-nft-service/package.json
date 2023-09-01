@@ -17,6 +17,7 @@
   "author": "RaenonX",
   "license": "ISC",
   "dependencies": {
+    "@faker-js/faker": "^8.0.2",
     "decimal.js": "^10.4.3",
     "spinach-nft-common": "*",
     "ws": "^8.13.0"

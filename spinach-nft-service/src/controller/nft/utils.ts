@@ -1,3 +1,4 @@
+import {faker} from '@faker-js/faker';
 import {NftInfoModel} from '@spinach/common/types/data/nft';
 
 import {getNewSeqId} from '@spinach/service/controller/nft/main';
@@ -16,7 +17,13 @@ export const generateNft = async (): Promise<NftInfoModel> => {
   const imageIdx = Math.floor(Math.random() * 100000 % staticImageUrls.length);
   const isLimited = Math.random() < 0.5;
 
-  return {seqId, image: staticImageUrls[imageIdx], isLimited};
+  return {
+    seqId,
+    tokenId: parseInt((Math.random() * 10000).toString()),
+    maker: `${faker.person.firstName()} ${faker.person.lastName()}`,
+    image: staticImageUrls[imageIdx],
+    isLimited,
+  };
 };
 
 export const generateSalePrice = () => {
