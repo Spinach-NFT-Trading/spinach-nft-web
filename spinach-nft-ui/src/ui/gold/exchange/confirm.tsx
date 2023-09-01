@@ -31,7 +31,7 @@ export const GoldExchangeConfirmPopup = ({amount, show, setShow}: Props) => {
     const session = await act({action: 'request', options: {type: 'exchangeGold', data: null}});
     const error = session?.user.jwtUpdateError;
     if (!error) {
-      push('/gold/confirm');
+      push(`/gold/confirm?${new URLSearchParams({amount: amount.usdt.toString()})}`);
       return;
     }
     setError(error);
