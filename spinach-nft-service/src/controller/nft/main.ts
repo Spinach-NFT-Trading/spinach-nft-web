@@ -1,5 +1,9 @@
-import {nftInfoCollection, nftOnSaleCollection} from '@spinach/common/controller/collections/nft';
-import {NftInfoModel} from '@spinach/common/types/data/nft';
+import {
+  nftImageCollection,
+  nftInfoCollection,
+  nftOnSaleCollection,
+} from '@spinach/common/controller/collections/nft';
+import {NftImageModel, NftInfoModel} from '@spinach/common/types/data/nft';
 import {ObjectId} from 'mongodb';
 
 import {seqIdDefaultStart} from '@spinach/service/controller/nft/const';
@@ -15,6 +19,10 @@ export const getNewSeqId = async () => {
   }
 
   return newest.seqId + 1;
+};
+
+export const getRandomNftImage = async () => {
+  return (await nftImageCollection.aggregate<NftImageModel>([{$sample: {size: 1}}]).toArray())[0].url;
 };
 
 type PutNftOnSaleOpts = {

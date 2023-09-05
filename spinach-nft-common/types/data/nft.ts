@@ -21,3 +21,7 @@ export type NftTxnModel = {
   nftId: ObjectId,
   price: number,
 };
+
+export type NftImageModel = {
+  url: string,
+};
