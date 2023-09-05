@@ -7,27 +7,11 @@ import {getServerSession} from 'next-auth';
 import {Flex} from '@spinach/next/components/layout/flex';
 import {NftListing} from '@spinach/next/components/shared/nft/main';
 import {authOptions} from '@spinach/next/const/auth';
-import {getNftInfoMap, getNftOnSaleList} from '@spinach/next/controller/nft';
-import {NftListingData} from '@spinach/next/types/nft';
+import {getNftListing} from '@spinach/next/controller/nft';
 import {PageLayout} from '@spinach/next/ui/base/layout/common';
 import {HomeFooter} from '@spinach/next/ui/home/footer/main';
 import {HomeHeader} from '@spinach/next/ui/home/header';
 
-
-const getNftListing = async (): Promise<NftListingData[]> => {
-  const nftOnSale = await getNftOnSaleList(20).toArray();
-  const nftInfoMap = await getNftInfoMap(nftOnSale.map(({id}) => id));
-
-  return nftOnSale.map(({id, price}) => {
-    const idString = id.toString();
-
-    return {
-      id: idString,
-      price,
-      ...nftInfoMap[idString],
-    } satisfies NftListingData;
-  });
-};
 
 export const Home = async () => {
   const [
@@ -36,7 +20,7 @@ export const Home = async () => {
     currentFx,
   ] = await Promise.all([
     getServerSession(authOptions),
-    getNftListing(),
+    getNftListing(20),
     getFxRate(fxMarket),
   ]);
 

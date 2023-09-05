@@ -5,9 +5,10 @@ import {getServerSession} from 'next-auth';
 
 import {SignIn} from '@spinach/next/components/auth/signIn';
 import {Failed} from '@spinach/next/components/icons/failed';
-import {Grid} from '@spinach/next/components/layout/grid';
+import {Flex} from '@spinach/next/components/layout/flex';
+import {NftListingSingle} from '@spinach/next/components/shared/nft/single';
 import {authOptions} from '@spinach/next/const/auth';
-import {getNftInfo, getNftOnSale} from '@spinach/next/controller/nft';
+import {getNftInfo, getNftListing, getNftOnSale} from '@spinach/next/controller/nft';
 import {NextPageProps} from '@spinach/next/types/next/page';
 import {LoginRequiredPageLayout} from '@spinach/next/ui/base/layout/loginRequired';
 import {NftPurchaseImage} from '@spinach/next/ui/nft/purchase/image';
@@ -27,8 +28,13 @@ export const NftPurchase = async ({params}: NextPageProps<PageParams>) => {
   }
 
   const nftId = new ObjectId(params.id);
-  const [onSale, info] = await Promise.all([
+  const [
+    onSale,
+    recommendedNfts,
+    info,
+  ] = await Promise.all([
     getNftOnSale(nftId),
+    getNftListing(3),
     getNftInfo(nftId),
   ]);
 
@@ -46,10 +52,13 @@ export const NftPurchase = async ({params}: NextPageProps<PageParams>) => {
 
   return (
     <LoginRequiredPageLayout>
-      <Grid className="grid-rows-2 gap-4 md:grid-cols-2">
+      <Flex direction="col" className="gap-2 md:flex-row">
         <NftPurchaseImage {...props}/>
-        <NftPurchaseInfo nftId={nftId.toString()} onSaleTimestamp={onSaleTimestamp} {...props}/>
-      </Grid>
+        <Flex direction="col" className="gap-2">
+          <NftPurchaseInfo nftId={nftId.toString()} onSaleTimestamp={onSaleTimestamp} {...props}/>
+          {recommendedNfts.map((nft) => <NftListingSingle key={nft.id} nft={nft}/>)}
+        </Flex>
+      </Flex>
     </LoginRequiredPageLayout>
   );
 };

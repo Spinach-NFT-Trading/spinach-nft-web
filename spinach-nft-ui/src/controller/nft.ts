@@ -8,6 +8,7 @@ import {ObjectId} from 'mongodb';
 
 import mongoPromise from '@spinach/next/lib/mongodb';
 import {NftInfoMap, NftPriceMap} from '@spinach/next/types/mongo/nft';
+import {NftListingData} from '@spinach/next/types/nft';
 import {toSum} from '@spinach/next/utils/array';
 
 
@@ -70,6 +71,21 @@ export const getNftPositionInfo = async (owner: ObjectId) => {
 type NftBuyOpts = {
   buyer: ObjectId,
   nftId: ObjectId,
+};
+
+export const getNftListing = async (limit: number): Promise<NftListingData[]> => {
+  const nftOnSale = await getNftOnSaleList(limit).toArray();
+  const nftInfoMap = await getNftInfoMap(nftOnSale.map(({id}) => id));
+
+  return nftOnSale.map(({id, price}) => {
+    const idString = id.toString();
+
+    return {
+      id: idString,
+      price,
+      ...nftInfoMap[idString],
+    } satisfies NftListingData;
+  });
 };
 
 export const buyNft = async ({buyer, nftId}: NftBuyOpts): Promise<ApiErrorCode | null> => {
