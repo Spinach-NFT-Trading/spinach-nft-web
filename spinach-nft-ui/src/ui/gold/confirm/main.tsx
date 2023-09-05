@@ -18,7 +18,7 @@ type GoldExchangeConfirmParams = {
   amount?: number,
 };
 
-export const GoldExchangeConfirm = ({params}: NextPageProps<GoldExchangeConfirmParams>) => {
+export const GoldExchangeConfirm = ({searchParams}: NextPageProps<GoldExchangeConfirmParams>) => {
   const session = React.use(getServerSession(authOptions));
   const wallet = React.use(getDepositWallet());
 
@@ -33,7 +33,7 @@ export const GoldExchangeConfirm = ({params}: NextPageProps<GoldExchangeConfirmP
   return (
     <PageLayout>
       <Flex direction="col" center className="gap-2">
-        <Flex direction="col" className="gap-2 md:w-1/2">
+        <Flex direction="col" className="info-section gap-2 md:w-1/2">
           <GoldExchangeConfirmSection title="幣種" content={
             <Flex direction="row" center className="gap-1">
               <div className="h-6 w-6">
@@ -43,7 +43,7 @@ export const GoldExchangeConfirm = ({params}: NextPageProps<GoldExchangeConfirmP
             </Flex>
           }/>
           <GoldExchangeConfirmSection title="區塊鍊" content="TRC20 (Tron)"/>
-          <GoldExchangeConfirmSection title="充幣金額" content={params.amount ?? '-'}/>
+          <GoldExchangeConfirmSection title="充幣金額" content={searchParams?.amount ?? '-'}/>
           <GoldExchangeConfirmSection title="充幣地址" content={
             <Flex direction="col" center className="gap-2 p-3">
               <div className="relative h-36 w-36">
@@ -54,7 +54,7 @@ export const GoldExchangeConfirm = ({params}: NextPageProps<GoldExchangeConfirmP
               </div>
             </Flex>
           }/>
-          <Flex direction="row" center className="gap-2 rounded-lg bg-slate-700/30 p-1.5">
+          <Flex direction="row" center className="gap-2 rounded-lg p-1.5">
             <pre className="text-xl">
               {wallet.wallet}
             </pre>
