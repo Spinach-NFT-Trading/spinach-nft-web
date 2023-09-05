@@ -32,34 +32,36 @@ export const GoldExchangeConfirm = ({searchParams}: NextPageProps<GoldExchangeCo
 
   return (
     <PageLayout>
-      <Flex direction="col" center className="gap-2">
-        <Flex direction="col" className="info-section gap-2 md:w-1/2">
-          <GoldExchangeConfirmSection title="幣種" content={
-            <Flex direction="row" center className="gap-1">
-              <div className="h-6 w-6">
-                <UsdtIcon/>
-              </div>
-              <div>USDT</div>
-            </Flex>
-          }/>
-          <GoldExchangeConfirmSection title="區塊鍊" content="TRC20 (Tron)"/>
-          <GoldExchangeConfirmSection title="充幣金額" content={searchParams?.amount ?? '-'}/>
-          <GoldExchangeConfirmSection title="充幣地址" content={
-            <Flex direction="col" center className="gap-2 p-3">
-              <div className="relative h-36 w-36">
-                <NextImage src="/line-qr.png" alt="LINE"/>
-              </div>
-              <div className="text-slate-400">
-                僅支援對該地址充值 USDT
-              </div>
-            </Flex>
-          }/>
-          <Flex direction="row" center className="gap-2 rounded-lg p-1.5">
-            <pre className="text-xl">
-              {wallet.wallet}
-            </pre>
-            <Flex direction="col" noFullWidth>
-              <CopyButton data={wallet.wallet}/>
+      <div className="flex w-full justify-center">
+        <Flex direction="col" className="gap-2 md:w-1/2">
+          <Flex direction="col" className="info-section gap-2">
+            <GoldExchangeConfirmSection title="幣種" content={
+              <Flex direction="row" className="gap-1">
+                <div className="h-6 w-6">
+                  <UsdtIcon/>
+                </div>
+                <div>USDT</div>
+              </Flex>
+            }/>
+            <GoldExchangeConfirmSection title="區塊鍊" content="TRC20 (Tron)"/>
+            <GoldExchangeConfirmSection title="充幣金額" content={searchParams?.amount ?? '-'}/>
+            <GoldExchangeConfirmSection title="充幣地址" noBackground content={
+              <Flex direction="col" center className="gap-2 p-3">
+                <div className="relative h-36 w-36">
+                  <NextImage src="/line-qr.png" alt="LINE"/>
+                </div>
+                <div className="text-slate-400">
+                  僅支援對該地址充值 USDT
+                </div>
+              </Flex>
+            }/>
+            <Flex direction="row" center className="gap-2 rounded-lg bg-slate-950/70 p-1.5">
+              <pre className="text-xl">
+                {wallet.wallet}
+              </pre>
+              <Flex direction="col" noFullWidth>
+                <CopyButton data={wallet.wallet}/>
+              </Flex>
             </Flex>
           </Flex>
           <Flex direction="col">
@@ -70,7 +72,7 @@ export const GoldExchangeConfirm = ({searchParams}: NextPageProps<GoldExchangeCo
             </ul>
           </Flex>
         </Flex>
-      </Flex>
+      </div>
     </PageLayout>
   );
 };
