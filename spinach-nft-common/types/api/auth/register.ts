@@ -1,9 +1,8 @@
 import {Static, Type} from '@sinclair/typebox';
 
 import {PasswordSchemaBase} from '@spinach/common/types/api/auth/common';
-import {ApiErrorCodeSchema} from '@spinach/common/types/api/error';
 import {UserInfoSchema, UserInfoSchemaBase} from '@spinach/common/types/common/user';
-import {BoolFalseSchema, BoolTrueSchema} from '@spinach/common/types/typebox';
+import {generateApiFailableSchema} from '@spinach/common/utils/api/schema';
 
 
 export const UserRegisterRequestSchema = Type.Object(
@@ -16,21 +15,6 @@ export const UserRegisterRequestSchema = Type.Object(
 
 export type UserRegisterRequest = Static<typeof UserRegisterRequestSchema>;
 
-export const UserRegisterResponseSchema = Type.Union([
-  Type.Object(
-    {
-      success: BoolTrueSchema,
-      data: UserInfoSchema,
-    },
-    {additionalProperties: false},
-  ),
-  Type.Object(
-    {
-      success: BoolFalseSchema,
-      error: ApiErrorCodeSchema,
-    },
-    {additionalProperties: false},
-  ),
-]);
+export const UserRegisterResponseSchema = generateApiFailableSchema(UserInfoSchema);
 
 export type UserRegisterResponse = Static<typeof UserRegisterResponseSchema>;
