@@ -8,4 +8,10 @@ export type UserDataRequestOpts = {
 } | {
   type: 'exchangeGold',
   data: null,
+} | {
+  type: 'verify.sms.phone',
+  data: string,
+} | {
+  type: 'verify.sms.code',
+  data: string,
 };
