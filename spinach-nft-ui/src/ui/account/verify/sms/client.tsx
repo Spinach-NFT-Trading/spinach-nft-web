@@ -22,7 +22,7 @@ export const AccountVerifySmsClient = () => {
     loading: false,
     error: null,
   });
-  const {act} = useUserDataActor();
+  const {session, act} = useUserDataActor();
 
   const {
     phone,
@@ -31,6 +31,10 @@ export const AccountVerifySmsClient = () => {
     loading,
     error,
   } = input;
+
+  if (session.data?.user.preloaded?.verified?.sms) {
+    return redirect('/account/profile');
+  }
 
   if (!act) {
     return <SignIn/>;
@@ -52,7 +56,7 @@ export const AccountVerifySmsClient = () => {
     if (error) {
       setInput((original) => ({...original, error}));
     }
-    redirect('/account/profile');
+    return redirect('/');
   };
 
   return (

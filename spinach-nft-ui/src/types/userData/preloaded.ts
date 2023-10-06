@@ -3,4 +3,7 @@ export type UserPreloadedContent = {
     nft: number,
     gold: number,
   },
+  verified: {
+    sms: boolean,
+  },
 };

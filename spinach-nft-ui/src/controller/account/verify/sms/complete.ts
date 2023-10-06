@@ -39,6 +39,10 @@ export const recordSmsVerificationComplete = async ({
   return null;
 };
 
+export const isAccountSmsVerified = async (userId: ObjectId) => {
+  return !!(await (await getCollection()).findOne({userId}));
+};
+
 const addIndex = async () => {
   const collection = await getCollection();
 

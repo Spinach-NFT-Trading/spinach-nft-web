@@ -4,11 +4,18 @@ import EnvelopeIcon from '@heroicons/react/24/outline/EnvelopeIcon';
 import PlusCircleIcon from '@heroicons/react/24/outline/PlusCircleIcon';
 import clsx from 'clsx';
 import Link from 'next/link';
+import {Session} from 'next-auth';
 
 import {Flex} from '@spinach/next/components/layout/flex';
 
 
-export const ProfileLayoutControls = () => {
+type Props = {
+  session: Session,
+};
+
+export const ProfileLayoutControls = ({session}: Props) => {
+  const {user} = session;
+
   return (
     <Flex direction="row" className="justify-center gap-2 md:justify-end">
       <Link href="/gold/exchange" className={clsx(
@@ -23,18 +30,21 @@ export const ProfileLayoutControls = () => {
           </div>
         </Flex>
       </Link>
-      <Link href="/account/verify/sms" className={clsx(
-        'button-base button-text-hover button-bg p-1 px-1.5 text-base hover:bg-slate-200',
-      )}>
-        <Flex direction="row" className="gap-1">
-          <div className="relative h-6 w-6">
-            <EnvelopeIcon/>
-          </div>
-          <div>
-            簡訊驗證
-          </div>
-        </Flex>
-      </Link>
+      {
+        !user.preloaded?.verified?.sms &&
+        <Link href="/account/verify/sms" className={clsx(
+          'button-base button-text-hover button-bg p-1 px-1.5 text-base hover:bg-slate-200',
+        )}>
+          <Flex direction="row" className="gap-1">
+            <div className="relative h-6 w-6">
+              <EnvelopeIcon/>
+            </div>
+            <div>
+              簡訊驗證
+            </div>
+          </Flex>
+        </Link>
+      }
     </Flex>
   );
 };
