@@ -1,3 +1,6 @@
+import {AccountVerifySmsCode} from '@spinach/next/types/mongo/account/verify';
+
+
 export type RequestOptsOfNftBuy = {
   nftId: string,
 };
@@ -13,5 +16,5 @@ export type UserDataRequestOpts = {
   data: string,
 } | {
   type: 'verify.sms.code',
-  data: string,
+  data: AccountVerifySmsCode,
 };

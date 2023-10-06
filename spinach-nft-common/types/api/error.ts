@@ -15,6 +15,8 @@ export const apiErrorCode = [
   'nftNotOnSale',
   'walletInvalid',
   'walletNotExist',
+  'smsSendFailed',
+  'smsCodeInvalid',
 ] as const;
 
 export interface TApiErrorCode extends TString {

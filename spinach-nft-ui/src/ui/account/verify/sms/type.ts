@@ -10,5 +10,6 @@ export type AccountVerifySmsState = {
   phone: string,
   requested: boolean,
   code: string,
+  loading: boolean,
   error: ApiErrorCode | null,
 };
