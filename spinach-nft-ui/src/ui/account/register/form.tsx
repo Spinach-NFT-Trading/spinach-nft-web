@@ -15,7 +15,7 @@ import {signIn} from 'next-auth/react';
 
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
 import {AccountRegisterInput} from '@spinach/next/ui/account/register/type';
-import {sendApiPost} from '@spinach/next/utils/api';
+import {sendApiPost} from '@spinach/next/utils/api/common';
 
 
 type Props = {
