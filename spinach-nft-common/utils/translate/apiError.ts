@@ -15,6 +15,8 @@ const apiErrorStringMap: {[code in ApiErrorCode]: string} = {
   nftNotOnSale: 'NFT 不在販賣中。',
   walletInvalid: '錢包地址無效。',
   walletNotExist: '錢包地址不存在。',
+  smsSendFailed: '驗證簡訊傳送失敗。',
+  smsCodeInvalid: '驗證碼無效。',
 };
 
 export const translateApiError = (error: string): string => {
