@@ -14,6 +14,9 @@ declare global {
       NEXTAUTH_SECRET: string;
 
       NEXT_PUBLIC_SERVER_API: string;
+
+      EXTERNAL_SMS_USERNAME: string;
+      EXTERNAL_SMS_PASSWORD: string;
     }
   }
 }
