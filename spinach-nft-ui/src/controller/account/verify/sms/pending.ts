@@ -1,5 +1,6 @@
 import {Collection, ObjectId} from 'mongodb';
 
+import {smsVerificationExpiry} from '@spinach/next/const/sms';
 import mongoPromise from '@spinach/next/lib/mongodb';
 import {AccountVerifySmsCode, AccountVerifySmsPendingData} from '@spinach/next/types/mongo/account/verify';
 import {generateOtp} from '@spinach/next/utils/otp';
@@ -28,7 +29,7 @@ export const recordSmsVerificationPending = async ({
     userId,
     phone,
     code,
-    expiry: new Date(new Date().getTime() + 86400),
+    expiry: new Date(new Date().getTime() + smsVerificationExpiry * 1000),
   });
 
   return code;
