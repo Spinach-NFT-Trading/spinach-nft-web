@@ -1,12 +1,6 @@
 import {Static, Type} from '@sinclair/typebox';
 
-import {
-  bankAccountPattern,
-  bankCodePattern,
-  lineIdPattern,
-  namePattern,
-  phonePattern,
-} from '@spinach/common/const/auth';
+import {bankAccountPattern, bankCodePattern, lineIdPattern, namePattern} from '@spinach/common/const/auth';
 import {UsernameSchemaBase} from '@spinach/common/types/api/auth/common';
 import {WalletSchemaBase} from '@spinach/common/types/common/wallet';
 
@@ -36,7 +30,6 @@ export type UserBankDetails = Static<typeof UserBankDetailsSchema>;
 export const UserInfoSchemaBase = {
   username: UsernameSchemaBase,
   name: Type.String({pattern: namePattern}),
-  phone: Type.String({pattern: phonePattern}),
   email: Type.String({format: 'email'}),
   lineId: Type.String({pattern: lineIdPattern}),
   wallet: WalletSchemaBase,

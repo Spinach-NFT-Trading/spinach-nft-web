@@ -4,7 +4,6 @@ import {
   lineIdPattern,
   namePattern,
   passwordPattern,
-  phonePattern,
   usernamePattern,
   walletPattern,
 } from '@spinach/common/const/auth';
@@ -27,13 +26,12 @@ export const AccountRegisterForm = ({setError}: Props) => {
     name: '',
     email: '',
     lineId: '',
-    phone: '',
     wallet: '',
     username: '',
     password: '',
   });
 
-  const {name, email, lineId, phone, wallet, username, password} = input;
+  const {name, email, lineId, wallet, username, password} = input;
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -88,18 +86,6 @@ export const AccountRegisterForm = ({setError}: Props) => {
         } satisfies AccountRegisterInput))}
         required
         pattern={lineIdPattern}
-      />
-      <InputFloatingLabel
-        id="phone"
-        placeholder="手機號碼"
-        type="text"
-        value={phone}
-        onChange={({target}) => setInput((original) => ({
-          ...original,
-          phone: target.value,
-        } satisfies AccountRegisterInput))}
-        required
-        pattern={phonePattern}
       />
       <InputFloatingLabel
         id="wallet"

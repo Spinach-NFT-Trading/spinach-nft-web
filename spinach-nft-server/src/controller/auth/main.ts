@@ -11,7 +11,6 @@ import {ObjectId} from 'mongodb';
 export const registerUser = async ({
   name,
   email,
-  phone,
   lineId,
   wallet,
   username,
@@ -27,10 +26,6 @@ export const registerUser = async ({
 
   if (await userInfoCollection.findOne({email})) {
     return 'takenEmail';
-  }
-
-  if (await userInfoCollection.findOne({phone})) {
-    return 'takenPhone';
   }
 
   if (await userInfoCollection.findOne({lineId})) {
@@ -56,7 +51,6 @@ export const registerUser = async ({
     passwordHash: await hashPassword(password),
     name,
     email,
-    phone,
     lineId,
     wallet,
   });
@@ -83,7 +77,6 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     id: info._id.toHexString(),
     username: info.username,
     name: info.name,
-    phone: info.phone,
     email: info.email,
     lineId: info.lineId,
     wallet: info.wallet,
