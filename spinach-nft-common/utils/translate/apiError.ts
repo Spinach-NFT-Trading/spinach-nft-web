@@ -15,6 +15,7 @@ const apiErrorStringMap: {[code in ApiErrorCode]: string} = {
   walletInvalid: '錢包地址無效。',
   walletNotExist: '錢包地址不存在。',
   smsSendFailed: '驗證簡訊傳送失敗。',
+  smsAlreadyRequested: '已要求傳送驗證簡訊，請稍後再試。',
   smsPhoneInvalid: '手機號碼格式無效。',
   smsPhoneUsed: '手機號碼已被使用。',
   smsCodeInvalid: '驗證碼無效。',

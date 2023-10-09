@@ -36,6 +36,10 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
 
     const otp = await recordSmsVerificationPending({userId: new ObjectId(accountId), phone});
 
+    if (!otp) {
+      return 'smsAlreadyRequested';
+    }
+
     const {stats} = await sendSms({
       data: toSmsOtpPayload({
         phone,

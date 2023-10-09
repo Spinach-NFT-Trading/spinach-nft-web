@@ -14,6 +14,7 @@ export const apiErrorCode = [
   'nftNotOnSale',
   'walletInvalid',
   'walletNotExist',
+  'smsAlreadyRequested',
   'smsSendFailed',
   'smsPhoneInvalid',
   'smsPhoneUsed',

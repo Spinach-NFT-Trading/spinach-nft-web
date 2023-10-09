@@ -22,10 +22,15 @@ type RecordSmsVerificationPendingOpts = {
 export const recordSmsVerificationPending = async ({
   userId,
   phone,
-}: RecordSmsVerificationPendingOpts) => {
-  const code = generateOtp(6);
+}: RecordSmsVerificationPendingOpts): Promise<string | null> => {
+  const collection = await getCollection();
 
-  await (await getCollection()).insertOne({
+  if (await collection.findOne({userId})) {
+    return null;
+  }
+
+  const code = generateOtp(6);
+  await collection.insertOne({
     userId,
     phone,
     code,
