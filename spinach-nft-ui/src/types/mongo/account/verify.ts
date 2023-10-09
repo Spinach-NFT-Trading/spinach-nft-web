@@ -5,6 +5,7 @@ export type AccountVerifySmsCode = string;
 
 export type AccountVerifySmsCommonData = {
   userId: ObjectId,
+  phone: string,
 };
 
 export type AccountVerifySmsPendingData = AccountVerifySmsCommonData & {

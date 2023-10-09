@@ -7,7 +7,6 @@ export const apiErrorCode = [
   'takenUsername',
   'takenName',
   'takenEmail',
-  'takenPhone',
   'takenLineId',
   'takenWallet',
   'goldExchangeInProgress',
@@ -16,6 +15,8 @@ export const apiErrorCode = [
   'walletInvalid',
   'walletNotExist',
   'smsSendFailed',
+  'smsPhoneInvalid',
+  'smsPhoneUsed',
   'smsCodeInvalid',
 ] as const;
 

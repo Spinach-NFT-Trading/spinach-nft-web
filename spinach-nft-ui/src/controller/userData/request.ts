@@ -1,3 +1,4 @@
+import {phonePattern} from '@spinach/common/const/auth';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {ObjectId} from 'mongodb';
 
@@ -27,11 +28,17 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
   }
 
   if (type === 'verify.sms.phone') {
-    const otp = await recordSmsVerificationPending({userId: new ObjectId(accountId)});
+    const {phone} = data;
+
+    if (!new RegExp(phonePattern).test(phone)) {
+      return 'smsPhoneInvalid';
+    }
+
+    const otp = await recordSmsVerificationPending({userId: new ObjectId(accountId), phone});
 
     const {stats} = await sendSms({
       data: toSmsOtpPayload({
-        phone: data,
+        phone,
         otp,
       }),
     });
@@ -44,7 +51,9 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
   }
 
   if (type === 'verify.sms.code') {
-    return recordSmsVerificationComplete({userId: new ObjectId(accountId), code: data});
+    const {code} = data;
+
+    return recordSmsVerificationComplete({userId: new ObjectId(accountId), code});
   }
 
   console.error(`Unhandled user request type [${type satisfies never}]`);

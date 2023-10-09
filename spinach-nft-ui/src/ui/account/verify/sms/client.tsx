@@ -43,14 +43,30 @@ export const AccountVerifySmsClient = () => {
   const onPhoneSubmitted = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setInput((original) => ({...original, loading: true}));
-    await act({action: 'request', options: {type: 'verify.sms.phone', data: input.phone}});
+    await act({
+      action: 'request',
+      options: {
+        type: 'verify.sms.phone',
+        data: {
+          phone: input.phone,
+        },
+      },
+    });
     setInput((original) => ({...original, loading: false, requested: true}));
   };
 
   const onCodeSubmitted = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setInput((original) => ({...original, loading: true}));
-    const session = await act({action: 'request', options: {type: 'verify.sms.code', data: input.code}});
+    const session = await act({
+      action: 'request',
+      options: {
+        type: 'verify.sms.code',
+        data: {
+          code: input.code,
+        },
+      },
+    });
 
     const error = session?.user.jwtUpdateError;
     if (error) {

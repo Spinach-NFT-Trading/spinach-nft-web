@@ -5,6 +5,14 @@ export type RequestOptsOfNftBuy = {
   nftId: string,
 };
 
+export type RequestOptsOfVerifySmsPending = {
+  phone: string,
+};
+
+export type RequestOptsOfVerifySmsComplete = {
+  code: AccountVerifySmsCode,
+};
+
 export type UserDataRequestOpts = {
   type: 'nftBuy',
   data: RequestOptsOfNftBuy,
@@ -13,8 +21,8 @@ export type UserDataRequestOpts = {
   data: null,
 } | {
   type: 'verify.sms.phone',
-  data: string,
+  data: RequestOptsOfVerifySmsPending,
 } | {
   type: 'verify.sms.code',
-  data: AccountVerifySmsCode,
+  data: RequestOptsOfVerifySmsComplete,
 };

@@ -15,15 +15,18 @@ const getCollection = async (): Promise<Collection<AccountVerifySmsPendingData>>
 
 type RecordSmsVerificationPendingOpts = {
   userId: ObjectId,
+  phone: string,
 };
 
 export const recordSmsVerificationPending = async ({
   userId,
+  phone,
 }: RecordSmsVerificationPendingOpts) => {
   const code = generateOtp(6);
 
   await (await getCollection()).insertOne({
     userId,
+    phone,
     code,
     expiry: new Date(new Date().getTime() + 86400),
   });
@@ -36,16 +39,16 @@ type RemoveSmsVerificationPendingOpts = {
   code: AccountVerifySmsCode,
 };
 
-export const removeSmsVerificationPending = async ({
+export const getAndRemovePendingSmsVerification = async ({
   userId,
   code,
-}: RemoveSmsVerificationPendingOpts): Promise<boolean> => {
-  const {deletedCount} = await (await getCollection()).deleteOne({
+}: RemoveSmsVerificationPendingOpts): Promise<AccountVerifySmsPendingData | null> => {
+  const data = await (await getCollection()).findOneAndDelete({
     userId,
     code,
   });
 
-  return deletedCount > 0;
+  return data.value;
 };
 
 const addIndex = async () => {

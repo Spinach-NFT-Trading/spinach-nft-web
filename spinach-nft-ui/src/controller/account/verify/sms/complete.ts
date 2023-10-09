@@ -1,7 +1,7 @@
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {Collection, ObjectId} from 'mongodb';
 
-import {removeSmsVerificationPending} from '@spinach/next/controller/account/verify/sms/pending';
+import {getAndRemovePendingSmsVerification} from '@spinach/next/controller/account/verify/sms/pending';
 import mongoPromise from '@spinach/next/lib/mongodb';
 import {AccountVerifySmsCompletedData} from '@spinach/next/types/mongo/account/verify';
 
@@ -23,15 +23,18 @@ export const recordSmsVerificationComplete = async ({
   userId,
   code,
 }: RecordSmsVerificationCompleteOpts): Promise<ApiErrorCode | null> => {
-  const isCodeVerified = await removeSmsVerificationPending({userId, code});
+  const pendingData = await getAndRemovePendingSmsVerification({userId, code});
 
-  if (!isCodeVerified) {
+  if (!pendingData) {
     return 'smsCodeInvalid';
   }
+
+  const {phone} = pendingData;
 
   await (await getCollection()).insertOne(
     {
       userId,
+      phone,
       completedAt: new Date(),
     },
   );
