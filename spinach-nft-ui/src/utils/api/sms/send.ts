@@ -26,7 +26,7 @@ export const sendSms = async ({data}: SendSmsOpts): Promise<SendSmsResponse> => 
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: encodeURIComponent(toSmsPayloadBody(data)),
+      body: toSmsPayloadBody(data),
     },
   );
 
