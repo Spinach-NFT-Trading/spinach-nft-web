@@ -43,7 +43,7 @@ export const AccountVerifySmsClient = () => {
   const onPhoneSubmitted = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setInput((original) => ({...original, loading: true}));
-    await act({
+    const session = await act({
       action: 'request',
       options: {
         type: 'verify.sms.phone',
@@ -52,6 +52,13 @@ export const AccountVerifySmsClient = () => {
         },
       },
     });
+
+    const error = session?.user.jwtUpdateError;
+    if (error) {
+      setInput((original) => ({...original, loading: false, error}));
+      return;
+    }
+
     setInput((original) => ({...original, loading: false, requested: true}));
   };
 
@@ -70,7 +77,7 @@ export const AccountVerifySmsClient = () => {
 
     const error = session?.user.jwtUpdateError;
     if (error) {
-      setInput((original) => ({...original, error}));
+      setInput((original) => ({...original, loading: false, error}));
     }
     return redirect('/');
   };
