@@ -92,7 +92,11 @@ export const AccountVerifySmsClient = () => {
           required
           pattern={phonePattern}
         />
-        <button type="submit" disabled={loading} className="button-clickable-bg disabled:button-disabled w-full p-2">
+        <button
+          type="submit"
+          disabled={loading || requested}
+          className="button-clickable-bg disabled:button-disabled w-full p-2"
+        >
           獲取驗證碼
         </button>
       </form>
