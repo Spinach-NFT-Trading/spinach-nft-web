@@ -8,6 +8,7 @@ import {generateApiFailableSchema} from '@spinach/common/utils/api/schema';
 export const UserRegisterRequestSchema = Type.Object(
   {
     ...UserInfoSchemaBase,
+    phoneVerificationKey: Type.String(),
     password: PasswordSchemaBase,
   },
   {additionalProperties: false},
