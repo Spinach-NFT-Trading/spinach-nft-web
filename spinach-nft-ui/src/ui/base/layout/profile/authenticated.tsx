@@ -17,7 +17,7 @@ export const ProfileLayoutAuthenticated = ({session, children}: React.PropsWithC
     <Flex direction="col" className="gap-2">
       <Flex direction="col" center className="gap-3 md:flex-row">
         <ProfileLayoutInfo session={session}/>
-        <ProfileLayoutControls session={session}/>
+        <ProfileLayoutControls/>
       </Flex>
       <Flex direction="col" center className={clsx(
         'gap-2 rounded-lg bg-gradient-to-br from-slate-500/70 to-slate-900/90 p-4 md:flex-row',
