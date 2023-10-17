@@ -28,8 +28,8 @@ export const GoldExchangeClient = ({exchangeRate, cashbackRate}: Props) => {
   return (
     <>
       <GoldExchangeConfirmPopup amount={amount} show={show} setShow={setShow}/>
-      <Flex direction="col" center>
-        <Flex direction="col" center className="gap-3 md:w-1/2 md:p-7">
+      <Flex center>
+        <Flex center className="gap-3 md:w-1/2 md:p-7">
           <InputFloatingLabel
             id="usdt"
             type="number"
@@ -59,8 +59,8 @@ export const GoldExchangeClient = ({exchangeRate, cashbackRate}: Props) => {
               setAmount({usdt, gold});
             }}
           />
-          <Flex direction="col" className="info-section gap-1.5 md:flex-row">
-            <Flex center direction="col" className="gap-1.5">
+          <Flex className="info-section gap-1.5 md:flex-row">
+            <Flex center className="gap-1.5">
               <div>
                 目前匯率
               </div>
@@ -72,7 +72,7 @@ export const GoldExchangeClient = ({exchangeRate, cashbackRate}: Props) => {
                 {formatFloat3(exchangeRate)} GOLD
               </Flex>
             </Flex>
-            <Flex center direction="col" className="gap-1.5">
+            <Flex center className="gap-1.5">
               <div>
                 用戶回饋
               </div>
@@ -81,7 +81,7 @@ export const GoldExchangeClient = ({exchangeRate, cashbackRate}: Props) => {
               </div>
             </Flex>
           </Flex>
-          <Flex direction="col" center>
+          <Flex center>
             <button className="button-clickable-bg w-1/2 p-2" onClick={() => setShow(true)}>
               購買
             </button>

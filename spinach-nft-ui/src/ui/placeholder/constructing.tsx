@@ -7,7 +7,7 @@ import {Flex} from '@spinach/next/components/layout/flex';
 
 export const Constructing = () => {
   return (
-    <Flex direction="col" center className="h-full">
+    <Flex center className="h-full">
       <div className="h-72 w-72">
         <WrenchIcon/>
       </div>

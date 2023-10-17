@@ -11,7 +11,7 @@ type Props = {
 
 export const HomeFooterIntroSection = ({icon, title, description}: Props) => {
   return (
-    <Flex direction="col" center>
+    <Flex center>
       <div className="rounded-full border-2 border-gray-600 p-1.5">
         <div className="relative h-10 w-10 text-purple-600">
           {icon}

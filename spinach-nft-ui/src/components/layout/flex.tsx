@@ -7,12 +7,12 @@ import {getLayoutClassNames} from '@spinach/next/components/layout/util';
 
 
 type Props = LayoutProps & {
-  direction: 'row' | 'col',
+  direction?: 'row' | 'col',
   wrap?: boolean,
 };
 
 export const Flex = ({
-  direction,
+  direction = 'col',
   wrap,
   children,
   ...props

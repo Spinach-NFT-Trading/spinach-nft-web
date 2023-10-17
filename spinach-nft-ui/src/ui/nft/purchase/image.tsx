@@ -11,7 +11,7 @@ import {NftPurchaseSectionProps} from '@spinach/next/ui/nft/purchase/type';
 
 export const NftPurchaseImage = ({info, onSale}: NftPurchaseSectionProps) => {
   return (
-    <Flex direction="col" className="info-section-bg rounded-lg">
+    <Flex className="info-section-bg rounded-lg">
       <Flex direction="row" className="p-4">
         <Flex direction="row">
           <div className="h-10 w-10">

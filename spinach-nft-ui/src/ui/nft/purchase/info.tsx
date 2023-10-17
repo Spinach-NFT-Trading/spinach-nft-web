@@ -18,7 +18,7 @@ export const NftPurchaseInfo = ({nftId, info, onSale, onSaleTimestamp}: Props) =
   const {isLimited, seqId} = info;
 
   return (
-    <Flex direction="col" className="info-section gap-3">
+    <Flex className="info-section gap-3">
       <Flex direction="row" className="items-center gap-1 text-3xl">
         <div>#{seqId}</div>
         {

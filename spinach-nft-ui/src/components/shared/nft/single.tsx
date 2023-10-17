@@ -19,12 +19,12 @@ export const NftListingSingle = ({nft}: Props) => {
 
   return (
     <Flex direction="row" className="info-section items-center gap-4">
-      <Flex direction="col" noFullWidth>
+      <Flex noFullWidth>
         <div className="relative h-20 w-20">
           <NextImage src={image} alt={`NFT #${id}`} className="rounded-lg"/>
         </div>
       </Flex>
-      <Flex direction="col" className="text-xl font-semibold">
+      <Flex className="text-xl font-semibold">
         <Flex direction="row" className="items-center gap-1">
           <div>#{seqId}</div>
           {
@@ -34,11 +34,11 @@ export const NftListingSingle = ({nft}: Props) => {
             </div>
           }
         </Flex>
-        <Flex direction="col" className="whitespace-nowrap text-yellow-300">
+        <Flex className="whitespace-nowrap text-yellow-300">
           {formatInt(price)} GOLD
         </Flex>
       </Flex>
-      <Flex direction="col" noFullWidth>
+      <Flex noFullWidth>
         <Link href={`/nft/purchase/${id}`} className="button-clickable-bg p-3">
           <div className="h-10 w-10">
             <ShoppingCartIcon/>

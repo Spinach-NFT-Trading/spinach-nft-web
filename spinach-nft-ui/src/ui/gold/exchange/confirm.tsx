@@ -39,7 +39,7 @@ export const GoldExchangeConfirmPopup = ({amount, show, setShow}: Props) => {
 
   return (
     <Popup show={show} setShow={setShow}>
-      <Flex direction="col" center className="gap-2">
+      <Flex center className="gap-2">
         {error && <Alert>{translateApiError(error)}</Alert>}
         <div className="text-xl">
           確認購買

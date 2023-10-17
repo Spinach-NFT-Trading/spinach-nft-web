@@ -5,7 +5,7 @@ import {Flex} from '@spinach/next/components/layout/flex';
 
 export const Alert = ({children}: React.PropsWithChildren) => {
   return (
-    <Flex direction="col" className="transform-smooth rounded-lg bg-red-900 p-2">
+    <Flex className="transform-smooth rounded-lg bg-red-900 p-2">
       {children}
     </Flex>
   );

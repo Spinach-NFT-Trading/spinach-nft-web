@@ -33,8 +33,8 @@ export const GoldExchangeConfirm = ({searchParams}: NextPageProps<GoldExchangeCo
   return (
     <PageLayout>
       <div className="flex w-full justify-center">
-        <Flex direction="col" className="gap-2 md:w-1/2">
-          <Flex direction="col" className="info-section gap-2">
+        <Flex className="gap-2 md:w-1/2">
+          <Flex className="info-section gap-2">
             <GoldExchangeConfirmSection title="幣種" content={
               <Flex direction="row" className="gap-1">
                 <div className="h-6 w-6">
@@ -46,7 +46,7 @@ export const GoldExchangeConfirm = ({searchParams}: NextPageProps<GoldExchangeCo
             <GoldExchangeConfirmSection title="區塊鍊" content="TRC20 (Tron)"/>
             <GoldExchangeConfirmSection title="充幣金額" content={searchParams?.amount ?? '-'}/>
             <GoldExchangeConfirmSection title="充幣地址" noBackground content={
-              <Flex direction="col" center className="gap-2 p-3">
+              <Flex center className="gap-2 p-3">
                 <div className="relative h-36 w-36">
                   <NextImage src="/line-qr.png" alt="LINE"/>
                 </div>
@@ -59,12 +59,12 @@ export const GoldExchangeConfirm = ({searchParams}: NextPageProps<GoldExchangeCo
               <pre className="text-xl">
                 {wallet.wallet}
               </pre>
-              <Flex direction="col" noFullWidth>
+              <Flex noFullWidth>
                 <CopyButton data={wallet.wallet}/>
               </Flex>
             </Flex>
           </Flex>
-          <Flex direction="col">
+          <Flex>
             <ul className="list-inside list-disc text-left text-sm text-slate-400">
               <li>請勿向上述地址充值 USDT 外的資產，否則將會導致資產丟失。</li>
               <li>請確保您行動裝置的安全，防止資訊被竄改或洩漏。</li>

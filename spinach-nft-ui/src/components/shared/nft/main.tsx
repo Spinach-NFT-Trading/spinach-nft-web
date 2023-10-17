@@ -45,7 +45,7 @@ export const NftListing = ({nfts}: Props) => {
     });
 
   return (
-    <Flex direction="col" className="gap-2">
+    <Flex className="gap-2">
       <Flex direction="row" className="gap-1.5">
         <InputBox
           value={priceSearch}

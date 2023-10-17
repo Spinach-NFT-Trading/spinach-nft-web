@@ -12,7 +12,7 @@ type Props = {
 
 export const HomeStatsSection = ({icon, value, title}: Props) => {
   return (
-    <Flex direction="col">
+    <Flex>
       <Flex direction="row" center className="gap-1.5">
         <div className="relative h-10 w-10">
           {icon}

@@ -52,9 +52,9 @@ export const NftPurchase = async ({params}: NextPageProps<PageParams>) => {
 
   return (
     <LoginRequiredPageLayout>
-      <Flex direction="col" className="gap-2 md:flex-row">
+      <Flex className="gap-2 md:flex-row">
         <NftPurchaseImage {...props}/>
-        <Flex direction="col" className="gap-2">
+        <Flex className="gap-2">
           <NftPurchaseInfo nftId={nftId.toString()} onSaleTimestamp={onSaleTimestamp} {...props}/>
           {recommendedNfts.map((nft) => <NftListingSingle key={nft.id} nft={nft}/>)}
         </Flex>

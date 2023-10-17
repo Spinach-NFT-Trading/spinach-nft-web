@@ -33,7 +33,7 @@ export const LoadingSvg = () => {
 
 export const LoadingIcon = ({text}: Props) => {
   return (
-    <Flex direction="col" center className="h-full gap-1">
+    <Flex center className="h-full gap-1">
       <div className="h-6 w-6">
         <LoadingSvg/>
       </div>

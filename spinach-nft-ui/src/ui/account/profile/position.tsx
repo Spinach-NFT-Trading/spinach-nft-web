@@ -8,7 +8,7 @@ import {UserDataLazyLoad} from '@spinach/next/components/shared/userData/lazyLoa
 
 export const AccountNftPosition = () => {
   return (
-    <Flex direction="col" className="gap-2">
+    <Flex className="gap-2">
       <div className="text-2xl">NFT</div>
       <UserDataLazyLoad
         type="nftPosition"

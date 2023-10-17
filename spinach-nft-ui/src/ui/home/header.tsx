@@ -21,8 +21,8 @@ type Props = {
 
 export const HomeHeader = ({session, currentFx}: Props) => {
   return (
-    <Flex direction="col" className="gap-2">
-      <Flex direction="col" className="relative">
+    <Flex className="gap-2">
+      <Flex className="relative">
         {
           !session &&
           <Flex direction="row" noFullWidth className="absolute bottom-5 right-5 z-10 justify-end gap-5">

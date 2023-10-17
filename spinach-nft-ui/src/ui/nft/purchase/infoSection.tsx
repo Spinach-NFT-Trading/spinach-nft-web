@@ -10,11 +10,11 @@ type Props = {
 
 export const NftPurchaseInfoSection = ({title, content}: Props) => {
   return (
-    <Flex direction="col" className="gap-2">
-      <Flex direction="col" className="text-slate-300">
+    <Flex className="gap-2">
+      <Flex className="text-slate-300">
         {title}
       </Flex>
-      <Flex direction="col" className="text-xl">
+      <Flex className="text-xl">
         {content}
       </Flex>
     </Flex>

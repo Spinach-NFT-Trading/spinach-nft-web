@@ -15,7 +15,7 @@ export const AccountRegisterClient = () => {
   const [error, setError] = React.useState<ApiErrorCode | null>(null);
 
   return (
-    <Flex direction="col" className="gap-3 md:p-10">
+    <Flex className="gap-3 md:p-10">
       {error && <Alert>{translateApiError(error)}</Alert>}
       <Grid className="grid-cols-1 gap-3 md:grid-cols-2">
         <AccountRegisterForm setError={setError}/>

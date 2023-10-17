@@ -13,8 +13,8 @@ type Props = {
 
 export const ProfileBalanceSection = ({title, value}: Props) => {
   return (
-    <Flex direction="col" className="gap-2">
-      <Flex direction="col" className="text-2xl">
+    <Flex className="gap-2">
+      <Flex className="text-2xl">
         {title}
       </Flex>
       <Flex direction="row" center className="gap-2 text-3xl text-amber-400">

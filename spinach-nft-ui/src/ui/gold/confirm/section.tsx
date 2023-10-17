@@ -13,7 +13,7 @@ type Props = {
 
 export const GoldExchangeConfirmSection = ({title, content, noBackground}: Props) => {
   return (
-    <Flex direction="col" className="gap-2">
+    <Flex className="gap-2">
       <div className="text-start">{title}</div>
       <div className={clsx('rounded-lg p-1 text-start', !noBackground && 'bg-slate-950/70')}>
         {content}

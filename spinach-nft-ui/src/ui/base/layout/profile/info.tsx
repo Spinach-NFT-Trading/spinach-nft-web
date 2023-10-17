@@ -12,7 +12,7 @@ export const ProfileLayoutInfo = ({session}: ProfileLayoutProps) => {
   return (
     <Flex direction="row" noFullWidth className="items-center gap-2">
       <ProfileIcon/>
-      <Flex direction="col" noFullWidth>
+      <Flex noFullWidth>
         <div className="text-3xl text-slate-200">
           {username}
         </div>

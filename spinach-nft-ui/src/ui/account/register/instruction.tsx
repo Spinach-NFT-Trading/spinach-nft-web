@@ -8,7 +8,7 @@ import {NextImage} from '@spinach/next/components/shared/common/image';
 
 export const AccountRegisterInstruction = () => {
   return (
-    <Flex direction="col" center className="justify-between gap-3">
+    <Flex center className="justify-between gap-3">
       <div className="relative h-72 w-72">
         <NextImage src="/line-qr.png" alt="LINE"/>
       </div>

@@ -8,7 +8,7 @@ import {HomeSocialButton} from '@spinach/next/ui/home/footer/socialButton';
 
 export const HomeFooterSocial = () => {
   return (
-    <Flex direction="col" className="relative">
+    <Flex className="relative">
       <Grid noFullWidth center className="absolute right-5 z-10 h-full">
         <Grid className="grid-rows-4 gap-4">
           <HomeSocialButton href="#" text="LINE"/>

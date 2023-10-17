@@ -15,7 +15,7 @@ export const PageLayout = ({announcement = true, children, ...props}: React.Prop
     <React.Suspense fallback={<LoadingFullScreen/>}>
       <main className="min-h-full w-full">
         <NavBar {...props}/>
-        <Flex direction="col" className="gap-1.5 p-2">
+        <Flex className="gap-1.5 p-2">
           {announcement && <Announcements/>}
           <div className="lg:px-32">
             {children}

@@ -26,11 +26,11 @@ export const Home = async () => {
 
   return (
     <PageLayout>
-      <Flex direction="col" className="gap-2">
+      <Flex className="gap-2">
         <HomeHeader session={session} currentFx={currentFx}/>
         <NftListing nfts={nfts}/>
         <HomeFooter/>
-        <Flex direction="col" className="text-right text-sm md:flex-row md:justify-between">
+        <Flex className="text-right text-sm md:flex-row md:justify-between">
           <div>&copy; 2018 - 2023 Ozone Networks, Inc.</div>
           <div className="border-slate-300 md:ml-auto">
             隱私權政策服務條款
