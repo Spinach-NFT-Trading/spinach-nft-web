@@ -1,0 +1,43 @@
+import {apiPath} from '@spinach/common/const/path';
+import {
+  SmsVerifyInitialRequest,
+  SmsVerifyInitialRequestSchema,
+  SmsVerifyInitialResponse,
+  SmsVerifyInitialResponseSchema,
+} from '@spinach/common/types/api/auth/verify/sms/initial';
+import {isApiError} from '@spinach/common/types/api/error';
+import {generateOtp} from 'spinach-nft-ui/src/utils/otp';
+
+import {Server} from '@spinach/server/const';
+import {recordSmsVerifyInitialize} from '@spinach/server/controller/auth/verify/sms/initial';
+
+
+export const addSmsVerifyInitial = () => {
+  Server.post<{Body: SmsVerifyInitialRequest, Reply: SmsVerifyInitialResponse}>(
+    apiPath.auth.sms.initial,
+    {
+      schema: {
+        body: SmsVerifyInitialRequestSchema,
+        response: {
+          200: SmsVerifyInitialResponseSchema,
+        },
+      },
+    },
+    async ({body}): Promise<SmsVerifyInitialResponse> => {
+      const otp = generateOtp(6);
+      const data = await recordSmsVerifyInitialize({
+        phone: body.phone,
+        otp,
+      });
+
+      if (isApiError(data)) {
+        return {
+          success: false,
+          error: data,
+        };
+      }
+
+      return {success: true, data};
+    },
+  );
+};
