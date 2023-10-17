@@ -1,3 +1,5 @@
+import crypto from 'crypto';
+
 import {compare, hash} from 'bcryptjs';
 
 
@@ -11,4 +13,8 @@ export const verifyPasswordOrThrow = async (password: string, passwordHash: stri
   if (!success) {
     throw new Error('invalid password');
   }
+};
+
+export const generateSecretKey = (): string => {
+  return crypto.randomBytes(24).toString('hex');
 };
