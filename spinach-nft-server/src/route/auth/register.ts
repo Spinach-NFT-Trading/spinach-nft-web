@@ -8,7 +8,7 @@ import {
 import {isApiError} from '@spinach/common/types/api/error';
 
 import {Server} from '@spinach/server/const';
-import {registerUser} from '@spinach/server/controller/auth/main';
+import {registerUser} from '@spinach/server/controller/auth/user';
 
 
 export const addAuthRegister = () => {

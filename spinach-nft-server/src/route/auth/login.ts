@@ -7,7 +7,7 @@ import {
 } from '@spinach/common/types/api/auth/login';
 
 import {Server} from '@spinach/server/const';
-import {getUserInfo} from '@spinach/server/controller/auth/main';
+import {getUserInfo} from '@spinach/server/controller/auth/user';
 
 
 export const addAuthLogin = () => {
