@@ -7,7 +7,7 @@ import {Flex} from '@spinach/next/components/layout/flex';
 
 
 type Props = {
-  verified: boolean | undefined,
+  verified?: boolean,
 };
 
 export const ProfileLayoutVerificationStatus = ({verified}: Props) => {
@@ -17,7 +17,7 @@ export const ProfileLayoutVerificationStatus = ({verified}: Props) => {
         <CheckBadgeIcon/>
       </div>
       <div className="whitespace-nowrap">
-        {verified ? '已簡訊認證' : '未簡訊認證'}
+        {verified ? '已認證' : '未認證'}
       </div>
     </Flex>
   );
