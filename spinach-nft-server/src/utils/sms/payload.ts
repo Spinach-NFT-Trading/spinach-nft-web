@@ -1,4 +1,5 @@
-import {SendSmsPayload} from '@spinach/next/types/api/sms';
+import {SmsPassword, SmsUsername} from '@spinach/server/env';
+import {SendSmsPayload} from '@spinach/server/types/external/sms';
 
 
 type ToSmsOtpPayload = {
@@ -9,8 +10,8 @@ type ToSmsOtpPayload = {
 export const toSmsOtpPayload = ({phone, otp}: ToSmsOtpPayload): SendSmsPayload => {
   return {
     method: 'instant',
-    username: process.env.EXTERNAL_SMS_USERNAME,
-    password: process.env.EXTERNAL_SMS_PASSWORD,
+    username: SmsUsername,
+    password: SmsPassword,
     smsMessage: `NFT 3.0 Market 一次性密碼 (OTP): ${otp}`,
     phone: [phone],
   };

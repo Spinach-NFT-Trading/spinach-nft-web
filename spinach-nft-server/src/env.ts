@@ -15,3 +15,7 @@ export const LogDir = env.get('SPINACH_LOG_DIR')
 export const ApiHost = env.get('SPINACH_API_HOST').required().asString();
 
 export const ApiPort = env.get('SPINACH_API_PORT').required().asPortNumber();
+
+export const SmsUsername = env.get('SPINACH_SMS_USERNAME').required().asString();
+
+export const SmsPassword = env.get('SPINACH_SMS_PASSWORD').required().asString();

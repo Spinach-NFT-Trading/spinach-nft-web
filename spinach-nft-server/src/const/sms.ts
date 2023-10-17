@@ -1,4 +1,4 @@
-import {SendSmsMethod} from '@spinach/next/types/api/sms';
+import {SendSmsMethod} from '@spinach/server/types/external/sms';
 
 
 export const sendSmsMethodToId: {[method in SendSmsMethod]: number} = {

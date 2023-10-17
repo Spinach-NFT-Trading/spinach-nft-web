@@ -10,6 +10,8 @@ import {generateOtp} from 'spinach-nft-ui/src/utils/otp';
 
 import {Server} from '@spinach/server/const';
 import {recordSmsVerifyInitialize} from '@spinach/server/controller/auth/verify/sms/initial';
+import {toSmsOtpPayload} from '@spinach/server/utils/sms/payload';
+import {sendSms} from '@spinach/server/utils/sms/send';
 
 
 export const addSmsVerifyInitial = () => {
@@ -25,6 +27,18 @@ export const addSmsVerifyInitial = () => {
     },
     async ({body}): Promise<SmsVerifyInitialResponse> => {
       const otp = generateOtp(6);
+      const {phone} = body;
+
+      const {stats} = await sendSms({
+        data: toSmsOtpPayload({phone, otp}),
+      });
+      if (!stats) {
+        return {
+          success: false,
+          error: 'smsSendFailed',
+        };
+      }
+
       const data = await recordSmsVerifyInitialize({
         phone: body.phone,
         otp,

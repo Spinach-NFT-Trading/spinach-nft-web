@@ -1,5 +1,5 @@
-import {sendSmsMethodToId} from '@spinach/next/const/sms';
-import {SendSmsPayload, SendSmsResponse} from '@spinach/next/types/api/sms';
+import {sendSmsMethodToId} from '@spinach/server/const/sms';
+import {SendSmsPayload, SendSmsResponse} from '@spinach/server/types/external/sms';
 
 
 // https://www.sms-get.com/api_desc.pdf
