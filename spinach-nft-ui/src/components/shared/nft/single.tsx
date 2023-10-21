@@ -5,7 +5,7 @@ import CheckBadgeIcon from '@heroicons/react/24/solid/CheckBadgeIcon';
 import Link from 'next/link';
 
 import {Flex} from '@spinach/next/components/layout/flex';
-import {NextImage} from '@spinach/next/components/shared/common/image';
+import {NextImage} from '@spinach/next/components/shared/common/image/main';
 import {NftListingData} from '@spinach/next/types/nft';
 import {formatInt} from '@spinach/next/utils/number';
 

@@ -5,7 +5,7 @@ import {getServerSession} from 'next-auth';
 import {Failed} from '@spinach/next/components/icons/failed';
 import {UsdtIcon} from '@spinach/next/components/icons/usdt';
 import {Flex} from '@spinach/next/components/layout/flex';
-import {NextImage} from '@spinach/next/components/shared/common/image';
+import {NextImage} from '@spinach/next/components/shared/common/image/main';
 import {CopyButton} from '@spinach/next/components/shared/copy';
 import {authOptions} from '@spinach/next/const/auth';
 import {getDepositWallet} from '@spinach/next/controller/gold';

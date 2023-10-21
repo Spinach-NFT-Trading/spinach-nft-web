@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {NextImage} from '@spinach/next/components/shared/common/image';
+import {NextImage} from '@spinach/next/components/shared/common/image/main';
 import {imageIconSizes} from '@spinach/next/styles/image';
 
 

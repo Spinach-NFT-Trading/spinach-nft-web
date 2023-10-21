@@ -3,7 +3,7 @@ import React from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 
-import {NextImage} from '@spinach/next/components/shared/common/image';
+import {NextImage} from '@spinach/next/components/shared/common/image/main';
 import {imageGallerySizes} from '@spinach/next/styles/image';
 
 

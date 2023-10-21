@@ -3,7 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import {Flex} from '@spinach/next/components/layout/flex';
-import {NextImage} from '@spinach/next/components/shared/common/image';
+import {NextImage} from '@spinach/next/components/shared/common/image/main';
 
 
 export const AccountRegisterInstruction = () => {

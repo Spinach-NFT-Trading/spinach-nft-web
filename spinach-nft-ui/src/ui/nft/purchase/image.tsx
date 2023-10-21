@@ -5,7 +5,7 @@ import HeartIcon from '@heroicons/react/24/solid/HeartIcon';
 
 import {UsdtIcon} from '@spinach/next/components/icons/usdt';
 import {Flex} from '@spinach/next/components/layout/flex';
-import {NextImage} from '@spinach/next/components/shared/common/image';
+import {NextImage} from '@spinach/next/components/shared/common/image/main';
 import {NftPurchaseSectionProps} from '@spinach/next/ui/nft/purchase/type';
 
 
