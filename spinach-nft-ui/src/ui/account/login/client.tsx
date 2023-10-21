@@ -25,49 +25,47 @@ export const AccountLoginClient = ({error}: Props) => {
   const {username, password} = input;
 
   return (
-    <Flex className="gap-2 md:p-10">
-      <Flex className="gap-2 self-center md:w-1/2">
-        {error && <Alert>{translateApiError(error)}</Alert>}
-        <form className="flex flex-col gap-2" onSubmit={async (e) => {
-          e.preventDefault();
-          await signIn('Spinach', {username, password});
-        }}>
-          <InputFloatingLabel
-            id="username"
-            placeholder="帳號"
-            type="text"
-            value={username}
-            onChange={({target}) => setInput((original) => ({
-              ...original,
-              username: target.value,
-            } satisfies AccountLoginInput))}
-            autoComplete="username"
-            required
-            pattern={usernamePattern}
-          />
-          <InputFloatingLabel
-            id="password"
-            placeholder="密碼"
-            type="password"
-            value={password}
-            onChange={({target}) => setInput((original) => ({
-              ...original,
-              password: target.value,
-            } satisfies AccountLoginInput))}
-            autoComplete="current-password"
-            required
-            pattern={passwordPattern}
-          />
-          <Flex direction="row" className="gap-2">
-            <Link href="/account/register" className="button-clickable-bg w-full p-2 text-center">
-              註冊
-            </Link>
-            <button type="submit" className="button-clickable-bg w-full p-2">
-              登入
-            </button>
-          </Flex>
-        </form>
-      </Flex>
+    <Flex className="gap-2 self-center md:px-7">
+      {error && <Alert>{translateApiError(error)}</Alert>}
+      <form className="flex flex-col gap-2" onSubmit={async (e) => {
+        e.preventDefault();
+        await signIn('Spinach', {username, password});
+      }}>
+        <InputFloatingLabel
+          id="username"
+          placeholder="帳號"
+          type="text"
+          value={username}
+          onChange={({target}) => setInput((original) => ({
+            ...original,
+            username: target.value,
+          } satisfies AccountLoginInput))}
+          autoComplete="username"
+          required
+          pattern={usernamePattern}
+        />
+        <InputFloatingLabel
+          id="password"
+          placeholder="密碼"
+          type="password"
+          value={password}
+          onChange={({target}) => setInput((original) => ({
+            ...original,
+            password: target.value,
+          } satisfies AccountLoginInput))}
+          autoComplete="current-password"
+          required
+          pattern={passwordPattern}
+        />
+        <Flex className="gap-2">
+          <button type="submit" className="button-clickable-bg w-full p-2">
+            登入
+          </button>
+          <Link href="/account/register" className="button-clickable-border w-full p-2 text-center">
+            註冊
+          </Link>
+        </Flex>
+      </form>
     </Flex>
   );
 };
