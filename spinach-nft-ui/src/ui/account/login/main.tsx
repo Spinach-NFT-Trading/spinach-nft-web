@@ -6,7 +6,7 @@ import {getServerSession} from 'next-auth';
 import {authOptions} from '@spinach/next/const/auth';
 import {LoginPageParams} from '@spinach/next/types/next/auth';
 import {AccountLoginClient} from '@spinach/next/ui/account/login/client';
-import {PageLayout} from '@spinach/next/ui/base/layout/common';
+import {UserControlLayout} from '@spinach/next/ui/base/layout/userControl';
 
 
 export const AccountLogin = ({searchParams}: LoginPageParams) => {
@@ -16,8 +16,8 @@ export const AccountLogin = ({searchParams}: LoginPageParams) => {
   }
 
   return (
-    <PageLayout hideUserControl>
+    <UserControlLayout>
       <AccountLoginClient error={searchParams.error}/>
-    </PageLayout>
+    </UserControlLayout>
   );
 };
