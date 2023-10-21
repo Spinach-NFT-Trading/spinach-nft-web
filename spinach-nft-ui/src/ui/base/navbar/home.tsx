@@ -10,21 +10,21 @@ import {imageGallerySizes} from '@spinach/next/styles/image';
 export const NavHomepage = () => {
   return (
     <Link href="/" className={clsx(
-      'transform-smooth nav-height button-bg-hover group sticky left-0 flex items-center rounded-lg px-1.5',
+      'transform-smooth nav-height button-bg-hover group sticky left-0 flex items-center gap-2 rounded-lg px-1.5',
     )}>
-      <div className="nav-height relative hidden w-72 md:block">
+      <div className="nav-height relative w-10">
         <NextImage
-          src="/logo-full.png"
-          alt="NFT Market 3.0"
+          src="/logo-half.png"
+          alt="GT NFT Market"
           sizes={imageGallerySizes}
           noCover
           className="invert-hoverable object-contain"
         />
       </div>
-      <div className="nav-height relative block w-10 md:hidden">
+      <div className="nav-height relative hidden w-72 md:block">
         <NextImage
-          src="/logo-half.png"
-          alt="NFT Market 3.0"
+          src="/logo-full.png"
+          alt="GT NFT Market"
           sizes={imageGallerySizes}
           noCover
           className="invert-hoverable object-contain"

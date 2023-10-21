@@ -10,7 +10,7 @@ export const ProfileIcon = () => {
       <div className="relative h-20 w-20">
         <NextImage
           src="/logo-half.png"
-          alt="NFT Market 3.0"
+          alt="GT NFT Market"
           sizes={imageIconSizes}
           noCover
           className="invert-hoverable object-contain"

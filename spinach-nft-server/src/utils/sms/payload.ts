@@ -12,7 +12,7 @@ export const toSmsOtpPayload = ({phone, otp}: ToSmsOtpPayload): SendSmsPayload =
     method: 'instant',
     username: SmsUsername,
     password: SmsPassword,
-    smsMessage: `NFT 3.0 Market 一次性密碼 (OTP): ${otp}`,
+    smsMessage: `GT NFT Market 一次性密碼 (OTP): ${otp}`,
     phone: [phone],
   };
 };

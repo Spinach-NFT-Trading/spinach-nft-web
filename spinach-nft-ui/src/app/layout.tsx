@@ -17,8 +17,8 @@ const font = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'NFT 3.0 Market',
-  description: 'NFT 3.0 Market.',
+  title: 'GT NFT Market',
+  description: 'GT NFT Market.',
 };
 
 const RootLayout = ({children}: React.PropsWithChildren<PageLayoutParams>) => {
