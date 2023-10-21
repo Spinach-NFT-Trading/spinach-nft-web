@@ -1,12 +1,10 @@
 import React from 'react';
 
 import clsx from 'clsx';
-import Image, {ImageProps} from 'next/image';
+import Image from 'next/image';
 
+import {NextImageProps} from '@spinach/next/components/shared/common/image/type';
 
-export type NextImageProps = Omit<ImageProps, 'fill' | 'title'> & {
-  noCover?: boolean,
-};
 
 export const NextImage = ({src, alt, noCover, sizes, className}: NextImageProps) => {
   return (
