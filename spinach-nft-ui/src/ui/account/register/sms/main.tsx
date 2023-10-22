@@ -121,7 +121,7 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
               disabled={disableInit}
               className="button-clickable-bg disabled:button-disabled w-full p-2"
             >
-            獲取驗證碼
+              獲取驗證碼
             </button>
           </AnimatedCollapse>
         </form>
@@ -142,7 +142,7 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
             <button type="submit" disabled={disableOtp} className={clsx(
               'button-clickable-bg disabled:button-disabled w-full p-2',
             )}>
-            驗證手機
+              驗證手機
             </button>
           </form>
         </AnimatedCollapse>

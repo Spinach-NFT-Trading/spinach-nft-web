@@ -21,7 +21,7 @@ export const InputFloatingLabel = ({
       <input
         type={type} id={id} value={value} onChange={onChange}
         className={clsx(
-          'border-b border-slate-500 bg-slate-700 disabled:text-slate-400',
+          'border-b border-slate-500 bg-slate-200 text-slate-900 disabled:text-slate-500',
           'peer w-full rounded-lg p-1 focus:outline-none',
           inputClassName,
         )}
