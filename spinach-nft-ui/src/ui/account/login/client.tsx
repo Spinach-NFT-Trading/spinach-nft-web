@@ -25,7 +25,7 @@ export const AccountLoginClient = ({error}: Props) => {
   const {username, password} = input;
 
   return (
-    <Flex className="gap-2 self-center md:px-7">
+    <Flex className="gap-2 self-center text-xl md:px-7">
       {error && <Alert>{translateApiError(error)}</Alert>}
       <form className="flex flex-col gap-2" onSubmit={async (e) => {
         e.preventDefault();

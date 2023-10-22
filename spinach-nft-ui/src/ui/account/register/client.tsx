@@ -13,7 +13,7 @@ export const AccountRegisterClient = () => {
   const [error, setError] = React.useState<ApiErrorCode | null>(null);
 
   return (
-    <Flex className="gap-3 md:px-7">
+    <Flex className="gap-3 text-xl md:px-7">
       {error && <Alert>{translateApiError(error)}</Alert>}
       <AccountRegisterForm setError={setError}/>
     </Flex>

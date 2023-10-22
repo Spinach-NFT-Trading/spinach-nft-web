@@ -146,7 +146,7 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
             </button>
           </form>
         </AnimatedCollapse>
-        <Flex direction="row" center>
+        <Flex direction="row" center className="text-base">
           <div>已經有帳號了嗎？</div>
           <Link href="/account/login" className="text-link">
             登入
