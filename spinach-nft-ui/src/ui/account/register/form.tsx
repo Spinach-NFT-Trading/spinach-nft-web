@@ -30,7 +30,12 @@ export const AccountRegisterForm = ({setError}: Props) => {
     username: '',
     password: '',
     // Step 3 - ID verification
-    idImage: null,
+    image: {
+      idFront: null,
+      idBack: null,
+      secondaryFront: null,
+      handheld: null,
+    },
   });
 
   const {step} = input;

@@ -9,12 +9,13 @@ import {
 import {SmsVerifyInitialRequest, SmsVerifyInitialResponse} from '@spinach/common/types/api/auth/verify/sms/initial';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import clsx from 'clsx';
+import Link from 'next/link';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
-import {AccountRegisterVerificationState} from '@spinach/next/ui/account/register/sms/type';
+import {AccountRegisterSmsVerificationState} from '@spinach/next/ui/account/register/sms/type';
 import {sendApiPost} from '@spinach/next/utils/api/common';
 
 
@@ -24,7 +25,7 @@ type Props = {
 };
 
 export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) => {
-  const [state, setState] = React.useState<AccountRegisterVerificationState>({
+  const [state, setState] = React.useState<AccountRegisterSmsVerificationState>({
     phone: '',
     otp: '',
     loading: false,
@@ -108,7 +109,7 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
             onChange={({target}) => setState((original) => ({
               ...original,
               phone: target.value,
-            } satisfies AccountRegisterVerificationState))}
+            } satisfies AccountRegisterSmsVerificationState))}
             autoComplete="tel"
             required
             pattern={phonePattern}
@@ -134,7 +135,7 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
               onChange={({target}) => setState((original) => ({
                 ...original,
                 otp: target.value,
-              } satisfies AccountRegisterVerificationState))}
+              } satisfies AccountRegisterSmsVerificationState))}
               disabled={disableOtp}
               required
             />
@@ -145,6 +146,12 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
             </button>
           </form>
         </AnimatedCollapse>
+        <Flex direction="row" center>
+          <div>已經有帳號了嗎？</div>
+          <Link href="/account/login" className="text-link">
+            登入
+          </Link>
+        </Flex>
       </Flex>
     </AnimatedCollapse>
   );

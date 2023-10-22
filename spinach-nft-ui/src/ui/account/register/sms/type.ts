@@ -1,7 +1,7 @@
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 
 
-export type AccountRegisterVerificationState = {
+export type AccountRegisterSmsVerificationState = {
   phone: string,
   otp: string,
   loading: boolean,
