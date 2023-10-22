@@ -25,9 +25,11 @@ const RootLayout = ({children}: React.PropsWithChildren<PageLayoutParams>) => {
   return (
     <html lang="zh" className="h-full" suppressHydrationWarning>
       <body className={font.className}>
-        <Providers>
-          {children}
-        </Providers>
+        <div className="min-h-screen bg-black/50">
+          <Providers>
+            {children}
+          </Providers>
+        </div>
       </body>
     </html>
   );
