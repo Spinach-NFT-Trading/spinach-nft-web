@@ -5,7 +5,7 @@ import {getServerSession} from 'next-auth';
 
 import {authOptions} from '@spinach/next/const/auth';
 import {AccountRegisterClient} from '@spinach/next/ui/account/register/client';
-import {PageLayout} from '@spinach/next/ui/base/layout/common';
+import {UserControlLayout} from '@spinach/next/ui/base/layout/userControl';
 
 
 export const AccountRegister = () => {
@@ -15,8 +15,8 @@ export const AccountRegister = () => {
   }
 
   return (
-    <PageLayout>
+    <UserControlLayout>
       <AccountRegisterClient/>
-    </PageLayout>
+    </UserControlLayout>
   );
 };

@@ -19,10 +19,11 @@ import {sendApiPost} from '@spinach/next/utils/api/common';
 
 
 type Props = {
+  show: boolean,
   onPhoneVerified: (key: string) => void,
 };
 
-export const AccountRegisterSmsVerification = ({onPhoneVerified}: Props) => {
+export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) => {
   const [state, setState] = React.useState<AccountRegisterVerificationState>({
     phone: '',
     otp: '',
@@ -95,54 +96,56 @@ export const AccountRegisterSmsVerification = ({onPhoneVerified}: Props) => {
   const isCompleted = initialized && finalized;
 
   return (
-    <Flex className="gap-2">
-      {error && <Alert>{translateApiError(error)}</Alert>}
-      <form onSubmit={onPhoneSubmitted} className="flex flex-col gap-2">
-        <InputFloatingLabel
-          id="phone"
-          placeholder="手機號碼"
-          type="tel"
-          value={phone}
-          onChange={({target}) => setState((original) => ({
-            ...original,
-            phone: target.value,
-          } satisfies AccountRegisterVerificationState))}
-          autoComplete="tel"
-          required
-          pattern={phonePattern}
-          disabled={disableInit}
-        />
-        <AnimatedCollapse show={!isCompleted}>
-          <button
-            type="submit"
-            disabled={disableInit}
-            className="button-clickable-bg disabled:button-disabled w-full p-2"
-          >
-            獲取驗證碼
-          </button>
-        </AnimatedCollapse>
-      </form>
-      <AnimatedCollapse show={initialized && !finalized}>
-        <form onSubmit={onCodeSubmitted} className="flex flex-col gap-2">
+    <AnimatedCollapse show={show}>
+      <Flex className="gap-2">
+        {error && <Alert>{translateApiError(error)}</Alert>}
+        <form onSubmit={onPhoneSubmitted} className="flex flex-col gap-2">
           <InputFloatingLabel
-            id="code"
-            placeholder="驗證碼"
-            type="text"
-            value={otp}
+            id="phone"
+            placeholder="手機號碼"
+            type="tel"
+            value={phone}
             onChange={({target}) => setState((original) => ({
               ...original,
-              otp: target.value,
+              phone: target.value,
             } satisfies AccountRegisterVerificationState))}
-            disabled={disableOtp}
+            autoComplete="tel"
             required
+            pattern={phonePattern}
+            disabled={disableInit}
           />
-          <button type="submit" disabled={disableOtp} className={clsx(
-            'button-clickable-bg disabled:button-disabled w-full p-2',
-          )}>
-            驗證手機
-          </button>
+          <AnimatedCollapse show={!isCompleted}>
+            <button
+              type="submit"
+              disabled={disableInit}
+              className="button-clickable-bg disabled:button-disabled w-full p-2"
+            >
+            獲取驗證碼
+            </button>
+          </AnimatedCollapse>
         </form>
-      </AnimatedCollapse>
-    </Flex>
+        <AnimatedCollapse show={initialized && !finalized}>
+          <form onSubmit={onCodeSubmitted} className="flex flex-col gap-2">
+            <InputFloatingLabel
+              id="code"
+              placeholder="驗證碼"
+              type="text"
+              value={otp}
+              onChange={({target}) => setState((original) => ({
+                ...original,
+                otp: target.value,
+              } satisfies AccountRegisterVerificationState))}
+              disabled={disableOtp}
+              required
+            />
+            <button type="submit" disabled={disableOtp} className={clsx(
+              'button-clickable-bg disabled:button-disabled w-full p-2',
+            )}>
+            驗證手機
+            </button>
+          </form>
+        </AnimatedCollapse>
+      </Flex>
+    </AnimatedCollapse>
   );
 };
