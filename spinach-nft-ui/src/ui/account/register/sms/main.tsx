@@ -13,6 +13,7 @@ import Link from 'next/link';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';
+import {FlexForm} from '@spinach/next/components/layout/flex/form';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
 import {AccountRegisterSmsVerificationState} from '@spinach/next/ui/account/register/sms/type';
@@ -44,8 +45,7 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
     verificationKey,
   } = state;
 
-  const onPhoneSubmitted = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onPhoneSubmitted = async () => {
     setState((original) => ({...original, loading: true}));
 
     const response = await sendApiPost<SmsVerifyInitialResponse>({
@@ -66,8 +66,7 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
     }));
   };
 
-  const onCodeSubmitted = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const onCodeSubmitted = async () => {
     if (!verificationKey) {
       return;
     }
@@ -100,7 +99,7 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
     <AnimatedCollapse show={show}>
       <Flex className="gap-2">
         {error && <Alert>{translateApiError(error)}</Alert>}
-        <form onSubmit={onPhoneSubmitted} className="flex flex-col gap-2">
+        <FlexForm className="gap-2" onSubmit={onPhoneSubmitted}>
           <InputFloatingLabel
             id="phone"
             placeholder="手機號碼"
@@ -124,9 +123,9 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
               獲取驗證碼
             </button>
           </AnimatedCollapse>
-        </form>
+        </FlexForm>
         <AnimatedCollapse show={initialized && !finalized}>
-          <form onSubmit={onCodeSubmitted} className="flex flex-col gap-2">
+          <FlexForm className="gap-2" onSubmit={onCodeSubmitted}>
             <InputFloatingLabel
               id="code"
               placeholder="驗證碼"
@@ -144,7 +143,7 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
             )}>
               驗證手機
             </button>
-          </form>
+          </FlexForm>
         </AnimatedCollapse>
         <Flex direction="row" center className="text-base">
           <div>已經有帳號了嗎？</div>

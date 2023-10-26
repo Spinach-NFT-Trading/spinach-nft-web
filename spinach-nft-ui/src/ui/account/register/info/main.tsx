@@ -9,6 +9,7 @@ import {
 } from '@spinach/common/const/auth';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
+import {FlexForm} from '@spinach/next/components/layout/flex/form';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
 import {AccountRegisterCommonProps, AccountRegisterInput} from '@spinach/next/ui/account/register/type';
 
@@ -25,10 +26,7 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
 
   return (
     <AnimatedCollapse show={show}>
-      <form className="flex flex-col gap-2" onSubmit={(e) => {
-        e.preventDefault();
-        onComplete();
-      }}>
+      <FlexForm className="gap-2" onSubmit={onComplete}>
         <InputFloatingLabel
           id="name"
           placeholder="姓名"
@@ -107,7 +105,7 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
         <button type="submit" className="button-clickable-bg w-full p-2">
           下一步
         </button>
-      </form>
+      </FlexForm>
     </AnimatedCollapse>
   );
 };

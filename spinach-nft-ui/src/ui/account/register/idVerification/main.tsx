@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
+import {FlexForm} from '@spinach/next/components/layout/flex/form';
 import {AccountRegisterIdVerificationInput} from '@spinach/next/ui/account/register/idVerification/input';
 import {AccountRegisterIdVerificationState} from '@spinach/next/ui/account/register/idVerification/type';
 import {AccountRegisterCommonProps} from '@spinach/next/ui/account/register/type';
@@ -20,10 +21,7 @@ export const AccountRegisterIdVerification = (props: AccountRegisterCommonProps)
 
   return (
     <AnimatedCollapse show={show}>
-      <form className="flex flex-col gap-2" onSubmit={(e) => {
-        e.preventDefault();
-        onComplete();
-      }}>
+      <FlexForm className="gap-2" onSubmit={onComplete}>
         <AccountRegisterIdVerificationInput
           {...props}
           type="idFront"
@@ -54,7 +52,7 @@ export const AccountRegisterIdVerification = (props: AccountRegisterCommonProps)
         >
           註冊
         </button>
-      </form>
+      </FlexForm>
     </AnimatedCollapse>
   );
 };

@@ -8,6 +8,7 @@ import Link from 'next/link';
 import {signIn} from 'next-auth/react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
+import {FlexForm} from '@spinach/next/components/layout/flex/form';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
 import {AccountLoginInput} from '@spinach/next/ui/account/login/type';
@@ -27,10 +28,9 @@ export const AccountLoginClient = ({error}: Props) => {
   return (
     <Flex className="gap-2 self-center text-xl md:px-7">
       {error && <Alert>{translateApiError(error)}</Alert>}
-      <form className="flex flex-col gap-2" onSubmit={async (e) => {
-        e.preventDefault();
-        await signIn('Spinach', {username, password});
-      }}>
+      <FlexForm className="gap-2" onSubmit={async () => (
+        signIn('Spinach', {username, password})
+      )}>
         <InputFloatingLabel
           id="username"
           placeholder="帳號"
@@ -65,7 +65,7 @@ export const AccountLoginClient = ({error}: Props) => {
             註冊
           </Link>
         </Flex>
-      </form>
+      </FlexForm>
     </Flex>
   );
 };
