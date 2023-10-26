@@ -1,9 +1,8 @@
 import React from 'react';
 
 import UserCircleIcon from '@heroicons/react/24/outline/UserCircleIcon';
-import Link from 'next/link';
 
-import {Flex} from '@spinach/next/components/layout/flex/common';
+import {FlexLink} from '@spinach/next/components/layout/flex/link';
 import {UserControlCommonProps} from '@spinach/next/ui/base/navbar/user/type';
 
 
@@ -13,15 +12,13 @@ export const UserProfileButton = ({session}: UserControlCommonProps) => {
   }
 
   return (
-    <Link className="nav-button-text group" href="/account/profile">
-      <Flex direction="row" center className="gap-1">
-        <div className="transform-smooth relative h-5 w-5">
-          <UserCircleIcon/>
-        </div>
-        <div>
-          {session.user.username}
-        </div>
-      </Flex>
-    </Link>
+    <FlexLink className="nav-button-text group gap-1" center href="/account/profile">
+      <div className="relative h-5 w-5">
+        <UserCircleIcon/>
+      </div>
+      <div>
+        {session.user.username}
+      </div>
+    </FlexLink>
   );
 };

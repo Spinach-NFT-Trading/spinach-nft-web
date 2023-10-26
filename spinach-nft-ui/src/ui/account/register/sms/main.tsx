@@ -9,11 +9,11 @@ import {
 import {SmsVerifyInitialRequest, SmsVerifyInitialResponse} from '@spinach/common/types/api/auth/verify/sms/initial';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import clsx from 'clsx';
-import Link from 'next/link';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {FlexForm} from '@spinach/next/components/layout/flex/form';
+import {FlexLink} from '@spinach/next/components/layout/flex/link';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
 import {AccountRegisterSmsVerificationState} from '@spinach/next/ui/account/register/sms/type';
@@ -147,9 +147,9 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
         </AnimatedCollapse>
         <Flex direction="row" center className="text-base">
           <div>已經有帳號了嗎？</div>
-          <Link href="/account/login" className="text-link">
+          <FlexLink href="/account/login" className="text-link">
             登入
-          </Link>
+          </FlexLink>
         </Flex>
       </Flex>
     </AnimatedCollapse>

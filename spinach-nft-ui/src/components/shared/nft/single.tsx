@@ -2,9 +2,9 @@ import React from 'react';
 
 import ShoppingCartIcon from '@heroicons/react/24/outline/ShoppingCartIcon';
 import CheckBadgeIcon from '@heroicons/react/24/solid/CheckBadgeIcon';
-import Link from 'next/link';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
+import {FlexLink} from '@spinach/next/components/layout/flex/link';
 import {NextImage} from '@spinach/next/components/shared/common/image/main';
 import {NftListingData} from '@spinach/next/types/nft';
 import {formatInt} from '@spinach/next/utils/number';
@@ -39,11 +39,11 @@ export const NftListingSingle = ({nft}: Props) => {
         </Flex>
       </Flex>
       <Flex noFullWidth>
-        <Link href={`/nft/purchase/${id}`} className="button-clickable-bg p-3">
+        <FlexLink href={`/nft/purchase/${id}`} className="button-clickable-bg p-3">
           <div className="h-10 w-10">
             <ShoppingCartIcon/>
           </div>
-        </Link>
+        </FlexLink>
       </Flex>
     </Flex>
   );

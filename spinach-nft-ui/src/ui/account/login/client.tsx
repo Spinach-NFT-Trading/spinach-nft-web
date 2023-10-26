@@ -4,11 +4,11 @@ import React from 'react';
 import {passwordPattern, usernamePattern} from '@spinach/common/const/auth';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
-import Link from 'next/link';
 import {signIn} from 'next-auth/react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {FlexForm} from '@spinach/next/components/layout/flex/form';
+import {FlexLink} from '@spinach/next/components/layout/flex/link';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
 import {AccountLoginInput} from '@spinach/next/ui/account/login/type';
@@ -61,9 +61,9 @@ export const AccountLoginClient = ({error}: Props) => {
           <button type="submit" className="button-clickable-bg w-full p-2">
             登入
           </button>
-          <Link href="/account/register" className="button-clickable-border w-full p-2 text-center">
+          <FlexLink href="/account/register" className="button-clickable-border w-full p-2 text-center">
             註冊
-          </Link>
+          </FlexLink>
         </Flex>
       </FlexForm>
     </Flex>

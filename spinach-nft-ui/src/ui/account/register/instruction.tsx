@@ -1,8 +1,7 @@
 import React from 'react';
 
-import Link from 'next/link';
-
 import {Flex} from '@spinach/next/components/layout/flex/common';
+import {FlexLink} from '@spinach/next/components/layout/flex/link';
 import {NextImage} from '@spinach/next/components/shared/common/image/main';
 
 
@@ -19,9 +18,9 @@ export const AccountRegisterInstruction = () => {
           <li>提交後請添加官方客服實名認證。</li>
         </ol>
       </div>
-      <Link href="#" className="button-clickable-bg w-full p-2">
+      <FlexLink href="#" className="button-clickable-bg w-full p-2">
         前往實名驗證
-      </Link>
+      </FlexLink>
     </Flex>
   );
 };

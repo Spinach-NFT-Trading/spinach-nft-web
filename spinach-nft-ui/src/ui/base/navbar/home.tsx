@@ -1,15 +1,15 @@
 import React from 'react';
 
 import clsx from 'clsx';
-import Link from 'next/link';
 
+import {FlexLink} from '@spinach/next/components/layout/flex/link';
 import {NextImage} from '@spinach/next/components/shared/common/image/main';
 import {imageGallerySizes} from '@spinach/next/styles/image';
 
 
 export const NavHomepage = () => {
   return (
-    <Link href="/" className={clsx(
+    <FlexLink href="/" className={clsx(
       'transform-smooth nav-height button-bg-hover group sticky left-0 flex items-center gap-2 rounded-lg px-1.5',
     )}>
       <div className="nav-height relative w-10">
@@ -30,6 +30,6 @@ export const NavHomepage = () => {
           className="invert-hoverable object-contain"
         />
       </div>
-    </Link>
+    </FlexLink>
   );
 };

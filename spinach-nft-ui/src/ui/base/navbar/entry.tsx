@@ -2,10 +2,10 @@
 import React from 'react';
 
 import clsx from 'clsx';
-import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 import {Session} from 'next-auth';
 
+import {FlexLink} from '@spinach/next/components/layout/flex/link';
 import {NavEntry} from '@spinach/next/types/nav';
 
 
@@ -23,7 +23,7 @@ export const NavEntryUI = ({href, text, showOnlyIfLoggedIn, session}: Props) => 
   const isCurrent = href === pathname;
 
   return (
-    <Link
+    <FlexLink
       href={isCurrent ? '#' : href}
       className={clsx(
         'nav-height button-base relative flex items-center justify-center px-2',
@@ -31,6 +31,6 @@ export const NavEntryUI = ({href, text, showOnlyIfLoggedIn, session}: Props) => 
       )}
     >
       {text}
-    </Link>
+    </FlexLink>
   );
 };
