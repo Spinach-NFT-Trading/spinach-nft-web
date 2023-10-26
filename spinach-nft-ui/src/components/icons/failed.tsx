@@ -2,7 +2,8 @@ import React from 'react';
 
 import ExclamationTriangleIcon from '@heroicons/react/24/outline/ExclamationTriangleIcon';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+
+import {Flex} from '@spinach/next/components/layout/flex/common';
 
 
 type Props = {

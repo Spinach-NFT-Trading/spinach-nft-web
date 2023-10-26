@@ -3,7 +3,8 @@ import React from 'react';
 import CheckBadgeIcon from '@heroicons/react/24/solid/CheckBadgeIcon';
 import clsx from 'clsx';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+
+import {Flex} from '@spinach/next/components/layout/flex/common';
 
 
 type Props = {

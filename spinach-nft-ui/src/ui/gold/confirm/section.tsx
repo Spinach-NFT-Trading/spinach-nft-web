@@ -2,7 +2,8 @@ import React from 'react';
 
 import clsx from 'clsx';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+
+import {Flex} from '@spinach/next/components/layout/flex/common';
 
 
 type Props = {

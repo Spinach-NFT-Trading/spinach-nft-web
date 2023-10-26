@@ -12,7 +12,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
 import {AccountRegisterSmsVerificationState} from '@spinach/next/ui/account/register/sms/type';

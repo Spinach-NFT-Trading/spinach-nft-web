@@ -3,7 +3,7 @@ import React from 'react';
 import CurrencyDollarIcon from '@heroicons/react/24/outline/CurrencyDollarIcon';
 import {Session} from 'next-auth';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {formatToAbbreviation} from '@spinach/next/utils/number';
 
 

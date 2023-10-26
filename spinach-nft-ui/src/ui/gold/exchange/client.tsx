@@ -4,7 +4,7 @@ import React from 'react';
 import ArrowDownCircleIcon from '@heroicons/react/24/outline/ArrowDownCircleIcon';
 import ArrowRightIcon from '@heroicons/react/24/outline/ArrowRightIcon';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
 import {GoldExchangeConfirmPopup} from '@spinach/next/ui/gold/exchange/confirm';
 import {ExchangeAmount} from '@spinach/next/ui/gold/exchange/type';

@@ -4,7 +4,7 @@ import {fxMarket} from '@spinach/common/const/fx';
 import {getFxRate} from '@spinach/common/controller/actors/fx';
 import {getServerSession} from 'next-auth';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NftListing} from '@spinach/next/components/shared/nft/main';
 import {authOptions} from '@spinach/next/const/auth';
 import {getNftListing} from '@spinach/next/controller/nft';

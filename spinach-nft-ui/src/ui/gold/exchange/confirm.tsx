@@ -4,7 +4,7 @@ import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {useRouter} from 'next/navigation';
 import {signIn} from 'next-auth/react';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';

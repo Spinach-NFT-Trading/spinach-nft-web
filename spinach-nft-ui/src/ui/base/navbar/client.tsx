@@ -4,7 +4,7 @@ import React from 'react';
 import clsx from 'clsx';
 import {Session} from 'next-auth';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {useNavEntries} from '@spinach/next/hooks/nav';
 import {NavEntryUI} from '@spinach/next/ui/base/navbar/entry';
 import {NavHomepage} from '@spinach/next/ui/base/navbar/home';

@@ -3,7 +3,7 @@ import React from 'react';
 import DocumentArrowUpIcon from '@heroicons/react/24/outline/DocumentArrowUpIcon';
 import {clsx} from 'clsx';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {InputFileCommonProps} from '@spinach/next/components/shared/common/input/file/type';
 import {MimeTypes} from '@spinach/next/types/mime';
 

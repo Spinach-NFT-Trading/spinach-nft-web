@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Announcements} from '@spinach/next/components/announcement/main';
 import {LoadingFullScreen} from '@spinach/next/components/icons/loading';
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {PageLayoutProps} from '@spinach/next/ui/base/layout/type';
 import {NavBar} from '@spinach/next/ui/base/navbar/main';
 import {NavBarProps} from '@spinach/next/ui/base/navbar/type';

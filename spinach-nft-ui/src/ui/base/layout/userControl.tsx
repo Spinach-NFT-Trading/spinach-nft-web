@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NextImage} from '@spinach/next/components/shared/common/image/main';
 import {PageLayout} from '@spinach/next/ui/base/layout/common';
 

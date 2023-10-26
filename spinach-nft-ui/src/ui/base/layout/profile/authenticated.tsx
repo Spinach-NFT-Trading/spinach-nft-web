@@ -2,7 +2,7 @@ import React from 'react';
 
 import clsx from 'clsx';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {ProfileBalanceSection} from '@spinach/next/ui/base/layout/profile/balance';
 import {ProfileLayoutControls} from '@spinach/next/ui/base/layout/profile/control';
 import {ProfileLayoutInfo} from '@spinach/next/ui/base/layout/profile/info';

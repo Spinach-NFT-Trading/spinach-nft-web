@@ -5,7 +5,7 @@ import ExclamationTriangleIcon from '@heroicons/react/24/outline/ExclamationTria
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {redirect} from 'next/navigation';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 
 

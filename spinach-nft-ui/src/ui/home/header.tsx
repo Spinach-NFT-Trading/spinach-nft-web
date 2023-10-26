@@ -8,7 +8,7 @@ import Link from 'next/link';
 import {Session} from 'next-auth';
 
 import {UsdtIcon} from '@spinach/next/components/icons/usdt';
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Grid} from '@spinach/next/components/layout/grid';
 import {NextImage} from '@spinach/next/components/shared/common/image/main';
 import {HomeStatsSection} from '@spinach/next/ui/home/stats';

@@ -3,7 +3,7 @@ import React from 'react';
 import CheckBadgeIcon from '@heroicons/react/24/solid/CheckBadgeIcon';
 import format from 'date-fns/format';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NftPurchaseButton} from '@spinach/next/ui/nft/purchase/button';
 import {NftPurchaseInfoSection} from '@spinach/next/ui/nft/purchase/infoSection';
 import {NftPurchaseSectionProps} from '@spinach/next/ui/nft/purchase/type';

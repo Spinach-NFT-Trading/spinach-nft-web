@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {ProfileIcon} from '@spinach/next/components/shared/account/icon';
 import {ProfileLayoutProps} from '@spinach/next/ui/base/layout/profile/type';
 import {ProfileLayoutVerificationStatus} from '@spinach/next/ui/base/layout/profile/verified';

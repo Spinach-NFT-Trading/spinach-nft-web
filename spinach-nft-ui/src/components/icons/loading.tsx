@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import React from 'react';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+
+import {Flex} from '@spinach/next/components/layout/flex/common';
 
 
 type Props = {

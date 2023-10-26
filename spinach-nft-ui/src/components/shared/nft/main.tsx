@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Grid} from '@spinach/next/components/layout/grid';
 import {InputBox} from '@spinach/next/components/shared/common/input/box';
 import {nftListingSortingIcon} from '@spinach/next/components/shared/nft/const';

@@ -3,7 +3,7 @@ import React from 'react';
 import UserCircleIcon from '@heroicons/react/24/outline/UserCircleIcon';
 import Link from 'next/link';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {UserControlCommonProps} from '@spinach/next/ui/base/navbar/user/type';
 
 

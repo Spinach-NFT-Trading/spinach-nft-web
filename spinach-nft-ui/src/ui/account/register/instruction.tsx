@@ -2,7 +2,7 @@ import React from 'react';
 
 import Link from 'next/link';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NextImage} from '@spinach/next/components/shared/common/image/main';
 
 

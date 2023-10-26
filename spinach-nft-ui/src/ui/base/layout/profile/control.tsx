@@ -4,7 +4,8 @@ import PlusCircleIcon from '@heroicons/react/24/outline/PlusCircleIcon';
 import clsx from 'clsx';
 import Link from 'next/link';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+
+import {Flex} from '@spinach/next/components/layout/flex/common';
 
 
 export const ProfileLayoutControls = () => {

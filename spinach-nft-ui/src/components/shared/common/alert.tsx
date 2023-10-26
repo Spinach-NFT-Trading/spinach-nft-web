@@ -1,6 +1,7 @@
 import React from 'react';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+
+import {Flex} from '@spinach/next/components/layout/flex/common';
 
 
 export const Alert = ({children}: React.PropsWithChildren) => {

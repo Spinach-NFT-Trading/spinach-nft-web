@@ -4,7 +4,7 @@ import {apiPath} from '@spinach/common/const/path';
 import {UserRegisterResponse} from '@spinach/common/types/api/auth/register';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {AccountRegisterCompleted} from '@spinach/next/ui/account/register/completed/main';
 import {AccountRegisterIdVerification} from '@spinach/next/ui/account/register/idVerification/main';
 import {AccountRegisterBasicInfo} from '@spinach/next/ui/account/register/info/main';

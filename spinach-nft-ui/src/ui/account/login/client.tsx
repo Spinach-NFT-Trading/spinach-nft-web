@@ -7,7 +7,7 @@ import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import Link from 'next/link';
 import {signIn} from 'next-auth/react';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
 import {AccountLoginInput} from '@spinach/next/ui/account/login/type';

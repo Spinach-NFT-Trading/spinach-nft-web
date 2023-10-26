@@ -5,7 +5,7 @@ import {getServerSession} from 'next-auth';
 
 import {SignIn} from '@spinach/next/components/auth/signIn';
 import {Failed} from '@spinach/next/components/icons/failed';
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NftListingSingle} from '@spinach/next/components/shared/nft/single';
 import {authOptions} from '@spinach/next/const/auth';
 import {getNftInfo, getNftListing, getNftOnSale} from '@spinach/next/controller/nft';

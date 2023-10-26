@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-import {Flex} from '@spinach/next/components/layout/flex';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NftListing} from '@spinach/next/components/shared/nft/main';
 import {UserDataLazyLoad} from '@spinach/next/components/shared/userData/lazyLoad';
 
