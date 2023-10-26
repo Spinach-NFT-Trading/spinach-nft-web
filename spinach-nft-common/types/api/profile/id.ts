@@ -1,4 +1,4 @@
-import {Static, TString, Type} from '@sinclair/typebox';
+import {Static, Type} from '@sinclair/typebox';
 
 
 export const accountIdVerificationType = [
@@ -8,12 +8,8 @@ export const accountIdVerificationType = [
   'secondaryFront',
 ] as const;
 
-export interface TAccountIdVerificationType extends TString {
-  static: typeof accountIdVerificationType[number];
-}
-
-export const AccountIdVerificationTypeSchema = Type.Unsafe<Static<TAccountIdVerificationType>>(Type.String({
-  pattern: accountIdVerificationType.join('|'),
-}));
+export const AccountIdVerificationTypeSchema = Type.Union(
+  accountIdVerificationType.map((type) => Type.Literal(type)),
+);
 
 export type AccountIdVerificationType = Static<typeof AccountIdVerificationTypeSchema>;

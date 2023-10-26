@@ -1,7 +1,5 @@
 import React from 'react';
 
-import {accountIdVerificationType} from '@spinach/common/types/api/profile/id';
-
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {AccountRegisterIdVerificationInput} from '@spinach/next/ui/account/register/idVerification/input';
 import {AccountRegisterIdVerificationState} from '@spinach/next/ui/account/register/idVerification/type';
@@ -52,7 +50,7 @@ export const AccountRegisterIdVerification = (props: AccountRegisterCommonProps)
         />
         <button
           type="submit" className="enabled:button-clickable-bg disabled:button-disabled w-full p-2"
-          disabled={accountIdVerificationType.some((type) => !input.image[type])}
+          disabled={Object.values(input.image).some((data) => !data)}
         >
           註冊
         </button>
