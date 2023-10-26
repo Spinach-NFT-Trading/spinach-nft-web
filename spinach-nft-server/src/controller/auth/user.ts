@@ -7,8 +7,11 @@ import {hashPassword, verifyPasswordOrThrow} from '@spinach/common/utils/secret'
 import {checkTrxAddress} from '@spinach/common/utils/tron/address';
 import {ObjectId} from 'mongodb';
 
+import {isSmsVerificationKeyValid} from '@spinach/server/controller/auth/verify/sms/finalize';
+
 
 export const registerUser = async ({
+  phoneVerificationKey,
   name,
   email,
   lineId,
@@ -44,6 +47,10 @@ export const registerUser = async ({
 
   if (checkResult.isToken || checkResult.isContract) {
     return 'walletInvalid';
+  }
+
+  if (!await isSmsVerificationKeyValid(phoneVerificationKey)) {
+    return 'smsPhoneInvalid';
   }
 
   const result = await userInfoCollection.insertOne({

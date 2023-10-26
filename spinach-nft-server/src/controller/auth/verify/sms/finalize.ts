@@ -33,3 +33,7 @@ export const recordSmsVerifyFinalized = async ({
 
   return {key: completedKey};
 };
+
+export const isSmsVerificationKeyValid = async (key: string) => {
+  return !!await smsVerifyFinalizedCollection.findOne({key});
+};
