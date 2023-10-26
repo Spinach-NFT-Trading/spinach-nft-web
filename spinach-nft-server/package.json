@@ -17,6 +17,7 @@
   "author": "RaenonX",
   "license": "ISC",
   "dependencies": {
+    "@azure/storage-blob": "^12.16.0",
     "@fastify/cors": "^8.3.0",
     "@fastify/helmet": "^11.0.0",
     "fastify": "^4.21.0",

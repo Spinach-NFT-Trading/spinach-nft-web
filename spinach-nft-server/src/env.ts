@@ -19,3 +19,4 @@ export const ApiPort = env.get('SPINACH_API_PORT').required().asPortNumber();
 export const SmsUsername = env.get('SPINACH_SMS_USERNAME').required().asString();
 
 export const SmsPassword = env.get('SPINACH_SMS_PASSWORD').required().asString();
+
