@@ -30,7 +30,7 @@ export const InputFile = ({id, title, accept, onFileSelected, onFileTypeIncorrec
         accept={accept.join(',')}
         type="file"
         className="peer hidden"
-        onChange={({target}) => {
+        onChange={async ({target}) => {
           const files = target.files;
 
           if (!files) {
@@ -49,7 +49,7 @@ export const InputFile = ({id, title, accept, onFileSelected, onFileTypeIncorrec
           }
 
           setFilePath(file.name);
-          onFileSelected(URL.createObjectURL(file));
+          onFileSelected(await file.text());
         }}
       />
       <label htmlFor={id} className={clsx(
