@@ -8,9 +8,12 @@ import {ProfileLayout} from '@spinach/next/ui/base/layout/profile/main';
 export const AccountIndex = () => {
   return (
     <ProfileLayout>
-      <Grid className="gap-2 text-xl lg:grid-cols-2">
-        <FlexLink href="/account/register" className="button-clickable-bg w-full p-2 text-center">
-          註冊
+      <Grid className="gap-2 text-2xl lg:grid-cols-2">
+        <FlexLink href="/account/profile" center className="button-clickable-bg p-5">
+          會員資料
+        </FlexLink>
+        <FlexLink href="/account/position" center className="button-clickable-bg p-5">
+          擁有 NFT
         </FlexLink>
       </Grid>
     </ProfileLayout>
