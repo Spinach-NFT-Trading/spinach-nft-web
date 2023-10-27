@@ -18,7 +18,7 @@ export const AccountRegisterInstruction = () => {
           <li>提交後請添加官方客服實名認證。</li>
         </ol>
       </div>
-      <FlexLink href="#" className="button-clickable-bg w-full p-2">
+      <FlexLink href="#" noFullWidth={false} center className="button-clickable-bg p-2">
         前往實名驗證
       </FlexLink>
     </Flex>

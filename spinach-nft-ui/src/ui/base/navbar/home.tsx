@@ -9,8 +9,8 @@ import {imageGallerySizes} from '@spinach/next/styles/image';
 
 export const NavHomepage = () => {
   return (
-    <FlexLink href="/" className={clsx(
-      'transform-smooth nav-height button-bg-hover group sticky left-0 flex items-center gap-2 rounded-lg px-1.5',
+    <FlexLink href="/" center className={clsx(
+      'transform-smooth nav-height button-bg-hover group sticky left-0 gap-2 rounded-lg px-1.5',
     )}>
       <div className="nav-height relative w-10">
         <NextImage

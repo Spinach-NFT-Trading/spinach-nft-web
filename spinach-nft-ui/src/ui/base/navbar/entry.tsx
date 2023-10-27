@@ -23,13 +23,10 @@ export const NavEntryUI = ({href, text, showOnlyIfLoggedIn, session}: Props) => 
   const isCurrent = href === pathname;
 
   return (
-    <FlexLink
-      href={isCurrent ? '#' : href}
-      className={clsx(
-        'nav-height button-base relative flex items-center justify-center px-2',
-        isCurrent ? 'cursor-auto bg-slate-700/30' : 'button-clickable group',
-      )}
-    >
+    <FlexLink href={isCurrent ? '#' : href} center className={clsx(
+      'nav-height button-base relative px-2',
+      isCurrent ? 'cursor-auto bg-slate-700/30' : 'button-clickable group',
+    )}>
       {text}
     </FlexLink>
   );

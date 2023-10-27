@@ -61,7 +61,7 @@ export const AccountLoginClient = ({error}: Props) => {
           <button type="submit" className="button-clickable-bg w-full p-2">
             登入
           </button>
-          <FlexLink href="/account/register" className="button-clickable-border w-full p-2 text-center">
+          <FlexLink href="/account/register" center className="button-clickable-border p-2">
             註冊
           </FlexLink>
         </Flex>

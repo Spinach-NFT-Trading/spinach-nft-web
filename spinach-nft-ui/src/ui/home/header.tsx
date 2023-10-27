@@ -26,10 +26,10 @@ export const HomeHeader = ({session, currentFx}: Props) => {
         {
           !session &&
           <Flex direction="row" noFullWidth className="absolute bottom-5 right-5 z-10 justify-end gap-5">
-            <FlexLink href="/account/register" className="button-clickable-bg w-20 p-2 text-center">
+            <FlexLink href="/account/register" center className="button-clickable-bg w-20 p-2">
               註冊
             </FlexLink>
-            <FlexLink href="/account/login" className="button-clickable-border w-20 p-2 text-center">
+            <FlexLink href="/account/login" center className="button-clickable-border w-20 p-2">
               登入
             </FlexLink>
           </Flex>
