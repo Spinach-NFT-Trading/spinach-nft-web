@@ -1,10 +1,10 @@
 import React from 'react';
 
-import {accountIdVerificationTypeText} from '@spinach/common/const/auth';
 import {AccountIdVerificationType} from '@spinach/common/types/api/profile/id';
 import clsx from 'clsx';
 
 import {InputFileImageOnly} from '@spinach/next/components/shared/common/input/file/image';
+import {accountIdVerificationTypeText} from '@spinach/next/const/account';
 import {AccountRegisterIdVerificationState} from '@spinach/next/ui/account/register/idVerification/type';
 import {AccountRegisterCommonProps, AccountRegisterInput} from '@spinach/next/ui/account/register/type';
 
