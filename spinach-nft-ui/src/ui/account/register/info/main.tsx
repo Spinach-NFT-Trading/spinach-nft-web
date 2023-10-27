@@ -7,6 +7,7 @@ import {
   usernamePattern,
   walletPattern,
 } from '@spinach/common/const/auth';
+import {IsoDateString} from '@spinach/common/types/common/date';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {FlexForm} from '@spinach/next/components/layout/flex/form';
@@ -18,6 +19,7 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
   const {
     name,
     email,
+    birthday,
     lineId,
     wallet,
     username,
@@ -50,6 +52,17 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
             email: target.value,
           } satisfies AccountRegisterInput))}
           autoComplete="email"
+          required
+        />
+        <InputFloatingLabel
+          id="birthday"
+          placeholder="生日"
+          type="date"
+          value={birthday}
+          onChange={({target}) => setInput((original) => ({
+            ...original,
+            birthday: target.value as IsoDateString,
+          } satisfies AccountRegisterInput))}
           required
         />
         <InputFloatingLabel

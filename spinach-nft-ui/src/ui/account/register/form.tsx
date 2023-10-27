@@ -25,6 +25,7 @@ export const AccountRegisterForm = ({setError}: Props) => {
     // Step 2 - Basic info
     name: '',
     email: '',
+    birthday: '1990-01-01',
     lineId: '',
     wallet: '',
     username: '',

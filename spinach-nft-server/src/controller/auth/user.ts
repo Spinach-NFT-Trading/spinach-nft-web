@@ -14,6 +14,7 @@ export const registerUser = async ({
   phoneVerificationKey,
   name,
   email,
+  birthday,
   lineId,
   wallet,
   username,
@@ -58,6 +59,7 @@ export const registerUser = async ({
     passwordHash: await hashPassword(password),
     name,
     email,
+    birthday,
     lineId,
     wallet,
   });
@@ -85,6 +87,7 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     username: info.username,
     name: info.name,
     email: info.email,
+    birthday: info.birthday,
     lineId: info.lineId,
     wallet: info.wallet,
     bankDetails: await userBankDetailsCollection.find({username: info.username}).toArray(),

@@ -69,6 +69,7 @@ export const addAuthRegister = () => {
           name: body.name,
           email: body.email,
           username: body.username,
+          birthday: body.birthday,
           lineId: body.lineId,
           wallet: body.wallet,
           bankDetails: [],
