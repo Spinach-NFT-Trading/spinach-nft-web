@@ -14,7 +14,7 @@ import {sendApiPost} from '@spinach/next/utils/api/common';
 
 
 type Props = {
-  setError: (error: ApiErrorCode) => void,
+  setError: (error: ApiErrorCode | null) => void,
 };
 
 export const AccountRegisterForm = ({setError}: Props) => {
@@ -49,6 +49,7 @@ export const AccountRegisterForm = ({setError}: Props) => {
     });
 
     if (response.success) {
+      setError(null);
       setInput((original) => ({
         ...original,
         step: 'completed',
@@ -82,9 +83,7 @@ export const AccountRegisterForm = ({setError}: Props) => {
         show={step === 'idVerification'}
         input={input}
         setInput={setInput}
-        onComplete={async () => {
-          await onSubmit();
-        }}
+        onComplete={onSubmit}
       />
       <AccountRegisterCompleted show={step === 'completed'}/>
     </Flex>
