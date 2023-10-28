@@ -8,7 +8,7 @@ type UploadBlobOpts = {
 };
 
 export const uploadBlob = async ({container, name, data}: UploadBlobOpts) => {
-  const containerClient = azureBlobClient.getContainerClient(container);
+  const containerClient = azureBlobClient.getContainerClient(container.toLowerCase());
   await containerClient.createIfNotExists();
 
   const blockBlobClient = containerClient.getBlockBlobClient(name);
