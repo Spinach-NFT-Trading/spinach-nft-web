@@ -27,6 +27,7 @@
     "eslint-config-google": "*",
     "eslint-import-resolver-typescript":"*",
     "eslint-plugin-import": "*",
+    "jest": "*",
     "mongodb": "*",
     "pm2": "*",
     "typescript": "*"

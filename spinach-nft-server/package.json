@@ -42,6 +42,7 @@
     "mongodb": "*",
     "nodemon": "*",
     "pm2": "*",
+    "ts-jest": "*",
     "ts-node": "*",
     "tsc-alias": "*",
     "typescript": "*"
