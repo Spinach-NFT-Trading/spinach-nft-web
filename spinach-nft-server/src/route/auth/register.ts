@@ -11,6 +11,7 @@ import {AccountIdVerificationType, accountIdVerificationType} from '@spinach/com
 
 import {Server} from '@spinach/server/const';
 import {registerUser} from '@spinach/server/controller/auth/user';
+import {isIdNumberValid} from '@spinach/server/utils/id';
 
 
 type UploadIdImageOpts = {
@@ -46,6 +47,13 @@ export const addAuthRegister = () => {
       },
     },
     async ({body}): Promise<UserRegisterResponse> => {
+      if (!isIdNumberValid(body.idNumber)) {
+        return {
+          success: false,
+          error: 'idNumberInvalid',
+        };
+      }
+
       const errorOrUserId = await registerUser(body);
 
       if (isApiError(errorOrUserId)) {
@@ -66,6 +74,7 @@ export const addAuthRegister = () => {
         success: true,
         data: {
           id,
+          idNumber: body.idNumber,
           name: body.name,
           email: body.email,
           username: body.username,

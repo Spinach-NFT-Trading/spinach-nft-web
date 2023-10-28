@@ -12,6 +12,7 @@ import {isSmsVerificationKeyValid} from '@spinach/server/controller/auth/verify/
 
 export const registerUser = async ({
   phoneVerificationKey,
+  idNumber,
   name,
   email,
   birthday,
@@ -20,6 +21,10 @@ export const registerUser = async ({
   username,
   password,
 }: UserRegisterRequest): Promise<ApiErrorCode | ObjectId> => {
+  if (await userInfoCollection.findOne({idNumber})) {
+    return 'takenIdNumber';
+  }
+
   if (await userInfoCollection.findOne({username})) {
     return 'takenUsername';
   }
@@ -55,6 +60,7 @@ export const registerUser = async ({
   }
 
   const result = await userInfoCollection.insertOne({
+    idNumber,
     username,
     passwordHash: await hashPassword(password),
     name,
@@ -84,6 +90,7 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
 
   return {
     id: info._id.toHexString(),
+    idNumber: info.idNumber,
     username: info.username,
     name: info.name,
     email: info.email,

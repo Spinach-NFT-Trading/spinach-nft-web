@@ -4,6 +4,7 @@ import {Static, TString, Type} from '@sinclair/typebox';
 export const apiErrorCode = [
   'accountNotFound',
   'passwordMismatch',
+  'takenIdNumber',
   'takenUsername',
   'takenName',
   'takenEmail',
@@ -19,6 +20,7 @@ export const apiErrorCode = [
   'smsPhoneInvalid',
   'smsPhoneUsed',
   'smsCodeInvalid',
+  'idNumberInvalid',
 ] as const;
 
 export interface TApiErrorCode extends TString {

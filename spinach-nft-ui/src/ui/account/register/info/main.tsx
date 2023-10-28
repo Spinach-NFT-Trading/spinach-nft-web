@@ -7,6 +7,7 @@ import {
   usernamePattern,
   walletPattern,
 } from '@spinach/common/const/auth';
+import {idNumberPattern} from '@spinach/common/const/id';
 import {IsoDateString} from '@spinach/common/types/common/date';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
@@ -17,6 +18,7 @@ import {AccountRegisterCommonProps, AccountRegisterInput} from '@spinach/next/ui
 
 export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: AccountRegisterCommonProps) => {
   const {
+    idNumber,
     name,
     email,
     birthday,
@@ -29,6 +31,18 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
   return (
     <AnimatedCollapse show={show}>
       <FlexForm className="gap-2" onSubmit={onComplete}>
+        <InputFloatingLabel
+          id="idNumber"
+          placeholder="身分證字號"
+          type="text"
+          value={idNumber}
+          onChange={({target}) => setInput((original) => ({
+            ...original,
+            idNumber: target.value,
+          } satisfies AccountRegisterInput))}
+          required
+          pattern={idNumberPattern}
+        />
         <InputFloatingLabel
           id="name"
           placeholder="姓名"

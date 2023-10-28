@@ -4,6 +4,7 @@ import {ApiErrorCode, isApiError} from '@spinach/common/types/api/error';
 const apiErrorStringMap: {[code in ApiErrorCode]: string} = {
   accountNotFound: '找不到對應的帳號。',
   passwordMismatch: '密碼不正確。',
+  takenIdNumber: '身份證字號已被使用。',
   takenEmail: '電子信箱已被使用。',
   takenLineId: 'LINE ID 已被使用。',
   takenName: '姓名已被使用。',
@@ -19,6 +20,7 @@ const apiErrorStringMap: {[code in ApiErrorCode]: string} = {
   smsPhoneInvalid: '手機號碼無效。',
   smsPhoneUsed: '手機號碼已被使用。',
   smsCodeInvalid: '驗證碼無效。',
+  idNumberInvalid: '無效的身份證字號。',
 };
 
 export const translateApiError = (error: string): string => {

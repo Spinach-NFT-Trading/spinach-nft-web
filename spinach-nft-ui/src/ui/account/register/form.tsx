@@ -23,6 +23,7 @@ export const AccountRegisterForm = ({setError}: Props) => {
     // Step 1 - SMS
     phoneVerificationKey: '',
     // Step 2 - Basic info
+    idNumber: '',
     name: '',
     email: '',
     birthday: '1990-01-01',
