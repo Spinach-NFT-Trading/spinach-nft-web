@@ -20,6 +20,7 @@ export const initServer = ({appName, logDir, afterBuild}: InitServerOpts) => {
       environment: getEnvironment().toLowerCase(),
     }),
     trustProxy: true,
+    bodyLimit: 20 * 1024 * 1024, // Default limit set to 20 MB
   })
     .withTypeProvider<TypeBoxTypeProvider>();
 
