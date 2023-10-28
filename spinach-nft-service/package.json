@@ -17,13 +17,13 @@
   "author": "RaenonX",
   "license": "ISC",
   "dependencies": {
-    "@faker-js/faker": "^8.0.2",
+    "@faker-js/faker": "^8.2.0",
     "decimal.js": "^10.4.3",
     "spinach-nft-common": "*",
-    "ws": "^8.13.0"
+    "ws": "^8.14.2"
   },
   "devDependencies": {
-    "@types/ws": "^8.5.5"
+    "@types/ws": "^8.5.8"
   },
   "peerDependencies": {
     "@types/node": "*",
