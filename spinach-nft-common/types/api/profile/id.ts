@@ -8,8 +8,12 @@ export const accountIdVerificationType = [
   'secondaryFront',
 ] as const;
 
-export const AccountIdVerificationTypeSchema = Type.Union(
-  accountIdVerificationType.map((type) => Type.Literal(type)),
-);
+export const AccountIdVerificationTypeSchema = Type.Union([
+  // Needs to have the same literals of `accountIdVerificationType`
+  Type.Literal('idFront'),
+  Type.Literal('idBack'),
+  Type.Literal('handheld'),
+  Type.Literal('secondaryFront'),
+]);
 
 export type AccountIdVerificationType = Static<typeof AccountIdVerificationTypeSchema>;
