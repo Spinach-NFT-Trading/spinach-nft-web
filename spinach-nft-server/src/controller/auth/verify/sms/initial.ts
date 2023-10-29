@@ -53,9 +53,9 @@ export const popPendingSmsVerification = async ({
     otp,
   });
 
-  if (!data?.value) {
+  if (!data) {
     return 'smsCodeInvalid';
   }
 
-  return data.value;
+  return data;
 };
