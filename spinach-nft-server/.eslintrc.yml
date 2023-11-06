@@ -78,10 +78,18 @@ rules:
     - error
     - count: 2
 
+  import/no-relative-packages:
+    - error
+
   import/no-unresolved:
     - error
 
   object-curly-spacing: off
+
+  no-restricted-imports:
+    - error
+    - patterns:
+        - 'spinach-nft-*'
 
   "@typescript-eslint/object-curly-spacing":
     - error
