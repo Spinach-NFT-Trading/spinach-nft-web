@@ -1,5 +1,4 @@
 import {Mongo} from '@spinach/common/controller/const';
-import {UserInfoSchemaBase} from '@spinach/common/types/common/user';
 import {
   UserBalanceHistoryModel,
   UserBankDetailModel,
@@ -20,7 +19,12 @@ export const userBankDetailsCollection = db.collection<UserBankDetailModel>('ban
 
 const initUserIndex = async () => {
   return Promise.all([
-    ...Object.keys(UserInfoSchemaBase).map((key) => userInfoCollection.createIndex({[key]: 1}, {unique: true})),
+    userInfoCollection.createIndex({email: 1}, {unique: true}),
+    userInfoCollection.createIndex({username: 1}, {unique: true}),
+    userInfoCollection.createIndex({idNumber: 1}, {unique: true}),
+    userInfoCollection.createIndex({name: 1}, {unique: true}),
+    userInfoCollection.createIndex({lineId: 1}, {unique: true}),
+    userInfoCollection.createIndex({wallet: 1}, {unique: true}),
     userBalanceCollection.createIndex({userId: 1}),
     userNftPositionCollection.createIndex({owner: 1, nftId: 1}, {unique: true}),
     userBalanceCollection.createIndex(
