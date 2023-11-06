@@ -12,7 +12,8 @@
     "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
     "start": "node ./dist/spinach-nft-server/src/main.js",
     "lint": "eslint src/ --ext .ts,.tsx",
-    "lint:fix": "eslint src/ --ext .ts,.tsx --fix"
+    "lint:fix": "eslint src/ --ext .ts,.tsx --fix",
+    "tsc": "tsc --noemit"
   },
   "author": "RaenonX",
   "license": "ISC",

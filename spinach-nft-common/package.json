@@ -7,7 +7,8 @@
     "npm": "^9.5.1"
   },
   "scripts": {
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "tsc": "tsc --noemit"
   },
   "author": "RaenonX",
   "license": "ISC",
