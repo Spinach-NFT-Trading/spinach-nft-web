@@ -1,23 +1,19 @@
 import {getBlobClient} from '@spinach/common/controller/blob/client';
 import {AzureBlobControlOpts} from '@spinach/common/controller/blob/type';
+import {BinaryData} from '@spinach/common/types/common/data';
+import {streamToUint8Array} from '@spinach/common/utils/data';
 
 
-const streamToBuffer = async (readableStream: NodeJS.ReadableStream) => {
-  return new Promise<Buffer>((resolve, reject) => {
-    const chunks: Uint8Array[] = [];
-    readableStream.on('data', (data) => chunks.push(data instanceof Buffer ? data : Buffer.from(data)));
-    readableStream.on('end', () => resolve(Buffer.concat(chunks)));
-    readableStream.on('error', reject);
-  });
-};
-
-export const getBlobBase64 = async (opts: AzureBlobControlOpts) => {
+export const getBlob = async (opts: AzureBlobControlOpts): Promise<BinaryData | null> => {
   const {client} = await getBlobClient(opts);
 
-  const {readableStreamBody} = await client.download();
-  if (!readableStreamBody) {
+  const {contentType, readableStreamBody} = await client.download();
+  if (!readableStreamBody || !contentType) {
     return null;
   }
 
-  return (await streamToBuffer(readableStreamBody)).toString('base64');
+  return {
+    contentType,
+    data: Object.values(await streamToUint8Array(readableStreamBody)),
+  };
 };
