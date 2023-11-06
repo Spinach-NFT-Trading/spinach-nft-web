@@ -4,12 +4,12 @@ import {nftInfoCollection, nftOnSaleCollection, nftTxnCollection} from '@spinach
 import {userNftPositionCollection} from '@spinach/common/controller/collections/user';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {NftTxnModel} from '@spinach/common/types/data/nft';
+import {toSum} from '@spinach/common/utils/array';
 import {ObjectId} from 'mongodb';
 
 import mongoPromise from '@spinach/next/lib/mongodb';
 import {NftInfoMap, NftPriceMap} from '@spinach/next/types/mongo/nft';
 import {NftListingData} from '@spinach/next/types/nft';
-import {toSum} from '@spinach/next/utils/array';
 
 
 export const getNftOnSale = (nftId: ObjectId) => {

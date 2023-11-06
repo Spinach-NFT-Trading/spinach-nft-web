@@ -1,4 +1,4 @@
-import {toSum} from 'spinach-nft-ui/src/utils/array';
+import {toSum} from '@spinach/common/utils/array';
 
 import {idNumberValue} from '@spinach/server/const/id';
 
