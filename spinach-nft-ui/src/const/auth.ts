@@ -7,7 +7,6 @@ import credentialsProvider, {CredentialInput} from 'next-auth/providers/credenti
 import {handleUserLoad} from '@spinach/next/controller/userData/load';
 import {getUserPreloadedData} from '@spinach/next/controller/userData/preload';
 import {handleUserRequest} from '@spinach/next/controller/userData/request';
-import {CommonUserData} from '@spinach/next/types/auth';
 import {UserDataAction} from '@spinach/next/types/userData/main';
 
 
@@ -27,42 +26,34 @@ export const authOptions: AuthOptions = {
         token.email = user.email;
       }
 
-      const accountId = token.sub;
-
-      if (trigger === 'update' && accountId) {
-        const {action, options} = session as UserDataAction;
-
-        if (action === 'request') {
-          token.jwtUpdateError = await handleUserRequest({accountId, options});
-          return token;
-        }
-
-        if (action === 'load') {
-          token.lazyLoaded = await handleUserLoad({
-            initialData: token.lazyLoaded,
-            accountId,
-            type: options.type,
-          });
-          return token;
-        }
-
-        console.error(`Unhandled user data action [${action satisfies never}]`);
-      }
+      token.action = (trigger === 'update' && token.sub) ? (session as UserDataAction) : null;
 
       return token;
     },
     session: async ({session, token}) => {
-      // Needs to add the properties on `token` JWT, or it won't be exposed to the UI
-      const addon: CommonUserData = {
-        username: token.username,
-        jwtUpdateError: token.jwtUpdateError,
-        preloaded: await getUserPreloadedData(token.sub),
-        lazyLoaded: token.lazyLoaded,
-      };
+      // Can't use `trigger` here as it's always `undefined`
+      const accountId = token.sub;
+
+      if (token.action && accountId) {
+        const {action, options} = token.action;
+
+        if (action === 'request') {
+          session.user.jwtUpdateError = await handleUserRequest({accountId, options});
+        } else if (action === 'load') {
+          session.user.lazyLoaded = await handleUserLoad({
+            initialData: session.user.lazyLoaded,
+            accountId,
+            type: options.type,
+          });
+        } else {
+          console.error(`Unhandled user data action [${action satisfies never}]`);
+        }
+      }
 
       session.user = {
         ...session.user,
-        ...addon,
+        preloaded: await getUserPreloadedData(token.sub),
+        username: token.username,
       };
 
       return session;
