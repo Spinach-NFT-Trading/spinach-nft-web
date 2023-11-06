@@ -1,6 +1,7 @@
 /* eslint-disable new-cap */
 import React from 'react';
 
+import {projectName} from '@spinach/common/const/project';
 import type {Metadata} from 'next';
 // eslint-disable-next-line camelcase
 import {Noto_Sans} from 'next/font/google';
@@ -17,8 +18,8 @@ const font = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  title: 'GT NFT Market',
-  description: 'GT NFT Market.',
+  title: projectName,
+  description: `${projectName}.`,
 };
 
 const RootLayout = ({children}: React.PropsWithChildren<PageLayoutParams>) => {

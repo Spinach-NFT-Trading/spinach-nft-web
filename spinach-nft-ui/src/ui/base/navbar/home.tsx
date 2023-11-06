@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {projectName} from '@spinach/common/const/project';
 import clsx from 'clsx';
 
 import {FlexLink} from '@spinach/next/components/layout/flex/link';
@@ -15,7 +16,7 @@ export const NavHomepage = () => {
       <div className="nav-height relative w-14">
         <NextImage
           src="/logo-half.png"
-          alt="GT NFT Market"
+          alt={projectName}
           sizes={imageGallerySizes}
           noCover
           className="invert-hoverable object-contain"
@@ -24,7 +25,7 @@ export const NavHomepage = () => {
       <div className="relative hidden h-8 w-24 md:block">
         <NextImage
           src="/logo-full.png"
-          alt="GT NFT Market"
+          alt={projectName}
           sizes={imageGallerySizes}
           noCover
           className="invert-hoverable object-contain"

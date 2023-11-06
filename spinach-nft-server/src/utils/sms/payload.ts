@@ -1,3 +1,5 @@
+import {projectName} from '@spinach/common/const/project';
+
 import {SmsPassword, SmsUsername} from '@spinach/server/env';
 import {SendSmsPayload} from '@spinach/server/types/external/sms';
 
@@ -12,7 +14,7 @@ export const toSmsOtpPayload = ({phone, otp}: ToSmsOtpPayload): SendSmsPayload =
     method: 'instant',
     username: SmsUsername,
     password: SmsPassword,
-    smsMessage: `GT NFT Market 一次性密碼 (OTP): ${otp}`,
+    smsMessage: `${projectName} 一次性密碼 (OTP): ${otp}`,
     phone: [phone],
   };
 };
