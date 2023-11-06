@@ -1,16 +1,25 @@
 import {getBlobClient} from '@spinach/common/controller/blob/client';
 import {AzureBlobControlOpts} from '@spinach/common/controller/blob/type';
+import {BinaryData} from '@spinach/common/types/common/data';
 
 
-type UploadBlobOpts = AzureBlobControlOpts & {
-  data: string,
-};
+type UploadBlobOpts = AzureBlobControlOpts & BinaryData;
 
-export const uploadBlob = async ({data, ...opts}: UploadBlobOpts) => {
+export const uploadBlob = async ({contentType, data, ...opts}: UploadBlobOpts) => {
   const {client, container, name} = await getBlobClient(opts);
-  const uploadBlobResponse = await client.upload(data, data.length);
+  const dataArray = new Uint8Array(data);
 
-  console.log(`Uploaded blob to Azure`);
+  const uploadBlobResponse = await client.upload(
+    dataArray,
+    dataArray.byteLength,
+    {
+      blobHTTPHeaders: {
+        blobContentType: contentType,
+      },
+    },
+  );
+
+  console.log(`Uploaded blob of type '${contentType}' to Azure`);
   console.log(`> Request ID: ${uploadBlobResponse.requestId}`);
   console.log(`> Container: ${container}`);
   console.log(`> Name: ${name}`);

@@ -1,7 +1,10 @@
+import {BinaryData} from '@spinach/common/types/common/data';
+
+
 export type InputFileCommonProps = {
   id: string,
   title: string,
-  onFileSelected: (data: string | null) => void,
+  onFileSelected: (data: BinaryData | null) => void,
   onFileTypeIncorrect: (fileType: string) => void,
   className?: string,
   disabled?: boolean,

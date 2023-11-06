@@ -49,7 +49,10 @@ export const InputFile = ({id, title, accept, onFileSelected, onFileTypeIncorrec
           }
 
           setFilePath(file.name);
-          onFileSelected(await file.text());
+          onFileSelected({
+            contentType: file.type,
+            data: Object.values(new Uint8Array(await file.arrayBuffer())),
+          });
         }}
       />
       <label htmlFor={id} className={clsx(
