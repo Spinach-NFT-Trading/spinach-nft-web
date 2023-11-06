@@ -1,4 +1,4 @@
-import {BinaryData} from '@spinach/common/types/common/data';
+import {BinaryData} from '@spinach/common/types/common/binary';
 
 
 export type InputFileCommonProps = {

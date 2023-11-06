@@ -2,6 +2,7 @@ import {Static, Type} from '@sinclair/typebox';
 
 import {PasswordSchemaBase} from '@spinach/common/types/api/auth/common';
 import {AccountIdVerificationTypeSchema} from '@spinach/common/types/api/profile/id';
+import {BinaryDataSchema} from '@spinach/common/types/common/binary';
 import {UserInfoSchema, UserInfoSchemaBase} from '@spinach/common/types/common/user';
 import {generateApiFailableSchema} from '@spinach/common/utils/api/schema';
 
@@ -13,7 +14,7 @@ export const UserRegisterRequestSchema = Type.Object(
     password: PasswordSchemaBase,
     image: Type.Record(
       AccountIdVerificationTypeSchema,
-      Type.Union([Type.String(), Type.Null()]),
+      Type.Union([BinaryDataSchema, Type.Null()]),
     ),
   },
   {additionalProperties: false},

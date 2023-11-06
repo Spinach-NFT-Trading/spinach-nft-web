@@ -1,4 +1,4 @@
-import {ByteArray} from '@spinach/common/types/common/data';
+import {ByteArray} from '@spinach/common/types/common/binary';
 
 
 export const byteArrayToDataUri = async (data: ByteArray) => {

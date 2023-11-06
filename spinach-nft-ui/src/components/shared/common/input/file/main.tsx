@@ -2,6 +2,7 @@ import React from 'react';
 
 import DocumentArrowUpIcon from '@heroicons/react/24/outline/DocumentArrowUpIcon';
 import {MimeTypes} from '@spinach/common/types/common/mime';
+import {isMimeTypesOfImage} from '@spinach/common/utils/mime';
 import {clsx} from 'clsx';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -43,14 +44,15 @@ export const InputFile = ({id, title, accept, onFileSelected, onFileTypeIncorrec
             return;
           }
 
-          if (!accept.includes(file.type as MimeTypes)) {
+          const contentType = file.type;
+          if (!isMimeTypesOfImage(contentType)) {
             onFileTypeIncorrect(file.type);
             return;
           }
 
           setFilePath(file.name);
           onFileSelected({
-            contentType: file.type,
+            contentType,
             data: Object.values(new Uint8Array(await file.arrayBuffer())),
           });
         }}

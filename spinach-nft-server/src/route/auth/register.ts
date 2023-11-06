@@ -31,7 +31,7 @@ export const uploadIdImage = ({request, id, type}: UploadIdImageOpts) => {
   return uploadBlob({
     container: type,
     name: id,
-    data,
+    ...data,
   });
 };
 

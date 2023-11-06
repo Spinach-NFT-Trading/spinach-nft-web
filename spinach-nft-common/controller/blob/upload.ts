@@ -1,6 +1,6 @@
 import {getBlobClient} from '@spinach/common/controller/blob/client';
 import {AzureBlobControlOpts} from '@spinach/common/controller/blob/type';
-import {BinaryData} from '@spinach/common/types/common/data';
+import {BinaryData} from '@spinach/common/types/common/binary';
 
 
 type UploadBlobOpts = AzureBlobControlOpts & BinaryData;
