@@ -24,7 +24,7 @@ export const NftPurchaseButton = ({nftId}: Props) => {
     }
 
     if (status === 'completed') {
-      redirect('/account/profile');
+      redirect('/account/position');
     }
   }, [status]);
 
