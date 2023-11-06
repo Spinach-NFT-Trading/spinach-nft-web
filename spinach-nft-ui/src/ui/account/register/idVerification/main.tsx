@@ -7,7 +7,11 @@ import {AccountRegisterIdVerificationState} from '@spinach/next/ui/account/regis
 import {AccountRegisterCommonProps} from '@spinach/next/ui/account/register/type';
 
 
-export const AccountRegisterIdVerification = (props: AccountRegisterCommonProps) => {
+type Props = AccountRegisterCommonProps & {
+  uploading: boolean,
+};
+
+export const AccountRegisterIdVerification = ({uploading, ...props}: Props) => {
   const {show, input, onComplete} = props;
 
   const [state, setState] = React.useState<AccountRegisterIdVerificationState>({
@@ -48,9 +52,9 @@ export const AccountRegisterIdVerification = (props: AccountRegisterCommonProps)
         />
         <button
           type="submit" className="enabled:button-clickable-bg disabled:button-disabled w-full p-2"
-          disabled={Object.values(input.image).some((data) => !data)}
+          disabled={uploading || Object.values(input.image).some((data) => !data)}
         >
-          註冊
+          {uploading ? '上傳中...' : '註冊'}
         </button>
       </FlexForm>
     </AnimatedCollapse>

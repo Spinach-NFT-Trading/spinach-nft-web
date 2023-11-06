@@ -18,6 +18,7 @@ type Props = {
 };
 
 export const AccountRegisterForm = ({setError}: Props) => {
+  const [uploading, setUploading] = React.useState(false);
   const [input, setInput] = React.useState<AccountRegisterInput>({
     step: 'sms',
     // Step 1 - SMS
@@ -43,10 +44,12 @@ export const AccountRegisterForm = ({setError}: Props) => {
   const {step} = input;
 
   const onSubmit = async () => {
+    setUploading(true);
     const response = await sendApiPost<UserRegisterResponse>({
       path: apiPath.auth.register,
       data: input,
     });
+    setUploading(false);
 
     if (response.success) {
       setError(null);
@@ -81,6 +84,7 @@ export const AccountRegisterForm = ({setError}: Props) => {
       )}/>
       <AccountRegisterIdVerification
         show={step === 'idVerification'}
+        uploading={uploading}
         input={input}
         setInput={setInput}
         onComplete={onSubmit}
