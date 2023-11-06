@@ -8,7 +8,8 @@ const idNumberWeights = [8, 7, 6, 5, 4, 3, 2, 1, 1];
 export const isIdNumberValid = (idNumber: string): boolean => {
   const value = idNumberValue[idNumber[0]];
 
-  if (!value) {
+  // Explicit because `value` can be `0`, which is a valid value here
+  if (value === undefined) {
     return false;
   }
 
