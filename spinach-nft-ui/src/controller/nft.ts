@@ -2,12 +2,12 @@
 import {getGoldAsset, recordUserDataAfterNftTxn} from '@spinach/common/controller/actors/user';
 import {nftInfoCollection, nftOnSaleCollection, nftTxnCollection} from '@spinach/common/controller/collections/nft';
 import {userNftPositionCollection} from '@spinach/common/controller/collections/user';
+import {Mongo} from '@spinach/common/controller/const';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {NftTxnModel} from '@spinach/common/types/data/nft';
 import {toSum} from '@spinach/common/utils/array';
 import {ObjectId} from 'mongodb';
 
-import mongoPromise from '@spinach/next/lib/mongodb';
 import {NftInfoMap, NftPriceMap} from '@spinach/next/types/mongo/nft';
 import {NftListingData} from '@spinach/next/types/nft';
 
@@ -109,7 +109,7 @@ export const buyNft = async ({buyer, nftId}: NftBuyOpts): Promise<ApiErrorCode |
     price: nftOnSale.price,
   };
 
-  await (await mongoPromise).withSession(async (session) => {
+  await Mongo.withSession(async (session) => {
     await session.withTransaction(async () => {
       const nftTxn = await nftTxnCollection.insertOne(txn, {session});
 
