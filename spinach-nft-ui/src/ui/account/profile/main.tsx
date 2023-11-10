@@ -13,7 +13,7 @@ export const AccountProfile = () => {
       <Grid className="grid-cols-1 gap-2 text-3xl lg:grid-cols-2">
         <FlexLink href="/account/position" center className="button-clickable-bg h-36 gap-2">
           <MagnifyingGlassIcon className="h-9 w-9"/>
-          NFT 持倉
+          <div>NFT 持倉</div>
         </FlexLink>
       </Grid>
     </ProfileLayout>
