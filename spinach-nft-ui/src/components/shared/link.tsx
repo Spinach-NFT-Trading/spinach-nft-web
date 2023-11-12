@@ -10,7 +10,7 @@ type Props = {
   text: string,
 };
 
-export const AccountInfoLink = ({link, text}: Props) => {
+export const TileLink = ({link, text}: Props) => {
   return (
     <FlexLink href={link} center className="button-clickable-bg h-36 gap-2">
       <MagnifyingGlassIcon className="h-9 w-9"/>
