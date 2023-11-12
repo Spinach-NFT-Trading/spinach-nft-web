@@ -1,6 +1,7 @@
 import {ObjectId} from 'mongodb';
 
 import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft';
+import {getUserInfoById} from '@spinach/next/controller/user/info';
 import {NftListingData} from '@spinach/next/types/nft';
 import {UserLazyLoadedDataType} from '@spinach/next/types/userData/lazyLoaded';
 import {UserLazyLoadedData} from '@spinach/next/types/userData/main';
@@ -26,6 +27,10 @@ const loadData = async ({type, accountId} : GetUserLazyDataOpts) => {
       price: nftPriceMap[data._id.toString()],
       ...data,
     } satisfies NftListingData)) satisfies UserLazyLoadedData['nftPosition'];
+  }
+
+  if (type === 'userInfo') {
+    return await getUserInfoById(accountId) satisfies UserLazyLoadedData['userInfo'];
   }
 
   console.error(`Unknown data type ${type satisfies never} to load data`);
