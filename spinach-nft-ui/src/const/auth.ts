@@ -4,9 +4,9 @@ import * as env from 'env-var';
 import {AuthOptions} from 'next-auth';
 import credentialsProvider, {CredentialInput} from 'next-auth/providers/credentials';
 
-import {handleUserLoad} from '@spinach/next/controller/userData/load';
-import {getUserPreloadedData} from '@spinach/next/controller/userData/preload';
-import {handleUserRequest} from '@spinach/next/controller/userData/request';
+import {handleUserLoad} from '@spinach/next/controller/act/load';
+import {getUserPreloadedData} from '@spinach/next/controller/act/preload';
+import {handleUserRequest} from '@spinach/next/controller/act/request';
 import {UserDataAction} from '@spinach/next/types/userData/main';
 
 
