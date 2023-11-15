@@ -2,12 +2,13 @@ import {Static, Type} from '@sinclair/typebox';
 import {ObjectId} from 'mongodb';
 
 import {UsernameSchemaBase} from '@spinach/common/types/api/auth/common';
-import {BankDetailsSchemaBase, UserInfoSchemaBase} from '@spinach/common/types/common/user';
+import {BankDetailsSchemaBase, UserInfoSchemaBase, UserPropertySchemaBase} from '@spinach/common/types/common/user';
 
 
 export const UserModelSchema = Type.Object(
   {
     ...UserInfoSchemaBase,
+    ...UserPropertySchemaBase,
     passwordHash: Type.String(),
   },
   {additionalProperties: false},

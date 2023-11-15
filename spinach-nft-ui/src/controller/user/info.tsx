@@ -22,5 +22,7 @@ export const getUserInfoById = async (id: string): Promise<UserInfo | undefined>
     lineId: info.lineId,
     wallet: info.wallet,
     bankDetails: await userBankDetailsCollection.find({username: info.username}).toArray(),
+    verified: info.verified,
+    admin: info.admin,
   };
 };

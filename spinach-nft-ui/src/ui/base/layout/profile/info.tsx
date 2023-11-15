@@ -7,7 +7,7 @@ import {ProfileLayoutVerificationStatus} from '@spinach/next/ui/base/layout/prof
 
 
 export const ProfileLayoutInfo = ({session}: ProfileLayoutProps) => {
-  const {username} = session.user;
+  const {username, verified} = session.user;
 
   return (
     <Flex direction="row" noFullWidth className="items-center gap-2">
@@ -16,7 +16,7 @@ export const ProfileLayoutInfo = ({session}: ProfileLayoutProps) => {
         <div className="text-3xl text-slate-200">
           {username}
         </div>
-        <ProfileLayoutVerificationStatus/>
+        <ProfileLayoutVerificationStatus verified={verified}/>
       </Flex>
     </Flex>
   );

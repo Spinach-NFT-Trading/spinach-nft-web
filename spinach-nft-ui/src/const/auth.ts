@@ -24,6 +24,8 @@ export const authOptions: AuthOptions = {
         token.username = user.username;
         token.name = user.name;
         token.email = user.email;
+        token.isAdmin = user.admin;
+        token.verified = user.verified;
       }
 
       token.action = (trigger === 'update' && token.sub) ? (session as UserDataAction) : null;
@@ -54,6 +56,8 @@ export const authOptions: AuthOptions = {
         ...session.user,
         preloaded: await getUserPreloadedData(token.sub),
         username: token.username,
+        verified: token.verified,
+        isAdmin: token.isAdmin,
       };
 
       return session;

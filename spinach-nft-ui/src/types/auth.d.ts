@@ -8,6 +8,8 @@ import {UserDataAction, UserLazyLoadedData, UserPreloadedData} from '@spinach/ne
 
 export type CommonUserData = {
   username: UserInfo['username'],
+  verified: boolean,
+  isAdmin: boolean,
 };
 
 declare module 'next-auth' {

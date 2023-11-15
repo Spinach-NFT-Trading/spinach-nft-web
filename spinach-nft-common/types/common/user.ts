@@ -28,6 +28,11 @@ export const UserBankDetailsSchema = Type.Object(
 
 export type UserBankDetails = Static<typeof UserBankDetailsSchema>;
 
+export const UserPropertySchemaBase = {
+  verified: Type.Boolean(),
+  admin: Type.Boolean(),
+};
+
 export const UserInfoSchemaBase = {
   username: UsernameSchemaBase,
   idNumber: IdNumberSchemaBase,
@@ -42,6 +47,7 @@ export const UserInfoSchema = Type.Object(
   {
     id: Type.String(),
     ...UserInfoSchemaBase,
+    ...UserPropertySchemaBase,
     bankDetails: Type.Array(BankDetailsSchema, {uniqueItems: true}),
   },
   {additionalProperties: false},

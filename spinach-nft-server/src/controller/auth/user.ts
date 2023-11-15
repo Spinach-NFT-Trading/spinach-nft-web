@@ -68,6 +68,8 @@ export const registerUser = async ({
     birthday,
     lineId,
     wallet,
+    verified: false,
+    admin: false,
   });
 
   return result.insertedId;
@@ -98,5 +100,7 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     lineId: info.lineId,
     wallet: info.wallet,
     bankDetails: await userBankDetailsCollection.find({username: info.username}).toArray(),
+    verified: info.verified,
+    admin: info.admin,
   };
 };
