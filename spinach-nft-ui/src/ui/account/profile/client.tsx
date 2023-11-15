@@ -10,7 +10,9 @@ export const AccountProfileClient = () => {
   return (
     <Flex className="gap-2">
       <UserDataLazyLoad
-        type="userInfo"
+        options={{
+          type: 'userInfo',
+        }}
         loadingText="用戶資訊"
         content={(data) => (
           <AccountProfileInfo userInfo={data?.userInfo}/>

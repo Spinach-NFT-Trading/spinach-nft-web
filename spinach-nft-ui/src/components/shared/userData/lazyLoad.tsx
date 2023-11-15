@@ -3,12 +3,12 @@ import React from 'react';
 import {Failed} from '@spinach/next/components/icons/failed';
 import {Loading} from '@spinach/next/components/icons/loading';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
-import {UserLazyLoadedDataType} from '@spinach/next/types/userData/lazyLoaded';
+import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 import {UserLazyLoadedData} from '@spinach/next/types/userData/main';
 
 
 type Props = {
-  type: UserLazyLoadedDataType,
+  options: UserDataLoadingOpts,
   loadingText: string,
   content: (data: UserLazyLoadedData | null | undefined) => React.ReactNode,
 } & ({
@@ -19,7 +19,7 @@ type Props = {
   toAct?: never,
 });
 
-export const UserDataLazyLoad = ({type, loadingText, content, actDeps, toAct}: Props) => {
+export const UserDataLazyLoad = ({options, loadingText, content, actDeps, toAct}: Props) => {
   const {act, status, session} = useUserDataActor();
   const [loaded, setLoaded] = React.useState(false);
 
@@ -29,7 +29,7 @@ export const UserDataLazyLoad = ({type, loadingText, content, actDeps, toAct}: P
     }
 
     if (!loaded && act && session.status === 'authenticated' && status === 'waiting') {
-      void act({action: 'load', options: {type}});
+      void act({action: 'load', options});
     }
   }, [session.status, ...(actDeps ?? [])]);
 

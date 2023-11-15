@@ -11,7 +11,9 @@ export const AccountNftPositionClient = () => {
     <Flex className="gap-2">
       <div className="text-2xl">NFT</div>
       <UserDataLazyLoad
-        type="nftPosition"
+        options={{
+          type: 'nftPosition',
+        }}
         loadingText="NFT"
         content={(data) => (
           <NftListing nfts={data?.nftPosition ?? []}/>
