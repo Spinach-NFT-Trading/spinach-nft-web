@@ -45,7 +45,7 @@ export const authOptions: AuthOptions = {
           session.user.lazyLoaded = await handleUserLoad({
             initialData: session.user.lazyLoaded,
             accountId,
-            type: options.type,
+            options,
           });
         } else {
           console.error(`Unhandled user data action [${action satisfies never}]`);

@@ -3,7 +3,7 @@ import {ObjectId} from 'mongodb';
 import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft';
 import {getUserInfoById} from '@spinach/next/controller/user/info';
 import {NftListingData} from '@spinach/next/types/nft';
-import {UserLazyLoadedDataType} from '@spinach/next/types/userData/lazyLoaded';
+import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 import {UserLazyLoadedData} from '@spinach/next/types/userData/main';
 
 
@@ -14,10 +14,12 @@ export const emptyLazyData: UserLazyLoadedData = {
 type GetUserLazyDataOpts = {
   initialData: UserLazyLoadedData,
   accountId: string,
-  type: UserLazyLoadedDataType,
+  options: UserDataLoadingOpts,
 };
 
-const loadData = async ({type, accountId} : GetUserLazyDataOpts) => {
+const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
+  const type = options.type;
+
   if (type === 'nftPosition') {
     const nftInfo = await (await getNftPositionInfo(new ObjectId(accountId))).toArray();
     const nftPriceMap = await getNftLastTradedPriceMap(nftInfo.map(({_id}) => _id));
@@ -38,11 +40,11 @@ const loadData = async ({type, accountId} : GetUserLazyDataOpts) => {
 };
 
 export const handleUserLoad = async (opts: GetUserLazyDataOpts): Promise<UserLazyLoadedData> => {
-  const {initialData, type} = opts;
+  const {initialData, options} = opts;
 
   return {
     ...initialData,
     ...emptyLazyData,
-    [type]: await loadData(opts),
+    [options.type]: await loadData(opts),
   };
 };
