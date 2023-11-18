@@ -1,28 +1,34 @@
-import {userBankDetailsCollection, userInfoCollection} from '@spinach/common/controller/collections/user';
+import {userInfoCollection} from '@spinach/common/controller/collections/user';
 import {UserInfo} from '@spinach/common/types/common/user';
 import {ObjectId} from 'mongodb';
 
+import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
+import {toUserInfo} from '@spinach/next/controller/user/utils';
+import {throwIfNotAdmin} from '@spinach/next/controller/utils';
+
 
 export const getUserInfoById = async (id: string): Promise<UserInfo | undefined> => {
-  const info = await userInfoCollection.findOne({
+  const model = await userInfoCollection.findOne({
     _id: new ObjectId(id),
   });
 
-  if (!info) {
+  if (!model) {
     return undefined;
   }
 
-  return {
-    id: info._id.toHexString(),
-    idNumber: info.idNumber,
-    username: info.username,
-    name: info.name,
-    email: info.email,
-    birthday: info.birthday,
-    lineId: info.lineId,
-    wallet: info.wallet,
-    bankDetails: await userBankDetailsCollection.find({username: info.username}).toArray(),
-    verified: info.verified,
-    admin: info.admin,
-  };
+  return toUserInfo(model);
+};
+
+type GetUnverifiedUsersOpts = ControllerRequireUserIdOpts;
+
+export const getUnverifiedUsers = async ({executorUserId}: GetUnverifiedUsersOpts): Promise<UserInfo[]> => {
+  await throwIfNotAdmin(executorUserId);
+
+  return await userInfoCollection.find({verified: false})
+    .map(({_id, ...data}): UserInfo => ({
+      ...data,
+      id: _id.toHexString(),
+      bankDetails: [],
+    }))
+    .toArray();
 };

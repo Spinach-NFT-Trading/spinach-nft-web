@@ -1,7 +1,8 @@
+import {getImageBlob} from '@spinach/common/controller/blob/get';
 import {ObjectId} from 'mongodb';
 
 import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft';
-import {getUserInfoById} from '@spinach/next/controller/user/info';
+import {getUnverifiedUsers, getUserInfoById} from '@spinach/next/controller/user/info';
 import {NftListingData} from '@spinach/next/types/nft';
 import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 import {UserLazyLoadedData} from '@spinach/next/types/userData/main';
@@ -28,6 +29,19 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
 
   if (type === 'userInfo') {
     return await getUserInfoById(accountId) satisfies UserLazyLoadedData['userInfo'];
+  }
+
+  if (type === 'adminImageOfId') {
+    return await getImageBlob({
+      container: options.opts.type,
+      name: options.opts.userId,
+    }) satisfies UserLazyLoadedData['adminImageOfId'];
+  }
+
+  if (type === 'adminUnverifiedAccounts') {
+    return await getUnverifiedUsers({
+      executorUserId: accountId,
+    }) satisfies UserLazyLoadedData['adminUnverifiedAccounts'];
   }
 
   console.error(`Unknown data type ${type satisfies never} to load data`);
