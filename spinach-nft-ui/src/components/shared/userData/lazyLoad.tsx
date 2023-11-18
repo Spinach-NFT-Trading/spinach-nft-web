@@ -20,7 +20,12 @@ type Props = {
 });
 
 export const UserDataLazyLoad = ({options, loadingText, content, actDeps, toAct}: Props) => {
-  const {act, status, session} = useUserDataActor();
+  const {
+    act,
+    status,
+    session,
+    lazyLoaded,
+  } = useUserDataActor();
   const [loaded, setLoaded] = React.useState(false);
 
   React.useEffect(() => {
@@ -66,5 +71,5 @@ export const UserDataLazyLoad = ({options, loadingText, content, actDeps, toAct}
     }
   }
 
-  return <>{content(session.data?.user.lazyLoaded)}</>;
+  return content(lazyLoaded);
 };

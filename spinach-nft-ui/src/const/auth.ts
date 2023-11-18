@@ -43,7 +43,6 @@ export const authOptions: AuthOptions = {
           session.user.jwtUpdateError = await handleUserRequest({accountId, options});
         } else if (action === 'load') {
           session.user.lazyLoaded = await handleUserLoad({
-            initialData: session.user.lazyLoaded,
             accountId,
             options,
           });

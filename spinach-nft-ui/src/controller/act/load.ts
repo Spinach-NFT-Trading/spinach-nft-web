@@ -7,12 +7,7 @@ import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 import {UserLazyLoadedData} from '@spinach/next/types/userData/main';
 
 
-export const emptyLazyData: UserLazyLoadedData = {
-  nftPosition: [],
-};
-
 type GetUserLazyDataOpts = {
-  initialData: UserLazyLoadedData,
   accountId: string,
   options: UserDataLoadingOpts,
 };
@@ -40,11 +35,9 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
 };
 
 export const handleUserLoad = async (opts: GetUserLazyDataOpts): Promise<UserLazyLoadedData> => {
-  const {initialData, options} = opts;
+  const {options} = opts;
 
   return {
-    ...initialData,
-    ...emptyLazyData,
     [options.type]: await loadData(opts),
   };
 };

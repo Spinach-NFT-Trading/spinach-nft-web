@@ -2,49 +2,71 @@ import React from 'react';
 
 import {useSession} from 'next-auth/react';
 
-import {UserDataActionStatus, UserDataActor} from '@spinach/next/types/userData/main';
+import {UserDataActorState} from '@spinach/next/hooks/userData/type';
+import {UserDataActor} from '@spinach/next/types/userData/main';
 
 
-type UseUserDataActorReturn = {
+type UseUserDataActorReturn = UserDataActorState & {
   act: UserDataActor | null,
-  status: UserDataActionStatus,
   session: ReturnType<typeof useSession>,
 };
 
 export const useUserDataActor = (): UseUserDataActorReturn => {
-  const [status, setStatus] = React.useState<UserDataActionStatus>('waiting');
+  const [state, setState] = React.useState<UserDataActorState>({
+    status: 'waiting',
+    lazyLoaded: {},
+  });
   const session = useSession();
 
   const userDataActor: UserDataActor = async (action) => {
-    setStatus('processing');
+    setState((original) => ({
+      ...original,
+      status: 'processing',
+    }));
 
     try {
       const updated = await session.update(action);
 
-      setStatus(!!updated?.user.jwtUpdateError ? 'failed' : 'completed');
+      const status = !!updated?.user.jwtUpdateError ? 'failed' : 'completed';
 
+      setState((original) => ({
+        status,
+        lazyLoaded: {...original.lazyLoaded, ...updated?.user.lazyLoaded},
+      }));
       return updated;
     } catch (err) {
       console.error(`Failed to [${action.action}] user data of [${action.options.type}]`, err);
-      setStatus('failed');
+
+      setState((original) => ({
+        ...original,
+        status: 'failed',
+      }));
     }
 
     return null;
   };
 
   React.useEffect(() => {
+    const {status} = state;
+
     if (status !== 'completed' && status !== 'failed') {
       return;
     }
 
-    const timeoutId = setTimeout(() => setStatus('waiting'), 2500);
+    const timeoutId = setTimeout(
+      () => setState((original) => ({
+        ...original,
+        status: 'waiting',
+      })),
+      2500,
+    );
 
     return () => clearTimeout(timeoutId);
-  }, [status]);
+  }, [state]);
 
   return {
+    ...state,
     act: session.data ? userDataActor : null,
-    status,
     session,
   };
 };
