@@ -7,16 +7,16 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
 import {CopyButton} from '@spinach/next/components/shared/copy';
 import {accountIdVerificationTypeText} from '@spinach/next/const/account';
-import {AdminPendingVerificationCell} from '@spinach/next/ui/admin/verify/id/pending/popup/cell';
-import {AdminPendingVerificationImage} from '@spinach/next/ui/admin/verify/id/pending/popup/image';
-import {AdminPendingVerificationPopupState} from '@spinach/next/ui/admin/verify/id/pending/popup/type';
+import {AdminPendingVerificationCell} from '@spinach/next/ui/admin/verify/id/pending/single/cell';
+import {AdminPendingVerificationImage} from '@spinach/next/ui/admin/verify/id/pending/single/image';
+import {AdminPendingVerificationPopupState} from '@spinach/next/ui/admin/verify/id/pending/single/type';
 
 
 type Props = {
   user: UserInfo | null,
 };
 
-export const AdminPendingVerificationPopup = ({user}: Props) => {
+export const AdminPendingVerificationContent = ({user}: Props) => {
   const [state, setState] = React.useState<AdminPendingVerificationPopupState>({
     show: false,
     type: null,
@@ -39,7 +39,7 @@ export const AdminPendingVerificationPopup = ({user}: Props) => {
   } = user;
 
   return (
-    <div className="md:w-[70vw] lg:w-[60vw]">
+    <Flex>
       <Popup show={state.show} setShow={(show) => setState((original) => ({
         ...original,
         show,
@@ -78,6 +78,6 @@ export const AdminPendingVerificationPopup = ({user}: Props) => {
           }
         />
       </Flex>
-    </div>
+    </Flex>
   );
 };

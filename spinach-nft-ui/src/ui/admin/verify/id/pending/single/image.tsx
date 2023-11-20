@@ -7,7 +7,7 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NextImageAutoHeight} from '@spinach/next/components/shared/common/image/autoHeight';
 import {UserDataLazyLoad} from '@spinach/next/components/shared/userData/lazyLoad';
 import {accountIdVerificationTypeText} from '@spinach/next/const/account';
-import {AdminPendingVerificationPopupState} from '@spinach/next/ui/admin/verify/id/pending/popup/type';
+import {AdminPendingVerificationPopupState} from '@spinach/next/ui/admin/verify/id/pending/single/type';
 
 
 type Props = {
