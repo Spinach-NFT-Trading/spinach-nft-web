@@ -57,7 +57,7 @@ export const UserDataLazyLoad = ({options, loadingText, content, actDeps, toAct}
     }
 
     if (session.status === 'unauthenticated') {
-      return <>{content(null)}</>;
+      return content(null);
     }
 
     if (status === 'failed') {
@@ -67,7 +67,7 @@ export const UserDataLazyLoad = ({options, loadingText, content, actDeps, toAct}
     // If not loaded but got an action to run later, don't show anything to prevent the UI blink
     // between the gap of user getting authenticated and the action starts
     if (status === 'waiting' && act) {
-      return <></>;
+      return null;
     }
   }
 
