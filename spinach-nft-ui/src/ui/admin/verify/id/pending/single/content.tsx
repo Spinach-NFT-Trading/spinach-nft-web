@@ -8,7 +8,7 @@ import {Popup} from '@spinach/next/components/popup';
 import {CopyButton} from '@spinach/next/components/shared/copy';
 import {accountIdVerificationTypeText} from '@spinach/next/const/account';
 import {AdminPendingVerificationCell} from '@spinach/next/ui/admin/verify/id/pending/single/cell';
-import {AdminPendingVerificationImage} from '@spinach/next/ui/admin/verify/id/pending/single/image';
+import {AdminPendingVerificationImage} from '@spinach/next/ui/admin/verify/id/pending/single/image/main';
 import {AdminPendingVerificationPopupState} from '@spinach/next/ui/admin/verify/id/pending/single/type';
 
 
