@@ -1,10 +1,10 @@
+import {DeepPartialExceptKey} from '@spinach/common/types/common/typing';
 import {Session} from 'next-auth';
 
 import {UserLazyLoadedContent} from '@spinach/next/types/userData/lazyLoaded';
 import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 import {UserPreloadedContent} from '@spinach/next/types/userData/preloaded';
 import {UserDataRequestOpts} from '@spinach/next/types/userData/upload';
-import {DeepPartialExceptKey} from '@spinach/next/utils/type';
 
 
 export type UserPreloadedData = DeepPartialExceptKey<UserPreloadedContent>;
