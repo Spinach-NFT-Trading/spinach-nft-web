@@ -4,11 +4,11 @@ import {Failed} from '@spinach/next/components/icons/failed';
 import {UserDataLazyLoad} from '@spinach/next/components/shared/userData/lazyLoad';
 import {accountIdVerificationTypeText} from '@spinach/next/const/account';
 import {AdminPendingVerificationImageContent} from '@spinach/next/ui/admin/verify/id/pending/single/image/content';
-import {AdminPendingVerificationPopupState} from '@spinach/next/ui/admin/verify/id/pending/single/type';
+import {AdminPendingVerificationState} from '@spinach/next/ui/admin/verify/id/pending/single/type';
 
 
 type Props = {
-  state: AdminPendingVerificationPopupState,
+  state: AdminPendingVerificationState,
 };
 
 export const AdminPendingVerificationImage = ({state}: Props) => {

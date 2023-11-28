@@ -8,4 +8,9 @@ export type UserDataRequestOpts = {
 } | {
   type: 'exchangeGold',
   data: null,
+} | {
+  type: 'adminVerifyAccount',
+  data: {
+    targetId: string,
+  },
 };
