@@ -2,6 +2,7 @@ import {getImageBlob} from '@spinach/common/controller/blob/get';
 import {ObjectId} from 'mongodb';
 
 import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft';
+import {getBankDetailsOfUser} from '@spinach/next/controller/user/bankDetails';
 import {getUnverifiedUsers, getUserInfoById} from '@spinach/next/controller/user/info';
 import {NftListingData} from '@spinach/next/types/nft';
 import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
@@ -29,6 +30,10 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
 
   if (type === 'userInfo') {
     return await getUserInfoById(accountId) satisfies UserLazyLoadedData['userInfo'];
+  }
+
+  if (type === 'userBankDetails') {
+    return await getBankDetailsOfUser(accountId) satisfies UserLazyLoadedData['userBankDetails'];
   }
 
   if (type === 'adminImageOfId') {

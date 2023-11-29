@@ -4,7 +4,7 @@ import {UserInfo} from '@spinach/common/types/common/user';
 
 import {SignIn} from '@spinach/next/components/auth/signIn';
 import {Flex} from '@spinach/next/components/layout/flex/common';
-import {AccountProfileCell} from '@spinach/next/ui/account/profile/cell';
+import {AccountProfileCell} from '@spinach/next/ui/account/profile/sections/common/cell';
 
 
 type Props = {
