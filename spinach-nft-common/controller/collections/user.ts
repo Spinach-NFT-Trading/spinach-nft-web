@@ -26,7 +26,6 @@ const initUserIndex = async () => {
     userInfoCollection.createIndex({lineId: 1}, {unique: true}),
     userInfoCollection.createIndex({wallet: 1}, {unique: true}),
     userBalanceCollection.createIndex({userId: 1}),
-    userNftPositionCollection.createIndex({owner: 1, nftId: 1}, {unique: true}),
     userBalanceCollection.createIndex(
       {txnHash: 1},
       {unique: true, partialFilterExpression: {type: 'deposit'}, name: 'depositTxnHash'},
@@ -39,6 +38,8 @@ const initUserIndex = async () => {
       {nftTxnId: 1},
       {unique: true, partialFilterExpression: {type: 'nftSell'}, name: 'nftSellTxn'},
     ),
+    userNftPositionCollection.createIndex({owner: 1, nftId: 1}, {unique: true}),
+    userBankDetailsCollection.createIndex({userId: 1, account: 1, code: 1}, {unique: true}),
   ]);
 };
 

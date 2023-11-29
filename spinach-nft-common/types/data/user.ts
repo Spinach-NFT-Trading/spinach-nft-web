@@ -1,7 +1,7 @@
 import {Static, Type} from '@sinclair/typebox';
 import {ObjectId} from 'mongodb';
 
-import {UsernameSchemaBase} from '@spinach/common/types/api/auth/common';
+import {UserIdSchemaBase} from '@spinach/common/types/api/auth/common';
 import {BankDetailsSchemaBase, UserInfoSchemaBase, UserPropertySchemaBase} from '@spinach/common/types/common/user';
 
 
@@ -19,7 +19,7 @@ export type UserModel = Static<typeof UserModelSchema>;
 export const UserBankDetailModelSchema = Type.Object(
   {
     ...BankDetailsSchemaBase,
-    username: UsernameSchemaBase,
+    userId: UserIdSchemaBase,
   },
   {additionalProperties: false},
 );

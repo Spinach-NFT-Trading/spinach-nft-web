@@ -2,6 +2,9 @@ export const bankCodePattern = '[0-9]{3}';
 
 export const bankAccountPattern = '\\w+';
 
+// ObjectId
+export const userIdPattern = '^[a-f\\d]{24}$';
+
 export const usernamePattern = '[a-zA-Z0-9]{6,}';
 
 export const passwordPattern = '.{6,}';
