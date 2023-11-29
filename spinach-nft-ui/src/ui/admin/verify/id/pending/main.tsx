@@ -7,14 +7,22 @@ import {AdminPendingVerificationSingle} from '@spinach/next/ui/admin/verify/id/p
 
 
 type Props = {
-  users: UserInfo[],
+  initialUsers: UserInfo[],
 };
 
-export const AdminPendingVerification = ({users}: Props) => {
+export const AdminPendingVerification = ({initialUsers}: Props) => {
+  const [users, setUsers] = React.useState(initialUsers);
+
   return (
     <Grid className="grid-cols-1 gap-2 xl:grid-cols-2 3xl:grid-cols-3">
       {users.map((user) => (
-        <AdminPendingVerificationSingle key={user.id} user={user}/>
+        <AdminPendingVerificationSingle
+          key={user.id}
+          user={user}
+          onVerified={() => setUsers((original) => (
+            original.filter(({id}) => id !== user.id)
+          ))}
+        />
       ))}
     </Grid>
   );

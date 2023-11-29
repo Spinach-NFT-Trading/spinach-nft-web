@@ -3,7 +3,9 @@ import React from 'react';
 import {Failed} from '@spinach/next/components/icons/failed';
 import {UserDataLazyLoad} from '@spinach/next/components/shared/userData/lazyLoad';
 import {accountIdVerificationTypeText} from '@spinach/next/const/account';
-import {AdminPendingVerificationImageContent} from '@spinach/next/ui/admin/verify/id/pending/single/image/content';
+import {
+  AdminPendingVerificationImageContent,
+} from '@spinach/next/ui/admin/verify/id/pending/single/popup/image/content';
 import {AdminPendingVerificationState} from '@spinach/next/ui/admin/verify/id/pending/single/type';
 
 

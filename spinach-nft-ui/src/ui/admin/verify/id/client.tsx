@@ -16,7 +16,7 @@ export const AdminVerifyIdClient = () => {
         }}
         loadingText="待驗證帳號"
         content={(data) => (
-          <AdminPendingVerification users={data?.adminUnverifiedAccounts ?? []}/>
+          <AdminPendingVerification initialUsers={data?.adminUnverifiedAccounts ?? []}/>
         )}
       />
     </Flex>

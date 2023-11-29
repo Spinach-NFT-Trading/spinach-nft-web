@@ -1,63 +1,34 @@
 import React from 'react';
 
 import {accountIdVerificationType} from '@spinach/common/types/api/profile/id';
-import {UserInfo} from '@spinach/common/types/common/user';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
-import {signIn} from 'next-auth/react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {CopyButton} from '@spinach/next/components/shared/copy';
 import {accountIdVerificationTypeText} from '@spinach/next/const/account';
-import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {AdminPendingVerificationCell} from '@spinach/next/ui/admin/verify/id/pending/single/cell';
-import {AdminPendingVerificationImage} from '@spinach/next/ui/admin/verify/id/pending/single/image/main';
-import {AdminPendingVerificationState} from '@spinach/next/ui/admin/verify/id/pending/single/type';
+import {AdminPendingVerificationConfirm} from '@spinach/next/ui/admin/verify/id/pending/single/popup/confirm/main';
+import {AdminPendingVerificationImage} from '@spinach/next/ui/admin/verify/id/pending/single/popup/image/main';
+import {
+  AdminPendingVerificationProps,
+  AdminPendingVerificationState,
+} from '@spinach/next/ui/admin/verify/id/pending/single/type';
 
 
-type Props = {
-  user: UserInfo | null,
-};
-
-export const AdminPendingVerificationContent = ({user}: Props) => {
+export const AdminPendingVerificationContent = (props: AdminPendingVerificationProps) => {
+  const {user} = props;
   const [state, setState] = React.useState<AdminPendingVerificationState>({
-    show: false,
+    show: null,
     type: null,
     userId: null,
     error: null,
   });
-  const {act} = useUserDataActor();
 
   if (!user) {
     return;
   }
-
-  const onClickVerify = async () => {
-    if (!act) {
-      await signIn();
-      return;
-    }
-
-    const session = await act({
-      action: 'request',
-      options: {
-        type: 'adminVerifyAccount',
-        data: {
-          targetId: id,
-        },
-      },
-    });
-    const error = session?.user.jwtUpdateError;
-    if (!error) {
-      return;
-    }
-
-    setState((original) => ({
-      ...original,
-      error,
-    }));
-  };
 
   const {
     id,
@@ -72,12 +43,13 @@ export const AdminPendingVerificationContent = ({user}: Props) => {
 
   return (
     <Flex>
-      <Popup show={state.show} setShow={(show) => setState((original) => ({
+      <Popup show={state.show === 'image'} setShow={(show) => setState((original) => ({
         ...original,
-        show,
+        show: show ? 'image' : null,
       }))}>
         <AdminPendingVerificationImage state={state}/>
       </Popup>
+      <AdminPendingVerificationConfirm state={state} setState={setState} {...props}/>
       <Flex className="gap-1.5 p-2">
         {state.error && <Alert>{translateApiError(state.error)}</Alert>}
         <Flex className="gap-1.5 md:flex-row">
@@ -96,13 +68,16 @@ export const AdminPendingVerificationContent = ({user}: Props) => {
                   ...original,
                   type,
                   userId: id,
-                  show: true,
+                  show: 'image',
                 }))}>
                   {accountIdVerificationTypeText[type]}
                 </button>
               ))}
             </Flex>
-            <button className="button-clickable-bg-warn py-5" onClick={onClickVerify}>
+            <button className="button-clickable-bg-warn py-5" onClick={() => setState((original) => ({
+              ...original,
+              show: 'confirm',
+            }))}>
               確認驗證
             </button>
           </Flex>
