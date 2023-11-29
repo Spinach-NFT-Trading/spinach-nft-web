@@ -1,8 +1,8 @@
 import {Static} from '@sinclair/typebox';
 
-import {BankDetailsSchema} from '@spinach/common/types/common/user';
+import {UserBankDetailsSchema} from '@spinach/common/types/data/user/bank';
 
 
-export const UserAddBankDetailsRequestSchema = BankDetailsSchema;
+export const UserAddBankDetailsRequestSchema = UserBankDetailsSchema;
 
 export type UserAddBankDetailsRequest = Static<typeof UserAddBankDetailsRequestSchema>;

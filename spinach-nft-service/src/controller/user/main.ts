@@ -1,7 +1,7 @@
 import {getNewBalance} from '@spinach/common/controller/actors/user';
 import {userBalanceCollection} from '@spinach/common/controller/collections/user';
 import {GoldCompletedTxn} from '@spinach/common/types/data/gold';
-import {UserBalanceHistoryModel} from '@spinach/common/types/data/user';
+import {UserBalanceHistoryModel} from '@spinach/common/types/data/user/balance';
 
 
 export const recordBalanceAfterDeposit = async (txns: GoldCompletedTxn[]) => {

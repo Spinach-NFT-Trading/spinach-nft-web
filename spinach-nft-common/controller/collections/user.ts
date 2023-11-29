@@ -1,10 +1,8 @@
 import {Mongo} from '@spinach/common/controller/const';
-import {
-  UserBalanceHistoryModel,
-  UserBankDetailModel,
-  UserModel,
-  UserNftPositionModel,
-} from '@spinach/common/types/data/user';
+import {UserBalanceHistoryModel} from '@spinach/common/types/data/user/balance';
+import {UserBankDetails} from '@spinach/common/types/data/user/bank';
+import {UserModel} from '@spinach/common/types/data/user/data';
+import {UserNftPositionModel} from '@spinach/common/types/data/user/nftPosition';
 
 
 const db = Mongo.db('user');
@@ -15,7 +13,7 @@ export const userBalanceCollection = db.collection<UserBalanceHistoryModel>('bal
 
 export const userNftPositionCollection = db.collection<UserNftPositionModel>('nft');
 
-export const userBankDetailsCollection = db.collection<UserBankDetailModel>('bankDetails');
+export const userBankDetailsCollection = db.collection<UserBankDetails>('bankDetails');
 
 const initUserIndex = async () => {
   return Promise.all([

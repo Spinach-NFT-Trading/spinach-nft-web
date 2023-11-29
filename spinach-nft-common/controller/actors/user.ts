@@ -2,7 +2,7 @@ import {ClientSession, ObjectId} from 'mongodb';
 
 import {userBalanceCollection, userNftPositionCollection} from '@spinach/common/controller/collections/user';
 import {NftTxnModel} from '@spinach/common/types/data/nft';
-import {UserBalanceHistoryModelRequired} from '@spinach/common/types/data/user';
+import {UserBalanceHistoryModelRequired} from '@spinach/common/types/data/user/balance';
 
 
 type GetNewAccountBalance = {

@@ -1,6 +1,6 @@
 import {userBankDetailsCollection} from '@spinach/common/controller/collections/user';
 import {UserInfo} from '@spinach/common/types/common/user';
-import {UserModel} from '@spinach/common/types/data/user';
+import {UserModel} from '@spinach/common/types/data/user/data';
 import {WithId} from 'mongodb';
 
 
