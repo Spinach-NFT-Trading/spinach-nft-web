@@ -5,12 +5,6 @@ export type UserDataLoadingOpts = {
   type: 'nftPosition',
   opts?: never,
 } | {
-  type: 'userInfo',
-  opts?: never,
-} | {
-  type: 'userBankDetails',
-  opts?: never,
-} | {
   type: 'adminUnverifiedAccounts',
   opts?: never,
 } | {

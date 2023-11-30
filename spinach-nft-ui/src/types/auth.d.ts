@@ -7,6 +7,7 @@ import {UserDataAction, UserLazyLoadedData, UserPreloadedData} from '@spinach/ne
 
 
 export type CommonUserData = {
+  id: string,
   username: UserInfo['username'],
   verified: boolean,
   isAdmin: boolean,

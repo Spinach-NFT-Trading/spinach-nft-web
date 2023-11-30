@@ -51,8 +51,13 @@ export const authOptions: AuthOptions = {
         }
       }
 
+      if (!accountId) {
+        throw new Error('Failed to create session as `token.sub` is falsy');
+      }
+
       session.user = {
         ...session.user,
+        id: accountId,
         preloaded: await getUserPreloadedData(token.sub),
         username: token.username,
         verified: token.verified,
