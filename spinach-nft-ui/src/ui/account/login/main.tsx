@@ -9,8 +9,9 @@ import {AccountLoginClient} from '@spinach/next/ui/account/login/client';
 import {UserControlLayout} from '@spinach/next/ui/base/layout/userControl';
 
 
-export const AccountLogin = ({searchParams}: LoginPageParams) => {
-  const session = React.use(getServerSession(authOptions));
+export const AccountLogin = async ({searchParams}: LoginPageParams) => {
+  const session = await getServerSession(authOptions);
+
   if (session) {
     redirect(searchParams.callbackUrl ?? '/');
   }

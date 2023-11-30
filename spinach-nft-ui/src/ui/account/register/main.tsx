@@ -8,8 +8,9 @@ import {AccountRegisterClient} from '@spinach/next/ui/account/register/client';
 import {UserControlLayout} from '@spinach/next/ui/base/layout/userControl';
 
 
-export const AccountRegister = () => {
-  const session = React.use(getServerSession(authOptions));
+export const AccountRegister = async () => {
+  const session = await getServerSession(authOptions);
+
   if (session) {
     redirect('/');
   }

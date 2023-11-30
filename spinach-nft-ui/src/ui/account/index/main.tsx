@@ -11,8 +11,8 @@ import {authOptions} from '@spinach/next/const/auth';
 import {ProfileLayout} from '@spinach/next/ui/base/layout/profile/main';
 
 
-export const AccountIndex = () => {
-  const session = React.use(getServerSession(authOptions));
+export const AccountIndex = async () => {
+  const session = await getServerSession(authOptions);
 
   return (
     <ProfileLayout>

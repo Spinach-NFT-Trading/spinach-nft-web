@@ -7,8 +7,8 @@ import {PageLayout} from '@spinach/next/ui/base/layout/common';
 import {GoldExchangeClient} from '@spinach/next/ui/gold/exchange/client';
 
 
-export const GoldExchange = () => {
-  const currentFx = React.use(getFxRate(fxMarket));
+export const GoldExchange = async () => {
+  const currentFx = await getFxRate(fxMarket);
 
   return (
     <PageLayout>

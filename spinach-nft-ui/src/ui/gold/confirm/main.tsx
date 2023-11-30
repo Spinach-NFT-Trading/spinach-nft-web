@@ -18,9 +18,14 @@ type GoldExchangeConfirmParams = {
   amount?: number,
 };
 
-export const GoldExchangeConfirm = ({searchParams}: NextPageProps<GoldExchangeConfirmParams>) => {
-  const session = React.use(getServerSession(authOptions));
-  const wallet = React.use(getDepositWallet());
+export const GoldExchangeConfirm = async ({searchParams}: NextPageProps<GoldExchangeConfirmParams>) => {
+  const [
+    session,
+    wallet,
+  ] = await Promise.all([
+    getServerSession(authOptions),
+    getDepositWallet(),
+  ]);
 
   if (!session) {
     return <Failed text="Session"/>;
