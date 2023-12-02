@@ -2,7 +2,7 @@ import React from 'react';
 
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
-import {redirect} from 'next/navigation';
+import {useRouter} from 'next/navigation';
 import {signIn} from 'next-auth/react';
 
 import {SignIn} from '@spinach/next/components/auth/signIn';
@@ -21,6 +21,7 @@ type Props = {
 export const NftPurchaseConfirmPopup = ({nftId, show, setShow}: Props) => {
   const [error, setError] = React.useState<ApiErrorCode | null>(null);
   const {act, status} = useUserDataActor();
+  const {replace} = useRouter();
 
   if (!act) {
     return <SignIn/>;
@@ -39,7 +40,7 @@ export const NftPurchaseConfirmPopup = ({nftId, show, setShow}: Props) => {
       return;
     }
 
-    redirect('/account/position');
+    replace('/account/position');
   };
 
   return (
