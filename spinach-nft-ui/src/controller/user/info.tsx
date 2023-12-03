@@ -1,9 +1,9 @@
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
-import {UserInfo} from '@spinach/common/types/common/user';
+import {UserInfo, UserDataMap} from '@spinach/common/types/common/user';
 import {ObjectId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
-import {toUserInfo} from '@spinach/next/controller/user/utils';
+import {toUserData, toUserInfo} from '@spinach/next/controller/user/utils';
 import {throwIfNotAdmin} from '@spinach/next/controller/utils';
 
 
@@ -17,6 +17,13 @@ export const getUserInfoById = async (id: string): Promise<UserInfo | undefined>
   }
 
   return toUserInfo(model);
+};
+
+export const getUserDataMap = async (userIds: string[]): Promise<UserDataMap> => {
+  return Object.fromEntries((await userInfoCollection
+    .find({_id: {$in: userIds.map((id) => new ObjectId(id))}})
+    .toArray())
+    .map((data) => [data._id.toHexString(), toUserData(data)]));
 };
 
 type GetUnverifiedUsersOpts = ControllerRequireUserIdOpts;

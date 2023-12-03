@@ -48,7 +48,7 @@ export const CollapsibleFull = ({
         enterTo="p-1"
         leaveFrom="p-1"
         leaveTo="p-0"
-        className="border-common transition-spacing rounded-b-lg border-x border-b duration-300 ease-in-out"
+        className="rounded-b-lg border-x border-b transition-all duration-300 ease-in-out"
       >
         <Transition.Child
           appear={appear}

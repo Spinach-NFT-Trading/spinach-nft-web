@@ -3,7 +3,7 @@ import {ObjectId} from 'mongodb';
 
 import {recordPendingTxN} from '@spinach/next/controller/gold';
 import {buyNft} from '@spinach/next/controller/nft';
-import {uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
+import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
 import {markUserVerified} from '@spinach/next/controller/user/update';
 import {UserDataRequestOpts} from '@spinach/next/types/userData/upload';
 
@@ -30,6 +30,10 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
 
   if (type === 'adminVerifyAccount') {
     return markUserVerified({executorUserId: accountId, targetId: data.targetId});
+  }
+
+  if (type === 'adminVerifyBankDetails') {
+    return markBankDetailsVerified({executorUserId: accountId, uuid: data.targetUuid});
   }
 
   console.error(`Unhandled user request type [${type satisfies never}]`);

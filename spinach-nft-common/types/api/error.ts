@@ -23,6 +23,7 @@ export const apiErrorCode = [
   'idNumberInvalid',
   'bankDetailsAlreadyExist',
   'bankDetailsUploadFailed',
+  'bankDetailsNotFound',
 ] as const;
 
 export interface TApiErrorCode extends TString {

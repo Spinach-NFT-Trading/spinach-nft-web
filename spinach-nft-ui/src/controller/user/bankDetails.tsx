@@ -7,11 +7,34 @@ import {ObjectId} from 'mongodb';
 import {v4} from 'uuid';
 
 import {getDataAsArray} from '@spinach/next/controller/common';
+import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
+import {throwIfNotAdmin} from '@spinach/next/controller/utils';
 import {RequestOfUserBankDetails} from '@spinach/next/types/userData/upload';
 
 
 export const getBankDetailsOfUser = (userId: string) => {
   return getDataAsArray(userBankDetailsCollection, {userId});
+};
+
+export const getUnverifiedBankDetails = async ({executorUserId}: ControllerRequireUserIdOpts) => {
+  await throwIfNotAdmin(executorUserId);
+
+  return getDataAsArray(userBankDetailsCollection, {verified: false});
+};
+
+type MarkBankDetailsVerifiedOpts = ControllerRequireUserIdOpts & {
+  uuid: string,
+};
+
+export const markBankDetailsVerified = async ({
+  executorUserId,
+  uuid,
+}: MarkBankDetailsVerifiedOpts): Promise<ApiErrorCode | null> => {
+  await throwIfNotAdmin(executorUserId);
+
+  const result = await userBankDetailsCollection.updateOne({uuid}, {$set: {verified: true}});
+
+  return result.modifiedCount > 0 ? null : 'bankDetailsNotFound';
 };
 
 type UploadBankDetailsOpts = {

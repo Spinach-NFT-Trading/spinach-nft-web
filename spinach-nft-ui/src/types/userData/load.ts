@@ -8,10 +8,18 @@ export type UserDataLoadingOpts = {
   type: 'adminUnverifiedAccounts',
   opts?: never,
 } | {
+  type: 'adminUnverifiedBankDetails',
+  opts?: never,
+} | {
   type: 'adminImageOfId',
   opts: {
     type: AccountIdVerificationType,
     userId: string,
+  },
+} | {
+  type: 'adminImageOfBank',
+  opts: {
+    uuid: string,
   },
 };
 

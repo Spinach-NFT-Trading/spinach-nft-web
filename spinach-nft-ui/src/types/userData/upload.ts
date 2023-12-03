@@ -25,4 +25,9 @@ export type UserDataRequestOpts = {
   data: {
     targetId: string,
   },
+} | {
+  type: 'adminVerifyBankDetails',
+  data: {
+    targetUuid: string,
+  },
 };

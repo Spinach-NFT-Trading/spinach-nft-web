@@ -1,8 +1,11 @@
+import {azureContainer} from '@spinach/common/controller/blob/const';
 import {getImageBlob} from '@spinach/common/controller/blob/get';
+import {toUnique} from '@spinach/common/utils/array';
 import {ObjectId} from 'mongodb';
 
 import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft';
-import {getUnverifiedUsers} from '@spinach/next/controller/user/info';
+import {getUnverifiedBankDetails} from '@spinach/next/controller/user/bankDetails';
+import {getUnverifiedUsers, getUserDataMap} from '@spinach/next/controller/user/info';
 import {NftListingData} from '@spinach/next/types/nft';
 import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 import {UserLazyLoadedData} from '@spinach/next/types/userData/main';
@@ -32,6 +35,20 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
       container: options.opts.type,
       name: options.opts.userId,
     }) satisfies UserLazyLoadedData['adminImageOfId'];
+  }
+
+  if (type === 'adminImageOfBank') {
+    return await getImageBlob({
+      container: azureContainer.bankDetails,
+      name: options.opts.uuid,
+    }) satisfies UserLazyLoadedData['adminImageOfBank'];
+  }
+
+  if (type === 'adminUnverifiedBankDetails') {
+    const details = await getUnverifiedBankDetails({executorUserId: accountId});
+    const userInfoMap = await getUserDataMap(toUnique(details.map(({userId}) => userId)));
+
+    return {userDataMap: userInfoMap, details} satisfies UserLazyLoadedData['adminUnverifiedBankDetails'];
   }
 
   if (type === 'adminUnverifiedAccounts') {

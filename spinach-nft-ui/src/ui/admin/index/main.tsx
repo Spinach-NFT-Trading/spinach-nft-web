@@ -12,6 +12,7 @@ export const AdminIndex = () => {
     <AdminRequiredPageLayout>
       <Grid className="gap-2 text-3xl lg:grid-cols-2">
         <TileLink link="/admin/verify/id" text="驗證身分" icon={<IdentificationIcon/>}/>
+        <TileLink link="/admin/verify/bank" text="驗證銀行帳號" icon={<IdentificationIcon/>}/>
       </Grid>
     </AdminRequiredPageLayout>
   );
