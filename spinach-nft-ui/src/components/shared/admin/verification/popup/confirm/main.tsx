@@ -5,23 +5,27 @@ import {signIn} from 'next-auth/react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
+import {
+  AdminVerificationCollapsibleProps,
+  AdminVerificationCollapsibleState,
+} from '@spinach/next/components/shared/admin/verification/type';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
-import {
-  AdminPendingVerificationProps,
-  AdminPendingVerificationState,
-} from '@spinach/next/ui/admin/verify/id/pending/single/type';
-import {formatUserName} from '@spinach/next/utils/data/user';
 
 
-type Props = AdminPendingVerificationProps & {
-  state: AdminPendingVerificationState,
-  setState: React.Dispatch<React.SetStateAction<AdminPendingVerificationState>>,
+type Props<TData> = AdminVerificationCollapsibleProps<TData> & {
+  state: AdminVerificationCollapsibleState,
+  setState: React.Dispatch<React.SetStateAction<AdminVerificationCollapsibleState>>,
 };
 
-export const AdminPendingVerificationConfirm = ({state, setState, user, onVerified}: Props) => {
+export const AdminVerificationConfirm = <TData, >({
+  data,
+  getConfirmPayload,
+  onVerified,
+  state,
+  setState,
+}: Props<TData>) => {
   const {error} = state;
-  const {id} = user;
 
   const {act} = useUserDataActor();
 
@@ -33,12 +37,7 @@ export const AdminPendingVerificationConfirm = ({state, setState, user, onVerifi
 
     const session = await act({
       action: 'request',
-      options: {
-        type: 'adminVerifyAccount',
-        data: {
-          targetId: id,
-        },
-      },
+      options: getConfirmPayload(data),
     });
     const error = session?.user.jwtUpdateError;
     if (!error) {
@@ -53,9 +52,10 @@ export const AdminPendingVerificationConfirm = ({state, setState, user, onVerifi
   };
 
   return (
-    <Popup show={state.show === 'confirm'} setShow={(show) => setState((original) => ({
+    <Popup show={state.show === 'confirm'} setShow={() => setState((original) => ({
       ...original,
-      show: show ? 'confirm' : null,
+      show: null,
+      payload: null,
     }))}>
       <Flex center className="gap-2">
         {error && <Alert>{translateApiError(error)}</Alert>}
@@ -64,7 +64,7 @@ export const AdminPendingVerificationConfirm = ({state, setState, user, onVerifi
         </div>
         <hr className="w-full"/>
         <div>
-          確定要讓 {formatUserName(user)} 通過驗證嗎？
+          確定要通過驗證嗎？
         </div>
         <button className="button-clickable-bg w-1/2 p-2" onClick={onClickVerify}>
           確認

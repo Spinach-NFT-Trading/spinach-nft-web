@@ -9,11 +9,11 @@ import {NextImageAutoHeight} from '@spinach/next/components/shared/common/image/
 
 
 type Props = {
-  data: ByteArray | undefined,
+  data: ByteArray | null | undefined,
   name: string,
 };
 
-export const AdminPendingVerificationImageContent = ({data, name}: Props) => {
+export const AdminVerificationImageContent = ({data, name}: Props) => {
   const [imageData, setImageData] = React.useState<string | null>();
 
   React.useEffect(() => {

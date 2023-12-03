@@ -3,7 +3,7 @@ import React from 'react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {UserDataLazyLoad} from '@spinach/next/components/shared/userData/lazyLoad';
-import {AdminPendingVerification} from '@spinach/next/ui/admin/verify/id/pending/main';
+import {AdminVerifyIdPending} from '@spinach/next/ui/admin/verify/id/pending';
 
 
 export const AdminVerifyIdClient = () => {
@@ -16,7 +16,7 @@ export const AdminVerifyIdClient = () => {
         }}
         loadingText="待驗證帳號"
         content={(data) => (
-          <AdminPendingVerification initialUsers={data?.adminUnverifiedAccounts ?? []}/>
+          <AdminVerifyIdPending initialUsers={data?.adminUnverifiedAccounts ?? []}/>
         )}
       />
     </Flex>

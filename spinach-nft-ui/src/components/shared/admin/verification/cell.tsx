@@ -8,7 +8,7 @@ type Props = {
   info: React.ReactNode,
 };
 
-export const AdminPendingVerificationCell = ({title, info}: Props) => {
+export const AdminVerificationDataCell = ({title, info}: Props) => {
   return (
     <Flex className="gap-1">
       <Flex noFullWidth center className="text-slate-400">
