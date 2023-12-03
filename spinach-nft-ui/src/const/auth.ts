@@ -36,13 +36,19 @@ export const authOptions: AuthOptions = {
         throw new Error('Failed to create JWT as `userInfo` is empty');
       }
 
-      const {username, name, email, admin, verified} = userInfo;
+      const {
+        username,
+        name,
+        email,
+        admin,
+        verified,
+      } = userInfo;
       token = {
         ...token,
         username,
         name,
         email,
-        admin,
+        isAdmin: admin,
         verified,
         jwtUpdateError: null,
         action: null,
