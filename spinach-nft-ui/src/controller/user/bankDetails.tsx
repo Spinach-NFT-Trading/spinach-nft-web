@@ -4,6 +4,7 @@ import {userBankDetailsCollection, userInfoCollection} from '@spinach/common/con
 import {Mongo} from '@spinach/common/controller/const';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {ObjectId} from 'mongodb';
+import {v4} from 'uuid';
 
 import {getDataAsArray} from '@spinach/next/controller/common';
 import {RequestOfUserBankDetails} from '@spinach/next/types/userData/upload';
@@ -32,10 +33,11 @@ export const uploadBankDetails = async ({
     return 'accountNotFound';
   }
 
-  let insertedData;
+  const uuid = v4();
   try {
-    insertedData = await userBankDetailsCollection.insertOne({
+    await userBankDetailsCollection.insertOne({
       userId,
+      uuid,
       ...details,
     }, {session});
   } catch (e) {
@@ -47,7 +49,7 @@ export const uploadBankDetails = async ({
   try {
     await uploadBlob({
       container: azureContainer.bankDetails,
-      name: insertedData.insertedId.toHexString(),
+      name: uuid,
       ...image,
     });
   } catch (e) {

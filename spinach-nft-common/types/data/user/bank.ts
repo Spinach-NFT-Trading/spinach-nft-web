@@ -1,6 +1,7 @@
 import {Static, Type} from '@sinclair/typebox';
 
 import {bankAccountPattern, bankCodePattern} from '@spinach/common/const/auth';
+import {uuidPattern} from '@spinach/common/const/common';
 import {UserIdSchemaBase} from '@spinach/common/types/api/auth/common';
 
 
@@ -21,6 +22,7 @@ export const UserBankDetailsSchema = Type.Object(
   {
     ...BankDetailsSchemaBase,
     userId: UserIdSchemaBase,
+    uuid: Type.String({pattern: uuidPattern}),
   },
   {additionalProperties: false},
 );
