@@ -1,11 +1,11 @@
 import {Static, Type} from '@sinclair/typebox';
 
-import {UserInfoSchemaBase, UserPropertySchemaBase} from '@spinach/common/types/common/user';
+import {UserDataSchemaBase, UserPropertySchemaBase} from '@spinach/common/types/common/user';
 
 
 export const UserModelSchema = Type.Object(
   {
-    ...UserInfoSchemaBase,
+    ...UserDataSchemaBase,
     ...UserPropertySchemaBase,
     passwordHash: Type.String(),
   },

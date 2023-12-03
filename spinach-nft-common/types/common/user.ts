@@ -12,7 +12,7 @@ export const UserPropertySchemaBase = {
   admin: Type.Boolean(),
 };
 
-export const UserInfoSchemaBase = {
+export const UserDataSchemaBase = {
   username: UsernameSchemaBase,
   idNumber: IdNumberSchemaBase,
   name: Type.String({pattern: namePattern}),
@@ -22,10 +22,19 @@ export const UserInfoSchemaBase = {
   wallet: WalletSchemaBase,
 };
 
+export const UserDataSchema = Type.Object(
+  UserDataSchemaBase,
+  {additionalProperties: false},
+);
+
+export type UserData = Static<typeof UserDataSchema>;
+
+export type UserDataMap = {[userId in string]?: UserData};
+
 export const UserInfoSchema = Type.Object(
   {
     id: Type.String(),
-    ...UserInfoSchemaBase,
+    ...UserDataSchemaBase,
     ...UserPropertySchemaBase,
     bankDetails: Type.Array(BankDetailsSchema, {uniqueItems: true}),
   },
