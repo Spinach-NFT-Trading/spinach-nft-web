@@ -15,6 +15,8 @@ export const BankDetailsSchema = Type.Object(
   {additionalProperties: false},
 );
 
+export type BankDetails = Static<typeof BankDetailsSchema>;
+
 export const UserBankDetailsSchema = Type.Object(
   {
     ...BankDetailsSchemaBase,

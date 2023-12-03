@@ -3,6 +3,7 @@ import {ObjectId} from 'mongodb';
 
 import {recordPendingTxN} from '@spinach/next/controller/gold';
 import {buyNft} from '@spinach/next/controller/nft';
+import {uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
 import {markUserVerified} from '@spinach/next/controller/user/update';
 import {UserDataRequestOpts} from '@spinach/next/types/userData/upload';
 
@@ -21,6 +22,10 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
 
   if (type === 'nftBuy') {
     return buyNft({buyer: new ObjectId(accountId), nftId: new ObjectId(data.nftId)});
+  }
+
+  if (type === 'userBankDetails') {
+    return uploadBankDetails({userId: accountId, request: data});
   }
 
   if (type === 'adminVerifyAccount') {

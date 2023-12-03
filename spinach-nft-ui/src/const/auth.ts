@@ -28,24 +28,18 @@ export const authOptions: AuthOptions = {
         token.verified = user.verified;
       }
 
-      token.action = (trigger === 'update' && token.sub) ? (session as UserDataAction) : null;
-
-      return token;
-    },
-    session: async ({session, token}) => {
       // Can't use `trigger` here as it's always `undefined`
       const accountId = token.sub;
 
-      if (token.action && accountId) {
-        const {action, options} = token.action;
+      token.jwtUpdateError = null;
+      token.action = null;
+      if (trigger === 'update' && accountId) {
+        const {action, options} = session as UserDataAction;
 
         if (action === 'request') {
-          session.user.jwtUpdateError = await handleUserRequest({accountId, options});
+          token.jwtUpdateError = await handleUserRequest({accountId, options});
         } else if (action === 'load') {
-          session.user.lazyLoaded = await handleUserLoad({
-            accountId,
-            options,
-          });
+          token.action = session;
         } else {
           console.error(`Unhandled user data action [${action satisfies never}]`);
         }
@@ -55,12 +49,35 @@ export const authOptions: AuthOptions = {
         throw new Error('Failed to create session as `token.sub` is falsy');
       }
 
+      return token;
+    },
+    session: async ({session, token}) => {
+      // Can't use `trigger` here as it's always `undefined`
+      const accountId = token.sub;
+
+      let lazyLoaded = {};
+      if (token.action && accountId) {
+        const {action, options} = token.action;
+
+        if (action === 'load') {
+          lazyLoaded = await handleUserLoad({
+            accountId,
+            options,
+          });
+        }
+      }
+
+      if (!accountId) {
+        throw new Error('Failed to create session as `token.sub` is falsy');
+      }
+
       session.user = {
-        ...session.user,
         id: accountId,
         preloaded: await getUserPreloadedData(token.sub),
         username: token.username,
         verified: token.verified,
+        jwtUpdateError: token.jwtUpdateError,
+        lazyLoaded,
         isAdmin: token.isAdmin,
       };
 

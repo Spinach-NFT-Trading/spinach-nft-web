@@ -21,7 +21,7 @@ export const AccountBankDetails = ({bankDetails}: Props) => {
       <div className="text-3xl">
         銀行帳號
       </div>
-      <Grid className="grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3">
+      <Grid className="grid-cols-1 gap-2 lg:grid-cols-2 2xl:grid-cols-3">
         {bankDetails.map(({verified, account, code}) => (
           <AnimatedCollapse key={account} show appear>
             <Flex className="gap-1">
@@ -34,7 +34,7 @@ export const AccountBankDetails = ({bankDetails}: Props) => {
       </Grid>
       <FlexLink href="/account/bank" className="button-clickable-bg self-end p-1.5">
         <DocumentTextIcon className="h-6 w-6"/>
-        <div>管理銀行帳號</div>
+        <div>新增銀行帳號</div>
       </FlexLink>
     </Flex>
   );

@@ -46,7 +46,6 @@ export const registerUser = async ({
   }
 
   const checkResult = await checkTrxAddress({wallet});
-  console.log(checkResult);
   if ('message' in checkResult) {
     return 'walletNotExist';
   }

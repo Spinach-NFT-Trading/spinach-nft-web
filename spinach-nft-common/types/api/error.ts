@@ -21,6 +21,8 @@ export const apiErrorCode = [
   'smsPhoneUsed',
   'smsCodeInvalid',
   'idNumberInvalid',
+  'bankDetailsAlreadyExist',
+  'bankDetailsUploadFailed',
 ] as const;
 
 export interface TApiErrorCode extends TString {

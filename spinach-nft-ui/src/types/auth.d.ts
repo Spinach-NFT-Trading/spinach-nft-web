@@ -28,5 +28,6 @@ declare module 'next-auth' {
 declare module 'next-auth/jwt' {
   interface JWT extends DefaultJWT, CommonUserData {
     action: UserDataAction | null;
+    jwtUpdateError: ApiErrorCode | null;
   }
 }
