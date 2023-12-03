@@ -7,6 +7,7 @@ import credentialsProvider, {CredentialInput} from 'next-auth/providers/credenti
 import {handleUserLoad} from '@spinach/next/controller/act/load';
 import {getUserPreloadedData} from '@spinach/next/controller/act/preload';
 import {handleUserRequest} from '@spinach/next/controller/act/request';
+import {getUserInfoById} from '@spinach/next/controller/user/info';
 import {UserDataAction} from '@spinach/next/types/userData/main';
 
 
@@ -20,19 +21,33 @@ export const authOptions: AuthOptions = {
   },
   callbacks: {
     jwt: async ({token, user, trigger, session}) => {
-      if (user) {
-        token.username = user.username;
-        token.name = user.name;
-        token.email = user.email;
-        token.isAdmin = user.admin;
-        token.verified = user.verified;
-      }
-
-      // Can't use `trigger` here as it's always `undefined`
       const accountId = token.sub;
 
-      token.jwtUpdateError = null;
-      token.action = null;
+      if (!accountId) {
+        throw new Error('Failed to create JWT as `token.sub` is falsy');
+      }
+
+      // Fetch the user info on the fly because according to the doc,
+      // `user` is only available on the first call when a new session is created.
+      // `user` will be unavailable for the subsequent calls.
+      // https://next-auth.js.org/configuration/callbacks#jwt-callback
+      const userInfo = user ?? await getUserInfoById(accountId);
+      if (!userInfo) {
+        throw new Error('Failed to create JWT as `userInfo` is empty');
+      }
+
+      const {username, name, email, admin, verified} = userInfo;
+      token = {
+        ...token,
+        username,
+        name,
+        email,
+        admin,
+        verified,
+        jwtUpdateError: null,
+        action: null,
+      };
+
       if (trigger === 'update' && accountId) {
         const {action, options} = session as UserDataAction;
 
@@ -43,10 +58,6 @@ export const authOptions: AuthOptions = {
         } else {
           console.error(`Unhandled user data action [${action satisfies never}]`);
         }
-      }
-
-      if (!accountId) {
-        throw new Error('Failed to create session as `token.sub` is falsy');
       }
 
       return token;
