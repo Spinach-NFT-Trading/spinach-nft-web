@@ -24,7 +24,7 @@ export const GoldExchangeConfirmUsdt = async ({searchParams}: NextPageProps<Gold
     wallet,
   ] = await Promise.all([
     getServerSession(authOptions),
-    getDepositWallet(),
+    getDepositWallet('crypto'),
   ]);
 
   if (!session) {
