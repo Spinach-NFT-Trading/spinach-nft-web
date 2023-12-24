@@ -17,5 +17,10 @@ export type GoldCompletedTxn = GoldTrackedTxn & {
 };
 
 export type GoldWallet = {
+  channel: 'crypto',
   wallet: string,
+} | {
+  channel: 'twBank',
+  code: string,
+  account: string,
 };

@@ -15,9 +15,10 @@ type Props = {
   show: boolean,
   setShow: (show: boolean) => void,
   amount: ExchangeAmount,
+  getRedirectUrl: (amount: ExchangeAmount) => string,
 };
 
-export const GoldExchangeConfirmPopup = ({amount, show, setShow}: Props) => {
+export const GoldExchangeConfirmPopup = ({show, setShow, amount, getRedirectUrl}: Props) => {
   const [error, setError] = React.useState<string | null>(null);
   const {act} = useUserDataActor();
   const {push} = useRouter();
@@ -31,7 +32,7 @@ export const GoldExchangeConfirmPopup = ({amount, show, setShow}: Props) => {
     const session = await act({action: 'request', options: {type: 'exchangeGold', data: null}});
     const error = session?.user.jwtUpdateError;
     if (!error) {
-      push(`/gold/confirm?${new URLSearchParams({amount: amount.usdt.toString()})}`);
+      push(getRedirectUrl(amount));
       return;
     }
     setError(error);

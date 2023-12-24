@@ -11,14 +11,14 @@ import {authOptions} from '@spinach/next/const/auth';
 import {getDepositWallet} from '@spinach/next/controller/gold';
 import {NextPageProps} from '@spinach/next/types/next/page';
 import {PageLayout} from '@spinach/next/ui/base/layout/common';
-import {GoldExchangeConfirmSection} from '@spinach/next/ui/gold/confirm/section';
+import {GoldExchangeConfirmSection} from '@spinach/next/ui/gold/confirm/common/section';
 
 
-type GoldExchangeConfirmParams = {
+type GoldExchangeConfirmUsdtParams = {
   amount?: number,
 };
 
-export const GoldExchangeConfirm = async ({searchParams}: NextPageProps<GoldExchangeConfirmParams>) => {
+export const GoldExchangeConfirmUsdt = async ({searchParams}: NextPageProps<GoldExchangeConfirmUsdtParams>) => {
   const [
     session,
     wallet,
@@ -33,6 +33,10 @@ export const GoldExchangeConfirm = async ({searchParams}: NextPageProps<GoldExch
 
   if (!wallet) {
     return <Failed text="Deposit Wallet"/>;
+  }
+
+  if (wallet.channel !== 'crypto') {
+    return <Failed text="Wallet not Crypto"/>;
   }
 
   return (

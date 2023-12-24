@@ -1,4 +1,4 @@
 export type ExchangeAmount = {
-  usdt: number,
+  source: number,
   gold: number,
 };

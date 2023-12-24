@@ -13,7 +13,7 @@ export const GoldExchange = async () => {
   return (
     <PageLayout>
       <GoldExchangeClient
-        exchangeRate={parseFloat(currentFx || '0')}
+        usdtExchangeRate={parseFloat(currentFx || '0')}
         cashbackRate={0.1}
       />
     </PageLayout>

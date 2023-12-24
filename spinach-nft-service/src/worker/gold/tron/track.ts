@@ -1,5 +1,5 @@
 import {usdtContractInTrc20} from '@spinach/common/const/tron';
-import {getOwnedWallets} from '@spinach/common/controller/actors/gold';
+import {getOwnedCryptoWallets} from '@spinach/common/controller/actors/gold';
 import {sleep} from '@spinach/common/utils/execution';
 import {getTrc20IncomingTxn} from '@spinach/common/utils/tron/transfers';
 
@@ -45,7 +45,7 @@ const checkSingleWallet = async (wallet: string) => {
 };
 
 const checkWallets = async () => {
-  return Promise.all((await getOwnedWallets()).map((wallet) => checkSingleWallet(wallet)));
+  return Promise.all((await getOwnedCryptoWallets()).map((wallet) => checkSingleWallet(wallet)));
 };
 
 export const trackTronWallet = () => {
