@@ -82,7 +82,7 @@ export const addAuthRegister = () => {
           lineId: body.lineId,
           wallet: body.wallet,
           bankDetails: [],
-          verified: false,
+          status: 'unverified',
           admin: false,
         },
       };

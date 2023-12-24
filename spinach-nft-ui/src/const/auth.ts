@@ -41,7 +41,7 @@ export const authOptions: AuthOptions = {
         name,
         email,
         admin,
-        verified,
+        status,
       } = userInfo;
       token = {
         ...token,
@@ -49,7 +49,7 @@ export const authOptions: AuthOptions = {
         name,
         email,
         isAdmin: admin,
-        verified,
+        status,
         jwtUpdateError: null,
         action: null,
       };

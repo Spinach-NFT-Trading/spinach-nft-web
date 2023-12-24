@@ -28,7 +28,7 @@ export const toUserInfo = async (model: WithId<UserModel>): Promise<UserInfo> =>
   const {
     _id,
     username,
-    verified,
+    status,
     admin,
   } = model;
 
@@ -36,7 +36,7 @@ export const toUserInfo = async (model: WithId<UserModel>): Promise<UserInfo> =>
     ...toUserData(model),
     id: _id.toHexString(),
     bankDetails: await userBankDetailsCollection.find({username}).toArray(),
-    verified,
+    status,
     admin,
   };
 };

@@ -1,21 +1,22 @@
 import React from 'react';
 
 import CheckBadgeIcon from '@heroicons/react/24/solid/CheckBadgeIcon';
-import clsx from 'clsx';
+import {VerificationStatus} from '@spinach/common/types/common/status';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
+import {verificationStatusText, verificationStatusTextColor} from '@spinach/next/const/verification';
 
 
 type Props = {
-  verified: boolean,
+  status: VerificationStatus,
 };
 
-export const AccountBankVerified = ({verified}: Props) => {
+export const AccountBankVerified = ({status}: Props) => {
   return (
-    <Flex direction="row" className={clsx(!verified && 'text-slate-500')}>
-      <CheckBadgeIcon className={clsx('h-6 w-6', verified ? 'text-green-400' : 'text-red-400')}/>
+    <Flex direction="row" className={verificationStatusTextColor[status]}>
+      <CheckBadgeIcon className="h-6 w-6"/>
       <div className="whitespace-nowrap">
-        {verified ? '已認證' : '未認證'}
+        {verificationStatusText[status]}
       </div>
     </Flex>
   );

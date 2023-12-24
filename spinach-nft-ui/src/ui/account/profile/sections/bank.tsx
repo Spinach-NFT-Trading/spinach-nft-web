@@ -22,10 +22,10 @@ export const AccountBankDetails = ({bankDetails}: Props) => {
         銀行帳號
       </div>
       <Grid className="grid-cols-1 gap-2 lg:grid-cols-2 2xl:grid-cols-3">
-        {bankDetails.map(({verified, account, code}) => (
+        {bankDetails.map(({status, account, code}) => (
           <AnimatedCollapse key={account} show appear>
             <Flex className="gap-1">
-              <AccountBankVerified verified={verified}/>
+              <AccountBankVerified status={status}/>
               <AccountProfileCell title="銀行代碼" info={code}/>
               <AccountProfileCell title="銀行帳號" info={account}/>
             </Flex>

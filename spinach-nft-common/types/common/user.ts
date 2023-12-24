@@ -3,12 +3,13 @@ import {Static, Type} from '@sinclair/typebox';
 import {lineIdPattern, namePattern} from '@spinach/common/const/auth';
 import {IdNumberSchemaBase, UsernameSchemaBase} from '@spinach/common/types/api/auth/common';
 import {IsoDateStringSchema} from '@spinach/common/types/common/date';
+import {VerificationStatusSchema} from '@spinach/common/types/common/status';
 import {WalletSchemaBase} from '@spinach/common/types/common/wallet';
 import {BankDetailsSchema} from '@spinach/common/types/data/user/bank';
 
 
 export const UserPropertySchemaBase = {
-  verified: Type.Boolean(),
+  status: VerificationStatusSchema,
   admin: Type.Boolean(),
 };
 

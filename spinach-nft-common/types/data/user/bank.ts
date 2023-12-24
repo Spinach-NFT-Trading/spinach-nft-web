@@ -3,12 +3,13 @@ import {Static, Type} from '@sinclair/typebox';
 import {bankAccountPattern, bankCodePattern} from '@spinach/common/const/auth';
 import {uuidPattern} from '@spinach/common/const/common';
 import {UserIdSchemaBase} from '@spinach/common/types/api/auth/common';
+import {VerificationStatusSchema} from '@spinach/common/types/common/status';
 
 
 export const BankDetailsSchemaBase = {
   code: Type.String({pattern: bankCodePattern}),
   account: Type.String({pattern: bankAccountPattern}),
-  verified: Type.Boolean(),
+  status: VerificationStatusSchema,
 };
 
 export const BankDetailsSchema = Type.Object(

@@ -25,7 +25,7 @@ export const AccountAddBankClient = () => {
       details: {
         code: '',
         account: '',
-        verified: false,
+        status: 'unverified',
       },
     },
   });
