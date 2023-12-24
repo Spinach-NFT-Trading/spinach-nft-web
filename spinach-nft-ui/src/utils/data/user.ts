@@ -1,7 +1,7 @@
 import {UserInfo} from '@spinach/common/types/common/user';
-import {UserBankDetails} from '@spinach/common/types/data/user/bank';
+import {BankDetails} from '@spinach/common/types/data/user/bank';
 
 
 export const formatUserName = ({username, name}: UserInfo) => `${name} (@${username})`;
 
-export const formatBankDetails = ({code, account}: UserBankDetails) => `${code}-${account}`;
+export const formatBankDetails = ({code, account}: Pick<BankDetails, 'code' | 'account'>) => `${code}-${account}`;
