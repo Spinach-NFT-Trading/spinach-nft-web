@@ -1384,6 +1384,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@savvywombat/tailwindcss-grid-areas@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "@savvywombat/tailwindcss-grid-areas@npm:3.1.0"
+  dependencies:
+    lodash: "npm:^4.17.21"
+  peerDependencies:
+    tailwindcss: ^3.0.1
+  checksum: a33d83d7f15e8486f42e3b1971835cda70cdff3ec6f7d51cfff504e9527cd6ef40c688028ccfd18e5d637c944208407e9a52d2ed12936a703dc3e6b3c8764105
+  languageName: node
+  linkType: hard
+
 "@sinclair/typebox@npm:^0.27.8":
   version: 0.27.8
   resolution: "@sinclair/typebox@npm:0.27.8"
@@ -8874,6 +8885,7 @@ __metadata:
   dependencies:
     "@headlessui/react": "npm:^1.7.16"
     "@heroicons/react": "npm:^2.0.18"
+    "@savvywombat/tailwindcss-grid-areas": "npm:^3.1.0"
     "@types/lodash": "npm:^4.14.200"
     "@types/react": "npm:^18.2.35"
     "@types/react-dom": "npm:^18.2.14"
