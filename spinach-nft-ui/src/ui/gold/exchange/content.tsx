@@ -2,9 +2,11 @@ import React from 'react';
 
 import ArrowDownCircleIcon from '@heroicons/react/24/outline/ArrowDownCircleIcon';
 import ArrowRightIcon from '@heroicons/react/24/outline/ArrowRightIcon';
+import {GoldExchangeChannel} from '@spinach/common/types/data/gold';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
+import {goldExchangeChannelText} from '@spinach/next/const/gold';
 import {GoldExchangeConfirmPopup} from '@spinach/next/ui/gold/exchange/confirm';
 import {ExchangeAmount} from '@spinach/next/ui/gold/exchange/type';
 import {formatFloat2, formatFloat3} from '@spinach/next/utils/number';
@@ -13,13 +15,13 @@ import {formatFloat2, formatFloat3} from '@spinach/next/utils/number';
 const defaultSource = 1000;
 
 type Props = {
-  sourceCurrency: string,
+  exchangeChannel: GoldExchangeChannel,
   exchangeRate: number,
   cashbackRate: number,
   getRedirectUrl: (amount: ExchangeAmount) => string,
 };
 
-export const GoldExchangeContent = ({sourceCurrency, exchangeRate, cashbackRate, getRedirectUrl}: Props) => {
+export const GoldExchangeContent = ({exchangeChannel, exchangeRate, cashbackRate, getRedirectUrl}: Props) => {
   const [show, setShow] = React.useState(false);
   const [amount, setAmount] = React.useState<ExchangeAmount>({
     source: defaultSource,
@@ -37,10 +39,10 @@ export const GoldExchangeContent = ({sourceCurrency, exchangeRate, cashbackRate,
       <Flex center>
         <Flex center className="gap-3 md:w-1/2 md:p-7">
           <InputFloatingLabel
-            id={sourceCurrency}
+            id={exchangeChannel}
             type="number"
             step={0.01}
-            placeholder={sourceCurrency}
+            placeholder={goldExchangeChannelText[exchangeChannel]}
             value={amount.source.toString()}
             onChange={({target}) => {
               const source = parseInt(target.value || '0');
@@ -71,7 +73,7 @@ export const GoldExchangeContent = ({sourceCurrency, exchangeRate, cashbackRate,
                 目前匯率
               </div>
               <Flex center direction="row" className="gap-1.5">
-                1 {sourceCurrency}
+                1 {goldExchangeChannelText[exchangeChannel]}
                 <div className="h-4 w-4">
                   <ArrowRightIcon/>
                 </div>

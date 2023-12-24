@@ -24,3 +24,5 @@ export type GoldWallet = {
   code: string,
   account: string,
 };
+
+export type GoldExchangeChannel = GoldWallet['channel'];

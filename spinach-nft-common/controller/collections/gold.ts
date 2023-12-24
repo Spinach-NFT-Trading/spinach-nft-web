@@ -1,6 +1,5 @@
 import * as console from 'console';
 
-import {walletPattern} from '@spinach/common/const/auth';
 import {Mongo} from '@spinach/common/controller/const';
 import {GoldCompletedTxn, GoldTrackedTxn, GoldWallet} from '@spinach/common/types/data/gold';
 
@@ -24,27 +23,3 @@ const initTxnDatabaseIndex = () => {
 };
 
 initTxnDatabaseIndex().catch((err) => console.error('Failed to init TxN db index', err));
-
-const initTxnWalletValidation = () => {
-  // Needs to match the type of `Announcement`
-  return db.command({
-    collMod: 'wallet',
-    validator: {
-      $jsonSchema: {
-        required: ['_id', 'wallet'],
-        properties: {
-          _id: {
-            bsonType: 'objectId',
-          },
-          wallet: {
-            bsonType: 'string',
-            pattern: walletPattern,
-          },
-        },
-        additionalProperties: false,
-      },
-    },
-  });
-};
-
-initTxnWalletValidation().catch((err) => console.error('Failed to init TxN wallet validation', err));

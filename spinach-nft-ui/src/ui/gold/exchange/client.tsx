@@ -23,7 +23,7 @@ export const GoldExchangeClient = ({usdtExchangeRate, cashbackRate}: Props) => {
         content={{
           usdt: (
             <GoldExchangeContent
-              sourceCurrency="USDT"
+              exchangeChannel="crypto"
               exchangeRate={usdtExchangeRate}
               cashbackRate={cashbackRate}
               getRedirectUrl={({source}) => (
@@ -33,7 +33,7 @@ export const GoldExchangeClient = ({usdtExchangeRate, cashbackRate}: Props) => {
           ),
           twBank: (
             <GoldExchangeContent
-              sourceCurrency="台幣"
+              exchangeChannel="twBank"
               exchangeRate={1}
               cashbackRate={cashbackRate}
               getRedirectUrl={({source}) => (
