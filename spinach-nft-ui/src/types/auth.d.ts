@@ -1,4 +1,5 @@
 import {ApiErrorCode} from '@spinach/common/types/api/error';
+import {VerificationStatus} from '@spinach/common/types/common/status';
 import {UserInfo} from '@spinach/common/types/common/user';
 import {DefaultSession, DefaultUser} from 'next-auth';
 import {DefaultJWT} from 'next-auth/jwt';
@@ -9,7 +10,7 @@ import {UserDataAction, UserLazyLoadedData, UserPreloadedData} from '@spinach/ne
 export type CommonUserData = {
   id: string,
   username: UserInfo['username'],
-  verified: boolean,
+  status: VerificationStatus,
   isAdmin: boolean,
 };
 

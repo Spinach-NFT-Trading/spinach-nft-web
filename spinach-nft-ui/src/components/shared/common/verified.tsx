@@ -11,9 +11,9 @@ type Props = {
   status: VerificationStatus,
 };
 
-export const AccountBankVerified = ({status}: Props) => {
+export const VerificationStatusUi = ({status}: Props) => {
   return (
-    <Flex direction="row" className={verificationStatusTextColor[status]}>
+    <Flex direction="row" noFullWidth className={verificationStatusTextColor[status]}>
       <CheckBadgeIcon className="h-6 w-6"/>
       <div className="whitespace-nowrap">
         {verificationStatusText[status]}

@@ -7,8 +7,8 @@ import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/anim
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {FlexLink} from '@spinach/next/components/layout/flex/link';
 import {Grid} from '@spinach/next/components/layout/grid';
+import {VerificationStatusUi} from '@spinach/next/components/shared/common/verified';
 import {AccountProfileCell} from '@spinach/next/ui/account/profile/sections/common/cell';
-import {AccountBankVerified} from '@spinach/next/ui/account/profile/sections/common/verified';
 
 
 type Props = {
@@ -25,7 +25,7 @@ export const AccountBankDetails = ({bankDetails}: Props) => {
         {bankDetails.map(({status, account, code}) => (
           <AnimatedCollapse key={account} show appear>
             <Flex className="gap-1">
-              <AccountBankVerified status={status}/>
+              <VerificationStatusUi status={status}/>
               <AccountProfileCell title="銀行代碼" info={code}/>
               <AccountProfileCell title="銀行帳號" info={account}/>
             </Flex>

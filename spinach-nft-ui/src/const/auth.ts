@@ -92,7 +92,7 @@ export const authOptions: AuthOptions = {
         id: accountId,
         preloaded: await getUserPreloadedData(token.sub),
         username: token.username,
-        verified: token.verified,
+        status: token.status,
         jwtUpdateError: token.jwtUpdateError,
         lazyLoaded,
         isAdmin: token.isAdmin,
