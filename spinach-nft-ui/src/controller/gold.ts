@@ -1,7 +1,7 @@
 import {txnWalletCollection} from '@spinach/common/controller/collections/gold';
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
-import {GoldExchangeChannel} from '@spinach/common/types/data/gold';
+import {GoldExchangeChannel, GoldWallet} from '@spinach/common/types/data/gold';
 import {ObjectId} from 'mongodb';
 
 
@@ -23,6 +23,6 @@ export const recordPendingTxN = async ({
   return null;
 };
 
-export const getDepositWallet = (channel: GoldExchangeChannel) => (
+export const getDepositWallet = (channel: GoldExchangeChannel): Promise<GoldWallet | null> => (
   txnWalletCollection.findOne({channel}, {projection: {_id: false}})
 );

@@ -16,13 +16,24 @@ export type GoldCompletedTxn = GoldTrackedTxn & {
   goldEquivalent: number,
 };
 
-export type GoldWallet = {
+export type GoldWalletCrypto = {
   channel: 'crypto',
   wallet: string,
-} | {
+};
+
+export type GoldWalletTwBank = {
   channel: 'twBank',
   code: string,
   account: string,
 };
 
-export type GoldExchangeChannel = GoldWallet['channel'];
+export type GoldWallet =
+  GoldWalletCrypto |
+  GoldWalletTwBank;
+
+export type GoldWalletTypeMap = {
+  crypto: GoldWalletCrypto,
+  twBank: GoldWalletTwBank,
+};
+
+export type GoldExchangeChannel = keyof GoldWalletTypeMap;
