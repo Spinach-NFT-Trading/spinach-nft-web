@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CheckBadgeIcon from '@heroicons/react/24/solid/CheckBadgeIcon';
-import format from 'date-fns/format';
+import {format} from 'date-fns/format';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NftPurchaseButton} from '@spinach/next/ui/nft/purchase/button';

@@ -13,23 +13,25 @@
   },
   "author": "RaenonX",
   "license": "ISC",
-  "peerDependencies": {
+  "dependencies": {
     "@fastify/type-provider-typebox": "*",
     "@sinclair/typebox": "*",
+    "bcryptjs": "*",
+    "dotenv": "*",
+    "env-var": "*",
+    "mongodb": "*",
+    "pm2": "*"
+  },
+  "devDependencies": {
     "@types/bcryptjs": "*",
     "@types/node": "*",
     "@typescript-eslint/eslint-plugin": "*",
     "@typescript-eslint/parser": "*",
-    "bcryptjs": "*",
-    "dotenv": "*",
-    "env-var": "*",
     "eslint": "*",
     "eslint-config-google": "*",
     "eslint-import-resolver-typescript": "*",
     "eslint-plugin-import": "*",
     "jest": "*",
-    "mongodb": "*",
-    "pm2": "*",
     "typescript": "*"
   }
 }
