@@ -2,31 +2,30 @@
   "name": "spinach-nft-common",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "yarn@4.0.2",
   "engines": {
-    "node": "18.x",
+    "node": "20.x",
     "npm": "^9.5.1"
   },
   "scripts": {
-    "build": "tsc -p .",
-    "tsc": "tsc --noemit"
+    "build": "yarn g:build:common",
+    "tsc": "yarn g:tsc"
   },
   "author": "RaenonX",
   "license": "ISC",
-  "dependencies": {
-  },
   "peerDependencies": {
     "@fastify/type-provider-typebox": "*",
     "@sinclair/typebox": "*",
+    "@types/bcryptjs": "*",
     "@types/node": "*",
     "@typescript-eslint/eslint-plugin": "*",
     "@typescript-eslint/parser": "*",
-    "@types/bcryptjs": "*",
     "bcryptjs": "*",
     "dotenv": "*",
     "env-var": "*",
     "eslint": "*",
     "eslint-config-google": "*",
-    "eslint-import-resolver-typescript":"*",
+    "eslint-import-resolver-typescript": "*",
     "eslint-plugin-import": "*",
     "jest": "*",
     "mongodb": "*",

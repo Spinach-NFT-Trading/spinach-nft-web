@@ -2,11 +2,12 @@
   "name": "spinach-nft-web",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "yarn@4.0.2",
   "author": "RaenonX",
   "license": "ISC",
   "description": "Web-related projects for Spinach NFT.",
   "engines": {
-    "node": "18.x",
+    "node": "20.x",
     "npm": "^9.5.1"
   },
   "workspaces": [
@@ -16,7 +17,13 @@
     "spinach-nft-ui"
   ],
   "scripts": {
-    "devops": "node scripts/discord-webhook.js"
+    "g:devops": "node scripts/discord-webhook.js",
+    "g:dev": "cd $INIT_CWD && nodemon",
+    "g:tsc": "cd $INIT_CWD && tsc --noemit",
+    "g:build:common": "cd $INIT_CWD && tsc -p .",
+    "g:build:process": "cd $INIT_CWD && tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+    "g:lint": "cd $INIT_CWD && eslint src/ --ext .ts,.tsx",
+    "g:lint:fix": "cd $INIT_CWD && eslint src/ --ext .ts,.tsx --fix"
   },
   "dependencies": {
     "@fastify/type-provider-typebox": "^3.4.0",

@@ -2,18 +2,19 @@
   "name": "spinach-nft-server",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "yarn@4.0.2",
   "engines": {
-    "node": "18.x",
+    "node": "20.x",
     "npm": "^9.5.1"
   },
   "scripts": {
-    "dev": "nodemon",
-    "devops": "node scripts/discord-webhook.js",
-    "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
+    "dev": "yarn g:dev",
+    "devops": "yarn g:devops",
+    "build": "yarn g:build:process",
     "start": "node ./dist/spinach-nft-server/src/main.js",
-    "lint": "eslint src/ --ext .ts,.tsx",
-    "lint:fix": "eslint src/ --ext .ts,.tsx --fix",
-    "tsc": "tsc --noemit"
+    "lint": "yarn g:lint",
+    "lint:fix": "yarn g:lint:fix",
+    "tsc": "yarn g:tsc"
   },
   "author": "RaenonX",
   "license": "ISC",

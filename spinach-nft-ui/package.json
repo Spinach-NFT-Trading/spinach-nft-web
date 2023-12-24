@@ -3,16 +3,16 @@
   "version": "1.0.0",
   "author": "RaenonX",
   "private": true,
+  "packageManager": "yarn@4.0.2",
   "engines": {
-    "node": "18.x",
+    "node": "20.x",
     "npm": "^9.5.1"
   },
   "scripts": {
     "dev": "next dev -p 3005",
-    "devops": "node scripts/discord-webhook.js",
     "build": "next build",
     "start": "next start",
-    "tsc": "tsc --noemit",
+    "tsc": "yarn g:tsc",
     "lint": "next lint",
     "lint:css": "stylelint **/*.css"
   },
