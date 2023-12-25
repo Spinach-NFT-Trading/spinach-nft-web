@@ -4,6 +4,7 @@ import {GoldExchangeChannel} from '@spinach/common/types/data/gold/common';
 import {GoldWalletClientTypeMap} from '@spinach/common/types/data/gold/wallet';
 import {getServerSession} from 'next-auth';
 
+import {SignIn} from '@spinach/next/components/auth/signIn';
 import {Failed} from '@spinach/next/components/icons/failed';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {GoldExchangeChannelUi} from '@spinach/next/components/shared/gold/channel';
@@ -33,7 +34,7 @@ export const GoldExchangeConfirmLayout = async <TChannel extends GoldExchangeCha
   ]);
 
   if (!session) {
-    return <Failed text="Session"/>;
+    return <SignIn/>;
   }
 
   if (!wallet) {
