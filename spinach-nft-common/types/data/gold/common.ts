@@ -1,4 +1,4 @@
-import {GoldWalletTypeMap} from '@spinach/common/types/data/gold/wallet';
+import {GoldWallet} from '@spinach/common/types/data/gold/wallet';
 
 
-export type GoldExchangeChannel = keyof GoldWalletTypeMap;
+export type GoldExchangeChannel = GoldWallet['channel'];

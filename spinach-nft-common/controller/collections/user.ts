@@ -38,6 +38,7 @@ const initUserIndex = async () => {
     ),
     userNftPositionCollection.createIndex({owner: 1, nftId: 1}, {unique: true}),
     userBankDetailsCollection.createIndex({userId: 1, account: 1, code: 1}, {unique: true}),
+    userBankDetailsCollection.createIndex({uuid: 1}, {unique: true}),
   ]);
 };
 

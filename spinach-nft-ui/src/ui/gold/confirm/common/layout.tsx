@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {GoldExchangeChannel} from '@spinach/common/types/data/gold/common';
-import {GoldWalletTypeMap} from '@spinach/common/types/data/gold/wallet';
+import {GoldWalletClientTypeMap} from '@spinach/common/types/data/gold/wallet';
 import {getServerSession} from 'next-auth';
 
 import {Failed} from '@spinach/next/components/icons/failed';
@@ -16,7 +16,7 @@ import {GoldExchangeConfirmSection} from '@spinach/next/ui/gold/confirm/common/s
 type Props<TChannel extends GoldExchangeChannel> = {
   channel: TChannel,
   amount: React.ReactNode,
-  children: (wallet: GoldWalletTypeMap[TChannel]) => React.ReactNode,
+  children: (wallet: GoldWalletClientTypeMap[TChannel]) => React.ReactNode,
 };
 
 export const GoldExchangeConfirmLayout = async <TChannel extends GoldExchangeChannel>({
@@ -51,7 +51,7 @@ export const GoldExchangeConfirmLayout = async <TChannel extends GoldExchangeCha
           <Flex className="info-section gap-2">
             <GoldExchangeConfirmSection title="幣種" content={<GoldExchangeChannelUi channel={wallet.channel}/>}/>
             <GoldExchangeConfirmSection title="充幣金額" content={amount ?? '-'}/>
-            {children(wallet as GoldWalletTypeMap[TChannel])}
+            {children(wallet as GoldWalletClientTypeMap[TChannel])}
           </Flex>
         </Flex>
       </Flex>
