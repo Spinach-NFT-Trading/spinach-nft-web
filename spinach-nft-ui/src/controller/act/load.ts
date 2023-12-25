@@ -4,7 +4,7 @@ import {toUnique} from '@spinach/common/utils/array';
 import {ObjectId} from 'mongodb';
 
 import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft';
-import {getUnverifiedBankDetails} from '@spinach/next/controller/user/bankDetails';
+import {getUnverifiedBankDetails, getVerifiedBankDetailsOfUser} from '@spinach/next/controller/user/bankDetails';
 import {getUnverifiedUsers, getUserDataMap} from '@spinach/next/controller/user/info';
 import {NftListingData} from '@spinach/next/types/nft';
 import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
@@ -28,6 +28,10 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
       price: nftPriceMap[data._id.toString()],
       ...data,
     } satisfies NftListingData)) satisfies UserLazyLoadedData['nftPosition'];
+  }
+
+  if (type === 'verifiedBankDetails') {
+    return await getVerifiedBankDetailsOfUser(accountId) satisfies UserLazyLoadedData['verifiedBankDetails'];
   }
 
   if (type === 'adminImageOfId') {

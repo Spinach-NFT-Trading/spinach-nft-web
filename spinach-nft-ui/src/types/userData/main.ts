@@ -14,9 +14,11 @@ export type UserLazyLoadedData = Partial<UserLazyLoadedContent>;
 export type UserDataActionStatus = 'waiting' | 'processing' | 'completed' | 'failed';
 
 export type UserDataAction = {
+  // `request` only upload data, and does not expect a response
   action: 'request',
   options: UserDataRequestOpts,
 } | {
+  // `load` expects a response
   action: 'load',
   options: UserDataLoadingOpts,
 };

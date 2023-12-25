@@ -16,6 +16,10 @@ export const getBankDetailsOfUser = (userId: string) => {
   return getDataAsArray(userBankDetailsCollection, {userId});
 };
 
+export const getVerifiedBankDetailsOfUser = (userId: string) => {
+  return getDataAsArray(userBankDetailsCollection, {userId, status: 'verified'});
+};
+
 export const getUnverifiedBankDetails = async ({executorUserId}: ControllerRequireUserIdOpts) => {
   await throwIfNotAdmin(executorUserId);
 

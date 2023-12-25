@@ -5,6 +5,9 @@ export type UserDataLoadingOpts = {
   type: 'nftPosition',
   opts?: never,
 } | {
+  type: 'verifiedBankDetails',
+  opts?: never,
+} | {
   type: 'adminUnverifiedAccounts',
   opts?: never,
 } | {
@@ -24,3 +27,5 @@ export type UserDataLoadingOpts = {
 };
 
 export type UserDataLoader = (options: UserDataLoadingOpts) => void;
+
+export type UserDataLoadingType = UserDataLoadingOpts['type'];
