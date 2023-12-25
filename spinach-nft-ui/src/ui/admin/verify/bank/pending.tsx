@@ -31,11 +31,11 @@ export const AdminVerifyBankPending = ({data}: Props) => {
               targetUuid: uuid,
             },
           })}
-          getImageData={(data) => data?.adminImageOfBank?.data}
+          getImageData={(data) => data?.adminImageOfBankDetails?.data}
           getImageRequestPayload={({uuid}) => [
             {
               opts: {
-                type: 'adminImageOfBank',
+                type: 'adminImageOfBankDetails',
                 opts: {uuid},
               },
               imageName: '銀行存摺封面圖',

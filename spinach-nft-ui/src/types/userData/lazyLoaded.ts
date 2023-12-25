@@ -18,7 +18,7 @@ export type UserLazyLoadedContent = {
   adminUnverifiedAccounts: UserInfo[],
   adminUnverifiedBankDetails: ResponseOfUnverifiedBankDetails,
   adminImageOfId: BinaryData | null,
-  adminImageOfBank: BinaryData | null,
+  adminImageOfBankDetails: BinaryData | null,
 };
 
 // For checking if `UserLazyLoadedContent` implements every key of `UserDataLoadingOpts.type`

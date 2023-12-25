@@ -41,11 +41,11 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
     }) satisfies UserLazyLoadedData['adminImageOfId'];
   }
 
-  if (type === 'adminImageOfBank') {
+  if (type === 'adminImageOfBankDetails') {
     return await getImageBlob({
       container: azureContainer.bankDetails,
       name: options.opts.uuid,
-    }) satisfies UserLazyLoadedData['adminImageOfBank'];
+    }) satisfies UserLazyLoadedData['adminImageOfBankDetails'];
   }
 
   if (type === 'adminUnverifiedBankDetails') {

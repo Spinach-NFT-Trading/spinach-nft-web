@@ -20,7 +20,7 @@ export type UserDataLoadingOpts = {
     userId: string,
   },
 } | {
-  type: 'adminImageOfBank',
+  type: 'adminImageOfBankDetails',
   opts: {
     uuid: string,
   },
