@@ -14,13 +14,16 @@ export type UserDataLoadingOpts = {
   type: 'adminUnverifiedBankDetails',
   opts?: never,
 } | {
+  type: 'adminUnverifiedGoldTxn',
+  opts?: never,
+} | {
   type: 'adminImageOfId',
   opts: {
     type: AccountIdVerificationType,
     userId: string,
   },
 } | {
-  type: 'adminImageOfBankDetails',
+  type: 'adminImageOfBankDetails' | 'adminImageOfGoldTxnTwBank',
   opts: {
     uuid: string,
   },

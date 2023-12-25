@@ -3,8 +3,14 @@ import {getImageBlob} from '@spinach/common/controller/blob/get';
 import {toUnique} from '@spinach/common/utils/array';
 import {ObjectId} from 'mongodb';
 
+import {getUnverifiedGoldPurchaseTwBankRecordClient} from '@spinach/next/controller/gold/twBank';
+import {getWalletClientMap} from '@spinach/next/controller/gold/wallet';
 import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft';
-import {getUnverifiedBankDetails, getVerifiedBankDetailsOfUser} from '@spinach/next/controller/user/bankDetails';
+import {
+  getBankDetailsMap,
+  getUnverifiedBankDetails,
+  getVerifiedBankDetailsOfUser,
+} from '@spinach/next/controller/user/bankDetails';
 import {getUnverifiedUsers, getUserDataMap} from '@spinach/next/controller/user/info';
 import {NftListingData} from '@spinach/next/types/nft';
 import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
@@ -48,11 +54,41 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
     }) satisfies UserLazyLoadedData['adminImageOfBankDetails'];
   }
 
+  if (type === 'adminImageOfGoldTxnTwBank') {
+    return await getImageBlob({
+      container: azureContainer.goldPurchase.twBank,
+      name: options.opts.uuid,
+    }) satisfies UserLazyLoadedData['adminImageOfGoldTxnTwBank'];
+  }
+
   if (type === 'adminUnverifiedBankDetails') {
     const details = await getUnverifiedBankDetails({executorUserId: accountId});
-    const userInfoMap = await getUserDataMap(toUnique(details.map(({userId}) => userId)));
+    const userDataMap = await getUserDataMap(toUnique(details.map(({userId}) => userId)));
 
-    return {userDataMap: userInfoMap, details} satisfies UserLazyLoadedData['adminUnverifiedBankDetails'];
+    return {userDataMap, details} satisfies UserLazyLoadedData['adminUnverifiedBankDetails'];
+  }
+
+  if (type === 'adminUnverifiedGoldTxn') {
+    const unverifiedTwBank = await getUnverifiedGoldPurchaseTwBankRecordClient({executorUserId: accountId});
+
+    const [
+      userDataMap,
+      bankDetailsMap,
+      walletMap,
+    ] = await Promise.all([
+      getUserDataMap(toUnique(unverifiedTwBank.map(({accountId}) => accountId))),
+      getBankDetailsMap(toUnique(unverifiedTwBank.map(({sourceBankDetailsUuid}) => sourceBankDetailsUuid))),
+      getWalletClientMap(toUnique(unverifiedTwBank.map(({targetWalletId}) => targetWalletId))),
+    ]);
+
+    return {
+      userDataMap,
+      bankDetailsMap,
+      walletMap,
+      unverified: {
+        twBank: unverifiedTwBank,
+      },
+    } satisfies UserLazyLoadedData['adminUnverifiedGoldTxn'];
   }
 
   if (type === 'adminUnverifiedAccounts') {

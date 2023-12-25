@@ -3,10 +3,11 @@ import {uploadBlob} from '@spinach/common/controller/blob/upload';
 import {userBankDetailsCollection, userInfoCollection} from '@spinach/common/controller/collections/user';
 import {Mongo} from '@spinach/common/controller/const';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
+import {BankDetailsMap} from '@spinach/common/types/data/user/bank';
 import {ObjectId} from 'mongodb';
 import {v4} from 'uuid';
 
-import {getDataAsArray} from '@spinach/next/controller/common';
+import {getDataAsArray, getDataAsMap} from '@spinach/next/controller/common';
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {throwIfNotAdmin} from '@spinach/next/controller/utils';
 import {RequestOfUserBankDetails} from '@spinach/next/types/userData/upload';
@@ -14,6 +15,10 @@ import {RequestOfUserBankDetails} from '@spinach/next/types/userData/upload';
 
 export const getBankDetailsOfUser = (userId: string) => {
   return getDataAsArray(userBankDetailsCollection, {userId});
+};
+
+export const getBankDetailsMap = (uuidList: string[]): Promise<BankDetailsMap> => {
+  return getDataAsMap(userBankDetailsCollection, ({uuid}) => uuid, {uuid: {$in: uuidList}});
 };
 
 export const getVerifiedBankDetailsOfUser = (userId: string) => {

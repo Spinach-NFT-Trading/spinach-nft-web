@@ -13,6 +13,7 @@ export const apiErrorCode = [
   'goldExchangeInProgress',
   'goldNotEnough',
   'goldTwBankTxnRecordFailed',
+  'goldTwBankTxnNotFound',
   'nftNotOnSale',
   'walletInvalid',
   'walletNotExist',

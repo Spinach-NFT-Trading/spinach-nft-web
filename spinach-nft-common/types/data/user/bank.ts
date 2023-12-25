@@ -20,6 +20,8 @@ export const BankDetailsSchema = Type.Object(
 
 export type BankDetails = Static<typeof BankDetailsSchema>;
 
+export type BankDetailsMap = {[uuid in string]?: BankDetails};
+
 export const UserBankDetailsSchema = Type.Object(
   {
     ...BankDetailsSchemaBase,

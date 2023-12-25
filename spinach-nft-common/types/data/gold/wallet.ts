@@ -24,6 +24,8 @@ export type GoldWallet =
 
 export type GoldWalletClient = GoldWallet & GoldWalletClientCommon;
 
+export type GoldWalletClientMap = {[id in string]?: GoldWalletClient};
+
 export type GoldWalletClientTypeMap = {
   crypto: GoldWalletCrypto,
   twBank: GoldWalletTwBank,

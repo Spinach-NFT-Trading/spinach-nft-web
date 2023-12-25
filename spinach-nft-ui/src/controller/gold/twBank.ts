@@ -4,6 +4,7 @@ import {txnGoldPurchaseTwBankRecordCollection} from '@spinach/common/controller/
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
 import {Mongo} from '@spinach/common/controller/const';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
+import {GoldPurchaseTwBankRecordClient} from '@spinach/common/types/data/gold/purchase';
 import {ObjectId} from 'mongodb';
 import {v4} from 'uuid';
 
@@ -13,10 +14,21 @@ import {throwIfNotAdmin} from '@spinach/next/controller/utils';
 import {RequestOfGoldExchangeTwBank} from '@spinach/next/types/userData/upload';
 
 
-export const getUnverifiedGoldPurchaseTwBankRecord = async ({executorUserId}: ControllerRequireUserIdOpts) => {
+export const getUnverifiedGoldPurchaseTwBankRecordClient = async ({
+  executorUserId,
+}: ControllerRequireUserIdOpts): Promise<GoldPurchaseTwBankRecordClient[]> => {
   await throwIfNotAdmin(executorUserId);
 
-  return getDataAsArray(txnGoldPurchaseTwBankRecordCollection, {status: 'unverified'});
+  return (await getDataAsArray(txnGoldPurchaseTwBankRecordCollection, {status: 'unverified'}))
+    .map(({
+      accountId,
+      targetWalletId,
+      ...txn
+    }): GoldPurchaseTwBankRecordClient => ({
+      accountId: accountId.toHexString(),
+      targetWalletId: targetWalletId.toHexString(),
+      ...txn,
+    }));
 };
 
 type MarkGoldPurchaseTwBankRecordVerifiedOpts = ControllerRequireUserIdOpts & {

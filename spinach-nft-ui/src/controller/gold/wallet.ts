@@ -1,7 +1,17 @@
 import {txnWalletCollection} from '@spinach/common/controller/collections/gold';
 import {GoldExchangeChannel} from '@spinach/common/types/data/gold/common';
-import {GoldWalletClient} from '@spinach/common/types/data/gold/wallet';
+import {GoldWallet, GoldWalletClient, GoldWalletClientMap} from '@spinach/common/types/data/gold/wallet';
+import {ObjectId, WithId} from 'mongodb';
 
+
+const toGoldWalletClient = (wallet: WithId<GoldWallet>): GoldWalletClient => {
+  const {_id, ...walletContent} = wallet;
+
+  return {
+    ...walletContent,
+    id: wallet._id.toHexString(),
+  };
+};
 
 export const getDepositWallet = async (channel: GoldExchangeChannel): Promise<GoldWalletClient | null> => {
   const wallet = await txnWalletCollection.findOne({channel});
@@ -9,10 +19,12 @@ export const getDepositWallet = async (channel: GoldExchangeChannel): Promise<Go
     return null;
   }
 
-  const {_id, ...walletContent} = wallet;
+  return toGoldWalletClient(wallet);
+};
 
-  return {
-    ...walletContent,
-    id: wallet._id.toHexString(),
-  };
+export const getWalletClientMap = async (idList: string[]): Promise<GoldWalletClientMap> => {
+  return Object.fromEntries((await txnWalletCollection
+    .find({_id: {$in: idList.map((id) => new ObjectId(id))}})
+    .toArray())
+    .map((data) => [data._id.toHexString(), toGoldWalletClient(data)]));
 };

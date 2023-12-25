@@ -36,7 +36,7 @@ export type UserDataRequestOpts = {
     targetId: string,
   },
 } | {
-  type: 'adminVerifyBankDetails',
+  type: 'adminVerifyBankDetails' | 'adminVerifyGoldTxnTwBank',
   data: {
     targetUuid: string,
   },

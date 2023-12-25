@@ -44,6 +44,10 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
     return markBankDetailsVerified({executorUserId: accountId, uuid: data.targetUuid});
   }
 
+  if (type === 'adminVerifyGoldTxnTwBank') {
+    return markGoldPurchaseTwBankRecordVerified({executorUserId: accountId, uuid: data.targetUuid});
+  }
+
   console.error(`Unhandled user request type [${type satisfies never}]`);
   return null;
 };
