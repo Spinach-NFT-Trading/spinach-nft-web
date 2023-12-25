@@ -17,8 +17,8 @@ export const markUserVerified = async ({
   await throwIfNotAdmin(executorUserId);
 
   const result = await userInfoCollection.findOneAndUpdate(
-    {_id: new ObjectId(targetId), verified: false},
-    {$set: {verified: true}},
+    {_id: new ObjectId(targetId), status: 'unverified'},
+    {$set: {status: 'verified'}},
   );
 
   if (!result) {

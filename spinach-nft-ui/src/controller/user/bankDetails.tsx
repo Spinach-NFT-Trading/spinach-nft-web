@@ -23,7 +23,7 @@ export const getVerifiedBankDetailsOfUser = (userId: string) => {
 export const getUnverifiedBankDetails = async ({executorUserId}: ControllerRequireUserIdOpts) => {
   await throwIfNotAdmin(executorUserId);
 
-  return getDataAsArray(userBankDetailsCollection, {verified: false});
+  return getDataAsArray(userBankDetailsCollection, {status: 'unverified'});
 };
 
 type MarkBankDetailsVerifiedOpts = ControllerRequireUserIdOpts & {
@@ -36,7 +36,10 @@ export const markBankDetailsVerified = async ({
 }: MarkBankDetailsVerifiedOpts): Promise<ApiErrorCode | null> => {
   await throwIfNotAdmin(executorUserId);
 
-  const result = await userBankDetailsCollection.updateOne({uuid}, {$set: {verified: true}});
+  const result = await userBankDetailsCollection.updateOne(
+    {uuid},
+    {$set: {status: 'verified'}},
+  );
 
   return result.modifiedCount > 0 ? null : 'bankDetailsNotFound';
 };

@@ -31,7 +31,7 @@ type GetUnverifiedUsersOpts = ControllerRequireUserIdOpts;
 export const getUnverifiedUsers = async ({executorUserId}: GetUnverifiedUsersOpts): Promise<UserInfo[]> => {
   await throwIfNotAdmin(executorUserId);
 
-  return await userInfoCollection.find({verified: false})
+  return await userInfoCollection.find({status: 'unverified'})
     .map(({_id, ...data}): UserInfo => ({
       ...data,
       id: _id.toHexString(),
