@@ -1,6 +1,6 @@
 import {azureContainer} from '@spinach/common/controller/blob/const';
 import {uploadBlob} from '@spinach/common/controller/blob/upload';
-import {txnTwBankRecordCollection, txnWalletCollection} from '@spinach/common/controller/collections/gold';
+import {txnGoldPurchaseTwBankRecordCollection, txnWalletCollection} from '@spinach/common/controller/collections/gold';
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
 import {Mongo} from '@spinach/common/controller/const';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
@@ -44,15 +44,15 @@ export const recordPendingTxN = async ({
   return null;
 };
 
-type RecordTwBankTxnOpts = {
+type RecordGoldPurchaseTwBankTxnOpts = {
   userId: string,
   request: RequestOfGoldExchangeTwBank,
 };
 
-export const recordTwBankTxn = async ({
+export const recordGoldPurchaseTwBankTxn = async ({
   userId,
   request,
-}: RecordTwBankTxnOpts): Promise<ApiErrorCode | null> => {
+}: RecordGoldPurchaseTwBankTxnOpts): Promise<ApiErrorCode | null> => {
   const {
     sourceBankDetailsUuid,
     txnProofImage,
@@ -72,7 +72,7 @@ export const recordTwBankTxn = async ({
 
   const uuid = v4();
   try {
-    await txnTwBankRecordCollection.insertOne({
+    await txnGoldPurchaseTwBankRecordCollection.insertOne({
       accountId: userObjectId,
       sourceBankDetailsUuid,
       targetWalletId: new ObjectId(targetWalletId),
@@ -87,7 +87,7 @@ export const recordTwBankTxn = async ({
 
   try {
     await uploadBlob({
-      container: azureContainer.goldTwBankTxn,
+      container: azureContainer.goldPurchase.twBank,
       name: uuid,
       ...txnProofImage,
     });

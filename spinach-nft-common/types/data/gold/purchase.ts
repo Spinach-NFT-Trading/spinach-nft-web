@@ -1,7 +1,7 @@
 import {ObjectId} from 'mongodb';
 
 
-export type GoldTwBankTxnRecord = {
+export type GoldPurchaseTwBankRecord = {
   accountId: ObjectId,
   sourceBankDetailsUuid: string,
   targetWalletId: ObjectId,
