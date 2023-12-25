@@ -43,6 +43,10 @@
     @apply hover:text-slate-700;
   }
   
+  .button-toggle-common {
+    @apply transform-smooth rounded-lg;
+  }
+  
   /* endregion */
   
   .invert-base {
@@ -150,27 +154,27 @@
   /* region Toggle button styling (button-toggle-*) */
   
   .button-toggle-inactive-hover {
-    @apply hover:bg-slate-400 hover:text-slate-900;
-  }
-  
-  .button-toggle-inactive-bg {
-    @apply bg-slate-400/20;
-  }
-  
-  .button-toggle-inactive {
-    @apply button-toggle-inactive-hover button-toggle-inactive-bg;
-  }
-  
-  .button-toggle-active-hover {
     @apply hover:bg-slate-500 hover:text-slate-100;
   }
   
+  .button-toggle-inactive-bg {
+    @apply bg-slate-700/50;
+  }
+  
+  .button-toggle-inactive {
+    @apply button-toggle-common button-toggle-inactive-hover button-toggle-inactive-bg;
+  }
+  
+  .button-toggle-active-hover {
+    @apply hover:bg-slate-400 hover:text-slate-800;
+  }
+  
   .button-toggle-active-bg {
-    @apply bg-slate-800 text-slate-100;
+    @apply bg-slate-50 text-slate-800;
   }
   
   .button-toggle-active {
-    @apply button-toggle-active-hover button-toggle-active-bg;
+    @apply button-toggle-common button-toggle-active-hover button-toggle-active-bg;
   }
   
   /* endregion */
