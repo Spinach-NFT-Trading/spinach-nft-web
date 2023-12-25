@@ -2,7 +2,7 @@ import React from 'react';
 
 import ArrowDownCircleIcon from '@heroicons/react/24/outline/ArrowDownCircleIcon';
 import ArrowRightIcon from '@heroicons/react/24/outline/ArrowRightIcon';
-import {GoldExchangeChannel} from '@spinach/common/types/data/gold';
+import {GoldExchangeChannel} from '@spinach/common/types/data/gold/common';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';

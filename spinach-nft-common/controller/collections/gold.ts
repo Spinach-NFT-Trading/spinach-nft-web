@@ -1,7 +1,8 @@
 import * as console from 'console';
 
 import {Mongo} from '@spinach/common/controller/const';
-import {GoldCompletedTxn, GoldTrackedTxn, GoldWallet} from '@spinach/common/types/data/gold';
+import {GoldWallet} from '@spinach/common/types/data/gold/wallet';
+import {GoldCompletedTxn, GoldTrackedTxn} from '@spinach/common/types/data/gold/txn';
 
 
 const db = Mongo.db('txn');

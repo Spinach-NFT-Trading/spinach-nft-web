@@ -1,8 +1,12 @@
 import {txnWalletCollection} from '@spinach/common/controller/collections/gold';
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
-import {GoldExchangeChannel, GoldWallet} from '@spinach/common/types/data/gold';
+import {GoldExchangeChannel} from '@spinach/common/types/data/gold/common';
+import {GoldWallet} from '@spinach/common/types/data/gold/wallet';
 import {ObjectId} from 'mongodb';
+import {v4} from 'uuid';
+
+import {RequestOfGoldExchangeTwBank} from '@spinach/next/types/userData/upload';
 
 
 type RecordGoldPendingTxnOpts = {

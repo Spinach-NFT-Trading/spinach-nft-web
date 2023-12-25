@@ -2,7 +2,7 @@ import {fxMarket} from '@spinach/common/const/fx';
 import {getFxRate} from '@spinach/common/controller/actors/fx';
 import {txnCompletedCollection, txnTrackedCollection} from '@spinach/common/controller/collections/gold';
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
-import {GoldCompletedTxn, GoldTrackedTxn} from '@spinach/common/types/data/gold';
+import {GoldCompletedTxn, GoldTrackedTxn} from '@spinach/common/types/data/gold/txn';
 import {TrxWalletTransferResponseData} from '@spinach/common/types/tron/transfer';
 import {isNotNullish} from '@spinach/common/utils/type';
 import {AnyBulkWriteOperation, MongoBulkWriteError, SortDirection} from 'mongodb';

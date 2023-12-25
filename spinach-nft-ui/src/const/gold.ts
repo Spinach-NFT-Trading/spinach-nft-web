@@ -1,4 +1,4 @@
-import {GoldExchangeChannel} from '@spinach/common/types/data/gold';
+import {GoldExchangeChannel} from '@spinach/common/types/data/gold/common';
 
 
 export const goldExchangeChannelText: {[channel in GoldExchangeChannel]: string} = {

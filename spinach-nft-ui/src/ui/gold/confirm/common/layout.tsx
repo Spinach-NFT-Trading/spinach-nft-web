@@ -1,6 +1,7 @@
 import React from 'react';
 
-import {GoldExchangeChannel, GoldWalletTypeMap} from '@spinach/common/types/data/gold';
+import {GoldExchangeChannel} from '@spinach/common/types/data/gold/common';
+import {GoldWalletTypeMap} from '@spinach/common/types/data/gold/wallet';
 import {getServerSession} from 'next-auth';
 
 import {Failed} from '@spinach/next/components/icons/failed';

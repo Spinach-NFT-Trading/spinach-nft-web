@@ -1,7 +1,7 @@
 import React from 'react';
 
 import CurrencyDollarIcon from '@heroicons/react/24/outline/CurrencyDollarIcon';
-import {GoldExchangeChannel} from '@spinach/common/types/data/gold';
+import {GoldExchangeChannel} from '@spinach/common/types/data/gold/common';
 
 import {UsdtIcon} from '@spinach/next/components/icons/usdt';
 import {Flex} from '@spinach/next/components/layout/flex/common';
