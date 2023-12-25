@@ -8,7 +8,14 @@ export type RequestOptsOfNftBuy = {
 
 export type RequestOfUserBankDetails = {
   image: BinaryData,
-  details: BankDetails,
+  details: Omit<BankDetails, 'uuid'>,
+};
+
+export type RequestOfGoldExchangeTwBank = {
+  sourceBankDetailsUuid: string,
+  txnProofImage: BinaryData,
+  targetWalletId: string,
+  amount: number,
 };
 
 export type UserDataRequestOpts = {
@@ -20,6 +27,9 @@ export type UserDataRequestOpts = {
 } | {
   type: 'exchangeGold',
   data: null,
+} | {
+  type: 'exchangeGoldTwBank',
+  data: RequestOfGoldExchangeTwBank,
 } | {
   type: 'adminVerifyAccount',
   data: {

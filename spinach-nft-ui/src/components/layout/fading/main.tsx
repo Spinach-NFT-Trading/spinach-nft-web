@@ -25,7 +25,7 @@ export const FadingLayout = <TKey extends string>({current, contents, className}
           leave="duration-300"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
-          className="grid-in-inner-div overflow-hidden transition-opacity ease-in-out"
+          className="overflow-hidden transition-opacity ease-in-out grid-in-inner-div"
         >
           {content as React.ReactNode}
         </Transition>

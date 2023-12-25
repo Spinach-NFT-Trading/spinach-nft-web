@@ -7,4 +7,5 @@ export const azureBlobClient = BlobServiceClient.fromConnectionString(azureBlobC
 
 export const azureContainer = {
   bankDetails: 'bankDetails',
+  goldTwBankTxn: 'goldTwBankTxn',
 };

@@ -1,5 +1,8 @@
-import {txnWalletCollection} from '@spinach/common/controller/collections/gold';
+import {azureContainer} from '@spinach/common/controller/blob/const';
+import {uploadBlob} from '@spinach/common/controller/blob/upload';
+import {txnTwBankRecordCollection, txnWalletCollection} from '@spinach/common/controller/collections/gold';
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
+import {Mongo} from '@spinach/common/controller/const';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {GoldExchangeChannel} from '@spinach/common/types/data/gold/common';
 import {GoldWalletClient} from '@spinach/common/types/data/gold/wallet';
@@ -41,6 +44,61 @@ export const recordPendingTxN = async ({
   return null;
 };
 
-export const getDepositWallet = (channel: GoldExchangeChannel): Promise<GoldWallet | null> => (
-  txnWalletCollection.findOne({channel}, {projection: {_id: false}})
-);
+type RecordTwBankTxnOpts = {
+  userId: string,
+  request: RequestOfGoldExchangeTwBank,
+};
+
+export const recordTwBankTxn = async ({
+  userId,
+  request,
+}: RecordTwBankTxnOpts): Promise<ApiErrorCode | null> => {
+  const {
+    sourceBankDetailsUuid,
+    txnProofImage,
+    targetWalletId,
+    amount,
+  } = request;
+
+  const session = Mongo.startSession();
+  session.startTransaction();
+
+  const userObjectId = new ObjectId(userId);
+
+  const userData = userInfoCollection.findOne({_id: userObjectId});
+  if (!userData) {
+    return 'accountNotFound';
+  }
+
+  const uuid = v4();
+  try {
+    await txnTwBankRecordCollection.insertOne({
+      accountId: userObjectId,
+      sourceBankDetailsUuid,
+      targetWalletId: new ObjectId(targetWalletId),
+      uuid,
+      amount,
+    }, {session});
+  } catch (e) {
+    console.error(e);
+    await session.abortTransaction();
+    await session.endSession();
+  }
+
+  try {
+    await uploadBlob({
+      container: azureContainer.goldTwBankTxn,
+      name: uuid,
+      ...txnProofImage,
+    });
+  } catch (e) {
+    await session.abortTransaction();
+    await session.endSession();
+    return 'goldTwBankTxnRecordFailed';
+  }
+
+  await session.commitTransaction();
+  await session.endSession();
+  return null;
+};
+

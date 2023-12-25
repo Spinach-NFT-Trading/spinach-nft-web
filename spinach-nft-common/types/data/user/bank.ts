@@ -10,6 +10,7 @@ export const BankDetailsSchemaBase = {
   code: Type.String({pattern: bankCodePattern}),
   account: Type.String({pattern: bankAccountPattern}),
   status: VerificationStatusSchema,
+  uuid: Type.String({pattern: uuidPattern}),
 };
 
 export const BankDetailsSchema = Type.Object(
@@ -23,7 +24,6 @@ export const UserBankDetailsSchema = Type.Object(
   {
     ...BankDetailsSchemaBase,
     userId: UserIdSchemaBase,
-    uuid: Type.String({pattern: uuidPattern}),
   },
   {additionalProperties: false},
 );

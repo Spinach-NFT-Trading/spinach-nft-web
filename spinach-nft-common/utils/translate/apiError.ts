@@ -12,6 +12,7 @@ const apiErrorStringMap: {[code in ApiErrorCode]: string} = {
   takenWallet: 'MAX 錢包已被使用。',
   goldExchangeInProgress: 'GOLD 購買程序已在進行中，請稍後再試。',
   goldNotEnough: 'GOLD 不足。',
+  goldTwBankTxnRecordFailed: '台幣轉帳紀錄上傳失敗。',
   nftNotOnSale: 'NFT 不在販賣中。',
   walletInvalid: '錢包地址無效。',
   walletNotExist: '錢包地址不存在。',

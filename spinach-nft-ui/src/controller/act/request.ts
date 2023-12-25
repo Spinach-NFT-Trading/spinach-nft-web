@@ -1,7 +1,7 @@
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {ObjectId} from 'mongodb';
 
-import {recordPendingTxN} from '@spinach/next/controller/gold';
+import {recordPendingTxN, recordTwBankTxn} from '@spinach/next/controller/gold';
 import {buyNft} from '@spinach/next/controller/nft';
 import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
 import {markUserVerified} from '@spinach/next/controller/user/update';
@@ -18,6 +18,10 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
 
   if (type === 'exchangeGold') {
     return recordPendingTxN({account: accountId});
+  }
+
+  if (type === 'exchangeGoldTwBank') {
+    return recordTwBankTxn({userId: accountId, request: data});
   }
 
   if (type === 'nftBuy') {
