@@ -6,12 +6,16 @@ import {UserDataActorState} from '@spinach/next/hooks/userData/type';
 import {UserDataActor} from '@spinach/next/types/userData/main';
 
 
+type UseUserDataActorOpts = {
+  statusNoReset?: boolean,
+};
+
 type UseUserDataActorReturn = UserDataActorState & {
   act: UserDataActor | null,
   session: ReturnType<typeof useSession>,
 };
 
-export const useUserDataActor = (): UseUserDataActorReturn => {
+export const useUserDataActor = (opts?: UseUserDataActorOpts): UseUserDataActorReturn => {
   const [state, setState] = React.useState<UserDataActorState>({
     status: 'waiting',
     lazyLoaded: {},
@@ -49,7 +53,7 @@ export const useUserDataActor = (): UseUserDataActorReturn => {
   React.useEffect(() => {
     const {status} = state;
 
-    if (status !== 'completed' && status !== 'failed') {
+    if (status !== 'completed' && status !== 'failed' || opts?.statusNoReset) {
       return;
     }
 
