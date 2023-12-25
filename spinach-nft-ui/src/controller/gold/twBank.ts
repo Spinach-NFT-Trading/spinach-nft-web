@@ -1,47 +1,40 @@
 import {azureContainer} from '@spinach/common/controller/blob/const';
 import {uploadBlob} from '@spinach/common/controller/blob/upload';
-import {txnGoldPurchaseTwBankRecordCollection, txnWalletCollection} from '@spinach/common/controller/collections/gold';
+import {txnGoldPurchaseTwBankRecordCollection} from '@spinach/common/controller/collections/gold';
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
 import {Mongo} from '@spinach/common/controller/const';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
-import {GoldExchangeChannel} from '@spinach/common/types/data/gold/common';
-import {GoldWalletClient} from '@spinach/common/types/data/gold/wallet';
 import {ObjectId} from 'mongodb';
 import {v4} from 'uuid';
 
+import {getDataAsArray} from '@spinach/next/controller/common';
+import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
+import {throwIfNotAdmin} from '@spinach/next/controller/utils';
 import {RequestOfGoldExchangeTwBank} from '@spinach/next/types/userData/upload';
 
 
-export const getDepositWallet = async (channel: GoldExchangeChannel): Promise<GoldWalletClient | null> => {
-  const wallet = await txnWalletCollection.findOne({channel});
-  if (!wallet) {
-    return null;
-  }
+export const getUnverifiedGoldPurchaseTwBankRecord = async ({executorUserId}: ControllerRequireUserIdOpts) => {
+  await throwIfNotAdmin(executorUserId);
 
-  const {_id, ...walletContent} = wallet;
-
-  return {
-    ...walletContent,
-    id: wallet._id.toHexString(),
-  };
+  return getDataAsArray(txnGoldPurchaseTwBankRecordCollection, {status: 'unverified'});
 };
 
-type RecordGoldPendingTxnOpts = {
-  account: string,
+type MarkGoldPurchaseTwBankRecordVerifiedOpts = ControllerRequireUserIdOpts & {
+  uuid: string,
 };
 
-export const recordPendingTxN = async ({
-  account,
-}: RecordGoldPendingTxnOpts): Promise<ApiErrorCode | null> => {
-  const accountId = new ObjectId(account);
+export const markGoldPurchaseTwBankRecordVerified = async ({
+  executorUserId,
+  uuid,
+}: MarkGoldPurchaseTwBankRecordVerifiedOpts): Promise<ApiErrorCode | null> => {
+  await throwIfNotAdmin(executorUserId);
 
-  const userInfo = await userInfoCollection.findOne({_id: accountId}, {projection: {_id: false}});
+  const result = await txnGoldPurchaseTwBankRecordCollection.updateOne(
+    {uuid},
+    {$set: {status: 'verified'}},
+  );
 
-  if (!userInfo) {
-    return 'accountNotFound';
-  }
-
-  return null;
+  return result.modifiedCount > 0 ? null : 'goldTwBankTxnNotFound';
 };
 
 type RecordGoldPurchaseTwBankTxnOpts = {
@@ -78,6 +71,7 @@ export const recordGoldPurchaseTwBankTxn = async ({
       targetWalletId: new ObjectId(targetWalletId),
       uuid,
       amount,
+      status: 'unverified',
     }, {session});
   } catch (e) {
     console.error(e);
@@ -101,4 +95,3 @@ export const recordGoldPurchaseTwBankTxn = async ({
   await session.endSession();
   return null;
 };
-

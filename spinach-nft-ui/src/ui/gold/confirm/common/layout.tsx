@@ -9,7 +9,7 @@ import {Failed} from '@spinach/next/components/icons/failed';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {GoldExchangeChannelUi} from '@spinach/next/components/shared/gold/channel';
 import {authOptions} from '@spinach/next/const/auth';
-import {getDepositWallet} from '@spinach/next/controller/gold';
+import {getDepositWallet} from '@spinach/next/controller/gold/wallet';
 import {PageLayout} from '@spinach/next/ui/base/layout/common';
 import {GoldExchangeConfirmSection} from '@spinach/next/ui/gold/confirm/common/section';
 
