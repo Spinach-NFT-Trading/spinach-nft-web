@@ -21,7 +21,10 @@ export const uploadIdVerification = async ({
   userId,
   request,
 }: UploadIdVerificationOpts): Promise<ApiErrorCode | null> => {
-  const userData = await userInfoCollection.findOne({_id: new ObjectId(userId)});
+  const userData = await userInfoCollection.findOneAndUpdate(
+    {_id: new ObjectId(userId)},
+    {$set: {status: 'unverified'}},
+  );
   if (!userData) {
     return 'accountNotFound';
   }
@@ -42,6 +45,7 @@ export const uploadIdVerification = async ({
     })
     .filter(isNotNullish),
   );
+
   return null;
 };
 
