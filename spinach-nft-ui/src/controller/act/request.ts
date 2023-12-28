@@ -6,7 +6,7 @@ import {markGoldPurchaseTwBankRecord, recordGoldPurchaseTwBankTxn} from '@spinac
 import {buyNft} from '@spinach/next/controller/nft';
 import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
 import {uploadIdVerification} from '@spinach/next/controller/user/info';
-import {markUserVerified} from '@spinach/next/controller/user/update';
+import {markUserStatus} from '@spinach/next/controller/user/status';
 import {UserDataRequestOpts} from '@spinach/next/types/userData/upload';
 
 
@@ -39,7 +39,14 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
   }
 
   if (type === 'adminVerifyAccount') {
-    return markUserVerified({executorUserId: accountId, targetId: data.targetId});
+    return markUserStatus({
+      executorUserId: accountId,
+      targetId: data.targetId,
+      status: {
+        original: 'unverified',
+        new: 'verified',
+      },
+    });
   }
 
   if (type === 'adminVerifyBankDetails') {
