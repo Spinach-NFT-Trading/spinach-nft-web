@@ -1,7 +1,8 @@
+import {getNewBalance} from '@spinach/common/controller/actors/user';
 import {azureContainer} from '@spinach/common/controller/blob/const';
 import {uploadBlob} from '@spinach/common/controller/blob/upload';
 import {txnGoldPurchaseTwBankRecordCollection} from '@spinach/common/controller/collections/gold';
-import {userInfoCollection} from '@spinach/common/controller/collections/user';
+import {userBalanceCollection, userInfoCollection} from '@spinach/common/controller/collections/user';
 import {Mongo} from '@spinach/common/controller/const';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {GoldPurchaseTwBankRecordClient} from '@spinach/common/types/data/gold/purchase';
@@ -49,12 +50,21 @@ export const markGoldPurchaseTwBankRecord = async ({
     return deletionResult.deletedCount > 0 ? null : 'goldTwBankTxnNotFound';
   }
 
-  const result = await txnGoldPurchaseTwBankRecordCollection.updateOne(
+  const result = await txnGoldPurchaseTwBankRecordCollection.findOneAndUpdate(
     {uuid},
     {$set: {status: 'verified'}},
   );
+  if (!result) {
+    return 'goldTwBankTxnNotFound';
+  }
 
-  return result.modifiedCount > 0 ? null : 'goldTwBankTxnNotFound';
+  await userBalanceCollection.insertOne({
+    ...(await getNewBalance({accountId: result.accountId, diff: result.amount})),
+    type: 'deposit.twBank',
+    uuid,
+  });
+
+  return null;
 };
 
 type RecordGoldPurchaseTwBankTxnOpts = {
