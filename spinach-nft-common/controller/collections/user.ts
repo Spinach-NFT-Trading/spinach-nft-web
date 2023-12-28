@@ -26,7 +26,11 @@ const initUserIndex = async () => {
     userBalanceCollection.createIndex({userId: 1}),
     userBalanceCollection.createIndex(
       {txnHash: 1},
-      {unique: true, partialFilterExpression: {type: 'deposit'}, name: 'depositTxnHash'},
+      {unique: true, partialFilterExpression: {type: 'deposit.crypto'}, name: 'depositTxnHash'},
+    ),
+    userBalanceCollection.createIndex(
+      {uuid: 1},
+      {unique: true, partialFilterExpression: {type: 'deposit.twBank'}, name: 'depositTwBankUuid'},
     ),
     userBalanceCollection.createIndex(
       {nftTxnId: 1},

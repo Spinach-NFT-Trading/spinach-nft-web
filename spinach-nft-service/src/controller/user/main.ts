@@ -12,7 +12,7 @@ export const recordBalanceAfterDeposit = async (txns: GoldCompletedTxn[]) => {
 
     newRecords.push({
       ...(await getNewBalance({accountId, diff})),
-      type: 'deposit',
+      type: 'deposit.crypto',
       txnHash: hash,
     });
   }

@@ -8,8 +8,11 @@ export type UserBalanceHistoryModelRequired = {
 };
 
 export type UserBalanceHistoryModel = UserBalanceHistoryModelRequired & ({
-  type: 'deposit',
+  type: 'deposit.crypto',
   txnHash: string,
+} | {
+  type: 'deposit.twBank',
+  uuid: string,
 } | {
   type: 'nftBuy',
   nftTxnId: ObjectId,
