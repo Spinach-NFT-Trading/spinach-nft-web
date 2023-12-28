@@ -4,6 +4,8 @@ import React from 'react';
 import {Dialog, Transition} from '@headlessui/react';
 import clsx from 'clsx';
 
+import {Flex} from '@spinach/next/components/layout/flex/common';
+
 
 type Props = {
   className?: string,
@@ -45,9 +47,9 @@ export const Popup = ({show, setShow, children, className}: React.PropsWithChild
               'bg-gray-950 ring-1 ring-inset ring-gray-600',
               className,
             )}>
-              <div className="max-h-96 overflow-y-auto">
+              <Flex className="max-h-96 overflow-y-auto">
                 {children}
-              </div>
+              </Flex>
             </Dialog.Panel>
           </Transition.Child>
         </div>
