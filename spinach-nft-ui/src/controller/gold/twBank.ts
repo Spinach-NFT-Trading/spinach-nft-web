@@ -31,15 +31,23 @@ export const getUnverifiedGoldPurchaseTwBankRecordClient = async ({
     }));
 };
 
-type MarkGoldPurchaseTwBankRecordVerifiedOpts = ControllerRequireUserIdOpts & {
+type MarkGoldPurchaseTwBankRecordOpts = ControllerRequireUserIdOpts & {
   uuid: string,
+  pass: boolean,
 };
 
-export const markGoldPurchaseTwBankRecordVerified = async ({
+export const markGoldPurchaseTwBankRecord = async ({
   executorUserId,
   uuid,
-}: MarkGoldPurchaseTwBankRecordVerifiedOpts): Promise<ApiErrorCode | null> => {
+  pass,
+}: MarkGoldPurchaseTwBankRecordOpts): Promise<ApiErrorCode | null> => {
   await throwIfNotAdmin(executorUserId);
+
+  if (!pass) {
+    const deletionResult = await txnGoldPurchaseTwBankRecordCollection.deleteOne({uuid});
+
+    return deletionResult.deletedCount > 0 ? null : 'goldTwBankTxnNotFound';
+  }
 
   const result = await txnGoldPurchaseTwBankRecordCollection.updateOne(
     {uuid},

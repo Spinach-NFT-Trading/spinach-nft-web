@@ -34,6 +34,6 @@ export type AdminVerificationCollapsibleProps<TData> = {
   getInfo: (data: TData) => React.ReactNode,
   getImageRequestPayload: (data: TData) => AdminVerificationImageRequestPayload[],
   getImageData: AdminVerificationGetImageFromPayload,
-  getConfirmPayload: (data: TData) => UserDataRequestOpts,
+  getConfirmPayload: (data: TData, pass: boolean) => UserDataRequestOpts,
   onVerified: () => void,
 };

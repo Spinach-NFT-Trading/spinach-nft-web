@@ -1,8 +1,11 @@
 import React from 'react';
 
+import CheckCircleIcon from '@heroicons/react/24/outline/CheckCircleIcon';
+import XCircleIcon from '@heroicons/react/24/outline/XCircleIcon';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {signIn} from 'next-auth/react';
 
+import {FlexButton} from '@spinach/next/components/layout/flex/button';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
 import {
@@ -29,7 +32,7 @@ export const AdminVerificationConfirm = <TData, >({
 
   const {act} = useUserDataActor();
 
-  const onClickVerify = async () => {
+  const onClickVerify = (pass: boolean) => async () => {
     if (!act) {
       await signIn();
       return;
@@ -37,7 +40,7 @@ export const AdminVerificationConfirm = <TData, >({
 
     const session = await act({
       action: 'request',
-      options: getConfirmPayload(data),
+      options: getConfirmPayload(data, pass),
     });
     const error = session?.user.jwtUpdateError;
     if (!error) {
@@ -57,18 +60,30 @@ export const AdminVerificationConfirm = <TData, >({
       show: null,
       payload: null,
     }))}>
-      <Flex center className="gap-2">
+      <Flex center className="gap-2 sm:w-96">
         {error && <Alert>{translateApiError(error)}</Alert>}
         <div className="text-xl">
           確認驗證
         </div>
         <hr className="w-full"/>
-        <div>
-          確定要通過驗證嗎？
-        </div>
-        <button className="button-clickable-bg w-1/2 p-2" onClick={onClickVerify}>
-          確認
-        </button>
+        <FlexButton
+          center
+          noFullWidth={false}
+          className="button-base button-text-hover h-24 gap-1 bg-green-700 p-2 text-3xl hover:bg-green-300"
+          onClick={onClickVerify(true)}
+        >
+          <CheckCircleIcon className="h-9 w-9"/>
+          <div>通過</div>
+        </FlexButton>
+        <FlexButton
+          center
+          noFullWidth={false}
+          className="button-base button-text-hover h-24 gap-1 bg-red-800 p-2 text-3xl hover:bg-red-300"
+          onClick={onClickVerify(false)}
+        >
+          <XCircleIcon className="h-9 w-9"/>
+          <div>駁回</div>
+        </FlexButton>
       </Flex>
     </Popup>
   );

@@ -33,13 +33,21 @@ export const getUnverifiedBankDetails = async ({executorUserId}: ControllerRequi
 
 type MarkBankDetailsVerifiedOpts = ControllerRequireUserIdOpts & {
   uuid: string,
+  pass: boolean,
 };
 
 export const markBankDetailsVerified = async ({
   executorUserId,
   uuid,
+  pass,
 }: MarkBankDetailsVerifiedOpts): Promise<ApiErrorCode | null> => {
   await throwIfNotAdmin(executorUserId);
+
+  if (!pass) {
+    const deletionResult = await userBankDetailsCollection.deleteOne({uuid});
+
+    return deletionResult.deletedCount > 0 ? null : 'bankDetailsNotFound';
+  }
 
   const result = await userBankDetailsCollection.updateOne(
     {uuid},

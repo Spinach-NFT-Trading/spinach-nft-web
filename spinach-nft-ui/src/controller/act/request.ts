@@ -2,10 +2,7 @@ import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {ObjectId} from 'mongodb';
 
 import {recordGoldPendingTxn} from '@spinach/next/controller/gold/pending';
-import {
-  markGoldPurchaseTwBankRecordVerified,
-  recordGoldPurchaseTwBankTxn,
-} from '@spinach/next/controller/gold/twBank';
+import {markGoldPurchaseTwBankRecord, recordGoldPurchaseTwBankTxn} from '@spinach/next/controller/gold/twBank';
 import {buyNft} from '@spinach/next/controller/nft';
 import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
 import {markUserVerified} from '@spinach/next/controller/user/update';
@@ -41,11 +38,19 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
   }
 
   if (type === 'adminVerifyBankDetails') {
-    return markBankDetailsVerified({executorUserId: accountId, uuid: data.targetUuid});
+    return markBankDetailsVerified({
+      executorUserId: accountId,
+      uuid: data.targetUuid,
+      pass: data.pass,
+    });
   }
 
   if (type === 'adminVerifyGoldTxnTwBank') {
-    return markGoldPurchaseTwBankRecordVerified({executorUserId: accountId, uuid: data.targetUuid});
+    return markGoldPurchaseTwBankRecord({
+      executorUserId: accountId,
+      uuid: data.targetUuid,
+      pass: data.pass,
+    });
   }
 
   console.error(`Unhandled user request type [${type satisfies never}]`);

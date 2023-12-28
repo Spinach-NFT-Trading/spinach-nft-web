@@ -39,5 +39,6 @@ export type UserDataRequestOpts = {
   type: 'adminVerifyBankDetails' | 'adminVerifyGoldTxnTwBank',
   data: {
     targetUuid: string,
+    pass: boolean,
   },
 };

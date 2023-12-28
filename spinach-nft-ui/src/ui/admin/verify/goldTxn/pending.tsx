@@ -31,10 +31,11 @@ export const AdminVerifyGoldTxnPending = ({data}: Props) => {
           onVerified={() => setTwBankTxn((original) => (
             original.filter(({uuid}) => uuid !== txn.uuid)
           ))}
-          getConfirmPayload={({uuid}) => ({
+          getConfirmPayload={({uuid}, pass) => ({
             type: 'adminVerifyGoldTxnTwBank',
             data: {
               targetUuid: uuid,
+              pass,
             },
           })}
           getImageData={(data) => data?.adminImageOfGoldTxnTwBank?.data}

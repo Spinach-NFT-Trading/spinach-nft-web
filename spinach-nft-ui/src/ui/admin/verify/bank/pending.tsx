@@ -25,10 +25,11 @@ export const AdminVerifyBankPending = ({data}: Props) => {
           onVerified={() => setBankDetails((original) => (
             original.filter(({uuid}) => uuid !== details.uuid)
           ))}
-          getConfirmPayload={({uuid}) => ({
+          getConfirmPayload={({uuid}, pass) => ({
             type: 'adminVerifyBankDetails',
             data: {
               targetUuid: uuid,
+              pass,
             },
           })}
           getImageData={(data) => data?.adminImageOfBankDetails?.data}
