@@ -1,3 +1,4 @@
+import {UserIdVerificationData} from '@spinach/common/types/api/auth/verify/id/main';
 import {BinaryData} from '@spinach/common/types/common/binary';
 import {BankDetails} from '@spinach/common/types/data/user/bank';
 
@@ -24,6 +25,9 @@ export type UserDataRequestOpts = {
 } | {
   type: 'userBankDetails',
   data: RequestOfUserBankDetails,
+} | {
+  type: 'userAccountIdVerification',
+  data: UserIdVerificationData,
 } | {
   type: 'exchangeGold',
   data: null,

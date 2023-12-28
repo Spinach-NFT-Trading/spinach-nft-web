@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
+import {initialAccountIdVerificationState} from '@spinach/next/components/shared/account/idVerification/const';
 import {AccountIdVerificationForm} from '@spinach/next/components/shared/account/idVerification/main';
 import {AccountIdVerificationState} from '@spinach/next/components/shared/account/idVerification/type';
 import {AccountRegisterCommonProps, AccountRegisterInput} from '@spinach/next/ui/account/register/type';
@@ -13,14 +14,9 @@ type Props = AccountRegisterCommonProps & {
 export const AccountRegisterIdVerification = ({uploading, ...props}: Props) => {
   const {show, input, setInput, onComplete} = props;
 
-  const [state, setState] = React.useState<AccountIdVerificationState>({
-    error: {
-      idFront: null,
-      idBack: null,
-      handheld: null,
-      secondaryFront: null,
-    },
-  });
+  const [state, setState] = React.useState<AccountIdVerificationState>(
+    initialAccountIdVerificationState,
+  );
 
   return (
     <AnimatedCollapse show={show}>

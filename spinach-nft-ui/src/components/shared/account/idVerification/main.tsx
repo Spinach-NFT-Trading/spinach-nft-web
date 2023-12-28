@@ -1,5 +1,7 @@
 import React from 'react';
 
+import clsx from 'clsx';
+
 import {FlexForm} from '@spinach/next/components/layout/flex/form';
 import {AccountIdVerificationInput} from '@spinach/next/components/shared/account/idVerification/input';
 import {AccountIdVerificationCommonProps} from '@spinach/next/components/shared/account/idVerification/type';
@@ -10,6 +12,7 @@ type Props = AccountIdVerificationCommonProps & {
   isNotReady: boolean,
   onComplete: () => void,
   submitButtonText: string,
+  className?: string,
 };
 
 export const AccountIdVerificationForm = ({
@@ -17,10 +20,11 @@ export const AccountIdVerificationForm = ({
   isNotReady,
   onComplete,
   submitButtonText,
+  className,
   ...props
 }: Props) => {
   return (
-    <FlexForm className="gap-2" onSubmit={onComplete}>
+    <FlexForm className={clsx('gap-2', className)} onSubmit={onComplete}>
       <AccountIdVerificationInput
         type="idFront"
         {...props}
