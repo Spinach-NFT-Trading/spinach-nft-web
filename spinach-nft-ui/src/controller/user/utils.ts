@@ -12,6 +12,7 @@ export const toUserData = ({
   birthday,
   lineId,
   wallet,
+  recruitedBy,
 }: WithId<UserModel>): UserData => {
   return {
     idNumber,
@@ -21,6 +22,7 @@ export const toUserData = ({
     birthday,
     lineId,
     wallet,
+    recruitedBy,
   };
 };
 
@@ -30,6 +32,8 @@ export const toUserInfo = async (model: WithId<UserModel>): Promise<UserInfo> =>
     username,
     status,
     admin,
+    agent,
+    recruitedBy,
   } = model;
 
   return {
@@ -38,5 +42,7 @@ export const toUserInfo = async (model: WithId<UserModel>): Promise<UserInfo> =>
     bankDetails: await userBankDetailsCollection.find({username}).toArray(),
     status,
     admin,
+    agent,
+    recruitedBy,
   };
 };

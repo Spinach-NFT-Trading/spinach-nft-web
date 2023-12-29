@@ -69,6 +69,8 @@ export const registerUser = async ({
     wallet,
     status: 'unverified',
     admin: false,
+    agent: false,
+    recruitedBy: null,
   });
 
   return result.insertedId;
@@ -89,17 +91,34 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     return 'passwordMismatch';
   }
 
+  const {
+    _id,
+    idNumber,
+    username,
+    name,
+    email,
+    birthday,
+    lineId,
+    wallet,
+    status,
+    admin,
+    agent,
+    recruitedBy,
+  } = info;
+
   return {
-    id: info._id.toHexString(),
-    idNumber: info.idNumber,
-    username: info.username,
-    name: info.name,
-    email: info.email,
-    birthday: info.birthday,
-    lineId: info.lineId,
-    wallet: info.wallet,
+    id: _id.toHexString(),
+    idNumber,
+    username,
+    name,
+    email,
+    birthday,
+    lineId,
+    wallet,
     bankDetails: await userBankDetailsCollection.find({username: info.username}).toArray(),
-    status: info.status,
-    admin: info.admin,
+    status,
+    admin,
+    agent,
+    recruitedBy,
   };
 };

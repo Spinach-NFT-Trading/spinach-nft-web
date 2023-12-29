@@ -41,14 +41,17 @@ export const authOptions: AuthOptions = {
         name,
         email,
         admin,
+        agent,
         status,
       } = userInfo;
       token = {
-        ...token,
+        id: token.id,
+        sub: token.sub,
         username,
         name,
         email,
         isAdmin: admin,
+        isAgent: agent,
         status,
         jwtUpdateError: null,
         action: null,
@@ -96,6 +99,7 @@ export const authOptions: AuthOptions = {
         jwtUpdateError: token.jwtUpdateError,
         lazyLoaded,
         isAdmin: token.isAdmin,
+        isAgent: token.isAgent,
       };
 
       return session;

@@ -12,6 +12,7 @@ export type CommonUserData = {
   username: UserInfo['username'],
   status: VerificationStatus,
   isAdmin: boolean,
+  isAgent: boolean,
 };
 
 declare module 'next-auth' {

@@ -84,6 +84,8 @@ export const addAuthRegister = () => {
           bankDetails: [],
           status: 'unverified',
           admin: false,
+          agent: false,
+          recruitedBy: null,
         },
       };
     },
