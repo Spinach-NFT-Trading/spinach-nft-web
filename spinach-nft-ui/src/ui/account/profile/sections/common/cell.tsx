@@ -5,7 +5,7 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 
 type Props = {
   title: string,
-  info: string,
+  info: React.ReactNode,
 };
 
 export const AccountProfileCell = ({title, info}: Props) => {

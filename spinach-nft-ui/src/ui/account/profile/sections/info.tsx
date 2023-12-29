@@ -6,7 +6,9 @@ import {UserInfo} from '@spinach/common/types/common/user';
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {FlexLink} from '@spinach/next/components/layout/flex/link';
+import {CopyButton} from '@spinach/next/components/shared/copy';
 import {AccountProfileCell} from '@spinach/next/ui/account/profile/sections/common/cell';
+import {generateAgentReferralLink} from '@spinach/next/utils/data/agent';
 
 
 type Props = {
@@ -15,6 +17,7 @@ type Props = {
 
 export const AccountProfileInfo = ({userInfo}: Props) => {
   const {
+    id,
     username,
     email,
     name,
@@ -23,7 +26,10 @@ export const AccountProfileInfo = ({userInfo}: Props) => {
     lineId,
     wallet,
     status,
+    agent,
   } = userInfo;
+
+  const agentReferralLink = generateAgentReferralLink(id);
 
   return (
     <Flex className="info-section gap-1">
@@ -40,6 +46,21 @@ export const AccountProfileInfo = ({userInfo}: Props) => {
           <AccountProfileCell title="生日" info={birthday}/>
         </Flex>
       </Flex>
+      <AnimatedCollapse show={agent}>
+        <AccountProfileCell
+          title="邀請連結"
+          info={
+            <Flex direction="row" center className="gap-2 rounded-lg bg-slate-950/70 p-1.5">
+              <pre className="overflow-y-auto text-lg">
+                {agentReferralLink}
+              </pre>
+              <Flex noFullWidth>
+                <CopyButton data={agentReferralLink}/>
+              </Flex>
+            </Flex>
+          }
+        />
+      </AnimatedCollapse>
       <AnimatedCollapse show={status === 'rejected'}>
         <Flex className="items-end">
           <FlexLink href="/account/verify/id" className="button-clickable-bg gap-1 p-1.5">
