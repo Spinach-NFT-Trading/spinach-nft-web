@@ -20,27 +20,27 @@ export type RequestOfGoldExchangeTwBank = {
 };
 
 export type UserDataRequestOpts = {
-  type: 'nftBuy',
+  type: 'nft.buy',
   data: RequestOptsOfNftBuy,
 } | {
-  type: 'userBankDetails',
+  type: 'user.bank',
   data: RequestOfUserBankDetails,
 } | {
-  type: 'userAccountIdVerification',
+  type: 'user.account.verify.id',
   data: UserIdVerificationData,
 } | {
-  type: 'exchangeGold',
+  type: 'exchange.gold.crypto',
   data: null,
 } | {
-  type: 'exchangeGoldTwBank',
+  type: 'exchange.gold.twBank',
   data: RequestOfGoldExchangeTwBank,
 } | {
-  type: 'adminVerifyAccount',
+  type: 'admin.verify.account',
   data: {
     targetId: string,
   },
 } | {
-  type: 'adminVerifyBankDetails' | 'adminVerifyGoldTxnTwBank',
+  type: 'admin.verify.bank' | 'admin.verify.gold.twBank',
   data: {
     targetUuid: string,
     pass: boolean,

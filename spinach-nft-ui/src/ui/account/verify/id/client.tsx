@@ -35,7 +35,7 @@ export const AccountIdVerifyClient = () => {
     const session = await act({
       action: 'request',
       options: {
-        type: 'userAccountIdVerification',
+        type: 'user.account.verify.id',
         data,
       },
     });

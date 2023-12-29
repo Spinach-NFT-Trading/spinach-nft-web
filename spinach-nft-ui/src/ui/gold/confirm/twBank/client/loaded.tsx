@@ -76,7 +76,7 @@ export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedB
     const session = await act({
       action: 'request',
       options: {
-        type: 'exchangeGoldTwBank',
+        type: 'exchange.gold.twBank',
         data: {
           sourceBankDetailsUuid,
           txnProofImage,

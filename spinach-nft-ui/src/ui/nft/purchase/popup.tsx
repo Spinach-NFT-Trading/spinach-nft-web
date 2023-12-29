@@ -33,7 +33,13 @@ export const NftPurchaseConfirmPopup = ({nftId, show, setShow}: Props) => {
       return;
     }
 
-    const session = await act({action: 'request', options: {type: 'nftBuy', data: {nftId}}});
+    const session = await act({
+      action: 'request',
+      options: {
+        type: 'nft.buy',
+        data: {nftId},
+      },
+    });
     const error = session?.user.jwtUpdateError;
     if (error) {
       setError(error);

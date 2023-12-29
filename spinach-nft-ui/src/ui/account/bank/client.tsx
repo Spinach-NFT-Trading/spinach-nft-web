@@ -53,7 +53,7 @@ export const AccountAddBankClient = () => {
     const session = await act({
       action: 'request',
       options: {
-        type: 'userBankDetails',
+        type: 'user.bank',
         data: {
           details: data.details,
           image: data.image,

@@ -29,7 +29,13 @@ export const GoldExchangeConfirmPopup = ({show, setShow, amount, getRedirectUrl}
       return;
     }
 
-    const session = await act({action: 'request', options: {type: 'exchangeGold', data: null}});
+    const session = await act({
+      action: 'request',
+      options: {
+        type: 'exchange.gold.crypto',
+        data: null,
+      },
+    });
     const error = session?.user.jwtUpdateError;
     if (!error) {
       push(getRedirectUrl(amount));

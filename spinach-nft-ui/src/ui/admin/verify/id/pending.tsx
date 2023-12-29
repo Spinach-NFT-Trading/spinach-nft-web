@@ -30,7 +30,7 @@ export const AdminVerifyIdPending = ({initialUsers}: Props) => {
             original.filter(({id}) => id !== user.id)
           ))}
           getConfirmPayload={({id}) => ({
-            type: 'adminVerifyAccount',
+            type: 'admin.verify.account',
             data: {
               targetId: id,
             },

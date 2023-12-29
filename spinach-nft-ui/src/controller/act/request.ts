@@ -18,27 +18,27 @@ type HandleUserRequestOpts = {
 export const handleUserRequest = async ({accountId, options}: HandleUserRequestOpts): Promise<ApiErrorCode | null> => {
   const {type, data} = options;
 
-  if (type === 'exchangeGold') {
+  if (type === 'exchange.gold.crypto') {
     return recordGoldPendingTxn({account: accountId});
   }
 
-  if (type === 'exchangeGoldTwBank') {
+  if (type === 'exchange.gold.twBank') {
     return recordGoldPurchaseTwBankTxn({userId: accountId, request: data});
   }
 
-  if (type === 'nftBuy') {
+  if (type === 'nft.buy') {
     return buyNft({buyer: new ObjectId(accountId), nftId: new ObjectId(data.nftId)});
   }
 
-  if (type === 'userBankDetails') {
+  if (type === 'user.bank') {
     return uploadBankDetails({userId: accountId, request: data});
   }
 
-  if (type === 'userAccountIdVerification') {
+  if (type === 'user.account.verify.id') {
     return uploadIdVerification({userId: accountId, request: data});
   }
 
-  if (type === 'adminVerifyAccount') {
+  if (type === 'admin.verify.account') {
     return markUserStatus({
       executorUserId: accountId,
       targetId: data.targetId,
@@ -49,7 +49,7 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
     });
   }
 
-  if (type === 'adminVerifyBankDetails') {
+  if (type === 'admin.verify.bank') {
     return markBankDetailsVerified({
       executorUserId: accountId,
       uuid: data.targetUuid,
@@ -57,7 +57,7 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
     });
   }
 
-  if (type === 'adminVerifyGoldTxnTwBank') {
+  if (type === 'admin.verify.gold.twBank') {
     return markGoldPurchaseTwBankRecord({
       executorUserId: accountId,
       uuid: data.targetUuid,

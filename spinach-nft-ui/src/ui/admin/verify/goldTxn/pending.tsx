@@ -32,7 +32,7 @@ export const AdminVerifyGoldTxnPending = ({data}: Props) => {
             original.filter(({uuid}) => uuid !== txn.uuid)
           ))}
           getConfirmPayload={({uuid}, pass) => ({
-            type: 'adminVerifyGoldTxnTwBank',
+            type: 'admin.verify.gold.twBank',
             data: {
               targetUuid: uuid,
               pass,
