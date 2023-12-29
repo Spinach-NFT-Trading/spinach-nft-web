@@ -3,13 +3,12 @@ import React from 'react';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NextImage} from '@spinach/next/components/shared/common/image/main';
 import {CopyButton} from '@spinach/next/components/shared/copy';
-import {NextPageProps} from '@spinach/next/types/next/page';
 import {GoldExchangeConfirmLayout} from '@spinach/next/ui/gold/confirm/common/layout';
 import {GoldExchangeConfirmSection} from '@spinach/next/ui/gold/confirm/common/section';
-import {GoldExchangeConfirmPageParams} from '@spinach/next/ui/gold/confirm/common/type';
+import {GoldExchangeConfirmPageProps} from '@spinach/next/ui/gold/confirm/common/type';
 
 
-export const GoldExchangeConfirmUsdt = async ({searchParams}: NextPageProps<GoldExchangeConfirmPageParams>) => {
+export const GoldExchangeConfirmUsdt = async ({searchParams}: GoldExchangeConfirmPageProps) => {
   return (
     <GoldExchangeConfirmLayout channel="crypto" amount={searchParams?.amount}>
       {({wallet}) => (
