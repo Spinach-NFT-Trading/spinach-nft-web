@@ -70,22 +70,33 @@ export const addAuthRegister = () => {
         type,
       })));
 
+      const {
+        idNumber,
+        name,
+        email,
+        username,
+        birthday,
+        lineId,
+        wallet,
+        recruitedBy,
+      } = body;
+
       return {
         success: true,
         data: {
           id,
-          idNumber: body.idNumber,
-          name: body.name,
-          email: body.email,
-          username: body.username,
-          birthday: body.birthday,
-          lineId: body.lineId,
-          wallet: body.wallet,
+          idNumber,
+          name,
+          email,
+          username,
+          birthday,
+          lineId,
+          wallet,
           bankDetails: [],
           status: 'unverified',
           admin: false,
           agent: false,
-          recruitedBy: null,
+          recruitedBy,
         },
       };
     },

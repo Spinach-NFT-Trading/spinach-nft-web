@@ -20,6 +20,7 @@ export const registerUser = async ({
   wallet,
   username,
   password,
+  recruitedBy,
 }: UserRegisterRequest): Promise<ApiErrorCode | ObjectId> => {
   if (await userInfoCollection.findOne({idNumber})) {
     return 'takenIdNumber';
@@ -43,6 +44,18 @@ export const registerUser = async ({
 
   if (await userInfoCollection.findOne({wallet})) {
     return 'takenWallet';
+  }
+
+  if (recruitedBy) {
+    const agent = await userInfoCollection.findOne({_id: new ObjectId(recruitedBy)});
+
+    if (!agent) {
+      return 'agentNotFound';
+    }
+
+    if (!agent.agent) {
+      return 'agentInactive';
+    }
   }
 
   const checkResult = await checkTrxAddress({wallet});
@@ -70,7 +83,7 @@ export const registerUser = async ({
     status: 'unverified',
     admin: false,
     agent: false,
-    recruitedBy: null,
+    recruitedBy,
   });
 
   return result.insertedId;

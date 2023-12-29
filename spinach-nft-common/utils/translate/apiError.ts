@@ -3,6 +3,8 @@ import {ApiErrorCode, isApiError} from '@spinach/common/types/api/error';
 
 const apiErrorStringMap: {[code in ApiErrorCode]: string} = {
   accountNotFound: '找不到對應的帳號。',
+  agentNotFound: '找不到對應的代理。',
+  agentInactive: '申請連結對應的代理無效。',
   passwordMismatch: '密碼不正確。',
   takenIdNumber: '身份證字號已被使用。',
   takenEmail: '電子信箱已被使用。',

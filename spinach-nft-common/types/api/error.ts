@@ -3,6 +3,8 @@ import {Static, TString, Type} from '@sinclair/typebox';
 
 export const apiErrorCode = [
   'accountNotFound',
+  'agentNotFound',
+  'agentInactive',
   'passwordMismatch',
   'takenIdNumber',
   'takenUsername',

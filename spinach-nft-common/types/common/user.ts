@@ -12,7 +12,6 @@ export const UserPropertySchemaBase = {
   status: VerificationStatusSchema,
   admin: Type.Boolean(),
   agent: Type.Boolean(),
-  recruitedBy: Type.Union([UserIdSchemaBase, Type.Null()]),
 };
 
 export const UserDataSchemaBase = {
@@ -23,6 +22,7 @@ export const UserDataSchemaBase = {
   birthday: IsoDateStringSchema,
   lineId: Type.String({pattern: lineIdPattern}),
   wallet: WalletSchemaBase,
+  recruitedBy: Type.Union([UserIdSchemaBase, Type.Null()]),
 };
 
 export const UserDataSchema = Type.Object(
