@@ -14,6 +14,7 @@ declare global {
       NEXTAUTH_SECRET: string;
 
       NEXT_PUBLIC_SERVER_API: string;
+      NEXT_PUBLIC_HOST: string;
     }
   }
 }
