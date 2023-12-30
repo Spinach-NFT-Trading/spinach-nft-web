@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {PageLayout} from '@spinach/next/ui/base/layout/common';
+import {PageLayout} from '@spinach/next/ui/base/layout/base/common';
 import {PageLayoutProps} from '@spinach/next/ui/base/layout/type';
 
 

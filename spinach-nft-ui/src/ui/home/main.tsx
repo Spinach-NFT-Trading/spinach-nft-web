@@ -8,7 +8,7 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NftListing} from '@spinach/next/components/shared/nft/main';
 import {authOptions} from '@spinach/next/const/auth';
 import {getNftListing} from '@spinach/next/controller/nft';
-import {PageLayout} from '@spinach/next/ui/base/layout/common';
+import {PageLayout} from '@spinach/next/ui/base/layout/base/common';
 import {HomeFooter} from '@spinach/next/ui/home/footer/main';
 import {HomeHeader} from '@spinach/next/ui/home/header';
 

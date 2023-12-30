@@ -1,32 +1,19 @@
 import React from 'react';
 
-import {redirect} from 'next/navigation';
-import {getServerSession, Session} from 'next-auth';
-
-import {SignIn} from '@spinach/next/components/auth/signIn';
-import {authOptions} from '@spinach/next/const/auth';
-import {PageLayout} from '@spinach/next/ui/base/layout/common';
+import {SessionCheckRequiredPageLayout} from '@spinach/next/ui/base/layout/base/checksRequired';
 import {PageLayoutProps} from '@spinach/next/ui/base/layout/type';
 
 
-type Props = PageLayoutProps & {
-  sessionOverride?: Session | null,
-};
-
-export const AdminRequiredPageLayout = ({announcement, sessionOverride, children}: React.PropsWithChildren<Props>) => {
-  const session = React.use(
-    sessionOverride ?
-      Promise.resolve(sessionOverride) :
-      getServerSession(authOptions),
-  );
-
-  if (!session?.user.isAdmin) {
-    redirect('/');
-  }
-
+export const AdminRequiredPageLayout = ({
+  children,
+  ...props
+}: React.PropsWithChildren<PageLayoutProps>) => {
   return (
-    <PageLayout announcement={announcement}>
-      {session ? children : <SignIn/>}
-    </PageLayout>
+    <SessionCheckRequiredPageLayout
+      isSessionCheckPassed={(session) => !!session?.user.isAdmin}
+      {...props}
+    >
+      {children}
+    </SessionCheckRequiredPageLayout>
   );
 };
