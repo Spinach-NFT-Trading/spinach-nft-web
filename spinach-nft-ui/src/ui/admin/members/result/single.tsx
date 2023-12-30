@@ -11,10 +11,13 @@ import {AdminMemberDataCell} from '@spinach/next/ui/admin/members/result/cell';
 
 
 type Props = {
+  isAdmin: boolean,
   member: UserInfo,
+  onSetAgent: (enable: boolean) => void,
+  agentToggleDisabled: boolean,
 };
 
-export const AdminMemberSingleResult = ({member}: Props) => {
+export const AdminMemberSingleResult = ({isAdmin, member, onSetAgent, agentToggleDisabled}: Props) => {
   const {
     id,
     status,
@@ -53,8 +56,8 @@ export const AdminMemberSingleResult = ({member}: Props) => {
         {recruitedBy && <AdminMemberDataCell title="代理上線 ID" info={recruitedBy}/>}
         <Grid className="info-section grid-cols-1 gap-2 lg:grid-cols-2 2xl:grid-cols-3">
           {bankDetails.length ?
-            bankDetails.map(({status, account, code}) => (
-              <Flex className="gap-1">
+            bankDetails.map(({status, account, code, uuid}) => (
+              <Flex key={uuid} className="gap-1">
                 <VerificationStatusUi status={status}/>
                 <AdminMemberDataCell center={false} title="銀行代碼" info={code}/>
                 <AdminMemberDataCell center={false} title="銀行帳號" info={account}/>
@@ -62,6 +65,16 @@ export const AdminMemberSingleResult = ({member}: Props) => {
             )) :
             '無相關銀行帳號'}
         </Grid>
+        {
+          isAdmin &&
+          <button
+            className="button-clickable-bg p-1"
+            onClick={() => onSetAgent(!agent)}
+            disabled={agentToggleDisabled}
+          >
+            {agent ? '拔除代理' : '授予代理'}
+          </button>
+        }
       </Flex>
     </CollapsibleFull>
   );

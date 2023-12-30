@@ -26,6 +26,7 @@ export type UserLazyLoadedContent = {
   // Keys here should match `UserDataLoadingOpts.type`
   nftPosition: NftListingData[],
   verifiedBankDetails: BankDetails[],
+  adminMemberList: UserInfo[],
   adminUnverifiedAccounts: UserInfo[],
   adminUnverifiedBankDetails: ResponseOfUnverifiedBankDetails,
   adminUnverifiedGoldTxn: ResponseOfUnverifiedGoldTxn,

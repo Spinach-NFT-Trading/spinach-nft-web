@@ -12,6 +12,7 @@ import {
   getVerifiedBankDetailsOfUser,
 } from '@spinach/next/controller/user/bankDetails';
 import {getUnverifiedUsers, getUserDataMap} from '@spinach/next/controller/user/info';
+import {getAccountMembers} from '@spinach/next/controller/user/members';
 import {NftListingData} from '@spinach/next/types/nft';
 import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 import {UserLazyLoadedData} from '@spinach/next/types/userData/main';
@@ -38,6 +39,12 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
 
   if (type === 'verifiedBankDetails') {
     return await getVerifiedBankDetailsOfUser(accountId) satisfies UserLazyLoadedData['verifiedBankDetails'];
+  }
+
+  if (type === 'adminMemberList') {
+    return await getAccountMembers({
+      executorUserId: accountId,
+    }) satisfies UserLazyLoadedData['adminMemberList'];
   }
 
   if (type === 'adminImageOfId') {

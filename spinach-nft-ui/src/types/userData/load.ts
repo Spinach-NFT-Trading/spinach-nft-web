@@ -8,6 +8,9 @@ export type UserDataLoadingOpts = {
   type: 'verifiedBankDetails',
   opts?: never,
 } | {
+  type: 'adminMemberList',
+  opts?: never,
+} | {
   type: 'adminUnverifiedAccounts',
   opts?: never,
 } | {
