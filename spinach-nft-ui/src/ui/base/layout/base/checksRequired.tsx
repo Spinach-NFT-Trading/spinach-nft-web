@@ -19,7 +19,7 @@ export const SessionCheckRequiredPageLayout = ({
   isValid,
   isSessionCheckPassed,
   children,
-}: React.PropsWithChildren<Props>) => {
+}: Props) => {
   const session = React.use(
     sessionOverride ?
       Promise.resolve(sessionOverride) :
@@ -32,7 +32,7 @@ export const SessionCheckRequiredPageLayout = ({
 
   return (
     <PageLayout announcement={announcement}>
-      {session ? children : <SignIn/>}
+      {session ? (typeof children === 'function' ? children(session) : children) : <SignIn/>}
     </PageLayout>
   );
 };

@@ -7,7 +7,7 @@ import {PageLayoutProps} from '@spinach/next/ui/base/layout/type';
 export const AdminRequiredPageLayout = ({
   children,
   ...props
-}: React.PropsWithChildren<PageLayoutProps>) => {
+}: PageLayoutProps) => {
   return (
     <SessionCheckRequiredPageLayout
       isSessionCheckPassed={(session) => !!session?.user.isAdmin}

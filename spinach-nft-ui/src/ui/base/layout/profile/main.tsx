@@ -8,14 +8,14 @@ import {ProfileLayoutAuthenticated} from '@spinach/next/ui/base/layout/profile/a
 import {PageLayoutProps} from '@spinach/next/ui/base/layout/type';
 
 
-export const ProfileLayout = ({children, ...props}: React.PropsWithChildren<PageLayoutProps>) => {
+export const ProfileLayout = ({children, ...props}: PageLayoutProps) => {
   const session = React.use(getServerSession(authOptions));
 
   return (
     <LoginRequiredPageLayout sessionOverride={session} {...props}>
       {session ?
         <ProfileLayoutAuthenticated session={session}>
-          {children}
+          {typeof children === 'function' ? children(session) : children}
         </ProfileLayoutAuthenticated> :
         <></>}
     </LoginRequiredPageLayout>

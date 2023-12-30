@@ -4,7 +4,10 @@ import {SessionCheckRequiredPageLayout} from '@spinach/next/ui/base/layout/base/
 import {PageLayoutProps} from '@spinach/next/ui/base/layout/type';
 
 
-export const LoginRequiredPageLayout = ({children, ...props}: React.PropsWithChildren<PageLayoutProps>) => {
+export const LoginRequiredPageLayout = ({
+  children,
+  ...props
+}: PageLayoutProps) => {
   return (
     <SessionCheckRequiredPageLayout
       isSessionCheckPassed={() => true}
