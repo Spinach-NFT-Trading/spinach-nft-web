@@ -101,6 +101,10 @@
     @apply info-section-base info-section-bg;
   }
   
+  .info-highlight {
+    @apply rounded-lg shadow-border shadow-slate-200;
+  }
+  
   /* endregion */
   
   /* region Image inverting (invert-*) */

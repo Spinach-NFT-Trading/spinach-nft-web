@@ -22,6 +22,9 @@ const config: Config = {
           'inner-div',
         ],
       },
+      boxShadow: {
+        'border': 'inset 0 0 0.3rem',
+      },
     },
   },
   plugins: [
