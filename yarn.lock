@@ -483,6 +483,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/runtime@npm:^7.0.0":
+  version: 7.23.7
+  resolution: "@babel/runtime@npm:7.23.7"
+  dependencies:
+    regenerator-runtime: "npm:^0.14.0"
+  checksum: 3e304133ee55b0750e03e53cb4efb47fb2bdcdb5795f85bbffa10595196c34b9be60eb65bd6d833c87f49fc827f0365f86f95f51d85b188004d3128bb5129c93
+  languageName: node
+  linkType: hard
+
 "@babel/runtime@npm:^7.20.13, @babel/runtime@npm:^7.23.2":
   version: 7.23.6
   resolution: "@babel/runtime@npm:7.23.6"
@@ -1725,6 +1734,15 @@ __metadata:
   dependencies:
     "@types/react": "npm:*"
   checksum: 74dba11a1b8156f3a763f3fca1fb4ec1dcd349153279b8bf79210024a69f994bf2cf0728198c047f8130c5318420ea56281b0a4ef84c8ae943cd9a0cac705220
+  languageName: node
+  linkType: hard
+
+"@types/react-window@npm:^1.8.8":
+  version: 1.8.8
+  resolution: "@types/react-window@npm:1.8.8"
+  dependencies:
+    "@types/react": "npm:*"
+  checksum: 2170a3957752603e8b994840c5d31b72ddf94c427c0f42b0175b343cc54f50fe66161d8871e11786ec7a59906bd33861945579a3a8f745455a3744268ec1069f
   languageName: node
   linkType: hard
 
@@ -6058,6 +6076,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"memoize-one@npm:>=3.1.1 <6":
+  version: 5.2.1
+  resolution: "memoize-one@npm:5.2.1"
+  checksum: fd22dbe9a978a2b4f30d6a491fc02fb90792432ad0dab840dc96c1734d2bd7c9cdeb6a26130ec60507eb43230559523615873168bcbe8fafab221c30b11d54c1
+  languageName: node
+  linkType: hard
+
 "memory-pager@npm:^1.0.2":
   version: 1.5.0
   resolution: "memory-pager@npm:1.5.0"
@@ -7464,6 +7489,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-virtualized-auto-sizer@npm:^1.0.20":
+  version: 1.0.20
+  resolution: "react-virtualized-auto-sizer@npm:1.0.20"
+  peerDependencies:
+    react: ^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0-rc
+    react-dom: ^15.3.0 || ^16.0.0-alpha || ^17.0.0 || ^18.0.0-rc
+  checksum: af8cc202a9f8d0d4bc21470d57a970455262cb27784811b3a813790361aa60f790acd304efdd8e8b380d46d3eed66309abecc7e5d6aecbec93f60844028d10cb
+  languageName: node
+  linkType: hard
+
+"react-window@npm:^1.8.10":
+  version: 1.8.10
+  resolution: "react-window@npm:1.8.10"
+  dependencies:
+    "@babel/runtime": "npm:^7.0.0"
+    memoize-one: "npm:>=3.1.1 <6"
+  peerDependencies:
+    react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: eda9afb667d9784513dcc2755b65edf3a1412e7877975322993c1382908aaef0c0b948b7e3b2d705e353306556274d90f7ab19ac40aef2184fa39d4c1e2232ea
+  languageName: node
+  linkType: hard
+
 "react@npm:^18.2.0":
   version: 18.2.0
   resolution: "react@npm:18.2.0"
@@ -8191,6 +8239,7 @@ __metadata:
     "@types/lodash": "npm:^4.14.202"
     "@types/react": "npm:^18.2.45"
     "@types/react-dom": "npm:^18.2.18"
+    "@types/react-window": "npm:^1.8.8"
     "@types/uuid": "npm:^9.0.7"
     autoprefixer: "npm:^10.4.16"
     clsx: "npm:^2.0.0"
@@ -8203,6 +8252,8 @@ __metadata:
     postcss: "npm:^8.4.32"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
+    react-virtualized-auto-sizer: "npm:^1.0.20"
+    react-window: "npm:^1.8.10"
     sharp: "npm:^0.33.1"
     stylelint: "npm:^16.0.2"
     stylelint-config-standard: "npm:^35.0.0"

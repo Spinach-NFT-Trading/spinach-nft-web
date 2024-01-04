@@ -2,7 +2,6 @@
 import React from 'react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
-import {HorizontalSplitter} from '@spinach/next/components/shared/common/splitter';
 import {UserDataLazyLoad} from '@spinach/next/components/shared/userData/lazyLoad';
 import {AdminMembersSearchInput} from '@spinach/next/ui/admin/members/input/main';
 import {AdminMembersResults} from '@spinach/next/ui/admin/members/result/main';
@@ -27,7 +26,6 @@ export const AdminMembersClient = ({isAdmin}: Props) => {
   return (
     <Flex className="gap-1.5">
       <AdminMembersSearchInput input={input} setInput={setInput}/>
-      <HorizontalSplitter/>
       <UserDataLazyLoad
         options={{
           type: 'adminMemberList',

@@ -25,6 +25,9 @@ const config: Config = {
       boxShadow: {
         'border': 'inset 0 0 0.3rem',
       },
+      width: {
+        '108': '28rem',
+      },
     },
   },
   plugins: [
