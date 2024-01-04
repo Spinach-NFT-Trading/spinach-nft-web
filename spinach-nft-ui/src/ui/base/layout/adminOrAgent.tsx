@@ -10,7 +10,7 @@ export const AdminOrAgentPageLayout = ({
 }: PageLayoutProps) => {
   return (
     <SessionCheckRequiredPageLayout
-      isSessionCheckPassed={(session) => !!session?.user.isAdmin && !!session?.user.isAgent}
+      isSessionCheckPassed={(session) => !!session?.user.isAdmin || !!session?.user.isAgent}
       {...props}
     >
       {children}
