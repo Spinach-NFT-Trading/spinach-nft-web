@@ -1,3 +1,4 @@
+import {Nullable} from '@spinach/common/types/common/typing';
 import {isNotNullish} from '@spinach/common/utils/type';
 
 
@@ -7,7 +8,7 @@ const formatter = {
   int: new Intl.NumberFormat(undefined, {minimumFractionDigits: 0, maximumFractionDigits: 0}),
 };
 
-export const formatFloat3 = (num: number | null | undefined): string | null => {
+export const formatFloat3 = (num: Nullable<number>): string | null => {
   if (isNotNullish(num)) {
     return formatter.float3.format(num);
   }
@@ -15,7 +16,7 @@ export const formatFloat3 = (num: number | null | undefined): string | null => {
   return '-';
 };
 
-export const formatFloat2 = (num: number | null | undefined): string | null => {
+export const formatFloat2 = (num: Nullable<number>): string | null => {
   if (isNotNullish(num)) {
     return formatter.float2.format(num);
   }
@@ -23,7 +24,7 @@ export const formatFloat2 = (num: number | null | undefined): string | null => {
   return '-';
 };
 
-export const formatInt = (num: number | null | undefined): string | null => {
+export const formatInt = (num: Nullable<number>): string | null => {
   if (isNotNullish(num)) {
     return formatter.int.format(num);
   }
@@ -32,7 +33,7 @@ export const formatInt = (num: number | null | undefined): string | null => {
 };
 
 type FormatToAbbreviationOpts = {
-  num: number | undefined,
+  num: Nullable<number>,
   decimals?: number
 };
 
