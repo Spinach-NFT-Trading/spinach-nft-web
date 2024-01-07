@@ -20,3 +20,5 @@ export type UserBalanceHistoryModel = UserBalanceHistoryModelRequired & ({
   type: 'nftSell',
   nftTxnId: ObjectId,
 });
+
+export type UserBalanceHistoryTxnType = UserBalanceHistoryModel['type'];

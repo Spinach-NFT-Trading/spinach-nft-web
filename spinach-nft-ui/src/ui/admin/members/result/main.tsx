@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {UserInfo} from '@spinach/common/types/common/user';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import {FixedSizeList} from 'react-window';
@@ -8,6 +7,8 @@ import {FixedSizeList} from 'react-window';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
+import {ResponseAdminMemberList} from '@spinach/next/types/userData/lazyLoaded';
+import {adminMemberTableRowHeight} from '@spinach/next/ui/admin/members/result/const';
 import {AdminMemberSingleResult} from '@spinach/next/ui/admin/members/result/single/main';
 import {AdminMembersTable} from '@spinach/next/ui/admin/members/result/table';
 import {AdminMembersResultState} from '@spinach/next/ui/admin/members/result/type';
@@ -17,10 +18,10 @@ import {AdminMembersFilterInput} from '@spinach/next/ui/admin/members/type';
 type Props = {
   isAdmin: boolean,
   input: AdminMembersFilterInput,
-  membersOnLoad: UserInfo[],
+  memberInfo: ResponseAdminMemberList,
 };
 
-export const AdminMembersResults = ({isAdmin, input, membersOnLoad}: Props) => {
+export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
   const {
     idNumber,
     username,
@@ -31,9 +32,10 @@ export const AdminMembersResults = ({isAdmin, input, membersOnLoad}: Props) => {
     bankAccount,
   } = input;
   const {act, status} = useUserDataActor();
+  const {info, balanceSummaryMap} = memberInfo;
 
   const [state, setState] = React.useState<AdminMembersResultState>({
-    members: membersOnLoad,
+    members: info,
     error: null,
   });
   const membersToShow = React.useMemo(() => state.members.filter((member) => {
@@ -67,7 +69,7 @@ export const AdminMembersResults = ({isAdmin, input, membersOnLoad}: Props) => {
   return (
     <Flex className="gap-1.5">
       {state.error && <Alert>{translateApiError(state.error)}</Alert>}
-      <Flex className="info-highlight h-[85vh] p-2">
+      <Flex className="h-[85vh]">
         <AutoSizer disableWidth>
           {({height}) => (
             <FixedSizeList
@@ -97,6 +99,7 @@ export const AdminMembersResults = ({isAdmin, input, membersOnLoad}: Props) => {
                     style={styleToUse}
                     isAdmin={isAdmin}
                     member={member}
+                    balanceSummary={balanceSummaryMap[id]}
                     onSetAgent={async (agent) => {
                       if (!act) {
                         return;

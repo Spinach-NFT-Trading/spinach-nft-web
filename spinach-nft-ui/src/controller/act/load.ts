@@ -6,6 +6,7 @@ import {ObjectId} from 'mongodb';
 import {getUnverifiedGoldPurchaseTwBankRecordClient} from '@spinach/next/controller/gold/twBank';
 import {getWalletClientMap} from '@spinach/next/controller/gold/wallet';
 import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft';
+import {getUserBalanceSummaryMap} from '@spinach/next/controller/user/balance';
 import {
   getBankDetailsMap,
   getUnverifiedBankDetails,
@@ -42,9 +43,17 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
   }
 
   if (type === 'adminMemberList') {
-    return await getAccountMembers({
+    const info = await getAccountMembers({
       executorUserId: accountId,
-    }) satisfies UserLazyLoadedData['adminMemberList'];
+    });
+    const balanceSummaryMap = await getUserBalanceSummaryMap({
+      userIdsToCheck: info.map(({id}) => new ObjectId(id)),
+    });
+
+    return {
+      info,
+      balanceSummaryMap,
+    } satisfies UserLazyLoadedData['adminMemberList'];
   }
 
   if (type === 'adminImageOfId') {

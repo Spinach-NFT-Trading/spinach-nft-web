@@ -1,39 +1,35 @@
 import React from 'react';
 
-import CheckCircleIcon from '@heroicons/react/24/outline/CheckCircleIcon';
-import CurrencyDollarIcon from '@heroicons/react/24/outline/CurrencyDollarIcon';
-import IdentificationIcon from '@heroicons/react/24/outline/IdentificationIcon';
-import XCircleIcon from '@heroicons/react/24/outline/XCircleIcon';
-import {UserInfo} from '@spinach/common/types/common/user';
-
-import {FlexButton} from '@spinach/next/components/layout/flex/button';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {VerificationStatusUi} from '@spinach/next/components/shared/common/verified';
-import {adminMemberSingleResultButtonStyle} from '@spinach/next/ui/admin/members/result/single/const';
+import {UserBalanceSummary} from '@spinach/next/types/mongo/balance';
+import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/members/result/single/cell/monetary/main';
+import {
+  AdminMemberSingleControls,
+  AdminMemberSingleControlsProps,
+} from '@spinach/next/ui/admin/members/result/single/control';
 import {AdminMemberPopup} from '@spinach/next/ui/admin/members/result/single/popup/main';
 import {AdminMemberPopupState} from '@spinach/next/ui/admin/members/result/single/popup/type';
 import {formatUserName} from '@spinach/next/utils/data/user';
+import {formatInt} from '@spinach/next/utils/number';
 
 
-type Props = {
-  isAdmin: boolean,
+type Props = Omit<AdminMemberSingleControlsProps, 'setPopup'> & {
   style: React.CSSProperties,
-  member: UserInfo,
-  onSetAgent: (enable: boolean) => void,
-  agentToggleDisabled: boolean,
+  balanceSummary: UserBalanceSummary | undefined,
 };
 
 export const AdminMemberSingleResult = ({
-  isAdmin,
   style,
-  member,
-  onSetAgent,
-  agentToggleDisabled,
+  balanceSummary,
+  ...props
 }: Props) => {
+  const {member} = props;
   const {
     status,
     agent,
   } = member;
+
   const [
     popup,
     setPopup,
@@ -43,7 +39,7 @@ export const AdminMemberSingleResult = ({
   });
 
   return (
-    <Flex direction="row" noFullWidth style={style} className="border-b-slate-400 py-1 not-last:border-b">
+    <Flex direction="row" noFullWidth style={style} className="border-b-slate-400 p-2 not-last:border-b">
       <AdminMemberPopup
         show={popup.show}
         type={popup.type}
@@ -53,7 +49,7 @@ export const AdminMemberSingleResult = ({
         }))}
         member={member}
       />
-      <Flex noFullWidth className="w-40 justify-center">
+      <Flex noFullWidth className="w-52 justify-center">
         {formatUserName(member)}
       </Flex>
       <Flex noFullWidth center className="w-20">
@@ -62,41 +58,15 @@ export const AdminMemberSingleResult = ({
       <Flex noFullWidth center className="w-12">
         {agent && <span className="info-highlight px-1.5 py-1 text-sm">代理</span>}
       </Flex>
-      <Flex direction="row" noFullWidth className="gap-1">
-        <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => setPopup({
-          type: 'info',
-          show: true,
-        })}>
-          <IdentificationIcon className="h-6 w-6"/>
-          <div>帳號資訊</div>
-        </FlexButton>
-        <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => setPopup({
-          type: 'bankDetails',
-          show: true,
-        })}>
-          <CurrencyDollarIcon className="h-6 w-6"/>
-          <div>銀行帳號資訊</div>
-        </FlexButton>
-        {
-          isAdmin &&
-          <FlexButton
-            className={adminMemberSingleResultButtonStyle}
-            onClick={() => onSetAgent(!agent)}
-            disabled={agentToggleDisabled}
-          >
-            {agent ?
-              <>
-                <XCircleIcon className="h-6 w-6"/>
-                <div>拔除代理</div>
-              </> :
-              <>
-                <CheckCircleIcon className="h-6 w-6"/>
-                <div>授予代理</div>
-              </>
-            }
-          </FlexButton>
-        }
-      </Flex>
+      <AdminMemberMonetaryCell value={balanceSummary?.currentBalance}/>
+      <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['nftBuy']}/>
+      <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['nftSell']}/>
+      <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['deposit.twBank']}/>
+      <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['deposit.crypto']}/>
+      <AdminMemberSingleControls
+        setPopup={setPopup}
+        {...props}
+      />
     </Flex>
   );
 };

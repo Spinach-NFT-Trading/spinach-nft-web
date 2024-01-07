@@ -8,8 +8,9 @@ import {AdminMemberSingleHeader} from '@spinach/next/ui/admin/members/result/sin
 export const AdminMembersTable = React.forwardRef<HTMLTableElement>(({
   children,
 }: React.PropsWithChildren, ref) => (
-  <Flex ref={ref} className="h-full">
-    <AdminMemberSingleHeader style={{top: 0, left: 0, width: '100%', height: adminMemberTableRowHeight}}/>
+  <Flex ref={ref} noFullWidth className="h-full w-max">
+    <AdminMemberSingleHeader style={{top: 0, left: 0, height: adminMemberTableRowHeight}}/>
     {children}
   </Flex>
 ));
+AdminMembersTable.displayName = 'AdminMembersTable';

@@ -38,7 +38,7 @@ export const AdminMembersClient = ({isAdmin}: Props) => {
             return null;
           }
 
-          return <AdminMembersResults isAdmin={isAdmin} input={input} membersOnLoad={response}/>;
+          return <AdminMembersResults isAdmin={isAdmin} input={input} memberInfo={response}/>;
         }}
       />
     </Flex>
