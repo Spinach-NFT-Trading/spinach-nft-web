@@ -1,16 +1,15 @@
 import React from 'react';
 
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
-import AutoSizer from 'react-virtualized-auto-sizer';
-import {FixedSizeList} from 'react-window';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Alert} from '@spinach/next/components/shared/common/alert';
+import {WindowedTable} from '@spinach/next/components/shared/common/table/windowed/main';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {ResponseAdminMemberList} from '@spinach/next/types/userData/lazyLoaded';
 import {adminMemberTableRowHeight} from '@spinach/next/ui/admin/members/result/const';
+import {AdminMemberSingleHeader} from '@spinach/next/ui/admin/members/result/single/header';
 import {AdminMemberSingleResult} from '@spinach/next/ui/admin/members/result/single/main';
-import {AdminMembersTable} from '@spinach/next/ui/admin/members/result/table';
 import {AdminMembersResultState} from '@spinach/next/ui/admin/members/result/type';
 import {AdminMembersFilterInput} from '@spinach/next/ui/admin/members/type';
 
@@ -31,9 +30,9 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
     wallet,
     bankAccount,
   } = input;
-  const {act, status} = useUserDataActor();
   const {info, balanceSummaryMap} = memberInfo;
 
+  const {act, status} = useUserDataActor();
   const [state, setState] = React.useState<AdminMembersResultState>({
     members: info,
     error: null,
@@ -70,75 +69,53 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
     <Flex className="gap-1.5">
       {state.error && <Alert>{translateApiError(state.error)}</Alert>}
       <Flex className="h-[85vh]">
-        <AutoSizer disableWidth>
-          {({height}) => (
-            <FixedSizeList
-              height={height}
-              itemCount={membersToShow.length + 1}
-              itemSize={adminMemberTableRowHeight}
-              itemData={[null, ...membersToShow]}
-              itemKey={(idx, data) => data[idx]?.id ?? 'header'}
-              width="100%"
-              overscanCount={10}
-              innerElementType={AdminMembersTable}
-            >
-              {({style, data, index}) => {
-                // Extracting `width` out because it causes breaks on sticky row header if any
-                const {width, ...styleToUse} = style;
-                const member = data[index];
-
-                if (!member) {
-                  return null;
+        <WindowedTable
+          data={membersToShow}
+          itemHeight={adminMemberTableRowHeight}
+          header={<AdminMemberSingleHeader/>}
+          getKey={(data) => data?.id}
+          renderRow={({data, style}) => (
+            <AdminMemberSingleResult
+              style={style}
+              isAdmin={isAdmin}
+              member={data}
+              balanceSummary={balanceSummaryMap[data.id]}
+              agentToggleDisabled={!act || status === 'processing'}
+              onSetAgent={async (agent) => {
+                if (!act) {
+                  return;
                 }
 
-                const {id} = member;
+                const session = await act({
+                  action: 'request',
+                  options: {
+                    type: 'admin.member.grant.agent',
+                    data: {
+                      targetId: data.id,
+                      agent,
+                    },
+                  },
+                });
+                const error = session?.user.jwtUpdateError;
+                if (!error) {
+                  setState(({members}) => ({
+                    members: members.map((memberOfOriginal) => ({
+                      ...memberOfOriginal,
+                      agent: memberOfOriginal.id === data.id ? agent : memberOfOriginal.agent,
+                    })),
+                    error: null,
+                  }));
+                  return;
+                }
 
-                return (
-                  <AdminMemberSingleResult
-                    key={id}
-                    style={styleToUse}
-                    isAdmin={isAdmin}
-                    member={member}
-                    balanceSummary={balanceSummaryMap[id]}
-                    agentToggleDisabled={!act || status === 'processing'}
-                    onSetAgent={async (agent) => {
-                      if (!act) {
-                        return;
-                      }
-
-                      const session = await act({
-                        action: 'request',
-                        options: {
-                          type: 'admin.member.grant.agent',
-                          data: {
-                            targetId: id,
-                            agent,
-                          },
-                        },
-                      });
-                      const error = session?.user.jwtUpdateError;
-                      if (!error) {
-                        setState(({members}) => ({
-                          members: members.map((memberOfOriginal) => ({
-                            ...memberOfOriginal,
-                            agent: memberOfOriginal.id === id ? agent : memberOfOriginal.agent,
-                          })),
-                          error: null,
-                        }));
-                        return;
-                      }
-
-                      setState(({error, ...original}) => ({
-                        ...original,
-                        error,
-                      }));
-                    }}
-                  />
-                );
+                setState(({error, ...original}) => ({
+                  ...original,
+                  error,
+                }));
               }}
-            </FixedSizeList>
+            />
           )}
-        </AutoSizer>
+        />
       </Flex>
     </Flex>
   );

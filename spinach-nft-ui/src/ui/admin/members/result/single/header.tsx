@@ -1,27 +1,12 @@
 import React from 'react';
 
-import clsx from 'clsx';
-
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {adminMemberMonetaryCellStyle} from '@spinach/next/ui/admin/members/result/single/cell/monetary/const';
 
 
-type Props = {
-  style: React.CSSProperties,
-};
-
-export const AdminMemberSingleHeader = ({style}: Props) => {
-  const {
-    top,
-    position,
-    width,
-    ...styleToUse
-  } = style;
-
+export const AdminMemberSingleHeader = () => {
   return (
-    <Flex direction="row" noFullWidth style={styleToUse} className={clsx(
-      'sticky top-0 z-20 items-center bg-slate-900/90 p-2 [&>div]:shrink-0',
-    )}>
+    <>
       <Flex center noFullWidth className="w-52">
         用戶名稱
       </Flex>
@@ -47,6 +32,6 @@ export const AdminMemberSingleHeader = ({style}: Props) => {
         入金 (USDT)
       </Flex>
       <Flex className="w-[42rem]"/>
-    </Flex>
+    </>
   );
 };
