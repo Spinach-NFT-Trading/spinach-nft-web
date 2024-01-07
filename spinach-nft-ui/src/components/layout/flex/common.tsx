@@ -4,13 +4,18 @@ import {FlexCommonProps} from '@spinach/next/components/layout/flex/type';
 import {getFlexStyles} from '@spinach/next/components/layout/flex/utils';
 
 
+type Props = FlexCommonProps & {
+  style?: React.CSSProperties,
+};
+
 const FlexInternal = ({
   direction = 'col',
+  style,
   children,
   ...props
-}: React.PropsWithChildren<FlexCommonProps>, ref: React.ForwardedRef<HTMLDivElement>) => {
+}: React.PropsWithChildren<Props>, ref: React.ForwardedRef<HTMLDivElement>) => {
   return (
-    <div ref={ref} className={getFlexStyles(direction, props)}>
+    <div ref={ref} style={style} className={getFlexStyles(direction, props)}>
       {children}
     </div>
   );
