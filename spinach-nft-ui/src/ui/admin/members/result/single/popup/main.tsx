@@ -16,7 +16,7 @@ export const AdminMemberPopup = ({setShow, state}: Props) => {
 
   return (
     <Popup show={show} setShow={setShow}>
-      <Flex className="w-[70vw]">
+      <Flex noFullWidth>
         {member && <AdminMemberPopupContent {...state} member={member}/>}
       </Flex>
     </Popup>
