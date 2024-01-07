@@ -1,5 +1,6 @@
 import React from 'react';
 
+import ArrowsRightLeftIcon from '@heroicons/react/24/outline/ArrowsRightLeftIcon';
 import CurrencyDollarIcon from '@heroicons/react/24/outline/CurrencyDollarIcon';
 import IdentificationIcon from '@heroicons/react/24/outline/IdentificationIcon';
 
@@ -27,8 +28,12 @@ export const AdminMemberSingleControls = ({
         <div>銀行帳號資訊</div>
       </FlexButton>
       <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('nftTxn')}>
-        <CurrencyDollarIcon className="h-6 w-6"/>
+        <ArrowsRightLeftIcon className="h-6 w-6"/>
         <div>交易紀錄</div>
+      </FlexButton>
+      <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('balanceHistory')}>
+        <CurrencyDollarIcon className="h-6 w-6"/>
+        <div>餘額歷史</div>
       </FlexButton>
     </Flex>
   );

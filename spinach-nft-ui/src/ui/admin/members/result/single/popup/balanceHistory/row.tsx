@@ -1,0 +1,39 @@
+import React from 'react';
+
+import clsx from 'clsx';
+
+import {Flex} from '@spinach/next/components/layout/flex/common';
+import {userBalanceHistoryTypeText} from '@spinach/next/const/balance';
+import {userBalanceHistoryTypeTextStyle} from '@spinach/next/styles/balance';
+import {UserBalanceHistoryModelClient} from '@spinach/next/types/mongo/balance';
+import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/members/result/single/cell/monetary/main';
+
+
+type Props = {
+  history: UserBalanceHistoryModelClient,
+};
+
+export const AdminMemberBalanceHistoryRow = ({
+  history,
+}: Props) => {
+  const {
+    type,
+    current,
+    diff,
+  } = history;
+
+  return (
+    <Flex direction="row" noFullWidth className="border-b-slate-400 p-2 not-last:border-b">
+      <Flex center noFullWidth className={clsx('w-40 whitespace-nowrap', userBalanceHistoryTypeTextStyle[type])}>
+        {userBalanceHistoryTypeText[type]}
+      </Flex>
+      <Flex center noFullWidth className="w-28">
+        <AdminMemberMonetaryCell value={diff} applySignStyle/>
+      </Flex>
+      <Flex center noFullWidth className="w-28">
+        <AdminMemberMonetaryCell value={current}/>
+      </Flex>
+    </Flex>
+  );
+};
+

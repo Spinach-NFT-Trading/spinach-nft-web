@@ -4,7 +4,7 @@ import {GoldPurchaseTwBankRecordClient} from '@spinach/common/types/data/gold/pu
 import {GoldWalletClientMap} from '@spinach/common/types/data/gold/wallet';
 import {BankDetails, BankDetailsMap, UserBankDetails} from '@spinach/common/types/data/user/bank';
 
-import {UserBalanceSummary} from '@spinach/next/types/mongo/balance';
+import {UserBalanceHistoryModelClient, UserBalanceSummary} from '@spinach/next/types/mongo/balance';
 import {NftTxnModelClient} from '@spinach/next/types/mongo/nft';
 import {NftListingData} from '@spinach/next/types/nft';
 import {UserDataLoadingType} from '@spinach/next/types/userData/load';
@@ -40,6 +40,7 @@ export type UserLazyLoadedContent = {
   verifiedBankDetails: BankDetails[],
   adminMemberList: ResponseOfAdminMemberList,
   adminMemberNftTxn: ResponseOfAdminNftTxn,
+  adminMemberBalanceHistory: UserBalanceHistoryModelClient[],
   adminUnverifiedAccounts: UserInfo[],
   adminUnverifiedBankDetails: ResponseOfUnverifiedBankDetails,
   adminUnverifiedGoldTxn: ResponseOfUnverifiedGoldTxn,

@@ -1,5 +1,8 @@
 import React from 'react';
 
+import {
+  AdminMemberBalanceHistoryPopup,
+} from '@spinach/next/ui/admin/members/result/single/popup/balanceHistory/main';
 import {AdminMemberBankDetailsPopup} from '@spinach/next/ui/admin/members/result/single/popup/bankDetails';
 import {AdminMemberInfoPopup} from '@spinach/next/ui/admin/members/result/single/popup/info';
 import {AdminMemberNftTxnPopup} from '@spinach/next/ui/admin/members/result/single/popup/nftTxn/main';
@@ -17,6 +20,10 @@ export const AdminMemberPopupContent = ({type, ...props}: AdminMemberPopupConten
 
   if (type === 'nftTxn') {
     return <AdminMemberNftTxnPopup {...props}/>;
+  }
+
+  if (type === 'balanceHistory') {
+    return <AdminMemberBalanceHistoryPopup {...props}/>;
   }
 
   throw new Error(`Unhandled admin member popup content type: [${type satisfies never}]`);

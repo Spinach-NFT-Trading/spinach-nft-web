@@ -11,7 +11,7 @@ export type UserDataLoadingOpts = {
   type: 'adminMemberList',
   opts?: never,
 } | {
-  type: 'adminMemberNftTxn',
+  type: 'adminMemberNftTxn' | 'adminMemberBalanceHistory',
   opts: {
     userId: string,
   },

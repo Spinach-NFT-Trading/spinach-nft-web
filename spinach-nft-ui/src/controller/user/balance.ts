@@ -4,7 +4,11 @@ import {ObjectId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {throwIfNotAdminOrAgent} from '@spinach/next/controller/utils';
-import {UserBalanceSummary, UserBalanceSummaryMap} from '@spinach/next/types/mongo/balance';
+import {
+  UserBalanceHistoryModelClient,
+  UserBalanceSummary,
+  UserBalanceSummaryMap,
+} from '@spinach/next/types/mongo/balance';
 
 
 type UserBalanceSummaryAggregated = {
@@ -71,4 +75,29 @@ export const getUserBalanceSummaryMap = async ({
       currentBalance,
     } satisfies UserBalanceSummary,
   ]).toArray());
+};
+
+type GetUserBalanceHistoryOpts = ControllerRequireUserIdOpts & {
+  userId: string,
+};
+
+export const getUserBalanceHistory = async ({
+  executorUserId,
+  userId,
+}: GetUserBalanceHistoryOpts): Promise<UserBalanceHistoryModelClient[]> => {
+  await throwIfNotAdminOrAgent(executorUserId);
+
+  return userBalanceCollection.find({userId: new ObjectId(userId)})
+    .map(({
+      _id,
+      type,
+      current,
+      diff,
+    }): UserBalanceHistoryModelClient => ({
+      id: _id.toHexString(),
+      type,
+      current,
+      diff,
+    }))
+    .toArray();
 };

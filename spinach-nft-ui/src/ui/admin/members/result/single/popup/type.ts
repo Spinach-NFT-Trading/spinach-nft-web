@@ -9,7 +9,7 @@ export type AdminMemberPopupContentProps = AdminMemberPopupProps & {
   type: AdminMemberPopupType,
 };
 
-export type AdminMemberPopupType = 'info' | 'bankDetails' | 'nftTxn';
+export type AdminMemberPopupType = 'info' | 'bankDetails' | 'nftTxn' | 'balanceHistory';
 
 export type AdminMemberPopupState = {
   type: AdminMemberPopupType,
