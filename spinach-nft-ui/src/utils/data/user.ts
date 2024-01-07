@@ -1,4 +1,4 @@
-import {NftMinterAccount} from '@spinach/common/const/nft';
+import {nftMinterAccountId} from '@spinach/common/const/nft';
 import {Nullable} from '@spinach/common/types/common/typing';
 import {UserData, UserDataMap} from '@spinach/common/types/common/user';
 import {BankDetails} from '@spinach/common/types/data/user/bank';
@@ -20,7 +20,7 @@ type FormatUserNameFromMapOpts = {
 };
 
 export const formatUserNameFromMap = ({userDataMap, userId}: FormatUserNameFromMapOpts): string | null => {
-  if (userId === NftMinterAccount.toHexString()) {
+  if (userId === nftMinterAccountId) {
     return 'SYSTEM';
   }
 
