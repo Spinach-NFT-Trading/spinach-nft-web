@@ -48,6 +48,7 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
       executorUserId: accountId,
     });
     const balanceSummaryMap = await getUserBalanceSummaryMap({
+      executorUserId: accountId,
       userIdsToCheck: info.map(({id}) => new ObjectId(id)),
     });
 

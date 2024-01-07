@@ -2,6 +2,8 @@ import {userBalanceCollection} from '@spinach/common/controller/collections/user
 import {UserBalanceHistoryTxnType} from '@spinach/common/types/data/user/balance';
 import {ObjectId} from 'mongodb';
 
+import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
+import {throwIfNotAdminOrAgent} from '@spinach/next/controller/utils';
 import {UserBalanceSummary, UserBalanceSummaryMap} from '@spinach/next/types/mongo/balance';
 
 
@@ -14,13 +16,16 @@ type UserBalanceSummaryAggregated = {
   currentBalance: number,
 };
 
-type GetUserBalanceSummaryOpts = {
+type GetUserBalanceSummaryOpts = ControllerRequireUserIdOpts & {
   userIdsToCheck: ObjectId[],
 };
 
 export const getUserBalanceSummaryMap = async ({
+  executorUserId,
   userIdsToCheck,
 }: GetUserBalanceSummaryOpts): Promise<UserBalanceSummaryMap> => {
+  await throwIfNotAdminOrAgent(executorUserId);
+
   const aggregated = userBalanceCollection.aggregate<UserBalanceSummaryAggregated>([
     {
       $match: {
