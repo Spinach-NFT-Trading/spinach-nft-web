@@ -1,9 +1,9 @@
 import {Nullable} from '@spinach/common/types/common/typing';
-import {UserInfo} from '@spinach/common/types/common/user';
+import {UserData} from '@spinach/common/types/common/user';
 import {BankDetails} from '@spinach/common/types/data/user/bank';
 
 
-export const formatUserName = (userInfo: Nullable<UserInfo>): string | null => {
+export const formatUserName = (userInfo: Nullable<UserData>): string | null => {
   if (!userInfo) {
     return null;
   }
