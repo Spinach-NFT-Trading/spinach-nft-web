@@ -16,15 +16,15 @@ type Props = {
 export const AdminMemberMonetaryCell = ({value, applySignStyle}: Props) => {
   return (
     <Flex direction="row" noFullWidth className={clsx(
-      value ? 'justify-between' : 'justify-center',
+      value ? 'justify-end gap-1' : 'justify-center',
       value && applySignStyle && value > 0 && 'text-green-300',
       value && applySignStyle && value < 0 && 'text-red-300',
       adminMemberMonetaryCellStyle,
     )}>
       {value ?
         <>
-          <span>G</span>
           {formatInt(value)}
+          <span>G</span>
         </> :
         '-'}
     </Flex>
