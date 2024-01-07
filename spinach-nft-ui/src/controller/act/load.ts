@@ -5,7 +5,7 @@ import {ObjectId} from 'mongodb';
 
 import {getUnverifiedGoldPurchaseTwBankRecordClient} from '@spinach/next/controller/gold/twBank';
 import {getWalletClientMap} from '@spinach/next/controller/gold/wallet';
-import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft';
+import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft/utils';
 import {getUserBalanceSummaryMap} from '@spinach/next/controller/user/balance';
 import {
   getBankDetailsMap,

@@ -1,7 +1,7 @@
 import {getGoldAsset} from '@spinach/common/controller/actors/user';
 import {ObjectId} from 'mongodb';
 
-import {getNftAsset} from '@spinach/next/controller/nft';
+import {getNftAsset} from '@spinach/next/controller/nft/utils';
 import {UserPreloadedData} from '@spinach/next/types/userData/main';
 
 

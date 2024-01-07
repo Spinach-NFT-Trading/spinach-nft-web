@@ -3,7 +3,7 @@ import {ObjectId} from 'mongodb';
 
 import {recordGoldPendingTxn} from '@spinach/next/controller/gold/pending';
 import {markGoldPurchaseTwBankRecord, recordGoldPurchaseTwBankTxn} from '@spinach/next/controller/gold/twBank';
-import {buyNft} from '@spinach/next/controller/nft';
+import {buyNft} from '@spinach/next/controller/nft/utils';
 import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
 import {uploadIdVerification} from '@spinach/next/controller/user/info';
 import {markUserAgent} from '@spinach/next/controller/user/permission';
