@@ -28,7 +28,7 @@ export const AdminMemberSingleHeader = ({style}: Props) => {
       <Flex center noFullWidth className="w-20">
         驗證狀態
       </Flex>
-      <Flex center noFullWidth className="w-12">
+      <Flex center noFullWidth className="w-16">
         代理
       </Flex>
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
@@ -46,6 +46,7 @@ export const AdminMemberSingleHeader = ({style}: Props) => {
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
         入金 (USDT)
       </Flex>
+      <Flex className="w-[42rem]"/>
     </Flex>
   );
 };

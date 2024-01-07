@@ -100,6 +100,7 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
                     isAdmin={isAdmin}
                     member={member}
                     balanceSummary={balanceSummaryMap[id]}
+                    agentToggleDisabled={!act || status === 'processing'}
                     onSetAgent={async (agent) => {
                       if (!act) {
                         return;
@@ -132,7 +133,6 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
                         error,
                       }));
                     }}
-                    agentToggleDisabled={!act || status === 'processing'}
                   />
                 );
               }}
