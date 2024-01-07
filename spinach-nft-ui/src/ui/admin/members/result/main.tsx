@@ -9,6 +9,7 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {AdminMemberSingleResult} from '@spinach/next/ui/admin/members/result/single/main';
+import {AdminMembersTable} from '@spinach/next/ui/admin/members/result/table';
 import {AdminMembersResultState} from '@spinach/next/ui/admin/members/result/type';
 import {AdminMembersFilterInput} from '@spinach/next/ui/admin/members/type';
 
@@ -71,61 +72,65 @@ export const AdminMembersResults = ({isAdmin, input, membersOnLoad}: Props) => {
           {({height}) => (
             <FixedSizeList
               height={height}
-              itemCount={membersToShow.length}
-              itemSize={43}
-              itemData={membersToShow}
-              itemKey={(idx, data) => data[idx].id}
+              itemCount={membersToShow.length + 1}
+              itemSize={adminMemberTableRowHeight}
+              itemData={[null, ...membersToShow]}
+              itemKey={(idx, data) => data[idx]?.id ?? 'header'}
               width="100%"
               overscanCount={10}
+              innerElementType={AdminMembersTable}
             >
               {({style, data, index}) => {
+                // Extracting `width` out because it causes breaks on sticky row header if any
+                const {width, ...styleToUse} = style;
                 const member = data[index];
+
+                if (!member) {
+                  return null;
+                }
+
                 const {id} = member;
 
-                // Extracting `width` out because it causes #187 (width not enough - sticky not in effect
-                const {width, ...styleToUse} = style;
-
                 return (
-                  <div style={styleToUse}>
-                    <AdminMemberSingleResult
-                      key={id}
-                      isAdmin={isAdmin}
-                      member={member}
-                      onSetAgent={async (agent) => {
-                        if (!act) {
-                          return;
-                        }
+                  <AdminMemberSingleResult
+                    key={id}
+                    style={styleToUse}
+                    isAdmin={isAdmin}
+                    member={member}
+                    onSetAgent={async (agent) => {
+                      if (!act) {
+                        return;
+                      }
 
-                        const session = await act({
-                          action: 'request',
-                          options: {
-                            type: 'admin.member.grant.agent',
-                            data: {
-                              targetId: id,
-                              agent,
-                            },
+                      const session = await act({
+                        action: 'request',
+                        options: {
+                          type: 'admin.member.grant.agent',
+                          data: {
+                            targetId: id,
+                            agent,
                           },
-                        });
-                        const error = session?.user.jwtUpdateError;
-                        if (!error) {
-                          setState(({members}) => ({
-                            members: members.map((memberOfOriginal) => ({
-                              ...memberOfOriginal,
-                              agent: memberOfOriginal.id === id ? agent : memberOfOriginal.agent,
-                            })),
-                            error: null,
-                          }));
-                          return;
-                        }
-
-                        setState(({error, ...original}) => ({
-                          ...original,
-                          error,
+                        },
+                      });
+                      const error = session?.user.jwtUpdateError;
+                      if (!error) {
+                        setState(({members}) => ({
+                          members: members.map((memberOfOriginal) => ({
+                            ...memberOfOriginal,
+                            agent: memberOfOriginal.id === id ? agent : memberOfOriginal.agent,
+                          })),
+                          error: null,
                         }));
-                      }}
-                      agentToggleDisabled={!act || status === 'processing'}
-                    />
-                  </div>
+                        return;
+                      }
+
+                      setState(({error, ...original}) => ({
+                        ...original,
+                        error,
+                      }));
+                    }}
+                    agentToggleDisabled={!act || status === 'processing'}
+                  />
                 );
               }}
             </FixedSizeList>

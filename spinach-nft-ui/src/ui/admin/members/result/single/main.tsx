@@ -17,12 +17,19 @@ import {formatUserName} from '@spinach/next/utils/data/user';
 
 type Props = {
   isAdmin: boolean,
+  style: React.CSSProperties,
   member: UserInfo,
   onSetAgent: (enable: boolean) => void,
   agentToggleDisabled: boolean,
 };
 
-export const AdminMemberSingleResult = ({isAdmin, member, onSetAgent, agentToggleDisabled}: Props) => {
+export const AdminMemberSingleResult = ({
+  isAdmin,
+  style,
+  member,
+  onSetAgent,
+  agentToggleDisabled,
+}: Props) => {
   const {
     status,
     agent,
@@ -36,7 +43,7 @@ export const AdminMemberSingleResult = ({isAdmin, member, onSetAgent, agentToggl
   });
 
   return (
-    <Flex direction="row" className="info-section-bg items-center gap-1 rounded-lg p-1">
+    <Flex direction="row" noFullWidth style={style} className="border-b-slate-400 py-1 not-last:border-b">
       <AdminMemberPopup
         show={popup.show}
         type={popup.type}
@@ -46,14 +53,14 @@ export const AdminMemberSingleResult = ({isAdmin, member, onSetAgent, agentToggl
         }))}
         member={member}
       />
-      <Flex noFullWidth className="w-40">
+      <Flex noFullWidth className="w-40 justify-center">
         {formatUserName(member)}
       </Flex>
       <Flex noFullWidth center className="w-20">
         <VerificationStatusUi status={status}/>
       </Flex>
       <Flex noFullWidth center className="w-12">
-        {agent && <div className="info-highlight px-1.5 py-1 text-sm">代理</div>}
+        {agent && <span className="info-highlight px-1.5 py-1 text-sm">代理</span>}
       </Flex>
       <Flex direction="row" noFullWidth className="gap-1">
         <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => setPopup({

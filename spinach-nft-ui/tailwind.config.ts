@@ -1,5 +1,6 @@
 import {Config} from 'tailwindcss';
 import defaultTheme from 'tailwindcss/defaultTheme';
+import plugin from 'tailwindcss/plugin';
 
 
 const config: Config = {
@@ -32,6 +33,9 @@ const config: Config = {
   },
   plugins: [
     require('@savvywombat/tailwindcss-grid-areas'),
+    plugin(({addVariant}) => {
+      addVariant('not-last', '&:not(:last-child)');
+    }),
   ],
 };
 
