@@ -11,6 +11,11 @@ export type UserDataLoadingOpts = {
   type: 'adminMemberList',
   opts?: never,
 } | {
+  type: 'adminMemberNftTxn',
+  opts: {
+    userId: string,
+  },
+} | {
   type: 'adminUnverifiedAccounts',
   opts?: never,
 } | {

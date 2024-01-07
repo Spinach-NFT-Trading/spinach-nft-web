@@ -5,6 +5,7 @@ import {ObjectId} from 'mongodb';
 
 import {getUnverifiedGoldPurchaseTwBankRecordClient} from '@spinach/next/controller/gold/twBank';
 import {getWalletClientMap} from '@spinach/next/controller/gold/wallet';
+import {getNftTxnOfUser} from '@spinach/next/controller/nft/txn';
 import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft/utils';
 import {getUserBalanceSummaryMap} from '@spinach/next/controller/user/balance';
 import {
@@ -54,6 +55,19 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
       info,
       balanceSummaryMap,
     } satisfies UserLazyLoadedData['adminMemberList'];
+  }
+
+  if (type === 'adminMemberNftTxn') {
+    const nftTxn = await getNftTxnOfUser({
+      executorUserId: accountId,
+      userId: options.opts.userId,
+    });
+    const userDataMap = await getUserDataMap(toUnique(nftTxn.flatMap(({from, to}) => [from, to])));
+
+    return {
+      userDataMap,
+      nftTxn,
+    } satisfies UserLazyLoadedData['adminMemberNftTxn'];
   }
 
   if (type === 'adminImageOfId') {
