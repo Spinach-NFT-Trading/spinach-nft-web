@@ -6,29 +6,23 @@ import IdentificationIcon from '@heroicons/react/24/outline/IdentificationIcon';
 import {FlexButton} from '@spinach/next/components/layout/flex/button';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {adminMemberSingleResultButtonStyle} from '@spinach/next/ui/admin/members/result/single/const';
-import {AdminMemberPopupState} from '@spinach/next/ui/admin/members/result/single/popup/type';
+import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/single/popup/type';
 
 
 type Props = {
-  setPopup: (updated: AdminMemberPopupState) => void,
+  showPopup: (type: AdminMemberPopupType) => void,
 };
 
 export const AdminMemberSingleControls = ({
-  setPopup,
+  showPopup,
 }: Props) => {
   return (
     <Flex direction="row" noFullWidth className="gap-1">
-      <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => setPopup({
-        type: 'info',
-        show: true,
-      })}>
+      <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('info')}>
         <IdentificationIcon className="h-6 w-6"/>
         <div>帳號資訊</div>
       </FlexButton>
-      <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => setPopup({
-        type: 'bankDetails',
-        show: true,
-      })}>
+      <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('bankDetails')}>
         <CurrencyDollarIcon className="h-6 w-6"/>
         <div>銀行帳號資訊</div>
       </FlexButton>

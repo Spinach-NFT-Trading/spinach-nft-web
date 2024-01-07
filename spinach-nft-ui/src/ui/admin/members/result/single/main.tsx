@@ -11,8 +11,7 @@ import {VerificationStatusUi} from '@spinach/next/components/shared/common/verif
 import {UserBalanceSummary} from '@spinach/next/types/mongo/balance';
 import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/members/result/single/cell/monetary/main';
 import {AdminMemberSingleControls} from '@spinach/next/ui/admin/members/result/single/control';
-import {AdminMemberPopup} from '@spinach/next/ui/admin/members/result/single/popup/main';
-import {AdminMemberPopupState} from '@spinach/next/ui/admin/members/result/single/popup/type';
+import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/single/popup/type';
 import {formatUserName} from '@spinach/next/utils/data/user';
 
 
@@ -23,6 +22,7 @@ type Props = {
   balanceSummary: UserBalanceSummary | undefined,
   agentToggleDisabled: boolean,
   onSetAgent: (enable: boolean) => void,
+  showPopup: (type: AdminMemberPopupType) => void,
 };
 
 export const AdminMemberSingleResult = ({
@@ -32,31 +32,15 @@ export const AdminMemberSingleResult = ({
   balanceSummary,
   agentToggleDisabled,
   onSetAgent,
+  showPopup,
 }: Props) => {
   const {
     status,
     agent,
   } = member;
 
-  const [
-    popup,
-    setPopup,
-  ] = React.useState<AdminMemberPopupState>({
-    type: 'info',
-    show: false,
-  });
-
   return (
     <Flex direction="row" noFullWidth style={style} className="border-b-slate-400 p-2 not-last:border-b">
-      <AdminMemberPopup
-        show={popup.show}
-        type={popup.type}
-        setShow={(show) => setPopup((original) => ({
-          ...original,
-          show,
-        }))}
-        member={member}
-      />
       <Flex noFullWidth className="w-52 justify-center">
         {formatUserName(member)}
       </Flex>
@@ -85,7 +69,7 @@ export const AdminMemberSingleResult = ({
       <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['nftSell']}/>
       <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['deposit.twBank']}/>
       <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['deposit.crypto']}/>
-      <AdminMemberSingleControls setPopup={setPopup}/>
+      <AdminMemberSingleControls showPopup={showPopup}/>
     </Flex>
   );
 };

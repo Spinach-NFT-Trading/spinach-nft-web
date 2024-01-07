@@ -6,10 +6,12 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {WindowedTable} from '@spinach/next/components/shared/common/table/windowed/main';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
-import {ResponseAdminMemberList} from '@spinach/next/types/userData/lazyLoaded';
+import {ResponseOfAdminMemberList} from '@spinach/next/types/userData/lazyLoaded';
 import {adminMemberTableRowHeight} from '@spinach/next/ui/admin/members/result/const';
 import {AdminMemberSingleHeader} from '@spinach/next/ui/admin/members/result/single/header';
 import {AdminMemberSingleResult} from '@spinach/next/ui/admin/members/result/single/main';
+import {AdminMemberPopup} from '@spinach/next/ui/admin/members/result/single/popup/main';
+import {AdminMemberPopupState} from '@spinach/next/ui/admin/members/result/single/popup/type';
 import {AdminMembersResultState} from '@spinach/next/ui/admin/members/result/type';
 import {AdminMembersFilterInput} from '@spinach/next/ui/admin/members/type';
 
@@ -17,7 +19,7 @@ import {AdminMembersFilterInput} from '@spinach/next/ui/admin/members/type';
 type Props = {
   isAdmin: boolean,
   input: AdminMembersFilterInput,
-  memberInfo: ResponseAdminMemberList,
+  memberInfo: ResponseOfAdminMemberList,
 };
 
 export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
@@ -36,6 +38,14 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
   const [state, setState] = React.useState<AdminMembersResultState>({
     members: info,
     error: null,
+  });
+  const [
+    popup,
+    setPopup,
+  ] = React.useState<AdminMemberPopupState>({
+    type: 'info',
+    show: false,
+    member: null,
   });
   const membersToShow = React.useMemo(() => state.members.filter((member) => {
     if (idNumber && !member.idNumber.includes(idNumber)) {
@@ -67,6 +77,13 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
 
   return (
     <Flex className="gap-1.5">
+      <AdminMemberPopup
+        state={popup}
+        setShow={(show) => setPopup((original) => ({
+          ...original,
+          show,
+        }))}
+      />
       {state.error && <Alert>{translateApiError(state.error)}</Alert>}
       <Flex className="h-[85vh]">
         <WindowedTable
@@ -81,6 +98,11 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
               member={data}
               balanceSummary={balanceSummaryMap[data.id]}
               agentToggleDisabled={!act || status === 'processing'}
+              showPopup={(type) => setPopup({
+                type,
+                show: true,
+                member: data,
+              })}
               onSetAgent={async (agent) => {
                 if (!act) {
                   return;

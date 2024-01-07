@@ -14,4 +14,5 @@ export type AdminMemberPopupType = 'info' | 'bankDetails';
 export type AdminMemberPopupState = {
   type: AdminMemberPopupType,
   show: boolean,
+  member: UserInfo | null,
 };
