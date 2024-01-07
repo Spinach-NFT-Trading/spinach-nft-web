@@ -16,6 +16,7 @@ export const getNftTxnOfUser = async ({executorUserId, userId}: GetNftTxnOfUserO
   const userObjectId = new ObjectId(userId);
 
   return nftTxnCollection.find({$or: [{from: userObjectId}, {to: userObjectId}]})
+    .sort({_id: 1})
     .map(({
       from,
       to,
@@ -24,6 +25,7 @@ export const getNftTxnOfUser = async ({executorUserId, userId}: GetNftTxnOfUserO
       ...rest
     }): NftTxnModelClient => ({
       ...rest,
+      epochMs: _id.getTimestamp().getTime(),
       from: from.toHexString(),
       to: to.toHexString(),
       nftId: nftId.toHexString(),

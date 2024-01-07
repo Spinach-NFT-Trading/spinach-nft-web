@@ -1,6 +1,7 @@
 import React from 'react';
 
 import clsx from 'clsx';
+import {format} from 'date-fns/format';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {userBalanceHistoryTypeText} from '@spinach/next/const/balance';
@@ -17,6 +18,7 @@ export const AdminMemberBalanceHistoryRow = ({
   history,
 }: Props) => {
   const {
+    epochMs,
     type,
     current,
     diff,
@@ -24,6 +26,9 @@ export const AdminMemberBalanceHistoryRow = ({
 
   return (
     <Flex direction="row" noFullWidth className="border-b-slate-400 p-2 not-last:border-b">
+      <Flex center noFullWidth className="w-40 whitespace-nowrap">
+        {format(epochMs, 'yyyy-MM-dd HH:mm:ss')}
+      </Flex>
       <Flex center noFullWidth className={clsx('w-40 whitespace-nowrap', userBalanceHistoryTypeTextStyle[type])}>
         {userBalanceHistoryTypeText[type]}
       </Flex>

@@ -4,6 +4,7 @@ import ArrowDownRightIcon from '@heroicons/react/24/outline/ArrowDownRightIcon';
 import ArrowUpRightIcon from '@heroicons/react/24/outline/ArrowUpRightIcon';
 import {UserDataMap, UserInfo} from '@spinach/common/types/common/user';
 import clsx from 'clsx';
+import {format} from 'date-fns/format';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NftTxnModelClient} from '@spinach/next/types/mongo/nft';
@@ -26,6 +27,9 @@ export const AdminMemberNftTxnRow = ({
 
   return (
     <Flex direction="row" noFullWidth className="border-b-slate-400 p-2 not-last:border-b">
+      <Flex center noFullWidth className="w-40">
+        {format(txn.epochMs, 'yyyy-MM-dd HH:mm:ss')}
+      </Flex>
       <Flex direction="row" center noFullWidth className={clsx(
         'w-20 gap-1',
         isSelling && 'text-red-300',

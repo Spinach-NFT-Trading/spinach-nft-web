@@ -7,6 +7,9 @@ export const AdminMemberBalanceHistoryHeader = () => {
   return (
     <Flex noFullWidth direction="row" className="bg-slate-800 p-2">
       <Flex center noFullWidth className="w-40">
+        時間
+      </Flex>
+      <Flex center noFullWidth className="w-40">
         種類
       </Flex>
       <Flex center noFullWidth className="w-28">

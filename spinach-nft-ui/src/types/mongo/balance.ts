@@ -12,5 +12,6 @@ export type UserBalanceHistoryModelClient = Pick<
   UserBalanceHistoryModel,
   'current' | 'diff' | 'type'
 > & {
+  epochMs: number,
   id: string,
 };

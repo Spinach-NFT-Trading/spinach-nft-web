@@ -88,6 +88,7 @@ export const getUserBalanceHistory = async ({
   await throwIfNotAdminOrAgent(executorUserId);
 
   return userBalanceCollection.find({userId: new ObjectId(userId)})
+    .sort({_id: 1})
     .map(({
       _id,
       type,
@@ -95,6 +96,7 @@ export const getUserBalanceHistory = async ({
       diff,
     }): UserBalanceHistoryModelClient => ({
       id: _id.toHexString(),
+      epochMs: _id.getTimestamp().getTime(),
       type,
       current,
       diff,
