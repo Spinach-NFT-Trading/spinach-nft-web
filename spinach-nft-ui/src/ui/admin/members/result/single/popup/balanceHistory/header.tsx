@@ -13,7 +13,7 @@ export const AdminMemberBalanceHistoryHeader = () => {
         種類
       </Flex>
       <Flex center noFullWidth className="w-28">
-        變化
+        數量
       </Flex>
       <Flex center noFullWidth className="w-28">
         餘額
