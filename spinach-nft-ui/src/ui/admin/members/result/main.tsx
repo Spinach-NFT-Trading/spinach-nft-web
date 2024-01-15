@@ -24,13 +24,8 @@ type Props = {
 
 export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
   const {
-    idNumber,
-    username,
-    name,
-    email,
-    lineId,
-    wallet,
-    bankAccount,
+    key,
+    value,
   } = input;
   const {info, balanceSummaryMap} = memberInfo;
 
@@ -47,33 +42,9 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
     show: false,
     member: null,
   });
-  const membersToShow = React.useMemo(() => state.members.filter((member) => {
-    if (idNumber && !member.idNumber.includes(idNumber)) {
-      return false;
-    }
-
-    if (username && !member.username.includes(username)) {
-      return false;
-    }
-
-    if (name && !member.name.includes(name)) {
-      return false;
-    }
-
-    if (email && !member.email.includes(email)) {
-      return false;
-    }
-
-    if (lineId && !member.lineId.includes(lineId)) {
-      return false;
-    }
-
-    if (wallet && !member.wallet.includes(wallet)) {
-      return false;
-    }
-
-    return !(bankAccount && !member.bankDetails.some(({account}) => account.includes(bankAccount)));
-  }), [state, input]);
+  const membersToShow = React.useMemo(() => state.members.filter((member) => (
+    !value || member[key].includes(value)
+  )), [state, input]);
 
   return (
     <Flex className="gap-1.5">

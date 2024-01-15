@@ -14,13 +14,8 @@ type Props = {
 
 export const AdminMembersClient = ({isAdmin}: Props) => {
   const [input, setInput] = React.useState<AdminMembersFilterInput>({
-    idNumber: '',
-    username: '',
-    name: '',
-    email: '',
-    lineId: '',
-    wallet: '',
-    bankAccount: '',
+    key: 'username',
+    value: '',
   });
 
   return (

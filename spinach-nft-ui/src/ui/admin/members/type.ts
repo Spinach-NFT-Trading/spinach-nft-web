@@ -1,10 +1,15 @@
-import {UserInfo} from '@spinach/common/types/common/user';
+export const adminMembersFilterBasis = [
+  'idNumber',
+  'username',
+  'name',
+  'email',
+  'lineId',
+  'wallet',
+] as const;
 
+export type AdminMembersFilterBasis = typeof adminMembersFilterBasis[number];
 
-export type AdminMembersFilterInput = Pick<
-  UserInfo,
-  'idNumber' | 'username' | 'name' | 'email' | 'lineId' | 'wallet'
-> & {
-  bankAccount: string,
+export type AdminMembersFilterInput = {
+  key: AdminMembersFilterBasis,
+  value: string,
 };
-
