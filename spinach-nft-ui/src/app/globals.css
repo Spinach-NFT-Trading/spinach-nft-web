@@ -91,6 +91,14 @@
     }
   }
   
+  /* region Elements divider (divide-*) */
+  
+  .divide-horizontal {
+    @apply divide-y divide-slate-400 dark:divide-slate-700;
+  }
+  
+  /* endregion */
+  
   /* region Info section styling (info-*) */
   
   .info-section-base {
@@ -226,6 +234,10 @@
   /* endregion */
   
   /* region Border styling (border-*) */
+  
+  .border-common {
+    @apply border-slate-400/70 dark:border-slate-700/50;
+  }
   
   .border-button-clickable {
     @apply border-slate-50/70;
