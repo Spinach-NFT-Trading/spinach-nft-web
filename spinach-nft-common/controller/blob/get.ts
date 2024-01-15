@@ -8,6 +8,10 @@ import {isMimeTypesOfImage} from '@spinach/common/utils/mime';
 export const getImageBlob = async (opts: AzureBlobControlOpts): Promise<BinaryData | null> => {
   const {client} = await getBlobClient(opts);
 
+  if (!await client.exists()) {
+    return null;
+  }
+
   const {contentType, readableStreamBody} = await client.download();
   if (!readableStreamBody || !contentType || !isMimeTypesOfImage(contentType)) {
     return null;
