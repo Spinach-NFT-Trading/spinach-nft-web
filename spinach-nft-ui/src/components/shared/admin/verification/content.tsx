@@ -32,7 +32,6 @@ export const AdminVerificationCollapsibleContent = <TData, >(props: AdminVerific
       <Popup show={state.show === 'image'} setShow={() => setState((original) => ({
         ...original,
         show: null,
-        payload: null,
       }))}>
         <AdminVerificationImage state={state} getImageData={getImageData}/>
       </Popup>

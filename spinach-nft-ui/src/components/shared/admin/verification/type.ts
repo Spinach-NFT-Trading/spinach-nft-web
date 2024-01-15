@@ -20,7 +20,7 @@ export type AdminVerificationCollapsibleState = {
   payload: AdminVerificationImageRequestPayload,
 } | {
   show: 'confirm' | null,
-  payload: null,
+  payload: AdminVerificationImageRequestPayload | null,
 });
 
 export type AdminVerificationGetImageFromPayload = (
