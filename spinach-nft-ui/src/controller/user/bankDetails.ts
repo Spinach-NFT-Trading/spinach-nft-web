@@ -13,10 +13,6 @@ import {throwIfNotAdmin} from '@spinach/next/controller/utils';
 import {RequestOfUserBankDetails} from '@spinach/next/types/userData/upload';
 
 
-export const getBankDetailsOfUser = (userId: string) => {
-  return getDataAsArray(userBankDetailsCollection, {userId});
-};
-
 export const getBankDetailsMap = (uuidList: string[]): Promise<BankDetailsMap> => {
   return getDataAsMap(userBankDetailsCollection, ({uuid}) => uuid, {uuid: {$in: uuidList}});
 };

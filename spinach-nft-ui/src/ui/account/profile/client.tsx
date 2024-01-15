@@ -7,11 +7,11 @@ import {AccountProfileInfo} from '@spinach/next/ui/account/profile/sections/info
 import {AccountProfileCommonProps} from '@spinach/next/ui/account/profile/type';
 
 
-export const AccountProfileClient = ({userInfo, bankDetails}: AccountProfileCommonProps) => {
+export const AccountProfileClient = ({userInfo}: AccountProfileCommonProps) => {
   return (
     <Flex className="gap-2">
       <AccountProfileInfo userInfo={userInfo}/>
-      <AccountBankDetails bankDetails={bankDetails}/>
+      <AccountBankDetails bankDetails={userInfo.bankDetails}/>
     </Flex>
   );
 };

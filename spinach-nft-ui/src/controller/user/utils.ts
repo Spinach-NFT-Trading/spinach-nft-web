@@ -3,6 +3,8 @@ import {UserData, UserInfo} from '@spinach/common/types/common/user';
 import {UserModel} from '@spinach/common/types/data/user/data';
 import {WithId} from 'mongodb';
 
+import {getDataAsArray} from '@spinach/next/controller/common';
+
 
 export const toUserData = ({
   idNumber,
@@ -38,7 +40,7 @@ export const toUserInfo = async (model: WithId<UserModel>): Promise<UserInfo> =>
   return {
     ...toUserData(model),
     id: _id.toHexString(),
-    bankDetails: await userBankDetailsCollection.find({userId: _id.toHexString()}).toArray(),
+    bankDetails: await getDataAsArray(userBankDetailsCollection, {userId: _id.toHexString()}),
     status,
     admin,
     agent,

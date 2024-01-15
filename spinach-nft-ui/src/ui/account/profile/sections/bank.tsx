@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DocumentTextIcon from '@heroicons/react/24/outline/DocumentTextIcon';
-import {UserBankDetails} from '@spinach/common/types/data/user/bank';
+import {BankDetails} from '@spinach/common/types/data/user/bank';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -12,7 +12,7 @@ import {AccountProfileCell} from '@spinach/next/ui/account/profile/sections/comm
 
 
 type Props = {
-  bankDetails: UserBankDetails[],
+  bankDetails: BankDetails[],
 };
 
 export const AccountBankDetails = ({bankDetails}: Props) => {
