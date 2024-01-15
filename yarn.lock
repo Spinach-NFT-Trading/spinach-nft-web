@@ -8243,7 +8243,6 @@ __metadata:
     "@types/uuid": "npm:^9.0.7"
     autoprefixer: "npm:^10.4.16"
     clsx: "npm:^2.0.0"
-    date-fns: "npm:^3.0.6"
     eslint-config-next: "npm:^14.0.4"
     eslint-plugin-tailwindcss: "npm:^3.13.0"
     lodash: "npm:^4.17.21"
@@ -8264,6 +8263,7 @@ __metadata:
     "@types/node": "*"
     "@typescript-eslint/eslint-plugin": "*"
     "@typescript-eslint/parser": "*"
+    date-fns: "*"
     dotenv: "*"
     env-var: "*"
     eslint: "*"
@@ -8286,6 +8286,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^6.15.0"
     "@typescript-eslint/parser": "npm:^6.15.0"
     bcryptjs: "npm:^2.4.3"
+    date-fns: "npm:^3.0.6"
     dotenv: "npm:^16.3.1"
     env-var: "npm:^7.4.1"
     eslint: "npm:^8.56.0"
@@ -8300,6 +8301,8 @@ __metadata:
     ts-node: "npm:^10.9.2"
     tsc-alias: "npm:^1.8.8"
     typescript: "npm:^5.3.3"
+  peerDependencies:
+    date-fns: "*"
   languageName: unknown
   linkType: soft
 

@@ -10,3 +10,7 @@ export const IsoDateStringSchema = Type.Unsafe<Static<TIsoDateString>>(
 );
 
 export type IsoDateString = Static<typeof IsoDateStringSchema>;
+
+export type DateDelta = {
+  day: number,
+};
