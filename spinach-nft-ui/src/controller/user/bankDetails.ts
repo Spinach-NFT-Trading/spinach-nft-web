@@ -80,6 +80,7 @@ export const uploadBankDetails = async ({
       ...details,
     }, {session});
   } catch (e) {
+    console.error(`Failed to insert user bank details for ${userId}`, details, e);
     await session.abortTransaction();
     await session.endSession();
     return 'bankDetailsAlreadyExist';
@@ -92,6 +93,7 @@ export const uploadBankDetails = async ({
       ...image,
     });
   } catch (e) {
+    console.error(`Failed to upload user bank details images of ${userId}`, details, e);
     await session.abortTransaction();
     await session.endSession();
     return 'bankDetailsUploadFailed';

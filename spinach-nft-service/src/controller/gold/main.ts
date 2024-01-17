@@ -36,6 +36,7 @@ export const recordTxnTracked = async (txn: TrxWalletTransferResponseData[]): Pr
 
     return {trackedTxn, newTxnCount: result.insertedCount};
   } catch (e) {
+    console.error('Failed to record tracked TxN', e);
     if (!(e instanceof MongoBulkWriteError)) {
       throw e;
     }
@@ -85,6 +86,7 @@ export const recordTxnCompleted = async (trackedTxn: GoldTrackedTxn[]): Promise<
 
     return txnCompletedCollection.find({_id: {$in: insertedIds}}).toArray();
   } catch (e) {
+    console.error('Failed to record completed TxN', e);
     if (!(e instanceof MongoBulkWriteError)) {
       throw e;
     }

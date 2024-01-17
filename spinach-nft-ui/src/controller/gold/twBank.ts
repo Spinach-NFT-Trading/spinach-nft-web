@@ -104,7 +104,7 @@ export const recordGoldPurchaseTwBankTxn = async ({
       status: 'unverified',
     }, {session});
   } catch (e) {
-    console.error(e);
+    console.error('Failed to record Gold purchasing txn via TW bank (insert TxN)', e);
     await session.abortTransaction();
     await session.endSession();
   }
@@ -116,6 +116,7 @@ export const recordGoldPurchaseTwBankTxn = async ({
       ...txnProofImage,
     });
   } catch (e) {
+    console.error('Failed to record Gold purchasing txn via TW bank (Upload)', e);
     await session.abortTransaction();
     await session.endSession();
     return 'goldTwBankTxnRecordFailed';
