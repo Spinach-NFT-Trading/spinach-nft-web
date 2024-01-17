@@ -3,12 +3,15 @@ import React from 'react';
 import {DropDown} from '@spinach/next/components/dropdown/main';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {InputBox} from '@spinach/next/components/shared/common/input/box';
-import {adminMembersSearchKeyName} from '@spinach/next/ui/admin/members/const';
-import {AdminMembersSearchInputProps} from '@spinach/next/ui/admin/members/input/type';
-import {adminMembersFilterBasis, AdminMembersFilterInput} from '@spinach/next/ui/admin/members/type';
+import {AdminDataSearchInput, AdminDataSearchInputProps} from '@spinach/next/ui/admin/input/type';
 
 
-export const AdminMembersSearchInput = ({input, setInput}: AdminMembersSearchInputProps) => {
+export const AdminDataSearchInputUi = <TKey extends string>({
+  input,
+  setInput,
+  availableSearchKeys,
+  getSearchKeyName,
+}: AdminDataSearchInputProps<TKey>) => {
   const {key} = input;
 
   return (
@@ -17,16 +20,16 @@ export const AdminMembersSearchInput = ({input, setInput}: AdminMembersSearchInp
         origin="topLeft"
         renderButton={(DropdownMenuButton) => (
           <DropdownMenuButton className="button-clickable-bg whitespace-nowrap px-2 py-1">
-            {adminMembersSearchKeyName[key]}
+            {getSearchKeyName(key)}
           </DropdownMenuButton>
         )}
         itemList={[
-          adminMembersFilterBasis.map((basis) => (
+          availableSearchKeys.map((basis) => (
             <button key={basis} className="button-clickable-bg whitespace-nowrap px-2 py-1" onClick={() => setInput({
               key: basis,
               value: '',
-            })}>
-              {adminMembersSearchKeyName[basis]}
+            } satisfies AdminDataSearchInput<TKey>)}>
+              {getSearchKeyName(basis)}
             </button>
           )),
         ]}
@@ -37,7 +40,7 @@ export const AdminMembersSearchInput = ({input, setInput}: AdminMembersSearchInp
         onChange={({target}) => setInput((original) => ({
           ...original,
           value: target.value,
-        } satisfies AdminMembersFilterInput))}
+        } satisfies AdminDataSearchInput<TKey>))}
         className="w-full"
       />
     </Flex>

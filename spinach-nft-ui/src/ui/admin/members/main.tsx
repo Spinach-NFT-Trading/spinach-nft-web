@@ -3,9 +3,10 @@ import React from 'react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {UserDataLazyLoad} from '@spinach/next/components/shared/userData/lazyLoad';
-import {AdminMembersSearchInput} from '@spinach/next/ui/admin/members/input/main';
+import {AdminDataSearchInputUi} from '@spinach/next/ui/admin/input/main';
+import {adminMembersSearchKeyName} from '@spinach/next/ui/admin/members/const';
 import {AdminMembersResults} from '@spinach/next/ui/admin/members/result/main';
-import {AdminMembersFilterInput} from '@spinach/next/ui/admin/members/type';
+import {adminMembersFilterBasis, AdminMembersFilterInput} from '@spinach/next/ui/admin/members/type';
 
 
 type Props = {
@@ -21,7 +22,12 @@ export const AdminMembers = ({isAdmin}: Props) => {
   return (
     <Flex className="gap-1.5">
       <div className="text-2xl">會員資訊</div>
-      <AdminMembersSearchInput input={input} setInput={setInput}/>
+      <AdminDataSearchInputUi
+        input={input}
+        setInput={setInput}
+        availableSearchKeys={[...adminMembersFilterBasis]}
+        getSearchKeyName={(key) => adminMembersSearchKeyName[key]}
+      />
       <UserDataLazyLoad
         options={{
           type: 'adminMemberList',
