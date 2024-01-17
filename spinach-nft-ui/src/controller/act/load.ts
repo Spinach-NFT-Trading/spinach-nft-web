@@ -61,7 +61,7 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
   if (type === 'adminMemberNftTxn') {
     const nftTxn = await getNftTxnOfUser({
       executorUserId: accountId,
-      userId: options.opts.userId,
+      ...options.opts,
     });
     const userDataMap = await getUserDataMap(toUnique(nftTxn.flatMap(({from, to}) => [from, to])));
 
@@ -74,7 +74,7 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
   if (type === 'adminMemberBalanceHistory') {
     return await getUserBalanceHistory({
       executorUserId: accountId,
-      userId: options.opts.userId,
+      ...options.opts,
     }) satisfies UserLazyLoadedData['adminMemberBalanceHistory'];
   }
 

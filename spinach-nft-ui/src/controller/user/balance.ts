@@ -3,12 +3,14 @@ import {UserBalanceHistoryTxnType} from '@spinach/common/types/data/user/balance
 import {ObjectId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
+import {toIdRangeFromTimelineLookBackRequest} from '@spinach/next/controller/user/utils';
 import {throwIfNotAdminOrAgent} from '@spinach/next/controller/utils';
 import {
   UserBalanceHistoryModelClient,
   UserBalanceSummary,
   UserBalanceSummaryMap,
 } from '@spinach/next/types/mongo/balance';
+import {UserTimelineLookBackRequest} from '@spinach/next/types/userData/load';
 
 
 type UserBalanceSummaryAggregated = {
@@ -77,17 +79,19 @@ export const getUserBalanceSummaryMap = async ({
   ]).toArray());
 };
 
-type GetUserBalanceHistoryOpts = ControllerRequireUserIdOpts & {
-  userId: string,
-};
+type GetUserBalanceHistoryOpts = ControllerRequireUserIdOpts & UserTimelineLookBackRequest;
 
 export const getUserBalanceHistory = async ({
   executorUserId,
-  userId,
+  ...request
 }: GetUserBalanceHistoryOpts): Promise<UserBalanceHistoryModelClient[]> => {
+  const {userId} = request;
   await throwIfNotAdminOrAgent(executorUserId);
 
-  return userBalanceCollection.find({userId: new ObjectId(userId)})
+  return userBalanceCollection.find({
+    userId: new ObjectId(userId),
+    ...toIdRangeFromTimelineLookBackRequest(request),
+  })
     .sort({_id: 1})
     .map(({
       _id,

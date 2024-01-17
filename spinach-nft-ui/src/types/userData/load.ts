@@ -1,5 +1,12 @@
 import {AccountIdVerificationType} from '@spinach/common/types/api/profile/id';
+import {IsoDateString} from '@spinach/common/types/common/date';
 
+
+export type UserTimelineLookBackRequest = {
+  userId: string,
+  startDate: IsoDateString,
+  endDate: IsoDateString,
+};
 
 export type UserDataLoadingOpts = {
   type: 'nftPosition',
@@ -12,9 +19,7 @@ export type UserDataLoadingOpts = {
   opts?: never,
 } | {
   type: 'adminMemberNftTxn' | 'adminMemberBalanceHistory',
-  opts: {
-    userId: string,
-  },
+  opts: UserTimelineLookBackRequest,
 } | {
   type: 'adminUnverifiedAccounts',
   opts?: never,

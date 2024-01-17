@@ -10,7 +10,7 @@ type UseUserDataActorOpts = {
   statusNoReset?: boolean,
 };
 
-type UseUserDataActorReturn = UserDataActorState & {
+export type UseUserDataActorReturn = UserDataActorState & {
   act: UserDataActor | null,
   session: ReturnType<typeof useSession>,
 };

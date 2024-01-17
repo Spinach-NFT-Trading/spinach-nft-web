@@ -1,43 +1,36 @@
 import React from 'react';
 
-import {Flex} from '@spinach/next/components/layout/flex/common';
-import {UserDataLazyLoad} from '@spinach/next/components/shared/userData/lazyLoad';
 import {
   AdminMemberBalanceHistoryHeader,
 } from '@spinach/next/ui/admin/members/result/single/popup/balanceHistory/header';
 import {AdminMemberBalanceHistoryRow} from '@spinach/next/ui/admin/members/result/single/popup/balanceHistory/row';
+import {AdminTimelineLookBackResultContent} from '@spinach/next/ui/admin/members/result/single/popup/common/content';
+import {AdminTimelineLookBackResultLayout} from '@spinach/next/ui/admin/members/result/single/popup/common/layout';
 import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/single/popup/type';
 
 
-export const AdminMemberBalanceHistoryPopup = ({member}: AdminMemberPopupProps) => {
+export const AdminMemberBalanceHistoryPopup = (props: AdminMemberPopupProps) => {
   return (
-    <UserDataLazyLoad
-      options={{
-        type: 'adminMemberBalanceHistory',
-        opts: {
-          userId: member.id,
-        },
-      }}
-      loadingText="餘額歷史"
-      content={(data) => {
-        const history = data?.adminMemberBalanceHistory;
-
-        if (!history?.length) {
-          return '無餘額歷史';
-        }
+    <AdminTimelineLookBackResultLayout
+      requestType="adminMemberBalanceHistory"
+      header={<AdminMemberBalanceHistoryHeader/>}
+      {...props}
+    >
+      {({status, lazyLoaded}) => {
+        const response = lazyLoaded?.adminMemberBalanceHistory;
 
         return (
-          <Flex noFullWidth>
-            <AdminMemberBalanceHistoryHeader/>
-            {history.map((entry) => (
-              <AdminMemberBalanceHistoryRow
-                key={entry.id}
-                history={entry}
-              />
-            ))}
-          </Flex>
+          <AdminTimelineLookBackResultContent
+            data={response}
+            status={status}
+            renderEntry={(entry) => (
+              <AdminMemberBalanceHistoryRow key={entry.id} history={entry}/>
+            )}
+            textOnLoading="餘額歷史"
+            textOnNoResult="無餘額歷史"
+          />
         );
       }}
-    />
+    </AdminTimelineLookBackResultLayout>
   );
 };
