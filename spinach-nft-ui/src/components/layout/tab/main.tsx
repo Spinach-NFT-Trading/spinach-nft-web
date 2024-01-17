@@ -13,6 +13,7 @@ type Props<TKey extends string> = {
   content: {[key in TKey]: React.ReactNode},
   tabTitle: {[key in TKey]: React.ReactNode},
   getReactKey: (key: TKey) => string,
+  classOfContents?: string,
 };
 
 export const TabbedContent = <TKey extends string>({
@@ -21,6 +22,7 @@ export const TabbedContent = <TKey extends string>({
   tabTitle,
   content,
   getReactKey,
+  classOfContents,
 }: Props<TKey>) => {
   const [current, setCurrent] = React.useState<TKey>(defaultKey);
 
@@ -38,7 +40,7 @@ export const TabbedContent = <TKey extends string>({
           ))}
         </Flex>
       </div>
-      <FadingLayout current={current} contents={content}/>
+      <FadingLayout current={current} contents={content} className={classOfContents}/>
     </Flex>
   );
 };
