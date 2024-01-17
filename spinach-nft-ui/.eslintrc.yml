@@ -124,3 +124,5 @@ rules:
 settings:
   react:
     version: detect
+  tailwindcss:
+    classRegex: "^class(.*)?$"
