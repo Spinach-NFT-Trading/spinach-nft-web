@@ -7,7 +7,7 @@ import {Alert} from '@spinach/next/components/shared/common/alert';
 import {WindowedTable} from '@spinach/next/components/shared/common/table/windowed/main';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {ResponseOfAdminMemberList} from '@spinach/next/types/userData/lazyLoaded';
-import {adminMemberTableRowHeight} from '@spinach/next/ui/admin/members/result/const';
+import {adminDataRowHeight} from '@spinach/next/ui/admin/const';
 import {AdminMemberSingleHeader} from '@spinach/next/ui/admin/members/result/single/header';
 import {AdminMemberSingleResult} from '@spinach/next/ui/admin/members/result/single/main';
 import {AdminMemberPopup} from '@spinach/next/ui/admin/members/result/single/popup/main';
@@ -59,7 +59,7 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
       <Flex className="h-[85vh]">
         <WindowedTable
           data={membersToShow}
-          itemHeight={adminMemberTableRowHeight}
+          itemHeight={adminDataRowHeight}
           header={<AdminMemberSingleHeader/>}
           getKey={(data) => data?.id}
           renderRow={({data, style}) => (

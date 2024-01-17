@@ -20,6 +20,7 @@ export const AdminMembers = ({isAdmin}: Props) => {
 
   return (
     <Flex className="gap-1.5">
+      <div className="text-2xl">會員資訊</div>
       <AdminMembersSearchInput input={input} setInput={setInput}/>
       <UserDataLazyLoad
         options={{
