@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import {FadingLayout} from '@spinach/next/components/layout/fading/main';
 import {Flex} from '@spinach/next/components/layout/flex/common';
-import {tabbedContentStyle} from '@spinach/next/components/shared/common/tab/const';
+import {tabbedContentStyle} from '@spinach/next/components/layout/tab/const';
 
 
 type Props<TKey extends string> = {

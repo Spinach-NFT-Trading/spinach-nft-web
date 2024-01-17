@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-import {TabbedContent} from '@spinach/next/components/shared/common/tab/main';
+import {TabbedContent} from '@spinach/next/components/layout/tab/main';
 import {GoldExchangeContent} from '@spinach/next/ui/gold/exchange/content';
 
 
