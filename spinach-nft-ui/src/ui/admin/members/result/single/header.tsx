@@ -31,6 +31,9 @@ export const AdminMemberSingleHeader = () => {
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
         入金 (USDT)
       </Flex>
+      <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
+        退傭
+      </Flex>
       <Flex className="w-[42rem]"/>
     </>
   );

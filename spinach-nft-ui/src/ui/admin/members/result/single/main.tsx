@@ -69,6 +69,7 @@ export const AdminMemberSingleResult = ({
       <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['nftSell']}/>
       <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['deposit.twBank']}/>
       <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['deposit.crypto']}/>
+      <AdminMemberMonetaryCell applySignStyle value={0}/>
       <AdminMemberSingleControls showPopup={showPopup}/>
     </Flex>
   );
