@@ -12,7 +12,7 @@ export const AdminMembersSearchInput = ({input, setInput}: AdminMembersSearchInp
   const {key} = input;
 
   return (
-    <Flex direction="row" className="gap-1.5 p-1.5">
+    <Flex direction="row" className="gap-1.5">
       <DropDown
         origin="topLeft"
         renderButton={(DropdownMenuButton) => (

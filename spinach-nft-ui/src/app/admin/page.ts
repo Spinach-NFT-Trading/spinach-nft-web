@@ -1,4 +1,4 @@
-import {AdminIndex} from '@spinach/next/ui/admin/index/main';
+import {AdminPage} from '@spinach/next/ui/admin/main';
 
 
-export default AdminIndex;
+export default AdminPage;
