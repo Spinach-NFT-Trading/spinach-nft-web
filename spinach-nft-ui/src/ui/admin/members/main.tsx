@@ -20,7 +20,7 @@ export const AdminMembers = ({isAdmin}: Props) => {
   });
 
   return (
-    <Flex className="gap-1.5">
+    <Flex className="gap-2">
       <div className="text-2xl">會員資訊</div>
       <AdminDataSearchInputUi
         input={input}

@@ -1,21 +1,12 @@
 import React from 'react';
 
-import {Nullable} from '@spinach/common/types/common/typing';
 import clsx from 'clsx';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import {FixedSizeList} from 'react-window';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
-import {RenderWindowedTableRowOpts} from '@spinach/next/components/shared/common/table/windowed/type';
+import {WindowedTableProps} from '@spinach/next/components/shared/common/table/windowed/type';
 
-
-type Props<TData> = {
-  data: TData[],
-  itemHeight: number,
-  header: React.ReactNode,
-  getKey: (data: Nullable<TData>) => Nullable<React.Key>,
-  renderRow: (opts: RenderWindowedTableRowOpts<TData>) => React.ReactNode,
-};
 
 export const WindowedTable = <TData, >({
   data,
@@ -23,7 +14,8 @@ export const WindowedTable = <TData, >({
   header,
   getKey,
   renderRow,
-}: Props<TData>) => {
+  classOfRow,
+}: WindowedTableProps<TData>) => {
   return (
     <AutoSizer disableWidth>
       {({height}) => (
@@ -38,7 +30,7 @@ export const WindowedTable = <TData, >({
           innerElementType={({children}: React.PropsWithChildren) => (
             <Flex noFullWidth className="h-full w-max">
               <Flex direction="row" noFullWidth style={{height: itemHeight}} className={clsx(
-                'sticky left-0 top-0 z-20 items-center bg-slate-900/90 p-2 [&>div]:shrink-0',
+                'sticky left-0 top-0 z-20 items-center gap-1 bg-slate-900/90 p-2 [&>div]:shrink-0',
               )}>
                 {header}
               </Flex>
@@ -55,7 +47,14 @@ export const WindowedTable = <TData, >({
               return null;
             }
 
-            return renderRow({data: single, style: styleToUse});
+            return (
+              <Flex direction="row" noFullWidth style={styleToUse} className={clsx(
+                'items-center gap-1 p-2 [&>*]:shrink-0',
+                classOfRow,
+              )}>
+                {renderRow({data: single})}
+              </Flex>
+            );
           }}
         </FixedSizeList>
       )}

@@ -47,7 +47,7 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
   )), [state, input]);
 
   return (
-    <Flex className="gap-1.5">
+    <Flex className="gap-2">
       <AdminMemberPopup
         state={popup}
         setShow={(show) => setPopup((original) => ({
@@ -62,9 +62,9 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
           itemHeight={adminDataRowHeight}
           header={<AdminMemberSingleHeader/>}
           getKey={(data) => data?.id}
-          renderRow={({data, style}) => (
+          classOfRow="border-b-slate-400 p-2 not-last:border-b"
+          renderRow={({data}) => (
             <AdminMemberSingleResult
-              style={style}
               isAdmin={isAdmin}
               member={data}
               balanceSummary={balanceSummaryMap[data.id]}

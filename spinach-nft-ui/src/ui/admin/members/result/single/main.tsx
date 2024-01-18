@@ -16,7 +16,6 @@ import {formatUserName} from '@spinach/next/utils/data/user';
 
 
 type Props = {
-  style: React.CSSProperties,
   member: UserInfo,
   isAdmin: boolean,
   balanceSummary: UserBalanceSummary | undefined,
@@ -26,7 +25,6 @@ type Props = {
 };
 
 export const AdminMemberSingleResult = ({
-  style,
   member,
   isAdmin,
   balanceSummary,
@@ -40,7 +38,7 @@ export const AdminMemberSingleResult = ({
   } = member;
 
   return (
-    <Flex direction="row" noFullWidth style={style} className="border-b-slate-400 p-2 not-last:border-b">
+    <Flex direction="row" noFullWidth>
       <Flex noFullWidth className="w-52 justify-center">
         {formatUserName(member)}
       </Flex>
