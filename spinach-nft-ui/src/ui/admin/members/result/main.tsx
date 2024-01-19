@@ -56,7 +56,7 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
         }))}
       />
       {state.error && <Alert>{translateApiError(state.error)}</Alert>}
-      <Flex className="h-[85vh]">
+      <Flex className="h-[70vh]">
         <WindowedTable
           data={membersToShow}
           itemHeight={adminDataRowHeight}

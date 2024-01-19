@@ -29,7 +29,7 @@ export const AdminPageClient = ({isAdmin}: Props) => {
         members: '會員列表',
         verifyId: '驗證身分',
         verifyBankAccount: '驗證銀行帳號',
-        verifyBankTxn: '驗證轉帳紀錄',
+        verifyBankTxn: '驗證 GOLD 購買紀錄',
       }}
       content={{
         members: <AdminMembers isAdmin={isAdmin}/>,
