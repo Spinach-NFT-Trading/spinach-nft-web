@@ -1,24 +1,47 @@
 import React from 'react';
 
-import {CollapsibleFull} from '@spinach/next/components/layout/collapsible/full';
-import {useCollapsible} from '@spinach/next/components/layout/collapsible/hook';
+import {translateApiError} from '@spinach/common/utils/translate/apiError';
+
 import {Flex} from '@spinach/next/components/layout/flex/common';
-import {AdminVerificationCollapsibleContent} from '@spinach/next/components/shared/admin/verification/content';
-import {AdminVerificationCollapsibleProps} from '@spinach/next/components/shared/admin/verification/type';
+import {useAdminVerificationStateControl} from '@spinach/next/components/shared/admin/verification/hook';
+import {AdminVerificationPopup} from '@spinach/next/components/shared/admin/verification/popup/main';
+import {AdminVerificationPopupCommonProps} from '@spinach/next/components/shared/admin/verification/popup/type';
+import {AdminVerificationRow} from '@spinach/next/components/shared/admin/verification/row';
+import {AdminVerificationRowProps} from '@spinach/next/components/shared/admin/verification/type';
+import {Alert} from '@spinach/next/components/shared/common/alert';
+import {WindowedTable} from '@spinach/next/components/shared/common/table/windowed/main';
+import {WindowedTableProps} from '@spinach/next/components/shared/common/table/windowed/type';
 
 
-export const AdminVerificationCollapsible = <TData, >(props: AdminVerificationCollapsibleProps<TData>) => {
-  const {getTitle, data} = props;
+type Props<TData> =
+  Omit<WindowedTableProps<TData>, 'data' | 'renderRow'> &
+  AdminVerificationPopupCommonProps<TData> &
+  Omit<AdminVerificationRowProps<TData>, 'data'> & {
+    data: TData[],
+  };
 
-  const collapsible = useCollapsible();
+export const AdminVerification = <TData, >({data, ...props}: Props<TData>) => {
+  const stateControls = useAdminVerificationStateControl<TData>();
+  const {state} = stateControls;
 
   return (
-    <CollapsibleFull state={collapsible} button={
-      <Flex center className="py-2">
-        {getTitle(data)}
-      </Flex>
-    }>
-      <AdminVerificationCollapsibleContent {...props}/>
-    </CollapsibleFull>
+    <Flex className="h-[70vh]">
+      <AdminVerificationPopup
+        {...stateControls}
+        {...props}
+      />
+      {state.error && <Alert>{translateApiError(state.error)}</Alert>}
+      <WindowedTable
+        data={data}
+        renderRow={(rowProps) => (
+          <AdminVerificationRow
+            {...rowProps}
+            {...stateControls}
+            {...props}
+          />
+        )}
+        {...props}
+      />
+    </Flex>
   );
 };

@@ -1,28 +1,21 @@
 import React from 'react';
 
-import {Failed} from '@spinach/next/components/icons/failed';
 import {
   AdminVerificationImageContent,
 } from '@spinach/next/components/shared/admin/verification/popup/image/content';
 import {
-  AdminVerificationCollapsibleState,
   AdminVerificationGetImageFromPayload,
+  AdminVerificationImageRequestPayload,
 } from '@spinach/next/components/shared/admin/verification/type';
 import {UserDataLazyLoad} from '@spinach/next/components/shared/userData/lazyLoad';
 
 
 type Props = {
-  state: AdminVerificationCollapsibleState,
+  payload: AdminVerificationImageRequestPayload,
   getImageData: AdminVerificationGetImageFromPayload,
 };
 
-export const AdminVerificationImage = ({state, getImageData}: Props) => {
-  const {payload} = state;
-
-  if (!payload) {
-    return <Failed text="沒有指定要顯示的照片。"/>;
-  }
-
+export const AdminVerificationImage = ({payload, getImageData}: Props) => {
   const {opts, imageName} = payload;
 
   return (

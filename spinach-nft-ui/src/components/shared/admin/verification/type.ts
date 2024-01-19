@@ -1,11 +1,11 @@
 import React from 'react';
 
-import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {ByteArray} from '@spinach/common/types/common/binary';
+import {Nullable} from '@spinach/common/types/common/typing';
 
+import {AdminVerificationPopupData} from '@spinach/next/components/shared/admin/verification/popup/type';
 import {UserLazyLoadedContent} from '@spinach/next/types/userData/lazyLoaded';
 import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
-import {UserDataRequestOpts} from '@spinach/next/types/userData/upload';
 
 
 export type AdminVerificationImageRequestPayload = {
@@ -13,27 +13,14 @@ export type AdminVerificationImageRequestPayload = {
   imageName: string,
 };
 
-export type AdminVerificationCollapsibleState = {
-  error: ApiErrorCode | null,
-} & ({
-  show: 'image',
-  payload: AdminVerificationImageRequestPayload,
-} | {
-  show: 'confirm' | null,
-  payload: AdminVerificationImageRequestPayload | null,
-});
-
 export type AdminVerificationGetImageFromPayload = (
-  data: Partial<UserLazyLoadedContent> | null | undefined,
+  data: Nullable<Partial<UserLazyLoadedContent>>,
   payload: AdminVerificationImageRequestPayload
 ) => ByteArray | null | undefined;
 
-export type AdminVerificationCollapsibleProps<TData> = {
+export type AdminVerificationRowProps<TData> = {
   data: TData,
-  getTitle: (data: TData) => React.ReactNode,
   getInfo: (data: TData) => React.ReactNode,
   getImageRequestPayload: (data: TData) => AdminVerificationImageRequestPayload[],
-  getImageData: AdminVerificationGetImageFromPayload,
-  getConfirmPayload: (data: TData, pass: boolean) => UserDataRequestOpts,
-  onVerified: () => void,
+  getPopupData: (data: TData) => AdminVerificationPopupData<TData> | null,
 };
