@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {Toaster} from 'react-hot-toast';
+
 import {Announcements} from '@spinach/next/components/announcement/main';
 import {LoadingFullScreen} from '@spinach/next/components/icons/loading';
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -13,6 +15,7 @@ type Props = PageLayoutProps & NavBarProps;
 export const PageLayout = ({announcement = true, children, ...props}: React.PropsWithChildren<Props>) => {
   return (
     <React.Suspense fallback={<LoadingFullScreen/>}>
+      <Toaster position="bottom-center" toastOptions={{duration: 3000}}/>
       <main className="min-h-full w-full">
         <NavBar {...props}/>
         <Flex className="gap-1.5 p-2">

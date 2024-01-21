@@ -29,7 +29,9 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
   } = input;
   const {info, balanceSummaryMap} = memberInfo;
 
-  const {act, status} = useUserDataActor();
+  const {act, status} = useUserDataActor({
+    statusToast: true,
+  });
   const [state, setState] = React.useState<AdminMembersResultState>({
     members: info,
     error: null,

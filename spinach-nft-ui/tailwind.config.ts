@@ -30,6 +30,28 @@ const config: Config = {
       width: {
         '108': '28rem',
       },
+      animation: {
+        'enter': 'fadeIn 300ms ease-out',
+        'leave': 'fadeOut 300ms ease-in forwards',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': {
+            opacity: '0',
+          },
+          '100%': {
+            opacity: '1',
+          },
+        },
+        fadeOut: {
+          '0%': {
+            opacity: '1',
+          },
+          '100%': {
+            opacity: '0',
+          },
+        },
+      },
     },
   },
   plugins: [

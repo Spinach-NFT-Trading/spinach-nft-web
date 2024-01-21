@@ -2,12 +2,15 @@ import React from 'react';
 
 import {useSession} from 'next-auth/react';
 
+import {UserDataUploadStatus} from '@spinach/next/components/shared/userData/uploadStatus';
 import {UserDataActorState} from '@spinach/next/hooks/userData/type';
 import {UserDataActor} from '@spinach/next/types/userData/main';
+import {showToast} from '@spinach/next/utils/toast';
 
 
 type UseUserDataActorOpts = {
   statusNoReset?: boolean,
+  statusToast?: boolean,
 };
 
 export type UseUserDataActorReturn = UserDataActorState & {
@@ -53,7 +56,19 @@ export const useUserDataActor = (opts?: UseUserDataActorOpts): UseUserDataActorR
   React.useEffect(() => {
     const {status} = state;
 
-    if (status !== 'completed' && status !== 'failed' || opts?.statusNoReset) {
+    if (status !== 'completed' && status !== 'failed') {
+      return;
+    }
+
+    if (status === 'completed' && opts?.statusToast) {
+      showToast({content: <UserDataUploadStatus success/>});
+    }
+
+    if (status === 'failed') {
+      showToast({content: <UserDataUploadStatus success={false}/>});
+    }
+
+    if (opts?.statusNoReset) {
       return;
     }
 
