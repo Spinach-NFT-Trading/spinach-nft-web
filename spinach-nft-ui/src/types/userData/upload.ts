@@ -47,6 +47,12 @@ export type UserDataRequestOpts = {
     isSuspended: boolean,
   },
 } | {
+  type: 'admin.member.update.commission',
+  data: {
+    targetId: string,
+    commissionRate: number,
+  },
+} | {
   type: 'admin.verify.account',
   data: {
     targetId: string,

@@ -12,6 +12,7 @@ import {VerificationStatusUi} from '@spinach/next/components/shared/common/verif
 import {UserBalanceSummary} from '@spinach/next/types/mongo/balance';
 import {UserDataActor} from '@spinach/next/types/userData/main';
 import {AdminMemberControlButton} from '@spinach/next/ui/admin/members/result/single/button';
+import {AdminMemberCommissionSettingsCell} from '@spinach/next/ui/admin/members/result/single/cell/commission/main';
 import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/members/result/single/cell/monetary/main';
 import {AdminMemberSingleControls} from '@spinach/next/ui/admin/members/result/single/control';
 import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/single/popup/type';
@@ -44,6 +45,7 @@ export const AdminMemberSingleResult = ({
     status,
     isAgent,
     isSuspended,
+    commissionRate,
   } = member;
 
   return (
@@ -107,6 +109,28 @@ export const AdminMemberSingleResult = ({
       <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['deposit.twBank']}/>
       <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['deposit.crypto']}/>
       <AdminMemberMonetaryCell applySignStyle value={0}/>
+      <AdminMemberCommissionSettingsCell
+        commissionRate={commissionRate}
+        setCommissionRate={(commissionRate) => onUpdatedMember({...member, commissionRate})}
+        isAdmin={isAdmin}
+        disabled={controlDisabled}
+        onUpload={async (commissionRate) => {
+          const session = await act({
+            action: 'request',
+            options: {
+              type: 'admin.member.update.commission',
+              data: {targetId: id, commissionRate},
+            },
+          });
+
+          const error = session?.user.jwtUpdateError;
+          if (error) {
+            onUpdateError(error);
+          }
+
+          onUpdatedMember({...member, commissionRate});
+        }}
+      />
       <AdminMemberSingleControls showPopup={showPopup}/>
     </Flex>
   );

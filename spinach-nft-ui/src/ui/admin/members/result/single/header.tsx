@@ -37,7 +37,10 @@ export const AdminMemberSingleHeader = () => {
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
         退傭
       </Flex>
-      <Flex className="w-[42rem]"/>
+      <Flex center noFullWidth className="w-28">
+        退傭設定
+      </Flex>
+      <Flex noFullWidth className="w-[42rem]"/>
     </>
   );
 };

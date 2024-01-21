@@ -8,6 +8,7 @@ import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controll
 import {uploadIdVerification} from '@spinach/next/controller/user/info';
 import {markUserStatus} from '@spinach/next/controller/user/status';
 import {markUserAgent} from '@spinach/next/controller/user/update/agent';
+import {updateUserCommissionRate} from '@spinach/next/controller/user/update/commissionRate';
 import {markUserSuspended} from '@spinach/next/controller/user/update/suspended';
 import {UserDataRequestOpts} from '@spinach/next/types/userData/upload';
 
@@ -49,6 +50,13 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
 
   if (type === 'admin.member.mark.suspended') {
     return markUserSuspended({
+      executorUserId: accountId,
+      ...data,
+    });
+  }
+
+  if (type === 'admin.member.update.commission') {
+    return updateUserCommissionRate({
       executorUserId: accountId,
       ...data,
     });
