@@ -38,7 +38,7 @@ export const AdminMemberSingleResult = ({
   } = member;
 
   return (
-    <Flex direction="row" noFullWidth>
+    <Flex direction="row" noFullWidth className="gap-1">
       <Flex noFullWidth className="w-52 justify-center">
         {formatUserName(member)}
       </Flex>
