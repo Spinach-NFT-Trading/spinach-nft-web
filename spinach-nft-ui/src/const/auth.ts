@@ -40,8 +40,8 @@ export const authOptions: AuthOptions = {
         username,
         name,
         email,
-        admin,
-        agent,
+        isAdmin,
+        isAgent,
         status,
       } = userInfo;
       token = {
@@ -50,8 +50,8 @@ export const authOptions: AuthOptions = {
         username,
         name,
         email,
-        isAdmin: admin,
-        isAgent: agent,
+        isAdmin,
+        isAgent,
         status,
         jwtUpdateError: null,
         action: null,

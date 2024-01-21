@@ -26,7 +26,7 @@ export const AccountProfileInfo = ({userInfo}: Props) => {
     lineId,
     wallet,
     status,
-    agent,
+    isAgent,
   } = userInfo;
 
   const agentReferralLink = generateAgentReferralLink(id);
@@ -46,7 +46,7 @@ export const AccountProfileInfo = ({userInfo}: Props) => {
           <AccountProfileCell title="生日" info={birthday}/>
         </Flex>
       </Flex>
-      <AnimatedCollapse show={agent}>
+      <AnimatedCollapse show={isAgent}>
         <AccountProfileCell
           title="邀請連結"
           info={

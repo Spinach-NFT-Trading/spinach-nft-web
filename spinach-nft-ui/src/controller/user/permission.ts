@@ -8,19 +8,19 @@ import {throwIfNotAdmin} from '@spinach/next/controller/utils';
 
 type MarkUserAgentOpts = ControllerRequireUserIdOpts & {
   targetId: string,
-  agent: boolean,
+  isAgent: boolean,
 };
 
 export const markUserAgent = async ({
   executorUserId,
   targetId,
-  agent,
+  isAgent,
 }: MarkUserAgentOpts): Promise<ApiErrorCode | null> => {
   await throwIfNotAdmin(executorUserId);
 
   const result = await userInfoCollection.updateOne(
     {_id: new ObjectId(targetId)},
-    {$set: {agent}},
+    {$set: {isAgent}},
   );
 
   if (!result.matchedCount) {

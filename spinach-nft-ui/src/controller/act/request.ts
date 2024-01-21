@@ -42,8 +42,7 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
   if (type === 'admin.member.grant.agent') {
     return markUserAgent({
       executorUserId: accountId,
-      agent: data.agent,
-      targetId: data.targetId,
+      ...data,
     });
   }
 

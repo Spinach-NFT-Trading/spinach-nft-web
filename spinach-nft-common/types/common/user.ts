@@ -10,8 +10,8 @@ import {BankDetailsSchema} from '@spinach/common/types/data/user/bank';
 
 export const UserPropertySchemaBase = {
   status: VerificationStatusSchema,
-  admin: Type.Boolean(),
-  agent: Type.Boolean(),
+  isAdmin: Type.Boolean(),
+  isAgent: Type.Boolean(),
 };
 
 export const UserDataSchemaBase = {

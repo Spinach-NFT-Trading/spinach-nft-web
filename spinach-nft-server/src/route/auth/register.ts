@@ -94,8 +94,8 @@ export const addAuthRegister = () => {
           wallet,
           bankDetails: [],
           status: 'unverified',
-          admin: false,
-          agent: false,
+          isAdmin: false,
+          isAgent: false,
           recruitedBy,
         },
       };

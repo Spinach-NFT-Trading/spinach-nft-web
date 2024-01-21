@@ -2,7 +2,7 @@ import {getUserById} from '@spinach/next/controller/user/info';
 
 
 export const isAdmin = async (userId: string | undefined): Promise<boolean> => {
-  return !!(await getUserById(userId))?.admin;
+  return !!(await getUserById(userId))?.isAdmin;
 };
 
 export const throwIfNotAdmin = async (userId: string | undefined) => {
@@ -16,7 +16,7 @@ export const isAdminOrAgent = async (userId: string | undefined) => {
 
   return {
     user,
-    result: !!user?.admin || !!user?.agent,
+    result: !!user?.isAdmin || !!user?.isAgent,
   };
 };
 

@@ -53,7 +53,7 @@ export const registerUser = async ({
       return 'agentNotFound';
     }
 
-    if (!agent.agent) {
+    if (!agent.isAgent) {
       return 'agentInactive';
     }
   }
@@ -81,8 +81,8 @@ export const registerUser = async ({
     lineId,
     wallet,
     status: 'unverified',
-    admin: false,
-    agent: false,
+    isAdmin: false,
+    isAgent: false,
     recruitedBy,
   });
 
@@ -114,8 +114,8 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     lineId,
     wallet,
     status,
-    admin,
-    agent,
+    isAdmin,
+    isAgent,
     recruitedBy,
   } = info;
 
@@ -130,8 +130,8 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     wallet,
     bankDetails: await userBankDetailsCollection.find({username: info.username}).toArray(),
     status,
-    admin,
-    agent,
+    isAdmin,
+    isAgent,
     recruitedBy,
   };
 };

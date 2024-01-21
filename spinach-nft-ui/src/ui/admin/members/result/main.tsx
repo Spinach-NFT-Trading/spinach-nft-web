@@ -74,7 +74,7 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
                 show: true,
                 member: data,
               })}
-              onSetAgent={async (agent) => {
+              onSetAgent={async (isAgent) => {
                 if (!act) {
                   return;
                 }
@@ -85,7 +85,7 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
                     type: 'admin.member.grant.agent',
                     data: {
                       targetId: data.id,
-                      agent,
+                      isAgent,
                     },
                   },
                 });
@@ -94,8 +94,8 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
                   setState(({members}) => ({
                     members: members.map((memberOfOriginal) => ({
                       ...memberOfOriginal,
-                      agent: memberOfOriginal.id === data.id ? agent : memberOfOriginal.agent,
-                    })),
+                      isAgent: memberOfOriginal.id === data.id ? isAgent : memberOfOriginal.isAgent,
+                    } satisfies UserInfo)),
                     error: null,
                   }));
                   return;

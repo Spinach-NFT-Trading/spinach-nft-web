@@ -34,8 +34,8 @@ export const toUserInfo = async (model: WithId<UserModel>): Promise<UserInfo> =>
   const {
     _id,
     status,
-    admin,
-    agent,
+    isAdmin,
+    isAgent,
     recruitedBy,
   } = model;
 
@@ -44,8 +44,8 @@ export const toUserInfo = async (model: WithId<UserModel>): Promise<UserInfo> =>
     id: _id.toHexString(),
     bankDetails: await getDataAsArray(userBankDetailsCollection, {userId: _id.toHexString()}),
     status,
-    admin,
-    agent,
+    isAdmin,
+    isAgent,
     recruitedBy,
   };
 };

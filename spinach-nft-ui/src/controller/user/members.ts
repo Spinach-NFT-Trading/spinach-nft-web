@@ -10,11 +10,11 @@ export type GetAccountMembersOpts = ControllerRequireUserIdOpts & {};
 export const getAccountMembers = async ({executorUserId}: GetAccountMembersOpts): Promise<UserInfo[]> => {
   const user = await throwIfNotAdminOrAgent(executorUserId);
 
-  if (user.admin) {
+  if (user.isAdmin) {
     return getUserInfoArray({});
   }
 
-  if (user.agent) {
+  if (user.isAgent) {
     return getUserInfoArray({recruitedBy: executorUserId});
   }
 

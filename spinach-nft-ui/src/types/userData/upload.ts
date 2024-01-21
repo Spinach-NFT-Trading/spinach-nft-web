@@ -38,7 +38,7 @@ export type UserDataRequestOpts = {
   type: 'admin.member.grant.agent',
   data: {
     targetId: string,
-    agent: boolean,
+    isAgent: boolean,
   },
 } | {
   type: 'admin.verify.account',
