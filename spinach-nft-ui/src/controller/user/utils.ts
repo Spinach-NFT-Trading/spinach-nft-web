@@ -36,6 +36,7 @@ export const toUserInfo = async (model: WithId<UserModel>): Promise<UserInfo> =>
     status,
     isAdmin,
     isAgent,
+    isSuspended,
     recruitedBy,
   } = model;
 
@@ -46,6 +47,7 @@ export const toUserInfo = async (model: WithId<UserModel>): Promise<UserInfo> =>
     status,
     isAdmin,
     isAgent,
+    isSuspended,
     recruitedBy,
   };
 };

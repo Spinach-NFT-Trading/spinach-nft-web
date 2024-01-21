@@ -12,6 +12,7 @@ export const UserPropertySchemaBase = {
   status: VerificationStatusSchema,
   isAdmin: Type.Boolean(),
   isAgent: Type.Boolean(),
+  isSuspended: Type.Boolean(),
 };
 
 export const UserDataSchemaBase = {
