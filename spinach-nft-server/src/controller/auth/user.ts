@@ -87,6 +87,7 @@ export const registerUser = async ({
     isAdmin: lineId === RegisterAsAdminLineIdKey,
     isAgent: false,
     isSuspended: false,
+    commissionRate: 0,
     recruitedBy,
   };
   const result = await userInfoCollection.insertOne(model);
@@ -125,6 +126,7 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     isAdmin,
     isAgent,
     isSuspended,
+    commissionRate,
     recruitedBy,
   } = info;
 
@@ -142,6 +144,7 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     isAdmin,
     isAgent,
     isSuspended,
+    commissionRate,
     recruitedBy,
   };
 };

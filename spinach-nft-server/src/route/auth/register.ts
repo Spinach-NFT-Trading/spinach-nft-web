@@ -82,6 +82,7 @@ export const addAuthRegister = () => {
         isAdmin,
         isAgent,
         isSuspended,
+        commissionRate,
         recruitedBy,
       } = errorOrUserId.model;
 
@@ -101,6 +102,7 @@ export const addAuthRegister = () => {
           isAdmin,
           isAgent,
           isSuspended,
+          commissionRate,
           recruitedBy,
         },
       };

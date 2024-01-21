@@ -13,6 +13,7 @@ export const UserPropertySchemaBase = {
   isAdmin: Type.Boolean(),
   isAgent: Type.Boolean(),
   isSuspended: Type.Boolean(),
+  commissionRate: Type.Number({minimum: 0, maximum: 1}),
 };
 
 export const UserDataSchemaBase = {

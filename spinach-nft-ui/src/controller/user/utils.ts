@@ -37,6 +37,7 @@ export const toUserInfo = async (model: WithId<UserModel>): Promise<UserInfo> =>
     isAdmin,
     isAgent,
     isSuspended,
+    commissionRate,
     recruitedBy,
   } = model;
 
@@ -48,6 +49,7 @@ export const toUserInfo = async (model: WithId<UserModel>): Promise<UserInfo> =>
     isAdmin,
     isAgent,
     isSuspended,
+    commissionRate,
     recruitedBy,
   };
 };
