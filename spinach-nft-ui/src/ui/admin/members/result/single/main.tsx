@@ -4,11 +4,13 @@ import CheckCircleIcon from '@heroicons/react/24/outline/CheckCircleIcon';
 import XCircleIcon from '@heroicons/react/24/outline/XCircleIcon';
 import LockClosedIcon from '@heroicons/react/24/solid/LockClosedIcon';
 import LockOpenIcon from '@heroicons/react/24/solid/LockOpenIcon';
+import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {UserInfo} from '@spinach/common/types/common/user';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {VerificationStatusUi} from '@spinach/next/components/shared/common/verified';
 import {UserBalanceSummary} from '@spinach/next/types/mongo/balance';
+import {UserDataActor} from '@spinach/next/types/userData/main';
 import {AdminMemberControlButton} from '@spinach/next/ui/admin/members/result/single/button';
 import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/members/result/single/cell/monetary/main';
 import {AdminMemberSingleControls} from '@spinach/next/ui/admin/members/result/single/control';
@@ -18,24 +20,27 @@ import {formatUserName} from '@spinach/next/utils/data/user';
 
 type Props = {
   member: UserInfo,
-  isAdmin: boolean,
   balanceSummary: UserBalanceSummary | undefined,
+  isAdmin: boolean,
   controlDisabled: boolean,
-  onSetAgent: (isAgent: boolean) => void,
-  onSetSuspended: (isSuspended: boolean) => void,
+  act: UserDataActor,
   showPopup: (type: AdminMemberPopupType) => void,
+  onUpdateError: (error: ApiErrorCode) => void,
+  onUpdatedMember: (updated: UserInfo) => void,
 };
 
 export const AdminMemberSingleResult = ({
   member,
-  isAdmin,
   balanceSummary,
+  isAdmin,
   controlDisabled,
-  onSetAgent,
-  onSetSuspended,
+  act,
   showPopup,
+  onUpdateError,
+  onUpdatedMember,
 }: Props) => {
   const {
+    id,
     status,
     isAgent,
     isSuspended,
@@ -55,11 +60,19 @@ export const AdminMemberSingleResult = ({
           isAdmin={isAdmin}
           active={isAgent}
           disabled={controlDisabled}
-          onClick={() => onSetAgent(!isAgent)}
           icon={{
             active: <CheckCircleIcon className="h-5 w-5"/>,
             inactive: <XCircleIcon className="h-5 w-5"/>,
           }}
+          onSuccess={(isAgent) => onUpdatedMember({...member, isAgent})}
+          onError={onUpdateError}
+          sendRequest={(isAgent) => act({
+            action: 'request',
+            options: {
+              type: 'admin.member.mark.agent',
+              data: {targetId: id, isAgent},
+            },
+          })}
         />
       </Flex>
       <Flex noFullWidth center className="w-16">
@@ -70,11 +83,19 @@ export const AdminMemberSingleResult = ({
             isAdmin={isAdmin}
             active={isSuspended}
             disabled={controlDisabled}
-            onClick={() => onSetSuspended(!isSuspended)}
             icon={{
               active: <LockClosedIcon className="h-5 w-5"/>,
               inactive: <LockOpenIcon className="h-5 w-5"/>,
             }}
+            onSuccess={(isSuspended) => onUpdatedMember({...member, isSuspended})}
+            onError={onUpdateError}
+            sendRequest={(isSuspended) => act({
+              action: 'request',
+              options: {
+                type: 'admin.member.mark.suspended',
+                data: {targetId: id, isSuspended},
+              },
+            })}
             classOnActive="text-red-300"
             classOnInactive="text-green-300"
           />

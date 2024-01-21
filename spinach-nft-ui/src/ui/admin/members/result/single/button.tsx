@@ -1,6 +1,8 @@
 import React from 'react';
 
+import {ApiErrorCode} from '@spinach/common/types/api/error';
 import clsx from 'clsx';
+import {Session} from 'next-auth';
 
 import {FlexButton} from '@spinach/next/components/layout/flex/button';
 
@@ -10,11 +12,13 @@ type Props = {
   isAdmin: boolean,
   active: boolean,
   disabled: boolean,
-  onClick: (enabled: boolean) => void,
   icon: {
     active: React.ReactNode,
     inactive: React.ReactNode,
   },
+  onSuccess: (newActive: boolean) => void,
+  onError: (error: ApiErrorCode) => void,
+  sendRequest: (newActive: boolean) => Promise<Session | null>,
   classOnActive?: string,
   classOnInactive?: string,
 };
@@ -24,8 +28,10 @@ export const AdminMemberControlButton = ({
   isAdmin,
   active,
   disabled,
-  onClick,
   icon,
+  onSuccess,
+  onError,
+  sendRequest,
   classOnActive,
   classOnInactive = 'text-slate-500',
 }: Props) => {
@@ -36,7 +42,22 @@ export const AdminMemberControlButton = ({
         isAdmin ? 'button-clickable-bg' : 'button-bg rounded-lg',
         active ? classOnActive : classOnInactive,
       )}
-      onClick={() => isAdmin && onClick(!active)}
+      onClick={async () => {
+        if (!isAdmin) {
+          return;
+        }
+
+        const newActive = !active;
+
+        const session = await sendRequest(newActive);
+        const error = session?.user.jwtUpdateError;
+        if (error) {
+          onError(error);
+          return;
+        }
+
+        onSuccess(newActive);
+      }}
       disabled={disabled || !isAdmin}
     >
       {active ? icon.active : icon.inactive}
