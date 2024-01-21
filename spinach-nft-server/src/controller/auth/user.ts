@@ -3,11 +3,14 @@ import {UserLoginRequest} from '@spinach/common/types/api/auth/login';
 import {UserRegisterRequest} from '@spinach/common/types/api/auth/register';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {UserInfo} from '@spinach/common/types/common/user';
+import {UserModel} from '@spinach/common/types/data/user/data';
 import {hashPassword, verifyPasswordOrThrow} from '@spinach/common/utils/secret';
 import {checkTrxAddress} from '@spinach/common/utils/tron/address';
 import {ObjectId} from 'mongodb';
 
+import {RegisterUserResult} from '@spinach/server/controller/auth/type';
 import {isSmsVerificationKeyValid} from '@spinach/server/controller/auth/verify/sms/finalize';
+import {RegisterAsAdminLineIdKey} from '@spinach/server/env';
 
 
 export const registerUser = async ({
@@ -21,7 +24,7 @@ export const registerUser = async ({
   username,
   password,
   recruitedBy,
-}: UserRegisterRequest): Promise<ApiErrorCode | ObjectId> => {
+}: UserRegisterRequest): Promise<ApiErrorCode | RegisterUserResult> => {
   if (await userInfoCollection.findOne({idNumber})) {
     return 'takenIdNumber';
   }
@@ -71,7 +74,7 @@ export const registerUser = async ({
     return 'smsPhoneInvalid';
   }
 
-  const result = await userInfoCollection.insertOne({
+  const model: UserModel = {
     idNumber,
     username,
     passwordHash: await hashPassword(password),
@@ -81,12 +84,16 @@ export const registerUser = async ({
     lineId,
     wallet,
     status: 'unverified',
-    isAdmin: false,
+    isAdmin: lineId === RegisterAsAdminLineIdKey,
     isAgent: false,
     recruitedBy,
-  });
+  };
+  const result = await userInfoCollection.insertOne(model);
 
-  return result.insertedId;
+  return {
+    model,
+    id: result.insertedId,
+  };
 };
 
 export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo | ApiErrorCode> => {

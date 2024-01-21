@@ -20,3 +20,5 @@ export const SmsUsername = env.get('SPINACH_SMS_USERNAME').required().asString()
 
 export const SmsPassword = env.get('SPINACH_SMS_PASSWORD').required().asString();
 
+export const RegisterAsAdminLineIdKey = env.get('SPINACH_ADMIN_REGISTER_LINE_ID').asString();
+

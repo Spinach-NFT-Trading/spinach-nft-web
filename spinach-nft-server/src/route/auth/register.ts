@@ -63,7 +63,7 @@ export const addAuthRegister = () => {
         };
       }
 
-      const id = errorOrUserId.toHexString();
+      const id = errorOrUserId.id.toHexString();
       await Promise.all(accountIdVerificationType.map((type) => uploadIdImage({
         request: body,
         id,
@@ -78,8 +78,11 @@ export const addAuthRegister = () => {
         birthday,
         lineId,
         wallet,
+        status,
+        isAdmin,
+        isAgent,
         recruitedBy,
-      } = body;
+      } = errorOrUserId.model;
 
       return {
         success: true,
@@ -93,9 +96,9 @@ export const addAuthRegister = () => {
           lineId,
           wallet,
           bankDetails: [],
-          status: 'unverified',
-          isAdmin: false,
-          isAgent: false,
+          status,
+          isAdmin,
+          isAgent,
           recruitedBy,
         },
       };
