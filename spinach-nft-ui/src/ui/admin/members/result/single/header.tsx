@@ -16,6 +16,9 @@ export const AdminMemberSingleHeader = () => {
       <Flex center noFullWidth className="w-16">
         代理
       </Flex>
+      <Flex center noFullWidth className="w-16">
+        狀態
+      </Flex>
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
         目前餘額
       </Flex>

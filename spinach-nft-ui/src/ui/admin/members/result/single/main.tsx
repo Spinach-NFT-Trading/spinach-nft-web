@@ -2,13 +2,14 @@ import React from 'react';
 
 import CheckCircleIcon from '@heroicons/react/24/outline/CheckCircleIcon';
 import XCircleIcon from '@heroicons/react/24/outline/XCircleIcon';
+import LockClosedIcon from '@heroicons/react/24/solid/LockClosedIcon';
+import LockOpenIcon from '@heroicons/react/24/solid/LockOpenIcon';
 import {UserInfo} from '@spinach/common/types/common/user';
-import clsx from 'clsx';
 
-import {FlexButton} from '@spinach/next/components/layout/flex/button';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {VerificationStatusUi} from '@spinach/next/components/shared/common/verified';
 import {UserBalanceSummary} from '@spinach/next/types/mongo/balance';
+import {AdminMemberControlButton} from '@spinach/next/ui/admin/members/result/single/button';
 import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/members/result/single/cell/monetary/main';
 import {AdminMemberSingleControls} from '@spinach/next/ui/admin/members/result/single/control';
 import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/single/popup/type';
@@ -19,8 +20,9 @@ type Props = {
   member: UserInfo,
   isAdmin: boolean,
   balanceSummary: UserBalanceSummary | undefined,
-  agentToggleDisabled: boolean,
-  onSetAgent: (enable: boolean) => void,
+  controlDisabled: boolean,
+  onSetAgent: (isAgent: boolean) => void,
+  onSetSuspended: (isSuspended: boolean) => void,
   showPopup: (type: AdminMemberPopupType) => void,
 };
 
@@ -28,13 +30,15 @@ export const AdminMemberSingleResult = ({
   member,
   isAdmin,
   balanceSummary,
-  agentToggleDisabled,
+  controlDisabled,
   onSetAgent,
+  onSetSuspended,
   showPopup,
 }: Props) => {
   const {
     status,
-    agent,
+    isAgent,
+    isSuspended,
   } = member;
 
   return (
@@ -46,20 +50,34 @@ export const AdminMemberSingleResult = ({
         <VerificationStatusUi status={status}/>
       </Flex>
       <Flex noFullWidth center className="w-16">
+        <AdminMemberControlButton
+          text="代理"
+          isAdmin={isAdmin}
+          active={isAgent}
+          disabled={controlDisabled}
+          onClick={() => onSetAgent(!isAgent)}
+          icon={{
+            active: <CheckCircleIcon className="h-5 w-5"/>,
+            inactive: <XCircleIcon className="h-5 w-5"/>,
+          }}
+        />
+      </Flex>
+      <Flex noFullWidth center className="w-16">
         {
-          isAdmin &&
-          <FlexButton
-            className={clsx(
-              'items-center gap-0.5 whitespace-nowrap p-1 text-sm',
-              isAdmin ? 'button-clickable-bg' : 'button-bg rounded-lg',
-              !agent && 'text-slate-500',
-            )}
-            onClick={() => onSetAgent(!agent)}
-            disabled={agentToggleDisabled || !isAdmin}
-          >
-            {agent ? <CheckCircleIcon className="h-5 w-5"/> :<XCircleIcon className="h-5 w-5"/>}
-            <div>代理</div>
-          </FlexButton>
+          !member.isAdmin &&
+          <AdminMemberControlButton
+            text={isSuspended ? '停用' : '正常'}
+            isAdmin={isAdmin}
+            active={isSuspended}
+            disabled={controlDisabled}
+            onClick={() => onSetSuspended(!isSuspended)}
+            icon={{
+              active: <LockClosedIcon className="h-5 w-5"/>,
+              inactive: <LockOpenIcon className="h-5 w-5"/>,
+            }}
+            classOnActive="text-red-300"
+            classOnInactive="text-green-300"
+          />
         }
       </Flex>
       <AdminMemberMonetaryCell value={balanceSummary?.currentBalance}/>

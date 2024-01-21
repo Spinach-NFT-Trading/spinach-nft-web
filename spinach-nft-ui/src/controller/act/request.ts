@@ -6,7 +6,7 @@ import {markGoldPurchaseTwBankRecord, recordGoldPurchaseTwBankTxn} from '@spinac
 import {buyNft} from '@spinach/next/controller/nft/utils';
 import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
 import {uploadIdVerification} from '@spinach/next/controller/user/info';
-import {markUserAgent} from '@spinach/next/controller/user/permission';
+import {markUserAgent, markUserSuspended} from '@spinach/next/controller/user/permission';
 import {markUserStatus} from '@spinach/next/controller/user/status';
 import {UserDataRequestOpts} from '@spinach/next/types/userData/upload';
 
@@ -39,8 +39,15 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
     return uploadIdVerification({userId: accountId, request: data});
   }
 
-  if (type === 'admin.member.grant.agent') {
+  if (type === 'admin.member.mark.agent') {
     return markUserAgent({
+      executorUserId: accountId,
+      ...data,
+    });
+  }
+
+  if (type === 'admin.member.mark.suspended') {
+    return markUserSuspended({
       executorUserId: accountId,
       ...data,
     });

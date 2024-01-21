@@ -35,10 +35,16 @@ export type UserDataRequestOpts = {
   type: 'exchange.gold.twBank',
   data: RequestOfGoldExchangeTwBank,
 } | {
-  type: 'admin.member.grant.agent',
+  type: 'admin.member.mark.agent',
   data: {
     targetId: string,
     isAgent: boolean,
+  },
+} | {
+  type: 'admin.member.mark.suspended',
+  data: {
+    targetId: string,
+    isSuspended: boolean,
   },
 } | {
   type: 'admin.verify.account',

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {UserInfo} from '@spinach/common/types/common/user';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -68,7 +69,7 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
               isAdmin={isAdmin}
               member={data}
               balanceSummary={balanceSummaryMap[data.id]}
-              agentToggleDisabled={!act || status === 'processing'}
+              controlDisabled={!act || status === 'processing'}
               showPopup={(type) => setPopup({
                 type,
                 show: true,
@@ -82,28 +83,54 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
                 const session = await act({
                   action: 'request',
                   options: {
-                    type: 'admin.member.grant.agent',
-                    data: {
-                      targetId: data.id,
-                      isAgent,
-                    },
+                    type: 'admin.member.mark.agent',
+                    data: {targetId: data.id, isAgent},
                   },
                 });
                 const error = session?.user.jwtUpdateError;
-                if (!error) {
-                  setState(({members}) => ({
-                    members: members.map((memberOfOriginal) => ({
-                      ...memberOfOriginal,
-                      isAgent: memberOfOriginal.id === data.id ? isAgent : memberOfOriginal.isAgent,
-                    } satisfies UserInfo)),
-                    error: null,
+                if (error) {
+                  setState(({error, ...original}) => ({
+                    ...original,
+                    error,
                   }));
                   return;
                 }
 
-                setState(({error, ...original}) => ({
-                  ...original,
-                  error,
+                setState(({members}) => ({
+                  members: members.map((memberOfOriginal) => ({
+                    ...memberOfOriginal,
+                    isAgent: memberOfOriginal.id === data.id ? isAgent : memberOfOriginal.isAgent,
+                  } satisfies UserInfo)),
+                  error: null,
+                }));
+              }}
+              onSetSuspended={async (isSuspended) => {
+                if (!act) {
+                  return;
+                }
+
+                const session = await act({
+                  action: 'request',
+                  options: {
+                    type: 'admin.member.mark.suspended',
+                    data: {targetId: data.id, isSuspended},
+                  },
+                });
+                const error = session?.user.jwtUpdateError;
+                if (error) {
+                  setState(({error, ...original}) => ({
+                    ...original,
+                    error,
+                  }));
+                  return;
+                }
+
+                setState(({members}) => ({
+                  members: members.map((memberOfOriginal) => ({
+                    ...memberOfOriginal,
+                    isSuspended: memberOfOriginal.id === data.id ? isSuspended : memberOfOriginal.isSuspended,
+                  } satisfies UserInfo)),
+                  error: null,
                 }));
               }}
             />
