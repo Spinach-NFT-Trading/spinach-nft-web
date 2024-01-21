@@ -6,7 +6,7 @@ import {adminMemberMonetaryCellStyle} from '@spinach/next/ui/admin/members/resul
 
 export const AdminMemberSingleHeader = () => {
   return (
-    <>
+    <Flex direction="row" noFullWidth className="items-center gap-1 bg-slate-900/90 px-1 py-2">
       <Flex center noFullWidth className="w-52">
         用戶名稱
       </Flex>
@@ -41,6 +41,6 @@ export const AdminMemberSingleHeader = () => {
         退傭設定
       </Flex>
       <Flex noFullWidth className="w-[42rem]"/>
-    </>
+    </Flex>
   );
 };

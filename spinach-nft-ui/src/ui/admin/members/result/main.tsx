@@ -5,10 +5,9 @@ import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {Loading} from '@spinach/next/components/icons/loading';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Alert} from '@spinach/next/components/shared/common/alert';
-import {WindowedTable} from '@spinach/next/components/shared/common/table/windowed/main';
+import {OverflowableTable} from '@spinach/next/components/shared/common/table/overflowable/main';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {ResponseOfAdminMemberList} from '@spinach/next/types/userData/lazyLoaded';
-import {adminDataRowHeight} from '@spinach/next/ui/admin/const';
 import {AdminMemberSingleHeader} from '@spinach/next/ui/admin/members/result/single/header';
 import {AdminMemberSingleResult} from '@spinach/next/ui/admin/members/result/single/main';
 import {AdminMemberPopup} from '@spinach/next/ui/admin/members/result/single/popup/main';
@@ -61,39 +60,36 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
         }))}
       />
       {state.error && <Alert>{translateApiError(state.error)}</Alert>}
-      <Flex className="h-[70vh]">
-        <WindowedTable
-          data={membersToShow}
-          itemHeight={adminDataRowHeight}
-          header={<AdminMemberSingleHeader/>}
-          getKey={(data) => data?.id}
-          classOfRow="border-b-slate-400 p-2 not-last:border-b"
-          renderRow={({data}) => (
-            <AdminMemberSingleResult
-              member={data}
-              balanceSummary={balanceSummaryMap[data.id]}
-              isAdmin={isAdmin}
-              controlDisabled={!act || status === 'processing'}
-              act={act}
-              showPopup={(type) => setPopup({
-                type,
-                show: true,
-                member: data,
-              })}
-              onUpdateError={(error) => setState(({error: _, ...original}) => ({
-                ...original,
-                error,
-              }))}
-              onUpdatedMember={(updated) => setState(({members}) => ({
-                members: members.map((originalMember) => (
-                  originalMember.id === updated.id ? updated : originalMember
-                )),
-                error: null,
-              }))}
-            />
-          )}
-        />
-      </Flex>
+      <OverflowableTable
+        data={membersToShow}
+        header={<AdminMemberSingleHeader/>}
+        getKey={(data) => data?.id}
+        classOfRow="w-max gap-1 border-b-slate-400 p-1 not-last:border-b"
+        renderRow={({data}) => (
+          <AdminMemberSingleResult
+            member={data}
+            balanceSummary={balanceSummaryMap[data.id]}
+            isAdmin={isAdmin}
+            controlDisabled={!act || status === 'processing'}
+            act={act}
+            showPopup={(type) => setPopup({
+              type,
+              show: true,
+              member: data,
+            })}
+            onUpdateError={(error) => setState(({error: _, ...original}) => ({
+              ...original,
+              error,
+            }))}
+            onUpdatedMember={(updated) => setState(({members}) => ({
+              members: members.map((originalMember) => (
+                originalMember.id === updated.id ? updated : originalMember
+              )),
+              error: null,
+            }))}
+          />
+        )}
+      />
     </Flex>
   );
 };
