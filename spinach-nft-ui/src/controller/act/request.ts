@@ -6,8 +6,9 @@ import {markGoldPurchaseTwBankRecord, recordGoldPurchaseTwBankTxn} from '@spinac
 import {buyNft} from '@spinach/next/controller/nft/utils';
 import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
 import {uploadIdVerification} from '@spinach/next/controller/user/info';
-import {markUserAgent, markUserSuspended} from '@spinach/next/controller/user/permission';
 import {markUserStatus} from '@spinach/next/controller/user/status';
+import {markUserAgent} from '@spinach/next/controller/user/update/agent';
+import {markUserSuspended} from '@spinach/next/controller/user/update/suspended';
 import {UserDataRequestOpts} from '@spinach/next/types/userData/upload';
 
 

@@ -29,27 +29,3 @@ export const markUserAgent = async ({
 
   return null;
 };
-
-type MarkUserSuspendedOpts = ControllerRequireUserIdOpts & {
-  targetId: string,
-  isSuspended: boolean,
-};
-
-export const markUserSuspended = async ({
-  executorUserId,
-  targetId,
-  isSuspended,
-}: MarkUserSuspendedOpts): Promise<ApiErrorCode | null> => {
-  await throwIfNotAdmin(executorUserId);
-
-  const result = await userInfoCollection.updateOne(
-    {_id: new ObjectId(targetId)},
-    {$set: {isSuspended}},
-  );
-
-  if (!result.matchedCount) {
-    return 'accountNotFound';
-  }
-
-  return null;
-};
