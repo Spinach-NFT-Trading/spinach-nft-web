@@ -1,7 +1,7 @@
 import React from 'react';
 
-import {AdminTimelineLookBackResultContent} from '@spinach/next/ui/admin/members/result/single/popup/common/content';
-import {AdminTimelineLookBackResultLayout} from '@spinach/next/ui/admin/members/result/single/popup/common/layout';
+import {AdminLookBackResultContent} from '@spinach/next/ui/admin/members/result/single/popup/common/content';
+import {AdminLookBackResultLayout} from '@spinach/next/ui/admin/members/result/single/popup/common/layout';
 import {AdminMemberNftTxnHeader} from '@spinach/next/ui/admin/members/result/single/popup/nftTxn/header';
 import {AdminMemberNftTxnRow} from '@spinach/next/ui/admin/members/result/single/popup/nftTxn/row';
 import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/single/popup/type';
@@ -11,7 +11,7 @@ export const AdminMemberNftTxnPopup = (props: AdminMemberPopupProps) => {
   const {member} = props;
 
   return (
-    <AdminTimelineLookBackResultLayout
+    <AdminLookBackResultLayout
       requestType="adminMemberNftTxn"
       header={<AdminMemberNftTxnHeader/>}
       {...props}
@@ -20,7 +20,7 @@ export const AdminMemberNftTxnPopup = (props: AdminMemberPopupProps) => {
         const response = lazyLoaded?.adminMemberNftTxn;
 
         return (
-          <AdminTimelineLookBackResultContent
+          <AdminLookBackResultContent
             data={response?.nftTxn}
             status={status}
             renderEntry={(txn) => (
@@ -36,6 +36,6 @@ export const AdminMemberNftTxnPopup = (props: AdminMemberPopupProps) => {
           />
         );
       }}
-    </AdminTimelineLookBackResultLayout>
+    </AdminLookBackResultLayout>
   );
 };

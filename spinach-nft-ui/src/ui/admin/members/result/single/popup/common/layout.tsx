@@ -8,29 +8,29 @@ import {startOfMonth} from 'date-fns/startOfMonth';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {InputBox} from '@spinach/next/components/shared/common/input/box';
-import {adminTimelineLookBackButtonStyle} from '@spinach/next/ui/admin/members/result/single/popup/common/const';
-import {useAdminTimelineLookBackInput} from '@spinach/next/ui/admin/members/result/single/popup/common/input';
+import {adminLookBackButtonStyle} from '@spinach/next/ui/admin/members/result/single/popup/common/const';
+import {useAdminLookBackInput} from '@spinach/next/ui/admin/members/result/single/popup/common/input';
 import {
   AdminLookBackPopupRequest,
-  AdminTimelineLookBackLayoutRenderChildrenOpts,
+  AdminLookBackLayoutRenderChildrenOpts, AdminLookBackRequestType,
 } from '@spinach/next/ui/admin/members/result/single/popup/common/type';
 import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/single/popup/type';
 
 
 type Props = AdminMemberPopupProps & {
-  requestType: 'adminMemberNftTxn' | 'adminMemberBalanceHistory',
+  requestType: AdminLookBackRequestType,
   header: React.ReactNode,
-  children: (opts: AdminTimelineLookBackLayoutRenderChildrenOpts) => React.ReactNode,
+  children: (opts: AdminLookBackLayoutRenderChildrenOpts) => React.ReactNode,
 };
 
-export const AdminTimelineLookBackResultLayout = ({member, requestType, header, children}: Props) => {
+export const AdminLookBackResultLayout = ({member, requestType, header, children}: Props) => {
   const {
     status,
     lazyLoaded,
     now,
     request,
     setRequest,
-  } = useAdminTimelineLookBackInput({
+  } = useAdminLookBackInput({
     userId: member.id,
     requestType,
   });
@@ -63,13 +63,13 @@ export const AdminTimelineLookBackResultLayout = ({member, requestType, header, 
           className="text-center"
           required
         />
-        <button className={adminTimelineLookBackButtonStyle} onClick={() => setRequest((original) => ({
+        <button className={adminLookBackButtonStyle} onClick={() => setRequest((original) => ({
           ...original,
           timestamp: Date.now(),
         } satisfies AdminLookBackPopupRequest))}>
           <MagnifyingGlassIcon className="h-6 w-6"/>
         </button>
-        <button className={adminTimelineLookBackButtonStyle} onClick={() => setRequest((original) => ({
+        <button className={adminLookBackButtonStyle} onClick={() => setRequest((original) => ({
           ...original,
           startDate: toIsoUtcDateString(now),
           endDate: toIsoUtcDateString(now),
@@ -77,7 +77,7 @@ export const AdminTimelineLookBackResultLayout = ({member, requestType, header, 
         } satisfies AdminLookBackPopupRequest))}>
           今日
         </button>
-        <button className={adminTimelineLookBackButtonStyle} onClick={() => setRequest((original) => ({
+        <button className={adminLookBackButtonStyle} onClick={() => setRequest((original) => ({
           ...original,
           startDate: toIsoUtcDateString(getDateAfterDelta({date: now, delta: {day: -1}})),
           endDate: toIsoUtcDateString(getDateAfterDelta({date: now, delta: {day: -1}})),
@@ -85,7 +85,7 @@ export const AdminTimelineLookBackResultLayout = ({member, requestType, header, 
         } satisfies AdminLookBackPopupRequest))}>
           昨日
         </button>
-        <button className={adminTimelineLookBackButtonStyle} onClick={() => setRequest((original) => ({
+        <button className={adminLookBackButtonStyle} onClick={() => setRequest((original) => ({
           ...original,
           startDate: toIsoUtcDateString(getDateAfterDelta({date: now, delta: {day: -7}})),
           endDate: toIsoUtcDateString(now),
@@ -93,7 +93,7 @@ export const AdminTimelineLookBackResultLayout = ({member, requestType, header, 
         } satisfies AdminLookBackPopupRequest))}>
           7 日內
         </button>
-        <button className={adminTimelineLookBackButtonStyle} onClick={() => setRequest((original) => ({
+        <button className={adminLookBackButtonStyle} onClick={() => setRequest((original) => ({
           ...original,
           startDate: toIsoUtcDateString(startOfMonth(now)),
           endDate: toIsoUtcDateString(now),
@@ -101,7 +101,7 @@ export const AdminTimelineLookBackResultLayout = ({member, requestType, header, 
         } satisfies AdminLookBackPopupRequest))}>
           本月
         </button>
-        <button className={adminTimelineLookBackButtonStyle} onClick={() => setRequest((original) => ({
+        <button className={adminLookBackButtonStyle} onClick={() => setRequest((original) => ({
           ...original,
           // `setDate(0)` for changing date to last day or previous month
           // https://github.com/date-fns/date-fns/discussions/2945

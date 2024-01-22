@@ -15,7 +15,7 @@ type Props<TData> = {
   textOnNoResult: string,
 };
 
-export const AdminTimelineLookBackResultContent = <TData, >({
+export const AdminLookBackResultContent = <TData, >({
   data,
   status,
   renderEntry,

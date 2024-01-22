@@ -5,7 +5,7 @@ import {endOfDay} from 'date-fns/endOfDay';
 import {ObjectId, WithId} from 'mongodb';
 
 import {getDataAsArray} from '@spinach/next/controller/common';
-import {UserTimelineLookBackRequest} from '@spinach/next/types/userData/load';
+import {DataLookBackRequest} from '@spinach/next/types/userData/load';
 
 
 export const toUserData = ({
@@ -54,10 +54,10 @@ export const toUserInfo = async (model: WithId<UserModel>): Promise<UserInfo> =>
   };
 };
 
-export const toIdRangeFromTimelineLookBackRequest = ({
+export const toIdRangeFromLookBackRequest = ({
   startDate,
   endDate,
-}: UserTimelineLookBackRequest) => {
+}: DataLookBackRequest) => {
   return {
     _id: {
       $gte: ObjectId.createFromTime(new Date(startDate).getTime() / 1000),

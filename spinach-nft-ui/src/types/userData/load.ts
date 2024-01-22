@@ -2,7 +2,7 @@ import {AccountIdVerificationType} from '@spinach/common/types/api/profile/id';
 import {IsoDateString} from '@spinach/common/types/common/date';
 
 
-export type UserTimelineLookBackRequest = {
+export type DataLookBackRequest = {
   userId: string,
   startDate: IsoDateString,
   endDate: IsoDateString,
@@ -19,7 +19,7 @@ export type UserDataLoadingOpts = {
   opts?: never,
 } | {
   type: 'adminMemberNftTxn' | 'adminMemberBalanceHistory',
-  opts: UserTimelineLookBackRequest,
+  opts: DataLookBackRequest,
 } | {
   type: 'adminUnverifiedAccounts',
   opts?: never,

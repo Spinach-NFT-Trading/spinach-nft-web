@@ -2,13 +2,13 @@ import {nftTxnCollection} from '@spinach/common/controller/collections/nft';
 import {ObjectId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
-import {toIdRangeFromTimelineLookBackRequest} from '@spinach/next/controller/user/utils';
+import {toIdRangeFromLookBackRequest} from '@spinach/next/controller/user/utils';
 import {throwIfNotAdminOrAgent} from '@spinach/next/controller/utils';
 import {NftTxnModelClient} from '@spinach/next/types/mongo/nft';
-import {UserTimelineLookBackRequest} from '@spinach/next/types/userData/load';
+import {DataLookBackRequest} from '@spinach/next/types/userData/load';
 
 
-export type GetNftTxnOfUserOpts = ControllerRequireUserIdOpts & UserTimelineLookBackRequest;
+export type GetNftTxnOfUserOpts = ControllerRequireUserIdOpts & DataLookBackRequest;
 
 export const getNftTxnOfUser = async ({
   executorUserId,
@@ -24,7 +24,7 @@ export const getNftTxnOfUser = async ({
       {from: userObjectId},
       {to: userObjectId},
     ],
-    ...toIdRangeFromTimelineLookBackRequest(request),
+    ...toIdRangeFromLookBackRequest(request),
   })
     .sort({_id: 1})
     .map(({
