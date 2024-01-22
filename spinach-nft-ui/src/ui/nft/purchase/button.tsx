@@ -15,7 +15,7 @@ export const NftPurchaseButton = ({nftId}: Props) => {
     <>
       <NftPurchaseConfirmPopup nftId={nftId} show={show} setShow={setShow}/>
       <button onClick={() => setShow(true)} className="button-clickable-bg p-2">
-        確認
+        購買
       </button>
     </>
   );
