@@ -4,17 +4,16 @@ import {getDateAfterDelta, toIsoUtcDateString} from '@spinach/common/utils/date'
 import {signIn} from 'next-auth/react';
 
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
-import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
+import {DataLookBackRequest, UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 import {
   AdminLookBackInputControl,
-  AdminLookBackInput,
   AdminLookBackInputState,
 } from '@spinach/next/ui/admin/members/result/common/lookback/type';
 
 
 type UseAdminLookBackInputOpts = {
-  initialRequest?: AdminLookBackInput,
-  getDataLoadingOpts: (request: AdminLookBackInput) => UserDataLoadingOpts,
+  initialRequest?: DataLookBackRequest,
+  getDataLoadingOpts: (request: DataLookBackRequest) => UserDataLoadingOpts,
 };
 
 export const useAdminLookBackInput = ({
@@ -25,8 +24,8 @@ export const useAdminLookBackInput = ({
 
   const actorReturn = useUserDataActor();
   const {act} = actorReturn;
-  const [request, setRequest] = React.useState<AdminLookBackInputState>(() => {
-    const initial: AdminLookBackInput = initialRequest ?? {
+  const [state, setState] = React.useState<AdminLookBackInputState>(() => {
+    const initial: DataLookBackRequest = initialRequest ?? {
       startDate: toIsoUtcDateString(getDateAfterDelta({date: now, delta: {day: -7}})),
       endDate: toIsoUtcDateString(now),
     };
@@ -46,13 +45,13 @@ export const useAdminLookBackInput = ({
 
     void act({
       action: 'load',
-      options: getDataLoadingOpts(request.control),
+      options: getDataLoadingOpts(state.control),
     });
-  }, [request.timestamp]);
+  }, [state.timestamp]);
 
   const setInputAndSend = (
-    getRequest: (original: AdminLookBackInput) => AdminLookBackInput,
-  ) => setRequest((original) => {
+    getRequest: (original: DataLookBackRequest) => DataLookBackRequest,
+  ) => setState((original) => {
     const request = getRequest(original.control);
 
     return {
@@ -62,5 +61,5 @@ export const useAdminLookBackInput = ({
     };
   });
 
-  return {...actorReturn, now, state: request, setState: setRequest, setInputAndSend};
+  return {...actorReturn, now, state, setState, setInputAndSend};
 };

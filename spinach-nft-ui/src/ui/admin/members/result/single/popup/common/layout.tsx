@@ -1,9 +1,9 @@
 import React from 'react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
+import {DataLookBackRequest} from '@spinach/next/types/userData/load';
 import {useAdminLookBackInput} from '@spinach/next/ui/admin/members/result/common/lookback/hook';
 import {AdminMemberDataLookBackInput} from '@spinach/next/ui/admin/members/result/common/lookback/main';
-import {AdminLookBackInput} from '@spinach/next/ui/admin/members/result/common/lookback/type';
 import {
   AdminLookBackLayoutRenderChildrenOpts,
   AdminLookBackRequestType,
@@ -14,7 +14,7 @@ import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/singl
 type Props = AdminMemberPopupProps & {
   requestType: AdminLookBackRequestType,
   header: React.ReactNode,
-  initialState?: AdminLookBackInput,
+  initialState?: DataLookBackRequest,
   children: (opts: AdminLookBackLayoutRenderChildrenOpts) => React.ReactNode,
 };
 
@@ -39,7 +39,7 @@ export const AdminLookBackResultLayout = ({member, requestType, header, initialS
     <Flex className="gap-1.5 pr-2">
       <AdminMemberDataLookBackInput inputControl={inputControl}/>
       {header}
-      {children({lazyLoaded, status, input: state.control})}
+      {children({lazyLoaded, status, input: state.sent})}
     </Flex>
   );
 };

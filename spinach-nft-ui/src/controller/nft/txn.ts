@@ -5,16 +5,16 @@ import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {toIdRangeFromLookBackRequest} from '@spinach/next/controller/user/utils';
 import {throwIfNotAdminOrAgent} from '@spinach/next/controller/utils';
 import {NftTxnModelClient} from '@spinach/next/types/mongo/nft';
-import {DataLookBackRequest} from '@spinach/next/types/userData/load';
+import {DataLookBackRequestOnUser} from '@spinach/next/types/userData/load';
 
 
-export type GetNftTxnOfUserOpts = ControllerRequireUserIdOpts & DataLookBackRequest;
+export type GetNftTxnOfUserOpts = ControllerRequireUserIdOpts & DataLookBackRequestOnUser;
 
 export const getNftTxnOfUser = async ({
   executorUserId,
+  userId,
   ...request
 }: GetNftTxnOfUserOpts): Promise<NftTxnModelClient[]> => {
-  const {userId} = request;
   await throwIfNotAdminOrAgent(executorUserId);
 
   const userObjectId = new ObjectId(userId);

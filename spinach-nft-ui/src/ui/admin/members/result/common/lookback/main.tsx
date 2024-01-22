@@ -8,8 +8,8 @@ import {startOfMonth} from 'date-fns/startOfMonth';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {InputBox} from '@spinach/next/components/shared/common/input/box';
+import {DataLookBackRequest} from '@spinach/next/types/userData/load';
 import {
-  AdminLookBackInput,
   AdminLookBackInputControl,
   AdminLookBackInputState,
 } from '@spinach/next/ui/admin/members/result/common/lookback/type';
@@ -72,28 +72,28 @@ export const AdminMemberDataLookBackInput = ({inputControl}: Props) => {
         ...original,
         startDate: toIsoUtcDateString(now),
         endDate: toIsoUtcDateString(now),
-      } satisfies AdminLookBackInput))}>
+      } satisfies DataLookBackRequest))}>
         今日
       </button>
       <button className={adminLookBackButtonStyle} onClick={() => setInputAndSend((original) => ({
         ...original,
         startDate: toIsoUtcDateString(getDateAfterDelta({date: now, delta: {day: -1}})),
         endDate: toIsoUtcDateString(getDateAfterDelta({date: now, delta: {day: -1}})),
-      } satisfies AdminLookBackInput))}>
+      } satisfies DataLookBackRequest))}>
         昨日
       </button>
       <button className={adminLookBackButtonStyle} onClick={() => setInputAndSend((original) => ({
         ...original,
         startDate: toIsoUtcDateString(getDateAfterDelta({date: now, delta: {day: -7}})),
         endDate: toIsoUtcDateString(now),
-      } satisfies AdminLookBackInput))}>
+      } satisfies DataLookBackRequest))}>
         7 日內
       </button>
       <button className={adminLookBackButtonStyle} onClick={() => setInputAndSend((original) => ({
         ...original,
         startDate: toIsoUtcDateString(startOfMonth(now)),
         endDate: toIsoUtcDateString(now),
-      } satisfies AdminLookBackInput))}>
+      } satisfies DataLookBackRequest))}>
         本月
       </button>
       <button className={adminLookBackButtonStyle} onClick={() => setInputAndSend((original) => ({
@@ -102,7 +102,7 @@ export const AdminMemberDataLookBackInput = ({inputControl}: Props) => {
         // https://github.com/date-fns/date-fns/discussions/2945
         startDate: toIsoUtcDateString(startOfMonth(new Date(new Date(now).setDate(0)))),
         endDate: toIsoUtcDateString(lastDayOfMonth(new Date(new Date(now).setDate(0)))),
-      } satisfies AdminLookBackInput))}>
+      } satisfies DataLookBackRequest))}>
         上月
       </button>
     </Flex>

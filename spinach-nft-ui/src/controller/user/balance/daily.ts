@@ -8,7 +8,7 @@ import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {toIdRangeFromLookBackRequest} from '@spinach/next/controller/user/utils';
 import {throwIfNotAdmin} from '@spinach/next/controller/utils';
 import {UserBalanceDailySummary} from '@spinach/next/types/mongo/balance';
-import {DataLookBackRequest} from '@spinach/next/types/userData/load';
+import {DataLookBackRequestOnUser} from '@spinach/next/types/userData/load';
 
 
 type UserBalanceDailySummaryAggregated = {
@@ -17,7 +17,7 @@ type UserBalanceDailySummaryAggregated = {
   total: {[txnType in UserBalanceHistoryTxnType]?: number},
 };
 
-type GetUserBalanceDailySummaryOpts = ControllerRequireUserIdOpts & DataLookBackRequest;
+type GetUserBalanceDailySummaryOpts = ControllerRequireUserIdOpts & DataLookBackRequestOnUser;
 
 export const getUserBalanceDailySummary = async ({
   executorUserId,

@@ -1,11 +1,11 @@
 import {toIsoLocalDateString} from '@spinach/common/utils/date';
 
 import {UserBalanceDailySummary, UserBalanceDailySummaryOfDay} from '@spinach/next/types/mongo/balance';
-import {DataLookBackRequest} from '@spinach/next/types/userData/load';
+import {DataLookBackRequestOnUser} from '@spinach/next/types/userData/load';
 
 
 type GetFlattenedDailySummaryOpts = {
-  request: DataLookBackRequest,
+  request: DataLookBackRequestOnUser,
   data: UserBalanceDailySummary,
 };
 

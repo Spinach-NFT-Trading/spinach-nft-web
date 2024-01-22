@@ -5,16 +5,16 @@ import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {toIdRangeFromLookBackRequest} from '@spinach/next/controller/user/utils';
 import {throwIfNotAdminOrAgent} from '@spinach/next/controller/utils';
 import {UserBalanceHistoryModelClient} from '@spinach/next/types/mongo/balance';
-import {DataLookBackRequest} from '@spinach/next/types/userData/load';
+import {DataLookBackRequestOnUser} from '@spinach/next/types/userData/load';
 
 
-type GetUserBalanceHistoryOpts = ControllerRequireUserIdOpts & DataLookBackRequest;
+type GetUserBalanceHistoryOpts = ControllerRequireUserIdOpts & DataLookBackRequestOnUser;
 
 export const getUserBalanceHistory = async ({
   executorUserId,
+  userId,
   ...request
 }: GetUserBalanceHistoryOpts): Promise<UserBalanceHistoryModelClient[]> => {
-  const {userId} = request;
   await throwIfNotAdminOrAgent(executorUserId);
 
   return userBalanceCollection.find({

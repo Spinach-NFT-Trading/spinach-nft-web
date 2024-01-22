@@ -1,9 +1,13 @@
 import {AccountIdVerificationType} from '@spinach/common/types/api/profile/id';
+import {IsoDateString} from '@spinach/common/types/common/date';
 
-import {AdminLookBackInput} from '@spinach/next/ui/admin/members/result/common/lookback/type';
 
+export type DataLookBackRequest = {
+  startDate: IsoDateString,
+  endDate: IsoDateString,
+};
 
-export type DataLookBackRequest = AdminLookBackInput & {
+export type DataLookBackRequestOnUser = DataLookBackRequest & {
   userId: string,
 };
 
@@ -15,10 +19,10 @@ export type UserDataLoadingOpts = {
   opts?: never,
 } | {
   type: 'adminMemberList',
-  opts?: never,
+  opts: DataLookBackRequest,
 } | {
   type: 'adminMemberNftTxn' | 'adminMemberBalanceDaily' | 'adminMemberBalanceDetails',
-  opts: DataLookBackRequest,
+  opts: DataLookBackRequestOnUser,
 } | {
   type: 'adminUnverifiedAccounts',
   opts?: never,
