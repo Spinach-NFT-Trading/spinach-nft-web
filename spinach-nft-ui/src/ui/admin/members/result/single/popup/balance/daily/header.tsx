@@ -25,7 +25,7 @@ export const AdminMemberBalanceDailyHeader = () => {
       <Flex center noFullWidth className={clsx(adminMemberMonetaryCellStyle, 'text-sm')}>
         {userBalanceHistoryTypeText['deposit.twBank']}
       </Flex>
-      <Flex center noFullWidth className="w-20"/>
+      <Flex center noFullWidth className="w-16"/>
     </Flex>
   );
 };

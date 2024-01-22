@@ -7,10 +7,12 @@ import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/members/result/sin
 
 type Props = {
   data: UserBalanceDailySummaryOfDay,
+  onExpandClick: () => void,
 };
 
 export const AdminMemberBalanceDailyRow = ({
   data,
+  onExpandClick,
 }: Props) => {
   const {
     date,
@@ -27,6 +29,11 @@ export const AdminMemberBalanceDailyRow = ({
       <AdminMemberMonetaryCell value={total['nftBuy']} applySignStyle/>
       <AdminMemberMonetaryCell value={total['deposit.crypto']} applySignStyle/>
       <AdminMemberMonetaryCell value={total['deposit.twBank']} applySignStyle/>
+      <Flex noFullWidth className="w-16 text-sm">
+        <button className="button-clickable-bg p-0.5" onClick={onExpandClick}>
+          詳細
+        </button>
+      </Flex>
     </Flex>
   );
 };

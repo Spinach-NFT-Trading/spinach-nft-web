@@ -14,7 +14,7 @@ type Props = {
   history: UserBalanceHistoryModelClient,
 };
 
-export const AdminMemberBalanceHistoryRow = ({
+export const AdminMemberBalanceDetailsRow = ({
   history,
 }: Props) => {
   const {
