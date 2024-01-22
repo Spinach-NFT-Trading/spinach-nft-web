@@ -6,7 +6,7 @@ import {getDateAfterDelta, toIsoUtcDateString} from '@spinach/common/utils/date'
 import {lastDayOfMonth} from 'date-fns/lastDayOfMonth';
 import {startOfMonth} from 'date-fns/startOfMonth';
 
-import {Flex} from '@spinach/next/components/layout/flex/common';
+import {FlexForm} from '@spinach/next/components/layout/flex/form';
 import {InputBox} from '@spinach/next/components/shared/common/input/box';
 import {DataLookBackRequest} from '@spinach/next/types/userData/load';
 import {
@@ -29,7 +29,7 @@ export const AdminMemberDataLookBackInput = ({inputControl}: Props) => {
   } = inputControl;
 
   return (
-    <Flex direction="row" className="items-center gap-1.5">
+    <FlexForm direction="row" className="items-center gap-1.5">
       <InputBox
         id="start"
         placeholder="日期 (起)"
@@ -61,42 +61,42 @@ export const AdminMemberDataLookBackInput = ({inputControl}: Props) => {
         className="text-center"
         required
       />
-      <button className={adminLookBackButtonStyle} onClick={() => setState(({sent, ...original}) => ({
+      <button type="submit" className={adminLookBackButtonStyle} onClick={() => setState(({sent, ...original}) => ({
         ...original,
         sent: original.control,
         timestamp: Date.now(),
       } satisfies AdminLookBackInputState))}>
         <MagnifyingGlassIcon className="h-5 w-5"/>
       </button>
-      <button className={adminLookBackButtonStyle} onClick={() => setInputAndSend((original) => ({
+      <button type="button" className={adminLookBackButtonStyle} onClick={() => setInputAndSend((original) => ({
         ...original,
         startDate: toIsoUtcDateString(now),
         endDate: toIsoUtcDateString(now),
       } satisfies DataLookBackRequest))}>
         今日
       </button>
-      <button className={adminLookBackButtonStyle} onClick={() => setInputAndSend((original) => ({
+      <button type="button" className={adminLookBackButtonStyle} onClick={() => setInputAndSend((original) => ({
         ...original,
         startDate: toIsoUtcDateString(getDateAfterDelta({date: now, delta: {day: -1}})),
         endDate: toIsoUtcDateString(getDateAfterDelta({date: now, delta: {day: -1}})),
       } satisfies DataLookBackRequest))}>
         昨日
       </button>
-      <button className={adminLookBackButtonStyle} onClick={() => setInputAndSend((original) => ({
+      <button type="button" className={adminLookBackButtonStyle} onClick={() => setInputAndSend((original) => ({
         ...original,
         startDate: toIsoUtcDateString(getDateAfterDelta({date: now, delta: {day: -7}})),
         endDate: toIsoUtcDateString(now),
       } satisfies DataLookBackRequest))}>
         7 日內
       </button>
-      <button className={adminLookBackButtonStyle} onClick={() => setInputAndSend((original) => ({
+      <button type="button" className={adminLookBackButtonStyle} onClick={() => setInputAndSend((original) => ({
         ...original,
         startDate: toIsoUtcDateString(startOfMonth(now)),
         endDate: toIsoUtcDateString(now),
       } satisfies DataLookBackRequest))}>
         本月
       </button>
-      <button className={adminLookBackButtonStyle} onClick={() => setInputAndSend((original) => ({
+      <button type="button" className={adminLookBackButtonStyle} onClick={() => setInputAndSend((original) => ({
         ...original,
         // `setDate(0)` for changing date to last day or previous month
         // https://github.com/date-fns/date-fns/discussions/2945
@@ -105,6 +105,6 @@ export const AdminMemberDataLookBackInput = ({inputControl}: Props) => {
       } satisfies DataLookBackRequest))}>
         上月
       </button>
-    </Flex>
+    </FlexForm>
   );
 };
