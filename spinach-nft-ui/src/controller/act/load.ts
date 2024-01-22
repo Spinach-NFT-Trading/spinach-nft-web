@@ -72,11 +72,11 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
     } satisfies UserLazyLoadedData['adminMemberNftTxn'];
   }
 
-  if (type === 'adminMemberBalanceHistory') {
+  if (type === 'adminMemberBalanceDetails') {
     return await getUserBalanceHistory({
       executorUserId: accountId,
       ...options.opts,
-    }) satisfies UserLazyLoadedData['adminMemberBalanceHistory'];
+    }) satisfies UserLazyLoadedData['adminMemberBalanceDetails'];
   }
 
   if (type === 'adminImageOfId') {

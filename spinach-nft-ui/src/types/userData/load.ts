@@ -18,7 +18,7 @@ export type UserDataLoadingOpts = {
   type: 'adminMemberList',
   opts?: never,
 } | {
-  type: 'adminMemberNftTxn' | 'adminMemberBalanceHistory',
+  type: 'adminMemberNftTxn' | 'adminMemberBalanceDetails',
   opts: DataLookBackRequest,
 } | {
   type: 'adminUnverifiedAccounts',

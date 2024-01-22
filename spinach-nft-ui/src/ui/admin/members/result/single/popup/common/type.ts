@@ -14,4 +14,4 @@ export type AdminLookBackLayoutRenderChildrenOpts = {
 
 export type AdminLookBackRequestType =
   'adminMemberNftTxn' |
-  'adminMemberBalanceHistory';
+  'adminMemberBalanceDetails';
