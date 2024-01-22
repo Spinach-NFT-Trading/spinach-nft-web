@@ -7,7 +7,7 @@ import {BankDetails, BankDetailsMap, UserBankDetails} from '@spinach/common/type
 import {
   UserBalanceDailySummary,
   UserBalanceHistoryModelClient,
-  UserBalanceSummary,
+  UserBalanceSummaryMap,
 } from '@spinach/next/types/mongo/balance';
 import {NftTxnModelClient} from '@spinach/next/types/mongo/nft';
 import {NftListingData} from '@spinach/next/types/nft';
@@ -29,8 +29,8 @@ export type ResponseOfUnverifiedGoldTxn = {
 };
 
 export type ResponseOfAdminMemberList = {
-  info: UserInfo[],
-  balanceSummaryMap: {[userId in string]?: UserBalanceSummary},
+  members: UserInfo[],
+  balanceSummaryMap: UserBalanceSummaryMap,
 };
 
 export type ResponseOfAdminNftTxn = {

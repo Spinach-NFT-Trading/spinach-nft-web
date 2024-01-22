@@ -27,13 +27,12 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
     key,
     value,
   } = input;
-  const {info, balanceSummaryMap} = memberInfo;
 
   const {act, status} = useUserDataActor({
     statusToast: true,
   });
   const [state, setState] = React.useState<AdminMembersResultState>({
-    members: info,
+    ...memberInfo,
     error: null,
   });
   const [
@@ -44,6 +43,7 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
     show: false,
     member: null,
   });
+
   const membersToShow = React.useMemo(() => state.members.filter((member) => (
     !value || member[key].includes(value)
   )), [state, input]);
@@ -70,7 +70,7 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
         renderRow={({data}) => (
           <AdminMemberSingleResult
             member={data}
-            balanceSummary={balanceSummaryMap[data.id]}
+            balanceSummary={state.balanceSummaryMap[data.id]}
             isAdmin={isAdmin}
             controlDisabled={!act || status === 'processing'}
             act={act}
@@ -83,7 +83,8 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
               ...original,
               error,
             }))}
-            onUpdatedMember={(updated) => setState(({members}) => ({
+            onUpdatedMember={(updated) => setState(({members, ...original}) => ({
+              ...original,
               members: members.map((originalMember) => (
                 originalMember.id === updated.id ? updated : originalMember
               )),

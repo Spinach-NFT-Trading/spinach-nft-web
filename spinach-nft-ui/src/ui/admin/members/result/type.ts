@@ -1,8 +1,8 @@
 import {ApiErrorCode} from '@spinach/common/types/api/error';
-import {UserInfo} from '@spinach/common/types/common/user';
+
+import {ResponseOfAdminMemberList} from '@spinach/next/types/userData/lazyLoaded';
 
 
-export type AdminMembersResultState = {
-  members: UserInfo[],
+export type AdminMembersResultState = ResponseOfAdminMemberList & {
   error: ApiErrorCode | null,
 };

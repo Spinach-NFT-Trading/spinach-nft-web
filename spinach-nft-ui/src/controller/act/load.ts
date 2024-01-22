@@ -46,16 +46,16 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
   }
 
   if (type === 'adminMemberList') {
-    const info = await getAccountMembers({
+    const members = await getAccountMembers({
       executorUserId: accountId,
     });
     const balanceSummaryMap = await getUserBalanceSummaryMap({
       executorUserId: accountId,
-      userIdsToCheck: info.map(({id}) => new ObjectId(id)),
+      userIdsToCheck: members.map(({id}) => new ObjectId(id)),
     });
 
     return {
-      info,
+      members,
       balanceSummaryMap,
     } satisfies UserLazyLoadedData['adminMemberList'];
   }
