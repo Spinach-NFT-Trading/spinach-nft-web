@@ -113,7 +113,7 @@ export const AdminLookBackResultLayout = ({member, requestType, header, children
         </button>
       </Flex>
       {header}
-      {children({lazyLoaded, status})}
+      {children({lazyLoaded, status, request})}
     </Flex>
   );
 };

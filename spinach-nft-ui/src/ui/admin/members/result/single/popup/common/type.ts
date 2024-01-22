@@ -10,6 +10,7 @@ export type AdminLookBackPopupRequest = DataLookBackRequest & {
 export type AdminLookBackLayoutRenderChildrenOpts = {
   status: UserDataActionStatus,
   lazyLoaded: Partial<UserLazyLoadedContent>,
+  request: AdminLookBackPopupRequest,
 };
 
 export type AdminLookBackRequestType =
