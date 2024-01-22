@@ -8,7 +8,7 @@ import {UserDataActor} from '@spinach/next/types/userData/main';
 import {showToast} from '@spinach/next/utils/toast';
 
 
-type UseUserDataActorOpts = {
+export type UseUserDataActorOpts = {
   statusNoReset?: boolean,
   statusToast?: boolean,
 };

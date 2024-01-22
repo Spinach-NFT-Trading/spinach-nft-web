@@ -3,7 +3,7 @@ import React from 'react';
 import {getDateAfterDelta, toIsoUtcDateString} from '@spinach/common/utils/date';
 import {signIn} from 'next-auth/react';
 
-import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
+import {useUserDataActor, UseUserDataActorOpts} from '@spinach/next/hooks/userData/actor';
 import {DataLookBackRequest, UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 import {
   AdminLookBackInputControl,
@@ -14,15 +14,17 @@ import {
 type UseAdminLookBackInputOpts = {
   initialRequest?: DataLookBackRequest,
   getDataLoadingOpts: (request: DataLookBackRequest) => UserDataLoadingOpts,
+  actorOpts?: UseUserDataActorOpts,
 };
 
 export const useAdminLookBackInput = ({
   initialRequest,
   getDataLoadingOpts,
+  actorOpts,
 }: UseAdminLookBackInputOpts): AdminLookBackInputControl => {
   const now = new Date();
 
-  const actorReturn = useUserDataActor();
+  const actorReturn = useUserDataActor(actorOpts);
   const {act} = actorReturn;
   const [state, setState] = React.useState<AdminLookBackInputState>(() => {
     const initial: DataLookBackRequest = initialRequest ?? {
