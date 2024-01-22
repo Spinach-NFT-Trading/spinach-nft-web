@@ -3,7 +3,9 @@ import {DataLookBackRequest} from '@spinach/next/types/userData/load';
 import {UserDataActionStatus} from '@spinach/next/types/userData/main';
 
 
-export type AdminLookBackPopupRequest = DataLookBackRequest & {
+export type AdminLookBackPopupRequest = {
+  control: DataLookBackRequest,
+  sent: DataLookBackRequest | null,
   timestamp: number,
 };
 
