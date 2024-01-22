@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {IsoDateString} from '@spinach/common/types/common/date';
+
 import {
   AdminMemberBalanceDetailsHeader,
 } from '@spinach/next/ui/admin/members/result/single/popup/balance/details/header';
@@ -9,11 +11,22 @@ import {AdminLookBackResultLayout} from '@spinach/next/ui/admin/members/result/s
 import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/single/popup/type';
 
 
-export const AdminMemberBalanceDetailsPopup = (props: AdminMemberPopupProps) => {
+type Props = AdminMemberPopupProps & {
+  initialDate: IsoDateString,
+};
+
+export const AdminMemberBalanceDetailsPopup = ({initialDate, ...props}: Props) => {
+  const {member} = props;
+
   return (
     <AdminLookBackResultLayout
       requestType="adminMemberBalanceDetails"
       header={<AdminMemberBalanceDetailsHeader/>}
+      initialRequest={{
+        userId: member.id,
+        startDate: initialDate,
+        endDate: initialDate,
+      }}
       {...props}
     >
       {({status, lazyLoaded}) => {

@@ -14,6 +14,7 @@ import {
 type UseAdminLookBackInputOpts = {
   userId: string,
   requestType: AdminLookBackRequestType,
+  initialRequest?: DataLookBackRequest,
 };
 
 type UseAdminLookBackInputReturn = UseUserDataActorReturn & {
@@ -26,13 +27,14 @@ type UseAdminLookBackInputReturn = UseUserDataActorReturn & {
 export const useAdminLookBackInput = ({
   userId,
   requestType,
+  initialRequest,
 }: UseAdminLookBackInputOpts): UseAdminLookBackInputReturn => {
   const now = new Date();
 
   const actorReturn = useUserDataActor();
   const {act} = actorReturn;
   const [request, setRequest] = React.useState<AdminLookBackPopupRequest>(() => {
-    const initial: DataLookBackRequest = {
+    const initial: DataLookBackRequest = initialRequest ?? {
       userId,
       startDate: toIsoUtcDateString(getDateAfterDelta({date: now, delta: {day: -7}})),
       endDate: toIsoUtcDateString(now),

@@ -22,10 +22,11 @@ import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/singl
 type Props = AdminMemberPopupProps & {
   requestType: AdminLookBackRequestType,
   header: React.ReactNode,
+  initialRequest?: DataLookBackRequest,
   children: (opts: AdminLookBackLayoutRenderChildrenOpts) => React.ReactNode,
 };
 
-export const AdminLookBackResultLayout = ({member, requestType, header, children}: Props) => {
+export const AdminLookBackResultLayout = ({member, requestType, header, initialRequest, children}: Props) => {
   const {
     status,
     lazyLoaded,
@@ -36,6 +37,7 @@ export const AdminLookBackResultLayout = ({member, requestType, header, children
   } = useAdminLookBackInput({
     userId: member.id,
     requestType,
+    initialRequest,
   });
 
   return (

@@ -1,11 +1,16 @@
 import React from 'react';
 
+import {toIsoLocalDateString} from '@spinach/common/utils/date';
+
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
 import {
   AdminMemberBalanceDailyHeader,
 } from '@spinach/next/ui/admin/members/result/single/popup/balance/daily/header';
 import {AdminMemberBalanceDailyRow} from '@spinach/next/ui/admin/members/result/single/popup/balance/daily/row';
+import {
+  AdminMemberBalanceDetailPopupState,
+} from '@spinach/next/ui/admin/members/result/single/popup/balance/daily/type';
 import {getFlattenedDailySummary} from '@spinach/next/ui/admin/members/result/single/popup/balance/daily/utils';
 import {
   AdminMemberBalanceDetailsPopup,
@@ -16,13 +21,19 @@ import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/singl
 
 
 export const AdminMemberBalanceDailyPopup = (props: AdminMemberPopupProps) => {
-  const [show, setShow] = React.useState(false);
+  const [popup, setPopup] = React.useState<AdminMemberBalanceDetailPopupState>({
+    show: false,
+    date: toIsoLocalDateString(new Date()),
+  });
 
   return (
     <>
-      <Popup show={show} setShow={setShow}>
+      <Popup show={popup.show} setShow={(show) => setPopup((original) => ({
+        ...original,
+        show,
+      }))}>
         <Flex noFullWidth>
-          <AdminMemberBalanceDetailsPopup {...props}/>
+          <AdminMemberBalanceDetailsPopup initialDate={popup.date} {...props}/>
         </Flex>
       </Popup>
       <AdminLookBackResultLayout
@@ -42,7 +53,11 @@ export const AdminMemberBalanceDailyPopup = (props: AdminMemberPopupProps) => {
               }
               status={status}
               renderEntry={(entry) => (
-                <AdminMemberBalanceDailyRow key={entry.date} data={entry} onExpandClick={() => setShow(true)}/>
+                <AdminMemberBalanceDailyRow
+                  key={entry.date}
+                  data={entry}
+                  onExpandClick={() => setPopup({show: true, date: entry.date})}
+                />
               )}
               textOnLoading="每日活動歷史"
               textOnNoResult="查無資料"
