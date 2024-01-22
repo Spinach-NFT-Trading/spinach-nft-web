@@ -39,8 +39,8 @@ export const AdminLookBackResultLayout = ({member, requestType, header, children
   });
 
   return (
-    <Flex className="gap-2 pr-2">
-      <Flex direction="row" className="items-center gap-2">
+    <Flex className="gap-1.5 pr-2">
+      <Flex direction="row" className="items-center gap-1.5">
         <InputBox
           id="start"
           placeholder="日期 (起)"
@@ -77,7 +77,7 @@ export const AdminLookBackResultLayout = ({member, requestType, header, children
           sent: original.control,
           timestamp: Date.now(),
         } satisfies AdminLookBackPopupRequest))}>
-          <MagnifyingGlassIcon className="h-6 w-6"/>
+          <MagnifyingGlassIcon className="h-5 w-5"/>
         </button>
         <button className={adminLookBackButtonStyle} onClick={() => setRequestAndSend((original) => ({
           ...original,
