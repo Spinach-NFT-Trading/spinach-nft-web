@@ -1,11 +1,10 @@
 import {AccountIdVerificationType} from '@spinach/common/types/api/profile/id';
-import {IsoDateString} from '@spinach/common/types/common/date';
+
+import {AdminLookBackInput} from '@spinach/next/ui/admin/members/result/common/lookback/type';
 
 
-export type DataLookBackRequest = {
+export type DataLookBackRequest = AdminLookBackInput & {
   userId: string,
-  startDate: IsoDateString,
-  endDate: IsoDateString,
 };
 
 export type UserDataLoadingOpts = {

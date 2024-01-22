@@ -16,14 +16,11 @@ type Props = AdminMemberPopupProps & {
 };
 
 export const AdminMemberBalanceDetailsPopup = ({initialDate, ...props}: Props) => {
-  const {member} = props;
-
   return (
     <AdminLookBackResultLayout
       requestType="adminMemberBalanceDetails"
       header={<AdminMemberBalanceDetailsHeader/>}
-      initialRequest={{
-        userId: member.id,
+      initialState={{
         startDate: initialDate,
         endDate: initialDate,
       }}

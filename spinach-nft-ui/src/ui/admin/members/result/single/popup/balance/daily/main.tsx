@@ -21,6 +21,8 @@ import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/singl
 
 
 export const AdminMemberBalanceDailyPopup = (props: AdminMemberPopupProps) => {
+  const {member} = props;
+
   const [popup, setPopup] = React.useState<AdminMemberBalanceDetailPopupState>({
     show: false,
     date: toIsoLocalDateString(new Date()),
@@ -41,14 +43,14 @@ export const AdminMemberBalanceDailyPopup = (props: AdminMemberPopupProps) => {
         header={<AdminMemberBalanceDailyHeader/>}
         {...props}
       >
-        {({status, lazyLoaded, request}) => {
+        {({status, lazyLoaded, input}) => {
           const response = lazyLoaded?.adminMemberBalanceDaily;
 
           return (
             <AdminLookBackResultContent
               data={
                 response ?
-                  getFlattenedDailySummary({request: request.sent ?? request.control, data: response}) :
+                  getFlattenedDailySummary({request: {...input, userId: member.id}, data: response}) :
                   []
               }
               status={status}
