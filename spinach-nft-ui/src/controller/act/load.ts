@@ -7,6 +7,7 @@ import {getUnverifiedGoldPurchaseTwBankRecordClient} from '@spinach/next/control
 import {getWalletClientMap} from '@spinach/next/controller/gold/wallet';
 import {getNftTxnOfUser} from '@spinach/next/controller/nft/txn';
 import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft/utils';
+import {getUserBalanceDailySummary} from '@spinach/next/controller/user/balance/daily';
 import {getUserBalanceHistory} from '@spinach/next/controller/user/balance/history';
 import {getUserBalanceSummaryMap} from '@spinach/next/controller/user/balance/summary';
 import {
@@ -70,6 +71,13 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
       userDataMap,
       nftTxn,
     } satisfies UserLazyLoadedData['adminMemberNftTxn'];
+  }
+
+  if (type === 'adminMemberBalanceDaily') {
+    return await getUserBalanceDailySummary({
+      executorUserId: accountId,
+      ...options.opts,
+    }) satisfies UserLazyLoadedData['adminMemberBalanceDaily'];
   }
 
   if (type === 'adminMemberBalanceDetails') {

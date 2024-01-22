@@ -1,3 +1,4 @@
+import {IsoDateString} from '@spinach/common/types/common/date';
 import {UserBalanceHistoryModel, UserBalanceHistoryTxnType} from '@spinach/common/types/data/user/balance';
 
 
@@ -14,4 +15,15 @@ export type UserBalanceHistoryModelClient = Pick<
 > & {
   epochMs: number,
   id: string,
+};
+
+export type UserBalanceDailySummaryOfDay = {
+  date: IsoDateString,
+  endBalance: number,
+  total: {[txnType in UserBalanceHistoryTxnType]?: number},
+};
+
+export type UserBalanceDailySummary = {
+  startingBalance: number,
+  dataByDate: {[date in IsoDateString]?: UserBalanceDailySummaryOfDay}
 };
