@@ -32,7 +32,7 @@ export const AdminMemberBalanceDailyPopup = (props: AdminMemberPopupProps) => {
         ...original,
         show,
       }))}>
-        <Flex noFullWidth>
+        <Flex noFullWidth className="h-[30vh]">
           <AdminMemberBalanceDetailsPopup initialDate={popup.date} {...props}/>
         </Flex>
       </Popup>
