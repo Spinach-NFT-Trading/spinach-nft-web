@@ -7,7 +7,8 @@ import {getUnverifiedGoldPurchaseTwBankRecordClient} from '@spinach/next/control
 import {getWalletClientMap} from '@spinach/next/controller/gold/wallet';
 import {getNftTxnOfUser} from '@spinach/next/controller/nft/txn';
 import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft/utils';
-import {getUserBalanceHistory, getUserBalanceSummaryMap} from '@spinach/next/controller/user/balance';
+import {getUserBalanceHistory} from '@spinach/next/controller/user/balance/history';
+import {getUserBalanceSummaryMap} from '@spinach/next/controller/user/balance/summary';
 import {
   getBankDetailsMap,
   getUnverifiedBankDetails,
