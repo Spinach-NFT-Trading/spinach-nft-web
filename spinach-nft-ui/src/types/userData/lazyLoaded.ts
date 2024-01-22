@@ -43,6 +43,7 @@ export type UserLazyLoadedContent = {
   nftPosition: NftListingData[],
   verifiedBankDetails: BankDetails[],
   adminMemberList: ResponseOfAdminMemberList,
+  adminMemberBalanceSummary: UserBalanceSummaryMap,
   adminMemberNftTxn: ResponseOfAdminNftTxn,
   adminMemberBalanceDaily: UserBalanceDailySummary,
   adminMemberBalanceDetails: UserBalanceHistoryModelClient[],

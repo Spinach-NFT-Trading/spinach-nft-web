@@ -1,13 +1,15 @@
 import React from 'react';
 
+import {toIsoUtcDateString} from '@spinach/common/utils/date';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
 
 import {Loading} from '@spinach/next/components/icons/loading';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {OverflowableTable} from '@spinach/next/components/shared/common/table/overflowable/main';
-import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {ResponseOfAdminMemberList} from '@spinach/next/types/userData/lazyLoaded';
+import {useAdminLookBackInput} from '@spinach/next/ui/admin/members/result/common/lookback/hook';
+import {AdminMemberDataLookBackInput} from '@spinach/next/ui/admin/members/result/common/lookback/main';
 import {AdminMemberSingleHeader} from '@spinach/next/ui/admin/members/result/single/header';
 import {AdminMemberSingleResult} from '@spinach/next/ui/admin/members/result/single/main';
 import {AdminMemberPopup} from '@spinach/next/ui/admin/members/result/single/popup/main';
@@ -28,9 +30,6 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
     value,
   } = input;
 
-  const {act, status} = useUserDataActor({
-    statusToast: true,
-  });
   const [state, setState] = React.useState<AdminMembersResultState>({
     ...memberInfo,
     error: null,
@@ -43,6 +42,33 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
     show: false,
     member: null,
   });
+
+  const todayDateStr = toIsoUtcDateString(new Date());
+  const inputControl = useAdminLookBackInput({
+    initialRequest: {
+      startDate: todayDateStr,
+      endDate: todayDateStr,
+    },
+    getDataLoadingOpts: (request) => ({
+      type: 'adminMemberBalanceSummary',
+      opts: {
+        request,
+        targetUserIds: state.members.map(({id}) => id),
+      },
+    }),
+    actorOpts: {statusToast: true},
+  });
+  const {act, lazyLoaded, status} = inputControl;
+
+  React.useEffect(() => {
+    const balanceSummaryMap = lazyLoaded.adminMemberBalanceSummary;
+
+    if (!balanceSummaryMap) {
+      return;
+    }
+
+    setState((original) => ({...original, balanceSummaryMap}));
+  }, [lazyLoaded.adminMemberBalanceSummary]);
 
   const membersToShow = React.useMemo(() => state.members.filter((member) => (
     !value || member[key].includes(value)
@@ -61,6 +87,7 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo}: Props) => {
           show,
         }))}
       />
+      <AdminMemberDataLookBackInput inputControl={inputControl}/>
       {state.error && <Alert>{translateApiError(state.error)}</Alert>}
       <OverflowableTable
         data={membersToShow}

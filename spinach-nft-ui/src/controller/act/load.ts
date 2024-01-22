@@ -52,12 +52,23 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
     const balanceSummaryMap = await getUserBalanceSummaryMap({
       executorUserId: accountId,
       userIdsToCheck: members.map(({id}) => new ObjectId(id)),
+      ...options.opts,
     });
 
     return {
       members,
       balanceSummaryMap,
     } satisfies UserLazyLoadedData['adminMemberList'];
+  }
+
+  if (type === 'adminMemberBalanceSummary') {
+    const {request, targetUserIds} = options.opts;
+
+    return await getUserBalanceSummaryMap({
+      executorUserId: accountId,
+      userIdsToCheck: targetUserIds.map((id) => new ObjectId(id)),
+      ...request,
+    }) satisfies UserLazyLoadedData['adminMemberBalanceSummary'];
   }
 
   if (type === 'adminMemberNftTxn') {
