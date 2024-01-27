@@ -11,7 +11,7 @@ export const AccountProfileClient = ({userInfo}: AccountProfileCommonProps) => {
   return (
     <Flex className="gap-2">
       <AccountProfileInfo userInfo={userInfo}/>
-      <AccountBankDetails bankDetails={userInfo.bankDetails}/>
+      <AccountBankDetails userInfo={userInfo}/>
     </Flex>
   );
 };

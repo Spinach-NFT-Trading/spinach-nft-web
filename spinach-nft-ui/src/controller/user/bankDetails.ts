@@ -3,18 +3,39 @@ import {uploadBlob} from '@spinach/common/controller/blob/upload';
 import {userBankDetailsCollection, userInfoCollection} from '@spinach/common/controller/collections/user';
 import {Mongo} from '@spinach/common/controller/const';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
-import {BankDetailsMap} from '@spinach/common/types/data/user/bank';
+import {BankDetails, BankDetailsMap} from '@spinach/common/types/data/user/bank';
 import {ObjectId} from 'mongodb';
 import {v4} from 'uuid';
 
 import {getDataAsArray, getDataAsMap} from '@spinach/next/controller/common';
+import {getUserInfoById} from '@spinach/next/controller/user/info';
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
-import {throwIfNotAdmin} from '@spinach/next/controller/utils';
+import {throwIfNotAdmin, throwIfNotAdminOrAgent} from '@spinach/next/controller/utils';
 import {RequestOfUserBankDetails} from '@spinach/next/types/userData/upload';
 
 
 export const getBankDetailsMap = (uuidList: string[]): Promise<BankDetailsMap> => {
   return getDataAsMap(userBankDetailsCollection, ({uuid}) => uuid, {uuid: {$in: uuidList}});
+};
+
+type GetBankDetailsOfUserOpts = ControllerRequireUserIdOpts & {
+  userId: string,
+};
+
+export const getBankDetailsOfUser = async ({
+  executorUserId,
+  userId,
+}: GetBankDetailsOfUserOpts): Promise<BankDetails[]> => {
+  if (userId !== executorUserId) {
+    const executor = await throwIfNotAdminOrAgent(executorUserId);
+    const user = await getUserInfoById(userId);
+
+    if (!executor.isAdmin && user?.recruitedBy !== executorUserId) {
+      throw new Error(`${executorUserId} attempted to get the bank details of ${userId} without permission`);
+    }
+  }
+
+  return getDataAsArray(userBankDetailsCollection, {userId});
 };
 
 export const getVerifiedBankDetailsOfUser = (userId: string) => {

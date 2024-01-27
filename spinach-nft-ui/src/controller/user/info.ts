@@ -84,7 +84,6 @@ export const getUnverifiedUsers = async ({executorUserId}: GetUnverifiedUsersOpt
     .map(({_id, ...data}): UserInfo => ({
       ...data,
       id: _id.toHexString(),
-      bankDetails: [],
     }))
     .toArray();
 };

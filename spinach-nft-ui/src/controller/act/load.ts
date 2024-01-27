@@ -12,6 +12,7 @@ import {getUserBalanceHistory} from '@spinach/next/controller/user/balance/histo
 import {getUserBalanceSummaryMap} from '@spinach/next/controller/user/balance/summary';
 import {
   getBankDetailsMap,
+  getBankDetailsOfUser,
   getUnverifiedBankDetails,
   getVerifiedBankDetailsOfUser,
 } from '@spinach/next/controller/user/bankDetails';
@@ -39,6 +40,13 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
       price: nftPriceMap[data._id.toString()],
       ...data,
     } satisfies NftListingData)) satisfies UserLazyLoadedData['nftPosition'];
+  }
+
+  if (type === 'bankDetails') {
+    return await getBankDetailsOfUser({
+      executorUserId: accountId,
+      userId: options.opts.userId,
+    }) satisfies UserLazyLoadedData['bankDetails'];
   }
 
   if (type === 'verifiedBankDetails') {

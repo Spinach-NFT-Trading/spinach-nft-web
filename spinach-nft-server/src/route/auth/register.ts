@@ -97,7 +97,6 @@ export const addAuthRegister = () => {
           birthday,
           lineId,
           wallet,
-          bankDetails: [],
           status,
           isAdmin,
           isAgent,

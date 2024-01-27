@@ -15,6 +15,11 @@ export type UserDataLoadingOpts = {
   type: 'nftPosition',
   opts?: never,
 } | {
+  type: 'bankDetails',
+  opts: {
+    userId: string,
+  },
+} | {
   type: 'verifiedBankDetails',
   opts?: never,
 } | {

@@ -41,6 +41,7 @@ export type ResponseOfAdminNftTxn = {
 export type UserLazyLoadedContent = {
   // Keys here should match `UserDataLoadingOpts.type`
   nftPosition: NftListingData[],
+  bankDetails: BankDetails[],
   verifiedBankDetails: BankDetails[],
   adminMemberList: ResponseOfAdminMemberList,
   adminMemberNftTxn: ResponseOfAdminNftTxn,

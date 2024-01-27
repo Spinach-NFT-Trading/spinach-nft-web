@@ -1,10 +1,8 @@
-import {userBankDetailsCollection} from '@spinach/common/controller/collections/user';
 import {UserData, UserInfo} from '@spinach/common/types/common/user';
 import {UserModel} from '@spinach/common/types/data/user/data';
 import {endOfDay} from 'date-fns/endOfDay';
 import {ObjectId, WithId} from 'mongodb';
 
-import {getDataAsArray} from '@spinach/next/controller/common';
 import {DataLookBackRequest} from '@spinach/next/types/userData/load';
 
 
@@ -30,7 +28,7 @@ export const toUserData = ({
   };
 };
 
-export const toUserInfo = async (model: WithId<UserModel>): Promise<UserInfo> => {
+export const toUserInfo = (model: WithId<UserModel>): UserInfo => {
   const {
     _id,
     status,
@@ -44,7 +42,6 @@ export const toUserInfo = async (model: WithId<UserModel>): Promise<UserInfo> =>
   return {
     ...toUserData(model),
     id: _id.toHexString(),
-    bankDetails: await getDataAsArray(userBankDetailsCollection, {userId: _id.toHexString()}),
     status,
     isAdmin,
     isAgent,

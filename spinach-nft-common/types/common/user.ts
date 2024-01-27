@@ -5,7 +5,6 @@ import {IdNumberSchemaBase, UserIdSchemaBase, UsernameSchemaBase} from '@spinach
 import {IsoDateStringSchema} from '@spinach/common/types/common/date';
 import {VerificationStatusSchema} from '@spinach/common/types/common/status';
 import {WalletSchemaBase} from '@spinach/common/types/common/wallet';
-import {BankDetailsSchema} from '@spinach/common/types/data/user/bank';
 
 
 export const UserPropertySchemaBase = {
@@ -41,7 +40,6 @@ export const UserInfoSchema = Type.Object(
     id: Type.String(),
     ...UserDataSchemaBase,
     ...UserPropertySchemaBase,
-    bankDetails: Type.Array(BankDetailsSchema, {uniqueItems: true}),
   },
   {additionalProperties: false},
 );

@@ -1,4 +1,4 @@
-import {userBankDetailsCollection, userInfoCollection} from '@spinach/common/controller/collections/user';
+import {userInfoCollection} from '@spinach/common/controller/collections/user';
 import {UserLoginRequest} from '@spinach/common/types/api/auth/login';
 import {UserRegisterRequest} from '@spinach/common/types/api/auth/register';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
@@ -139,7 +139,6 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     birthday,
     lineId,
     wallet,
-    bankDetails: await userBankDetailsCollection.find({username: info.username}).toArray(),
     status,
     isAdmin,
     isAgent,
