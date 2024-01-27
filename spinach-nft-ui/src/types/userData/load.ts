@@ -21,12 +21,6 @@ export type UserDataLoadingOpts = {
   type: 'adminMemberList',
   opts: DataLookBackRequest,
 } | {
-  type: 'adminMemberBalanceSummary',
-  opts: {
-    request: DataLookBackRequest,
-    targetUserIds: string[],
-  },
-} | {
   type: 'adminMemberNftTxn' | 'adminMemberBalanceDaily' | 'adminMemberBalanceDetails',
   opts: DataLookBackRequestOnUser,
 } | {

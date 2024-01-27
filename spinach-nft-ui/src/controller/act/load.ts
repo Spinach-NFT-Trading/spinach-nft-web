@@ -61,16 +61,6 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
     } satisfies UserLazyLoadedData['adminMemberList'];
   }
 
-  if (type === 'adminMemberBalanceSummary') {
-    const {request, targetUserIds} = options.opts;
-
-    return await getUserBalanceSummaryMap({
-      executorUserId: accountId,
-      userIdsToCheck: targetUserIds.map((id) => new ObjectId(id)),
-      ...request,
-    }) satisfies UserLazyLoadedData['adminMemberBalanceSummary'];
-  }
-
   if (type === 'adminMemberNftTxn') {
     const nftTxn = await getNftTxnOfUser({
       executorUserId: accountId,
