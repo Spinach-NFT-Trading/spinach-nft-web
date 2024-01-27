@@ -7,7 +7,7 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {userBalanceHistoryTypeText} from '@spinach/next/const/balance';
 import {userBalanceHistoryTypeTextStyle} from '@spinach/next/styles/balance';
 import {UserBalanceHistoryModelClient} from '@spinach/next/types/mongo/balance';
-import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/members/result/single/cell/monetary/main';
+import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/members/result/member/cell/monetary/main';
 
 
 type Props = {

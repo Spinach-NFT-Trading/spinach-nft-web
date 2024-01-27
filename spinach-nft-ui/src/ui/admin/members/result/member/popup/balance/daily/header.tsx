@@ -4,7 +4,7 @@ import clsx from 'clsx';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {userBalanceHistoryTypeText} from '@spinach/next/const/balance';
-import {adminMemberMonetaryCellStyle} from '@spinach/next/ui/admin/members/result/single/cell/monetary/const';
+import {adminMemberMonetaryCellStyle} from '@spinach/next/ui/admin/members/result/member/cell/monetary/const';
 
 
 export const AdminMemberBalanceDailyHeader = () => {

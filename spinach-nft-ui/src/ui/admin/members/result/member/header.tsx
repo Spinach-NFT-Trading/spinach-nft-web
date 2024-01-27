@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
-import {adminMemberMonetaryCellStyle} from '@spinach/next/ui/admin/members/result/single/cell/monetary/const';
+import {adminMemberMonetaryCellStyle} from '@spinach/next/ui/admin/members/result/member/cell/monetary/const';
 
 
 export const AdminMemberSingleHeader = () => {

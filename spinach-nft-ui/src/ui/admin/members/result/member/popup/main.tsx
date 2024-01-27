@@ -2,8 +2,8 @@ import React from 'react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
-import {AdminMemberPopupContent} from '@spinach/next/ui/admin/members/result/single/popup/content';
-import {AdminMemberPopupState} from '@spinach/next/ui/admin/members/result/single/popup/type';
+import {AdminMemberPopupContent} from '@spinach/next/ui/admin/members/result/member/popup/content';
+import {AdminMemberPopupState} from '@spinach/next/ui/admin/members/result/member/popup/type';
 
 
 type Props = {

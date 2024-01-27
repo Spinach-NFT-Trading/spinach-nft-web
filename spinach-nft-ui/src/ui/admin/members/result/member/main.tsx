@@ -11,11 +11,11 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {VerificationStatusUi} from '@spinach/next/components/shared/common/verified';
 import {UserBalanceSummary} from '@spinach/next/types/mongo/balance';
 import {UserDataActor} from '@spinach/next/types/userData/main';
-import {AdminMemberControlButton} from '@spinach/next/ui/admin/members/result/single/button';
-import {AdminMemberCommissionSettingsCell} from '@spinach/next/ui/admin/members/result/single/cell/commission/main';
-import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/members/result/single/cell/monetary/main';
-import {AdminMemberSingleControls} from '@spinach/next/ui/admin/members/result/single/control';
-import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/single/popup/type';
+import {AdminMemberControlButton} from '@spinach/next/ui/admin/members/result/member/button';
+import {AdminMemberCommissionSettingsCell} from '@spinach/next/ui/admin/members/result/member/cell/commission/main';
+import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/members/result/member/cell/monetary/main';
+import {AdminMemberSingleControls} from '@spinach/next/ui/admin/members/result/member/control';
+import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/member/popup/type';
 import {formatUserName} from '@spinach/next/utils/data/user';
 
 

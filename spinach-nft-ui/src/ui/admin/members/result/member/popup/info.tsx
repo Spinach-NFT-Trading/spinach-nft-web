@@ -3,7 +3,7 @@ import React from 'react';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {VerificationStatusUi} from '@spinach/next/components/shared/common/verified';
 import {AdminMemberDataCell} from '@spinach/next/ui/admin/members/result/common/cell';
-import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/single/popup/type';
+import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/member/popup/type';
 
 
 export const AdminMemberInfoPopup = ({member}: AdminMemberPopupProps) => {

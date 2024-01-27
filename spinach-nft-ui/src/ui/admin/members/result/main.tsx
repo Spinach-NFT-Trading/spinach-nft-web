@@ -9,10 +9,10 @@ import {Alert} from '@spinach/next/components/shared/common/alert';
 import {OverflowableTable} from '@spinach/next/components/shared/common/table/overflowable/main';
 import {ResponseOfAdminMemberList} from '@spinach/next/types/userData/lazyLoaded';
 import {AdminLookBackInputControl} from '@spinach/next/ui/admin/members/result/common/lookback/type';
-import {AdminMemberSingleHeader} from '@spinach/next/ui/admin/members/result/single/header';
-import {AdminMemberSingleResult} from '@spinach/next/ui/admin/members/result/single/main';
-import {AdminMemberPopup} from '@spinach/next/ui/admin/members/result/single/popup/main';
-import {AdminMemberPopupState} from '@spinach/next/ui/admin/members/result/single/popup/type';
+import {AdminMemberSingleHeader} from '@spinach/next/ui/admin/members/result/member/header';
+import {AdminMemberSingleResult} from '@spinach/next/ui/admin/members/result/member/main';
+import {AdminMemberPopup} from '@spinach/next/ui/admin/members/result/member/popup/main';
+import {AdminMemberPopupState} from '@spinach/next/ui/admin/members/result/member/popup/type';
 import {AdminMembersFilterInput} from '@spinach/next/ui/admin/members/type';
 
 

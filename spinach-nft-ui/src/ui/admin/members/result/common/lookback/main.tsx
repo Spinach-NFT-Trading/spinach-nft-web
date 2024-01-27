@@ -13,7 +13,7 @@ import {
   AdminLookBackInputControl,
   AdminLookBackInputState,
 } from '@spinach/next/ui/admin/members/result/common/lookback/type';
-import {adminLookBackButtonStyle} from '@spinach/next/ui/admin/members/result/single/popup/common/const';
+import {adminLookBackButtonStyle} from '@spinach/next/ui/admin/members/result/member/popup/common/const';
 
 
 type Props = {

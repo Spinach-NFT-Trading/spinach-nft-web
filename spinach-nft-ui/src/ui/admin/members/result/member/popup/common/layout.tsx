@@ -7,8 +7,8 @@ import {AdminMemberDataLookBackInput} from '@spinach/next/ui/admin/members/resul
 import {
   AdminLookBackLayoutRenderChildrenOpts,
   AdminLookBackRequestType,
-} from '@spinach/next/ui/admin/members/result/single/popup/common/type';
-import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/single/popup/type';
+} from '@spinach/next/ui/admin/members/result/member/popup/common/type';
+import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/member/popup/type';
 
 
 type Props = AdminMemberPopupProps & {

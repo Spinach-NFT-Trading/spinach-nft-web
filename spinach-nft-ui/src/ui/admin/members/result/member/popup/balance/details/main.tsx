@@ -4,11 +4,11 @@ import {IsoDateString} from '@spinach/common/types/common/date';
 
 import {
   AdminMemberBalanceDetailsHeader,
-} from '@spinach/next/ui/admin/members/result/single/popup/balance/details/header';
-import {AdminMemberBalanceDetailsRow} from '@spinach/next/ui/admin/members/result/single/popup/balance/details/row';
-import {AdminLookBackResultContent} from '@spinach/next/ui/admin/members/result/single/popup/common/content';
-import {AdminLookBackResultLayout} from '@spinach/next/ui/admin/members/result/single/popup/common/layout';
-import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/single/popup/type';
+} from '@spinach/next/ui/admin/members/result/member/popup/balance/details/header';
+import {AdminMemberBalanceDetailsRow} from '@spinach/next/ui/admin/members/result/member/popup/balance/details/row';
+import {AdminLookBackResultContent} from '@spinach/next/ui/admin/members/result/member/popup/common/content';
+import {AdminLookBackResultLayout} from '@spinach/next/ui/admin/members/result/member/popup/common/layout';
+import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/member/popup/type';
 
 
 type Props = AdminMemberPopupProps & {
