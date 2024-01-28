@@ -4,7 +4,7 @@ import {Nullable} from '@spinach/common/types/common/typing';
 import clsx from 'clsx';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
-import {adminMemberMonetaryCellStyle} from '@spinach/next/ui/admin/members/result/member/cell/monetary/const';
+import {adminMemberMonetaryCellStyle} from '@spinach/next/ui/admin/common/cell/monetary/const';
 import {formatInt} from '@spinach/next/utils/number';
 
 

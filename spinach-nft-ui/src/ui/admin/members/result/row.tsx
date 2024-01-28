@@ -11,11 +11,11 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {VerificationStatusUi} from '@spinach/next/components/shared/common/verified';
 import {UserBalanceActivity} from '@spinach/next/types/mongo/balance';
 import {UserDataActor} from '@spinach/next/types/userData/main';
-import {AdminMemberControlButton} from '@spinach/next/ui/admin/members/result/member/button';
-import {AdminMemberCommissionSettingsCell} from '@spinach/next/ui/admin/members/result/member/cell/commission/main';
-import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/members/result/member/cell/monetary/main';
-import {AdminMemberSingleControls} from '@spinach/next/ui/admin/members/result/member/control';
-import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/member/popup/type';
+import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/common/cell/monetary/main';
+import {AdminMemberControlButton} from '@spinach/next/ui/admin/members/result/button';
+import {AdminMemberCommissionSettingsCell} from '@spinach/next/ui/admin/members/result/cell/commission/main';
+import {AdminMemberSingleControls} from '@spinach/next/ui/admin/members/result/control';
+import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/popup/type';
 import {formatUserName} from '@spinach/next/utils/data/user';
 
 
@@ -30,7 +30,7 @@ type Props = {
   onUpdatedMember: (updated: UserInfo) => void,
 };
 
-export const AdminMemberSingleResult = ({
+export const AdminMemberRow = ({
   member,
   balanceActivity,
   isAdmin,

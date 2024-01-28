@@ -8,8 +8,8 @@ import clsx from 'clsx';
 import {FlexButton} from '@spinach/next/components/layout/flex/button';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {UserBalanceActivityMap} from '@spinach/next/types/mongo/balance';
-import {getSumOfBalanceActivity} from '@spinach/next/ui/admin/agents/result/utils';
-import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/members/result/member/cell/monetary/main';
+import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/common/cell/monetary/main';
+import {getSumOfBalanceActivity} from '@spinach/next/ui/admin/common/utils';
 import {formatUserName} from '@spinach/next/utils/data/user';
 
 

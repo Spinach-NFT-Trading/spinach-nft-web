@@ -7,9 +7,9 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {adminAgentsSearchKeyName} from '@spinach/next/ui/admin/agents/const';
 import {AdminAgentsResults} from '@spinach/next/ui/admin/agents/result/main';
 import {adminAgentsFilterBasis, AdminAgentsFilterInput} from '@spinach/next/ui/admin/agents/type';
+import {useAdminLookBackInput} from '@spinach/next/ui/admin/common/lookback/hook';
+import {AdminMemberDataLookBackInput} from '@spinach/next/ui/admin/common/lookback/main';
 import {AdminDataSearchInputUi} from '@spinach/next/ui/admin/input/main';
-import {useAdminLookBackInput} from '@spinach/next/ui/admin/members/result/common/lookback/hook';
-import {AdminMemberDataLookBackInput} from '@spinach/next/ui/admin/members/result/common/lookback/main';
 
 
 type Props = {

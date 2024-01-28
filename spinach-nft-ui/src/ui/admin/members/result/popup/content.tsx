@@ -2,11 +2,11 @@ import React from 'react';
 
 import {
   AdminMemberBalanceDailyPopup,
-} from '@spinach/next/ui/admin/members/result/member/popup/balance/daily/main';
-import {AdminMemberBankDetailsPopup} from '@spinach/next/ui/admin/members/result/member/popup/bankDetails';
-import {AdminMemberInfoPopup} from '@spinach/next/ui/admin/members/result/member/popup/info';
-import {AdminMemberNftTxnPopup} from '@spinach/next/ui/admin/members/result/member/popup/nftTxn/main';
-import {AdminMemberPopupContentProps} from '@spinach/next/ui/admin/members/result/member/popup/type';
+} from '@spinach/next/ui/admin/members/result/popup/balance/daily/main';
+import {AdminMemberBankDetailsPopup} from '@spinach/next/ui/admin/members/result/popup/bankDetails';
+import {AdminMemberInfoPopup} from '@spinach/next/ui/admin/members/result/popup/info';
+import {AdminMemberNftTxnPopup} from '@spinach/next/ui/admin/members/result/popup/nftTxn/main';
+import {AdminMemberPopupContentProps} from '@spinach/next/ui/admin/members/result/popup/type';
 
 
 export const AdminMemberPopupContent = ({type, ...props}: AdminMemberPopupContentProps) => {

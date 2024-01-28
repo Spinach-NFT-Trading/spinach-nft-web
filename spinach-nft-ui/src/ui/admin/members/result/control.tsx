@@ -6,8 +6,8 @@ import IdentificationIcon from '@heroicons/react/24/outline/IdentificationIcon';
 
 import {FlexButton} from '@spinach/next/components/layout/flex/button';
 import {Flex} from '@spinach/next/components/layout/flex/common';
-import {adminMemberSingleResultButtonStyle} from '@spinach/next/ui/admin/members/result/member/const';
-import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/member/popup/type';
+import {adminMemberSingleResultButtonStyle} from '@spinach/next/ui/admin/members/result/const';
+import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/popup/type';
 
 
 type Props = {

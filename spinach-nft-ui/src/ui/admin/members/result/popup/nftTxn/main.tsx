@@ -1,10 +1,10 @@
 import React from 'react';
 
-import {AdminLookBackResultContent} from '@spinach/next/ui/admin/members/result/member/popup/common/content';
-import {AdminLookBackResultLayout} from '@spinach/next/ui/admin/members/result/member/popup/common/layout';
-import {AdminMemberNftTxnHeader} from '@spinach/next/ui/admin/members/result/member/popup/nftTxn/header';
-import {AdminMemberNftTxnRow} from '@spinach/next/ui/admin/members/result/member/popup/nftTxn/row';
-import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/member/popup/type';
+import {AdminLookBackResultContent} from '@spinach/next/ui/admin/members/result/popup/common/content';
+import {AdminLookBackResultLayout} from '@spinach/next/ui/admin/members/result/popup/common/layout';
+import {AdminMemberNftTxnHeader} from '@spinach/next/ui/admin/members/result/popup/nftTxn/header';
+import {AdminMemberNftTxnRow} from '@spinach/next/ui/admin/members/result/popup/nftTxn/row';
+import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/popup/type';
 
 
 export const AdminMemberNftTxnPopup = (props: AdminMemberPopupProps) => {

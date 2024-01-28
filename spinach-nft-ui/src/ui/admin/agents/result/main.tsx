@@ -6,7 +6,7 @@ import {OverflowableTable} from '@spinach/next/components/shared/common/table/ov
 import {ResponseOfAdminAgentList} from '@spinach/next/types/userData/lazyLoaded';
 import {AdminAgentHeader} from '@spinach/next/ui/admin/agents/result/header';
 import {AdminAgentRow} from '@spinach/next/ui/admin/agents/result/row';
-import {AdminLookBackInputControl} from '@spinach/next/ui/admin/members/result/common/lookback/type';
+import {AdminLookBackInputControl} from '@spinach/next/ui/admin/common/lookback/type';
 import {AdminMembersFilterInput} from '@spinach/next/ui/admin/members/type';
 
 

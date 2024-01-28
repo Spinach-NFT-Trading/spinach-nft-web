@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {UserBalanceDailySummaryOfDay} from '@spinach/next/types/mongo/balance';
-import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/members/result/member/cell/monetary/main';
+import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/common/cell/monetary/main';
 
 
 type Props = {

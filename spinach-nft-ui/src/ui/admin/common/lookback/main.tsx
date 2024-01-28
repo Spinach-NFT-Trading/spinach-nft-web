@@ -12,8 +12,8 @@ import {DataLookBackRequest} from '@spinach/next/types/userData/load';
 import {
   AdminLookBackInputControl,
   AdminLookBackInputState,
-} from '@spinach/next/ui/admin/members/result/common/lookback/type';
-import {adminLookBackButtonStyle} from '@spinach/next/ui/admin/members/result/member/popup/common/const';
+} from '@spinach/next/ui/admin/common/lookback/type';
+import {adminLookBackButtonStyle} from '@spinach/next/ui/admin/members/result/popup/common/const';
 
 
 type Props = {

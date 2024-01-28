@@ -2,13 +2,13 @@ import React from 'react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {DataLookBackRequest} from '@spinach/next/types/userData/load';
-import {useAdminLookBackInput} from '@spinach/next/ui/admin/members/result/common/lookback/hook';
-import {AdminMemberDataLookBackInput} from '@spinach/next/ui/admin/members/result/common/lookback/main';
+import {useAdminLookBackInput} from '@spinach/next/ui/admin/common/lookback/hook';
+import {AdminMemberDataLookBackInput} from '@spinach/next/ui/admin/common/lookback/main';
 import {
   AdminLookBackLayoutRenderChildrenOpts,
   AdminLookBackRequestType,
-} from '@spinach/next/ui/admin/members/result/member/popup/common/type';
-import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/member/popup/type';
+} from '@spinach/next/ui/admin/members/result/popup/common/type';
+import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/popup/type';
 
 
 type Props = AdminMemberPopupProps & {

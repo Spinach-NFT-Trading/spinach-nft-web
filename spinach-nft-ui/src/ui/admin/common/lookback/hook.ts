@@ -8,7 +8,7 @@ import {DataLookBackRequest, UserDataLoadingOpts} from '@spinach/next/types/user
 import {
   AdminLookBackInputControl,
   AdminLookBackInputState,
-} from '@spinach/next/ui/admin/members/result/common/lookback/type';
+} from '@spinach/next/ui/admin/common/lookback/type';
 
 
 type UseAdminLookBackInputOpts = {
