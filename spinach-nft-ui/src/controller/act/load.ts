@@ -1,6 +1,7 @@
 import {azureContainer} from '@spinach/common/controller/blob/const';
 import {getImageBlob} from '@spinach/common/controller/blob/get';
 import {toUnique} from '@spinach/common/utils/array';
+import {isNotNullish} from '@spinach/common/utils/type';
 import {ObjectId} from 'mongodb';
 
 import {getUnverifiedGoldPurchaseTwBankRecordClient} from '@spinach/next/controller/gold/twBank';
@@ -17,7 +18,7 @@ import {
   getVerifiedBankDetailsOfUser,
 } from '@spinach/next/controller/user/bankDetails';
 import {getUnverifiedUsers, getUserDataMap} from '@spinach/next/controller/user/info';
-import {getAccountMembers} from '@spinach/next/controller/user/members';
+import {getAccountMemberListByAgent, getUserInfoList} from '@spinach/next/controller/user/members';
 import {NftListingData} from '@spinach/next/types/nft';
 import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 import {UserLazyLoadedData} from '@spinach/next/types/userData/main';
@@ -53,9 +54,34 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
     return await getVerifiedBankDetailsOfUser(accountId) satisfies UserLazyLoadedData['verifiedBankDetails'];
   }
 
+  if (type === 'adminAgentList') {
+    const agentMemberList = await getAccountMemberListByAgent({executorUserId: accountId});
+    const [
+      agentInfo,
+      balanceActivityMap,
+    ] = await Promise.all([
+      getUserDataMap(agentMemberList.map(({agentId}) => agentId).filter(isNotNullish)),
+      getUserBalanceActivityMap({
+        executorUserId: accountId,
+        userIdsToCheck: agentMemberList
+          .flatMap(({agentId, members}) => [agentId, ...members.map(({id}) => id)])
+          .filter(isNotNullish)
+          .map((id) => new ObjectId(id)),
+        ...options.opts,
+      }),
+    ]);
+
+    return {
+      agentMemberList,
+      agentInfo,
+      balanceActivityMap,
+    } satisfies UserLazyLoadedData['adminAgentList'];
+  }
+
   if (type === 'adminMemberList') {
-    const members = await getAccountMembers({
+    const members = await getUserInfoList({
       executorUserId: accountId,
+      agentId: options.opts.agentId,
     });
     const balanceActivityMap = await getUserBalanceActivityMap({
       executorUserId: accountId,

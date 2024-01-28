@@ -28,6 +28,7 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo, lookBackInputCo
     key,
     value,
   } = input;
+  const {act, status, setInputAndSend} = lookBackInputControl;
 
   const [error, setError] = React.useState<ApiErrorCode | null>(null);
   const [
@@ -38,8 +39,6 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo, lookBackInputCo
     show: false,
     member: null,
   });
-
-  const {act, status, setInputAndSend} = lookBackInputControl;
 
   const membersToShow = React.useMemo(() => memberInfo.members.filter((member) => (
     !value || member[key].includes(value)

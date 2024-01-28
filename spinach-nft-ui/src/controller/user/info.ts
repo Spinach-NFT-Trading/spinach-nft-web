@@ -4,9 +4,8 @@ import {UserIdVerificationData} from '@spinach/common/types/api/auth/verify/id/m
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {accountIdVerificationType} from '@spinach/common/types/api/profile/id';
 import {UserDataMap, UserInfo} from '@spinach/common/types/common/user';
-import {UserModel} from '@spinach/common/types/data/user/data';
 import {isNotNullish} from '@spinach/common/utils/type';
-import {Filter, ObjectId} from 'mongodb';
+import {ObjectId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {toUserData, toUserInfo} from '@spinach/next/controller/user/utils';
@@ -62,10 +61,6 @@ export const getUserInfoById = async (id: string): Promise<UserInfo | undefined>
   }
 
   return toUserInfo(model);
-};
-
-export const getUserInfoArray = async (filter: Filter<UserModel>) => {
-  return Promise.all((await userInfoCollection.find(filter).toArray()).map(toUserInfo));
 };
 
 export const getUserDataMap = async (userIds: string[]): Promise<UserDataMap> => {

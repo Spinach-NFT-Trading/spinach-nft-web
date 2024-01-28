@@ -36,20 +36,20 @@ export const getUserBalanceActivityMap = async ({
         ...toIdRangeFromLookBackRequest(request),
       },
     },
-    {
-      $sort: {
-        userId: 1,
-        type: 1,
-      },
-    },
+    {$sort: {_id: -1}},
     {
       $group: {
-        _id: {
-          userId: '$userId',
-          type: '$type',
-        },
+        _id: '$userId',
         txn: {$push: '$$ROOT'},
-        currentBalance: {$last: '$current'},
+        currentBalance: {$first: '$current'},
+      },
+    },
+    {$unwind: {path: '$txn'}},
+    {
+      $group: {
+        _id: {userId: '$_id', type: '$txn.type'},
+        txn: {$push: '$txn'},
+        currentBalance: {$first: '$currentBalance'},
       },
     },
     {
@@ -58,9 +58,7 @@ export const getUserBalanceActivityMap = async ({
         byTxnType: {
           $push: {
             type: '$_id.type',
-            total: {
-              $sum: '$txn.diff',
-            },
+            total: {$sum: '$txn.diff'},
           },
         },
         currentBalance: {$first: '$currentBalance'},

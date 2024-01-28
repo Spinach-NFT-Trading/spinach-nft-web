@@ -1,27 +1,24 @@
-'use client';
 import React from 'react';
 
 import {toIsoUtcDateString} from '@spinach/common/utils/date';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';
-import {AgentIdContext} from '@spinach/next/ui/admin/context';
+import {adminAgentsSearchKeyName} from '@spinach/next/ui/admin/agents/const';
+import {AdminAgentsResults} from '@spinach/next/ui/admin/agents/result/main';
+import {adminAgentsFilterBasis, AdminAgentsFilterInput} from '@spinach/next/ui/admin/agents/type';
 import {AdminDataSearchInputUi} from '@spinach/next/ui/admin/input/main';
-import {adminMembersSearchKeyName} from '@spinach/next/ui/admin/members/const';
 import {useAdminLookBackInput} from '@spinach/next/ui/admin/members/result/common/lookback/hook';
 import {AdminMemberDataLookBackInput} from '@spinach/next/ui/admin/members/result/common/lookback/main';
-import {AdminMembersResults} from '@spinach/next/ui/admin/members/result/main';
-import {adminMembersFilterBasis, AdminMembersFilterInput} from '@spinach/next/ui/admin/members/type';
 
 
 type Props = {
-  isAdmin: boolean,
+  onAgentSelected: (agentId: string | null) => void,
 };
 
-export const AdminMembers = ({isAdmin}: Props) => {
-  const agentId = React.useContext(AgentIdContext);
+export const AdminMemberAgent = ({onAgentSelected}: Props) => {
   const todayDateStr = toIsoUtcDateString(new Date());
-  const [input, setInput] = React.useState<AdminMembersFilterInput>({
+  const [input, setInput] = React.useState<AdminAgentsFilterInput>({
     key: 'username',
     value: '',
   });
@@ -31,32 +28,32 @@ export const AdminMembers = ({isAdmin}: Props) => {
       endDate: todayDateStr,
     },
     getDataLoadingOpts: (state) => ({
-      type: 'adminMemberList',
-      opts: {...state, agentId},
+      type: 'adminAgentList',
+      opts: state,
     }),
   });
   const {lazyLoaded} = inputControl;
 
-  const response = lazyLoaded?.adminMemberList;
+  const response = lazyLoaded?.adminAgentList;
 
   return (
     <Flex className="gap-2">
-      <div className="text-2xl">會員資訊</div>
+      <div className="text-2xl">代理一覽</div>
       <AdminDataSearchInputUi
         input={input}
         setInput={setInput}
-        availableSearchKeys={[...adminMembersFilterBasis]}
-        getSearchKeyName={(key) => adminMembersSearchKeyName[key]}
+        availableSearchKeys={[...adminAgentsFilterBasis]}
+        getSearchKeyName={(key) => adminAgentsSearchKeyName[key]}
       />
       <AdminMemberDataLookBackInput inputControl={inputControl}/>
       <AnimatedCollapse appear show={!!response}>
         {
           response &&
-          <AdminMembersResults
-            isAdmin={isAdmin}
+          <AdminAgentsResults
             input={input}
-            memberInfo={response}
+            data={response}
             lookBackInputControl={inputControl}
+            onAgentSelected={onAgentSelected}
           />
         }
       </AnimatedCollapse>

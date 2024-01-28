@@ -1,13 +1,13 @@
 import {BinaryData} from '@spinach/common/types/common/binary';
-import {UserDataMap, UserInfo} from '@spinach/common/types/common/user';
+import {UserDataMap, UserInfo, UserInfoListByAgent} from '@spinach/common/types/common/user';
 import {GoldPurchaseTwBankRecordClient} from '@spinach/common/types/data/gold/purchase';
 import {GoldWalletClientMap} from '@spinach/common/types/data/gold/wallet';
 import {BankDetails, BankDetailsMap, UserBankDetails} from '@spinach/common/types/data/user/bank';
 
 import {
+  UserBalanceActivityMap,
   UserBalanceDailySummary,
   UserBalanceHistoryModelClient,
-  UserBalanceActivityMap,
 } from '@spinach/next/types/mongo/balance';
 import {NftTxnModelClient} from '@spinach/next/types/mongo/nft';
 import {NftListingData} from '@spinach/next/types/nft';
@@ -33,6 +33,12 @@ export type ResponseOfAdminMemberList = {
   balanceActivityMap: UserBalanceActivityMap,
 };
 
+export type ResponseOfAdminAgentList = {
+  agentMemberList: UserInfoListByAgent[],
+  agentInfo: UserDataMap,
+  balanceActivityMap: UserBalanceActivityMap,
+};
+
 export type ResponseOfAdminNftTxn = {
   userDataMap: UserDataMap,
   nftTxn: NftTxnModelClient[],
@@ -43,6 +49,7 @@ export type UserLazyLoadedContent = {
   nftPosition: NftListingData[],
   bankDetails: BankDetails[],
   verifiedBankDetails: BankDetails[],
+  adminAgentList: ResponseOfAdminAgentList,
   adminMemberList: ResponseOfAdminMemberList,
   adminMemberNftTxn: ResponseOfAdminNftTxn,
   adminMemberBalanceDaily: UserBalanceDailySummary,

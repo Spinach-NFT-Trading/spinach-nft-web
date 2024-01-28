@@ -45,3 +45,8 @@ export const UserInfoSchema = Type.Object(
 );
 
 export type UserInfo = Static<typeof UserInfoSchema>;
+
+export type UserInfoListByAgent = {
+  agentId: string | null,
+  members: UserInfo[],
+};

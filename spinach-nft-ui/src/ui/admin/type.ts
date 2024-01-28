@@ -1,4 +1,5 @@
 export const adminPageTabs = [
+  'agents',
   'members',
   'verifyId',
   'verifyBankAccount',

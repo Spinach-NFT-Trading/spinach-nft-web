@@ -23,8 +23,13 @@ export type UserDataLoadingOpts = {
   type: 'verifiedBankDetails',
   opts?: never,
 } | {
-  type: 'adminMemberList',
+  type: 'adminAgentList',
   opts: DataLookBackRequest,
+} | {
+  type: 'adminMemberList',
+  opts: DataLookBackRequest & {
+    agentId: string | null,
+  },
 } | {
   type: 'adminMemberNftTxn' | 'adminMemberBalanceDaily' | 'adminMemberBalanceDetails',
   opts: DataLookBackRequestOnUser,
