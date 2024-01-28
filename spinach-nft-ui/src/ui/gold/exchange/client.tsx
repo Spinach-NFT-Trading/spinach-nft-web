@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 
+import {useTabbedContentControl} from '@spinach/next/components/layout/tab/hook';
 import {TabbedContent} from '@spinach/next/components/layout/tab/main';
 import {GoldExchangeContent} from '@spinach/next/ui/gold/exchange/content';
 
@@ -11,11 +12,13 @@ type Props = {
 };
 
 export const GoldExchangeClient = ({usdtExchangeRate, cashbackRate}: Props) => {
+  const tabControl = useTabbedContentControl<'usdt' | 'twBank'>('usdt');
+
   return (
     <>
       <TabbedContent
         keys={['usdt', 'twBank']}
-        defaultKey="usdt"
+        control={tabControl}
         tabTitle={{
           usdt: 'USDT',
           twBank: '台幣',

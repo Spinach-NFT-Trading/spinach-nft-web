@@ -5,11 +5,12 @@ import clsx from 'clsx';
 import {FadingLayout} from '@spinach/next/components/layout/fading/main';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {tabbedContentStyle} from '@spinach/next/components/layout/tab/const';
+import {TabbedContentControl} from '@spinach/next/components/layout/tab/type';
 
 
 type Props<TKey extends string> = {
   keys: TKey[],
-  defaultKey: TKey,
+  control: TabbedContentControl<TKey>,
   content: {[key in TKey]: React.ReactNode},
   tabTitle: {[key in TKey]: React.ReactNode},
   getReactKey: (key: TKey) => string,
@@ -18,13 +19,13 @@ type Props<TKey extends string> = {
 
 export const TabbedContent = <TKey extends string>({
   keys,
-  defaultKey,
+  control,
   tabTitle,
   content,
   getReactKey,
   classOfContents,
 }: Props<TKey>) => {
-  const [current, setCurrent] = React.useState<TKey>(defaultKey);
+  const {current, setCurrent} = control;
 
   return (
     <Flex>
