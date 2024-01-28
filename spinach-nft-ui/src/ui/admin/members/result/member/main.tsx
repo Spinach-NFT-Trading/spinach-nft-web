@@ -9,7 +9,7 @@ import {UserInfo} from '@spinach/common/types/common/user';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {VerificationStatusUi} from '@spinach/next/components/shared/common/verified';
-import {UserBalanceSummary} from '@spinach/next/types/mongo/balance';
+import {UserBalanceActivity} from '@spinach/next/types/mongo/balance';
 import {UserDataActor} from '@spinach/next/types/userData/main';
 import {AdminMemberControlButton} from '@spinach/next/ui/admin/members/result/member/button';
 import {AdminMemberCommissionSettingsCell} from '@spinach/next/ui/admin/members/result/member/cell/commission/main';
@@ -21,7 +21,7 @@ import {formatUserName} from '@spinach/next/utils/data/user';
 
 type Props = {
   member: UserInfo,
-  balanceSummary: UserBalanceSummary | undefined,
+  balanceActivity: UserBalanceActivity | undefined,
   isAdmin: boolean,
   controlDisabled: boolean,
   act: UserDataActor,
@@ -32,7 +32,7 @@ type Props = {
 
 export const AdminMemberSingleResult = ({
   member,
-  balanceSummary,
+  balanceActivity,
   isAdmin,
   controlDisabled,
   act,
@@ -103,11 +103,11 @@ export const AdminMemberSingleResult = ({
           />
         }
       </Flex>
-      <AdminMemberMonetaryCell value={balanceSummary?.currentBalance}/>
-      <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['nftBuy']}/>
-      <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['nftSell']}/>
-      <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['deposit.twBank']}/>
-      <AdminMemberMonetaryCell applySignStyle value={balanceSummary?.byTxnType['deposit.crypto']}/>
+      <AdminMemberMonetaryCell value={balanceActivity?.currentBalance}/>
+      <AdminMemberMonetaryCell applySignStyle value={balanceActivity?.byTxnType['nftBuy']}/>
+      <AdminMemberMonetaryCell applySignStyle value={balanceActivity?.byTxnType['nftSell']}/>
+      <AdminMemberMonetaryCell applySignStyle value={balanceActivity?.byTxnType['deposit.twBank']}/>
+      <AdminMemberMonetaryCell applySignStyle value={balanceActivity?.byTxnType['deposit.crypto']}/>
       <AdminMemberMonetaryCell applySignStyle value={0}/>
       <AdminMemberCommissionSettingsCell
         commissionRate={commissionRate}

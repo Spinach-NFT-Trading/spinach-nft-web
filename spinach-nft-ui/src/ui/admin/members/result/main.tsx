@@ -67,7 +67,7 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo, lookBackInputCo
         renderRow={({data}) => (
           <AdminMemberSingleResult
             member={data}
-            balanceSummary={memberInfo.balanceSummaryMap[data.id]}
+            balanceActivity={memberInfo.balanceActivityMap[data.id]}
             isAdmin={isAdmin}
             controlDisabled={!act || status === 'processing'}
             act={act}

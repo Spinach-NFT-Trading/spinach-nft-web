@@ -5,11 +5,11 @@ import {ObjectId} from 'mongodb';
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {toIdRangeFromLookBackRequest} from '@spinach/next/controller/user/utils';
 import {throwIfNotAdminOrAgent} from '@spinach/next/controller/utils';
-import {UserBalanceSummary, UserBalanceSummaryMap} from '@spinach/next/types/mongo/balance';
+import {UserBalanceActivity, UserBalanceActivityMap} from '@spinach/next/types/mongo/balance';
 import {DataLookBackRequest} from '@spinach/next/types/userData/load';
 
 
-type UserBalanceSummaryAggregated = {
+type UserBalanceActivityAggregated = {
   _id: ObjectId,
   byTxnType: {
     type: UserBalanceHistoryTxnType,
@@ -18,18 +18,18 @@ type UserBalanceSummaryAggregated = {
   currentBalance: number,
 };
 
-type GetUserBalanceSummaryOpts = ControllerRequireUserIdOpts & DataLookBackRequest & {
+type GetUserBalanceActivityOpts = ControllerRequireUserIdOpts & DataLookBackRequest & {
   userIdsToCheck: ObjectId[],
 };
 
-export const getUserBalanceSummaryMap = async ({
+export const getUserBalanceActivityMap = async ({
   executorUserId,
   userIdsToCheck,
   ...request
-}: GetUserBalanceSummaryOpts): Promise<UserBalanceSummaryMap> => {
+}: GetUserBalanceActivityOpts): Promise<UserBalanceActivityMap> => {
   await throwIfNotAdminOrAgent(executorUserId);
 
-  const aggregated = userBalanceCollection.aggregate<UserBalanceSummaryAggregated>([
+  const aggregated = userBalanceCollection.aggregate<UserBalanceActivityAggregated>([
     {
       $match: {
         userId: {$in: userIdsToCheck},
@@ -73,6 +73,6 @@ export const getUserBalanceSummaryMap = async ({
     {
       byTxnType: Object.fromEntries(byTxnType.map(({type, total}) => [type, total])),
       currentBalance,
-    } satisfies UserBalanceSummary,
+    } satisfies UserBalanceActivity,
   ]).toArray());
 };

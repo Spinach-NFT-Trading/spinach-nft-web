@@ -9,7 +9,7 @@ import {getNftTxnOfUser} from '@spinach/next/controller/nft/txn';
 import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft/utils';
 import {getUserBalanceDailySummary} from '@spinach/next/controller/user/balance/daily';
 import {getUserBalanceHistory} from '@spinach/next/controller/user/balance/history';
-import {getUserBalanceSummaryMap} from '@spinach/next/controller/user/balance/summary';
+import {getUserBalanceActivityMap} from '@spinach/next/controller/user/balance/summary';
 import {
   getBankDetailsMap,
   getBankDetailsOfUser,
@@ -57,7 +57,7 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
     const members = await getAccountMembers({
       executorUserId: accountId,
     });
-    const balanceSummaryMap = await getUserBalanceSummaryMap({
+    const balanceActivityMap = await getUserBalanceActivityMap({
       executorUserId: accountId,
       userIdsToCheck: members.map(({id}) => new ObjectId(id)),
       ...options.opts,
@@ -65,7 +65,7 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
 
     return {
       members,
-      balanceSummaryMap,
+      balanceActivityMap,
     } satisfies UserLazyLoadedData['adminMemberList'];
   }
 
