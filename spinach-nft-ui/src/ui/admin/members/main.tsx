@@ -2,11 +2,13 @@
 import React from 'react';
 
 import {toIsoUtcDateString} from '@spinach/common/utils/date';
+import {isNotNullish} from '@spinach/common/utils/type';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {useAdminLookBackInput} from '@spinach/next/ui/admin/common/lookback/hook';
 import {AdminMemberDataLookBackInput} from '@spinach/next/ui/admin/common/lookback/main';
+import {AdminMemberActivitySummary} from '@spinach/next/ui/admin/common/summary/main';
 import {AgentIdContext} from '@spinach/next/ui/admin/context';
 import {AdminDataSearchInputUi} from '@spinach/next/ui/admin/input/main';
 import {adminMembersSearchKeyName} from '@spinach/next/ui/admin/members/const';
@@ -49,6 +51,9 @@ export const AdminMembers = ({isAdmin}: Props) => {
         getSearchKeyName={(key) => adminMembersSearchKeyName[key]}
       />
       <AdminMemberDataLookBackInput inputControl={inputControl}/>
+      <AdminMemberActivitySummary
+        activities={Object.values(response?.balanceActivityMap ?? []).filter(isNotNullish)}
+      />
       <AnimatedCollapse appear show={!!response}>
         {
           response &&
