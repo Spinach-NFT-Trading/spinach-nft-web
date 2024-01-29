@@ -1,13 +1,13 @@
 import React from 'react';
 
 import {AdminPageClient} from '@spinach/next/ui/admin/client';
-import {AdminRequiredPageLayout} from '@spinach/next/ui/base/layout/adminRequired';
+import {AdminOrAgentPageLayout} from '@spinach/next/ui/base/layout/adminOrAgent';
 
 
 export const AdminPage = () => {
   return (
-    <AdminRequiredPageLayout>
+    <AdminOrAgentPageLayout>
       {({user}) => <AdminPageClient isAdmin={user.isAdmin}/>}
-    </AdminRequiredPageLayout>
+    </AdminOrAgentPageLayout>
   );
 };
