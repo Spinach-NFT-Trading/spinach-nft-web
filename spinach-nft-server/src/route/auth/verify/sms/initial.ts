@@ -30,6 +30,18 @@ export const addSmsVerifyInitial = () => {
       const otp = generateOtp(6);
       const {phone} = body;
 
+      const data = await recordSmsVerifyInitialize({
+        phone: body.phone,
+        otp,
+      });
+
+      if (isApiError(data)) {
+        return {
+          success: false,
+          error: data,
+        };
+      }
+
       // Only actually sends SMS in production
       if (isProduction()) {
         const {stats} = await sendSms({
@@ -41,18 +53,6 @@ export const addSmsVerifyInitial = () => {
             error: 'smsSendFailed',
           };
         }
-      }
-
-      const data = await recordSmsVerifyInitialize({
-        phone: body.phone,
-        otp,
-      });
-
-      if (isApiError(data)) {
-        return {
-          success: false,
-          error: data,
-        };
       }
 
       return {success: true, data};
