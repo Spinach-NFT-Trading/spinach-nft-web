@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {toIsoUtcDateString} from '@spinach/common/utils/date';
 import {isNotNullish} from '@spinach/common/utils/type';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
@@ -10,6 +9,7 @@ import {AdminAgentsResults} from '@spinach/next/ui/admin/agents/result/main';
 import {adminAgentsFilterBasis, AdminAgentsFilterInput} from '@spinach/next/ui/admin/agents/type';
 import {useAdminLookBackInput} from '@spinach/next/ui/admin/common/lookback/hook';
 import {AdminMemberDataLookBackInput} from '@spinach/next/ui/admin/common/lookback/main';
+import {generateDataLookBackRequestOfSameDay} from '@spinach/next/ui/admin/common/lookback/utils';
 import {AdminMemberActivitySummary} from '@spinach/next/ui/admin/common/summary/main';
 import {AdminDataSearchInputUi} from '@spinach/next/ui/admin/input/main';
 
@@ -19,16 +19,12 @@ type Props = {
 };
 
 export const AdminMemberAgent = ({onAgentSelected}: Props) => {
-  const todayDateStr = toIsoUtcDateString(new Date());
   const [input, setInput] = React.useState<AdminAgentsFilterInput>({
     key: 'username',
     value: '',
   });
   const inputControl = useAdminLookBackInput({
-    initialRequest: {
-      startDate: todayDateStr,
-      endDate: todayDateStr,
-    },
+    initialRequest: generateDataLookBackRequestOfSameDay(),
     getDataLoadingOpts: (state) => ({
       type: 'adminAgentList',
       opts: state,

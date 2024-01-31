@@ -12,7 +12,7 @@ import {DataLookBackRequestOnUser} from '@spinach/next/types/userData/load';
 
 
 type UserBalanceDailySummaryAggregated = {
-  date: IsoDateString,
+  dateString: IsoDateString,
   endBalance: number,
   total: {[txnType in UserBalanceHistoryTxnType]?: number},
 };
@@ -32,7 +32,7 @@ export const getUserBalanceDailySummary = async ({
     {
       $group: {
         _id: {
-          date: {$dateTrunc: {date: '$_id', unit: 'day', timezone: 'UTC'}},
+          date: {$dateTrunc: {date: '$_id', unit: 'day', timezone: request.ianaTimezone}},
           type: '$type',
         },
         txn: {$push: '$$ROOT'},
@@ -54,7 +54,7 @@ export const getUserBalanceDailySummary = async ({
     {
       $project: {
         _id: false,
-        date: {$dateToString: {date: '$_id', format: '%Y-%m-%d'}},
+        dateString: {$dateToString: {date: '$_id', format: '%Y-%m-%d'}},
         endBalance: '$endBalance',
         total: {$arrayToObject: '$total'},
       },
@@ -68,9 +68,9 @@ export const getUserBalanceDailySummary = async ({
       latestId: idRange._id.$gte,
     }),
     dataByDate: Object.fromEntries((await result.toArray())
-      .map(({date, endBalance, total}) => [
-        date,
-        {date, endBalance, total},
+      .map(({dateString, endBalance, total}) => [
+        dateString,
+        {dateString, endBalance, total},
       ])),
   };
 };

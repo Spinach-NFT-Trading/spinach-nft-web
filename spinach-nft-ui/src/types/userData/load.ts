@@ -1,10 +1,10 @@
 import {AccountIdVerificationType} from '@spinach/common/types/api/profile/id';
-import {IsoDateString} from '@spinach/common/types/common/date';
 
 
 export type DataLookBackRequest = {
-  startDate: IsoDateString,
-  endDate: IsoDateString,
+  startEpochMs: number,
+  endEpochMs: number,
+  ianaTimezone: string,
 };
 
 export type DataLookBackRequestOnUser = DataLookBackRequest & {

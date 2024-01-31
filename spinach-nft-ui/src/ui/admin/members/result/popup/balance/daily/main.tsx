@@ -1,20 +1,14 @@
 import React from 'react';
 
-import {toIsoLocalDateString} from '@spinach/common/utils/date';
+import {parse} from 'date-fns/parse';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
-import {
-  AdminMemberBalanceDailyHeader,
-} from '@spinach/next/ui/admin/members/result/popup/balance/daily/header';
+import {AdminMemberBalanceDailyHeader} from '@spinach/next/ui/admin/members/result/popup/balance/daily/header';
 import {AdminMemberBalanceDailyRow} from '@spinach/next/ui/admin/members/result/popup/balance/daily/row';
-import {
-  AdminMemberBalanceDetailPopupState,
-} from '@spinach/next/ui/admin/members/result/popup/balance/daily/type';
+import {AdminMemberBalanceDetailPopupState} from '@spinach/next/ui/admin/members/result/popup/balance/daily/type';
 import {getFlattenedDailySummary} from '@spinach/next/ui/admin/members/result/popup/balance/daily/utils';
-import {
-  AdminMemberBalanceDetailsPopup,
-} from '@spinach/next/ui/admin/members/result/popup/balance/details/main';
+import {AdminMemberBalanceDetailsPopup} from '@spinach/next/ui/admin/members/result/popup/balance/details/main';
 import {AdminLookBackResultContent} from '@spinach/next/ui/admin/members/result/popup/common/content';
 import {AdminLookBackResultLayout} from '@spinach/next/ui/admin/members/result/popup/common/layout';
 import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/popup/type';
@@ -25,7 +19,7 @@ export const AdminMemberBalanceDailyPopup = (props: AdminMemberPopupProps) => {
 
   const [popup, setPopup] = React.useState<AdminMemberBalanceDetailPopupState>({
     show: false,
-    date: toIsoLocalDateString(new Date()),
+    date: new Date(),
   });
 
   return (
@@ -56,9 +50,12 @@ export const AdminMemberBalanceDailyPopup = (props: AdminMemberPopupProps) => {
               status={status}
               renderEntry={(entry) => (
                 <AdminMemberBalanceDailyRow
-                  key={entry.date}
+                  key={entry.dateString}
                   data={entry}
-                  onExpandClick={() => setPopup({show: true, date: entry.date})}
+                  onExpandClick={() => setPopup({
+                    show: true,
+                    date: parse(entry.dateString, 'yyyy-MM-dd', new Date(entry.dateString)),
+                  })}
                 />
               )}
               textOnLoading="每日活動歷史"

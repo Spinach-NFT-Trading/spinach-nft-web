@@ -1,10 +1,7 @@
 import React from 'react';
 
-import {IsoDateString} from '@spinach/common/types/common/date';
-
-import {
-  AdminMemberBalanceDetailsHeader,
-} from '@spinach/next/ui/admin/members/result/popup/balance/details/header';
+import {generateDataLookBackRequestOfSameDay} from '@spinach/next/ui/admin/common/lookback/utils';
+import {AdminMemberBalanceDetailsHeader} from '@spinach/next/ui/admin/members/result/popup/balance/details/header';
 import {AdminMemberBalanceDetailsRow} from '@spinach/next/ui/admin/members/result/popup/balance/details/row';
 import {AdminLookBackResultContent} from '@spinach/next/ui/admin/members/result/popup/common/content';
 import {AdminLookBackResultLayout} from '@spinach/next/ui/admin/members/result/popup/common/layout';
@@ -12,7 +9,7 @@ import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/popup
 
 
 type Props = AdminMemberPopupProps & {
-  initialDate: IsoDateString,
+  initialDate: Date,
 };
 
 export const AdminMemberBalanceDetailsPopup = ({initialDate, ...props}: Props) => {
@@ -20,10 +17,7 @@ export const AdminMemberBalanceDetailsPopup = ({initialDate, ...props}: Props) =
     <AdminLookBackResultLayout
       requestType="adminMemberBalanceDetails"
       header={<AdminMemberBalanceDetailsHeader/>}
-      initialState={{
-        startDate: initialDate,
-        endDate: initialDate,
-      }}
+      initialState={generateDataLookBackRequestOfSameDay(initialDate)}
       {...props}
     >
       {({status, lazyLoaded}) => {

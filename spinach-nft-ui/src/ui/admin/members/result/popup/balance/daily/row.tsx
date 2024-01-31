@@ -15,7 +15,7 @@ export const AdminMemberBalanceDailyRow = ({
   onExpandClick,
 }: Props) => {
   const {
-    date,
+    dateString,
     endBalance,
     total,
   } = data;
@@ -23,7 +23,7 @@ export const AdminMemberBalanceDailyRow = ({
   return (
     <Flex direction="row" noFullWidth className="border-b-slate-400 p-1.5 not-last:border-b">
       <Flex center noFullWidth className="w-28 whitespace-nowrap">
-        {date}
+        {dateString}
       </Flex>
       <AdminMemberMonetaryCell value={endBalance} applySignStyle/>
       <AdminMemberMonetaryCell value={total['nftBuy']} applySignStyle/>

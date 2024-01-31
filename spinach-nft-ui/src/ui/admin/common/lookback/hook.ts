@@ -1,14 +1,14 @@
 import React from 'react';
 
-import {getDateAfterDelta, toIsoUtcDateString} from '@spinach/common/utils/date';
+import {getDateAfterDelta} from '@spinach/common/utils/date';
+import {endOfDay} from 'date-fns/endOfDay';
+import {startOfDay} from 'date-fns/startOfDay';
 import {signIn} from 'next-auth/react';
 
 import {useUserDataActor, UseUserDataActorOpts} from '@spinach/next/hooks/userData/actor';
 import {DataLookBackRequest, UserDataLoadingOpts} from '@spinach/next/types/userData/load';
-import {
-  AdminLookBackInputControl,
-  AdminLookBackInputState,
-} from '@spinach/next/ui/admin/common/lookback/type';
+import {AdminLookBackInputControl, AdminLookBackInputState} from '@spinach/next/ui/admin/common/lookback/type';
+import {getIanaTimezone} from '@spinach/next/utils/date';
 
 
 type UseAdminLookBackInputOpts = {
@@ -28,8 +28,9 @@ export const useAdminLookBackInput = ({
   const {act} = actorReturn;
   const [state, setState] = React.useState<AdminLookBackInputState>(() => {
     const initial: DataLookBackRequest = initialRequest ?? {
-      startDate: toIsoUtcDateString(getDateAfterDelta({date: now, delta: {day: -7}})),
-      endDate: toIsoUtcDateString(now),
+      startEpochMs: startOfDay(getDateAfterDelta({date: now, delta: {day: -7}})).getTime(),
+      endEpochMs: endOfDay(now).getTime(),
+      ianaTimezone: getIanaTimezone(),
     };
 
     return {

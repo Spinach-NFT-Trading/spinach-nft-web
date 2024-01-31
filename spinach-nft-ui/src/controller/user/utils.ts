@@ -1,6 +1,5 @@
 import {UserData, UserInfo} from '@spinach/common/types/common/user';
 import {UserModel} from '@spinach/common/types/data/user/data';
-import {endOfDay} from 'date-fns/endOfDay';
 import {ObjectId, WithId} from 'mongodb';
 
 import {DataLookBackRequest} from '@spinach/next/types/userData/load';
@@ -52,13 +51,13 @@ export const toUserInfo = (model: WithId<UserModel>): UserInfo => {
 };
 
 export const toIdRangeFromLookBackRequest = ({
-  startDate,
-  endDate,
+  startEpochMs,
+  endEpochMs,
 }: DataLookBackRequest) => {
   return {
     _id: {
-      $gte: ObjectId.createFromTime(new Date(startDate).getTime() / 1000),
-      $lt: ObjectId.createFromTime(endOfDay(new Date(endDate)).getTime() / 1000),
+      $gte: ObjectId.createFromTime(startEpochMs / 1000),
+      $lt: ObjectId.createFromTime(endEpochMs / 1000),
     },
   };
 };

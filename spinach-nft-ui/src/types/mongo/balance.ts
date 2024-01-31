@@ -18,7 +18,7 @@ export type UserBalanceHistoryModelClient = Pick<
 };
 
 export type UserBalanceDailySummaryOfDay = {
-  date: IsoDateString,
+  dateString: IsoDateString,
   endBalance: number,
   total: {[txnType in UserBalanceHistoryTxnType]?: number},
 };

@@ -13,12 +13,12 @@ export const getFlattenedDailySummary = ({
   request,
   data,
 }: GetFlattenedDailySummaryOpts): UserBalanceDailySummaryOfDay[] => {
-  const {startDate, endDate} = request;
+  const {startEpochMs, endEpochMs} = request;
   const {dataByDate, startingBalance} = data;
 
-  const currentDate = new Date(startDate);
+  const currentDate = new Date(startEpochMs);
   let currentBalance = startingBalance;
-  const terminal = new Date(endDate);
+  const terminal = new Date(endEpochMs);
 
   const ret: UserBalanceDailySummaryOfDay[] = [];
 
@@ -28,7 +28,7 @@ export const getFlattenedDailySummary = ({
 
     if (!dataAtCurrent) {
       dataAtCurrent = {
-        date: currentDateString,
+        dateString: currentDateString,
         endBalance: currentBalance,
         total: {},
       };

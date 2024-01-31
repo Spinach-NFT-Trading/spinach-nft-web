@@ -1,13 +1,13 @@
 'use client';
 import React from 'react';
 
-import {toIsoUtcDateString} from '@spinach/common/utils/date';
 import {isNotNullish} from '@spinach/common/utils/type';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {useAdminLookBackInput} from '@spinach/next/ui/admin/common/lookback/hook';
 import {AdminMemberDataLookBackInput} from '@spinach/next/ui/admin/common/lookback/main';
+import {generateDataLookBackRequestOfSameDay} from '@spinach/next/ui/admin/common/lookback/utils';
 import {AdminMemberActivitySummary} from '@spinach/next/ui/admin/common/summary/main';
 import {AgentIdContext} from '@spinach/next/ui/admin/context';
 import {AdminDataSearchInputUi} from '@spinach/next/ui/admin/input/main';
@@ -22,16 +22,12 @@ type Props = {
 
 export const AdminMembers = ({isAdmin}: Props) => {
   const agentId = React.useContext(AgentIdContext);
-  const todayDateStr = toIsoUtcDateString(new Date());
   const [input, setInput] = React.useState<AdminMembersFilterInput>({
     key: 'username',
     value: '',
   });
   const inputControl = useAdminLookBackInput({
-    initialRequest: {
-      startDate: todayDateStr,
-      endDate: todayDateStr,
-    },
+    initialRequest: generateDataLookBackRequestOfSameDay(),
     getDataLoadingOpts: (state) => ({
       type: 'adminMemberList',
       opts: {...state, agentId},
