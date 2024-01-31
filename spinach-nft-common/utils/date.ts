@@ -3,7 +3,13 @@ import {format} from 'date-fns/format';
 import {DateDelta, IsoDateString} from '@spinach/common/types/common/date';
 
 
-export const toIsoUtcDateString = (date: Date): IsoDateString => date.toISOString().slice(0, 10) as IsoDateString;
+export const toIsoLocalDateStringFromEpochMs = (epochMs: number): IsoDateString => {
+  if (isNaN(epochMs)) {
+    return toIsoLocalDateString(new Date(0));
+  }
+
+  return toIsoLocalDateString(new Date(epochMs));
+};
 
 export const toIsoLocalDateString = (date: Date): IsoDateString => format(date, 'yyyy-MM-dd') as IsoDateString;
 
