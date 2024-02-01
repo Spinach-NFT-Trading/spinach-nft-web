@@ -18,7 +18,7 @@ import {
   getVerifiedBankDetailsOfUser,
 } from '@spinach/next/controller/user/bankDetails';
 import {getUnverifiedUsers, getUserDataMap} from '@spinach/next/controller/user/info';
-import {getAccountMemberListByAgent, getUserInfoList} from '@spinach/next/controller/user/members';
+import {getAccountMemberListByAgent, getUserInfoById, getUserInfoList} from '@spinach/next/controller/user/members';
 import {NftListingData} from '@spinach/next/types/nft';
 import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 import {UserLazyLoadedData} from '@spinach/next/types/userData/main';
@@ -79,10 +79,16 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
   }
 
   if (type === 'adminMemberList') {
-    const members = await getUserInfoList({
-      executorUserId: accountId,
-      agentId: options.opts.agentId,
-    });
+    const [agent, members] = await Promise.all([
+      getUserInfoById({
+        executorUserId: accountId,
+        userId: options.opts.agentId,
+      }),
+      getUserInfoList({
+        executorUserId: accountId,
+        agentId: options.opts.agentId,
+      }),
+    ]);
     const balanceActivityMap = await getUserBalanceActivityMap({
       executorUserId: accountId,
       userIdsToCheck: members.map(({id}) => new ObjectId(id)),
@@ -90,6 +96,7 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
     });
 
     return {
+      agent,
       members,
       balanceActivityMap,
     } satisfies UserLazyLoadedData['adminMemberList'];

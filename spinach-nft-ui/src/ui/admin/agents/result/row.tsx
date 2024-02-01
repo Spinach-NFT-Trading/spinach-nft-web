@@ -8,9 +8,9 @@ import clsx from 'clsx';
 import {FlexButton} from '@spinach/next/components/layout/flex/button';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {UserBalanceActivityMap} from '@spinach/next/types/mongo/balance';
+import {AdminAgentName} from '@spinach/next/ui/admin/common/agent';
 import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/common/cell/monetary/main';
 import {getSumOfBalanceActivity} from '@spinach/next/ui/admin/common/utils';
-import {formatUserName} from '@spinach/next/utils/data/user';
 
 
 type Props = {
@@ -33,8 +33,8 @@ export const AdminAgentRow = ({
 
   return (
     <Flex direction="row" noFullWidth className="gap-1">
-      <Flex noFullWidth className={clsx('w-52 justify-center', !agent && 'text-slate-400')}>
-        {agent ? formatUserName(agent) : '(無代理)'}
+      <Flex noFullWidth className="w-52 justify-center">
+        <AdminAgentName agent={agent}/>
       </Flex>
       <AdminMemberMonetaryCell value={getSumOfBalanceActivity({
         activities,

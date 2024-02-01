@@ -5,6 +5,7 @@ import {isNotNullish} from '@spinach/common/utils/type';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';
+import {AdminAgentName} from '@spinach/next/ui/admin/common/agent';
 import {useAdminLookBackInput} from '@spinach/next/ui/admin/common/lookback/hook';
 import {AdminMemberDataLookBackInput} from '@spinach/next/ui/admin/common/lookback/main';
 import {generateDataLookBackRequestOfSameDay} from '@spinach/next/ui/admin/common/lookback/utils';
@@ -39,7 +40,10 @@ export const AdminMembers = ({isAdmin}: Props) => {
 
   return (
     <Flex className="gap-2">
-      <div className="text-2xl">會員資訊</div>
+      <Flex direction="row" noFullWidth className="items-end gap-2">
+        <span className="text-2xl">會員資訊</span>
+        <AdminAgentName agent={response?.agent}/>
+      </Flex>
       <AdminDataSearchInputUi
         input={input}
         setInput={setInput}

@@ -29,6 +29,7 @@ export type ResponseOfUnverifiedGoldTxn = {
 };
 
 export type ResponseOfAdminMemberList = {
+  agent: UserInfo | null,
   members: UserInfo[],
   balanceActivityMap: UserBalanceActivityMap,
 };
