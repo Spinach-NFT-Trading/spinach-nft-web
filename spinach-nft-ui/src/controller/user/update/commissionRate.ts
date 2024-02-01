@@ -18,6 +18,10 @@ export const updateUserCommissionRate = async ({
 }: UpdateUserCommissionRateOpts): Promise<ApiErrorCode | null> => {
   await throwIfNotAdmin(executorUserId);
 
+  if (commissionRate > 0.1) {
+    return 'commissionOverLimit';
+  }
+
   const result = await userInfoCollection.updateOne(
     {_id: new ObjectId(targetId)},
     {$set: {commissionRate}},

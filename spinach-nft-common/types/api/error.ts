@@ -28,6 +28,7 @@ export const apiErrorCode = [
   'bankDetailsAlreadyExist',
   'bankDetailsUploadFailed',
   'bankDetailsNotFound',
+  'commissionOverLimit',
 ] as const;
 
 export interface TApiErrorCode extends TString {

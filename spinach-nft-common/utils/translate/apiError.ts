@@ -28,6 +28,7 @@ const apiErrorStringMap: {[code in ApiErrorCode]: string} = {
   bankDetailsNotFound: '銀行帳號不存在。',
   bankDetailsAlreadyExist: '銀行帳號已存在。',
   bankDetailsUploadFailed: '銀行帳號上傳失敗。',
+  commissionOverLimit: '超過退傭上限。',
 };
 
 export const translateApiError = (error: string): string => {
