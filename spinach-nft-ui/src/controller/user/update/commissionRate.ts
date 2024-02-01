@@ -1,3 +1,4 @@
+import {commissionRateLimit} from '@spinach/common/const/user';
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {ObjectId} from 'mongodb';
@@ -18,7 +19,7 @@ export const updateUserCommissionRate = async ({
 }: UpdateUserCommissionRateOpts): Promise<ApiErrorCode | null> => {
   await throwIfNotAdmin(executorUserId);
 
-  if (commissionRate > 0.1) {
+  if (commissionRate > commissionRateLimit) {
     return 'commissionOverLimit';
   }
 

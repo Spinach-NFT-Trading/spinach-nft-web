@@ -7,20 +7,20 @@ import {InputBox} from '@spinach/next/components/shared/common/input/box';
 
 
 type Props = {
-  commissionRate: number,
-  setCommissionRate: (commissionRate: number) => void,
+  initialCommissionRate: number,
   isAdmin: boolean,
   disabled: boolean,
   onUpload: (commissionRate: number) => Promise<void>,
 };
 
 export const AdminMemberCommissionSettingsCell = ({
-  commissionRate,
-  setCommissionRate,
+  initialCommissionRate,
   isAdmin,
   disabled,
   onUpload,
 }: Props) => {
+  const [commissionRate, setCommissionRate] = React.useState(initialCommissionRate);
+
   const actualDisabled= disabled || !isAdmin;
 
   return (
@@ -30,12 +30,16 @@ export const AdminMemberCommissionSettingsCell = ({
         type="number"
         className="w-full text-center"
         disabled={actualDisabled}
+        min={0}
+        max={10}
+        step={0.1}
         onChange={({target}) => {
           if (!target.value) {
             setCommissionRate(0);
+            return;
           }
 
-          const commissionRate = parseFloat(target.value);
+          const commissionRate = parseFloat(Number(target.value).toFixed(1));
 
           if (isNaN(commissionRate)) {
             return;

@@ -77,7 +77,10 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo, lookBackInputCo
               member: data,
             })}
             onUpdateError={(error) => setError(error)}
-            onUpdatedMember={() => setInputAndSend((original) => original)}
+            onUpdatedMember={() => {
+              setInputAndSend((original) => original);
+              setError(null);
+            }}
           />
         )}
       />

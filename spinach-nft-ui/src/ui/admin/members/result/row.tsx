@@ -6,9 +6,11 @@ import LockClosedIcon from '@heroicons/react/24/solid/LockClosedIcon';
 import LockOpenIcon from '@heroicons/react/24/solid/LockOpenIcon';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {UserInfo} from '@spinach/common/types/common/user';
+import {signIn} from 'next-auth/react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {VerificationStatusUi} from '@spinach/next/components/shared/common/verified';
+import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {UserBalanceActivity} from '@spinach/next/types/mongo/balance';
 import {UserDataActor} from '@spinach/next/types/userData/main';
 import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/common/cell/monetary/main';
@@ -47,6 +49,13 @@ export const AdminMemberRow = ({
     isSuspended,
     commissionRate,
   } = member;
+
+  const {act: actorWithToast} = useUserDataActor({statusToast: true});
+
+  if (!actorWithToast) {
+    void signIn();
+    return null;
+  }
 
   return (
     <Flex direction="row" noFullWidth className="gap-1">
@@ -110,12 +119,11 @@ export const AdminMemberRow = ({
       <AdminMemberMonetaryCell applySignStyle value={balanceActivity?.byTxnType['deposit.crypto']}/>
       <AdminMemberMonetaryCell applySignStyle value={0}/>
       <AdminMemberCommissionSettingsCell
-        commissionRate={commissionRate}
-        setCommissionRate={(commissionRate) => onUpdatedMember({...member, commissionRate})}
+        initialCommissionRate={commissionRate}
         isAdmin={isAdmin}
         disabled={controlDisabled}
         onUpload={async (commissionRate) => {
-          const session = await act({
+          const session = await actorWithToast({
             action: 'request',
             options: {
               type: 'admin.member.update.commission',
@@ -126,6 +134,7 @@ export const AdminMemberRow = ({
           const error = session?.user.jwtUpdateError;
           if (error) {
             onUpdateError(error);
+            return;
           }
 
           onUpdatedMember({...member, commissionRate});
