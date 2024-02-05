@@ -56,6 +56,7 @@ export type UserDataRequestOpts = {
   type: 'admin.verify.account',
   data: {
     targetId: string,
+    pass: boolean,
   },
 } | {
   type: 'admin.verify.bank' | 'admin.verify.gold.twBank',

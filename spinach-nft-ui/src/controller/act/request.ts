@@ -68,7 +68,7 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
       targetId: data.targetId,
       status: {
         original: 'unverified',
-        new: 'verified',
+        new: options.data.pass ? 'verified' : 'rejected',
       },
     });
   }
