@@ -15,6 +15,7 @@ export const AdminVerificationRow = <TData, >({
   getInfo,
   getImageRequestPayload,
   getPopupData,
+  hideOtherInfo,
 }: Props<TData>) => {
   const payload = getPopupData(data);
 
@@ -25,18 +26,21 @@ export const AdminVerificationRow = <TData, >({
   return (
     <>
       {getInfo(data)}
-      <FlexButton
-        className="button-clickable-bg items-center gap-1 p-1"
-        onClick={() => setState((original) => ({
-          ...original,
-          show: true,
-          type: 'other',
-          payload,
-        }))}
-      >
-        <InformationCircleIcon className="h-6 w-6"/>
-        <span>其他資訊</span>
-      </FlexButton>
+      {
+        !hideOtherInfo &&
+        <FlexButton
+          className="button-clickable-bg items-center gap-1 p-1"
+          onClick={() => setState((original) => ({
+            ...original,
+            show: true,
+            type: 'other',
+            payload,
+          }))}
+        >
+          <InformationCircleIcon className="h-6 w-6"/>
+          <span>其他資訊</span>
+        </FlexButton>
+      }
       {getImageRequestPayload(data).map((payload) => (
         <button
           key={payload.imageName}

@@ -23,4 +23,5 @@ export type AdminVerificationRowProps<TData> = {
   getInfo: (data: TData) => React.ReactNode,
   getImageRequestPayload: (data: TData) => AdminVerificationImageRequestPayload[],
   getPopupData: (data: TData) => AdminVerificationPopupData<TData> | null,
+  hideOtherInfo?: boolean,
 };

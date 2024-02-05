@@ -73,13 +73,8 @@ export const AdminVerifyBankResults = ({data, input}: Props) => {
       onVerified={(verified) => setBankDetails((original) => (
         original.filter(({uuid}) => uuid !== verified.data.uuid)
       ))}
-      renderOtherInfo={({data}) => (
-        <Flex className="gap-1">
-          <AdminVerificationDataCell title="持有人姓名" info={userDataMap[data.userId]?.name}/>
-          <AdminVerificationDataCell title="銀行代碼" info={data.code}/>
-          <AdminVerificationDataCell title="銀行帳號" info={data.account}/>
-        </Flex>
-      )}
+      renderOtherInfo={() => null}
+      hideOtherInfo
     />
   );
 };
