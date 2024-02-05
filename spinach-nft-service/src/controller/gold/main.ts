@@ -36,8 +36,8 @@ export const recordTxnTracked = async (txn: TrxWalletTransferResponseData[]): Pr
 
     return {trackedTxn, newTxnCount: result.insertedCount};
   } catch (e) {
-    console.error('Failed to record tracked TxN', e);
     if (!(e instanceof MongoBulkWriteError)) {
+      console.error('Failed to record tracked TxN', e);
       throw e;
     }
 
