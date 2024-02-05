@@ -3,7 +3,7 @@ import {isNotNullish} from '@spinach/common/utils/type';
 
 
 export const getOwnedCryptoWallets = async (): Promise<string[]> => {
-  return (await txnWalletCollection.find({}, {projection: {_id: false}})
+  return (await txnWalletCollection.find({channel: 'crypto'}, {projection: {_id: false}})
     .map((wallet) => {
       if (wallet.channel !== 'crypto') {
         return null;
