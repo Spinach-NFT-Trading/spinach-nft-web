@@ -56,8 +56,15 @@ const config: Config = {
   },
   plugins: [
     require('@savvywombat/tailwindcss-grid-areas'),
-    plugin(({addVariant}) => {
-      addVariant('not-last', '&:not(:last-child)');
+    plugin(({addUtilities}) => {
+      addUtilities(
+        {
+          '.filter-logo': {
+            filter: 'brightness(0) saturate(100%) invert(68%) sepia(72%)' +
+              ' saturate(3539%) hue-rotate(9deg) brightness(89%) contrast(97%)',
+          },
+        },
+      );
     }),
   ],
 };

@@ -19,7 +19,7 @@ export const NavHomepage = () => {
           alt={projectName}
           sizes={imageGallerySizes}
           noCover
-          className="invert-hoverable object-contain"
+          className="invert-hoverable object-contain filter-logo"
         />
       </div>
       <div className="relative hidden h-8 w-24 md:block">
@@ -28,7 +28,7 @@ export const NavHomepage = () => {
           alt={projectName}
           sizes={imageGallerySizes}
           noCover
-          className="invert-hoverable object-contain"
+          className="invert-hoverable object-contain filter-logo"
         />
       </div>
     </FlexLink>
