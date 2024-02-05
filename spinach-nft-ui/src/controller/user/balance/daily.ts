@@ -32,7 +32,7 @@ export const getUserBalanceDailySummary = async ({
     {
       $group: {
         _id: {
-          date: {$dateTrunc: {date: '$_id', unit: 'day', timezone: request.ianaTimezone}},
+          date: {$dateToString: {date: '$_id', timezone: request.ianaTimezone, format: '%Y-%m-%d'}},
           type: '$type',
         },
         txn: {$push: '$$ROOT'},
@@ -54,7 +54,7 @@ export const getUserBalanceDailySummary = async ({
     {
       $project: {
         _id: false,
-        dateString: {$dateToString: {date: '$_id', format: '%Y-%m-%d'}},
+        dateString: '$_id',
         endBalance: '$endBalance',
         total: {$arrayToObject: '$total'},
       },
