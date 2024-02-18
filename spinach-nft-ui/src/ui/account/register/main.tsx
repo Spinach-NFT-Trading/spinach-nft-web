@@ -17,7 +17,7 @@ export const AccountRegister = async ({searchParams}: AccountRegisterPageProps) 
   }
 
   return (
-    <UserControlLayout>
+    <UserControlLayout disableHomePageLink>
       <AccountRegisterClient {...searchParams}/>
     </UserControlLayout>
   );

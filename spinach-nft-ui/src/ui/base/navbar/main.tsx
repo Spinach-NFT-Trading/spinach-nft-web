@@ -10,14 +10,14 @@ import {NavBarProps} from '@spinach/next/ui/base/navbar/type';
 import {UserControl} from '@spinach/next/ui/base/navbar/user/main';
 
 
-export const NavBar = ({hideUserControl}: NavBarProps) => {
+export const NavBar = ({disableHomePageLink, hideUserControl}: NavBarProps) => {
   const session = React.use(getServerSession(authOptions));
 
   return (
     <Flex direction="row" center className={clsx(
       'sticky top-0 z-30 h-16 gap-1.5 border-b border-b-gray-700 p-2 text-lg backdrop-blur-lg lg:px-32',
     )}>
-      <NavBarClient session={session}/>
+      <NavBarClient disableHomePageLink={disableHomePageLink} session={session}/>
       {!hideUserControl && <UserControl/>}
     </Flex>
   );

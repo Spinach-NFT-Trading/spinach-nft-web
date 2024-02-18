@@ -5,9 +5,13 @@ import {NextImage} from '@spinach/next/components/shared/common/image/main';
 import {PageLayout} from '@spinach/next/ui/base/layout/base/common';
 
 
-export const UserControlLayout = ({children}: React.PropsWithChildren) => {
+type Props = {
+  disableHomePageLink?: boolean,
+};
+
+export const UserControlLayout = ({disableHomePageLink, children}: React.PropsWithChildren<Props>) => {
   return (
-    <PageLayout hideUserControl>
+    <PageLayout disableHomePageLink={disableHomePageLink} hideUserControl>
       <Flex direction="row">
         <Flex className="self-center md:basis-5/12 xl:basis-4/12">
           {children}

@@ -1,18 +1,15 @@
 import React from 'react';
 
 import {projectName} from '@spinach/common/const/project';
-import clsx from 'clsx';
 
-import {FlexLink} from '@spinach/next/components/layout/flex/link';
+import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NextImage} from '@spinach/next/components/shared/common/image/main';
 import {imageGallerySizes} from '@spinach/next/styles/image';
 
 
-export const NavHomepage = () => {
+export const NavHomepageContent = () => {
   return (
-    <FlexLink href="/" className={clsx(
-      'transform-smooth nav-height button-bg-hover group sticky left-0 items-end rounded-lg px-1.5',
-    )}>
+    <Flex direction="row" noFullWidth className="nav-height items-end px-1.5">
       <div className="nav-height relative w-14">
         <NextImage
           src="/logo-half.png"
@@ -31,6 +28,6 @@ export const NavHomepage = () => {
           className="invert-hoverable object-contain filter-logo"
         />
       </div>
-    </FlexLink>
+    </Flex>
   );
 };

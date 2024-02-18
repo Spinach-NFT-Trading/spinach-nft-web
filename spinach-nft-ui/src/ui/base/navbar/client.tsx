@@ -7,19 +7,20 @@ import {Session} from 'next-auth';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {useNavEntries} from '@spinach/next/hooks/nav';
 import {NavEntryUI} from '@spinach/next/ui/base/navbar/entry';
-import {NavHomepage} from '@spinach/next/ui/base/navbar/home';
+import {NavHomepage} from '@spinach/next/ui/base/navbar/home/main';
 
 
 type Props = {
-  session: Session | null;
+  disableHomePageLink?: boolean,
+  session: Session | null,
 };
 
-export const NavBarClient = ({session}: Props) => {
+export const NavBarClient = ({disableHomePageLink, session}: Props) => {
   const entries = useNavEntries();
 
   return (
     <>
-      <NavHomepage/>
+      <NavHomepage disableHomePageLink={disableHomePageLink}/>
       <Flex direction="row" className={clsx(
         'scrollbar-hide gap-1 overflow-x-auto overflow-y-hidden text-center text-sm text-gray-400',
       )}>
