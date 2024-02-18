@@ -26,7 +26,7 @@ export const AdminMemberNftTxnRow = ({
   const isBuying = txn.to === member.id;
 
   return (
-    <Flex direction="row" noFullWidth className="border-b-slate-400 p-2 not-last:border-b">
+    <Flex direction="row" noFullWidth className="not-last:border-b border-b-slate-400 p-2">
       <Flex center noFullWidth className="w-40">
         {format(txn.epochMs, 'yyyy-MM-dd HH:mm:ss')}
       </Flex>

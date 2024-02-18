@@ -54,7 +54,7 @@ export const AdminAgentsResults = ({
         data={infoListToShow}
         header={<AdminAgentHeader/>}
         getKey={(data) => data?.agentId}
-        classOfRow="w-max gap-1 border-b-slate-400 p-1 not-last:border-b"
+        classOfRow="not-last:border-b w-max gap-1 border-b-slate-400 p-1"
         renderRow={({data}) => {
           const {agentId} = data;
           if (!agentId) {

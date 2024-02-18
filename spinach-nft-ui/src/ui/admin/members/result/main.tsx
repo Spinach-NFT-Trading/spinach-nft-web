@@ -63,7 +63,7 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo, lookBackInputCo
         data={membersToShow}
         header={<AdminMemberSingleHeader/>}
         getKey={(data) => data?.id}
-        classOfRow="w-max gap-1 border-b-slate-400 p-1 not-last:border-b"
+        classOfRow="not-last:border-b w-max gap-1 border-b-slate-400 p-1"
         renderRow={({data}) => (
           <AdminMemberRow
             member={data}

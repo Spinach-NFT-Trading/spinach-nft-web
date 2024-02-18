@@ -1,7 +1,5 @@
 import React from 'react';
 
-import {Flex} from '@spinach/next/components/layout/flex/common';
-import {AdminVerificationDataCell} from '@spinach/next/components/shared/admin/verification/cell';
 import {AdminVerification} from '@spinach/next/components/shared/admin/verification/main';
 import {ResponseOfUnverifiedBankDetails} from '@spinach/next/types/userData/lazyLoaded';
 import {adminDataRowHeight} from '@spinach/next/ui/admin/const';
