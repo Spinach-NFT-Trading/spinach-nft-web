@@ -27,6 +27,7 @@ export const AccountRegisterForm = ({agent, setError}: AccountRegisterFormProps)
     lineId: '',
     wallet: '',
     username: '',
+    phone: '',
     password: '',
     // Step 3 - ID verification
     image: {
@@ -67,11 +68,12 @@ export const AccountRegisterForm = ({agent, setError}: AccountRegisterFormProps)
     <Flex className="gap-2">
       <AccountRegisterSmsVerification
         show={step === 'sms'}
-        onPhoneVerified={(phoneVerificationKey) => (
+        onPhoneVerified={({key, phone}) => (
           setInput((original) => ({
             ...original,
             step: 'info',
-            phoneVerificationKey,
+            phoneVerificationKey: key,
+            phone,
           } satisfies AccountRegisterInput))
         )}
       />

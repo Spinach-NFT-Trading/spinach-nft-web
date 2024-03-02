@@ -1,10 +1,11 @@
+import {smsVerifiedExpiry} from '@spinach/common/const/smsVerify';
 import {smsVerifyFinalizedCollection} from '@spinach/common/controller/collections/verify/sms';
 import {SmsVerifyOtp} from '@spinach/common/types/api/auth/verify/sms/common';
 import {SmsVerifyFinalizeResponseData} from '@spinach/common/types/api/auth/verify/sms/finalize';
 import {ApiErrorCode, isApiError} from '@spinach/common/types/api/error';
+import {SmsVerifyFinalizedData} from '@spinach/common/types/data/verify/sms';
 import {generateSecretKey} from '@spinach/common/utils/secret';
 
-import {smsVerifiedExpiry} from '@spinach/server/controller/auth/verify/sms/const';
 import {popPendingSmsVerification} from '@spinach/server/controller/auth/verify/sms/initial';
 
 
@@ -31,9 +32,9 @@ export const recordSmsVerifyFinalized = async ({
     expiry: new Date(new Date().getTime() + smsVerifiedExpiry * 1000),
   });
 
-  return {key: completedKey};
+  return {key: completedKey, phone};
 };
 
-export const isSmsVerificationKeyValid = async (key: string) => {
-  return !!await smsVerifyFinalizedCollection.findOne({key});
+export const getSmsVerifyFinalizedData = async (key: string): Promise<SmsVerifyFinalizedData | null> => {
+  return await smsVerifyFinalizedCollection.findOne({key});
 };

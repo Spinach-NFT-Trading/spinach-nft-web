@@ -1,3 +1,5 @@
+import {smsVerificationExpiry} from '@spinach/common/const/smsVerify';
+import {userInfoCollection} from '@spinach/common/controller/collections/user';
 import {
   smsVerifyFinalizedCollection,
   smsVerifyInitialCollection,
@@ -7,8 +9,6 @@ import {SmsVerifyInitialResponseData} from '@spinach/common/types/api/auth/verif
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {SmsVerifyInitialData} from '@spinach/common/types/data/verify/sms';
 import {generateSecretKey} from '@spinach/common/utils/secret';
-
-import {smsVerificationExpiry} from '@spinach/server/controller/auth/verify/sms/const';
 
 
 type RecordSmsVerifyInitialOpts = {
@@ -26,6 +26,10 @@ export const recordSmsVerifyInitialize = async ({
 
   if (await smsVerifyFinalizedCollection.findOne({phone})) {
     return 'smsPhoneUsed';
+  }
+
+  if (await userInfoCollection.findOne({phone})) {
+    return 'smsPhoneRegistered';
   }
 
   const key = generateSecretKey();

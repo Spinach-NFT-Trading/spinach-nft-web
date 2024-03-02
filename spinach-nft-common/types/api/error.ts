@@ -23,6 +23,7 @@ export const apiErrorCode = [
   'smsSendFailed',
   'smsPhoneInvalid',
   'smsPhoneUsed',
+  'smsPhoneRegistered',
   'smsCodeInvalid',
   'idNumberInvalid',
   'bankDetailsAlreadyExist',

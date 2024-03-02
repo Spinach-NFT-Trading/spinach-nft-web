@@ -9,7 +9,7 @@ import {checkTrxAddress} from '@spinach/common/utils/tron/address';
 import {ObjectId} from 'mongodb';
 
 import {RegisterUserResult} from '@spinach/server/controller/auth/type';
-import {isSmsVerificationKeyValid} from '@spinach/server/controller/auth/verify/sms/finalize';
+import {getSmsVerifyFinalizedData} from '@spinach/server/controller/auth/verify/sms/finalize';
 import {RegisterAsAdminLineIdKey} from '@spinach/server/env';
 
 
@@ -70,7 +70,8 @@ export const registerUser = async ({
     return 'walletInvalid';
   }
 
-  if (!await isSmsVerificationKeyValid(phoneVerificationKey)) {
+  const smsVerifyData = await getSmsVerifyFinalizedData(phoneVerificationKey);
+  if (!smsVerifyData) {
     return 'smsPhoneInvalid';
   }
 
@@ -83,6 +84,7 @@ export const registerUser = async ({
     birthday,
     lineId,
     wallet,
+    phone: smsVerifyData.phone,
     status: 'unverified',
     isAdmin: lineId === RegisterAsAdminLineIdKey,
     isAgent: false,
@@ -122,6 +124,7 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     birthday,
     lineId,
     wallet,
+    phone,
     status,
     isAdmin,
     isAgent,
@@ -139,6 +142,7 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     birthday,
     lineId,
     wallet,
+    phone,
     status,
     isAdmin,
     isAgent,

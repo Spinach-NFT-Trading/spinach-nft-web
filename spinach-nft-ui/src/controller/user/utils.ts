@@ -13,6 +13,7 @@ export const toUserData = ({
   birthday,
   lineId,
   wallet,
+  phone,
   recruitedBy,
 }: WithId<UserModel>): UserData => {
   return {
@@ -23,6 +24,7 @@ export const toUserData = ({
     birthday,
     lineId,
     wallet,
+    phone,
     recruitedBy,
   };
 };

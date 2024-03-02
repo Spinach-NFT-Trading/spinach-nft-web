@@ -5,6 +5,7 @@ import {apiPath} from '@spinach/common/const/path';
 import {
   SmsVerifyFinalizeRequest,
   SmsVerifyFinalizeResponse,
+  SmsVerifyFinalizeResponseData,
 } from '@spinach/common/types/api/auth/verify/sms/finalize';
 import {SmsVerifyInitialRequest, SmsVerifyInitialResponse} from '@spinach/common/types/api/auth/verify/sms/initial';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
@@ -22,7 +23,7 @@ import {sendApiPost} from '@spinach/next/utils/api/common';
 
 type Props = {
   show: boolean,
-  onPhoneVerified: (key: string) => void,
+  onPhoneVerified: (response: SmsVerifyFinalizeResponseData) => void,
 };
 
 export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) => {
@@ -88,7 +89,7 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
       finalized: true,
       error: null,
     }));
-    onPhoneVerified(response.data.key);
+    onPhoneVerified(response.data);
   };
 
   const disableInit = loading || initialized;

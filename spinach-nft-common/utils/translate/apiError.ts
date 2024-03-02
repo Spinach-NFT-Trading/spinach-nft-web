@@ -1,3 +1,4 @@
+import {smsVerifiedExpiry} from '@spinach/common/const/smsVerify';
 import {ApiErrorCode, isApiError} from '@spinach/common/types/api/error';
 
 
@@ -21,8 +22,9 @@ const apiErrorStringMap: {[code in ApiErrorCode]: string} = {
   walletNotExist: '錢包地址不存在。',
   smsSendFailed: '驗證簡訊傳送失敗。',
   smsAlreadyRequested: '已要求傳送驗證簡訊，請稍後再試。',
-  smsPhoneInvalid: '手機號碼無效。',
-  smsPhoneUsed: '手機號碼已被使用。',
+  smsPhoneInvalid: '手機號碼驗證無效或已失效。請重新驗證手機號碼。',
+  smsPhoneUsed: `手機號碼已被使用。請於 ${(smsVerifiedExpiry / 60).toFixed(0)} 分鐘後重試。`,
+  smsPhoneRegistered: '手機號碼已註冊。',
   smsCodeInvalid: '驗證碼無效。',
   idNumberInvalid: '無效的身份證字號。',
   bankDetailsNotFound: '銀行帳號不存在。',

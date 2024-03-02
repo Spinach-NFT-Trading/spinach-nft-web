@@ -38,8 +38,12 @@
     ],
     "baseUrl": "./",
     "paths": {
-      "@spinach/next/*": ["./src/*"],
-      "@spinach/common/*": ["../spinach-nft-common/*"]
+      "@spinach/next/*": [
+        "./src/*"
+      ],
+      "@spinach/common/*": [
+        "../spinach-nft-common/*"
+      ]
     }
   },
   "include": [
