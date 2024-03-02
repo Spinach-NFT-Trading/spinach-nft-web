@@ -12,9 +12,10 @@ import {formatInt} from '@spinach/next/utils/number';
 
 export type Props = {
   nft: NftListingData,
+  isOnSale: boolean,
 };
 
-export const NftListingSingle = ({nft}: Props) => {
+export const NftListingSingle = ({nft, isOnSale}: Props) => {
   const {id, image, isLimited, seqId, price} = nft;
 
   return (
@@ -38,13 +39,16 @@ export const NftListingSingle = ({nft}: Props) => {
           {formatInt(price)} GOLD
         </Flex>
       </Flex>
-      <Flex noFullWidth>
-        <FlexLink href={`/nft/purchase/${id}`} className="button-clickable-bg p-3">
-          <div className="h-10 w-10">
-            <ShoppingCartIcon/>
-          </div>
-        </FlexLink>
-      </Flex>
+      {
+        isOnSale &&
+        <Flex noFullWidth>
+          <FlexLink href={`/nft/purchase/${id}`} className="button-clickable-bg p-3">
+            <div className="h-10 w-10">
+              <ShoppingCartIcon/>
+            </div>
+          </FlexLink>
+        </Flex>
+      }
     </Flex>
   );
 };

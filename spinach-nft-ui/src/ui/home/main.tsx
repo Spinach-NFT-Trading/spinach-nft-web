@@ -28,7 +28,7 @@ export const Home = async () => {
     <PageLayout>
       <Flex className="gap-2">
         <HomeHeader session={session} currentFx={currentFx}/>
-        <NftListing nfts={nfts}/>
+        <NftListing nftListings={nfts} isOnSale/>
         <HomeFooter/>
         <Flex className="text-right text-sm md:flex-row md:justify-between">
           <div>&copy; 2018 - 2023 Ozone Networks, Inc.</div>

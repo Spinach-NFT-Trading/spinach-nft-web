@@ -16,7 +16,7 @@ export const AccountNftPositionClient = () => {
         }}
         loadingText="NFT"
         content={(data) => (
-          <NftListing nfts={data?.nftPosition ?? []}/>
+          <NftListing nftListings={data?.nftPosition ?? []} isOnSale={false}/>
         )}
       />
     </Flex>
