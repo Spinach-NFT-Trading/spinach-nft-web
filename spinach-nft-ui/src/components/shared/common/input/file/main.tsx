@@ -32,14 +32,7 @@ export const InputFile = ({id, title, accept, onFileSelected, onFileTypeIncorrec
         type="file"
         className="peer hidden"
         onChange={async ({target}) => {
-          const files = target.files;
-
-          if (!files) {
-            onFileSelected(null);
-            return;
-          }
-
-          const file = files.item(0);
+          const file = target.files?.item(0);
           if (!file) {
             return;
           }
