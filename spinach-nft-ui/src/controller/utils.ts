@@ -29,3 +29,9 @@ export const throwIfNotAdminOrAgent = async (userId: string | undefined) => {
 
   return user;
 };
+
+export const isSuspended = async (userId: string | undefined): Promise<boolean> => {
+  const user = await getUserById(userId);
+
+  return !!user && user.isSuspended;
+};

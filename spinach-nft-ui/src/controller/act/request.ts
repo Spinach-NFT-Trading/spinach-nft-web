@@ -10,6 +10,7 @@ import {markUserStatus} from '@spinach/next/controller/user/status';
 import {markUserAgent} from '@spinach/next/controller/user/update/agent';
 import {updateUserCommissionRate} from '@spinach/next/controller/user/update/commissionRate';
 import {markUserSuspended} from '@spinach/next/controller/user/update/suspended';
+import {isSuspended} from '@spinach/next/controller/utils';
 import {UserDataRequestOpts} from '@spinach/next/types/userData/upload';
 
 
@@ -20,6 +21,10 @@ type HandleUserRequestOpts = {
 
 export const handleUserRequest = async ({accountId, options}: HandleUserRequestOpts): Promise<ApiErrorCode | null> => {
   const {type, data} = options;
+
+  if (await isSuspended(accountId)) {
+    return 'accountDisabled';
+  }
 
   if (type === 'exchange.gold.crypto') {
     return recordGoldPendingTxn({account: accountId});

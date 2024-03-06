@@ -19,6 +19,7 @@ import {
 } from '@spinach/next/controller/user/bankDetails';
 import {getUnverifiedUsers, getUserDataMap} from '@spinach/next/controller/user/info';
 import {getAccountMemberListByAgent, getUserInfoById, getUserInfoList} from '@spinach/next/controller/user/members';
+import {isSuspended} from '@spinach/next/controller/utils';
 import {NftListingData} from '@spinach/next/types/nft';
 import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 import {UserLazyLoadedData} from '@spinach/next/types/userData/main';
@@ -31,6 +32,10 @@ type GetUserLazyDataOpts = {
 
 const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
   const type = options.type;
+
+  if (await isSuspended(accountId)) {
+    return 'accountDisabled';
+  }
 
   if (type === 'nftPosition') {
     const nftInfo = await (await getNftPositionInfo(new ObjectId(accountId))).toArray();

@@ -43,7 +43,13 @@ export const authOptions: AuthOptions = {
         isAdmin,
         isAgent,
         status,
+        isSuspended,
       } = userInfo;
+
+      if (isSuspended) {
+        throw new Error(`User @${username} is suspended`);
+      }
+
       token = {
         id: token.id,
         sub: token.sub,
@@ -52,6 +58,7 @@ export const authOptions: AuthOptions = {
         email,
         isAdmin,
         isAgent,
+        isSuspended,
         status,
         jwtUpdateError: null,
         action: null,
@@ -100,6 +107,7 @@ export const authOptions: AuthOptions = {
         lazyLoaded,
         isAdmin: token.isAdmin,
         isAgent: token.isAgent,
+        isSuspended: token.isSuspended,
       };
 
       return session;

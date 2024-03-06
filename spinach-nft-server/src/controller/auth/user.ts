@@ -133,6 +133,10 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     recruitedBy,
   } = info;
 
+  if (isSuspended) {
+    return 'accountDisabled';
+  }
+
   return {
     id: _id.toHexString(),
     idNumber,

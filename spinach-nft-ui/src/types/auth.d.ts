@@ -13,6 +13,7 @@ export type CommonUserData = {
   status: VerificationStatus,
   isAdmin: boolean,
   isAgent: boolean,
+  isSuspended: boolean,
 };
 
 declare module 'next-auth' {
