@@ -4,7 +4,7 @@ import {ObjectId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {toIdRangeFromLookBackRequest} from '@spinach/next/controller/user/utils';
-import {throwIfNotAdminOrAgent} from '@spinach/next/controller/utils';
+import {throwIfNotElevated} from '@spinach/next/controller/utils';
 import {UserBalanceActivity, UserBalanceActivityMap} from '@spinach/next/types/mongo/balance';
 import {DataLookBackRequest} from '@spinach/next/types/userData/load';
 
@@ -27,7 +27,7 @@ export const getUserBalanceActivityMap = async ({
   userIdsToCheck,
   ...request
 }: GetUserBalanceActivityOpts): Promise<UserBalanceActivityMap> => {
-  await throwIfNotAdminOrAgent(executorUserId);
+  await throwIfNotElevated(executorUserId);
 
   const aggregated = userBalanceCollection.aggregate<UserBalanceActivityAggregated>([
     {

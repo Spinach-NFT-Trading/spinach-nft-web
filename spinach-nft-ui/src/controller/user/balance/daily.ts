@@ -6,7 +6,7 @@ import {ObjectId} from 'mongodb';
 import {getUserBalanceAtDay} from '@spinach/next/controller/user/balance/atDay';
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {toIdRangeFromLookBackRequest} from '@spinach/next/controller/user/utils';
-import {throwIfNotAdmin} from '@spinach/next/controller/utils';
+import {throwIfNotPrivileged} from '@spinach/next/controller/utils';
 import {UserBalanceDailySummary} from '@spinach/next/types/mongo/balance';
 import {DataLookBackRequestOnUser} from '@spinach/next/types/userData/load';
 
@@ -24,7 +24,7 @@ export const getUserBalanceDailySummary = async ({
   ...request
 }: GetUserBalanceDailySummaryOpts): Promise<UserBalanceDailySummary> => {
   const userId = new ObjectId(request.userId);
-  await throwIfNotAdmin(executorUserId);
+  await throwIfNotPrivileged(executorUserId);
 
   const idRange = toIdRangeFromLookBackRequest(request);
   const result = userBalanceCollection.aggregate<UserBalanceDailySummaryAggregated>([

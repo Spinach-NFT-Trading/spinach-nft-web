@@ -3,6 +3,7 @@ import React from 'react';
 
 import {useTabbedContentControl} from '@spinach/next/components/layout/tab/hook';
 import {TabbedContent} from '@spinach/next/components/layout/tab/main';
+import {CommonUserData} from '@spinach/next/types/auth';
 import {AdminMemberAgent} from '@spinach/next/ui/admin/agents/main';
 import {adminTabsAdminOnly} from '@spinach/next/ui/admin/const';
 import {AgentIdContext} from '@spinach/next/ui/admin/context';
@@ -14,19 +15,19 @@ import {AdminVerifyId} from '@spinach/next/ui/admin/verify/id/main';
 
 
 type Props = {
-  isAdmin: boolean,
+  user: CommonUserData,
 };
 
-export const AdminPageClient = ({isAdmin}: Props) => {
+export const AdminPageClient = ({user}: Props) => {
   const [agentId, setAgentId] = React.useState<string | null>(null);
-  const tabControl = useTabbedContentControl<AdminPageTab>(isAdmin ? 'agents' : 'members');
+  const tabControl = useTabbedContentControl<AdminPageTab>(user ? 'agents' : 'members');
 
   return (
     <AgentIdContext.Provider value={agentId}>
       <TabbedContent
         keys={[...adminPageTabs].filter((tab) => {
           if (adminTabsAdminOnly[tab]) {
-            return isAdmin;
+            return user;
           }
 
           return true;
@@ -40,14 +41,14 @@ export const AdminPageClient = ({isAdmin}: Props) => {
           verifyBankTxn: '驗證 GOLD 購買紀錄',
         }}
         content={{
-          agents: isAdmin ? <AdminMemberAgent onAgentSelected={(agentId) => {
+          agents: user ? <AdminMemberAgent onAgentSelected={(agentId) => {
             setAgentId(agentId);
             tabControl.setCurrent('members');
           }}/> : null,
-          members: <AdminMembers isAdmin={isAdmin}/>,
-          verifyId: isAdmin ? <AdminVerifyId/> : null,
-          verifyBankAccount: isAdmin ? <AdminVerifyBank/> : null,
-          verifyBankTxn: isAdmin ? <AdminVerifyGoldTxn/> : null,
+          members: <AdminMembers user={user}/>,
+          verifyId: user ? <AdminVerifyId/> : null,
+          verifyBankAccount: user ? <AdminVerifyBank/> : null,
+          verifyBankTxn: user ? <AdminVerifyGoldTxn/> : null,
         }}
         getReactKey={(key) => key}
         classOfContents="p-2"

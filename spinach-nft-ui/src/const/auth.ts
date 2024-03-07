@@ -41,6 +41,7 @@ export const authOptions: AuthOptions = {
         name,
         email,
         isAdmin,
+        isMod,
         isAgent,
         status,
         isSuspended,
@@ -57,6 +58,7 @@ export const authOptions: AuthOptions = {
         name,
         email,
         isAdmin,
+        isMod,
         isAgent,
         isSuspended,
         status,
@@ -106,6 +108,7 @@ export const authOptions: AuthOptions = {
         jwtUpdateError: token.jwtUpdateError,
         lazyLoaded,
         isAdmin: token.isAdmin,
+        isMod: token.isMod,
         isAgent: token.isAgent,
         isSuspended: token.isSuspended,
       };

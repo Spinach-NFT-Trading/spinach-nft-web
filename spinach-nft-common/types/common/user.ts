@@ -10,6 +10,7 @@ import {WalletSchemaBase} from '@spinach/common/types/common/wallet';
 export const UserPropertySchemaBase = {
   status: VerificationStatusSchema,
   isAdmin: Type.Boolean(),
+  isMod: Type.Boolean(),
   isAgent: Type.Boolean(),
   isSuspended: Type.Boolean(),
   commissionRate: Type.Number({minimum: 0, maximum: 1}),

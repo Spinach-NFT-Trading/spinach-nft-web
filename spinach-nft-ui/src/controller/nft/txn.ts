@@ -3,7 +3,7 @@ import {ObjectId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {toIdRangeFromLookBackRequest} from '@spinach/next/controller/user/utils';
-import {throwIfNotAdminOrAgent} from '@spinach/next/controller/utils';
+import {throwIfNotElevated} from '@spinach/next/controller/utils';
 import {NftTxnModelClient} from '@spinach/next/types/mongo/nft';
 import {DataLookBackRequestOnUser} from '@spinach/next/types/userData/load';
 
@@ -15,7 +15,7 @@ export const getNftTxnOfUser = async ({
   userId,
   ...request
 }: GetNftTxnOfUserOpts): Promise<NftTxnModelClient[]> => {
-  await throwIfNotAdminOrAgent(executorUserId);
+  await throwIfNotElevated(executorUserId);
 
   const userObjectId = new ObjectId(userId);
 

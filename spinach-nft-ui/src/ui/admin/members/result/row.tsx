@@ -11,6 +11,7 @@ import {signIn} from 'next-auth/react';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {VerificationStatusUi} from '@spinach/next/components/shared/common/verified';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
+import {CommonUserData} from '@spinach/next/types/auth';
 import {UserBalanceActivity} from '@spinach/next/types/mongo/balance';
 import {UserDataActor} from '@spinach/next/types/userData/main';
 import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/common/cell/monetary/main';
@@ -18,13 +19,13 @@ import {AdminMemberControlButton} from '@spinach/next/ui/admin/members/result/bu
 import {AdminMemberCommissionSettingsCell} from '@spinach/next/ui/admin/members/result/cell/commission/main';
 import {AdminMemberSingleControls} from '@spinach/next/ui/admin/members/result/control';
 import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/popup/type';
-import {formatUserName} from '@spinach/next/utils/data/user';
+import {formatUserName, isUserPrivileged} from '@spinach/next/utils/data/user';
 
 
 type Props = {
   member: UserInfo,
   balanceActivity: UserBalanceActivity | undefined,
-  isAdmin: boolean,
+  actor: CommonUserData,
   controlDisabled: boolean,
   act: UserDataActor,
   showPopup: (type: AdminMemberPopupType) => void,
@@ -35,7 +36,7 @@ type Props = {
 export const AdminMemberRow = ({
   member,
   balanceActivity,
-  isAdmin,
+  actor,
   controlDisabled,
   act,
   showPopup,
@@ -57,6 +58,8 @@ export const AdminMemberRow = ({
     return null;
   }
 
+  const isPrivileged = isUserPrivileged(actor);
+
   return (
     <Flex direction="row" noFullWidth className="gap-1">
       <Flex noFullWidth className="w-52 justify-center">
@@ -68,7 +71,7 @@ export const AdminMemberRow = ({
       <Flex noFullWidth center className="w-16">
         <AdminMemberControlButton
           text="代理"
-          isAdmin={isAdmin}
+          isUpdatable={isPrivileged}
           active={isAgent}
           disabled={controlDisabled}
           icon={{
@@ -91,7 +94,7 @@ export const AdminMemberRow = ({
           !member.isAdmin &&
           <AdminMemberControlButton
             text={isSuspended ? '停用' : '正常'}
-            isAdmin={isAdmin}
+            isUpdatable={isPrivileged}
             active={isSuspended}
             disabled={controlDisabled}
             icon={{
@@ -118,28 +121,31 @@ export const AdminMemberRow = ({
       <AdminMemberMonetaryCell applySignStyle value={balanceActivity?.byTxnType['deposit.twBank']}/>
       <AdminMemberMonetaryCell applySignStyle value={balanceActivity?.byTxnType['deposit.crypto']}/>
       <AdminMemberMonetaryCell applySignStyle value={0}/>
-      <AdminMemberCommissionSettingsCell
-        initialCommissionRate={commissionRate}
-        isAdmin={isAdmin}
-        disabled={controlDisabled}
-        onUpload={async (commissionRate) => {
-          const session = await actorWithToast({
-            action: 'request',
-            options: {
-              type: 'admin.member.update.commission',
-              data: {targetId: id, commissionRate},
-            },
-          });
+      {
+        actor.isAdmin &&
+        <AdminMemberCommissionSettingsCell
+          initialCommissionRate={commissionRate}
+          isAdmin={isPrivileged}
+          disabled={controlDisabled}
+          onUpload={async (commissionRate) => {
+            const session = await actorWithToast({
+              action: 'request',
+              options: {
+                type: 'admin.member.update.commission',
+                data: {targetId: id, commissionRate},
+              },
+            });
 
-          const error = session?.user.jwtUpdateError;
-          if (error) {
-            onUpdateError(error);
-            return;
-          }
+            const error = session?.user.jwtUpdateError;
+            if (error) {
+              onUpdateError(error);
+              return;
+            }
 
-          onUpdatedMember({...member, commissionRate});
-        }}
-      />
+            onUpdatedMember({...member, commissionRate});
+          }}
+        />
+      }
       <AdminMemberSingleControls showPopup={showPopup}/>
     </Flex>
   );

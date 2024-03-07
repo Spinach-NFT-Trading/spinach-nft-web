@@ -10,7 +10,7 @@ import {v4} from 'uuid';
 import {getDataAsArray, getDataAsMap} from '@spinach/next/controller/common';
 import {getUserInfoById} from '@spinach/next/controller/user/info';
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
-import {throwIfNotAdmin, throwIfNotAdminOrAgent} from '@spinach/next/controller/utils';
+import {throwIfNotPrivileged, throwIfNotElevated} from '@spinach/next/controller/utils';
 import {RequestOfUserBankDetails} from '@spinach/next/types/userData/upload';
 
 
@@ -27,10 +27,10 @@ export const getBankDetailsOfUser = async ({
   userId,
 }: GetBankDetailsOfUserOpts): Promise<BankDetails[]> => {
   if (userId !== executorUserId) {
-    const executor = await throwIfNotAdminOrAgent(executorUserId);
+    const executor = await throwIfNotElevated(executorUserId);
     const user = await getUserInfoById(userId);
 
-    if (!executor.isAdmin && user?.recruitedBy !== executorUserId) {
+    if (executor.isAgent && user?.recruitedBy !== executorUserId) {
       throw new Error(`${executorUserId} attempted to get the bank details of ${userId} without permission`);
     }
   }
@@ -43,7 +43,7 @@ export const getVerifiedBankDetailsOfUser = (userId: string) => {
 };
 
 export const getUnverifiedBankDetails = async ({executorUserId}: ControllerRequireUserIdOpts) => {
-  await throwIfNotAdmin(executorUserId);
+  await throwIfNotPrivileged(executorUserId);
 
   return getDataAsArray(userBankDetailsCollection, {status: 'unverified'});
 };
@@ -58,7 +58,7 @@ export const markBankDetailsVerified = async ({
   uuid,
   pass,
 }: MarkBankDetailsVerifiedOpts): Promise<ApiErrorCode | null> => {
-  await throwIfNotAdmin(executorUserId);
+  await throwIfNotPrivileged(executorUserId);
 
   if (!pass) {
     const deletionResult = await userBankDetailsCollection.deleteOne({uuid});

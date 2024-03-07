@@ -5,6 +5,7 @@ import {isNotNullish} from '@spinach/common/utils/type';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';
+import {CommonUserData} from '@spinach/next/types/auth';
 import {AdminAgentName} from '@spinach/next/ui/admin/common/agent';
 import {useAdminLookBackInput} from '@spinach/next/ui/admin/common/lookback/hook';
 import {AdminMemberDataLookBackInput} from '@spinach/next/ui/admin/common/lookback/main';
@@ -18,10 +19,10 @@ import {adminMembersFilterBasis, AdminMembersFilterInput} from '@spinach/next/ui
 
 
 type Props = {
-  isAdmin: boolean,
+  user: CommonUserData,
 };
 
-export const AdminMembers = ({isAdmin}: Props) => {
+export const AdminMembers = ({user}: Props) => {
   const agentId = React.useContext(AgentIdContext);
   const [input, setInput] = React.useState<AdminMembersFilterInput>({
     key: 'username',
@@ -58,7 +59,7 @@ export const AdminMembers = ({isAdmin}: Props) => {
         {
           response &&
           <AdminMembersResults
-            isAdmin={isAdmin}
+            user={user}
             input={input}
             memberInfo={response}
             lookBackInputControl={inputControl}

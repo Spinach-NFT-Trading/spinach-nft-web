@@ -11,14 +11,14 @@ import {v4} from 'uuid';
 
 import {getDataAsArray} from '@spinach/next/controller/common';
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
-import {throwIfNotAdmin} from '@spinach/next/controller/utils';
+import {throwIfNotPrivileged} from '@spinach/next/controller/utils';
 import {RequestOfGoldExchangeTwBank} from '@spinach/next/types/userData/upload';
 
 
 export const getUnverifiedGoldPurchaseTwBankRecordClient = async ({
   executorUserId,
 }: ControllerRequireUserIdOpts): Promise<GoldPurchaseTwBankRecordClient[]> => {
-  await throwIfNotAdmin(executorUserId);
+  await throwIfNotPrivileged(executorUserId);
 
   return (await getDataAsArray(txnGoldPurchaseTwBankRecordCollection, {status: 'unverified'}))
     .map(({
@@ -42,7 +42,7 @@ export const markGoldPurchaseTwBankRecord = async ({
   uuid,
   pass,
 }: MarkGoldPurchaseTwBankRecordOpts): Promise<ApiErrorCode | null> => {
-  await throwIfNotAdmin(executorUserId);
+  await throwIfNotPrivileged(executorUserId);
 
   if (!pass) {
     const deletionResult = await txnGoldPurchaseTwBankRecordCollection.deleteOne({uuid});

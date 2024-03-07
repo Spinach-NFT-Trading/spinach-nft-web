@@ -7,6 +7,7 @@ import {Loading} from '@spinach/next/components/icons/loading';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {OverflowableTable} from '@spinach/next/components/shared/common/table/overflowable/main';
+import {CommonUserData} from '@spinach/next/types/auth';
 import {ResponseOfAdminMemberList} from '@spinach/next/types/userData/lazyLoaded';
 import {AdminLookBackInputControl} from '@spinach/next/ui/admin/common/lookback/type';
 import {AdminMemberSingleHeader} from '@spinach/next/ui/admin/members/result/header';
@@ -17,13 +18,13 @@ import {AdminMembersFilterInput} from '@spinach/next/ui/admin/members/type';
 
 
 type Props = {
-  isAdmin: boolean,
+  user: CommonUserData,
   input: AdminMembersFilterInput,
   memberInfo: ResponseOfAdminMemberList,
   lookBackInputControl: AdminLookBackInputControl,
 };
 
-export const AdminMembersResults = ({isAdmin, input, memberInfo, lookBackInputControl}: Props) => {
+export const AdminMembersResults = ({user, input, memberInfo, lookBackInputControl}: Props) => {
   const {
     key,
     value,
@@ -61,14 +62,14 @@ export const AdminMembersResults = ({isAdmin, input, memberInfo, lookBackInputCo
       {error && <Alert>{translateApiError(error)}</Alert>}
       <OverflowableTable
         data={membersToShow}
-        header={<AdminMemberSingleHeader/>}
+        header={<AdminMemberSingleHeader isAdmin={user.isAdmin}/>}
         getKey={(data) => data?.id}
         classOfRow="not-last:border-b w-max gap-1 border-b-slate-400 p-1"
         renderRow={({data}) => (
           <AdminMemberRow
             member={data}
             balanceActivity={memberInfo.balanceActivityMap[data.id]}
-            isAdmin={isAdmin}
+            actor={user}
             controlDisabled={!act || status === 'processing'}
             act={act}
             showPopup={(type) => setPopup({

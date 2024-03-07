@@ -4,7 +4,11 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {adminMemberMonetaryCellStyle} from '@spinach/next/ui/admin/common/cell/monetary/const';
 
 
-export const AdminMemberSingleHeader = () => {
+type Props = {
+  isAdmin: boolean,
+};
+
+export const AdminMemberSingleHeader = ({isAdmin}: Props) => {
   return (
     <Flex direction="row" noFullWidth className="items-center gap-1 bg-slate-900/90 px-1 py-2">
       <Flex center noFullWidth className="w-52">
@@ -37,9 +41,12 @@ export const AdminMemberSingleHeader = () => {
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
         退傭
       </Flex>
-      <Flex center noFullWidth className="w-28">
-        退傭設定
-      </Flex>
+      {
+        isAdmin &&
+        <Flex center noFullWidth className="w-28">
+          退傭設定
+        </Flex>
+      }
       <Flex noFullWidth className="w-[42rem]"/>
     </Flex>
   );

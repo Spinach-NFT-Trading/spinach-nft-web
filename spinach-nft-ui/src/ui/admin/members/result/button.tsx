@@ -9,7 +9,7 @@ import {FlexButton} from '@spinach/next/components/layout/flex/button';
 
 type Props = {
   text: string,
-  isAdmin: boolean,
+  isUpdatable: boolean,
   active: boolean,
   disabled: boolean,
   icon: {
@@ -25,7 +25,7 @@ type Props = {
 
 export const AdminMemberControlButton = ({
   text,
-  isAdmin,
+  isUpdatable,
   active,
   disabled,
   icon,
@@ -39,11 +39,11 @@ export const AdminMemberControlButton = ({
     <FlexButton
       className={clsx(
         'items-center gap-0.5 whitespace-nowrap p-1 text-sm',
-        isAdmin ? 'button-clickable-bg' : 'button-bg rounded-lg',
+        isUpdatable ? 'button-clickable-bg' : 'button-bg rounded-lg',
         active ? classOnActive : classOnInactive,
       )}
       onClick={async () => {
-        if (!isAdmin) {
+        if (!isUpdatable) {
           return;
         }
 
@@ -58,7 +58,7 @@ export const AdminMemberControlButton = ({
 
         onSuccess(newActive);
       }}
-      disabled={disabled || !isAdmin}
+      disabled={disabled || !isUpdatable}
     >
       {active ? icon.active : icon.inactive}
       <div>{text}</div>

@@ -9,7 +9,7 @@ import {ObjectId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {toUserData, toUserInfo} from '@spinach/next/controller/user/utils';
-import {throwIfNotAdmin} from '@spinach/next/controller/utils';
+import {throwIfNotPrivileged} from '@spinach/next/controller/utils';
 
 
 type UploadIdVerificationOpts = {
@@ -73,7 +73,7 @@ export const getUserDataMap = async (userIds: string[]): Promise<UserDataMap> =>
 type GetUnverifiedUsersOpts = ControllerRequireUserIdOpts;
 
 export const getUnverifiedUsers = async ({executorUserId}: GetUnverifiedUsersOpts): Promise<UserInfo[]> => {
-  await throwIfNotAdmin(executorUserId);
+  await throwIfNotPrivileged(executorUserId);
 
   return await userInfoCollection.find({status: 'unverified'})
     .map(({_id, ...data}): UserInfo => ({

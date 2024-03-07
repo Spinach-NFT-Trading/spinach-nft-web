@@ -5,7 +5,7 @@ import {Document, Filter, ObjectId, WithId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {toUserInfo} from '@spinach/next/controller/user/utils';
-import {throwIfNotAdminOrAgent} from '@spinach/next/controller/utils';
+import {throwIfNotElevated} from '@spinach/next/controller/utils';
 
 
 export type GetUserInfoByIdOpts = ControllerRequireUserIdOpts & {
@@ -13,7 +13,7 @@ export type GetUserInfoByIdOpts = ControllerRequireUserIdOpts & {
 };
 
 export const getUserInfoById = async ({executorUserId, userId}: GetUserInfoByIdOpts): Promise<UserInfo | null> => {
-  await throwIfNotAdminOrAgent(executorUserId);
+  await throwIfNotElevated(executorUserId);
 
   if (!userId) {
     return null;
@@ -32,9 +32,9 @@ export type GetUserInfoListOpts = ControllerRequireUserIdOpts & {
 };
 
 export const getUserInfoList = async ({executorUserId, agentId}: GetUserInfoListOpts): Promise<UserInfo[]> => {
-  const user = await throwIfNotAdminOrAgent(executorUserId);
+  const user = await throwIfNotElevated(executorUserId);
 
-  if (user.isAdmin) {
+  if (user.isAdmin || user.isMod) {
     return userInfoCollection.find({recruitedBy: agentId}).map(toUserInfo).toArray();
   }
 
@@ -55,7 +55,7 @@ export type GetAccountMemberListByAgentOpts = ControllerRequireUserIdOpts;
 export const getAccountMemberListByAgent = async ({
   executorUserId,
 }: GetAccountMemberListByAgentOpts): Promise<UserInfoListByAgent[]> => {
-  const user = await throwIfNotAdminOrAgent(executorUserId);
+  const user = await throwIfNotElevated(executorUserId);
 
   const pipeline: Document[] = [];
   if (user.isAgent) {

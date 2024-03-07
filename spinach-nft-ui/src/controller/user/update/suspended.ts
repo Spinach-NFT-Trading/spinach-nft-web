@@ -3,7 +3,7 @@ import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {ObjectId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
-import {throwIfNotAdmin} from '@spinach/next/controller/utils';
+import {throwIfNotPrivileged} from '@spinach/next/controller/utils';
 
 
 type MarkUserSuspendedOpts = ControllerRequireUserIdOpts & {
@@ -16,7 +16,7 @@ export const markUserSuspended = async ({
   targetId,
   isSuspended,
 }: MarkUserSuspendedOpts): Promise<ApiErrorCode | null> => {
-  await throwIfNotAdmin(executorUserId);
+  await throwIfNotPrivileged(executorUserId);
 
   const result = await userInfoCollection.updateOne(
     {_id: new ObjectId(targetId)},
