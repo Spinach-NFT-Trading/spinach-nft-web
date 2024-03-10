@@ -34,6 +34,8 @@ export const InputFile = ({id, title, accept, onFileSelected, onFileTypeIncorrec
         onChange={async ({target}) => {
           const file = target.files?.item(0);
           if (!file) {
+            setFilePath(null);
+            onFileSelected(null);
             return;
           }
 
