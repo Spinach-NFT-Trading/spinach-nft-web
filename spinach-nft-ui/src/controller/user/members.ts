@@ -34,8 +34,12 @@ export type GetUserInfoListOpts = ControllerRequireUserIdOpts & {
 export const getUserInfoList = async ({executorUserId, agentId}: GetUserInfoListOpts): Promise<UserInfo[]> => {
   const user = await throwIfNotElevated(executorUserId);
 
-  if (user.isAdmin || user.isMod) {
+  if (user.isAdmin) {
     return userInfoCollection.find({recruitedBy: agentId}).map(toUserInfo).toArray();
+  }
+
+  if (user.isMod) {
+    return userInfoCollection.find({recruitedBy: agentId, isAdmin: false}).map(toUserInfo).toArray();
   }
 
   if (user.isAgent) {
