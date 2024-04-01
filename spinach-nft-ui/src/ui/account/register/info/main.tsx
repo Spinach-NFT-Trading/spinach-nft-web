@@ -103,6 +103,9 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
           required
           pattern={walletPattern}
         />
+        <a href="https://youtu.be/bkCavlothfY" target="_blank" className="text-link w-fit self-end text-sm">
+          創建 MAX 帳號影片教學請點我
+        </a>
         <InputFloatingLabel
           id="username"
           placeholder="帳號"
