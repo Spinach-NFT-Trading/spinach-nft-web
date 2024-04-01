@@ -8,6 +8,7 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
 import {goldExchangeChannelText} from '@spinach/next/const/gold';
 import {GoldExchangeConfirmPopup} from '@spinach/next/ui/gold/exchange/confirm';
+import {GoldExchangeCryptoTutorial} from '@spinach/next/ui/gold/exchange/tutorial';
 import {ExchangeAmount} from '@spinach/next/ui/gold/exchange/type';
 import {formatFloat2, formatFloat3} from '@spinach/next/utils/number';
 
@@ -37,7 +38,11 @@ export const GoldExchangeContent = ({exchangeChannel, exchangeRate, cashbackRate
         getRedirectUrl={getRedirectUrl}
       />
       <Flex center>
-        <Flex center className="gap-3 md:w-1/2 md:p-7">
+        <Flex center className="m-2 gap-3 md:w-1/2 md:p-7">
+          {
+            exchangeChannel === 'crypto' &&
+            <GoldExchangeCryptoTutorial/>
+          }
           <InputFloatingLabel
             id={exchangeChannel}
             type="number"

@@ -26,7 +26,7 @@ const apiErrorStringMap: {[code in ApiErrorCode]: string} = {
   smsPhoneInvalid: '手機號碼驗證無效或已失效。請重新驗證手機號碼。',
   smsPhoneUsed: `手機號碼已被使用。請於 ${(smsVerifiedExpiry / 60).toFixed(0)} 分鐘後重試。`,
   smsPhoneRegistered: '手機號碼已註冊。',
-  smsCodeInvalid: '驗證碼無效。',
+  smsCodeInvalid: '驗證碼無效。請',
   idNumberInvalid: '無效的身份證字號。',
   bankDetailsNotFound: '銀行帳號不存在。',
   bankDetailsAlreadyExist: '銀行帳號已存在。',
