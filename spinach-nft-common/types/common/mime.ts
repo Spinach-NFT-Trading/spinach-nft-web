@@ -6,7 +6,7 @@ export const mimeTypesOfImage = [
   'image/png',
 ] as const;
 
-export interface TMimeTypesOfImage extends TString {
+interface TMimeTypesOfImage extends TString {
   static: typeof mimeTypesOfImage[number];
 }
 

@@ -4,13 +4,18 @@ import {UserDataSchemaBase} from '@spinach/common/types/common/user/data';
 import {UserPropertySchemaBase} from '@spinach/common/types/common/user/property';
 
 
-export const UserModelSchema = Type.Object(
+export const UserInfoSchema = Type.Object(
   {
+    id: Type.String(),
     ...UserDataSchemaBase,
     ...UserPropertySchemaBase,
-    passwordHash: Type.String(),
   },
   {additionalProperties: false},
 );
 
-export type UserModel = Static<typeof UserModelSchema>;
+export type UserInfo = Static<typeof UserInfoSchema>;
+
+export type UserInfoListByAgent = {
+  agentId: string | null,
+  members: UserInfo[],
+};

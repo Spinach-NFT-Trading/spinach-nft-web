@@ -1,1 +1,1 @@
-export const commissionRateLimit = 0.1;
+export const commissionPercentLimit = 10;

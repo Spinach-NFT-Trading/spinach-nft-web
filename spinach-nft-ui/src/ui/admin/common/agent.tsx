@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Nullable} from '@spinach/common/types/common/typing';
-import {UserData} from '@spinach/common/types/common/user';
+import {UserData} from '@spinach/common/types/common/user/data';
 import clsx from 'clsx';
 
 import {formatUserName} from '@spinach/next/utils/data/user';

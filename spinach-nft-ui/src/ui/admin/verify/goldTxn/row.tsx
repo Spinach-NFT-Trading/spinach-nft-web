@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {UserData} from '@spinach/common/types/common/user';
+import {UserData} from '@spinach/common/types/common/user/data';
 import {GoldPurchaseTwBankRecordClient} from '@spinach/common/types/data/gold/purchase';
 import clsx from 'clsx';
 

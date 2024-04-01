@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {accountIdVerificationType} from '@spinach/common/types/api/profile/id';
-import {UserInfo} from '@spinach/common/types/common/user';
+import {UserInfo} from '@spinach/common/types/common/user/info';
 import clsx from 'clsx';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';

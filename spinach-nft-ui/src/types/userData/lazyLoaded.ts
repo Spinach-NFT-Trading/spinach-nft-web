@@ -1,5 +1,6 @@
 import {BinaryData} from '@spinach/common/types/common/binary';
-import {UserDataMap, UserInfo, UserInfoListByAgent} from '@spinach/common/types/common/user';
+import {UserDataMap} from '@spinach/common/types/common/user/data';
+import {UserInfo, UserInfoListByAgent} from '@spinach/common/types/common/user/info';
 import {GoldPurchaseTwBankRecordClient} from '@spinach/common/types/data/gold/purchase';
 import {GoldWalletClientMap} from '@spinach/common/types/data/gold/wallet';
 import {BankDetails, BankDetailsMap, UserBankDetails} from '@spinach/common/types/data/user/bank';

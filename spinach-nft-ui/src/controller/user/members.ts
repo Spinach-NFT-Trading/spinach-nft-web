@@ -1,5 +1,5 @@
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
-import {UserInfo, UserInfoListByAgent} from '@spinach/common/types/common/user';
+import {UserInfo, UserInfoListByAgent} from '@spinach/common/types/common/user/info';
 import {UserModel} from '@spinach/common/types/data/user/data';
 import {Document, Filter, ObjectId, WithId} from 'mongodb';
 

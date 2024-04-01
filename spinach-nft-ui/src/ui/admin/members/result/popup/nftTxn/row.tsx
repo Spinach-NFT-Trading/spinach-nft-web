@@ -2,7 +2,8 @@ import React from 'react';
 
 import ArrowDownRightIcon from '@heroicons/react/24/outline/ArrowDownRightIcon';
 import ArrowUpRightIcon from '@heroicons/react/24/outline/ArrowUpRightIcon';
-import {UserDataMap, UserInfo} from '@spinach/common/types/common/user';
+import {UserDataMap} from '@spinach/common/types/common/user/data';
+import {UserInfo} from '@spinach/common/types/common/user/info';
 import clsx from 'clsx';
 import {format} from 'date-fns/format';
 

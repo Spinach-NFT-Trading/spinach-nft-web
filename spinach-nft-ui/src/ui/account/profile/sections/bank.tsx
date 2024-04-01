@@ -1,7 +1,7 @@
 import React from 'react';
 
 import DocumentTextIcon from '@heroicons/react/24/outline/DocumentTextIcon';
-import {UserInfo} from '@spinach/common/types/common/user';
+import {UserInfo} from '@spinach/common/types/common/user/info';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';

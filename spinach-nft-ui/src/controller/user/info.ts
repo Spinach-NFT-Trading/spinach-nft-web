@@ -3,7 +3,8 @@ import {userInfoCollection} from '@spinach/common/controller/collections/user';
 import {UserIdVerificationData} from '@spinach/common/types/api/auth/verify/id/main';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {accountIdVerificationType} from '@spinach/common/types/api/profile/id';
-import {UserDataMap, UserInfo} from '@spinach/common/types/common/user';
+import {UserDataMap} from '@spinach/common/types/common/user/data';
+import {UserInfo} from '@spinach/common/types/common/user/info';
 import {isNotNullish} from '@spinach/common/utils/type';
 import {ObjectId} from 'mongodb';
 

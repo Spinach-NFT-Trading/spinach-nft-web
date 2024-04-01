@@ -2,7 +2,7 @@ import {userInfoCollection} from '@spinach/common/controller/collections/user';
 import {UserLoginRequest} from '@spinach/common/types/api/auth/login';
 import {UserRegisterRequest} from '@spinach/common/types/api/auth/register';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
-import {UserInfo} from '@spinach/common/types/common/user';
+import {UserInfo} from '@spinach/common/types/common/user/info';
 import {UserModel} from '@spinach/common/types/data/user/data';
 import {hashPassword, verifyPasswordOrThrow} from '@spinach/common/utils/secret';
 import {checkTrxAddress} from '@spinach/common/utils/tron/address';
@@ -90,7 +90,10 @@ export const registerUser = async ({
     isMod: false,
     isAgent: false,
     isSuspended: false,
-    commissionRate: 0,
+    commissionPercent: {
+      buy: 0,
+      sell: 0,
+    },
     recruitedBy,
   };
   const result = await userInfoCollection.insertOne(model);
@@ -131,7 +134,7 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     isMod,
     isAgent,
     isSuspended,
-    commissionRate,
+    commissionPercent,
     recruitedBy,
   } = info;
 
@@ -154,7 +157,7 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     isMod,
     isAgent,
     isSuspended,
-    commissionRate,
+    commissionPercent,
     recruitedBy,
   };
 };

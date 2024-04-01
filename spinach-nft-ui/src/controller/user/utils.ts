@@ -1,4 +1,5 @@
-import {UserData, UserInfo} from '@spinach/common/types/common/user';
+import {UserData} from '@spinach/common/types/common/user/data';
+import {UserInfo} from '@spinach/common/types/common/user/info';
 import {UserModel} from '@spinach/common/types/data/user/data';
 import {ObjectId, WithId} from 'mongodb';
 
@@ -37,7 +38,7 @@ export const toUserInfo = (model: WithId<UserModel>): UserInfo => {
     isMod,
     isAgent,
     isSuspended,
-    commissionRate,
+    commissionPercent,
     recruitedBy,
   } = model;
 
@@ -49,7 +50,7 @@ export const toUserInfo = (model: WithId<UserModel>): UserInfo => {
     isMod,
     isAgent,
     isSuspended,
-    commissionRate,
+    commissionPercent,
     recruitedBy,
   };
 };

@@ -1,6 +1,6 @@
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {VerificationStatus} from '@spinach/common/types/common/status';
-import {UserInfo} from '@spinach/common/types/common/user';
+import {UserInfo} from '@spinach/common/types/common/user/info';
 import {DefaultSession, DefaultUser} from 'next-auth';
 import {DefaultJWT} from 'next-auth/jwt';
 

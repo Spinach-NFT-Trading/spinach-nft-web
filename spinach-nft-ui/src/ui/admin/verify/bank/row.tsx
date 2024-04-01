@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {UserData} from '@spinach/common/types/common/user';
+import {UserData} from '@spinach/common/types/common/user/data';
 import {BankDetails} from '@spinach/common/types/data/user/bank';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';

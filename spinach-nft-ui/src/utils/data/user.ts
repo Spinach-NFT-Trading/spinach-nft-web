@@ -1,6 +1,6 @@
 import {nftMinterAccountId} from '@spinach/common/const/nft';
 import {Nullable} from '@spinach/common/types/common/typing';
-import {UserData, UserDataMap} from '@spinach/common/types/common/user';
+import {UserData, UserDataMap} from '@spinach/common/types/common/user/data';
 import {BankDetails} from '@spinach/common/types/data/user/bank';
 
 import {CommonUserData} from '@spinach/next/types/auth';

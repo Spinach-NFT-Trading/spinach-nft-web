@@ -1,7 +1,8 @@
 import React from 'react';
 
 import IdentificationIcon from '@heroicons/react/24/outline/IdentificationIcon';
-import {UserData, UserInfoListByAgent} from '@spinach/common/types/common/user';
+import {UserData} from '@spinach/common/types/common/user/data';
+import {UserInfoListByAgent} from '@spinach/common/types/common/user/info';
 import {isNotNullish} from '@spinach/common/utils/type';
 import clsx from 'clsx';
 

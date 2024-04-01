@@ -1,4 +1,4 @@
-import {UserInfo} from '@spinach/common/types/common/user';
+import {UserInfo} from '@spinach/common/types/common/user/info';
 
 
 export type AccountProfileCommonProps = {

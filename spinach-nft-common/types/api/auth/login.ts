@@ -1,7 +1,7 @@
 import {Static, Type} from '@sinclair/typebox';
 
 import {PasswordSchemaBase, UsernameSchemaBase} from '@spinach/common/types/api/auth/common';
-import {UserInfoSchema} from '@spinach/common/types/common/user';
+import {UserInfoSchema} from '@spinach/common/types/common/user/info';
 import {generateApiFailableSchema} from '@spinach/common/utils/api/schema';
 
 

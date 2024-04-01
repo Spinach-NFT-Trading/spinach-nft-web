@@ -1,57 +1,55 @@
 import React from 'react';
 
 import CloudArrowUpIcon from '@heroicons/react/24/outline/CloudArrowUpIcon';
+import {UserCommissionPercent} from '@spinach/common/types/common/user/commission';
 
 import {FlexForm} from '@spinach/next/components/layout/flex/form';
-import {InputBox} from '@spinach/next/components/shared/common/input/box';
+import {AdminMemberCommissionSettingsInput} from '@spinach/next/ui/admin/members/result/cell/commission/input';
 
 
 type Props = {
-  initialCommissionRate: number,
+  initial: UserCommissionPercent,
   isAdmin: boolean,
   disabled: boolean,
-  onUpload: (commissionRate: number) => Promise<void>,
+  onUpload: (commissionPercent: UserCommissionPercent) => Promise<void>,
 };
 
 export const AdminMemberCommissionSettingsCell = ({
-  initialCommissionRate,
+  initial,
   isAdmin,
   disabled,
   onUpload,
 }: Props) => {
-  const [commissionRate, setCommissionRate] = React.useState(initialCommissionRate);
+  const [
+    commissionPercent,
+    setCommissionPercent,
+  ] = React.useState(initial);
 
   const actualDisabled= disabled || !isAdmin;
 
   return (
-    <FlexForm direction="row" noFullWidth className="w-28 items-center gap-1">
-      <InputBox
-        value={(commissionRate * 100).toString()}
-        type="number"
-        className="w-full text-center"
+    <FlexForm direction="row" noFullWidth className="items-center gap-1">
+      <AdminMemberCommissionSettingsInput
+        title="買"
+        rate={commissionPercent.buy}
+        onUpdated={(buy) => setCommissionPercent((original): UserCommissionPercent => ({
+          ...original,
+          buy,
+        }))}
         disabled={actualDisabled}
-        min={0}
-        max={10}
-        step={0.1}
-        onChange={({target}) => {
-          if (!target.value) {
-            setCommissionRate(0);
-            return;
-          }
-
-          const commissionRate = parseFloat(Number(target.value).toFixed(1));
-
-          if (isNaN(commissionRate)) {
-            return;
-          }
-
-          setCommissionRate(commissionRate / 100);
-        }}
       />
-      <span>%</span>
+      <AdminMemberCommissionSettingsInput
+        title="賣"
+        rate={commissionPercent.sell}
+        onUpdated={(sell) => setCommissionPercent((original): UserCommissionPercent => ({
+          ...original,
+          sell,
+        }))}
+        disabled={actualDisabled}
+      />
       <button
         className="button-clickable-bg rounded-lg p-1"
-        onClick={() => onUpload(commissionRate)}
+        onClick={() => onUpload(commissionPercent)}
         disabled={actualDisabled}
       >
         <CloudArrowUpIcon className="h-6 w-6"/>

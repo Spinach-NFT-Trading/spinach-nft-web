@@ -5,7 +5,7 @@ import XCircleIcon from '@heroicons/react/24/outline/XCircleIcon';
 import LockClosedIcon from '@heroicons/react/24/solid/LockClosedIcon';
 import LockOpenIcon from '@heroicons/react/24/solid/LockOpenIcon';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
-import {UserInfo} from '@spinach/common/types/common/user';
+import {UserInfo} from '@spinach/common/types/common/user/info';
 import {signIn} from 'next-auth/react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -48,7 +48,7 @@ export const AdminMemberRow = ({
     status,
     isAgent,
     isSuspended,
-    commissionRate,
+    commissionPercent,
   } = member;
 
   const {act: actorWithToast} = useUserDataActor({statusToast: true});
@@ -124,15 +124,15 @@ export const AdminMemberRow = ({
       {
         actor.isAdmin &&
         <AdminMemberCommissionSettingsCell
-          initialCommissionRate={commissionRate}
+          initial={commissionPercent}
           isAdmin={isPrivileged}
           disabled={controlDisabled}
-          onUpload={async (commissionRate) => {
+          onUpload={async (commissionPercent) => {
             const session = await actorWithToast({
               action: 'request',
               options: {
                 type: 'admin.member.update.commission',
-                data: {targetId: id, commissionRate},
+                data: {targetId: id, commissionPercent},
               },
             });
 
@@ -142,7 +142,7 @@ export const AdminMemberRow = ({
               return;
             }
 
-            onUpdatedMember({...member, commissionRate});
+            onUpdatedMember({...member, commissionPercent});
           }}
         />
       }
