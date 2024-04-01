@@ -114,6 +114,12 @@ export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedB
             title="轉帳來源"
             content={
               <Flex className="gap-1">
+                {
+                  !input.sourceBankDetailsUuid &&
+                  <Flex center className="text-rose-400">
+                    請選擇轉帳來源。
+                  </Flex>
+                }
                 {verifiedBankDetails.map((bankDetails) => {
                   const isActive = sourceBankDetailsUuid === bankDetails.uuid;
 
