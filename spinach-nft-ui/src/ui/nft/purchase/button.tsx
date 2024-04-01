@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-import {NftPurchaseConfirmPopup} from '@spinach/next/ui/nft/purchase/popup';
+import {NftPurchaseConfirmPopup} from '@spinach/next/ui/nft/purchase/popup/main';
 
 
 type Props = {

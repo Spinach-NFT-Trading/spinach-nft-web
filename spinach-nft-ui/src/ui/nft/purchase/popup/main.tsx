@@ -10,6 +10,7 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
+import {NftPurchaseConfirmDisclaimer} from '@spinach/next/ui/nft/purchase/popup/disclaimer';
 
 
 type Props = {
@@ -60,6 +61,7 @@ export const NftPurchaseConfirmPopup = ({nftId, show, setShow}: Props) => {
         <div>
           確定要購買此 NFT 嗎？
         </div>
+        <NftPurchaseConfirmDisclaimer/>
         <button
           className="button-clickable-bg w-1/2 p-2"
           disabled={status === 'processing' || status === 'failed'}
