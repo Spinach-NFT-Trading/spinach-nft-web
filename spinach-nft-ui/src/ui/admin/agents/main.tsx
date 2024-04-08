@@ -15,10 +15,11 @@ import {AdminDataSearchInputUi} from '@spinach/next/ui/admin/input/main';
 
 
 type Props = {
+  isAdmin: boolean,
   onAgentSelected: (agentId: string | null) => void,
 };
 
-export const AdminMemberAgent = ({onAgentSelected}: Props) => {
+export const AdminMemberAgent = ({isAdmin, onAgentSelected}: Props) => {
   const [input, setInput] = React.useState<AdminAgentsFilterInput>({
     key: 'username',
     value: '',
@@ -51,9 +52,10 @@ export const AdminMemberAgent = ({onAgentSelected}: Props) => {
         {
           response &&
           <AdminAgentsResults
+            isAdmin={isAdmin}
+            lookBackInputControl={inputControl}
             input={input}
             data={response}
-            lookBackInputControl={inputControl}
             onAgentSelected={onAgentSelected}
           />
         }

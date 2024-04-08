@@ -4,7 +4,7 @@ import CloudArrowUpIcon from '@heroicons/react/24/outline/CloudArrowUpIcon';
 import {UserCommissionPercent} from '@spinach/common/types/common/user/commission';
 
 import {FlexForm} from '@spinach/next/components/layout/flex/form';
-import {AdminMemberCommissionSettingsInput} from '@spinach/next/ui/admin/members/result/cell/commission/input';
+import {AdminMemberCommissionSettingsInput} from '@spinach/next/ui/admin/common/cell/commission/input';
 
 
 type Props = {
@@ -28,7 +28,7 @@ export const AdminMemberCommissionSettingsCell = ({
   const actualDisabled= disabled || !isAdmin;
 
   return (
-    <FlexForm direction="row" noFullWidth className="items-center gap-1">
+    <FlexForm direction="row" noFullWidth center className="w-60 gap-1">
       <AdminMemberCommissionSettingsInput
         title="買"
         rate={commissionPercent.buy}

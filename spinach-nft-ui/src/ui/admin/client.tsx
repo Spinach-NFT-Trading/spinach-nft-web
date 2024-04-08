@@ -27,7 +27,7 @@ export const AdminPageClient = ({user}: Props) => {
       <TabbedContent
         keys={[...adminPageTabs].filter((tab) => {
           if (adminTabsAdminOnly[tab]) {
-            return user;
+            return user.isAdmin;
           }
 
           return true;
@@ -41,10 +41,17 @@ export const AdminPageClient = ({user}: Props) => {
           verifyBankTxn: '驗證 GOLD 購買紀錄',
         }}
         content={{
-          agents: user ? <AdminMemberAgent onAgentSelected={(agentId) => {
-            setAgentId(agentId);
-            tabControl.setCurrent('members');
-          }}/> : null,
+          agents: (
+            user ?
+              <AdminMemberAgent
+                isAdmin={user.isAdmin}
+                onAgentSelected={(agentId) => {
+                  setAgentId(agentId);
+                  tabControl.setCurrent('members');
+                }}
+              /> :
+              null
+          ),
           members: <AdminMembers user={user}/>,
           verifyId: user ? <AdminVerifyId/> : null,
           verifyBankAccount: user ? <AdminVerifyBank/> : null,

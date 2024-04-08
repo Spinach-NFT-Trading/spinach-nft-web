@@ -36,6 +36,12 @@ export type UserDataRequestOpts = {
   type: 'exchange.gold.twBank',
   data: RequestOfGoldExchangeTwBank,
 } | {
+  type: 'admin.agent.update.commission',
+  data: {
+    agentId: string | null,
+    commissionPercent: UserCommissionPercent,
+  },
+} | {
   type: 'admin.member.mark.agent',
   data: {
     targetId: string,

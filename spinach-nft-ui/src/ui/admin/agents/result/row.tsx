@@ -8,13 +8,16 @@ import clsx from 'clsx';
 
 import {FlexButton} from '@spinach/next/components/layout/flex/button';
 import {Flex} from '@spinach/next/components/layout/flex/common';
+import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {UserBalanceActivityMap} from '@spinach/next/types/mongo/balance';
+import {AdminAgentRowCommonProps} from '@spinach/next/ui/admin/agents/result/type';
 import {AdminAgentName} from '@spinach/next/ui/admin/common/agent';
+import {AdminMemberCommissionSettingsCell} from '@spinach/next/ui/admin/common/cell/commission/main';
 import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/common/cell/monetary/main';
 import {getSumOfBalanceActivity} from '@spinach/next/ui/admin/common/utils';
 
 
-type Props = {
+type Props = AdminAgentRowCommonProps & {
   data: UserInfoListByAgent,
   agent: UserData | null,
   balanceActivityMap: UserBalanceActivityMap,
@@ -22,12 +25,17 @@ type Props = {
 };
 
 export const AdminAgentRow = ({
+  isAdmin,
   data,
   agent,
   balanceActivityMap,
   onMemberListClick,
 }: Props) => {
   const {members} = data;
+
+  // Not re-using actor from lookback control because it doesn't show status toast
+  const {act, status} = useUserDataActor({statusToast: true});
+
   const activities = members
     .map(({id}) => balanceActivityMap[id])
     .filter(isNotNullish);
@@ -57,6 +65,27 @@ export const AdminAgentRow = ({
         activities,
         getValue: ({byTxnType}) => byTxnType['deposit.crypto'],
       })}/>
+      <AdminMemberCommissionSettingsCell
+        initial={{
+          buy: 0,
+          sell: 0,
+        }}
+        isAdmin={isAdmin}
+        disabled={status === 'processing'}
+        onUpload={async (commissionPercent) => {
+          if (!act) {
+            return;
+          }
+
+          await act({
+            action: 'request',
+            options: {
+              type: 'admin.agent.update.commission',
+              data: {agentId: data.agentId, commissionPercent},
+            },
+          });
+        }}
+      />
       <FlexButton onClick={onMemberListClick} className={clsx(
         'button-clickable-bg items-center gap-1 whitespace-nowrap p-1',
       )}>

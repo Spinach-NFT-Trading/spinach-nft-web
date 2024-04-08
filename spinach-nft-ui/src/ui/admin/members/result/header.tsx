@@ -43,7 +43,7 @@ export const AdminMemberSingleHeader = ({isAdmin}: Props) => {
       </Flex>
       {
         isAdmin &&
-        <Flex center noFullWidth className="w-28">
+        <Flex center noFullWidth className="w-60">
           退傭設定
         </Flex>
       }

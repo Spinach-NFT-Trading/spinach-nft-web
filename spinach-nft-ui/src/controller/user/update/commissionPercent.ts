@@ -35,3 +35,31 @@ export const updateUserCommissionPercent = async ({
 
   return null;
 };
+
+type UpdateUserOfAgentCommissionPercentOpts = ControllerRequireUserIdOpts & {
+  agentId: string | null,
+  commissionPercent: UserCommissionPercent,
+};
+
+export const updateUserOfAgentCommissionPercent = async ({
+  executorUserId,
+  agentId,
+  commissionPercent,
+}: UpdateUserOfAgentCommissionPercentOpts): Promise<ApiErrorCode | null> => {
+  await throwIfNotAdmin(executorUserId);
+
+  if (commissionPercent.buy > commissionPercentLimit || commissionPercent.sell > commissionPercentLimit) {
+    return 'commissionOverLimit';
+  }
+
+  const result = await userInfoCollection.updateOne(
+    {recruitedBy: agentId},
+    {$set: {commissionPercent}},
+  );
+
+  if (!result.matchedCount) {
+    return 'accountNotFound';
+  }
+
+  return null;
+};

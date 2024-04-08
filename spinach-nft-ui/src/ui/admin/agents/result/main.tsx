@@ -6,23 +6,23 @@ import {OverflowableTable} from '@spinach/next/components/shared/common/table/ov
 import {ResponseOfAdminAgentList} from '@spinach/next/types/userData/lazyLoaded';
 import {AdminAgentHeader} from '@spinach/next/ui/admin/agents/result/header';
 import {AdminAgentRow} from '@spinach/next/ui/admin/agents/result/row';
-import {AdminLookBackInputControl} from '@spinach/next/ui/admin/common/lookback/type';
+import {AdminAgentRowCommonProps} from '@spinach/next/ui/admin/agents/result/type';
 import {AdminMembersFilterInput} from '@spinach/next/ui/admin/members/type';
 
 
-type Props = {
+type Props = AdminAgentRowCommonProps & {
   input: AdminMembersFilterInput,
   data: ResponseOfAdminAgentList,
-  lookBackInputControl: AdminLookBackInputControl,
   onAgentSelected: (agentId: string | null) => void,
 };
 
 export const AdminAgentsResults = ({
   input,
   data,
-  lookBackInputControl,
   onAgentSelected,
+  ...props
 }: Props) => {
+  const {lookBackInputControl} = props;
   const {key, value} = input;
   const {agentMemberList, agentInfo, balanceActivityMap} = data;
   const {act} = lookBackInputControl;
@@ -64,6 +64,7 @@ export const AdminAgentsResults = ({
                 agent={null}
                 balanceActivityMap={balanceActivityMap}
                 onMemberListClick={() => onAgentSelected(agentId)}
+                {...props}
               />
             );
           }
@@ -79,6 +80,7 @@ export const AdminAgentsResults = ({
               agent={agent}
               balanceActivityMap={balanceActivityMap}
               onMemberListClick={() => onAgentSelected(agentId)}
+              {...props}
             />
           );
         }}
