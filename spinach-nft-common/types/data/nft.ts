@@ -15,6 +15,11 @@ export type NftOnSaleModel = {
   price: number,
 };
 
+export type NftPriceTierModel = {
+  price: number,
+  quantity: number,
+};
+
 export type NftTxnModel = {
   from: ObjectId,
   to: ObjectId,
