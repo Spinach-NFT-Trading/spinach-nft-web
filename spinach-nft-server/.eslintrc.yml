@@ -91,6 +91,21 @@ rules:
     - patterns:
         - 'spinach-nft-*'
 
+  padding-line-between-statements:
+    - error
+    - blankLine: always
+      prev: "*"
+      next: cjs-export
+    - blankLine: always
+      prev: "*"
+      next: export
+    - blankLine: always
+      prev: const
+      next: cjs-export
+    - blankLine: always
+      prev: "*"
+      next: export
+
   "@typescript-eslint/object-curly-spacing":
     - error
     - never
