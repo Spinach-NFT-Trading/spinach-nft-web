@@ -1,6 +1,8 @@
 'use client';
 import React from 'react';
 
+import {GlobalCashbackPercent} from '@spinach/common/types/data/global';
+
 import {useTabbedContentControl} from '@spinach/next/components/layout/tab/hook';
 import {TabbedContent} from '@spinach/next/components/layout/tab/main';
 import {GoldExchangeContent} from '@spinach/next/ui/gold/exchange/content';
@@ -8,10 +10,10 @@ import {GoldExchangeContent} from '@spinach/next/ui/gold/exchange/content';
 
 type Props = {
   usdtExchangeRate: number,
-  cashbackRate: number,
+  cashbackPercent: GlobalCashbackPercent,
 };
 
-export const GoldExchangeClient = ({usdtExchangeRate, cashbackRate}: Props) => {
+export const GoldExchangeClient = ({usdtExchangeRate, cashbackPercent}: Props) => {
   const tabControl = useTabbedContentControl<'usdt' | 'twBank'>('usdt');
 
   return (
@@ -28,7 +30,7 @@ export const GoldExchangeClient = ({usdtExchangeRate, cashbackRate}: Props) => {
             <GoldExchangeContent
               exchangeChannel="crypto"
               exchangeRate={usdtExchangeRate}
-              cashbackRate={cashbackRate}
+              cashbackRate={cashbackPercent.crypto}
               getRedirectUrl={({source}) => (
                 `/gold/confirm/usdt?${new URLSearchParams({amount: source.toString()})}`
               )}
@@ -38,7 +40,7 @@ export const GoldExchangeClient = ({usdtExchangeRate, cashbackRate}: Props) => {
             <GoldExchangeContent
               exchangeChannel="twBank"
               exchangeRate={1}
-              cashbackRate={cashbackRate}
+              cashbackRate={cashbackPercent.twBank}
               getRedirectUrl={({source}) => (
                 `/gold/confirm/twBank?${new URLSearchParams({amount: source.toString()})}`
               )}

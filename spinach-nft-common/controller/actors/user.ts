@@ -5,20 +5,22 @@ import {NftTxnModel} from '@spinach/common/types/data/nft';
 import {UserBalanceHistoryModelRequired} from '@spinach/common/types/data/user/balance';
 
 
-type GetNewAccountBalance = {
+type GetNewBalanceOpts = {
   accountId: ObjectId,
   diff: number,
+  multiplier?: number,
 };
 
 export const getNewBalance = async ({
   accountId,
   diff,
-}: GetNewAccountBalance): Promise<UserBalanceHistoryModelRequired> => {
+  multiplier,
+}: GetNewBalanceOpts): Promise<UserBalanceHistoryModelRequired> => {
   const prev = await getGoldAsset(accountId);
 
   return {
     userId: accountId,
-    diff,
+    diff: diff * (multiplier ?? 1),
     current: (prev?.current ?? 0) + diff,
   };
 };

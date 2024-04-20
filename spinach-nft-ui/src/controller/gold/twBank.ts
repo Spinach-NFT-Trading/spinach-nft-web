@@ -1,3 +1,4 @@
+import {getGlobalConfig} from '@spinach/common/controller/actors/global';
 import {getNewBalance} from '@spinach/common/controller/actors/user';
 import {azureContainer} from '@spinach/common/controller/blob/const';
 import {uploadBlob} from '@spinach/common/controller/blob/upload';
@@ -58,8 +59,14 @@ export const markGoldPurchaseTwBankRecord = async ({
     return 'goldTwBankTxnNotFound';
   }
 
+  const config = await getGlobalConfig();
+
   await userBalanceCollection.insertOne({
-    ...(await getNewBalance({accountId: result.accountId, diff: result.amount})),
+    ...(await getNewBalance({
+      accountId: result.accountId,
+      diff: result.amount,
+      multiplier: config.cashbackPercent.twBank / 100,
+    })),
     type: 'deposit.twBank',
     uuid,
   });
