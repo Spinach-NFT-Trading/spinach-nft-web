@@ -1,6 +1,7 @@
 import {BinaryData} from '@spinach/common/types/common/binary';
 import {UserDataMap} from '@spinach/common/types/common/user/data';
 import {UserInfo, UserInfoListByAgent} from '@spinach/common/types/common/user/info';
+import {GlobalConfig} from '@spinach/common/types/data/global';
 import {GoldPurchaseTwBankRecordClient} from '@spinach/common/types/data/gold/purchase';
 import {GoldWalletClientMap} from '@spinach/common/types/data/gold/wallet';
 import {BankDetails, BankDetailsMap, UserBankDetails} from '@spinach/common/types/data/user/bank';
@@ -51,6 +52,7 @@ export type UserLazyLoadedContent = {
   nftPosition: NftListingData[],
   bankDetails: BankDetails[],
   verifiedBankDetails: BankDetails[],
+  globalConfig: GlobalConfig,
   adminAgentList: ResponseOfAdminAgentList,
   adminMemberList: ResponseOfAdminMemberList,
   adminMemberNftTxn: ResponseOfAdminNftTxn,

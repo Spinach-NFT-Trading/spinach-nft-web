@@ -1,3 +1,4 @@
+import {getGlobalConfig} from '@spinach/common/controller/actors/global';
 import {azureContainer} from '@spinach/common/controller/blob/const';
 import {getImageBlob} from '@spinach/common/controller/blob/get';
 import {toUnique} from '@spinach/common/utils/array';
@@ -57,6 +58,10 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
 
   if (type === 'verifiedBankDetails') {
     return await getVerifiedBankDetailsOfUser(accountId) satisfies UserLazyLoadedData['verifiedBankDetails'];
+  }
+
+  if (type === 'globalConfig') {
+    return await getGlobalConfig() satisfies UserLazyLoadedData['globalConfig'];
   }
 
   if (type === 'adminAgentList') {

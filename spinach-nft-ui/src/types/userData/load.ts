@@ -23,6 +23,9 @@ export type UserDataLoadingOpts = {
   type: 'verifiedBankDetails',
   opts?: never,
 } | {
+  type: 'globalConfig',
+  opts?: never,
+} | {
   type: 'adminAgentList',
   opts: DataLookBackRequest,
 } | {

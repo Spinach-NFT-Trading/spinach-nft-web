@@ -1,8 +1,6 @@
 'use client';
 import React from 'react';
 
-import {GlobalConfig} from '@spinach/common/types/data/global';
-
 import {useTabbedContentControl} from '@spinach/next/components/layout/tab/hook';
 import {TabbedContent} from '@spinach/next/components/layout/tab/main';
 import {CommonUserData} from '@spinach/next/types/auth';
@@ -19,10 +17,9 @@ import {AdminVerifyId} from '@spinach/next/ui/admin/verify/id/main';
 
 type Props = {
   user: CommonUserData,
-  globalConfig: GlobalConfig,
 };
 
-export const AdminPageClient = ({user, globalConfig}: Props) => {
+export const AdminPageClient = ({user}: Props) => {
   const [agentId, setAgentId] = React.useState<string | null>(null);
   const tabControl = useTabbedContentControl<AdminPageTab>(user ? 'agents' : 'members');
 
@@ -61,7 +58,7 @@ export const AdminPageClient = ({user, globalConfig}: Props) => {
           verifyId: user ? <AdminVerifyId/> : null,
           verifyBankAccount: user ? <AdminVerifyBank/> : null,
           verifyBankTxn: user ? <AdminVerifyGoldTxn/> : null,
-          globalConfig: user ? <AdminGlobalConfigUi initial={globalConfig}/> : null,
+          globalConfig: user ? <AdminGlobalConfigUi/> : null,
         }}
         getReactKey={(key) => key}
         classOfContents="p-2"
