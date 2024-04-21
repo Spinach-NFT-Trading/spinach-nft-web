@@ -7,6 +7,7 @@ export const adminTabsAdminOnly: {[tab in AdminPageTab]: boolean} = {
   verifyId: true,
   verifyBankAccount: true,
   verifyBankTxn: true,
+  globalConfig: true,
 };
 
 export const adminDataRowHeight = 43;

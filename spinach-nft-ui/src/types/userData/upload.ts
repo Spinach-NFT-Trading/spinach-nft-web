@@ -1,6 +1,7 @@
 import {UserIdVerificationData} from '@spinach/common/types/api/auth/verify/id/main';
 import {BinaryData} from '@spinach/common/types/common/binary';
 import {UserCommissionPercent} from '@spinach/common/types/common/user/commission';
+import {GlobalConfig} from '@spinach/common/types/data/global';
 import {BankDetails} from '@spinach/common/types/data/user/bank';
 
 
@@ -71,4 +72,7 @@ export type UserDataRequestOpts = {
     targetUuid: string,
     pass: boolean,
   },
+} | {
+  type: 'admin.config.update',
+  data: GlobalConfig,
 };

@@ -1,6 +1,7 @@
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {ObjectId} from 'mongodb';
 
+import {setGlobalConfig} from '@spinach/next/controller/global/config';
 import {recordGoldPendingTxn} from '@spinach/next/controller/gold/pending';
 import {markGoldPurchaseTwBankRecord, recordGoldPurchaseTwBankTxn} from '@spinach/next/controller/gold/twBank';
 import {buyNft} from '@spinach/next/controller/nft/utils';
@@ -101,6 +102,13 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
       executorUserId: accountId,
       uuid: data.targetUuid,
       pass: data.pass,
+    });
+  }
+
+  if (type === 'admin.config.update') {
+    return setGlobalConfig({
+      executorUserId: accountId,
+      config: data,
     });
   }
 

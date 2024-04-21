@@ -1,12 +1,15 @@
 'use client';
 import React from 'react';
 
+import {GlobalConfig} from '@spinach/common/types/data/global';
+
 import {useTabbedContentControl} from '@spinach/next/components/layout/tab/hook';
 import {TabbedContent} from '@spinach/next/components/layout/tab/main';
 import {CommonUserData} from '@spinach/next/types/auth';
 import {AdminMemberAgent} from '@spinach/next/ui/admin/agents/main';
 import {adminTabsAdminOnly} from '@spinach/next/ui/admin/const';
 import {AgentIdContext} from '@spinach/next/ui/admin/context';
+import {AdminGlobalConfigUi} from '@spinach/next/ui/admin/globalConfig/main';
 import {AdminMembers} from '@spinach/next/ui/admin/members/main';
 import {AdminPageTab, adminPageTabs} from '@spinach/next/ui/admin/type';
 import {AdminVerifyBank} from '@spinach/next/ui/admin/verify/bank/main';
@@ -16,9 +19,10 @@ import {AdminVerifyId} from '@spinach/next/ui/admin/verify/id/main';
 
 type Props = {
   user: CommonUserData,
+  globalConfig: GlobalConfig,
 };
 
-export const AdminPageClient = ({user}: Props) => {
+export const AdminPageClient = ({user, globalConfig}: Props) => {
   const [agentId, setAgentId] = React.useState<string | null>(null);
   const tabControl = useTabbedContentControl<AdminPageTab>(user ? 'agents' : 'members');
 
@@ -39,6 +43,7 @@ export const AdminPageClient = ({user}: Props) => {
           verifyId: '驗證身分',
           verifyBankAccount: '驗證銀行帳號',
           verifyBankTxn: '驗證 GOLD 購買紀錄',
+          globalConfig: '全站設定',
         }}
         content={{
           agents: (
@@ -56,6 +61,7 @@ export const AdminPageClient = ({user}: Props) => {
           verifyId: user ? <AdminVerifyId/> : null,
           verifyBankAccount: user ? <AdminVerifyBank/> : null,
           verifyBankTxn: user ? <AdminVerifyGoldTxn/> : null,
+          globalConfig: user ? <AdminGlobalConfigUi initial={globalConfig}/> : null,
         }}
         getReactKey={(key) => key}
         classOfContents="p-2"
