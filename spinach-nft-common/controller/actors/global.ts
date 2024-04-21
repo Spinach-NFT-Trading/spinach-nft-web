@@ -12,6 +12,7 @@ export const getGlobalConfig = async (): Promise<GlobalConfig> => {
     return globalConfig;
   }
 
-  await globalConfigCollection.insertOne(defaultGlobalConfig);
+  // Using `updateOne` to make sure that there's no duplicated record
+  await globalConfigCollection.updateOne({}, {$set: defaultGlobalConfig}, {upsert: true});
   return defaultGlobalConfig;
 };
