@@ -28,18 +28,18 @@ export const NftListing = ({nftListings, isOnSale}: Props) => {
       return price === parseInt(priceSearch);
     })
     .sort((a, b) => {
-      const limitedCompareDiff = +b.isLimited - +a.isLimited;
-
-      if (limitedCompareDiff !== 0) {
-        return limitedCompareDiff;
-      }
-
       if (sort === 'asc') {
         return a.price - b.price;
       }
 
       if (sort === 'desc') {
         return b.price - a.price;
+      }
+
+      const limitedCompareDiff = +b.isLimited - +a.isLimited;
+
+      if (limitedCompareDiff !== 0) {
+        return limitedCompareDiff;
       }
 
       throw new Error(`Unhandled sorting type [${sort satisfies never}]`);
