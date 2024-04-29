@@ -15,7 +15,7 @@ export const userNftPositionCollection = db.collection<UserNftPositionModel>('nf
 
 export const userBankDetailsCollection = db.collection<UserBankDetails>('bankDetails');
 
-const initUserIndex = async () => {
+const initDbIndex = async () => {
   return Promise.all([
     userInfoCollection.createIndex({email: 1}, {unique: true}),
     userInfoCollection.createIndex({username: 1}, {unique: true}),
@@ -50,4 +50,4 @@ const initUserIndex = async () => {
   ]);
 };
 
-initUserIndex().catch((err) => console.error('Failed to init user db index', err));
+initDbIndex().catch((err) => console.error('Failed to init user db index', err));

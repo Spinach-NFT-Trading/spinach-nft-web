@@ -6,8 +6,8 @@ const db = Mongo.db('fx');
 
 export const currentFxCollection = db.collection<CurrentFx>('current');
 
-const initCurrentFxIndex = () => {
+const initDbIndex = () => {
   return currentFxCollection.createIndex({market: 1}, {unique: true});
 };
 
-initCurrentFxIndex().catch((err) => console.error('Failed to init current FX index', err));
+initDbIndex().catch((err) => console.error('Failed to init current FX index', err));

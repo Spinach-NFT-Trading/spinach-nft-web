@@ -8,7 +8,7 @@ export const smsVerifyInitialCollection = db.collection<SmsVerifyInitialData>('v
 
 export const smsVerifyFinalizedCollection = db.collection<SmsVerifyFinalizedData>('verify/sms/finalized');
 
-const initSmsVerifyIndex = () => {
+const initDbIndex = () => {
   return Promise.all([
     smsVerifyInitialCollection.createIndex({key: 1, otp: 1}, {unique: true}),
     smsVerifyInitialCollection.createIndex({phone: 1}, {unique: true}),
@@ -19,4 +19,4 @@ const initSmsVerifyIndex = () => {
   ]);
 };
 
-initSmsVerifyIndex().catch((err) => console.error('Failed to init SMS verify indexes', err));
+initDbIndex().catch((err) => console.error('Failed to init SMS verify indexes', err));

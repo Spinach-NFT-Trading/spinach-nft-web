@@ -22,7 +22,7 @@ export const nftTxnCollection = db.collection<NftTxnModel>('txn');
 
 export const nftImageCollection = db.collection<NftImageModel>('images');
 
-const initTxnDatabaseIndex = () => {
+const initDbIndex = () => {
   return Promise.all([
     nftTxnCollection.createIndex({from: 1}),
     nftTxnCollection.createIndex({to: 1}),
@@ -31,4 +31,4 @@ const initTxnDatabaseIndex = () => {
   ]);
 };
 
-initTxnDatabaseIndex().catch((err) => console.error('Failed to init NFT db index', err));
+initDbIndex().catch((err) => console.error('Failed to init NFT db index', err));

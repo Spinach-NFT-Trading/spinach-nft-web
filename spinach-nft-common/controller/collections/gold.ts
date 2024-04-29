@@ -22,7 +22,7 @@ export const txnGoldPurchaseTwBankRecordCollection = db.collection<GoldPurchaseT
   'goldPurchase/twBank',
 );
 
-const initTxnDatabaseIndex = () => {
+const initDbIndex = () => {
   return Promise.all([
     txnTrackedCollection.createIndex({hash: 1}, {unique: true}),
     txnTrackedCollection.createIndex({from: 1, blockEpoch: -1}),
@@ -34,4 +34,4 @@ const initTxnDatabaseIndex = () => {
   ]);
 };
 
-initTxnDatabaseIndex().catch((err) => console.error('Failed to init TxN db index', err));
+initDbIndex().catch((err) => console.error('Failed to init TxN db index', err));
