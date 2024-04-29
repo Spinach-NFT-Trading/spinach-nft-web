@@ -6,6 +6,7 @@ import {recordGoldPendingTxn} from '@spinach/next/controller/gold/pending';
 import {markGoldPurchaseTwBankRecord, recordGoldPurchaseTwBankTxn} from '@spinach/next/controller/gold/twBank';
 import {buyNft} from '@spinach/next/controller/nft/utils';
 import {deleteRequestToken} from '@spinach/next/controller/request/token';
+import {recordSessionPoll} from '@spinach/next/controller/session/poll';
 import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
 import {uploadIdVerification} from '@spinach/next/controller/user/info';
 import {markUserStatus} from '@spinach/next/controller/user/status';
@@ -34,6 +35,15 @@ export const handleUserRequest = async ({
     return 'accountDisabled';
   }
 
+  if (type === 'session.poll') {
+    await recordSessionPoll({executorUserId: accountId});
+    return null;
+  }
+
+  if (type === 'nft.buy') {
+    return buyNft({buyer: new ObjectId(accountId), nftId: new ObjectId(data.nftId)});
+  }
+
   if (type === 'exchange.gold.crypto') {
     return recordGoldPendingTxn({account: accountId});
   }
@@ -41,11 +51,6 @@ export const handleUserRequest = async ({
   if (type === 'exchange.gold.twBank') {
     return recordGoldPurchaseTwBankTxn({userId: accountId, request: data});
   }
-
-  if (type === 'nft.buy') {
-    return buyNft({buyer: new ObjectId(accountId), nftId: new ObjectId(data.nftId)});
-  }
-
   if (type === 'user.bank') {
     return uploadBankDetails({userId: accountId, request: data});
   }

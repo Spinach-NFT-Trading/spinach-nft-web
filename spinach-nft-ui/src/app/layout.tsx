@@ -6,8 +6,8 @@ import type {Metadata} from 'next';
 // eslint-disable-next-line camelcase
 import {Noto_Sans} from 'next/font/google';
 
+import {MainContext} from '@spinach/next/context/main';
 import {PageLayoutParams} from '@spinach/next/types/next/layout';
-import {Providers} from '@spinach/next/ui/base/providers';
 
 import './globals.css';
 
@@ -27,9 +27,9 @@ const RootLayout = ({children}: React.PropsWithChildren<PageLayoutParams>) => {
     <html lang="zh" className="h-full" suppressHydrationWarning>
       <body className={font.className}>
         <div className="min-h-screen bg-black/50">
-          <Providers>
+          <MainContext>
             {children}
-          </Providers>
+          </MainContext>
         </div>
       </body>
     </html>
