@@ -5,5 +5,7 @@ export const userBalanceHistoryTypeTextStyle: {[type in UserBalanceHistoryTxnTyp
   'nftBuy': 'text-green-300',
   'nftSell': 'text-red-300',
   'deposit.twBank': 'text-sky-300',
+  'deposit.twBank.cashback': 'text-sky-300',
   'deposit.crypto': 'text-sky-300',
+  'deposit.crypto.cashback': 'text-sky-300',
 };

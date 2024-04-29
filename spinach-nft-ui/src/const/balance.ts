@@ -5,5 +5,7 @@ export const userBalanceHistoryTypeText: {[type in UserBalanceHistoryTxnType]: s
   'nftBuy': '購買 NFT',
   'nftSell': '販賣 NFT',
   'deposit.twBank': '入金 (台幣)',
+  'deposit.twBank.cashback': '入金贈金 (台幣)',
   'deposit.crypto': '入金 (USDT)',
+  'deposit.crypto.cashback': '入金贈金 (USDT)',
 };

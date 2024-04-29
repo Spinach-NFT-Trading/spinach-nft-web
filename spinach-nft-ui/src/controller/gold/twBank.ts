@@ -61,13 +61,21 @@ export const markGoldPurchaseTwBankRecord = async ({
 
   const config = await getGlobalConfig();
 
+  // Need to call `insertOne()` twice because `getNewBalance()` fetches the latest balance
   await userBalanceCollection.insertOne({
     ...(await getNewBalance({
       accountId: result.accountId,
       diff: result.amount,
-      multiplier: config.cashbackPercent.twBank / 100,
     })),
     type: 'deposit.twBank',
+    uuid,
+  });
+  await userBalanceCollection.insertOne({
+    ...(await getNewBalance({
+      accountId: result.accountId,
+      diff: result.amount * (config.cashbackPercent.twBank / 100),
+    })),
+    type: 'deposit.twBank.cashback',
     uuid,
   });
 
