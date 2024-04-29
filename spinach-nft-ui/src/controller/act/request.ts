@@ -5,6 +5,7 @@ import {setGlobalConfig} from '@spinach/next/controller/global/config';
 import {recordGoldPendingTxn} from '@spinach/next/controller/gold/pending';
 import {markGoldPurchaseTwBankRecord, recordGoldPurchaseTwBankTxn} from '@spinach/next/controller/gold/twBank';
 import {buyNft} from '@spinach/next/controller/nft/utils';
+import {deleteRequestToken} from '@spinach/next/controller/request/token';
 import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
 import {uploadIdVerification} from '@spinach/next/controller/user/info';
 import {markUserStatus} from '@spinach/next/controller/user/status';
@@ -23,7 +24,10 @@ type HandleUserRequestOpts = {
   options: UserDataRequestOpts,
 };
 
-export const handleUserRequest = async ({accountId, options}: HandleUserRequestOpts): Promise<ApiErrorCode | null> => {
+export const handleUserRequest = async ({
+  accountId,
+  options,
+}: HandleUserRequestOpts): Promise<ApiErrorCode | null> => {
   const {type, data} = options;
 
   if (await isSuspended(accountId)) {
@@ -76,6 +80,14 @@ export const handleUserRequest = async ({accountId, options}: HandleUserRequestO
       executorUserId: accountId,
       ...data,
     });
+  }
+
+  if (type === 'admin.token.delete') {
+    await deleteRequestToken({
+      executorUserId: accountId,
+      token: data.token,
+    });
+    return null;
   }
 
   if (type === 'admin.verify.account') {

@@ -1,4 +1,4 @@
-import {txnWalletCollection} from '@spinach/common/controller/collections/gold';
+import {txnWalletCollection} from '@spinach/common/controller/collections/txn';
 import {GoldExchangeChannel} from '@spinach/common/types/data/gold/common';
 import {GoldWallet, GoldWalletClient, GoldWalletClientMap} from '@spinach/common/types/data/gold/wallet';
 import {ObjectId, WithId} from 'mongodb';

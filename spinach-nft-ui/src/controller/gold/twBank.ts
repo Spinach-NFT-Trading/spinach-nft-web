@@ -2,7 +2,7 @@ import {getGlobalConfig} from '@spinach/common/controller/actors/global';
 import {getNewBalance} from '@spinach/common/controller/actors/user';
 import {azureContainer} from '@spinach/common/controller/blob/const';
 import {uploadBlob} from '@spinach/common/controller/blob/upload';
-import {txnGoldPurchaseTwBankRecordCollection} from '@spinach/common/controller/collections/gold';
+import {txnGoldPurchaseTwBankRecordCollection} from '@spinach/common/controller/collections/txn';
 import {userBalanceCollection, userInfoCollection} from '@spinach/common/controller/collections/user';
 import {Mongo} from '@spinach/common/controller/const';
 import {ApiErrorCode} from '@spinach/common/types/api/error';

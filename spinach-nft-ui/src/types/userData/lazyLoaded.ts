@@ -58,6 +58,8 @@ export type UserLazyLoadedContent = {
   adminMemberNftTxn: ResponseOfAdminNftTxn,
   adminMemberBalanceDaily: UserBalanceDailySummary,
   adminMemberBalanceDetails: UserBalanceHistoryModelClient[],
+  adminTokenList: string[],
+  adminTokenGeneration: string,
   adminUnverifiedAccounts: UserInfo[],
   adminUnverifiedBankDetails: ResponseOfUnverifiedBankDetails,
   adminUnverifiedGoldTxn: ResponseOfUnverifiedGoldTxn,

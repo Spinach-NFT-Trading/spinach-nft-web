@@ -2,6 +2,7 @@ import {Mongo} from '@spinach/common/controller/const';
 import {GoldPurchaseTwBankRecord} from '@spinach/common/types/data/gold/purchase';
 import {GoldCompletedTxn, GoldTrackedTxn} from '@spinach/common/types/data/gold/txn';
 import {GoldWallet} from '@spinach/common/types/data/gold/wallet';
+import {TxnRequestTokenModel} from '@spinach/common/types/data/request/token';
 
 
 const db = Mongo.db('txn');
@@ -22,6 +23,10 @@ export const txnGoldPurchaseTwBankRecordCollection = db.collection<GoldPurchaseT
   'goldPurchase/twBank',
 );
 
+export const txnRequestTokenCollection = db.collection<TxnRequestTokenModel>(
+  'request/Token',
+);
+
 const initDbIndex = () => {
   return Promise.all([
     txnTrackedCollection.createIndex({hash: 1}, {unique: true}),
@@ -31,6 +36,8 @@ const initDbIndex = () => {
     txnWalletCollection.createIndex({wallet: 1}, {unique: true}),
     txnGoldPurchaseTwBankRecordCollection.createIndex({uuid: 1}, {unique: true}),
     txnGoldPurchaseTwBankRecordCollection.createIndex({accountId: 1}),
+    txnRequestTokenCollection.createIndex({accountId: 1}),
+    txnRequestTokenCollection.createIndex({token: 1}, {unique: true}),
   ]);
 };
 

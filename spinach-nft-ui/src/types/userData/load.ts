@@ -37,6 +37,9 @@ export type UserDataLoadingOpts = {
   type: 'adminMemberNftTxn' | 'adminMemberBalanceDaily' | 'adminMemberBalanceDetails',
   opts: DataLookBackRequestOnUser,
 } | {
+  type: 'adminTokenList' | 'adminTokenGeneration',
+  opts?: never,
+} | {
   type: 'adminUnverifiedAccounts',
   opts?: never,
 } | {
@@ -57,7 +60,5 @@ export type UserDataLoadingOpts = {
     uuid: string,
   },
 };
-
-export type UserDataLoader = (options: UserDataLoadingOpts) => void;
 
 export type UserDataLoadingType = UserDataLoadingOpts['type'];

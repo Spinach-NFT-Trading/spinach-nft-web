@@ -1,4 +1,4 @@
-import {txnWalletCollection} from '@spinach/common/controller/collections/gold';
+import {txnWalletCollection} from '@spinach/common/controller/collections/txn';
 import {isNotNullish} from '@spinach/common/utils/type';
 
 

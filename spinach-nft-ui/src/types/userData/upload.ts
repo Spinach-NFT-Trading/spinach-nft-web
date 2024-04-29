@@ -43,6 +43,11 @@ export type UserDataRequestOpts = {
     commissionPercent: UserCommissionPercent,
   },
 } | {
+  type: 'admin.token.delete',
+  data: {
+    token: string,
+  },
+} | {
   type: 'admin.member.mark.agent',
   data: {
     targetId: string,
