@@ -93,7 +93,7 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
         />
         <InputFloatingLabel
           id="wallet"
-          placeholder="MAX 錢包地址 (TRC20)"
+          placeholder="虛擬貨幣錢包地址 (TRC20)"
           type="text"
           value={wallet}
           onChange={({target}) => setInput((original) => ({
