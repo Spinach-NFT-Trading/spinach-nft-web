@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Transition} from '@headlessui/react';
+import {Transition, TransitionChild} from '@headlessui/react';
 import {clsx} from 'clsx';
 
 import {CollapsibleMark} from '@spinach/next/components/layout/collapsible/mark';
@@ -43,6 +43,7 @@ export const CollapsibleFull = ({
         {button}
       </button>
       <Transition
+        as="div"
         show={show}
         enterFrom="p-0"
         enterTo="p-1"
@@ -50,7 +51,8 @@ export const CollapsibleFull = ({
         leaveTo="p-0"
         className="rounded-b-lg border-x border-b transition-all duration-300 ease-in-out"
       >
-        <Transition.Child
+        <TransitionChild
+          as="div"
           appear={appear}
           enter={duration}
           enterFrom="grid-rows-[0fr]"
@@ -60,7 +62,8 @@ export const CollapsibleFull = ({
           leaveTo="grid-rows-[0fr]"
           className="grid w-full transition-[grid-template-rows] ease-in-out"
         >
-          <Transition.Child
+          <TransitionChild
+            as="div"
             enter={`${delay} ${duration}`}
             enterFrom="opacity-0"
             enterTo="opacity-100"
@@ -70,8 +73,8 @@ export const CollapsibleFull = ({
             className="overflow-hidden transition-opacity ease-in-out"
           >
             {children}
-          </Transition.Child>
-        </Transition.Child>
+          </TransitionChild>
+        </TransitionChild>
       </Transition>
     </Flex>
   );

@@ -14,24 +14,24 @@
   "author": "RaenonX",
   "license": "ISC",
   "dependencies": {
-    "@fastify/type-provider-typebox": "*",
-    "@sinclair/typebox": "*",
-    "bcryptjs": "*",
-    "dotenv": "*",
-    "env-var": "*",
-    "mongodb": "*",
-    "pm2": "*"
+    "@fastify/type-provider-typebox": "^4.0.0",
+    "@sinclair/typebox": "^0.32.30",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "env-var": "^7.4.2",
+    "mongodb": "^6.6.2",
+    "pm2": "^5.3.1"
   },
   "devDependencies": {
-    "@types/bcryptjs": "*",
-    "@types/node": "*",
-    "@typescript-eslint/eslint-plugin": "*",
-    "@typescript-eslint/parser": "*",
-    "eslint": "*",
-    "eslint-config-google": "*",
-    "eslint-import-resolver-typescript": "*",
-    "eslint-plugin-import": "*",
-    "jest": "*",
-    "typescript": "*"
+    "@types/bcryptjs": "^2.4.6",
+    "@types/node": "^20.12.12",
+    "@typescript-eslint/eslint-plugin": "^7.9.0",
+    "@typescript-eslint/parser": "^7.9.0",
+    "eslint": "^8.57.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "jest": "^29.7.0",
+    "typescript": "^5.4.5"
   }
 }

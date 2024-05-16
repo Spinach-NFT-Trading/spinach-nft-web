@@ -17,6 +17,7 @@ export const FadingLayout = <TKey extends string>({current, contents, className}
     <Grid className={clsx('grid-areas-inner-div', className)}>
       {Object.entries(contents).map(([key, content]) => (
         <Transition
+          as="div"
           key={key}
           show={key === current}
           enter="duration-300"

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Transition} from '@headlessui/react';
+import {Transition, TransitionChild} from '@headlessui/react';
 import {clsx} from 'clsx';
 
 
@@ -13,6 +13,7 @@ type Props = {
 export const AnimatedCollapse = ({show, appear, className, children}: React.PropsWithChildren<Props>) => {
   return (
     <Transition
+      as="div"
       show={show}
       appear={appear}
       enter="duration-1000"
@@ -23,7 +24,8 @@ export const AnimatedCollapse = ({show, appear, className, children}: React.Prop
       leaveTo="grid-rows-[0fr]"
       className="grid w-full transition-[grid-template-rows] ease-in-out"
     >
-      <Transition.Child
+      <TransitionChild
+        as="div"
         enter="delay-500 duration-1000"
         enterFrom="opacity-0"
         enterTo="opacity-100"
@@ -33,7 +35,7 @@ export const AnimatedCollapse = ({show, appear, className, children}: React.Prop
         className={clsx('overflow-hidden transition-opacity ease-in-out', className)}
       >
         {children}
-      </Transition.Child>
+      </TransitionChild>
     </Transition>
   );
 };
