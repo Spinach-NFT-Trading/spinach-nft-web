@@ -1,4 +1,4 @@
-import {txnRequestTokenCollection} from '@spinach/common/controller/collections/txn';
+import {nftRequestTokenCollection} from '@spinach/common/controller/collections/nft';
 import {ObjectId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
@@ -7,7 +7,7 @@ import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 type GetRequestTokenListOpts = ControllerRequireUserIdOpts;
 
 export const getRequestTokenList = async ({executorUserId}: GetRequestTokenListOpts): Promise<string[]> => {
-  return txnRequestTokenCollection
+  return nftRequestTokenCollection
     .find({accountId: new ObjectId(executorUserId)})
     .map(({token}) => token)
     .toArray();
@@ -20,7 +20,7 @@ export const generateRequestToken = async ({
 }: GenerateRequestTokenOpts): Promise<string> => {
   const token = crypto.randomUUID();
 
-  await txnRequestTokenCollection.insertOne({
+  await nftRequestTokenCollection.insertOne({
     accountId: new ObjectId(executorUserId),
     token,
   });
@@ -36,5 +36,5 @@ export const deleteRequestToken = async ({
   executorUserId,
   token,
 }: DeleteRequestTokenOpts) => {
-  await txnRequestTokenCollection.deleteOne({accountId: new ObjectId(executorUserId), token});
+  await nftRequestTokenCollection.deleteOne({accountId: new ObjectId(executorUserId), token});
 };
