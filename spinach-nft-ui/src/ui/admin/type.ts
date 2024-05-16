@@ -1,6 +1,7 @@
 export const adminPageTabs = [
   'agents',
   'members',
+  'queuedExchangeRequests',
   'verifyId',
   'verifyBankAccount',
   'verifyBankTxn',
