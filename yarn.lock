@@ -1910,6 +1910,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-timeago@npm:^4.1.7":
+  version: 4.1.7
+  resolution: "@types/react-timeago@npm:4.1.7"
+  dependencies:
+    "@types/react": "npm:*"
+  checksum: 0f5965a0cdcced841889b45003c91643392caffc47470ed6e84784b940b3e8fe2031bce44a6c135e3adf6b5c21f46eb20c3b9211f1ec93c86f8e67ca732aed71
+  languageName: node
+  linkType: hard
+
 "@types/react-window@npm:^1.8.8":
   version: 1.8.8
   resolution: "@types/react-window@npm:1.8.8"
@@ -7858,6 +7867,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-timeago@npm:^7.2.0":
+  version: 7.2.0
+  resolution: "react-timeago@npm:7.2.0"
+  peerDependencies:
+    react: ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: 89051a12296934e3400319ca7887a0f3ae5a779fd9456769b526ac4771c47a431fb4c68f56ac9726e23d65aad55538f7e2f1c6adfa83224bc8f6278775c26fa3
+  languageName: node
+  linkType: hard
+
+"react-timer-hook@npm:^3.0.7":
+  version: 3.0.7
+  resolution: "react-timer-hook@npm:3.0.7"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 76a6419e8471be18023b907cb65c894566501305002186e9fa5ec42614ef21f0310f8ea0bed88b61efb75fc9bdc0430dcb92dc8f9a0a3c3a1956b6c27f6c8e2d
+  languageName: node
+  linkType: hard
+
 "react-virtualized-auto-sizer@npm:^1.0.24":
   version: 1.0.24
   resolution: "react-virtualized-auto-sizer@npm:1.0.24"
@@ -8634,6 +8661,7 @@ __metadata:
     "@types/lodash": "npm:^4.17.3"
     "@types/react": "npm:^18.3.2"
     "@types/react-dom": "npm:^18.3.0"
+    "@types/react-timeago": "npm:^4.1.7"
     "@types/react-window": "npm:^1.8.8"
     "@types/uuid": "npm:^9.0.8"
     autoprefixer: "npm:^10.4.19"
@@ -8647,6 +8675,8 @@ __metadata:
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     react-hot-toast: "npm:^2.4.1"
+    react-timeago: "npm:^7.2.0"
+    react-timer-hook: "npm:^3.0.7"
     react-virtualized-auto-sizer: "npm:^1.0.24"
     react-window: "npm:^1.8.10"
     sharp: "npm:^0.33.4"

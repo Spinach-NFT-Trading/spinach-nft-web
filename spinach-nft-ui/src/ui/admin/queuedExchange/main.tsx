@@ -16,15 +16,15 @@ export const AdminQueuedExchange = () => {
     data: [],
   });
 
-  React.useEffect(() => {
-    const intervalId = setInterval(
-      () => getQueuedNftExchangeRequests().then((data) => setState({
-        lastUpdated: new Date(),
-        data,
-      })),
-      5000,
-    );
+  const fetchData = () => getQueuedNftExchangeRequests().then((data) => setState({
+    lastUpdated: new Date(),
+    data,
+  }));
 
+  React.useEffect(() => {
+    void fetchData();
+
+    const intervalId = setInterval(fetchData, 5000);
 
     return () => clearInterval(intervalId);
   }, []);
@@ -39,7 +39,7 @@ export const AdminQueuedExchange = () => {
         data={state.data}
         header={<AdminQueuedExchangeHeader/>}
         getKey={(data) => data?.requestUuid}
-        classOfRow="not-last:border-b w-max gap-1 border-b-slate-400"
+        classOfRow="not-last:border-b w-max gap-1 border-b-slate-400 px-1 py-2"
         renderRow={({data}) => <AdminQueuedExchangeRow data={data}/>}
       />
     </Flex>

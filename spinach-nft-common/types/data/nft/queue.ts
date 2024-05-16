@@ -3,3 +3,7 @@ export type NftExchangeQueuedModel = {
   token: string,
   amount: number,
 };
+
+export type NftExchangeQueuedData = NftExchangeQueuedModel & {
+  createdAtEpochMs: number,
+};
