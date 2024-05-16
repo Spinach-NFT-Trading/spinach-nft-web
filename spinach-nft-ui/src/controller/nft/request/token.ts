@@ -1,26 +1,26 @@
-import {nftRequestTokenCollection} from '@spinach/common/controller/collections/nft';
+import {nftExchangeTokenCollection} from '@spinach/common/controller/collections/nft';
 import {ObjectId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 
 
-type GetRequestTokenListOpts = ControllerRequireUserIdOpts;
+type GetNftExchangeTokenListOpts = ControllerRequireUserIdOpts;
 
-export const getRequestTokenList = async ({executorUserId}: GetRequestTokenListOpts): Promise<string[]> => {
-  return nftRequestTokenCollection
+export const getNftExchangeTokenList = async ({executorUserId}: GetNftExchangeTokenListOpts): Promise<string[]> => {
+  return nftExchangeTokenCollection
     .find({accountId: new ObjectId(executorUserId)})
     .map(({token}) => token)
     .toArray();
 };
 
-type GenerateRequestTokenOpts = ControllerRequireUserIdOpts;
+type GenerateNftExchangeTokenOpts = ControllerRequireUserIdOpts;
 
-export const generateRequestToken = async ({
+export const generateNftExchangeToken = async ({
   executorUserId,
-}: GenerateRequestTokenOpts): Promise<string> => {
+}: GenerateNftExchangeTokenOpts): Promise<string> => {
   const token = crypto.randomUUID();
 
-  await nftRequestTokenCollection.insertOne({
+  await nftExchangeTokenCollection.insertOne({
     accountId: new ObjectId(executorUserId),
     token,
   });
@@ -28,13 +28,13 @@ export const generateRequestToken = async ({
   return token;
 };
 
-type DeleteRequestTokenOpts = ControllerRequireUserIdOpts & {
+type DeleteNftExchangeTokenOpts = ControllerRequireUserIdOpts & {
   token: string
 };
 
-export const deleteRequestToken = async ({
+export const deleteNftExchangeToken = async ({
   executorUserId,
   token,
-}: DeleteRequestTokenOpts) => {
-  await nftRequestTokenCollection.deleteOne({accountId: new ObjectId(executorUserId), token});
+}: DeleteNftExchangeTokenOpts) => {
+  await nftExchangeTokenCollection.deleteOne({accountId: new ObjectId(executorUserId), token});
 };

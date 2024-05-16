@@ -22,8 +22,8 @@ export const AdminRequestToken = () => {
 
     act({
       action: 'load',
-      options: {type: 'adminTokenList'},
-    }).then((session) => setTokenList(session?.user.lazyLoaded.adminTokenList ?? []));
+      options: {type: 'adminExchangeTokenList'},
+    }).then((session) => setTokenList(session?.user.lazyLoaded.adminExchangeTokenList ?? []));
   }, []);
 
   return (
@@ -35,9 +35,9 @@ export const AdminRequestToken = () => {
 
         act({
           action: 'load',
-          options: {type: 'adminTokenGeneration'},
+          options: {type: 'adminExchangeTokenGeneration'},
         }).then((session) => {
-          const newToken = session?.user.lazyLoaded.adminTokenGeneration;
+          const newToken = session?.user.lazyLoaded.adminExchangeTokenGeneration;
           if (!newToken) {
             return;
           }
