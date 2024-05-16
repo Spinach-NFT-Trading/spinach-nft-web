@@ -1,5 +1,6 @@
 import {userBankDetailsCollection} from '@spinach/common/controller/collections/user';
 import {NftExchangeRequest, NftExchangeResult} from '@spinach/common/types/api/nft/exchange';
+import {BankDetails} from '@spinach/common/types/data/user/bank';
 import {v4} from 'uuid';
 
 import {addNftExchangeRequestToQueue} from '@spinach/server/controller/nft/exchange/queue';
@@ -19,7 +20,14 @@ export const requestNftExchange = async (opts: RequestNftExchangeOpts): Promise<
     return {result: 'queued', requestUuid};
   }
 
-  const bankDetails = await userBankDetailsCollection.find({userId: nftToSell.owner.toHexString()})
+  const bankDetails: BankDetails[] = await userBankDetailsCollection.find({userId: nftToSell.owner.toHexString()})
+    .map(({code, account, status, uuid}) => ({
+      // Return whatever needed only
+      code,
+      account,
+      status,
+      uuid,
+    }))
     .toArray();
 
   return {
