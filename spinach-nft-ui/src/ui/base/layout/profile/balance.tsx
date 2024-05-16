@@ -3,7 +3,7 @@ import React from 'react';
 import CurrencyDollarIcon from '@heroicons/react/24/outline/CurrencyDollarIcon';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
-import {formatFloat2} from '@spinach/next/utils/number';
+import {formatFloat2} from '@spinach/next/utils/number/format';
 
 
 type Props = {
@@ -18,7 +18,7 @@ export const ProfileBalanceSection = ({title, value}: Props) => {
         {title}
       </Flex>
       <Flex direction="row" center className="gap-2 text-3xl text-amber-400">
-        <div className="relative h-10 w-10">
+        <div className="relative size-10">
           <CurrencyDollarIcon/>
         </div>
         <div>

@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {adminMemberMonetaryCellStyle} from '@spinach/next/ui/admin/common/cell/monetary/const';
-import {formatInt} from '@spinach/next/utils/number';
+import {formatInt} from '@spinach/next/utils/number/format';
 
 
 type Props = {

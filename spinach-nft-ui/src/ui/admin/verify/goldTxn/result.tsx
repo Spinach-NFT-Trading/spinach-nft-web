@@ -12,7 +12,7 @@ import {
   AdminVerifyGoldTxnFilterInput,
 } from '@spinach/next/ui/admin/verify/goldTxn/type';
 import {formatWallet} from '@spinach/next/utils/data/wallet';
-import {formatInt} from '@spinach/next/utils/number';
+import {formatInt} from '@spinach/next/utils/number/format';
 
 
 type Props = {

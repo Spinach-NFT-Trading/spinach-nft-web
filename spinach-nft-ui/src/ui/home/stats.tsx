@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
-import {formatToAbbreviation} from '@spinach/next/utils/number';
+import {formatToAbbreviation} from '@spinach/next/utils/number/format';
 
 
 type Props = {
@@ -14,7 +14,7 @@ export const HomeStatsSection = ({icon, value, title}: Props) => {
   return (
     <Flex>
       <Flex direction="row" center className="gap-1.5">
-        <div className="relative h-10 w-10">
+        <div className="relative size-10">
           {icon}
         </div>
         <div className="text-3xl font-semibold">

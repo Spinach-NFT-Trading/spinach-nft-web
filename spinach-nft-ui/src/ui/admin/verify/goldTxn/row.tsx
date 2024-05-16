@@ -7,7 +7,7 @@ import clsx from 'clsx';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {AdminVerifyDataRowCommonProps} from '@spinach/next/ui/admin/verify/common/type';
 import {formatUserName} from '@spinach/next/utils/data/user';
-import {formatInt} from '@spinach/next/utils/number';
+import {formatInt} from '@spinach/next/utils/number/format';
 
 
 type Props = AdminVerifyDataRowCommonProps<{

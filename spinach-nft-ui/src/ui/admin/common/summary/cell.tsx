@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
-import {formatInt} from '@spinach/next/utils/number';
+import {formatInt} from '@spinach/next/utils/number/format';
 
 
 type Props = {

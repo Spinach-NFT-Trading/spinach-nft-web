@@ -10,7 +10,7 @@ import {goldExchangeChannelText} from '@spinach/next/const/gold';
 import {GoldExchangeConfirmPopup} from '@spinach/next/ui/gold/exchange/confirm';
 import {GoldExchangeCryptoTutorial} from '@spinach/next/ui/gold/exchange/tutorial';
 import {ExchangeAmount} from '@spinach/next/ui/gold/exchange/type';
-import {formatFloat2, formatFloat3} from '@spinach/next/utils/number';
+import {formatFloat2, formatFloat3} from '@spinach/next/utils/number/format';
 
 
 const defaultSource = 1000;
@@ -56,7 +56,7 @@ export const GoldExchangeContent = ({exchangeChannel, exchangeRate, cashbackRate
               setAmount({source, gold});
             }}
           />
-          <div className="h-10 w-10">
+          <div className="size-10">
             <ArrowDownCircleIcon/>
           </div>
           <InputFloatingLabel
@@ -79,7 +79,7 @@ export const GoldExchangeContent = ({exchangeChannel, exchangeRate, cashbackRate
               </div>
               <Flex center direction="row" className="gap-1.5">
                 1 {goldExchangeChannelText[exchangeChannel]}
-                <div className="h-4 w-4">
+                <div className="size-4">
                   <ArrowRightIcon/>
                 </div>
                 {formatFloat3(exchangeRate)} GOLD
