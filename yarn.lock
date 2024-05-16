@@ -3753,6 +3753,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-unused-imports@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "eslint-plugin-unused-imports@npm:3.2.0"
+  dependencies:
+    eslint-rule-composer: "npm:^0.3.0"
+  peerDependencies:
+    "@typescript-eslint/eslint-plugin": 6 - 7
+    eslint: 8
+  peerDependenciesMeta:
+    "@typescript-eslint/eslint-plugin":
+      optional: true
+  checksum: 70c93efaa4dccd1172db3858b27968184c97cb8b7ffb2d9e6ffb09d9509863c70651b533b48eec4d10bc7f633d7f50fd190fdd5b36e8cac2c4efd5cecb5d5d98
+  languageName: node
+  linkType: hard
+
+"eslint-rule-composer@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "eslint-rule-composer@npm:0.3.0"
+  checksum: 1f0c40d209e1503a955101a0dbba37e7fc67c8aaa47a5b9ae0b0fcbae7022c86e52b3df2b1b9ffd658e16cd80f31fff92e7222460a44d8251e61d49e0af79a07
+  languageName: node
+  linkType: hard
+
 "eslint-scope@npm:^7.2.2":
   version: 7.2.2
   resolution: "eslint-scope@npm:7.2.2"
@@ -8200,6 +8222,7 @@ __metadata:
     pino: "npm:^8.17.1"
     pino-pretty: "npm:^10.3.0"
     spinach-nft-common: "npm:*"
+    uuid: "npm:^9.0.1"
   peerDependencies:
     "@fastify/type-provider-typebox": "*"
     "@sinclair/typebox": "*"
@@ -8315,6 +8338,7 @@ __metadata:
     eslint-config-google: "npm:^0.14.0"
     eslint-import-resolver-typescript: "npm:^3.6.1"
     eslint-plugin-import: "npm:^2.29.1"
+    eslint-plugin-unused-imports: "npm:^3.2.0"
     jest: "npm:^29.7.0"
     mongodb: "npm:^6.3.0"
     nodemon: "npm:^3.0.2"

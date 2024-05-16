@@ -7,4 +7,7 @@ export const apiPath = {
       finalize: '/auth/sms/finalize',
     },
   },
+  nft: {
+    exchange: '/nft/exchange',
+  },
 };
