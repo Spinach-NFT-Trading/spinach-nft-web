@@ -24,17 +24,25 @@ parserOptions:
 plugins:
   - "@typescript-eslint"
   - react
+  - unused-imports
 
 rules:
+  # Need to disable this for `unused-imports/no-unused-vars` to work properly
+  no-unused-vars:
+    - off
+
+  # Need to disable this for `unused-imports/no-unused-vars` to work properly
   "@typescript-eslint/no-unused-vars":
+    - off
+
+  unused-imports/no-unused-vars:
     - error
     - varsIgnorePattern: "^[_]+$"
       argsIgnorePattern: "^[_]+$"
       ignoreRestSiblings: true
 
-  # Needs to disable local no-unused-vars for this rule to work properly
-  no-unused-vars:
-    - off
+  unused-imports/no-unused-imports:
+    - error
 
   "@typescript-eslint/indent":
     - error
