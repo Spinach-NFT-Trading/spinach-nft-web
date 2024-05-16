@@ -51,6 +51,7 @@ export const handleUserRequest = async ({
   if (type === 'exchange.gold.twBank') {
     return recordGoldPurchaseTwBankTxn({userId: accountId, request: data});
   }
+
   if (type === 'user.bank') {
     return uploadBankDetails({userId: accountId, request: data});
   }

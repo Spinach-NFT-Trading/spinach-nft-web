@@ -52,7 +52,7 @@ export const recordUserDataAfterNftTxn = async ({nftTxnId, nftTxn, session}: Rec
   ], {session});
   await userNftPositionCollection.updateOne(
     {nftId: nftTxn.nftId},
-    {$set: {owner: nftTxn.to}},
+    {$set: {owner: nftTxn.to, price: nftTxn.price}},
     {upsert: true, session},
   );
 };
