@@ -2,7 +2,12 @@
 
 # dependencies
 node_modules
-.yarn/cache
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
 
 # next.js
 .next
