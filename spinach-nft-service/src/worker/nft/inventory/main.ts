@@ -1,6 +1,6 @@
 import {getNftPriceTiers} from '@spinach/common/controller/actors/nft';
 
-import {ensureInventoryOfTier} from '@spinach/service/worker/nft/tier';
+import {ensureInventoryOfTier} from '@spinach/service/worker/nft/inventory/tier';
 
 
 const checkNftInventory = async () => {

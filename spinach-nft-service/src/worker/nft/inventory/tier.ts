@@ -1,7 +1,7 @@
 import {nftOnSaleCollection} from '@spinach/common/controller/collections/nft';
 import {NftPriceTierModel} from '@spinach/common/types/data/nft';
 
-import {listNft} from '@spinach/service/worker/nft/list';
+import {listNft} from '@spinach/service/worker/nft/inventory/list';
 
 
 type EnsureInventoryOfTierOpts = {
