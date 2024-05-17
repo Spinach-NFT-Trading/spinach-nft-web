@@ -38,6 +38,22 @@ export const generateNftExchangeToken = async ({
   return {token, webhook};
 };
 
+type UpdateNftExchangeTokenOpts = ControllerRequireUserIdOpts & {
+  tokenData: NftExchangeToken,
+};
+
+export const updateNftExchangeToken = async ({
+  executorUserId,
+  tokenData,
+}: UpdateNftExchangeTokenOpts) => {
+  const {token, webhook} = tokenData;
+
+  await nftExchangeTokenCollection.updateOne(
+    {accountId: new ObjectId(executorUserId), token},
+    {$set: {webhook}},
+  );
+};
+
 type DeleteNftExchangeTokenOpts = ControllerRequireUserIdOpts & {
   token: string
 };

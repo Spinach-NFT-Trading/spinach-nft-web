@@ -4,7 +4,7 @@ import {ObjectId} from 'mongodb';
 import {setGlobalConfig} from '@spinach/next/controller/global/config';
 import {recordGoldPendingTxn} from '@spinach/next/controller/gold/pending';
 import {markGoldPurchaseTwBankRecord, recordGoldPurchaseTwBankTxn} from '@spinach/next/controller/gold/twBank';
-import {deleteNftExchangeToken} from '@spinach/next/controller/nft/request/token';
+import {deleteNftExchangeToken, updateNftExchangeToken} from '@spinach/next/controller/nft/request/token';
 import {buyNft} from '@spinach/next/controller/nft/utils';
 import {recordSessionPoll} from '@spinach/next/controller/session/poll';
 import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
@@ -86,6 +86,14 @@ export const handleUserRequest = async ({
       executorUserId: accountId,
       ...data,
     });
+  }
+
+  if (type === 'admin.token.update') {
+    await updateNftExchangeToken({
+      executorUserId: accountId,
+      tokenData: data,
+    });
+    return null;
   }
 
   if (type === 'admin.token.delete') {

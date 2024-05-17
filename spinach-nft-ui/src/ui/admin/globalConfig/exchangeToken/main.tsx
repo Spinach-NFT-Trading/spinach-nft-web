@@ -18,7 +18,7 @@ export const AdminExchangeToken = () => {
   const [tokenMap, setTokenMap] = React.useState<NftExchangeTokenMap>({});
   const [webhook, setWebhook] = React.useState('');
 
-  const {act} = useUserDataActor({statusToast: true});
+  const {act, status} = useUserDataActor({statusToast: true});
 
   React.useEffect(() => {
     if (!act) {
@@ -74,7 +74,13 @@ export const AdminExchangeToken = () => {
       </FlexForm>
       <Flex className="info-section gap-1">
         {Object.values(tokenMap).filter(isNotNullish).map((tokenData) => (
-          <AdminExchangeTokenSingle key={tokenData.token} act={act} tokenData={tokenData} setTokenMap={setTokenMap}/>
+          <AdminExchangeTokenSingle
+            key={tokenData.token}
+            act={act}
+            status={status}
+            tokenData={tokenData}
+            setTokenMap={setTokenMap}
+          />
         ))}
       </Flex>
     </Flex>

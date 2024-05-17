@@ -2,6 +2,7 @@ import {UserIdVerificationData} from '@spinach/common/types/api/auth/verify/id/m
 import {BinaryData} from '@spinach/common/types/common/binary';
 import {UserCommissionPercent} from '@spinach/common/types/common/user/commission';
 import {GlobalConfig} from '@spinach/common/types/data/global';
+import {NftExchangeToken} from '@spinach/common/types/data/nft/token';
 import {BankDetails} from '@spinach/common/types/data/user/bank';
 
 
@@ -45,6 +46,9 @@ export type UserDataRequestOpts = {
     agentId: string | null,
     commissionPercent: UserCommissionPercent,
   },
+} | {
+  type: 'admin.token.update',
+  data: NftExchangeToken,
 } | {
   type: 'admin.token.delete',
   data: {
