@@ -37,8 +37,13 @@ export type UserDataLoadingOpts = {
   type: 'adminMemberNftTxn' | 'adminMemberBalanceDaily' | 'adminMemberBalanceDetails',
   opts: DataLookBackRequestOnUser,
 } | {
-  type: 'adminExchangeTokenList' | 'adminExchangeTokenGeneration',
+  type: 'adminExchangeTokenMap',
   opts?: never,
+} | {
+  type: 'adminExchangeTokenGeneration',
+  opts: {
+    webhook: string,
+  },
 } | {
   type: 'adminUnverifiedAccounts',
   opts?: never,

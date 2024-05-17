@@ -7,7 +7,7 @@ import {ObjectId} from 'mongodb';
 
 import {getUnverifiedGoldPurchaseTwBankRecordClient} from '@spinach/next/controller/gold/twBank';
 import {getWalletClientMap} from '@spinach/next/controller/gold/wallet';
-import {generateNftExchangeToken, getNftExchangeTokenList} from '@spinach/next/controller/nft/request/token';
+import {generateNftExchangeToken, getNftExchangeTokenMap} from '@spinach/next/controller/nft/request/token';
 import {getNftTxnOfUser} from '@spinach/next/controller/nft/txn';
 import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft/utils';
 import {getUserBalanceDailySummary} from '@spinach/next/controller/user/balance/daily';
@@ -140,15 +140,16 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
     }) satisfies UserLazyLoadedData['adminMemberBalanceDetails'];
   }
 
-  if (type === 'adminExchangeTokenList') {
-    return await getNftExchangeTokenList({
+  if (type === 'adminExchangeTokenMap') {
+    return await getNftExchangeTokenMap({
       executorUserId: accountId,
-    }) satisfies UserLazyLoadedData['adminExchangeTokenList'];
+    }) satisfies UserLazyLoadedData['adminExchangeTokenMap'];
   }
 
   if (type === 'adminExchangeTokenGeneration') {
     return await generateNftExchangeToken({
       executorUserId: accountId,
+      webhook: options.opts.webhook,
     }) satisfies UserLazyLoadedData['adminExchangeTokenGeneration'];
   }
 

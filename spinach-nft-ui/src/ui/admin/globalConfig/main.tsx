@@ -7,8 +7,8 @@ import {signIn} from 'next-auth/react';
 import {Loading} from '@spinach/next/components/icons/loading';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
+import {AdminExchangeToken} from '@spinach/next/ui/admin/globalConfig/exchangeToken/main';
 import {AdminGlobalConfigNumberInput} from '@spinach/next/ui/admin/globalConfig/input';
-import {AdminRequestToken} from '@spinach/next/ui/admin/globalConfig/requestToken';
 
 
 export const AdminGlobalConfigUi = () => {
@@ -81,7 +81,7 @@ export const AdminGlobalConfigUi = () => {
         })}
       />
       <div className="info-section text-lg">NFT 撮合請求權杖</div>
-      <AdminRequestToken/>
+      <AdminExchangeToken/>
     </Flex>
   );
 };

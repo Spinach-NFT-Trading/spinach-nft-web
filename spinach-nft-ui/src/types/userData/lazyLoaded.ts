@@ -4,6 +4,7 @@ import {UserInfo, UserInfoListByAgent} from '@spinach/common/types/common/user/i
 import {GlobalConfig} from '@spinach/common/types/data/global';
 import {GoldPurchaseTwBankRecordClient} from '@spinach/common/types/data/gold/purchase';
 import {GoldWalletClientMap} from '@spinach/common/types/data/gold/wallet';
+import {NftExchangeToken, NftExchangeTokenMap} from '@spinach/common/types/data/nft/token';
 import {BankDetails, BankDetailsMap, UserBankDetails} from '@spinach/common/types/data/user/bank';
 
 import {
@@ -58,8 +59,8 @@ export type UserLazyLoadedContent = {
   adminMemberNftTxn: ResponseOfAdminNftTxn,
   adminMemberBalanceDaily: UserBalanceDailySummary,
   adminMemberBalanceDetails: UserBalanceHistoryModelClient[],
-  adminExchangeTokenList: string[],
-  adminExchangeTokenGeneration: string,
+  adminExchangeTokenMap: NftExchangeTokenMap,
+  adminExchangeTokenGeneration: NftExchangeToken,
   adminUnverifiedAccounts: UserInfo[],
   adminUnverifiedBankDetails: ResponseOfUnverifiedBankDetails,
   adminUnverifiedGoldTxn: ResponseOfUnverifiedGoldTxn,
