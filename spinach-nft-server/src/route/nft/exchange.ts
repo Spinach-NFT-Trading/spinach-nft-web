@@ -1,5 +1,5 @@
 import {apiPath} from '@spinach/common/const/path';
-import {requestNftExchange} from '@spinach/common/controller/nft/exchange/main';
+import {requestNftExchange} from '@spinach/common/controller/nft/exchange/request';
 import {
   NftExchangeRequest,
   NftExchangeRequestSchema,
