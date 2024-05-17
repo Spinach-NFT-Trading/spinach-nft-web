@@ -5,20 +5,27 @@ import {getFlexStyles} from '@spinach/next/components/layout/flex/utils';
 
 
 type Props = FlexCommonProps & {
-  onClick: () => void,
   disabled?: boolean,
-};
+} & ({
+  isSubmit: true,
+  onClick?: () => void,
+} | {
+  isSubmit?: boolean,
+  onClick: () => void,
+});
 
 const FlexButtonInternal = ({
   direction = 'row',
   noFullWidth = true,
   onClick,
   disabled,
+  isSubmit,
   children,
   ...props
 }: React.PropsWithChildren<Props>, ref: React.ForwardedRef<HTMLButtonElement>) => (
   <button
     ref={ref}
+    type={isSubmit ? 'submit' : 'button'}
     onClick={onClick}
     disabled={disabled}
     className={getFlexStyles(direction, {noFullWidth, ...props})}
