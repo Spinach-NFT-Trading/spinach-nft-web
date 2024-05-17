@@ -8,6 +8,7 @@ import {
   NftPriceTierModel,
   NftTxnModel,
 } from '@spinach/common/types/data/nft';
+import {NftExchangeMatchedModel} from '@spinach/common/types/data/nft/match';
 import {NftExchangeQueuedModel} from '@spinach/common/types/data/nft/queue';
 import {NftExchangeTokenModel} from '@spinach/common/types/data/nft/token';
 
@@ -30,6 +31,10 @@ export const nftExchangeTokenCollection = db.collection<NftExchangeTokenModel>(
 
 export const nftExchangeQueueCollection = db.collection<NftExchangeQueuedModel>(
   'exchange/queue',
+);
+
+export const nftExchangeMatchedCollection = db.collection<NftExchangeMatchedModel>(
+  'exchange/match',
 );
 
 const initDbIndex = () => {

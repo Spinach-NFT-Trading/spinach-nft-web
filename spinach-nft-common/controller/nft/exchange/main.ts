@@ -1,38 +1,32 @@
 import {v4} from 'uuid';
 
-import {userBankDetailsCollection} from '@spinach/common/controller/collections/user';
-import {addNftExchangeRequestToQueue} from '@spinach/common/controller/nft/exchange/queue';
-import {requestNftExchangeSingle} from '@spinach/common/controller/nft/exchange/single';
+import {queueNftExchangeRequest} from '@spinach/common/controller/nft/exchange/queue';
+import {requestNftExchangeSingle} from '@spinach/common/controller/nft/exchange/single/main';
+import {NftExchangeRequestCommonOpts} from '@spinach/common/controller/nft/exchange/type';
 import {NftExchangeRequest, NftExchangeResult} from '@spinach/common/types/api/nft/exchange';
-import {BankDetails} from '@spinach/common/types/data/user/bank';
 
 
 export type RequestNftExchangeOpts = NftExchangeRequest;
 
 export const requestNftExchange = async (opts: RequestNftExchangeOpts): Promise<NftExchangeResult> => {
-  const nftToSell = await requestNftExchangeSingle(opts);
+  const requestUuid = v4();
 
-  if (!nftToSell) {
-    const requestUuid = v4();
+  const commonOpts: NftExchangeRequestCommonOpts = {
+    requestUuid,
+    ...opts,
+  };
 
-    await addNftExchangeRequestToQueue({requestUuid, ...opts});
+  const exchangeResult = await requestNftExchangeSingle(commonOpts);
+
+  if (!exchangeResult) {
+    await queueNftExchangeRequest(commonOpts);
 
     return {result: 'queued', requestUuid};
   }
 
-  const bankDetails: BankDetails[] = await userBankDetailsCollection.find({userId: nftToSell.owner.toHexString()})
-    .map(({code, account, status, uuid}) => ({
-      // Return whatever needed only
-      code,
-      account,
-      status,
-      uuid,
-    }))
-    .toArray();
-
   return {
     result: 'found',
-    userId: nftToSell.owner.toHexString(),
-    bankDetails,
+    userId: exchangeResult.nftSold.owner.toHexString(),
+    bankDetails: exchangeResult.bankDetails,
   };
 };

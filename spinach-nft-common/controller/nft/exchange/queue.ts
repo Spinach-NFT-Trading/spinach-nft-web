@@ -1,17 +1,12 @@
 import {nftExchangeQueueCollection} from '@spinach/common/controller/collections/nft';
+import {NftExchangeRequestCommonOpts} from '@spinach/common/controller/nft/exchange/type';
 
 
-type AddNftExchangeRequestToQueueOpts = {
-  requestUuid: string,
-  token: string,
-  amount: number,
-};
-
-export const addNftExchangeRequestToQueue = async ({
+export const queueNftExchangeRequest = async ({
   requestUuid,
   token,
   amount,
-}: AddNftExchangeRequestToQueueOpts) => {
+}: NftExchangeRequestCommonOpts) => {
   await nftExchangeQueueCollection.insertOne({
     requestUuid,
     token,
