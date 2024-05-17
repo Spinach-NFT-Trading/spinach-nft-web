@@ -1,8 +1,7 @@
-import {nftExchangeRequestUserOnlineWindowMs} from '@spinach/common/const/nft';
 import {nftExchangeMatchedCollection, nftExchangeTokenCollection} from '@spinach/common/controller/collections/nft';
-import {sessionPollCollection} from '@spinach/common/controller/collections/session';
-import {userBankDetailsCollection, userNftPositionCollection} from '@spinach/common/controller/collections/user';
-import {getNftExchangeTargetExclusion} from '@spinach/common/controller/nft/exchange/single/exclusion';
+import {userBankDetailsCollection} from '@spinach/common/controller/collections/user';
+import {requestNftExchangeGetNftSold} from '@spinach/common/controller/nft/exchange/single/getNftSold';
+import {requestNftExchangeSingleSendWebhook} from '@spinach/common/controller/nft/exchange/single/sendWebhook';
 import {RequestNftExchangeResult} from '@spinach/common/controller/nft/exchange/single/type';
 import {NftExchangeRequestCommonOpts} from '@spinach/common/controller/nft/exchange/type';
 import {BankDetails} from '@spinach/common/types/data/user/bank';
@@ -18,19 +17,7 @@ export const requestNftExchangeSingle = async ({
     throw new Error(`Invalid NFT exchange token: ${token}`);
   }
 
-  const userIdsOnline = (await sessionPollCollection
-    .find({lastCheck: {$gt: new Date(Date.now() - nftExchangeRequestUserOnlineWindowMs)}})
-    .toArray())
-    .map(({userId}) => userId);
-  // These are excluded because they are already matched
-  const nftExcluded = await getNftExchangeTargetExclusion();
-
-  const nftSold = await userNftPositionCollection.findOne(
-    {price: {$gt: amount}, owner: {$in: userIdsOnline}, nftId: {$nin: nftExcluded}},
-    // Finds the closest to amount, then start from the oldest
-    {sort: [['price', -1], ['_id', 1]]},
-  );
-
+  const nftSold = await requestNftExchangeGetNftSold({amount});
   if (!nftSold) {
     return null;
   }
@@ -60,6 +47,11 @@ export const requestNftExchangeSingle = async ({
     },
     nftId: nftSold.nftId,
     bankDetailsUuid: bankDetails.map(({uuid}) => uuid),
+  });
+
+  await requestNftExchangeSingleSendWebhook({
+    requestToken,
+    payload: {requestUuid, amount, bankDetails},
   });
 
   return {nftSold, bankDetails};
