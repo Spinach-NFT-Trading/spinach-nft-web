@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Nullable} from '@spinach/common/types/common/typing';
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 
 import {useCountUp} from '@spinach/next/hooks/time/countUp';
 import {padTimeUnit} from '@spinach/next/utils/number/pad';

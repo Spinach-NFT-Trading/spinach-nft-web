@@ -2,7 +2,7 @@ import React from 'react';
 
 import {UserData} from '@spinach/common/types/common/user/data';
 import {GoldPurchaseTwBankRecordClient} from '@spinach/common/types/data/gold/purchase';
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {AdminVerifyDataRowCommonProps} from '@spinach/next/ui/admin/verify/common/type';

@@ -4,7 +4,7 @@ import IdentificationIcon from '@heroicons/react/24/outline/IdentificationIcon';
 import {UserData} from '@spinach/common/types/common/user/data';
 import {UserInfoListByAgent} from '@spinach/common/types/common/user/info';
 import {isNotNullish} from '@spinach/common/utils/type';
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 
 import {FlexButton} from '@spinach/next/components/layout/flex/button';
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -89,7 +89,7 @@ export const AdminAgentRow = ({
       <FlexButton onClick={onMemberListClick} className={clsx(
         'button-clickable-bg items-center gap-1 whitespace-nowrap p-1',
       )}>
-        <IdentificationIcon className="h-6 w-6"/>
+        <IdentificationIcon className="size-6"/>
         <div>下線列表</div>
       </FlexButton>
     </Flex>

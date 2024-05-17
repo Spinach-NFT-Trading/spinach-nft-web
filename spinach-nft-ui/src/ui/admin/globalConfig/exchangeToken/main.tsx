@@ -3,7 +3,7 @@ import React from 'react';
 import PlusCircleIcon from '@heroicons/react/24/outline/PlusCircleIcon';
 import {NftExchangeTokenMap} from '@spinach/common/types/data/nft/token';
 import {isNotNullish} from '@spinach/common/utils/type';
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 import {signIn} from 'next-auth/react';
 
 import {FlexButton} from '@spinach/next/components/layout/flex/button';

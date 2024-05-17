@@ -2,7 +2,7 @@ import React from 'react';
 
 import {BankDetails} from '@spinach/common/types/data/user/bank';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 import {signIn} from 'next-auth/react';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';

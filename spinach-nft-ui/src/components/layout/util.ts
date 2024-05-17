@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 
 import {LayoutProps} from '@spinach/next/components/layout/type';
 

@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 
 import {announcementTextClasses} from '@spinach/next/components/announcement/styles';
 import {AnnouncementProps} from '@spinach/next/components/announcement/type';

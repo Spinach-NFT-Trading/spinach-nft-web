@@ -1,6 +1,6 @@
 import React from 'react';
 
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 
 import {LayoutProps} from '@spinach/next/components/layout/type';
 import {getLayoutClassNames} from '@spinach/next/components/layout/util';

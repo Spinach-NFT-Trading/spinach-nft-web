@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {ApiErrorCode} from '@spinach/common/types/api/error';
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 import {Session} from 'next-auth';
 
 import {FlexButton} from '@spinach/next/components/layout/flex/button';

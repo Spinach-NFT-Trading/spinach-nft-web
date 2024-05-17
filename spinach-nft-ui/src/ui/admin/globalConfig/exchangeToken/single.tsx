@@ -3,7 +3,7 @@ import React from 'react';
 import CloudArrowUpIcon from '@heroicons/react/24/outline/CloudArrowUpIcon';
 import TrashIcon from '@heroicons/react/24/outline/TrashIcon';
 import {NftExchangeToken, NftExchangeTokenMap} from '@spinach/common/types/data/nft/token';
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 
 import {FlexButton} from '@spinach/next/components/layout/flex/button';
 import {Flex} from '@spinach/next/components/layout/flex/common';

@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 
 import {FlexCommonProps, FlexDirection} from '@spinach/next/components/layout/flex/type';
 import {getLayoutClassNames} from '@spinach/next/components/layout/util';

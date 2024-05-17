@@ -1,6 +1,6 @@
 import React from 'react';
 
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 
 import {FadingLayout} from '@spinach/next/components/layout/fading/main';
 import {Flex} from '@spinach/next/components/layout/flex/common';

@@ -2,7 +2,7 @@
 import React from 'react';
 
 import {Dialog, Transition} from '@headlessui/react';
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 

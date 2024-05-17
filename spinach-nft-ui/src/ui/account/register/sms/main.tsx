@@ -9,7 +9,7 @@ import {
 } from '@spinach/common/types/api/auth/verify/sms/finalize';
 import {SmsVerifyInitialRequest, SmsVerifyInitialResponse} from '@spinach/common/types/api/auth/verify/sms/initial';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';

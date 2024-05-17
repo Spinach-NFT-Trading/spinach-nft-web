@@ -1,6 +1,6 @@
 import React from 'react';
 
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {FlexLink} from '@spinach/next/components/layout/flex/link';

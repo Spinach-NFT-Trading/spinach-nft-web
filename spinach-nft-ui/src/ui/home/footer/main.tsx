@@ -4,7 +4,7 @@ import PencilSquareIcon from '@heroicons/react/24/outline/PencilSquareIcon';
 import ScaleIcon from '@heroicons/react/24/outline/ScaleIcon';
 import ShieldCheckIcon from '@heroicons/react/24/outline/ShieldCheckIcon';
 import TrophyIcon from '@heroicons/react/24/outline/TrophyIcon';
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 
 import {Grid} from '@spinach/next/components/layout/grid';
 import {HomeFooterIntroSection} from '@spinach/next/ui/home/footer/introSection';

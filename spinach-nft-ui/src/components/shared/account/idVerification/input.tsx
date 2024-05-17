@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {AccountIdVerificationType} from '@spinach/common/types/api/profile/id';
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 
 import {
   AccountIdVerificationCommonProps,

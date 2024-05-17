@@ -3,7 +3,7 @@ import React from 'react';
 import BanknotesIcon from '@heroicons/react/24/outline/BanknotesIcon';
 import CurrencyDollarIcon from '@heroicons/react/24/outline/CurrencyDollarIcon';
 import RocketLaunchIcon from '@heroicons/react/24/outline/RocketLaunchIcon';
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 import {Session} from 'next-auth';
 
 import {UsdtIcon} from '@spinach/next/components/icons/usdt';

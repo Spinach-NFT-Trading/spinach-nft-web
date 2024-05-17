@@ -4,7 +4,7 @@ import ArrowDownRightIcon from '@heroicons/react/24/outline/ArrowDownRightIcon';
 import ArrowUpRightIcon from '@heroicons/react/24/outline/ArrowUpRightIcon';
 import {UserDataMap} from '@spinach/common/types/common/user/data';
 import {UserInfo} from '@spinach/common/types/common/user/info';
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 import {format} from 'date-fns/format';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -39,14 +39,14 @@ export const AdminMemberNftTxnRow = ({
         {
           isSelling &&
           <>
-            <ArrowUpRightIcon className="h-5 w-5"/>
+            <ArrowUpRightIcon className="size-5"/>
             <span>販售</span>
           </>
         }
         {
           isBuying &&
           <>
-            <ArrowDownRightIcon className="h-5 w-5"/>
+            <ArrowDownRightIcon className="size-5"/>
             <span>購買</span>
           </>
         }

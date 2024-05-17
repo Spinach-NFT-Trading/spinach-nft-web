@@ -3,7 +3,7 @@ import React from 'react';
 
 import {bankAccountPattern, bankCodePattern} from '@spinach/common/const/auth';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 import {useRouter} from 'next/navigation';
 import {signIn} from 'next-auth/react';
 

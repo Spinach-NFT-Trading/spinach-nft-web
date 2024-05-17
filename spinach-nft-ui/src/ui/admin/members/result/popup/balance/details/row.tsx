@@ -1,6 +1,6 @@
 import React from 'react';
 
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 import {format} from 'date-fns/format';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 import Image from 'next/image';
 
 import {NextImageProps} from '@spinach/next/components/shared/common/image/type';

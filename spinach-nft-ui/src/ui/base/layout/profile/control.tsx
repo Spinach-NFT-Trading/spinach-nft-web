@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PlusCircleIcon from '@heroicons/react/24/outline/PlusCircleIcon';
-import clsx from 'clsx';
+import {clsx} from 'clsx';
 
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -14,7 +14,7 @@ export const ProfileLayoutControls = () => {
       <FlexLink href="/gold/exchange" className={clsx(
         'button-base button-text-hover button-bg gap-1 p-1 px-1.5 text-base hover:bg-amber-400',
       )}>
-        <div className="relative h-6 w-6">
+        <div className="relative size-6">
           <PlusCircleIcon/>
         </div>
         <div>
