@@ -1,10 +1,9 @@
+import {nftExchangeRequestUserOnlineWindowMs} from '@spinach/common/const/nft';
 import {nftExchangeTokenCollection} from '@spinach/common/controller/collections/nft';
 import {sessionPollCollection} from '@spinach/common/controller/collections/session';
 import {userNftPositionCollection} from '@spinach/common/controller/collections/user';
 import {NftExchangeRequest} from '@spinach/common/types/api/nft/exchange';
 import {UserNftPositionModel} from '@spinach/common/types/data/user/nftPosition';
-
-import {nftExchangeRequestUserOnlineWindowMs} from '@spinach/server/const/request';
 
 
 type RequestNftExchangeSingleOpts = NftExchangeRequest;

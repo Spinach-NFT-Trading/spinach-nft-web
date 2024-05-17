@@ -1,4 +1,5 @@
 import {apiPath} from '@spinach/common/const/path';
+import {requestNftExchange} from '@spinach/common/controller/nft/exchange/main';
 import {
   NftExchangeRequest,
   NftExchangeRequestSchema,
@@ -7,7 +8,6 @@ import {
 } from '@spinach/common/types/api/nft/exchange';
 
 import {Server} from '@spinach/server/const';
-import {requestNftExchange} from '@spinach/server/controller/nft/exchange/main';
 
 
 export const addNftExchangeRequest = () => {

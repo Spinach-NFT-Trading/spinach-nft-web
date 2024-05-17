@@ -1,10 +1,10 @@
-import {userBankDetailsCollection} from '@spinach/common/controller/collections/user';
-import {NftExchangeRequest, NftExchangeResult} from '@spinach/common/types/api/nft/exchange';
-import {BankDetails} from '@spinach/common/types/data/user/bank';
 import {v4} from 'uuid';
 
-import {addNftExchangeRequestToQueue} from '@spinach/server/controller/nft/exchange/queue';
-import {requestNftExchangeSingle} from '@spinach/server/controller/nft/exchange/single';
+import {userBankDetailsCollection} from '@spinach/common/controller/collections/user';
+import {addNftExchangeRequestToQueue} from '@spinach/common/controller/nft/exchange/queue';
+import {requestNftExchangeSingle} from '@spinach/common/controller/nft/exchange/single';
+import {NftExchangeRequest, NftExchangeResult} from '@spinach/common/types/api/nft/exchange';
+import {BankDetails} from '@spinach/common/types/data/user/bank';
 
 
 export type RequestNftExchangeOpts = NftExchangeRequest;

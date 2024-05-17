@@ -8586,6 +8586,7 @@ __metadata:
     mongodb: "npm:^6.6.2"
     pm2: "npm:^5.3.1"
     typescript: "npm:^5.4.5"
+    uuid: "npm:^9.0.1"
   languageName: unknown
   linkType: soft
 
@@ -8600,7 +8601,6 @@ __metadata:
     pino: "npm:^9.1.0"
     pino-pretty: "npm:^11.0.0"
     spinach-nft-common: "npm:*"
-    uuid: "npm:^9.0.1"
   peerDependencies:
     "@fastify/type-provider-typebox": "*"
     "@sinclair/typebox": "*"

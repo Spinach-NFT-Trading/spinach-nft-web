@@ -25,3 +25,5 @@ export const defaultNftPriceTiers: NftPriceTierModel[] = [
   {quantity: 1, price: 45000},
   {quantity: 1, price: 50000},
 ];
+
+export const nftExchangeRequestUserOnlineWindowMs = 300000; // 5 min

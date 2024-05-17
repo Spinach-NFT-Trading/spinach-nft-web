@@ -24,8 +24,7 @@
     "@fastify/helmet": "^11.1.1",
     "fastify": "^4.27.0",
     "pino": "^9.1.0",
-    "spinach-nft-common": "*",
-    "uuid": "^9.0.1"
+    "spinach-nft-common": "*"
   },
   "devDependencies": {
     "pino-pretty": "^11.0.0"
