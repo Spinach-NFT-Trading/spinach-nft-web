@@ -6,10 +6,6 @@ import {NftExchangeToken} from '@spinach/common/types/data/nft/token';
 import {BankDetails} from '@spinach/common/types/data/user/bank';
 
 
-export type RequestOptsOfNftBuy = {
-  nftId: string,
-};
-
 export type RequestOfUserBankDetails = {
   image: BinaryData,
   details: Omit<BankDetails, 'uuid'>,
@@ -27,7 +23,14 @@ export type UserDataRequestOpts = {
   data?: never,
 } | {
   type: 'nft.buy',
-  data: RequestOptsOfNftBuy,
+  data: {
+    nftId: string,
+  },
+} | {
+  type: 'nft.sell',
+  data: {
+    matchRequestUuid: string,
+  },
 } | {
   type: 'user.bank',
   data: RequestOfUserBankDetails,

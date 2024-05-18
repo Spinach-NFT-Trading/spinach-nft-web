@@ -67,7 +67,7 @@ export const NftListing = ({nftListings, isOnSale}: Props) => {
           }}
         />
         <button className="button-clickable-bg p-1" onClick={() => setSort(sort === 'asc' ? 'desc' : 'asc')}>
-          <div className="relative h-6 w-6">
+          <div className="relative size-6">
             {nftListingSortingIcon[sort]}
           </div>
         </button>

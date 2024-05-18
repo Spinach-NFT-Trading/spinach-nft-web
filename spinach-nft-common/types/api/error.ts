@@ -18,6 +18,8 @@ export const apiErrorCode = [
   'goldTwBankTxnRecordFailed',
   'goldTwBankTxnNotFound',
   'nftNotOnSale',
+  'nftInfoNotFound',
+  'nftMatchRequestNotFound',
   'walletInvalid',
   'walletNotExist',
   'smsAlreadyRequested',

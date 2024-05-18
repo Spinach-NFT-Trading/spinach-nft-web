@@ -19,6 +19,8 @@ const apiErrorStringMap: {[code in ApiErrorCode]: string} = {
   goldTwBankTxnRecordFailed: '台幣轉帳紀錄上傳失敗。',
   goldTwBankTxnNotFound: '沒有找到對應的台幣轉帳紀錄。',
   nftNotOnSale: 'NFT 不在販賣中。',
+  nftMatchRequestNotFound: '找不到對應的 NFT 交易請求。',
+  nftInfoNotFound: '找不到對應的 NFT 資訊。',
   walletInvalid: '錢包地址無效。',
   walletNotExist: '錢包地址不存在。',
   smsSendFailed: '驗證簡訊傳送失敗。',

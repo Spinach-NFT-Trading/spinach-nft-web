@@ -2,6 +2,7 @@
 import React from 'react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
+import {FlexLink} from '@spinach/next/components/layout/flex/link';
 import {localStorageKeyOfNftPositionsMatched} from '@spinach/next/const/localStorage';
 import {getMatchedNftExchangeRequests} from '@spinach/next/controller/nft/request/match';
 import {UserAuthButton} from '@spinach/next/ui/base/navbar/user/auth';
@@ -54,9 +55,9 @@ export const UserControlClient = (props: UserControlCommonProps) => {
     <Flex noFullWidth direction="row" className="shrink-0 gap-2">
       {
         positionsMatched &&
-        <Flex noFullWidth center className="bg-blink p-2">
+        <FlexLink href="/account/nft/exchange" center className="bg-blink p-2">
           有持倉售出
-        </Flex>
+        </FlexLink>
       }
       <UserProfileButton {...props}/>
       <UserAuthButton {...props}/>

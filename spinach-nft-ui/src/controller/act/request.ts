@@ -4,8 +4,9 @@ import {ObjectId} from 'mongodb';
 import {setGlobalConfig} from '@spinach/next/controller/global/config';
 import {recordGoldPendingTxn} from '@spinach/next/controller/gold/pending';
 import {markGoldPurchaseTwBankRecord, recordGoldPurchaseTwBankTxn} from '@spinach/next/controller/gold/twBank';
+import {buyNft} from '@spinach/next/controller/nft/action/buy';
+import {sellNft} from '@spinach/next/controller/nft/action/sell';
 import {deleteNftExchangeToken, updateNftExchangeToken} from '@spinach/next/controller/nft/request/token';
-import {buyNft} from '@spinach/next/controller/nft/utils';
 import {recordSessionPoll} from '@spinach/next/controller/session/poll';
 import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
 import {uploadIdVerification} from '@spinach/next/controller/user/info';
@@ -42,6 +43,10 @@ export const handleUserRequest = async ({
 
   if (type === 'nft.buy') {
     return buyNft({buyer: new ObjectId(accountId), nftId: new ObjectId(data.nftId)});
+  }
+
+  if (type === 'nft.sell') {
+    return sellNft({seller: new ObjectId(accountId), matchRequestUuid: data.matchRequestUuid});
   }
 
   if (type === 'exchange.gold.crypto') {

@@ -1,5 +1,6 @@
 import React from 'react';
 
+import CheckCircleIcon from '@heroicons/react/24/outline/CheckCircleIcon';
 import InboxIcon from '@heroicons/react/24/outline/InboxIcon';
 import MagnifyingGlassIcon from '@heroicons/react/24/outline/MagnifyingGlassIcon';
 import UserCircleIcon from '@heroicons/react/24/outline/UserCircleIcon';
@@ -20,6 +21,7 @@ export const AccountIndex = async () => {
       <Grid className="gap-2 text-3xl lg:grid-cols-2">
         <TileLink link="/account/profile" text="會員資料" icon={<MagnifyingGlassIcon/>}/>
         <TileLink link="/account/nft/position" text="NFT 持倉" icon={<InboxIcon/>}/>
+        <TileLink link="/account/nft/exchange" text="確認 NFT 交易" icon={<CheckCircleIcon/>}/>
         {isUserElevated(session?.user) && <TileLink link="/admin" text="會員管理" icon={<UserCircleIcon/>}/>}
       </Grid>
     </ProfileLayout>
