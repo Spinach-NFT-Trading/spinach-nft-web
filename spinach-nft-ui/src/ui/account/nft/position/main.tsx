@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {AccountNftPositionClient} from '@spinach/next/ui/account/position/position';
+import {AccountNftPositionClient} from '@spinach/next/ui/account/nft/position/position';
 import {ProfileLayout} from '@spinach/next/ui/base/layout/profile/main';
 
 

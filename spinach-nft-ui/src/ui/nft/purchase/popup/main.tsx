@@ -47,7 +47,7 @@ export const NftPurchaseConfirmPopup = ({nftId, show, setShow}: Props) => {
       return;
     }
 
-    replace('/account/position');
+    replace('/account/nft/position');
   };
 
   return (
