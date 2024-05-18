@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-import {Dialog, Transition} from '@headlessui/react';
+import {Dialog, DialogPanel, Transition, TransitionChild} from '@headlessui/react';
 import {clsx} from 'clsx';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -19,10 +19,9 @@ type Props = {
 
 export const Popup = ({show, setShow, children, className}: React.PropsWithChildren<Props>) => {
   return (
-    <Transition.Root show={show ?? true} as={React.Fragment}>
+    <Transition show={show ?? true}>
       <Dialog as="div" className="relative z-50" onClose={() => setShow ? setShow(false) : void 0}>
-        <Transition.Child
-          as={React.Fragment}
+        <TransitionChild
           enter="ease-out duration-300"
           enterFrom="opacity-0"
           enterTo="opacity-100"
@@ -31,10 +30,9 @@ export const Popup = ({show, setShow, children, className}: React.PropsWithChild
           leaveTo="opacity-0"
         >
           <div className="fixed inset-0 bg-black/75"/>
-        </Transition.Child>
+        </TransitionChild>
         <div className="transform-smooth fixed inset-0 flex items-center justify-center p-4 text-center">
-          <Transition.Child
-            as={React.Fragment}
+          <TransitionChild
             enter="ease-out duration-300"
             enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             enterTo="opacity-100 translate-y-0 sm:scale-100"
@@ -42,7 +40,7 @@ export const Popup = ({show, setShow, children, className}: React.PropsWithChild
             leaveFrom="opacity-100 translate-y-0 sm:scale-100"
             leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
           >
-            <Dialog.Panel className={clsx(
+            <DialogPanel className={clsx(
               'flex w-full justify-center rounded-lg p-3 sm:w-fit sm:max-w-2xl',
               'bg-gray-950 ring-1 ring-inset ring-gray-600',
               className,
@@ -50,10 +48,10 @@ export const Popup = ({show, setShow, children, className}: React.PropsWithChild
               <Flex className="max-h-[80vh] overflow-y-auto">
                 {children}
               </Flex>
-            </Dialog.Panel>
-          </Transition.Child>
+            </DialogPanel>
+          </TransitionChild>
         </div>
       </Dialog>
-    </Transition.Root>
+    </Transition>
   );
 };
