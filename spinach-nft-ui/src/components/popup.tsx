@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 
 import {Dialog, DialogPanel, Transition, TransitionChild} from '@headlessui/react';
@@ -8,14 +7,10 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 
 
 type Props = {
-  className?: string,
-} & ({
   show: boolean,
   setShow: (show: boolean) => void,
-} | {
-  show?: never,
-  setShow?: never,
-});
+  className?: string,
+};
 
 export const Popup = ({show, setShow, children, className}: React.PropsWithChildren<Props>) => {
   return (
