@@ -4,6 +4,9 @@ import {requestNftExchangeSingle} from '@spinach/common/controller/nft/exchange/
 
 export const checkQueuedNftExchangeRequests = async () => {
   console.log('Checking queued NFT exchange requests');
-  // Return of promises are ignored because queued requests only gets handled by webhook
-  await Promise.all((await nftExchangeQueueCollection.find().toArray()).map(requestNftExchangeSingle));
+
+  for (const queued of await nftExchangeQueueCollection.find().toArray()) {
+    console.log(`Checking queued request ${queued.requestUuid}`);
+    await requestNftExchangeSingle(queued);
+  }
 };
