@@ -40,6 +40,7 @@ export const AccountNftExchangeConfirmPopup = ({show, setShow, match, onMatchCon
     const error = session?.user.jwtUpdateError;
     if (!error) {
       onMatchConfirmed(requestUuid);
+      window.location.reload();
       return;
     }
 
