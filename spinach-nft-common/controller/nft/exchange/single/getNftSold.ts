@@ -20,7 +20,7 @@ export const requestNftExchangeGetNftSold = async ({
   const nftExcluded = await getNftExchangeTargetExclusion();
 
   return await userNftPositionCollection.findOne(
-    {price: {$gt: amount}, owner: {$in: userIdsOnline}, nftId: {$nin: nftExcluded}},
+    {price: {$gte: amount}, owner: {$in: userIdsOnline}, nftId: {$nin: nftExcluded}},
     // Finds the closest to amount, then start from the oldest
     {sort: [['price', -1], ['_id', 1]]},
   );
