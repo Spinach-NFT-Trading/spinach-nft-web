@@ -1,3 +1,4 @@
+'use server';
 import {sessionPollCollection} from '@spinach/common/controller/collections/session';
 import {ObjectId} from 'mongodb';
 

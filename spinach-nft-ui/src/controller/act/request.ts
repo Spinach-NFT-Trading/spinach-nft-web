@@ -7,7 +7,6 @@ import {markGoldPurchaseTwBankRecord, recordGoldPurchaseTwBankTxn} from '@spinac
 import {buyNft} from '@spinach/next/controller/nft/action/buy';
 import {sellNft} from '@spinach/next/controller/nft/action/sell';
 import {deleteNftExchangeToken, updateNftExchangeToken} from '@spinach/next/controller/nft/request/token';
-import {recordSessionPoll} from '@spinach/next/controller/session/poll';
 import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
 import {uploadIdVerification} from '@spinach/next/controller/user/info';
 import {markUserStatus} from '@spinach/next/controller/user/status';
@@ -34,11 +33,6 @@ export const handleUserRequest = async ({
 
   if (await isSuspended(accountId)) {
     return 'accountDisabled';
-  }
-
-  if (type === 'session.poll') {
-    await recordSessionPoll({executorUserId: accountId});
-    return null;
   }
 
   if (type === 'nft.buy') {

@@ -19,9 +19,6 @@ export type RequestOfGoldExchangeTwBank = {
 };
 
 export type UserDataRequestOpts = {
-  type: 'session.poll',
-  data?: never,
-} | {
   type: 'nft.buy',
   data: {
     nftId: string,

@@ -1,1 +1,1 @@
-export const sessionPollIntervalMs = 30000;
+export const sessionPollIntervalMs = 5000;

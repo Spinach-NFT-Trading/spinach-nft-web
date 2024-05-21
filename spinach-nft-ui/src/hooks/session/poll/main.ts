@@ -1,25 +1,35 @@
 'use client';
 import React from 'react';
 
+import {useSession} from 'next-auth/react';
+
+import {recordSessionPoll} from '@spinach/next/controller/session/poll';
 import {sessionPollIntervalMs} from '@spinach/next/hooks/session/poll/const';
-import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 
 
 export const useSessionPoll = () => {
-  const {act} = useUserDataActor();
+  const {data} = useSession();
 
   React.useEffect(() => {
-    if (!act) {
+    // Somehow using `useSession()` doesn't work
+    // This doesn't require any security measure (for now), therefore using server action
+    if (!data) {
       return;
     }
 
-    const intervalId = setInterval(() => {
-      void act({
-        action: 'request',
-        options: {type: 'session.poll'},
-      });
-    }, sessionPollIntervalMs);
+    const sendPollSignal = async () => {
+      const executorUserId = data.user.id;
+      if (!executorUserId) {
+        return;
+      }
+
+      await recordSessionPoll({executorUserId});
+    };
+
+    void sendPollSignal();
+
+    const intervalId = setInterval(sendPollSignal, sessionPollIntervalMs);
 
     return () => clearInterval(intervalId);
-  }, [act]);
+  }, [data]);
 };
