@@ -17,7 +17,7 @@ export type UserBalanceHistoryModel = UserBalanceHistoryModelRequired & ({
   type: 'nftBuy',
   nftTxnId: ObjectId,
 } | {
-  type: 'nftSell',
+  type: 'nftSell' | 'nftSellRefund',
   nftTxnId: ObjectId,
 });
 

@@ -15,7 +15,7 @@ export const getUserPreloadedData = async (userIdString: string | undefined): Pr
     goldAsset,
     nftAsset,
   ] = await Promise.all([
-    getGoldAsset(userId),
+    getGoldAsset({userId}),
     getNftAsset(userId),
   ]);
 

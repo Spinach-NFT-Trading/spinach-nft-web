@@ -8,13 +8,15 @@ import {UserBalanceHistoryModelRequired} from '@spinach/common/types/data/user/b
 type GetNewBalanceOpts = {
   accountId: ObjectId,
   diff: number,
+  session?: ClientSession,
 };
 
 export const getNewBalance = async ({
   accountId,
   diff,
+  session,
 }: GetNewBalanceOpts): Promise<UserBalanceHistoryModelRequired> => {
-  const prev = await getGoldAsset(accountId);
+  const prev = await getGoldAsset({userId: accountId, session});
 
   return {
     userId: accountId,
@@ -23,7 +25,17 @@ export const getNewBalance = async ({
   };
 };
 
-export const getGoldAsset = (userId: ObjectId) => userBalanceCollection.findOne({userId}, {sort: {_id: -1}});
+type GetGoldAssetOpts = {
+  userId: ObjectId,
+  session?: ClientSession,
+};
+
+export const getGoldAsset = ({
+  userId,
+  session,
+}: GetGoldAssetOpts) => (
+  userBalanceCollection.findOne({userId}, {sort: {_id: -1}, session})
+);
 
 type RecordBalanceAfterNftTxnOpts = {
   nftTxnId: ObjectId,

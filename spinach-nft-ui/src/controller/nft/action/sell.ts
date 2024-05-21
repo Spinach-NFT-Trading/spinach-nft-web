@@ -1,9 +1,10 @@
 import {nftBlackHoleAccountId} from '@spinach/common/const/nft';
-import {recordUserDataAfterNftTxn} from '@spinach/common/controller/actors/user';
+import {getNewBalance, recordUserDataAfterNftTxn} from '@spinach/common/controller/actors/user';
 import {
   nftExchangeMatchedCollection,
   nftTxnCollection,
 } from '@spinach/common/controller/collections/nft';
+import {userBalanceCollection} from '@spinach/common/controller/collections/user';
 import {Mongo} from '@spinach/common/controller/const';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {NftTxnModel} from '@spinach/common/types/data/nft';
@@ -45,6 +46,16 @@ export const sellNft = async ({seller, matchRequestUuid}: SellNftOpts): Promise<
         nftTxn: txn,
         session,
       });
+
+      await userBalanceCollection.insertOne({
+        ...(await getNewBalance({
+          accountId: seller,
+          diff: amount.refunded,
+          session,
+        })),
+        type: 'nftSellRefund',
+        nftTxnId: nftTxn.insertedId,
+      }, {session});
     });
   });
 

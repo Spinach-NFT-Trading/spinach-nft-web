@@ -15,7 +15,7 @@ type BuyNftOpts = {
 
 export const buyNft = async ({buyer, nftId}: BuyNftOpts): Promise<ApiErrorCode | null> => {
   const [balance, nftOnSale] = await Promise.all([
-    getGoldAsset(buyer),
+    getGoldAsset({userId: buyer}),
     getNftOnSale(nftId),
   ]);
 
