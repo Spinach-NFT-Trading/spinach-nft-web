@@ -5,6 +5,7 @@ import {ObjectId} from 'mongodb';
 import {revalidatePath} from 'next/cache';
 
 import {getDataAsArray} from '@spinach/next/controller/common';
+import {recordSessionPoll} from '@spinach/next/controller/session/poll';
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {NftExchangeMatchedModelAtClient} from '@spinach/next/types/nft';
 
@@ -18,6 +19,8 @@ export const getMatchedNftExchangeRequests = async ({
   // when "NFT sell request received" pops, clicking on it to redirect to the confirmation page
   // doesn't show the newly added match - possibly due to the caching mechanism
   revalidatePath('/account/nft/exchange');
+
+  await recordSessionPoll({executorUserId});
 
   const nftPositions = await userNftPositionCollection
     .find({owner: new ObjectId(executorUserId)}).map(({nftId}) => nftId)
