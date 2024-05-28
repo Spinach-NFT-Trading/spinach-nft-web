@@ -60,6 +60,7 @@ export const requestNftExchangeSingle = async ({
           },
           nftId: nftSold.nftId,
           bankDetailsUuid: bankDetails.map(({uuid}) => uuid),
+          completedAt: null,
         },
         {session},
       );

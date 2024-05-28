@@ -46,6 +46,7 @@ const initDbIndex = () => {
     nftExchangeTokenCollection.createIndex({accountId: 1}),
     nftExchangeTokenCollection.createIndex({token: 1}, {unique: true}),
     nftExchangeQueueCollection.createIndex({requestUuid: 1}, {unique: true}),
+    nftExchangeMatchedCollection.createIndex({completedAt: 1}),
   ]);
 };
 

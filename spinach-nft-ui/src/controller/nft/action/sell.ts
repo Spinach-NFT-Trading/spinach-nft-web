@@ -19,26 +19,30 @@ type SellNftOpts = {
 };
 
 export const sellNft = async ({seller, matchRequestUuid}: SellNftOpts): Promise<ApiErrorCode | null> => {
-  const matchRequest = await nftExchangeMatchedCollection.findOne({requestUuid: matchRequestUuid});
-  if (!matchRequest) {
-    return 'nftMatchRequestNotFound';
-  }
-
-  const nftInfo = await getNftInfo(matchRequest.nftId);
-  if (!nftInfo) {
-    return 'nftInfoNotFound';
-  }
-
-  const {amount} = matchRequest;
-  const txn: NftTxnModel = {
-    nftId: nftInfo._id,
-    from: seller,
-    to: new ObjectId(nftBlackHoleAccountId),
-    price: amount.requested,
-  };
-
   await Mongo.withSession(async (session) => {
     await session.withTransaction(async () => {
+      const matchRequest = await nftExchangeMatchedCollection.findOneAndUpdate(
+        {requestUuid: matchRequestUuid},
+        {$set: {completedAt: new Date()}},
+        {session},
+      );
+      if (!matchRequest) {
+        return 'nftMatchRequestNotFound';
+      }
+
+      const nftInfo = await getNftInfo(matchRequest.nftId);
+      if (!nftInfo) {
+        return 'nftInfoNotFound';
+      }
+
+      const {amount} = matchRequest;
+      const txn: NftTxnModel = {
+        nftId: nftInfo._id,
+        from: seller,
+        to: new ObjectId(nftBlackHoleAccountId),
+        price: amount.requested,
+      };
+
       const nftTxn = await nftTxnCollection.insertOne(txn, {session});
 
       await recordUserDataAfterNftTxn({

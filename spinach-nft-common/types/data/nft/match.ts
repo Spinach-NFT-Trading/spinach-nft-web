@@ -11,4 +11,10 @@ export type NftExchangeMatchedModel = {
   },
   nftId: ObjectId,
   bankDetailsUuid: string[],
+  completedAt: Date | null,
+};
+
+export type NftExchangeMatchedData = Omit<NftExchangeMatchedModel, 'nftId' | 'completedAt'> & {
+  nftId: string,
+  matchedAtEpochMs: number,
 };
