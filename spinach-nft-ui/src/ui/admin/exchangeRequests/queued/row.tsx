@@ -11,7 +11,7 @@ type Props = {
   data: NftExchangeQueuedData,
 };
 
-export const AdminQueuedExchangeRow = ({data}: Props) => {
+export const AdminExchangeRequestsQueuedRow = ({data}: Props) => {
   const {token, amount, createdAtEpochMs} = data;
 
   return (

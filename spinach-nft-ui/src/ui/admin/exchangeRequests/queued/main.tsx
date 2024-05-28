@@ -4,19 +4,19 @@ import {format} from 'date-fns/format';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {OverflowableTable} from '@spinach/next/components/shared/common/table/overflowable/main';
-import {getQueuedNftExchangeRequests} from '@spinach/next/controller/nft/request/queue';
-import {AdminQueuedExchangeHeader} from '@spinach/next/ui/admin/queuedExchange/header';
-import {AdminQueuedExchangeRow} from '@spinach/next/ui/admin/queuedExchange/row';
-import {AdminQueuedExchangeState} from '@spinach/next/ui/admin/queuedExchange/type';
+import {getNftExchangeRequestsQueued} from '@spinach/next/controller/nft/request/queue';
+import {AdminExchangeRequestsQueuedHeader} from '@spinach/next/ui/admin/exchangeRequests/queued/header';
+import {AdminExchangeRequestsQueuedRow} from '@spinach/next/ui/admin/exchangeRequests/queued/row';
+import {AdminExchangeRequestsQueuedState} from '@spinach/next/ui/admin/exchangeRequests/queued/type';
 
 
-export const AdminQueuedExchange = () => {
-  const [state, setState] = React.useState<AdminQueuedExchangeState>({
+export const AdminExchangeRequestsQueued = () => {
+  const [state, setState] = React.useState<AdminExchangeRequestsQueuedState>({
     lastUpdated: new Date(),
     data: [],
   });
 
-  const fetchData = () => getQueuedNftExchangeRequests().then((data) => setState({
+  const fetchData = () => getNftExchangeRequestsQueued().then((data) => setState({
     lastUpdated: new Date(),
     data,
   }));
@@ -37,10 +37,10 @@ export const AdminQueuedExchange = () => {
       </Flex>
       <OverflowableTable
         data={state.data}
-        header={<AdminQueuedExchangeHeader/>}
+        header={<AdminExchangeRequestsQueuedHeader/>}
         getKey={(data) => data?.requestUuid}
         classOfRow="not-last:border-b w-max gap-1 border-b-slate-400 px-1 py-2"
-        renderRow={({data}) => <AdminQueuedExchangeRow data={data}/>}
+        renderRow={({data}) => <AdminExchangeRequestsQueuedRow data={data}/>}
       />
     </Flex>
   );

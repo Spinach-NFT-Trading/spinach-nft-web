@@ -3,7 +3,7 @@ import React from 'react';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 
 
-export const AdminQueuedExchangeHeader = () => {
+export const AdminExchangeRequestsQueuedHeader = () => {
   return (
     <Flex direction="row" noFullWidth className="items-center gap-1 bg-slate-900/90 px-1 py-2">
       <Flex center noFullWidth className="w-20">

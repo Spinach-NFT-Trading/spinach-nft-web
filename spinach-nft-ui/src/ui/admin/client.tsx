@@ -7,9 +7,9 @@ import {CommonUserData} from '@spinach/next/types/auth';
 import {AdminMemberAgent} from '@spinach/next/ui/admin/agents/main';
 import {adminTabsAdminOnly} from '@spinach/next/ui/admin/const';
 import {AgentIdContext} from '@spinach/next/ui/admin/context';
+import {AdminExchangeRequests} from '@spinach/next/ui/admin/exchangeRequests/main';
 import {AdminGlobalConfigUi} from '@spinach/next/ui/admin/globalConfig/main';
 import {AdminMembers} from '@spinach/next/ui/admin/members/main';
-import {AdminQueuedExchange} from '@spinach/next/ui/admin/queuedExchange/main';
 import {AdminPageTab, adminPageTabs} from '@spinach/next/ui/admin/type';
 import {AdminVerifyBank} from '@spinach/next/ui/admin/verify/bank/main';
 import {AdminVerifyGoldTxn} from '@spinach/next/ui/admin/verify/goldTxn/main';
@@ -38,7 +38,7 @@ export const AdminPageClient = ({user}: Props) => {
         tabTitle={{
           agents: '代理列表',
           members: '會員列表',
-          queuedExchangeRequests: 'NFT 交易請求',
+          exchangeRequests: 'NFT 交易請求',
           verifyId: '驗證身分',
           verifyBankAccount: '驗證銀行帳號',
           verifyBankTxn: '驗證 GOLD 購買紀錄',
@@ -57,7 +57,7 @@ export const AdminPageClient = ({user}: Props) => {
               null
           ),
           members: <AdminMembers user={user}/>,
-          queuedExchangeRequests: <AdminQueuedExchange/>,
+          exchangeRequests: <AdminExchangeRequests/>,
           verifyId: <AdminVerifyId/>,
           verifyBankAccount: <AdminVerifyBank/>,
           verifyBankTxn: <AdminVerifyGoldTxn/>,
