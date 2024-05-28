@@ -1,6 +1,6 @@
 export const adminExchangeRequestsTabs = [
   'queued',
-  'pending',
+  'matched',
   'completed',
 ] as const;
 

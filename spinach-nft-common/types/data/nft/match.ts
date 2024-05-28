@@ -1,5 +1,7 @@
 import {ObjectId} from 'mongodb';
 
+import {BankDetailsMap} from '@spinach/common/types/data/user/bank';
+
 
 export type NftExchangeMatchedModel = {
   requestUuid: string,
@@ -17,4 +19,10 @@ export type NftExchangeMatchedModel = {
 export type NftExchangeMatchedData = Omit<NftExchangeMatchedModel, 'nftId' | 'completedAt'> & {
   nftId: string,
   matchedAtEpochMs: number,
+  completedAtEpochMs: number | null,
+};
+
+export type NftExchangeMatchedBundle = {
+  data: NftExchangeMatchedData[],
+  bankDetailsMap: BankDetailsMap,
 };
