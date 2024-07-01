@@ -99,6 +99,12 @@ declare global {
               Submit: string,
             },
           },
+          Index: {
+            Profile: string,
+            NftPositions: string,
+            NftExchangeConfirm: string,
+            Admin: string,
+          },
         },
         Nft: {
           Purchase: {

@@ -5,6 +5,7 @@ import InboxIcon from '@heroicons/react/24/outline/InboxIcon';
 import MagnifyingGlassIcon from '@heroicons/react/24/outline/MagnifyingGlassIcon';
 import UserCircleIcon from '@heroicons/react/24/outline/UserCircleIcon';
 import {getServerSession} from 'next-auth';
+import {getTranslations} from 'next-intl/server';
 
 import {Grid} from '@spinach/next/components/layout/grid';
 import {TileLink} from '@spinach/next/components/shared/link';
@@ -14,15 +15,21 @@ import {isUserElevated} from '@spinach/next/utils/data/user';
 
 
 export const AccountIndex = async () => {
-  const session = await getServerSession(authOptions);
+  const [
+    session,
+    t,
+  ] = await Promise.all([
+    getServerSession(authOptions),
+    getTranslations('UI.InPage.Account.Index'),
+  ]);
 
   return (
     <ProfileLayout>
       <Grid className="gap-2 text-3xl lg:grid-cols-2">
-        <TileLink link="/account/profile" text="會員資料" icon={<MagnifyingGlassIcon/>}/>
-        <TileLink link="/account/nft/position" text="NFT 持倉" icon={<InboxIcon/>}/>
-        <TileLink link="/account/nft/exchange" text="確認 NFT 交易" icon={<CheckCircleIcon/>}/>
-        {isUserElevated(session?.user) && <TileLink link="/admin" text="會員管理" icon={<UserCircleIcon/>}/>}
+        <TileLink link="/account/profile" text={t('Profile')} icon={<MagnifyingGlassIcon/>}/>
+        <TileLink link="/account/nft/position" text={t('NftPositions')} icon={<InboxIcon/>}/>
+        <TileLink link="/account/nft/exchange" text={t('NftExchangeConfirm')} icon={<CheckCircleIcon/>}/>
+        {isUserElevated(session?.user) && <TileLink link="/admin" text={t('Admin')} icon={<UserCircleIcon/>}/>}
       </Grid>
     </ProfileLayout>
   );

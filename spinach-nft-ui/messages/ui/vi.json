@@ -122,6 +122,12 @@
         "Id": {
           "Submit": "提交"
         }
+      },
+      "Index": {
+        "Profile": "會員資料",
+        "NftPositions": "NFT 持倉",
+        "NftExchangeConfirm": "確認 NFT 交易",
+        "Admin": "會員管理"
       }
     },
     "Nft": {
