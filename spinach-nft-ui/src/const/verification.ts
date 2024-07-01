@@ -1,11 +1,15 @@
 import {VerificationStatus} from '@spinach/common/types/common/status';
 import {Nullable} from '@spinach/common/types/common/typing';
 
+import {I18nMessageKeysOfNamespace} from '@spinach/next/types/i18n';
 
-export const verificationStatusText: {[status in VerificationStatus]: string} = {
-  verified: '已認證',
-  unverified: '未認證',
-  rejected: '認證失敗',
+
+export const verificationStatusI18nId: {
+  [status in VerificationStatus]: I18nMessageKeysOfNamespace<'UI.VerificationStatus'>
+} = {
+  verified: 'Verified',
+  unverified: 'Unverified',
+  rejected: 'Rejected',
 };
 
 export const verificationStatusTextStyleDefault: {[status in VerificationStatus]: string} = {

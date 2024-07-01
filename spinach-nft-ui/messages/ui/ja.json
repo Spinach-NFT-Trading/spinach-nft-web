@@ -138,6 +138,11 @@
       "Account": "銀行帳號"
     }
   },
+  "VerificationStatus": {
+    "Verified": "已認證",
+    "Unverified": "未認證",
+    "Rejected": "認證失敗"
+  },
   "UserControl": {
     "Login": "登入",
     "Logout": "登出",

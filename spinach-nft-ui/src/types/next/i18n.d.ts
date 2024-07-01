@@ -113,7 +113,12 @@ declare global {
           Code: string,
           Account: string,
         },
-      }
+      },
+      VerificationStatus: {
+        Verified: string,
+        Unverified: string,
+        Rejected: string,
+      },
       UserControl: {
         Login: string,
         Logout: string,

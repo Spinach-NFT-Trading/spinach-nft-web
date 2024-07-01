@@ -37,6 +37,7 @@ export const AccountProfile = async () => {
       <I18nProvider namespaces={[
         'UI.InPage.Account.Profile',
         'UI.Account',
+        'UI.VerificationStatus',
       ]}>
         <AccountProfileClient {...props}/>
       </I18nProvider>
