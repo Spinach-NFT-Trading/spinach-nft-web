@@ -10,6 +10,40 @@ type I18nMetadata = {
 declare global {
   interface IntlMessages {
     Locale: I18nContent,
-    UI: {},
+    UI: {
+      Metadata: {
+        Site: {
+          Name: I18nContent,
+          Description: I18nContent,
+        },
+        NotFound: I18nMetadata,
+        Home: I18nMetadata,
+        Account: {
+          Index: I18nMetadata,
+          Bank: I18nMetadata,
+          Login: I18nMetadata,
+          Nft: {
+            Exchange: I18nMetadata,
+            Position: I18nMetadata,
+          },
+          Profile: I18nMetadata,
+          Register: I18nMetadata,
+          Verify: {
+            Id: I18nMetadata,
+          },
+        },
+        Admin: I18nMetadata,
+        Gold: {
+          Confirm: {
+            TwBank: I18nMetadata,
+            Usdt: I18nMetadata,
+          },
+          Exchange: I18nMetadata,
+        },
+        Nft: {
+          Purchase: I18nMetadata,
+        },
+      },
+    },
   }
 }

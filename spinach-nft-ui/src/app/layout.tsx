@@ -1,39 +1,12 @@
-/* eslint-disable new-cap */
 import React from 'react';
 
-import {projectName} from '@spinach/common/const/project';
-import type {Metadata} from 'next';
-// eslint-disable-next-line camelcase
-import {Noto_Sans} from 'next/font/google';
-
-import {MainContext} from '@spinach/next/context/main';
-import {PageLayoutParams} from '@spinach/next/types/next/layout';
-
-import './globals.css';
+import {RouteDynamic} from '@spinach/next/types/next/route';
 
 
-const font = Noto_Sans({
-  weight: '400',
-  subsets: ['latin'],
-});
+export const dynamic: RouteDynamic = 'force-dynamic';
 
-export const metadata: Metadata = {
-  title: projectName,
-  description: `${projectName}.`,
-};
-
-const RootLayout = ({children}: React.PropsWithChildren<PageLayoutParams>) => {
-  return (
-    <html lang="zh" className="h-full" suppressHydrationWarning>
-      <body className={font.className}>
-        <div className="min-h-screen bg-black/50">
-          <MainContext>
-            {children}
-          </MainContext>
-        </div>
-      </body>
-    </html>
-  );
+const RootLayout = ({children}: React.PropsWithChildren) => {
+  return children;
 };
 
 export default RootLayout;

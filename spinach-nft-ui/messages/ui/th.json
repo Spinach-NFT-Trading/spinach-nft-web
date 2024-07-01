@@ -1,0 +1,65 @@
+{
+  "Metadata": {
+    "Site": {
+      "Name": "TG NFT Market",
+      "Description": "TG NFT 交易平台。"
+    },
+    "NotFound": {
+      "Title": "頁面不存在"
+    },
+    "Home": {
+      "Title": "首頁"
+    },
+    "Account": {
+      "Index": {
+        "Title": "帳號資訊"
+      },
+      "Bank": {
+        "Title": "新增銀行帳號"
+      },
+      "Login": {
+        "Title": "登入"
+      },
+      "Nft": {
+        "Exchange": {
+          "Title": "NFT 交易確認"
+        },
+        "Position": {
+          "Title": "NFT 持倉列表"
+        }
+      },
+      "Profile": {
+        "Title": "個人資訊"
+      },
+      "Register": {
+        "Title": "註冊"
+      },
+      "Verify": {
+        "Id": {
+          "Title": "身分驗證"
+        }
+      }
+    },
+    "Admin": {
+      "Title": "網站管理"
+    },
+    "Gold": {
+      "Confirm": {
+        "TwBank": {
+          "Title": "GOLD 購買確認 (台幣)"
+        },
+        "Usdt": {
+          "Title": "GOLD 購買確認 (USDT)"
+        }
+      },
+      "Exchange": {
+        "Title": "購買 GOLD"
+      }
+    },
+    "Nft": {
+      "Purchase": {
+        "Title": "購買 NFT"
+      }
+    }
+  }
+}
