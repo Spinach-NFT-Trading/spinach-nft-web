@@ -80,6 +80,15 @@
       "Login": {
         "Account": "帳號",
         "Password": "密碼"
+      },
+      "Nft": {
+        "Exchange": {
+          "Popup": {
+            "Title": "確認成交",
+            "Message": "確定要以 {amount} GOLD 成交嗎？",
+            "Button": "確認"
+          }
+        }
       }
     },
     "Nft": {

@@ -57,6 +57,15 @@ declare global {
             Account: string,
             Password: string,
           }
+          Nft: {
+            Exchange: {
+              Popup: {
+                Title: string,
+                Message: string,
+                Button: string,
+              }
+            },
+          }
         },
         Nft: {
           Purchase: {

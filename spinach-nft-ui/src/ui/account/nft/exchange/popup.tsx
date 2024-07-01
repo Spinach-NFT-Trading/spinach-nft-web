@@ -2,6 +2,7 @@ import React from 'react';
 
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
+import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
@@ -24,6 +25,8 @@ export const AccountNftExchangeConfirmPopup = ({show, setShow, match, onMatchCon
   const [error, setError] = React.useState<ApiErrorCode | null>(null);
 
   const {act} = useUserDataActor();
+
+  const t = useTranslations('UI.InPage.Account.Nft.Exchange');
 
   if (!act) {
     return null;
@@ -52,14 +55,14 @@ export const AccountNftExchangeConfirmPopup = ({show, setShow, match, onMatchCon
       <Flex center className="gap-2">
         {error && <Alert>{translateApiError(error)}</Alert>}
         <div className="text-xl">
-          確認成交
+          {t('Popup.Title')}
         </div>
         <hr className="w-full"/>
         <div>
-          確定要以 {formatInt(amount.requested)} GOLD 成交嗎？
+          {t('Popup.Message', {amount: formatInt(amount.requested)})}
         </div>
         <button className="button-clickable-bg w-1/2 p-2" onClick={onClick}>
-          確認
+          {t('Popup.Button')}
         </button>
       </Flex>
     </Popup>
