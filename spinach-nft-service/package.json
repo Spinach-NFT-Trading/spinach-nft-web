@@ -16,7 +16,7 @@
     "lint:fix": "yarn g:lint:fix",
     "tsc": "yarn g:tsc"
   },
-  "author": "RaenonX",
+  "author": "Spinach-NFT",
   "license": "ISC",
   "dependencies": {
     "@faker-js/faker": "^8.4.1",

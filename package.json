@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "packageManager": "yarn@4.0.2",
-  "author": "RaenonX",
+  "author": "Spinach-NFT",
   "license": "ISC",
   "description": "Web-related projects for Spinach NFT.",
   "engines": {

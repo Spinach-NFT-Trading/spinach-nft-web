@@ -11,7 +11,7 @@
     "build": "yarn g:build:common",
     "tsc": "yarn g:tsc"
   },
-  "author": "RaenonX",
+  "author": "Spinach-NFT",
   "license": "ISC",
   "dependencies": {
     "@fastify/type-provider-typebox": "^4.0.0",

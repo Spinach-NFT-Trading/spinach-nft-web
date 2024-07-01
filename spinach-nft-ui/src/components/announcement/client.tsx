@@ -20,7 +20,6 @@ export const AnnouncementsClient = ({larger, announcements}: Props) => {
 
   // Could be `undefined` if `idx` goes out of bound
   // - This could happen if the user switch to the other language with less site alerts
-  // Reference: https://github.com/RaenonX-DL/dragalia-site-front/issues/253
   const announcement = announcements[idx] as Announcement | undefined;
 
   if (!announcement) {
