@@ -4,6 +4,7 @@ import React from 'react';
 import {UserIdVerificationData} from '@spinach/common/types/api/auth/verify/id/main';
 import {useRouter} from 'next/navigation';
 import {signIn} from 'next-auth/react';
+import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {initialAccountIdVerificationState} from '@spinach/next/components/shared/account/idVerification/const';
@@ -25,6 +26,8 @@ export const AccountIdVerifyClient = () => {
     secondaryFront: null,
   });
   const {push} = useRouter();
+
+  const t = useTranslations('UI.InPage.Account.Verify.Id');
 
   const onComplete = async () => {
     if (!act) {
@@ -67,7 +70,7 @@ export const AccountIdVerifyClient = () => {
         uploading={status === 'processing'}
         isNotReady={Object.values(data).some((image) => !image)}
         onComplete={onComplete}
-        submitButtonText="提交"
+        submitButtonText={t('Submit')}
         className="md:w-1/2 lg:w-1/3"
       />
     </Flex>

@@ -94,6 +94,11 @@ declare global {
             NextStep: string,
             AlreadyHaveAnAccount: string,
           },
+          Verify: {
+            Id: {
+              Submit: string,
+            },
+          },
         },
         Nft: {
           Purchase: {

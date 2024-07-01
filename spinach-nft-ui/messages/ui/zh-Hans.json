@@ -117,6 +117,11 @@
         },
         "NextStep": "下一步",
         "AlreadyHaveAnAccount": "已經有帳號了嗎？"
+      },
+      "Verify": {
+        "Id": {
+          "Submit": "提交"
+        }
       }
     },
     "Nft": {
