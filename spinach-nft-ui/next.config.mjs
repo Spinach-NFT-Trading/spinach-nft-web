@@ -1,3 +1,8 @@
+import createNextI18nPlugin from 'next-intl/plugin';
+
+
+const withNextI18n = createNextI18nPlugin();
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   transpilePackages: ['@project/spinach-nft-common'],
@@ -6,4 +11,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default withNextI18n(nextConfig);
