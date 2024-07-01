@@ -87,5 +87,10 @@
         }
       }
     }
+  },
+  "UserControl": {
+    "Login": "登入",
+    "Logout": "登出",
+    "Register": "註冊"
   }
 }

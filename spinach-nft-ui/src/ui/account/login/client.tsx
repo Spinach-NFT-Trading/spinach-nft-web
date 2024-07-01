@@ -5,6 +5,7 @@ import {passwordPattern, usernamePattern} from '@spinach/common/const/auth';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {signIn} from 'next-auth/react';
+import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {FlexForm} from '@spinach/next/components/layout/flex/form';
@@ -24,6 +25,8 @@ export const AccountLoginClient = ({error}: Props) => {
     password: '',
   });
   const {username, password} = input;
+
+  const t = useTranslations('UI.UserControl');
 
   return (
     <Flex className="gap-2 self-center text-xl md:px-7">
@@ -59,10 +62,10 @@ export const AccountLoginClient = ({error}: Props) => {
         />
         <Flex className="gap-2">
           <button type="submit" className="button-clickable-bg w-full p-2">
-            登入
+            {t('Login')}
           </button>
           <FlexLink href="/account/register" center className="button-clickable-border p-2">
-            註冊
+            {t('Register')}
           </FlexLink>
         </Flex>
       </FlexForm>

@@ -67,6 +67,7 @@ declare global {
       UserControl: {
         Login: string,
         Logout: string,
+        Register: string,
       },
     },
   }

@@ -5,6 +5,7 @@ import CurrencyDollarIcon from '@heroicons/react/24/outline/CurrencyDollarIcon';
 import RocketLaunchIcon from '@heroicons/react/24/outline/RocketLaunchIcon';
 import {clsx} from 'clsx';
 import {Session} from 'next-auth';
+import {useTranslations} from 'next-intl';
 
 import {UsdtIcon} from '@spinach/next/components/icons/usdt';
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -20,6 +21,8 @@ type Props = {
 };
 
 export const HomeHeader = ({session, currentFx}: Props) => {
+  const t = useTranslations('UI.UserControl');
+
   return (
     <Flex className="gap-2">
       <Flex className="relative">
@@ -27,10 +30,10 @@ export const HomeHeader = ({session, currentFx}: Props) => {
           !session &&
           <Flex direction="row" noFullWidth className="absolute bottom-5 right-5 z-10 justify-end gap-5">
             <FlexLink href="/account/register" center className="button-clickable-bg w-20 p-2">
-              註冊
+              {t('Register')}
             </FlexLink>
             <FlexLink href="/account/login" center className="button-clickable-border w-20 p-2">
-              登入
+              {t('Logout')}
             </FlexLink>
           </Flex>
         }

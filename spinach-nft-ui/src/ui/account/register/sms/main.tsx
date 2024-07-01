@@ -10,6 +10,7 @@ import {
 import {SmsVerifyInitialRequest, SmsVerifyInitialResponse} from '@spinach/common/types/api/auth/verify/sms/initial';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {clsx} from 'clsx';
+import {useTranslations} from 'next-intl';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -45,6 +46,8 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
     error,
     verificationKey,
   } = state;
+
+  const t = useTranslations('UI.UserControl');
 
   const onPhoneSubmitted = async () => {
     setState((original) => ({...original, loading: true}));
@@ -149,7 +152,7 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
         <Flex direction="row" center className="text-base">
           <div>已經有帳號了嗎？</div>
           <FlexLink href="/account/login" className="text-link">
-            登入
+            {t('Login')}
           </FlexLink>
         </Flex>
       </Flex>

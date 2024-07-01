@@ -3,6 +3,7 @@ import React from 'react';
 import {redirect} from 'next/navigation';
 import {getServerSession} from 'next-auth';
 
+import {I18nProvider} from '@spinach/next/components/i18n/provider';
 import {authOptions} from '@spinach/next/const/auth';
 import {AccountLoginClient} from '@spinach/next/ui/account/login/client';
 import {AccountLoginPageProps} from '@spinach/next/ui/account/login/type';
@@ -18,7 +19,9 @@ export const AccountLogin = async ({searchParams}: AccountLoginPageProps) => {
 
   return (
     <UserControlLayout>
-      <AccountLoginClient error={searchParams?.error}/>
+      <I18nProvider namespaces={['UI.UserControl']}>
+        <AccountLoginClient error={searchParams?.error}/>
+      </I18nProvider>
     </UserControlLayout>
   );
 };

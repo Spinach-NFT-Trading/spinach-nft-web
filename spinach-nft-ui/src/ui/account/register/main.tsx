@@ -3,6 +3,7 @@ import React from 'react';
 import {redirect} from 'next/navigation';
 import {getServerSession} from 'next-auth';
 
+import {I18nProvider} from '@spinach/next/components/i18n/provider';
 import {authOptions} from '@spinach/next/const/auth';
 import {AccountRegisterClient} from '@spinach/next/ui/account/register/client';
 import {AccountRegisterPageProps} from '@spinach/next/ui/account/register/type';
@@ -18,7 +19,9 @@ export const AccountRegister = async ({searchParams}: AccountRegisterPageProps) 
 
   return (
     <UserControlLayout disableHomePageLink>
-      <AccountRegisterClient {...searchParams}/>
+      <I18nProvider namespaces={['UI.UserControl']}>
+        <AccountRegisterClient {...searchParams}/>
+      </I18nProvider>
     </UserControlLayout>
   );
 };
