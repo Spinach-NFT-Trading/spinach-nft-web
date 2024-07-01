@@ -10,7 +10,7 @@ type Props = {
 
 export const CollapsibleMark = ({show}: Props) => {
   return (
-    <div className="absolute bottom-1 right-1 h-3.5 w-3.5">
+    <div className="absolute bottom-1 right-1 size-3.5">
       {show ? <ChevronUpIcon/> : <ChevronDownIcon/>}
     </div>
   );

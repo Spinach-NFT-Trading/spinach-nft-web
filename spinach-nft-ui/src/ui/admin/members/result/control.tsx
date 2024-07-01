@@ -20,19 +20,19 @@ export const AdminMemberSingleControls = ({
   return (
     <Flex direction="row" noFullWidth className="gap-1 px-1">
       <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('info')}>
-        <IdentificationIcon className="h-6 w-6"/>
+        <IdentificationIcon className="size-6"/>
         <div>帳號資訊</div>
       </FlexButton>
       <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('bankDetails')}>
-        <CurrencyDollarIcon className="h-6 w-6"/>
+        <CurrencyDollarIcon className="size-6"/>
         <div>銀行帳號資訊</div>
       </FlexButton>
       <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('nftTxn')}>
-        <ArrowsRightLeftIcon className="h-6 w-6"/>
+        <ArrowsRightLeftIcon className="size-6"/>
         <div>交易紀錄</div>
       </FlexButton>
       <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('balanceHistory')}>
-        <CurrencyDollarIcon className="h-6 w-6"/>
+        <CurrencyDollarIcon className="size-6"/>
         <div>餘額歷史</div>
       </FlexButton>
     </Flex>

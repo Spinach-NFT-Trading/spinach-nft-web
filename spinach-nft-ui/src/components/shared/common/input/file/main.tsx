@@ -56,7 +56,7 @@ export const InputFile = ({id, title, accept, onFileSelected, onFileTypeIncorrec
         'button-clickable-bg peer-disabled:button-disabled',
         'flex w-full cursor-pointer flex-row items-center self-stretch overflow-auto p-1.5',
       )}>
-        <div className="h-6 w-6 shrink-0">
+        <div className="size-6 shrink-0">
           <DocumentArrowUpIcon/>
         </div>
         <div className="truncate">

@@ -52,7 +52,7 @@ export const AdminMemberCommissionSettingsCell = ({
         onClick={() => onUpload(commissionPercent)}
         disabled={actualDisabled}
       >
-        <CloudArrowUpIcon className="h-6 w-6"/>
+        <CloudArrowUpIcon className="size-6"/>
       </button>
     </FlexForm>
   );

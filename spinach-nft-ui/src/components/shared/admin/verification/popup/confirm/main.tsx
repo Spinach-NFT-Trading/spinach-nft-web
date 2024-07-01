@@ -55,7 +55,7 @@ export const AdminVerificationConfirmPopup = ({
         className="button-base button-text-hover h-24 gap-1 bg-green-700 p-2 text-3xl hover:bg-green-300"
         onClick={onClickVerify(true)}
       >
-        <CheckCircleIcon className="h-9 w-9"/>
+        <CheckCircleIcon className="size-9"/>
         <div>通過</div>
       </FlexButton>
       <FlexButton
@@ -64,7 +64,7 @@ export const AdminVerificationConfirmPopup = ({
         className="button-base button-text-hover h-24 gap-1 bg-red-800 p-2 text-3xl hover:bg-red-300"
         onClick={onClickVerify(false)}
       >
-        <XCircleIcon className="h-9 w-9"/>
+        <XCircleIcon className="size-9"/>
         <div>駁回</div>
       </FlexButton>
     </Flex>

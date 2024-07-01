@@ -28,7 +28,7 @@ export const AdminAgentHeader = () => {
       <Flex center noFullWidth className="w-60">
         退傭設定
       </Flex>
-      <Flex noFullWidth className="w-[20rem]"/>
+      <Flex noFullWidth className="w-80"/>
     </Flex>
   );
 };

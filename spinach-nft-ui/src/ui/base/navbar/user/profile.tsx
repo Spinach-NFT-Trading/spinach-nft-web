@@ -13,7 +13,7 @@ export const UserProfileButton = ({session}: UserControlCommonProps) => {
 
   return (
     <FlexLink className="nav-button-text group gap-1" center href="/account">
-      <div className="relative h-5 w-5">
+      <div className="relative size-5">
         <UserCircleIcon/>
       </div>
       <div>

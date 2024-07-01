@@ -37,7 +37,7 @@ export const AdminVerificationRow = <TData, >({
             payload,
           }))}
         >
-          <InformationCircleIcon className="h-6 w-6"/>
+          <InformationCircleIcon className="size-6"/>
           <span>其他資訊</span>
         </FlexButton>
       }

@@ -16,7 +16,7 @@ export const GoldExchangeConfirmUsdt = async ({searchParams}: GoldExchangeConfir
           <GoldExchangeConfirmSection title="區塊鍊" content="TRC20 (Tron)"/>
           <GoldExchangeConfirmSection title="充幣地址" noBackground content={
             <Flex center className="gap-2 p-3">
-              <div className="relative h-36 w-36">
+              <div className="relative size-36">
                 <NextImage src="/line-qr.png" alt="LINE"/>
               </div>
               <div className="text-slate-400">

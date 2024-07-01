@@ -75,8 +75,8 @@ export const AdminMemberRow = ({
           active={isAgent}
           disabled={controlDisabled}
           icon={{
-            active: <CheckCircleIcon className="h-5 w-5"/>,
-            inactive: <XCircleIcon className="h-5 w-5"/>,
+            active: <CheckCircleIcon className="size-5"/>,
+            inactive: <XCircleIcon className="size-5"/>,
           }}
           onSuccess={(isAgent) => onUpdatedMember({...member, isAgent})}
           onError={onUpdateError}
@@ -98,8 +98,8 @@ export const AdminMemberRow = ({
             active={isSuspended}
             disabled={controlDisabled}
             icon={{
-              active: <LockClosedIcon className="h-5 w-5"/>,
-              inactive: <LockOpenIcon className="h-5 w-5"/>,
+              active: <LockClosedIcon className="size-5"/>,
+              inactive: <LockOpenIcon className="size-5"/>,
             }}
             onSuccess={(isSuspended) => onUpdatedMember({...member, isSuspended})}
             onError={onUpdateError}

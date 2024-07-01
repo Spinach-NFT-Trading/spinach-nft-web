@@ -15,7 +15,7 @@ export const GoldExchangeChannelUi = ({channel}: Props) => {
   if (channel === 'crypto') {
     return (
       <Flex direction="row" className="gap-1">
-        <div className="h-6 w-6">
+        <div className="size-6">
           <UsdtIcon/>
         </div>
         <div>USDT</div>
@@ -26,7 +26,7 @@ export const GoldExchangeChannelUi = ({channel}: Props) => {
   if (channel === 'twBank') {
     return (
       <Flex direction="row" className="gap-1">
-        <div className="h-6 w-6">
+        <div className="size-6">
           <CurrencyDollarIcon/>
         </div>
         <div>台幣</div>

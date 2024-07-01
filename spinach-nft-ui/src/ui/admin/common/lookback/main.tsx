@@ -66,7 +66,7 @@ export const AdminMemberDataLookBackInput = ({inputControl}: Props) => {
         sent: original.control,
         timestamp: Date.now(),
       } satisfies AdminLookBackInputState))}>
-        <MagnifyingGlassIcon className="h-5 w-5"/>
+        <MagnifyingGlassIcon className="size-5"/>
       </button>
       <button type="button" className={adminLookBackButtonStyle} onClick={() => setInputAndSend((original) => ({
         ...original,

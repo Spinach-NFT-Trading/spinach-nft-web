@@ -19,7 +19,7 @@ export const CopyButton = ({data}: Props) => {
   }, [copied]);
 
   return (
-    <button className="button-clickable relative h-8 w-8 p-1" onClick={() => {
+    <button className="button-clickable relative size-8 p-1" onClick={() => {
       navigator.clipboard.writeText(data).then(() => setCopied(true));
     }}>
       {copied ? <CheckCircleIcon/> : <ClipboardIcon/>}

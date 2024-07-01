@@ -23,7 +23,7 @@ export const NftPurchaseInfo = ({nftId, info, onSale, onSaleTimestamp}: Props) =
         <div>#{seqId}</div>
         {
           isLimited &&
-          <div className="relative h-10 w-10 text-teal-400">
+          <div className="relative size-10 text-teal-400">
             <CheckBadgeIcon/>
           </div>
         }

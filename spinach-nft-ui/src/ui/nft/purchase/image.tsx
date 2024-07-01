@@ -14,15 +14,15 @@ export const NftPurchaseImage = ({info, onSale}: NftPurchaseSectionProps) => {
     <Flex className="info-section-bg rounded-lg">
       <Flex direction="row" className="p-4">
         <Flex direction="row">
-          <div className="h-10 w-10">
+          <div className="size-10">
             <UsdtIcon/>
           </div>
         </Flex>
         <Flex direction="row" noFullWidth className="gap-3">
-          <div className="h-10 w-10">
+          <div className="size-10">
             <ShareIcon/>
           </div>
-          <div className="h-10 w-10">
+          <div className="size-10">
             <HeartIcon/>
           </div>
         </Flex>

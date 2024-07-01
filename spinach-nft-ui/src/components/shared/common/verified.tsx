@@ -17,7 +17,7 @@ export const VerificationStatusUi = ({status, isActive}: Props) => {
 
   return (
     <Flex direction="row" noFullWidth className={textStyleMap[status]}>
-      <CheckBadgeIcon className="h-6 w-6"/>
+      <CheckBadgeIcon className="size-6"/>
       <div className="whitespace-nowrap">
         {verificationStatusText[status]}
       </div>

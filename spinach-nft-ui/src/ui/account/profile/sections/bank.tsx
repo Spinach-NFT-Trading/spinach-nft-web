@@ -51,7 +51,7 @@ export const AccountBankDetails = ({userInfo}: Props) => {
         }}
       />
       <FlexLink href="/account/bank" className="button-clickable-bg self-end p-1.5">
-        <DocumentTextIcon className="h-6 w-6"/>
+        <DocumentTextIcon className="size-6"/>
         <div>新增銀行帳號</div>
       </FlexLink>
     </Flex>

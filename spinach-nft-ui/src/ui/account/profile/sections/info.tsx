@@ -64,7 +64,7 @@ export const AccountProfileInfo = ({userInfo}: Props) => {
       <AnimatedCollapse show={status === 'rejected'}>
         <Flex className="items-end">
           <FlexLink href="/account/verify/id" className="button-clickable-bg gap-1 p-1.5">
-            <IdentificationIcon className="h-6 w-6"/>
+            <IdentificationIcon className="size-6"/>
             <div>重新提交身分驗證資料</div>
           </FlexLink>
         </Flex>
