@@ -2,6 +2,7 @@ import React from 'react';
 
 import {AccountIdVerificationType} from '@spinach/common/types/api/profile/id';
 import {clsx} from 'clsx';
+import {useTranslations} from 'next-intl';
 
 import {
   AccountIdVerificationCommonProps,
@@ -24,6 +25,8 @@ export const AccountIdVerificationInput = ({
   const {error} = state;
   const errorMessage = error[type];
 
+  const t = useTranslations('UI.Component.AccountIdVerificationForm.Error');
+
   return (
     <InputFileImageOnly
       id={type}
@@ -34,7 +37,7 @@ export const AccountIdVerificationInput = ({
         ...original,
         error: {
           ...original.error,
-          [type]: `檔案種類不正確: ${type}`,
+          [type]: t('IncorrectFileType', {type}),
         },
       } satisfies AccountIdVerificationState))}
       required

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {clsx} from 'clsx';
+import {useTranslations} from 'next-intl';
 
 import {FlexForm} from '@spinach/next/components/layout/flex/form';
 import {AccountIdVerificationInput} from '@spinach/next/components/shared/account/idVerification/input';
@@ -23,6 +24,8 @@ export const AccountIdVerificationForm = ({
   className,
   ...props
 }: Props) => {
+  const t = useTranslations('UI.Component.AccountIdVerificationForm');
+
   return (
     <FlexForm className={clsx('gap-2', className)} onSubmit={onComplete}>
       <AccountIdVerificationInput
@@ -45,7 +48,7 @@ export const AccountIdVerificationForm = ({
         type="submit" className="enabled:button-clickable-bg disabled:button-disabled w-full p-2"
         disabled={uploading || isNotReady}
       >
-        {uploading ? '上傳中...' : submitButtonText}
+        {uploading ? t('Uploading') : submitButtonText}
       </button>
     </FlexForm>
   );

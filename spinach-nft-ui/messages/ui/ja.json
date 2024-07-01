@@ -62,6 +62,14 @@
       }
     }
   },
+  "Component": {
+    "AccountIdVerificationForm": {
+      "Uploading": "上傳中...",
+      "Error": {
+        "IncorrectFileType": "檔案種類不正確 - {type}"
+      }
+    }
+  },
   "InPage": {
     "Account": {
       "Bank": {
@@ -77,10 +85,6 @@
         "Upload": "上傳",
         "Uploading": "上傳中..."
       },
-      "Login": {
-        "Account": "帳號",
-        "Password": "密碼"
-      },
       "Nft": {
         "Exchange": {
           "Popup": {
@@ -95,6 +99,24 @@
         "ResubmitIdentityVerification": "重新提交身分驗證資料",
         "NoAssociatedBankAccounts": "無相關銀行帳號。",
         "AddBankAccount": "新增銀行帳號"
+      },
+      "Register": {
+        "Sms": {
+          "Verification": {
+            "Code": "驗證碼",
+            "GetCode": "獲取驗證碼",
+            "Submit": "驗證手機"
+          }
+        },
+        "Info": {
+          "ClickForWalletCreation": "創建 MAX 帳號影片教學請點我"
+        },
+        "Completed": {
+          "Message": "註冊成功！請加入官方 LINE 進行實名認證。",
+          "KYC": "前往實名認證"
+        },
+        "NextStep": "下一步",
+        "AlreadyHaveAnAccount": "已經有帳號了嗎？"
       }
     },
     "Nft": {
@@ -127,13 +149,14 @@
       "UserId": "用戶 ID",
       "Email": "Email",
       "LineId": "LINE ID",
-      "WalletAddress": "錢包地址",
+      "WalletAddress": "虛擬貨幣錢包地址 (TRC20)",
       "Name": "姓名",
       "IdentificationNumber": "身分證字號",
-      "Birthday": "生日"
+      "Birthday": "生日",
+      "Phone": "手機號碼"
     },
     "BankAccounts": {
-      "Title": "銀行帳號",
+      "Name": "銀行帳號",
       "Code": "銀行代碼",
       "Account": "銀行帳號"
     }
@@ -144,6 +167,10 @@
     "Rejected": "認證失敗"
   },
   "UserControl": {
+    "Credentials": {
+      "Account": "帳號",
+      "Password": "密碼"
+    },
     "Login": "登入",
     "Logout": "登出",
     "Register": "註冊"

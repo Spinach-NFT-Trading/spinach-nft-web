@@ -48,6 +48,8 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
   } = state;
 
   const t = useTranslations('UI.UserControl');
+  const t2 = useTranslations('UI.InPage.Account.Register');
+  const t3 = useTranslations('UI.Account');
 
   const onPhoneSubmitted = async () => {
     setState((original) => ({...original, loading: true}));
@@ -106,7 +108,7 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
         <FlexForm className="gap-2" onSubmit={onPhoneSubmitted}>
           <InputFloatingLabel
             id="phone"
-            placeholder="手機號碼"
+            placeholder={t3('Info.Phone')}
             type="tel"
             value={phone}
             onChange={({target}) => setState((original) => ({
@@ -124,7 +126,7 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
               disabled={disableInit}
               className="button-clickable-bg disabled:button-disabled w-full p-2"
             >
-              獲取驗證碼
+              {t2('Sms.Verification.GetCode')}
             </button>
           </AnimatedCollapse>
         </FlexForm>
@@ -132,7 +134,7 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
           <FlexForm className="gap-2" onSubmit={onCodeSubmitted}>
             <InputFloatingLabel
               id="code"
-              placeholder="驗證碼"
+              placeholder={t2('Sms.Verification.Code')}
               type="text"
               value={otp}
               onChange={({target}) => setState((original) => ({
@@ -145,12 +147,12 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
             <button type="submit" disabled={disableOtp} className={clsx(
               'button-clickable-bg disabled:button-disabled w-full p-2',
             )}>
-              驗證手機
+              {t2('Sms.Verification.Submit')}
             </button>
           </FlexForm>
         </AnimatedCollapse>
         <Flex direction="row" center className="text-base">
-          <div>已經有帳號了嗎？</div>
+          <div>{t2('AlreadyHaveAnAccount')}</div>
           <FlexLink href="/account/login" className="text-link">
             {t('Login')}
           </FlexLink>

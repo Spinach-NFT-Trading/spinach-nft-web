@@ -9,6 +9,7 @@ import {
 } from '@spinach/common/const/auth';
 import {idNumberPattern} from '@spinach/common/const/id';
 import {IsoDateString} from '@spinach/common/types/common/date';
+import {useTranslations} from 'next-intl';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {FlexForm} from '@spinach/next/components/layout/flex/form';
@@ -28,12 +29,16 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
     password,
   } = input;
 
+  const t = useTranslations('UI.Account');
+  const t2 = useTranslations('UI.InPage.Account.Register');
+  const t3 = useTranslations('UI.UserControl');
+
   return (
     <AnimatedCollapse show={show}>
       <FlexForm className="gap-2" onSubmit={onComplete}>
         <InputFloatingLabel
           id="idNumber"
-          placeholder="身分證字號"
+          placeholder={t('Info.IdentificationNumber')}
           type="text"
           value={idNumber}
           onChange={({target}) => setInput((original) => ({
@@ -45,7 +50,7 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
         />
         <InputFloatingLabel
           id="name"
-          placeholder="姓名"
+          placeholder={t('Info.Name')}
           type="text"
           value={name}
           onChange={({target}) => setInput((original) => ({
@@ -58,7 +63,7 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
         />
         <InputFloatingLabel
           id="email"
-          placeholder="Email"
+          placeholder={t('Info.Email')}
           type="email"
           value={email}
           onChange={({target}) => setInput((original) => ({
@@ -70,7 +75,7 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
         />
         <InputFloatingLabel
           id="birthday"
-          placeholder="生日"
+          placeholder={t('Info.Birthday')}
           type="date"
           value={birthday}
           onChange={({target}) => setInput((original) => ({
@@ -81,7 +86,7 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
         />
         <InputFloatingLabel
           id="lineId"
-          placeholder="LINE ID"
+          placeholder={t('Info.LineId')}
           type="text"
           value={lineId}
           onChange={({target}) => setInput((original) => ({
@@ -93,7 +98,7 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
         />
         <InputFloatingLabel
           id="wallet"
-          placeholder="虛擬貨幣錢包地址 (TRC20)"
+          placeholder={t('Info.WalletAddress')}
           type="text"
           value={wallet}
           onChange={({target}) => setInput((original) => ({
@@ -104,11 +109,11 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
           pattern={walletPattern}
         />
         <a href="https://youtu.be/bkCavlothfY" target="_blank" className="text-link w-fit self-end text-sm">
-          創建 MAX 帳號影片教學請點我
+          {t2('Info.ClickForWalletCreation')}
         </a>
         <InputFloatingLabel
           id="username"
-          placeholder="帳號"
+          placeholder={t3('Credentials.Account')}
           type="text"
           value={username}
           onChange={({target}) => setInput((original) => ({
@@ -121,7 +126,7 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
         />
         <InputFloatingLabel
           id="password"
-          placeholder="密碼"
+          placeholder={t3('Credentials.Password')}
           type="password"
           value={password}
           onChange={({target}) => setInput((original) => ({
@@ -133,7 +138,7 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
           pattern={passwordPattern}
         />
         <button type="submit" className="button-clickable-bg w-full p-2">
-          下一步
+          {t2('NextStep')}
         </button>
       </FlexForm>
     </AnimatedCollapse>

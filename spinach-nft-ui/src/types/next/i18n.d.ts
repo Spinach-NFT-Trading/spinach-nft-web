@@ -38,6 +38,14 @@ declare global {
           Purchase: I18nPageMetadata,
         },
       },
+      Component: {
+        AccountIdVerificationForm: {
+          Uploading: string,
+          Error: {
+            IncorrectFileType: string,
+          },
+        },
+      },
       InPage: {
         Account: {
           Bank: {
@@ -53,10 +61,6 @@ declare global {
             Upload: string,
             Uploading: string,
           },
-          Login: {
-            Account: string,
-            Password: string,
-          },
           Nft: {
             Exchange: {
               Popup: {
@@ -71,6 +75,24 @@ declare global {
             ResubmitIdentityVerification: string,
             NoAssociatedBankAccounts: string,
             AddBankAccount: string,
+          },
+          Register: {
+            Sms: {
+              Verification: {
+                Code: string,
+                GetCode: string,
+                Submit: string,
+              },
+            },
+            Info: {
+              ClickForWalletCreation: string,
+            },
+            Completed: {
+              Message: string,
+              KYC: string,
+            },
+            NextStep: string,
+            AlreadyHaveAnAccount: string,
           },
         },
         Nft: {
@@ -107,6 +129,7 @@ declare global {
           Name: string,
           IdentificationNumber: string,
           Birthday: string,
+          Phone: string,
         },
         BankAccounts: {
           Name: string,
@@ -120,6 +143,10 @@ declare global {
         Rejected: string,
       },
       UserControl: {
+        Credentials: {
+          Account: string,
+          Password: string,
+        },
         Login: string,
         Logout: string,
         Register: string,

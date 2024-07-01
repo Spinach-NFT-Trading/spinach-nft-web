@@ -19,7 +19,7 @@ export const AccountLogin = async ({searchParams}: AccountLoginPageProps) => {
 
   return (
     <UserControlLayout>
-      <I18nProvider namespaces={['UI.UserControl', 'UI.InPage.Account.Login']}>
+      <I18nProvider namespaces={['UI.UserControl']}>
         <AccountLoginClient error={searchParams?.error}/>
       </I18nProvider>
     </UserControlLayout>
