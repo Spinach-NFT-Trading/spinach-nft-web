@@ -2,8 +2,10 @@ import React from 'react';
 
 import {ObjectId} from 'mongodb';
 import {getServerSession} from 'next-auth';
+import {getTranslations} from 'next-intl/server';
 
 import {SignIn} from '@spinach/next/components/auth/signIn';
+import {I18nProvider} from '@spinach/next/components/i18n/provider';
 import {Failed} from '@spinach/next/components/icons/failed';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NftListingSingle} from '@spinach/next/components/shared/nft/single';
@@ -34,18 +36,20 @@ export const NftPurchase = async ({params}: NextPageProps<PageParams>) => {
     onSale,
     recommendedNfts,
     info,
+    t,
   ] = await Promise.all([
     getNftOnSale(nftId),
     getNftListing(3),
     getNftInfo(nftId),
+    getTranslations('UI.InPage.Nft.Purchase.Error'),
   ]);
 
   if (!onSale) {
-    return <Failed text="On Sale"/>;
+    return <Failed text={t('NotOnSale')}/>;
   }
 
   if (!info) {
-    return <Failed text="NFT Info"/>;
+    return <Failed text={t('NotFound')}/>;
   }
 
   const onSaleTimestamp = onSale._id.getTimestamp();
@@ -54,13 +58,15 @@ export const NftPurchase = async ({params}: NextPageProps<PageParams>) => {
 
   return (
     <LoginRequiredPageLayout>
-      <Flex className="gap-2 md:flex-row">
-        <NftPurchaseImage {...props}/>
-        <Flex className="gap-2">
-          <NftPurchaseInfo nftId={nftId.toString()} onSaleTimestamp={onSaleTimestamp} {...props}/>
-          {recommendedNfts.map((nft) => <NftListingSingle key={nft.id} nft={nft} isOnSale/>)}
+      <I18nProvider namespaces={['UI.InPage.Nft.Purchase']}>
+        <Flex className="gap-2 md:flex-row">
+          <NftPurchaseImage {...props}/>
+          <Flex className="gap-2">
+            <NftPurchaseInfo nftId={nftId.toString()} onSaleTimestamp={onSaleTimestamp} {...props}/>
+            {recommendedNfts.map((nft) => <NftListingSingle key={nft.id} nft={nft} isOnSale/>)}
+          </Flex>
         </Flex>
-      </Flex>
+      </I18nProvider>
     </LoginRequiredPageLayout>
   );
 };

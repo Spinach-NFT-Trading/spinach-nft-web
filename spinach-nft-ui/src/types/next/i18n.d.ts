@@ -1,48 +1,72 @@
-// Import is required to actually make the `IntlMessages` typing effective
-// Therefore despite that `I18nContent` is just `string`, it's still importing stuff here
-import {I18nContent} from '@spinach/next/types/i18n';
+import {I18nPageMetadata} from '@spinach/next/types/i18n';
 
-
-type I18nMetadata = {
-  Title: string,
-};
 
 declare global {
   interface IntlMessages {
-    Locale: I18nContent,
+    Locale: string,
     UI: {
       Metadata: {
         Site: {
-          Name: I18nContent,
-          Description: I18nContent,
+          Name: string,
+          Description: string,
         },
-        NotFound: I18nMetadata,
-        Home: I18nMetadata,
+        NotFound: I18nPageMetadata,
+        Home: I18nPageMetadata,
         Account: {
-          Index: I18nMetadata,
-          Bank: I18nMetadata,
-          Login: I18nMetadata,
+          Index: I18nPageMetadata,
+          Bank: I18nPageMetadata,
+          Login: I18nPageMetadata,
           Nft: {
-            Exchange: I18nMetadata,
-            Position: I18nMetadata,
+            Exchange: I18nPageMetadata,
+            Position: I18nPageMetadata,
           },
-          Profile: I18nMetadata,
-          Register: I18nMetadata,
+          Profile: I18nPageMetadata,
+          Register: I18nPageMetadata,
           Verify: {
-            Id: I18nMetadata,
+            Id: I18nPageMetadata,
           },
         },
-        Admin: I18nMetadata,
+        Admin: I18nPageMetadata,
         Gold: {
           Confirm: {
-            TwBank: I18nMetadata,
-            Usdt: I18nMetadata,
+            TwBank: I18nPageMetadata,
+            Usdt: I18nPageMetadata,
           },
-          Exchange: I18nMetadata,
+          Exchange: I18nPageMetadata,
         },
         Nft: {
-          Purchase: I18nMetadata,
+          Purchase: I18nPageMetadata,
         },
+      },
+      InPage: {
+        Nft: {
+          Purchase: {
+            Error: {
+              NotOnSale: string,
+              NotFound: string,
+            },
+            Info: {
+              Id: string,
+              OnSaleTimestamp: string,
+              Description: string,
+              Price: string,
+            },
+            Buy: string,
+            Popup: {
+              Title: string,
+              Message: string,
+              Button: string,
+            },
+            Disclaimer: {
+              Title: string,
+              Content: string,
+            },
+          },
+        },
+      },
+      UserControl: {
+        Login: string,
+        Logout: string,
       },
     },
   }

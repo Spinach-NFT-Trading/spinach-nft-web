@@ -15,3 +15,7 @@ export type I18nMessageKeysOfNamespace<
 > = I18nMessageKeysOfObject<I18nNamespaceObject<TNamespace>>;
 
 export type I18nContent = string;
+
+export type I18nPageMetadata = {
+  Title: string,
+};

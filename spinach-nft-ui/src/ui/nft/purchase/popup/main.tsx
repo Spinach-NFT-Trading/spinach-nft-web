@@ -4,6 +4,7 @@ import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {useRouter} from 'next/navigation';
 import {signIn} from 'next-auth/react';
+import {useTranslations} from 'next-intl';
 
 import {SignIn} from '@spinach/next/components/auth/signIn';
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -23,6 +24,8 @@ export const NftPurchaseConfirmPopup = ({nftId, show, setShow}: Props) => {
   const [error, setError] = React.useState<ApiErrorCode | null>(null);
   const {act, status} = useUserDataActor();
   const {replace} = useRouter();
+
+  const t = useTranslations('UI.InPage.Nft.Purchase');
 
   if (!act) {
     return <SignIn/>;
@@ -55,11 +58,11 @@ export const NftPurchaseConfirmPopup = ({nftId, show, setShow}: Props) => {
       <Flex center className="gap-2">
         {error && <Alert>{translateApiError(error)}</Alert>}
         <div className="text-xl">
-          確認購買
+          {t('Popup.Title')}
         </div>
         <hr className="w-full"/>
         <div>
-          確定要購買此 NFT 嗎？
+          {t('Popup.Message')}
         </div>
         <NftPurchaseConfirmDisclaimer/>
         <button
@@ -67,7 +70,7 @@ export const NftPurchaseConfirmPopup = ({nftId, show, setShow}: Props) => {
           disabled={status === 'processing' || status === 'failed'}
           onClick={onClick}
         >
-          確認購買
+          {t('Popup.Button')}
         </button>
       </Flex>
     </Popup>
