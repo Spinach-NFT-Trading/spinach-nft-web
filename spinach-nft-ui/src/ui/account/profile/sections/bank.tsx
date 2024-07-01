@@ -2,6 +2,7 @@ import React from 'react';
 
 import DocumentTextIcon from '@heroicons/react/24/outline/DocumentTextIcon';
 import {UserInfo} from '@spinach/common/types/common/user/info';
+import {useTranslations} from 'next-intl';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -17,22 +18,25 @@ type Props = {
 };
 
 export const AccountBankDetails = ({userInfo}: Props) => {
+  const t = useTranslations('UI.Account');
+  const t2 = useTranslations('UI.InPage.Account.Profile');
+
   return (
     <Flex className="info-section gap-1">
       <div className="text-3xl">
-        銀行帳號
+        {t('BankAccounts.Name')}
       </div>
       <UserDataLazyLoad
         options={{
           type: 'bankDetails',
           opts: {userId: userInfo.id},
         }}
-        loadingText="銀行帳號"
+        loadingText={t('BankAccounts.Name')}
         content={(lazyLoaded) => {
           const bankDetails = lazyLoaded?.bankDetails;
 
           if (!bankDetails || !bankDetails.length) {
-            return '無相關銀行帳號';
+            return t2('NoAssociatedBankAccounts');
           }
 
           return (
@@ -41,8 +45,8 @@ export const AccountBankDetails = ({userInfo}: Props) => {
                 <AnimatedCollapse key={account} show appear>
                   <Flex className="gap-1">
                     <VerificationStatusUi status={status}/>
-                    <AccountProfileCell title="銀行代碼" info={code}/>
-                    <AccountProfileCell title="銀行帳號" info={account}/>
+                    <AccountProfileCell title={t('BankAccounts.Code')} info={code}/>
+                    <AccountProfileCell title={t('BankAccounts.Account')} info={account}/>
                   </Flex>
                 </AnimatedCollapse>
               ))}
@@ -52,7 +56,7 @@ export const AccountBankDetails = ({userInfo}: Props) => {
       />
       <FlexLink href="/account/bank" className="button-clickable-bg self-end p-1.5">
         <DocumentTextIcon className="size-6"/>
-        <div>新增銀行帳號</div>
+        <div>{t2('AddBankAccount')}</div>
       </FlexLink>
     </Flex>
   );

@@ -56,7 +56,7 @@ declare global {
           Login: {
             Account: string,
             Password: string,
-          }
+          },
           Nft: {
             Exchange: {
               Popup: {
@@ -65,7 +65,13 @@ declare global {
                 Button: string,
               }
             },
-          }
+          },
+          Profile: {
+            ReferralLink: string,
+            ResubmitIdentityVerification: string,
+            NoAssociatedBankAccounts: string,
+            AddBankAccount: string,
+          },
         },
         Nft: {
           Purchase: {
@@ -92,6 +98,22 @@ declare global {
           },
         },
       },
+      Account: {
+        Info: {
+          UserId: string,
+          Email: string,
+          LineId: string,
+          WalletAddress: string,
+          Name: string,
+          IdentificationNumber: string,
+          Birthday: string,
+        },
+        BankAccounts: {
+          Name: string,
+          Code: string,
+          Account: string,
+        },
+      }
       UserControl: {
         Login: string,
         Logout: string,
