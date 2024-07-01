@@ -6,6 +6,7 @@ import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {clsx} from 'clsx';
 import {useRouter} from 'next/navigation';
 import {signIn} from 'next-auth/react';
+import {useTranslations} from 'next-intl';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -32,6 +33,8 @@ export const AccountAddBankClient = () => {
   const {act, status} = useUserDataActor();
   const {replace} = useRouter();
 
+  const t = useTranslations('UI.InPage.Account.Bank');
+
   const {errorMessage, data} = state;
   const {image, details} = data;
   const uploading = status === 'processing';
@@ -45,7 +48,7 @@ export const AccountAddBankClient = () => {
     if (!data.image) {
       setState((original) => ({
         ...original,
-        errorMessage: '請附上存摺照片。',
+        errorMessage: t('Error.MissingBankbookPhoto'),
       }));
       return;
     }
@@ -79,7 +82,7 @@ export const AccountAddBankClient = () => {
         <Flex className="gap-2 lg:flex-row">
           <InputFileImageOnly
             id="note"
-            title="銀行存摺照片"
+            title={t('InputField.BankbookPhoto')}
             className={clsx(errorMessage && 'text-red-400')}
             onFileSelected={(image) => setState((original) => ({
               ...original,
@@ -90,14 +93,14 @@ export const AccountAddBankClient = () => {
             } satisfies AccountAddBankState))}
             onFileTypeIncorrect={(type) => setState((original) => ({
               ...original,
-              errorMessage: `檔案種類不正確: ${type}`,
+              errorMessage: t('Error.IncorrectFileType', {type}),
             } satisfies AccountAddBankState))}
             required
           />
           <InputFloatingLabel
             id="code"
             type="text"
-            placeholder="銀行代碼"
+            placeholder={t('InputField.BankCode')}
             value={details.code}
             onChange={({target}) => setState((original) => ({
               ...original,
@@ -116,7 +119,7 @@ export const AccountAddBankClient = () => {
           <InputFloatingLabel
             id="code"
             type="text"
-            placeholder="銀行帳號"
+            placeholder={t('InputField.BankAccount')}
             value={details.account}
             onChange={({target}) => setState((original) => ({
               ...original,
@@ -137,7 +140,7 @@ export const AccountAddBankClient = () => {
           type="submit" className="enabled:button-clickable-bg disabled:button-disabled w-full p-2"
           disabled={uploading || !image || !details.account || !details.code}
         >
-          {uploading ? '上傳中...' : '上傳'}
+          {uploading ? t('Uploading') : t('Upload')}
         </button>
       </FlexForm>
     </AnimatedCollapse>

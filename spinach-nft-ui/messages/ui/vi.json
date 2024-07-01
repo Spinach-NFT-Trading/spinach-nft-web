@@ -63,6 +63,21 @@
     }
   },
   "InPage": {
+    "Account": {
+      "Bank": {
+        "Error": {
+          "MissingBankbookPhoto": "請附上存摺照片。",
+          "IncorrectFileType": "檔案種類不正確 - {type}"
+        },
+        "InputField": {
+          "BankbookPhoto": "銀行存摺照片",
+          "BankCode": "銀行代碼",
+          "BankAccount": "銀行帳號"
+        },
+        "Upload": "上傳",
+        "Uploading": "上傳中..."
+      }
+    },
     "Nft": {
       "Purchase": {
         "Error": {

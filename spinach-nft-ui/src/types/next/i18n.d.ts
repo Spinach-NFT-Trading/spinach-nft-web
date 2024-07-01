@@ -39,6 +39,21 @@ declare global {
         },
       },
       InPage: {
+        Account: {
+          Bank: {
+            Error: {
+              MissingBankbookPhoto: string,
+              IncorrectFileType: string,
+            },
+            InputField: {
+              BankbookPhoto: string,
+              BankCode: string,
+              BankAccount: string,
+            },
+            Upload: string,
+            Uploading: string,
+          },
+        },
         Nft: {
           Purchase: {
             Error: {
