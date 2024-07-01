@@ -22,7 +22,7 @@
     "@faker-js/faker": "^8.4.1",
     "decimal.js": "^10.4.3",
     "spinach-nft-common": "*",
-    "ws": "^8.17.0"
+    "ws": "^8.17.1"
   },
   "devDependencies": {
     "@types/ws": "^8.5.10"
