@@ -27,6 +27,7 @@ export const AccountLoginClient = ({error}: Props) => {
   const {username, password} = input;
 
   const t = useTranslations('UI.UserControl');
+  const t2 = useTranslations('UI.InPage.Account.Login');
 
   return (
     <Flex className="gap-2 self-center text-xl md:px-7">
@@ -36,7 +37,7 @@ export const AccountLoginClient = ({error}: Props) => {
       )}>
         <InputFloatingLabel
           id="username"
-          placeholder="帳號"
+          placeholder={t2('Account')}
           type="text"
           value={username}
           onChange={({target}) => setInput((original) => ({
@@ -49,7 +50,7 @@ export const AccountLoginClient = ({error}: Props) => {
         />
         <InputFloatingLabel
           id="password"
-          placeholder="密碼"
+          placeholder={t2('Password')}
           type="password"
           value={password}
           onChange={({target}) => setInput((original) => ({

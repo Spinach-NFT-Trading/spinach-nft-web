@@ -76,6 +76,10 @@
         },
         "Upload": "上傳",
         "Uploading": "上傳中..."
+      },
+      "Login": {
+        "Account": "帳號",
+        "Password": "密碼"
       }
     },
     "Nft": {

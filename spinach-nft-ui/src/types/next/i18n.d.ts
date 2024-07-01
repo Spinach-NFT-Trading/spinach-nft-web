@@ -53,6 +53,10 @@ declare global {
             Upload: string,
             Uploading: string,
           },
+          Login: {
+            Account: string,
+            Password: string,
+          }
         },
         Nft: {
           Purchase: {
