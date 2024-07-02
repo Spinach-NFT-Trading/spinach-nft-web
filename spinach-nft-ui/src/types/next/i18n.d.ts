@@ -118,6 +118,28 @@ declare global {
               Button: string,
             },
           },
+          Confirm: {
+            TwBank: {
+              Error: {
+                SelectWiringSource: string,
+                AttachProof: string,
+                InvalidAmount: string,
+              },
+              Message: {
+                UploadCompleted: string,
+              },
+              Field: {
+                WiringSource: string,
+                WiringProof: string,
+              },
+              UploadStatus: {
+                Waiting: string,
+                Processing: string,
+                Completed: string,
+                Failed: string,
+              },
+            },
+          },
         },
         Nft: {
           Purchase: {

@@ -141,6 +141,28 @@
           "Message": "確定要購買 {gold} GOLD 嗎？",
           "Button": "確認"
         }
+      },
+      "Confirm": {
+        "TwBank": {
+          "Error": {
+            "SelectWiringSource": "請選擇轉帳來源帳號。",
+            "AttachProof": "請附上轉帳紀錄圖片。",
+            "InvalidAmount": "無效的轉帳金額。"
+          },
+          "Message": {
+            "UploadCompleted": "轉帳資料上傳完成。"
+          },
+          "Field": {
+            "WiringSource": "轉帳來源",
+            "WiringProof": "銀行轉帳證明"
+          },
+          "UploadStatus": {
+            "Waiting": "上傳轉帳紀錄",
+            "Processing": "上傳中...",
+            "Completed": "上傳完成",
+            "Failed": "上傳失敗！"
+          }
+        }
       }
     },
     "Nft": {

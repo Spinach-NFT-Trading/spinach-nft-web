@@ -4,6 +4,7 @@ import {BankDetails} from '@spinach/common/types/data/user/bank';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {clsx} from 'clsx';
 import {signIn} from 'next-auth/react';
+import {useTranslations} from 'next-intl';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {FlexButton} from '@spinach/next/components/layout/flex/button';
@@ -18,7 +19,10 @@ import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {getToggleButtonClass} from '@spinach/next/styles/input';
 import {GoldExchangeConfirmSection} from '@spinach/next/ui/gold/confirm/common/section';
 import {GoldExchangeConfirmTwBankClientCommonProps} from '@spinach/next/ui/gold/confirm/twBank/client/type';
-import {goldExchangeTwBankInitialInput, goldExchangeUploadStatus} from '@spinach/next/ui/gold/confirm/twBank/const';
+import {
+  goldExchangeTwBankInitialInput,
+  goldExchangeUploadStatusI18nId,
+} from '@spinach/next/ui/gold/confirm/twBank/const';
 import {GoldExchangeConfirmTwBankInput} from '@spinach/next/ui/gold/confirm/twBank/type';
 import {formatBankDetails} from '@spinach/next/utils/data/user';
 
@@ -37,6 +41,10 @@ export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedB
     statusNoReset: true,
   });
 
+  const t = useTranslations('UI.InPage.Gold.Confirm.TwBank');
+  const t2 = useTranslations('UI.Account.BankAccounts');
+  const t3 = useTranslations('UI.Error.Input');
+
   const {
     errorMessage,
     sourceBankDetailsUuid,
@@ -52,7 +60,7 @@ export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedB
     if (!sourceBankDetailsUuid) {
       setInput((original): GoldExchangeConfirmTwBankInput => ({
         ...original,
-        errorMessage: '請選擇轉帳來源帳號。',
+        errorMessage: t('Error.SelectWiringSource'),
       }));
       return;
     }
@@ -60,7 +68,7 @@ export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedB
     if (!txnProofImage) {
       setInput((original): GoldExchangeConfirmTwBankInput => ({
         ...original,
-        errorMessage: '請附上轉帳紀錄圖片。',
+        errorMessage: t('Error.AttachProof'),
       }));
       return;
     }
@@ -68,7 +76,7 @@ export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedB
     if (!amount) {
       setInput((original): GoldExchangeConfirmTwBankInput => ({
         ...original,
-        errorMessage: '無效的轉帳金額。',
+        errorMessage: t('Error.InvalidAmount'),
       }));
       return;
     }
@@ -99,25 +107,25 @@ export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedB
 
   return (
     <FlexForm onSubmit={onSubmit} className="gap-1.5">
-      <GoldExchangeConfirmSection title="銀行代碼" content={code}/>
-      <GoldExchangeConfirmSection title="銀行帳號" content={account}/>
+      <GoldExchangeConfirmSection title={t2('Code')} content={code}/>
+      <GoldExchangeConfirmSection title={t2('Account')} content={account}/>
       <HorizontalSplitter/>
       {errorMessage && <Alert>{translateApiError(errorMessage)}</Alert>}
       <AnimatedCollapse show={status === 'completed'}>
         <Flex center>
-          轉帳資料上傳完成。
+          {t('Message.UploadCompleted')}
         </Flex>
       </AnimatedCollapse>
       <AnimatedCollapse appear show={status !== 'completed'}>
         <Flex className="gap-1.5">
           <GoldExchangeConfirmSection
-            title="轉帳來源"
+            title={t('Field.WiringSource')}
             content={
               <Flex className="gap-1">
                 {
                   !input.sourceBankDetailsUuid &&
                   <Flex center className="text-rose-400">
-                    請選擇轉帳來源。
+                    {t('Error.SelectWiringSource')}
                   </Flex>
                 }
                 {verifiedBankDetails.map((bankDetails) => {
@@ -146,14 +154,14 @@ export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedB
           />
           <InputFileImageOnly
             id="transactionProof"
-            title="銀行轉帳證明"
+            title={t('Field.WiringProof')}
             onFileSelected={(txnProofImage) => setInput((original) => ({
               ...original,
               txnProofImage,
             } satisfies GoldExchangeConfirmTwBankInput))}
             onFileTypeIncorrect={(type) => setInput((original) => ({
               ...original,
-              errorMessage: `檔案種類不正確: ${type}`,
+              errorMessage: t3('IncorrectFileType', {type}),
             } satisfies GoldExchangeConfirmTwBankInput))}
             required
           />
@@ -162,7 +170,7 @@ export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedB
             className="enabled:button-clickable-bg disabled:button-disabled p-2"
             disabled={status === 'processing' || !sourceBankDetailsUuid || !txnProofImage}
           >
-            {goldExchangeUploadStatus[status]}
+            {t(goldExchangeUploadStatusI18nId[status])}
           </button>
         </Flex>
       </AnimatedCollapse>
