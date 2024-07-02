@@ -34,6 +34,7 @@ export const AccountAddBankClient = () => {
   const {replace} = useRouter();
 
   const t = useTranslations('UI.InPage.Account.Bank');
+  const t2 = useTranslations('UI.Error.Input');
 
   const {errorMessage, data} = state;
   const {image, details} = data;
@@ -93,7 +94,7 @@ export const AccountAddBankClient = () => {
             } satisfies AccountAddBankState))}
             onFileTypeIncorrect={(type) => setState((original) => ({
               ...original,
-              errorMessage: t('Error.IncorrectFileType', {type}),
+              errorMessage: t2('IncorrectFileType', {type}),
             } satisfies AccountAddBankState))}
             required
           />

@@ -23,7 +23,7 @@ export const I18nProvider = async ({namespaces, children}: React.PropsWithChildr
   return (
     <NextIntlClientProvider
       locale={locale}
-      messages={pick(messages, ...namespaces)}
+      messages={pick(messages, 'UI.Error', ...namespaces)}
     >
       {children}
     </NextIntlClientProvider>

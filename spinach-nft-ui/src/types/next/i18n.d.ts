@@ -41,9 +41,6 @@ declare global {
       Component: {
         AccountIdVerificationForm: {
           Uploading: string,
-          Error: {
-            IncorrectFileType: string,
-          },
         },
       },
       InPage: {
@@ -51,7 +48,6 @@ declare global {
           Bank: {
             Error: {
               MissingBankbookPhoto: string,
-              IncorrectFileType: string,
             },
             InputField: {
               BankbookPhoto: string,
@@ -184,6 +180,11 @@ declare global {
         Login: string,
         Logout: string,
         Register: string,
+      },
+      Error: {
+        Input: {
+          IncorrectFileType: string,
+        },
       },
     },
   }

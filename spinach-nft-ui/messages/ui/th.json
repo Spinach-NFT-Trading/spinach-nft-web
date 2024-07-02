@@ -64,18 +64,14 @@
   },
   "Component": {
     "AccountIdVerificationForm": {
-      "Uploading": "上傳中...",
-      "Error": {
-        "IncorrectFileType": "檔案種類不正確 - {type}"
-      }
+      "Uploading": "上傳中..."
     }
   },
   "InPage": {
     "Account": {
       "Bank": {
         "Error": {
-          "MissingBankbookPhoto": "請附上存摺照片。",
-          "IncorrectFileType": "檔案種類不正確 - {type}"
+          "MissingBankbookPhoto": "請附上存摺照片。"
         },
         "InputField": {
           "BankbookPhoto": "銀行存摺照片",
@@ -208,5 +204,10 @@
     "Login": "登入",
     "Logout": "登出",
     "Register": "註冊"
+  },
+  "Error": {
+    "Input": {
+      "IncorrectFileType": "檔案種類不正確 - {type}"
+    }
   }
 }

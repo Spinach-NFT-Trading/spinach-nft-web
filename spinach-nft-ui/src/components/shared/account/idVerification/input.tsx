@@ -25,7 +25,7 @@ export const AccountIdVerificationInput = ({
   const {error} = state;
   const errorMessage = error[type];
 
-  const t = useTranslations('UI.Component.AccountIdVerificationForm.Error');
+  const t = useTranslations('UI.Error.Input');
 
   return (
     <InputFileImageOnly
