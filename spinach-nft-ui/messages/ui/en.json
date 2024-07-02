@@ -130,6 +130,23 @@
         "Admin": "會員管理"
       }
     },
+    "Gold": {
+      "Exchange": {
+        "CurrencyRate": "目前匯率",
+        "Cashback": "用戶回饋",
+        "Buy": "購買",
+        "Tutorial": {
+          "CreateMaxAccount": "創建 MAX 帳號影片教學請點我",
+          "BuyUsdt": "購買 USDT 的影片教學請點我",
+          "CheckWalletAddress": "查詢 USDT (TRC20) 錢包地址的影片教學請點我"
+        },
+        "Popup": {
+          "Title": "確認購買",
+          "Message": "確定要購買 {gold} GOLD 嗎？",
+          "Button": "確認"
+        }
+      }
+    },
     "Nft": {
       "Purchase": {
         "Error": {
@@ -170,6 +187,12 @@
       "Name": "銀行帳號",
       "Code": "銀行代碼",
       "Account": "銀行帳號"
+    }
+  },
+  "Gold": {
+    "ExchangeChannel": {
+      "Usdt": "USDT",
+      "Twd": "台幣"
     }
   },
   "VerificationStatus": {

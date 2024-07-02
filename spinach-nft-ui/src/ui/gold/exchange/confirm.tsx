@@ -3,6 +3,7 @@ import React from 'react';
 import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {useRouter} from 'next/navigation';
 import {signIn} from 'next-auth/react';
+import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
@@ -22,6 +23,8 @@ export const GoldExchangeConfirmPopup = ({show, setShow, amount, getRedirectUrl}
   const [error, setError] = React.useState<string | null>(null);
   const {act} = useUserDataActor();
   const {push} = useRouter();
+
+  const t = useTranslations('UI.InPage.Gold.Exchange');
 
   const onClick = async () => {
     if (!act) {
@@ -49,14 +52,14 @@ export const GoldExchangeConfirmPopup = ({show, setShow, amount, getRedirectUrl}
       <Flex center className="gap-2">
         {error && <Alert>{translateApiError(error)}</Alert>}
         <div className="text-xl">
-          確認購買
+          {t('Popup.Title')}
         </div>
         <hr className="w-full"/>
         <div>
-          確定要購買 {amount.gold} GOLD 嗎？
+          {t('Popup.Message', {gold: amount.gold})}
         </div>
         <button className="button-clickable-bg w-1/2 p-2" onClick={onClick}>
-          確認
+          {t('Popup.Button')}
         </button>
       </Flex>
     </Popup>

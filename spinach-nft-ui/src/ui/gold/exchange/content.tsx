@@ -3,10 +3,11 @@ import React from 'react';
 import ArrowDownCircleIcon from '@heroicons/react/24/outline/ArrowDownCircleIcon';
 import ArrowRightIcon from '@heroicons/react/24/outline/ArrowRightIcon';
 import {GoldExchangeChannel} from '@spinach/common/types/data/gold/common';
+import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
-import {goldExchangeChannelText} from '@spinach/next/const/gold';
+import {goldExchangeChannelI18nId} from '@spinach/next/const/gold';
 import {GoldExchangeConfirmPopup} from '@spinach/next/ui/gold/exchange/confirm';
 import {GoldExchangeCryptoTutorial} from '@spinach/next/ui/gold/exchange/tutorial';
 import {ExchangeAmount} from '@spinach/next/ui/gold/exchange/type';
@@ -29,6 +30,9 @@ export const GoldExchangeContent = ({exchangeChannel, exchangeRate, cashbackRate
     gold: parseFloat((defaultSource * exchangeRate * (1 + cashbackRate)).toFixed(2)),
   });
 
+  const t = useTranslations('UI.Gold.ExchangeChannel');
+  const t2 = useTranslations('UI.InPage.Gold.Exchange');
+
   return (
     <>
       <GoldExchangeConfirmPopup
@@ -47,7 +51,7 @@ export const GoldExchangeContent = ({exchangeChannel, exchangeRate, cashbackRate
             id={exchangeChannel}
             type="number"
             step={0.01}
-            placeholder={goldExchangeChannelText[exchangeChannel]}
+            placeholder={t(goldExchangeChannelI18nId[exchangeChannel])}
             value={amount.source.toString()}
             onChange={({target}) => {
               const source = parseInt(target.value || '0');
@@ -74,11 +78,11 @@ export const GoldExchangeContent = ({exchangeChannel, exchangeRate, cashbackRate
           />
           <Flex className="info-section gap-1.5 xl:flex-row">
             <Flex center className="gap-1.5">
-              <div>
-                目前匯率
-              </div>
+              <span>
+                {t2('CurrencyRate')}
+              </span>
               <Flex center direction="row" className="gap-1.5">
-                1 {goldExchangeChannelText[exchangeChannel]}
+                1 {t(goldExchangeChannelI18nId[exchangeChannel])}
                 <div className="size-4">
                   <ArrowRightIcon/>
                 </div>
@@ -86,9 +90,9 @@ export const GoldExchangeContent = ({exchangeChannel, exchangeRate, cashbackRate
               </Flex>
             </Flex>
             <Flex center className="gap-1.5">
-              <div>
-                用戶回饋
-              </div>
+              <span>
+                {t2('Cashback')}
+              </span>
               <div>
                 {formatFloat2(amount.gold / (1 + cashbackRate) * cashbackRate)} GOLD
               </div>
@@ -96,7 +100,7 @@ export const GoldExchangeContent = ({exchangeChannel, exchangeRate, cashbackRate
           </Flex>
           <Flex center>
             <button className="button-clickable-bg w-1/2 p-2" onClick={() => setShow(true)}>
-              購買
+              {t2('Buy')}
             </button>
           </Flex>
         </Flex>

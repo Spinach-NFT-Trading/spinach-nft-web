@@ -2,7 +2,9 @@
 import React from 'react';
 
 import {GlobalCashbackPercent} from '@spinach/common/types/data/global';
+import {GoldExchangeChannel} from '@spinach/common/types/data/gold/common';
 import {signIn} from 'next-auth/react';
+import {useTranslations} from 'next-intl';
 
 import {Loading} from '@spinach/next/components/icons/loading';
 import {useTabbedContentControl} from '@spinach/next/components/layout/tab/hook';
@@ -16,13 +18,15 @@ type Props = {
 };
 
 export const GoldExchangeClient = ({usdtExchangeRate}: Props) => {
-  const tabControl = useTabbedContentControl<'usdt' | 'twBank'>('usdt');
+  const tabControl = useTabbedContentControl<GoldExchangeChannel>('crypto');
   const [
     cashbackPercent,
     setCashbackPercent,
   ] = React.useState<GlobalCashbackPercent | null>(null);
 
   const {act} = useUserDataActor();
+
+  const t = useTranslations('UI.Gold.ExchangeChannel');
 
   React.useEffect(() => {
     if (!act) {
@@ -43,14 +47,14 @@ export const GoldExchangeClient = ({usdtExchangeRate}: Props) => {
   return (
     <>
       <TabbedContent
-        keys={['usdt', 'twBank']}
+        keys={['crypto', 'twBank']}
         control={tabControl}
         tabTitle={{
-          usdt: 'USDT',
-          twBank: '台幣',
+          crypto: t('Usdt'),
+          twBank: t('Twd'),
         }}
         content={{
-          usdt: (
+          crypto: (
             <GoldExchangeContent
               exchangeChannel="crypto"
               exchangeRate={usdtExchangeRate}

@@ -1,19 +1,23 @@
 import React from 'react';
 
+import {useTranslations} from 'next-intl';
+
 import {Flex} from '@spinach/next/components/layout/flex/common';
 
 
 export const GoldExchangeCryptoTutorial = () => {
+  const t = useTranslations('UI.InPage.Gold.Exchange.Tutorial');
+
   return (
     <Flex center className="info-section gap-2">
       <a href="https://youtu.be/bkCavlothfY" target="_blank" className="text-link">
-        創建 MAX 帳號影片教學請點我
+        {t('CreateMaxAccount')}
       </a>
       <a href="https://youtu.be/R5qtrq4n_fQ" target="_blank" className="text-link">
-        購買 USDT 的影片教學請點我
+        {t('BuyUsdt')}
       </a>
       <a href="https://youtu.be/sydHSLaSDS8" target="_blank" className="text-link">
-        查詢 USDT (TRC20) 錢包地址的影片教學請點我
+        {t('CheckWalletAddress')}
       </a>
     </Flex>
   );

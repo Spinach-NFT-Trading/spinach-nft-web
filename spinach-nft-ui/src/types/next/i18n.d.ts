@@ -106,6 +106,23 @@ declare global {
             Admin: string,
           },
         },
+        Gold: {
+          Exchange: {
+            CurrencyRate: string,
+            Cashback: string,
+            Buy: string,
+            Tutorial: {
+              CreateMaxAccount: string,
+              BuyUsdt: string,
+              CheckWalletAddress: string,
+            },
+            Popup: {
+              Title: string,
+              Message: string,
+              Button: string,
+            },
+          },
+        },
         Nft: {
           Purchase: {
             Error: {
@@ -146,6 +163,12 @@ declare global {
           Name: string,
           Code: string,
           Account: string,
+        },
+      },
+      Gold: {
+        ExchangeChannel: {
+          Usdt: string,
+          Twd: string,
         },
       },
       VerificationStatus: {
