@@ -5,140 +5,140 @@
       "Description": "TG NFT 交易平台。"
     },
     "NotFound": {
-      "Title": "頁面不存在"
+      "Title": "页面不存在"
     },
     "Home": {
-      "Title": "首頁"
+      "Title": "首页"
     },
     "Account": {
       "Index": {
-        "Title": "帳號資訊"
+        "Title": "帐号资讯"
       },
       "Bank": {
-        "Title": "新增銀行帳號"
+        "Title": "新增银行帐号"
       },
       "Login": {
         "Title": "登入"
       },
       "Nft": {
         "Exchange": {
-          "Title": "NFT 交易確認"
+          "Title": "NFT 交易确认"
         },
         "Position": {
-          "Title": "NFT 持倉列表"
+          "Title": "NFT 持仓列表"
         }
       },
       "Profile": {
-        "Title": "個人資訊"
+        "Title": "个人资讯"
       },
       "Register": {
-        "Title": "註冊"
+        "Title": "注册"
       },
       "Verify": {
         "Id": {
-          "Title": "身分驗證"
+          "Title": "身分验证"
         }
       }
     },
     "Admin": {
-      "Title": "網站管理"
+      "Title": "网站管理"
     },
     "Gold": {
       "Confirm": {
         "TwBank": {
-          "Title": "GOLD 購買確認 (台幣)"
+          "Title": "GOLD 购买确认 (台币)"
         },
         "Usdt": {
-          "Title": "GOLD 購買確認 (USDT)"
+          "Title": "GOLD 购买确认 (USDT)"
         }
       },
       "Exchange": {
-        "Title": "購買 GOLD"
+        "Title": "购买 GOLD"
       }
     },
     "Nft": {
       "Purchase": {
-        "Title": "購買 NFT"
+        "Title": "购买 NFT"
       }
     }
   },
   "Component": {
     "AccountIdVerificationForm": {
-      "Uploading": "上傳中..."
+      "Uploading": "上传中..."
     }
   },
   "InPage": {
     "Home": {
-      "PrivacyPolicy": "隱私權政策服務條款",
+      "PrivacyPolicy": "隐私权政策服务条款",
       "Stats": {
-        "NftVolume": "已交易 NFT 數量",
-        "UsdtVolume": "24 小時 USDT 交易量",
-        "GoldVolume": "24 小時 GOLD 購買量"
+        "NftVolume": "已交易 NFT 数量",
+        "UsdtVolume": "24 小时 USDT 交易量",
+        "GoldVolume": "24 小时 GOLD 购买量"
       },
       "Pledge": {
         "System": {
-          "Title": "用戶成長體系",
-          "Content": "台灣首創，結合遊戲業常用的用戶成長體系納入交易所，積極互動即可享好康"
+          "Title": "用户成长体系",
+          "Content": "台湾首创，结合游戏业常用的用户成长体系纳入交易所，积极互动即可享好康"
         },
         "Security": {
-          "Title": "安全優先",
-          "Content": "採國際級 DDoS 防禦機制及 AI 應用程式防火牆，最大化保護用戶資產"
+          "Title": "安全优先",
+          "Content": "采国际级 DDoS 防御机制及 AI 应用程序防火墙，最大化保护用户资产"
         },
         "Legitimacy": {
-          "Title": "合法合規",
-          "Content": "以金融機構最高標準開發產品及營運流程，恪守 KYC、AML 規範"
+          "Title": "合法合规",
+          "Content": "以金融机构最高标准开发产品及营运流程，恪守 KYC、AML 规范"
         },
         "Customize": {
-          "Title": "量身訂製數位產品",
-          "Content": "配置風險等級框架及客製化投資組合，提供量身打造的金融產品和購買 / 提款限額"
+          "Title": "量身订制数位产品",
+          "Content": "配置风险等级框架及客制化投资组合，提供量身打造的金融产品和购买 / 提款限额"
         }
       }
     },
     "Account": {
       "Bank": {
         "Error": {
-          "MissingBankbookPhoto": "請附上存摺照片。"
+          "MissingBankbookPhoto": "请附上存折照片。"
         },
         "InputField": {
-          "BankbookPhoto": "銀行存摺照片",
-          "BankCode": "銀行代碼",
-          "BankAccount": "銀行帳號"
+          "BankbookPhoto": "银行存折照片",
+          "BankCode": "银行代码",
+          "BankAccount": "银行帐号"
         },
-        "Upload": "上傳",
-        "Uploading": "上傳中..."
+        "Upload": "上传",
+        "Uploading": "上传中..."
       },
       "Nft": {
         "Exchange": {
           "Popup": {
-            "Title": "確認成交",
-            "Message": "確定要以 {amount} GOLD 成交嗎？",
-            "Button": "確認"
+            "Title": "确认成交",
+            "Message": "确定要以 {amount} GOLD 成交吗？",
+            "Button": "确认"
           }
         }
       },
       "Profile": {
-        "ReferralLink": "邀請連結",
-        "ResubmitIdentityVerification": "重新提交身分驗證資料",
-        "NoAssociatedBankAccounts": "無相關銀行帳號。",
-        "AddBankAccount": "新增銀行帳號"
+        "ReferralLink": "邀请连结",
+        "ResubmitIdentityVerification": "重新提交身分验证资料",
+        "NoAssociatedBankAccounts": "无相关银行帐号。",
+        "AddBankAccount": "新增银行帐号"
       },
       "Register": {
         "Sms": {
           "Verification": {
-            "Code": "驗證碼",
-            "GetCode": "獲取驗證碼",
-            "Submit": "驗證手機"
+            "Code": "验证码",
+            "GetCode": "获取验证码",
+            "Submit": "验证手机"
           }
         },
         "Info": {
-          "ClickForWalletCreation": "創建 MAX 帳號影片教學請點我"
+          "ClickForWalletCreation": "创建 MAX 帐号影片教学请点我"
         },
         "Completed": {
-          "Message": "註冊成功！請加入官方 LINE 進行實名認證。",
-          "KYC": "前往實名認證"
+          "Message": "注册成功！请加入官方 LINE 进行实名认证。",
+          "KYC": "前往实名认证"
         },
         "NextStep": "下一步",
-        "AlreadyHaveAnAccount": "已經有帳號了嗎？"
+        "AlreadyHaveAnAccount": "已经有帐号了吗？"
       },
       "Verify": {
         "Id": {
@@ -146,65 +146,65 @@
         }
       },
       "Index": {
-        "Profile": "會員資料",
-        "NftPositions": "NFT 持倉",
-        "NftExchangeConfirm": "確認 NFT 交易",
-        "Admin": "會員管理"
+        "Profile": "会员资料",
+        "NftPositions": "NFT 持仓",
+        "NftExchangeConfirm": "确认 NFT 交易",
+        "Admin": "会员管理"
       }
     },
     "Gold": {
       "Exchange": {
-        "CurrencyRate": "目前匯率",
-        "Cashback": "用戶回饋",
-        "Buy": "購買",
+        "CurrencyRate": "目前汇率",
+        "Cashback": "用户回馈",
+        "Buy": "购买",
         "Tutorial": {
-          "CreateMaxAccount": "創建 MAX 帳號影片教學請點我",
-          "BuyUsdt": "購買 USDT 的影片教學請點我",
-          "CheckWalletAddress": "查詢 USDT (TRC20) 錢包地址的影片教學請點我"
+          "CreateMaxAccount": "创建 MAX 帐号影片教学请点我",
+          "BuyUsdt": "购买 USDT 的影片教学请点我",
+          "CheckWalletAddress": "查询 USDT (TRC20) 钱包地址的影片教学请点我"
         },
         "Popup": {
-          "Title": "確認購買",
-          "Message": "確定要購買 {gold} GOLD 嗎？",
-          "Button": "確認"
+          "Title": "确认购买",
+          "Message": "确定要购买 {gold} GOLD 吗？",
+          "Button": "确认"
         }
       },
       "Confirm": {
         "Layout": {
-          "Type": "幣種",
-          "Amount": "充幣金額"
+          "Type": "币种",
+          "Amount": "充币金额"
         },
         "TwBank": {
           "Error": {
-            "SelectWiringSource": "請選擇轉帳來源帳號。",
-            "AttachProof": "請附上轉帳紀錄圖片。",
-            "InvalidAmount": "無效的轉帳金額。"
+            "SelectWiringSource": "请选择转帐来源帐号。",
+            "AttachProof": "请附上转帐纪录图片。",
+            "InvalidAmount": "无效的转帐金额。"
           },
           "Message": {
-            "UploadCompleted": "轉帳資料上傳完成。"
+            "UploadCompleted": "转帐资料上传完成。"
           },
           "Field": {
-            "WiringSource": "轉帳來源",
-            "WiringProof": "銀行轉帳證明"
+            "WiringSource": "转帐来源",
+            "WiringProof": "银行转帐证明"
           },
           "UploadStatus": {
-            "Waiting": "上傳轉帳紀錄",
-            "Processing": "上傳中...",
-            "Completed": "上傳完成",
-            "Failed": "上傳失敗！"
+            "Waiting": "上传转帐纪录",
+            "Processing": "上传中...",
+            "Completed": "上传完成",
+            "Failed": "上传失败！"
           }
         },
         "Usdt": {
           "Field": {
-            "Chain": "區塊鍊",
-            "Address": "充幣地址"
+            "Chain": "区块鍊",
+            "Address": "充币地址"
           },
           "Message": {
-            "UsdtOnly": "僅支援對該地址充值 USDT"
+            "UsdtOnly": "仅支援对该地址充值 USDT"
           },
           "Note": {
-            "NoOtherThanUsdt": "請勿向上述地址充值 USDT 外的資產，否則將會導致資產丟失。",
-            "SecureDevice": "請確保您行動裝置的安全，防止資訊被竄改或洩漏。",
-            "NoOtherContracts": "TRC20-USDT 僅支援轉傳功能，使用其他智能合約的轉帳充值暫時無法入帳，請您諒解。"
+            "NoOtherThanUsdt": "请勿向上述地址充值 USDT 外的资产，否则将会导致资产丢失。",
+            "SecureDevice": "请确保您行动装置的安全，防止资讯被窜改或洩漏。",
+            "NoOtherContracts": "TRC20-USDT 仅支援转传功能，使用其他智能合约的转帐充值暂时无法入帐，请您谅解。"
           }
         }
       }
@@ -213,116 +213,116 @@
       "Purchase": {
         "Error": {
           "NotOnSale": "NFT 未上架",
-          "NotFound": "找不到對應 NFT"
+          "NotFound": "找不到对应 NFT"
         },
         "Info": {
           "Id": "ID",
-          "OnSaleTimestamp": "上架時間",
-          "Description": "說明",
-          "Price": "售價"
+          "OnSaleTimestamp": "上架时间",
+          "Description": "说明",
+          "Price": "售价"
         },
-        "Buy": "購買",
+        "Buy": "购买",
         "Popup": {
-          "Title": "確認購買",
-          "Message": "確定要購買此 NFT 嗎？",
-          "Button": "確認購買"
+          "Title": "确认购买",
+          "Message": "确定要购买此 NFT 吗？",
+          "Button": "确认购买"
         },
         "Disclaimer": {
-          "Title": "免責聲明",
-          "Content": "本免責聲明僅能簡要闡述所可能涉及的部分風險事項，無法窮盡列舉所有在購買、持有、買賣或交易過程中所會涉及的所有風險及各種相關面向，建議在購買之前，必須考慮各種相關因素，包含但不限於個人購買目的及風險承受能力等。<br/><br/>針對本項目所發行 NFT 之購買者，應了解區塊鏈商品及加密貨幣商品其市場價格具有極高之波動性及不確定性，並非所有大眾都適合從事購買、持有、交易的相關行為。本商品初始規劃設計目的並非金融商品或任何投資理財型商品作為投資之用，無論購入或交易出售本商品，為購買者自行決定且自行負責之行為，本公司無法預測或控制商品未來的價格變化，如有任何價格波動，皆與本公司無關，本公司對任何人因買賣或交易本商品所造成之獲利或虧損，無任何的法律或財務上之責任。<br/><br/>購入本商品並不代表對於本商品所連結之作品具有排他或專屬性的財產權，也不代表得到商品任何智慧財產權的授權，購買者同意不針對該商品作為商業用途使用。本公司並不保證持有、買賣或使用本商品，對於任何第三人之智慧財產權均不會構成任何侵害或侵權爭議，購買者如因購入本商品，導致第三人對購買者主張智慧財產權等法律權利，本公司概不負責。<br/><br/>本公司與本網站所提供之所有資訊服務，都可能會基於惡意駭客、病毒或其他方式，而被入侵或遭未經授權進入，本網站會盡力控制風險，但無法保證可以完全減免風險。此外，本網站無法控制您訪問我們網站所使用裝置之安全性，您對於確保裝置應隨時處於安全狀態一事，應自行負擔全部責任。<br/><br/>本公司及其供應商不因您使用本服務而受之損害而承擔賠償或其他責任，包含但不限於因使用者錯誤（如忘記密碼、交易錯誤或位址錯誤）、伺服器故障或資料遺失、未經授權訪問應用程式、任何未經授權之第三方活動，包含但不限於使用病毒、網路釣魚、野蠻行為或其他攻擊網站方式。<br/><br/>本公司不就漏洞或任何類型的故障、軟體（如錢包、智能合約）、區塊鏈或數位資產的任何其他功能的異常行為而造成持續功能異常負擔責任。<br/><br/>本商品之購買者應自行注意其所在國家或地區之法令及公序良俗，對於本商品或本商品所連結之作品，是否有違反其所在地國家或地區之法令或公序良俗，購買者應自行注意並瞭解相關風險，如因此發生任何法律問題或違法風險，購買者需自行負責。<br/><br/>本公司有權對所有所提供之服務、購買規則、資訊內容、聲明進行變更，變更內容於發布時即刻生效。"
+          "Title": "免责声明",
+          "Content": "本免责声明仅能简要阐述所可能涉及的部分风险事项，无法穷尽列举所有在购买、持有、买卖或交易过程中所会涉及的所有风险及各种相关面向，建议在购买之前，必须考虑各种相关因素，包含但不限于个人购买目的及风险承受能力等。<br/><br/>针对本项目所发行 NFT 之购买者，应了解区块链商品及加密货币商品其市场价格具有极高之波动性及不确定性，并非所有大众都适合从事购买、持有、交易的相关行为。本商品初始规划设计目的并非金融商品或任何投资理财型商品作为投资之用，无论购入或交易出售本商品，为购买者自行决定且自行负责之行为，本公司无法预测或控制商品未来的价格变化，如有任何价格波动，皆与本公司无关，本公司对任何人因买卖或交易本商品所造成之获利或亏损，无任何的法律或财务上之责任。<br/><br/>购入本商品并不代表对于本商品所连结之作品具有排他或专属性的财产权，也不代表得到商品任何智慧财产权的授权，购买者同意不针对该商品作为商业用途使用。本公司并不保证持有、买卖或使用本商品，对于任何第三人之智慧财产权均不会构成任何侵害或侵权争议，购买者如因购入本商品，导致第三人对购买者主张智慧财产权等法律权利，本公司概不负责。<br/><br/>本公司与本网站所提供之所有资讯服务，都可能会基于恶意骇客、病毒或其他方式，而被入侵或遭未经授权进入，本网站会尽力控制风险，但无法保证可以完全减免风险。此外，本网站无法控制您访问我们网站所使用装置之安全性，您对于确保装置应随时处于安全状态一事，应自行负担全部责任。<br/><br/>本公司及其供应商不因您使用本服务而受之损害而承担赔偿或其他责任，包含但不限于因使用者错误（如忘记密码、交易错误或位址错误）、服务器故障或资料遗失、未经授权访问应用程序、任何未经授权之第三方活动，包含但不限于使用病毒、网路钓鱼、野蛮行为或其他攻击网站方式。<br/><br/>本公司不就漏洞或任何类型的故障、软体（如钱包、智能合约）、区块链或数位资产的任何其他功能的异常行为而造成持续功能异常负担责任。<br/><br/>本商品之购买者应自行注意其所在国家或地区之法令及公序良俗，对于本商品或本商品所连结之作品，是否有违反其所在地国家或地区之法令或公序良俗，购买者应自行注意并了解相关风险，如因此发生任何法律问题或违法风险，购买者需自行负责。<br/><br/>本公司有权对所有所提供之服务、购买规则、资讯内容、声明进行变更，变更内容于发布时即刻生效。"
         }
       }
     }
   },
   "Layout": {
     "Profile": {
-      "BuyGold": "購買 GOLD"
+      "BuyGold": "购买 GOLD"
     }
   },
   "Account": {
     "Assets": {
-      "Nft": "NFT 資產",
+      "Nft": "NFT 资产",
       "Gold": "GOLD",
-      "Total": "總資產"
+      "Total": "总资产"
     },
     "Info": {
-      "UserId": "用戶 ID",
+      "UserId": "用户 ID",
       "Email": "Email",
       "LineId": "LINE ID",
-      "WalletAddress": "虛擬貨幣錢包地址 (TRC20)",
+      "WalletAddress": "虚拟货币钱包地址 (TRC20)",
       "Name": "姓名",
-      "IdentificationNumber": "身分證字號",
+      "IdentificationNumber": "身分证字号",
       "Birthday": "生日",
-      "Phone": "手機號碼"
+      "Phone": "手机号码"
     },
     "BankAccounts": {
-      "Name": "銀行帳號",
-      "Code": "銀行代碼",
-      "Account": "銀行帳號"
+      "Name": "银行帐号",
+      "Code": "银行代码",
+      "Account": "银行帐号"
     },
     "IdType": {
-      "IdFront": "身份證正面",
-      "IdBack": "身份證反面",
-      "Handheld": "手持身份證自拍",
-      "SecondaryFront": "第二證件正面"
+      "IdFront": "身份证正面",
+      "IdBack": "身份证反面",
+      "Handheld": "手持身份证自拍",
+      "SecondaryFront": "第二证件正面"
     }
   },
   "Gold": {
     "ExchangeChannel": {
       "Usdt": "USDT",
-      "Twd": "台幣"
+      "Twd": "台币"
     }
   },
   "VerificationStatus": {
-    "Verified": "已認證",
-    "Unverified": "未認證",
-    "Rejected": "認證失敗"
+    "Verified": "已认证",
+    "Unverified": "未认证",
+    "Rejected": "认证失败"
   },
   "UserControl": {
     "Credentials": {
-      "Account": "帳號",
-      "Password": "密碼"
+      "Account": "帐号",
+      "Password": "密码"
     },
     "Login": "登入",
     "Logout": "登出",
-    "Register": "註冊"
+    "Register": "注册"
   },
   "Error": {
     "Api": {
-      "AccountNotFound": "找不到對應的帳號。",
-      "AccountDisabled": "帳號已被停用。",
-      "AgentNotFound": "找不到對應的代理。",
-      "AgentInactive": "申請連結對應的代理無效。",
-      "PasswordMismatch": "密碼不正確。",
-      "TakenIdNumber": "身份證字號已被使用。",
-      "TakenEmail": "電子信箱已被使用。",
+      "AccountNotFound": "找不到对应的帐号。",
+      "AccountDisabled": "帐号已被停用。",
+      "AgentNotFound": "找不到对应的代理。",
+      "AgentInactive": "申请连结对应的代理无效。",
+      "PasswordMismatch": "密码不正确。",
+      "TakenIdNumber": "身份证字号已被使用。",
+      "TakenEmail": "电子信箱已被使用。",
       "TakenLineId": "LINE ID 已被使用。",
       "TakenName": "姓名已被使用。",
-      "TakenUsername": "帳號 ID 已被使用。",
-      "TakenWallet": "MAX 錢包已被使用。",
-      "GoldExchangeInProgress": "GOLD 購買程序已在進行中，請稍後再試。",
+      "TakenUsername": "帐号 ID 已被使用。",
+      "TakenWallet": "MAX 钱包已被使用。",
+      "GoldExchangeInProgress": "GOLD 购买程序已在进行中，请稍后再试。",
       "GoldNotEnough": "GOLD 不足。",
-      "GoldTwBankTxnRecordFailed": "台幣轉帳紀錄上傳失敗。",
-      "GoldTwBankTxnNotFound": "沒有找到對應的台幣轉帳紀錄。",
-      "NftNotOnSale": "NFT 不在販賣中。",
-      "NftMatchRequestNotFound": "找不到對應的 NFT 交易請求。",
-      "NftInfoNotFound": "找不到對應的 NFT 資訊。",
-      "WalletInvalid": "錢包地址無效。",
-      "WalletNotExist": "錢包地址不存在。",
-      "SmsSendFailed": "驗證簡訊傳送失敗。",
-      "SmsAlreadyRequested": "已要求傳送驗證簡訊，請於 {smsVerificationExpiryMin} 分鐘後重試。",
-      "SmsPhoneInvalid": "手機號碼驗證無效或已失效。請重新驗證手機號碼。",
-      "SmsPhoneUsed": "手機號碼已被使用。請於 {smsVerifiedExpiryMin} 分鐘後重試。",
-      "SmsPhoneRegistered": "手機號碼已註冊。",
-      "SmsCodeInvalid": "驗證碼無效。",
-      "IdNumberInvalid": "無效的身份證字號。",
-      "BankDetailsNotFound": "銀行帳號不存在。",
-      "BankDetailsAlreadyExist": "銀行帳號已存在。",
-      "BankDetailsUploadFailed": "銀行帳號上傳失敗。",
-      "CommissionOverLimit": "超過退傭上限。"
+      "GoldTwBankTxnRecordFailed": "台币转帐纪录上传失败。",
+      "GoldTwBankTxnNotFound": "没有找到对应的台币转帐纪录。",
+      "NftNotOnSale": "NFT 不在贩卖中。",
+      "NftMatchRequestNotFound": "找不到对应的 NFT 交易请求。",
+      "NftInfoNotFound": "找不到对应的 NFT 资讯。",
+      "WalletInvalid": "钱包地址无效。",
+      "WalletNotExist": "钱包地址不存在。",
+      "SmsSendFailed": "验证简讯传送失败。",
+      "SmsAlreadyRequested": "已要求传送验证简讯，请于 {smsVerificationExpiryMin} 分钟后重试。",
+      "SmsPhoneInvalid": "手机号码验证无效或已失效。请重新验证手机号码。",
+      "SmsPhoneUsed": "手机号码已被使用。请于 {smsVerifiedExpiryMin} 分钟后重试。",
+      "SmsPhoneRegistered": "手机号码已注册。",
+      "SmsCodeInvalid": "验证码无效。",
+      "IdNumberInvalid": "无效的身份证字号。",
+      "BankDetailsNotFound": "银行帐号不存在。",
+      "BankDetailsAlreadyExist": "银行帐号已存在。",
+      "BankDetailsUploadFailed": "银行帐号上传失败。",
+      "CommissionOverLimit": "超过退佣上限。"
     },
     "Input": {
-      "IncorrectFileType": "檔案種類不正確 - {type}"
+      "IncorrectFileType": "档案种类不正确 - {type}"
     }
   }
 }

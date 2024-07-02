@@ -1,210 +1,210 @@
 {
   "Metadata": {
     "Site": {
-      "Name": "TG NFT Market",
-      "Description": "TG NFT 交易平台。"
+      "Name": "Thị trường TG NFT",
+      "Description": "Nền tảng giao dịch TG NFT."
     },
     "NotFound": {
-      "Title": "頁面不存在"
+      "Title": "Trang không tồn tại"
     },
     "Home": {
-      "Title": "首頁"
+      "Title": "Trang chủ"
     },
     "Account": {
       "Index": {
-        "Title": "帳號資訊"
+        "Title": "Thông tin tài khoản"
       },
       "Bank": {
-        "Title": "新增銀行帳號"
+        "Title": "Thêm tài khoản ngân hàng"
       },
       "Login": {
-        "Title": "登入"
+        "Title": "đăng nhập"
       },
       "Nft": {
         "Exchange": {
-          "Title": "NFT 交易確認"
+          "Title": "Xác nhận giao dịch NFT"
         },
         "Position": {
-          "Title": "NFT 持倉列表"
+          "Title": "Danh sách nắm giữ NFT"
         }
       },
       "Profile": {
-        "Title": "個人資訊"
+        "Title": "thông tin cá nhân"
       },
       "Register": {
-        "Title": "註冊"
+        "Title": "đăng ký"
       },
       "Verify": {
         "Id": {
-          "Title": "身分驗證"
+          "Title": "Xác minh danh tính"
         }
       }
     },
     "Admin": {
-      "Title": "網站管理"
+      "Title": "Quản lý trang web"
     },
     "Gold": {
       "Confirm": {
         "TwBank": {
-          "Title": "GOLD 購買確認 (台幣)"
+          "Title": "Xác nhận mua VÀNG (Đô la Đài Loan)"
         },
         "Usdt": {
-          "Title": "GOLD 購買確認 (USDT)"
+          "Title": "Xác nhận mua VÀNG (USDT)"
         }
       },
       "Exchange": {
-        "Title": "購買 GOLD"
+        "Title": "Mua VÀNG"
       }
     },
     "Nft": {
       "Purchase": {
-        "Title": "購買 NFT"
+        "Title": "Mua NFT"
       }
     }
   },
   "Component": {
     "AccountIdVerificationForm": {
-      "Uploading": "上傳中..."
+      "Uploading": "Đang tải lên..."
     }
   },
   "InPage": {
     "Home": {
-      "PrivacyPolicy": "隱私權政策服務條款",
+      "PrivacyPolicy": "Chính sách bảo mật Điều khoản dịch vụ",
       "Stats": {
-        "NftVolume": "已交易 NFT 數量",
-        "UsdtVolume": "24 小時 USDT 交易量",
-        "GoldVolume": "24 小時 GOLD 購買量"
+        "NftVolume": "Số lượng NFT được giao dịch",
+        "UsdtVolume": "Khối lượng giao dịch USDT trong 24 giờ",
+        "GoldVolume": "Khối lượng mua VÀNG trong 24 giờ"
       },
       "Pledge": {
         "System": {
-          "Title": "用戶成長體系",
-          "Content": "台灣首創，結合遊戲業常用的用戶成長體系納入交易所，積極互動即可享好康"
+          "Title": "Hệ thống tăng trưởng người dùng",
+          "Content": "Là loại hình đầu tiên ở Đài Loan, nó tích hợp hệ thống tăng trưởng người dùng thường được sử dụng trong ngành trò chơi vào sàn giao dịch và bạn có thể tận hưởng những lợi ích tốt thông qua tương tác tích cực."
         },
         "Security": {
-          "Title": "安全優先",
-          "Content": "採國際級 DDoS 防禦機制及 AI 應用程式防火牆，最大化保護用戶資產"
+          "Title": "An toàn là trên hết",
+          "Content": "Áp dụng cơ chế phòng thủ DDoS đẳng cấp thế giới và tường lửa ứng dụng AI để bảo vệ tối đa tài sản của người dùng"
         },
         "Legitimacy": {
-          "Title": "合法合規",
-          "Content": "以金融機構最高標準開發產品及營運流程，恪守 KYC、AML 規範"
+          "Title": "Tuân thủ pháp luật",
+          "Content": "Phát triển sản phẩm và quy trình hoạt động theo tiêu chuẩn cao nhất của các tổ chức tài chính và tuân thủ các quy định KYC và AML"
         },
         "Customize": {
-          "Title": "量身訂製數位產品",
-          "Content": "配置風險等級框架及客製化投資組合，提供量身打造的金融產品和購買 / 提款限額"
+          "Title": "Sản phẩm kỹ thuật số tùy chỉnh",
+          "Content": "Định cấu hình khung mức độ rủi ro và danh mục đầu tư tùy chỉnh, cung cấp các sản phẩm tài chính phù hợp và giới hạn mua/rút tiền"
         }
       }
     },
     "Account": {
       "Bank": {
         "Error": {
-          "MissingBankbookPhoto": "請附上存摺照片。"
+          "MissingBankbookPhoto": "Vui lòng đính kèm ảnh sổ tiết kiệm của bạn."
         },
         "InputField": {
-          "BankbookPhoto": "銀行存摺照片",
-          "BankCode": "銀行代碼",
-          "BankAccount": "銀行帳號"
+          "BankbookPhoto": "Hình ảnh sổ tiết kiệm ngân hàng",
+          "BankCode": "Mã ngân hàng",
+          "BankAccount": "số tài khoản ngân hàng"
         },
-        "Upload": "上傳",
-        "Uploading": "上傳中..."
+        "Upload": "tải lên",
+        "Uploading": "Đang tải lên..."
       },
       "Nft": {
         "Exchange": {
           "Popup": {
-            "Title": "確認成交",
-            "Message": "確定要以 {amount} GOLD 成交嗎？",
-            "Button": "確認"
+            "Title": "Xác nhận giao dịch",
+            "Message": "Bạn có chắc chắn muốn giao dịch với {amount} GOLD không?",
+            "Button": "Xác nhận"
           }
         }
       },
       "Profile": {
-        "ReferralLink": "邀請連結",
-        "ResubmitIdentityVerification": "重新提交身分驗證資料",
-        "NoAssociatedBankAccounts": "無相關銀行帳號。",
-        "AddBankAccount": "新增銀行帳號"
+        "ReferralLink": "Liên kết lời mời",
+        "ResubmitIdentityVerification": "Gửi lại thông tin xác minh danh tính",
+        "NoAssociatedBankAccounts": "Không có số tài khoản ngân hàng liên quan.",
+        "AddBankAccount": "Thêm tài khoản ngân hàng"
       },
       "Register": {
         "Sms": {
           "Verification": {
-            "Code": "驗證碼",
-            "GetCode": "獲取驗證碼",
-            "Submit": "驗證手機"
+            "Code": "Mã xác nhận",
+            "GetCode": "Nhận mã xác minh",
+            "Submit": "Xác minh điện thoại"
           }
         },
         "Info": {
-          "ClickForWalletCreation": "創建 MAX 帳號影片教學請點我"
+          "ClickForWalletCreation": "Để xem video hướng dẫn tạo tài khoản MAX, vui lòng nhấp vào đây"
         },
         "Completed": {
-          "Message": "註冊成功！請加入官方 LINE 進行實名認證。",
-          "KYC": "前往實名認證"
+          "Message": "Đăng ký thành công! ",
+          "KYC": "Chuyển đến xác thực tên thật"
         },
-        "NextStep": "下一步",
-        "AlreadyHaveAnAccount": "已經有帳號了嗎？"
+        "NextStep": "Bước tiếp theo",
+        "AlreadyHaveAnAccount": "Bạn co săn san để tạo một tai khoản?"
       },
       "Verify": {
         "Id": {
-          "Submit": "提交"
+          "Submit": "nộp"
         }
       },
       "Index": {
-        "Profile": "會員資料",
-        "NftPositions": "NFT 持倉",
-        "NftExchangeConfirm": "確認 NFT 交易",
-        "Admin": "會員管理"
+        "Profile": "Thông tin thành viên",
+        "NftPositions": "nắm giữ NFT",
+        "NftExchangeConfirm": "Xác nhận giao dịch NFT",
+        "Admin": "Quản lý thành viên"
       }
     },
     "Gold": {
       "Exchange": {
-        "CurrencyRate": "目前匯率",
-        "Cashback": "用戶回饋",
-        "Buy": "購買",
+        "CurrencyRate": "Tỷ giá hối đoái hiện hành",
+        "Cashback": "Phản hồi của người dùng",
+        "Buy": "mua",
         "Tutorial": {
-          "CreateMaxAccount": "創建 MAX 帳號影片教學請點我",
-          "BuyUsdt": "購買 USDT 的影片教學請點我",
-          "CheckWalletAddress": "查詢 USDT (TRC20) 錢包地址的影片教學請點我"
+          "CreateMaxAccount": "Để xem video hướng dẫn tạo tài khoản MAX, vui lòng nhấp vào đây",
+          "BuyUsdt": "Vui lòng nhấp vào đây để xem video hướng dẫn cách mua USDT.",
+          "CheckWalletAddress": "Vui lòng nhấp vào đây để xem video hướng dẫn cách kiểm tra địa chỉ ví USDT (TRC20)."
         },
         "Popup": {
-          "Title": "確認購買",
-          "Message": "確定要購買 {gold} GOLD 嗎？",
-          "Button": "確認"
+          "Title": "Xác nhận mua hàng",
+          "Message": "Bạn có chắc chắn muốn mua {vàng} VÀNG không?",
+          "Button": "Xác nhận"
         }
       },
       "Confirm": {
         "Layout": {
-          "Type": "幣種",
-          "Amount": "充幣金額"
+          "Type": "Tiền tệ",
+          "Amount": "Số tiền gửi"
         },
         "TwBank": {
           "Error": {
-            "SelectWiringSource": "請選擇轉帳來源帳號。",
-            "AttachProof": "請附上轉帳紀錄圖片。",
-            "InvalidAmount": "無效的轉帳金額。"
+            "SelectWiringSource": "Vui lòng chọn tài khoản nguồn chuyển.",
+            "AttachProof": "Vui lòng đính kèm hình ảnh hồ sơ chuyển nhượng.",
+            "InvalidAmount": "Số tiền chuyển không hợp lệ."
           },
           "Message": {
-            "UploadCompleted": "轉帳資料上傳完成。"
+            "UploadCompleted": "Thông tin chuyển khoản đã được tải lên."
           },
           "Field": {
-            "WiringSource": "轉帳來源",
-            "WiringProof": "銀行轉帳證明"
+            "WiringSource": "Nguồn chuyển",
+            "WiringProof": "Bằng chứng chuyển khoản ngân hàng"
           },
           "UploadStatus": {
-            "Waiting": "上傳轉帳紀錄",
-            "Processing": "上傳中...",
-            "Completed": "上傳完成",
-            "Failed": "上傳失敗！"
+            "Waiting": "Tải lên hồ sơ chuyển nhượng",
+            "Processing": "Đang tải lên...",
+            "Completed": "Hoàn tất tải lên",
+            "Failed": "Tải lên không thành công!"
           }
         },
         "Usdt": {
           "Field": {
-            "Chain": "區塊鍊",
-            "Address": "充幣地址"
+            "Chain": "Chuỗi khối",
+            "Address": "Địa chỉ gửi tiền"
           },
           "Message": {
-            "UsdtOnly": "僅支援對該地址充值 USDT"
+            "UsdtOnly": "Chỉ hỗ trợ gửi USDT vào địa chỉ này."
           },
           "Note": {
-            "NoOtherThanUsdt": "請勿向上述地址充值 USDT 外的資產，否則將會導致資產丟失。",
-            "SecureDevice": "請確保您行動裝置的安全，防止資訊被竄改或洩漏。",
-            "NoOtherContracts": "TRC20-USDT 僅支援轉傳功能，使用其他智能合約的轉帳充值暫時無法入帳，請您諒解。"
+            "NoOtherThanUsdt": "Vui lòng không gửi tài sản khác ngoài USDT vào địa chỉ trên, nếu không tài sản sẽ bị mất.",
+            "SecureDevice": "Hãy đảm bảo tính bảo mật cho thiết bị di động của bạn để tránh thông tin bị giả mạo hoặc rò rỉ.",
+            "NoOtherContracts": "TRC20-USDT chỉ hỗ trợ chức năng chuyển khoản. Việc chuyển và nạp tiền bằng các hợp đồng thông minh khác không thể được ghi có tạm thời."
           }
         }
       }
@@ -212,117 +212,117 @@
     "Nft": {
       "Purchase": {
         "Error": {
-          "NotOnSale": "NFT 未上架",
-          "NotFound": "找不到對應 NFT"
+          "NotOnSale": "NFT không được liệt kê",
+          "NotFound": "Không tìm thấy NFT tương ứng"
         },
         "Info": {
-          "Id": "ID",
-          "OnSaleTimestamp": "上架時間",
-          "Description": "說明",
-          "Price": "售價"
+          "Id": "NHẬN DẠNG",
+          "OnSaleTimestamp": "Thời gian lưu trữ",
+          "Description": "chỉ dẫn",
+          "Price": "gia ban"
         },
-        "Buy": "購買",
+        "Buy": "mua",
         "Popup": {
-          "Title": "確認購買",
-          "Message": "確定要購買此 NFT 嗎？",
-          "Button": "確認購買"
+          "Title": "Xác nhận mua hàng",
+          "Message": "Bạn có chắc chắn muốn mua NFT này không?",
+          "Button": "Xác nhận mua hàng"
         },
         "Disclaimer": {
-          "Title": "免責聲明",
-          "Content": "本免責聲明僅能簡要闡述所可能涉及的部分風險事項，無法窮盡列舉所有在購買、持有、買賣或交易過程中所會涉及的所有風險及各種相關面向，建議在購買之前，必須考慮各種相關因素，包含但不限於個人購買目的及風險承受能力等。<br/><br/>針對本項目所發行 NFT 之購買者，應了解區塊鏈商品及加密貨幣商品其市場價格具有極高之波動性及不確定性，並非所有大眾都適合從事購買、持有、交易的相關行為。本商品初始規劃設計目的並非金融商品或任何投資理財型商品作為投資之用，無論購入或交易出售本商品，為購買者自行決定且自行負責之行為，本公司無法預測或控制商品未來的價格變化，如有任何價格波動，皆與本公司無關，本公司對任何人因買賣或交易本商品所造成之獲利或虧損，無任何的法律或財務上之責任。<br/><br/>購入本商品並不代表對於本商品所連結之作品具有排他或專屬性的財產權，也不代表得到商品任何智慧財產權的授權，購買者同意不針對該商品作為商業用途使用。本公司並不保證持有、買賣或使用本商品，對於任何第三人之智慧財產權均不會構成任何侵害或侵權爭議，購買者如因購入本商品，導致第三人對購買者主張智慧財產權等法律權利，本公司概不負責。<br/><br/>本公司與本網站所提供之所有資訊服務，都可能會基於惡意駭客、病毒或其他方式，而被入侵或遭未經授權進入，本網站會盡力控制風險，但無法保證可以完全減免風險。此外，本網站無法控制您訪問我們網站所使用裝置之安全性，您對於確保裝置應隨時處於安全狀態一事，應自行負擔全部責任。<br/><br/>本公司及其供應商不因您使用本服務而受之損害而承擔賠償或其他責任，包含但不限於因使用者錯誤（如忘記密碼、交易錯誤或位址錯誤）、伺服器故障或資料遺失、未經授權訪問應用程式、任何未經授權之第三方活動，包含但不限於使用病毒、網路釣魚、野蠻行為或其他攻擊網站方式。<br/><br/>本公司不就漏洞或任何類型的故障、軟體（如錢包、智能合約）、區塊鏈或數位資產的任何其他功能的異常行為而造成持續功能異常負擔責任。<br/><br/>本商品之購買者應自行注意其所在國家或地區之法令及公序良俗，對於本商品或本商品所連結之作品，是否有違反其所在地國家或地區之法令或公序良俗，購買者應自行注意並瞭解相關風險，如因此發生任何法律問題或違法風險，購買者需自行負責。<br/><br/>本公司有權對所有所提供之服務、購買規則、資訊內容、聲明進行變更，變更內容於發布時即刻生效。"
+          "Title": "Tuyên bố miễn trừ trách nhiệm",
+          "Content": "Tuyên bố từ chối trách nhiệm này chỉ có thể mô tả ngắn gọn một số vấn đề rủi ro có thể liên quan. Nó không thể liệt kê đầy đủ tất cả các rủi ro và các khía cạnh liên quan khác nhau liên quan đến quá trình mua, nắm giữ, mua và bán hoặc giao dịch. các yếu tố trước khi mua hàng, bao gồm nhưng không giới hạn ở mục đích mua hàng cá nhân và khả năng chấp nhận rủi ro, v.v.<br/><br/>Người mua NFT do dự án này phát hành nên hiểu rằng giá thị trường của hàng hóa blockchain và hàng hóa tiền điện tử cực kỳ biến động và không chắc chắn, đồng thời không phải tất cả mọi người đều phù hợp để mua, nắm giữ và giao dịch các hành vi liên quan. <br/><br/>Mua sản phẩm này không có nghĩa là bạn có quyền sở hữu độc quyền hoặc độc quyền đối với các tác phẩm liên quan đến sản phẩm này, cũng không có nghĩa là bạn đã được ủy quyền bởi bất kỳ quyền sở hữu trí tuệ nào của sản phẩm. Người mua đồng ý không sử dụng sản phẩm cho mục đích thương mại. mục đích. <br/><br/>Tất cả các dịch vụ thông tin do công ty và trang web này cung cấp có thể bị xâm phạm hoặc truy cập trái phép do tin tặc, vi rút hoặc các phương tiện khác. Trang web này sẽ cố gắng hết sức để kiểm soát rủi ro, nhưng không có gì đảm bảo rằng rủi ro có thể được giảm thiểu hoàn toàn. . <br/><br/>Công ty và các nhà cung cấp của Công ty sẽ không chịu trách nhiệm bồi thường hoặc trách nhiệm pháp lý khác đối với bất kỳ thiệt hại nào mà bạn phải chịu do sử dụng dịch vụ này, bao gồm nhưng không giới hạn lỗi của người dùng (như quên mật khẩu, lỗi giao dịch hoặc sai địa chỉ), lỗi máy chủ. hoặc mất dữ liệu, truy cập trái phép vào Ứng dụng, bất kỳ hoạt động trái phép nào của bên thứ ba, bao gồm nhưng không giới hạn việc sử dụng vi-rút, lừa đảo, hành vi man rợ hoặc các phương pháp tấn công trang web khác.<br/><br/>Công ty không chịu trách nhiệm về các trục trặc liên tục do lỗ hổng bảo mật hoặc bất kỳ loại trục trặc nào, hoạt động bất thường của phần mềm (như ví, hợp đồng thông minh), chuỗi khối hoặc bất kỳ chức năng nào khác của tài sản kỹ thuật số.<br/><br/>Người mua sản phẩm này nên chú ý đến luật pháp, trật tự công cộng và phong tục tập quán của quốc gia hoặc khu vực nơi họ sinh sống. Người mua nên chú ý và hiểu rõ liệu sản phẩm này hoặc các công trình liên quan đến sản phẩm này có vi phạm luật pháp hoặc trật tự công cộng hay không. phong tục tập quán tốt của quốc gia hoặc khu vực nơi họ đặt trụ sở Rủi ro nếu xảy ra bất kỳ vấn đề pháp lý hoặc rủi ro bất hợp pháp nào, người mua sẽ hoàn toàn chịu trách nhiệm.<br/><br/>Công ty có quyền thực hiện các thay đổi đối với tất cả các dịch vụ, quy tắc mua hàng, nội dung thông tin và tuyên bố được cung cấp và những thay đổi sẽ có hiệu lực ngay sau khi phát hành."
         }
       }
     }
   },
   "Layout": {
     "Profile": {
-      "BuyGold": "購買 GOLD"
+      "BuyGold": "Mua VÀNG"
     }
   },
   "Account": {
     "Assets": {
-      "Nft": "NFT 資產",
-      "Gold": "GOLD",
-      "Total": "總資產"
+      "Nft": "tài sản NFT",
+      "Gold": "VÀNG",
+      "Total": "Tổng tài sản"
     },
     "Info": {
-      "UserId": "用戶 ID",
-      "Email": "Email",
-      "LineId": "LINE ID",
-      "WalletAddress": "虛擬貨幣錢包地址 (TRC20)",
-      "Name": "姓名",
-      "IdentificationNumber": "身分證字號",
-      "Birthday": "生日",
-      "Phone": "手機號碼"
+      "UserId": "Tên người dùng",
+      "Email": "E-mail",
+      "LineId": "SỐ DÒNG",
+      "WalletAddress": "Địa chỉ ví tiền điện tử (TRC20)",
+      "Name": "Tên",
+      "IdentificationNumber": "Cỡ chữ CMND",
+      "Birthday": "Sinh nhật",
+      "Phone": "số điện thoại"
     },
     "BankAccounts": {
-      "Name": "銀行帳號",
-      "Code": "銀行代碼",
-      "Account": "銀行帳號"
+      "Name": "số tài khoản ngân hàng",
+      "Code": "Mã ngân hàng",
+      "Account": "số tài khoản ngân hàng"
     },
     "IdType": {
-      "IdFront": "身份證正面",
-      "IdBack": "身份證反面",
-      "Handheld": "手持身份證自拍",
-      "SecondaryFront": "第二證件正面"
+      "IdFront": "Mặt trước chứng minh nhân dân",
+      "IdBack": "Mặt sau CMND",
+      "Handheld": "Selfie cầm CMND",
+      "SecondaryFront": "Mặt trước ID thứ hai"
     }
   },
   "Gold": {
     "ExchangeChannel": {
       "Usdt": "USDT",
-      "Twd": "台幣"
+      "Twd": "Đô la Đài Loan"
     }
   },
   "VerificationStatus": {
-    "Verified": "已認證",
-    "Unverified": "未認證",
-    "Rejected": "認證失敗"
+    "Verified": "được chứng nhận",
+    "Unverified": "Không công nhận, không chứng nhận",
+    "Rejected": "Quá trình xác thực đã thất bại"
   },
   "UserControl": {
     "Credentials": {
-      "Account": "帳號",
-      "Password": "密碼"
+      "Account": "Số tài khoản",
+      "Password": "mật khẩu"
     },
-    "Login": "登入",
-    "Logout": "登出",
-    "Register": "註冊"
+    "Login": "đăng nhập",
+    "Logout": "Đăng xuất",
+    "Register": "đăng ký"
   },
   "Error": {
     "Api": {
-      "AccountNotFound": "找不到對應的帳號。",
-      "AccountDisabled": "帳號已被停用。",
-      "AgentNotFound": "找不到對應的代理。",
-      "AgentInactive": "申請連結對應的代理無效。",
-      "PasswordMismatch": "密碼不正確。",
-      "TakenIdNumber": "身份證字號已被使用。",
-      "TakenEmail": "電子信箱已被使用。",
-      "TakenLineId": "LINE ID 已被使用。",
-      "TakenName": "姓名已被使用。",
-      "TakenUsername": "帳號 ID 已被使用。",
-      "TakenWallet": "MAX 錢包已被使用。",
-      "GoldExchangeInProgress": "GOLD 購買程序已在進行中，請稍後再試。",
-      "GoldNotEnough": "GOLD 不足。",
-      "GoldTwBankTxnRecordFailed": "台幣轉帳紀錄上傳失敗。",
-      "GoldTwBankTxnNotFound": "沒有找到對應的台幣轉帳紀錄。",
-      "NftNotOnSale": "NFT 不在販賣中。",
-      "NftMatchRequestNotFound": "找不到對應的 NFT 交易請求。",
-      "NftInfoNotFound": "找不到對應的 NFT 資訊。",
-      "WalletInvalid": "錢包地址無效。",
-      "WalletNotExist": "錢包地址不存在。",
-      "SmsSendFailed": "驗證簡訊傳送失敗。",
-      "SmsAlreadyRequested": "已要求傳送驗證簡訊，請於 {smsVerificationExpiryMin} 分鐘後重試。",
-      "SmsPhoneInvalid": "手機號碼驗證無效或已失效。請重新驗證手機號碼。",
-      "SmsPhoneUsed": "手機號碼已被使用。請於 {smsVerifiedExpiryMin} 分鐘後重試。",
-      "SmsPhoneRegistered": "手機號碼已註冊。",
-      "SmsCodeInvalid": "驗證碼無效。",
-      "IdNumberInvalid": "無效的身份證字號。",
-      "BankDetailsNotFound": "銀行帳號不存在。",
-      "BankDetailsAlreadyExist": "銀行帳號已存在。",
-      "BankDetailsUploadFailed": "銀行帳號上傳失敗。",
-      "CommissionOverLimit": "超過退傭上限。"
+      "AccountNotFound": "Không thể tìm thấy tài khoản tương ứng.",
+      "AccountDisabled": "Tài khoản đã bị vô hiệu hóa.",
+      "AgentNotFound": "Các đại lý tương ứng không thể được tìm thấy.",
+      "AgentInactive": "Tác nhân tương ứng với liên kết ứng dụng không hợp lệ.",
+      "PasswordMismatch": "Mật khẩu không đúng.",
+      "TakenIdNumber": "Số ID đã được sử dụng.",
+      "TakenEmail": "Các địa chỉ email đã được sử dụng.",
+      "TakenLineId": "ID LINE đã được sử dụng.",
+      "TakenName": "Tên đã được sử dụng.",
+      "TakenUsername": "ID tài khoản đã được sử dụng.",
+      "TakenWallet": "Ví MAX đã được sử dụng.",
+      "GoldExchangeInProgress": "Quá trình mua VÀNG đang được tiến hành, vui lòng thử lại sau.",
+      "GoldNotEnough": "Không đủ vàng.",
+      "GoldTwBankTxnRecordFailed": "Không thể tải lên bản ghi chuyển khoản bằng đô la Đài Loan.",
+      "GoldTwBankTxnNotFound": "Không tìm thấy hồ sơ chuyển tiền đô la Đài Loan tương ứng.",
+      "NftNotOnSale": "NFT không được bán.",
+      "NftMatchRequestNotFound": "Không thể tìm thấy yêu cầu giao dịch NFT tương ứng.",
+      "NftInfoNotFound": "Không thể tìm thấy thông tin NFT tương ứng.",
+      "WalletInvalid": "Địa chỉ ví không hợp lệ.",
+      "WalletNotExist": "Địa chỉ ví không tồn tại.",
+      "SmsSendFailed": "Việc gửi SMS xác minh không thành công.",
+      "SmsAlreadyRequested": "SMS xác minh đã được yêu cầu. Vui lòng thử lại sau {smsVerificationExpiryMin} phút.",
+      "SmsPhoneInvalid": "Việc xác minh số điện thoại di động không hợp lệ hoặc đã hết hạn.",
+      "SmsPhoneUsed": "Số điện thoại di động đã được sử dụng.",
+      "SmsPhoneRegistered": "Số điện thoại di động đã được đăng ký.",
+      "SmsCodeInvalid": "Mã xác minh không hợp lệ.",
+      "IdNumberInvalid": "Số ID không hợp lệ.",
+      "BankDetailsNotFound": "Số tài khoản ngân hàng không tồn tại.",
+      "BankDetailsAlreadyExist": "Tài khoản ngân hàng đã tồn tại.",
+      "BankDetailsUploadFailed": "Tải lên tài khoản ngân hàng không thành công.",
+      "CommissionOverLimit": "Đã vượt quá giới hạn hoàn trả hoa hồng."
     },
     "Input": {
-      "IncorrectFileType": "檔案種類不正確 - {type}"
+      "IncorrectFileType": "Loại tệp không chính xác - {type}"
     }
   }
 }
