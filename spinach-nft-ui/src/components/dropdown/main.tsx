@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Menu, Transition} from '@headlessui/react';
+import {Menu, MenuButton, MenuItem, MenuItems, Transition} from '@headlessui/react';
 import {clsx} from 'clsx';
 
 import {dropdownExpandStyle} from '@spinach/next/components/dropdown/const';
@@ -17,7 +17,7 @@ type Props = {
 export const DropDown = ({renderButton, itemList, origin}: Props) => {
   return (
     <Menu as="div" className="relative w-fit">
-      {renderButton(Menu.Button)}
+      {renderButton(MenuButton)}
       <Transition
         as={React.Fragment}
         enter="transition ease-out duration-100"
@@ -27,20 +27,20 @@ export const DropDown = ({renderButton, itemList, origin}: Props) => {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className={clsx(
+        <MenuItems className={clsx(
           'divide-horizontal border-common absolute z-50 w-fit rounded-lg border bg-slate-800',
           dropdownExpandStyle[origin],
         )}>
           {itemList.map((group, idxGroup) => (
             <Flex key={idxGroup} className="gap-1 p-1">
               {group.map((item, idxItem) => (
-                <Menu.Item key={idxItem}>
+                <MenuItem key={idxItem}>
                   {item}
-                </Menu.Item>
+                </MenuItem>
               ))}
             </Flex>
           ))}
-        </Menu.Items>
+        </MenuItems>
       </Transition>
     </Menu>
   );
