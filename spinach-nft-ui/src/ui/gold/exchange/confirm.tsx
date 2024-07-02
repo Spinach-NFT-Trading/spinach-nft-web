@@ -1,6 +1,5 @@
 import React from 'react';
 
-import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {useRouter} from 'next/navigation';
 import {signIn} from 'next-auth/react';
 import {useTranslations} from 'next-intl';
@@ -8,6 +7,7 @@ import {useTranslations} from 'next-intl';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
 import {Alert} from '@spinach/next/components/shared/common/alert';
+import {useI18nApiErrorTranslator} from '@spinach/next/hooks/i18n/apiError/main';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {ExchangeAmount} from '@spinach/next/ui/gold/exchange/type';
 
@@ -25,6 +25,8 @@ export const GoldExchangeConfirmPopup = ({show, setShow, amount, getRedirectUrl}
   const {push} = useRouter();
 
   const t = useTranslations('UI.InPage.Gold.Exchange');
+
+  const translateApiError = useI18nApiErrorTranslator();
 
   const onClick = async () => {
     if (!act) {

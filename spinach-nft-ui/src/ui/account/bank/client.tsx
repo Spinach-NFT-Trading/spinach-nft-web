@@ -2,7 +2,6 @@
 import React from 'react';
 
 import {bankAccountPattern, bankCodePattern} from '@spinach/common/const/auth';
-import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {clsx} from 'clsx';
 import {useRouter} from 'next/navigation';
 import {signIn} from 'next-auth/react';
@@ -14,6 +13,7 @@ import {FlexForm} from '@spinach/next/components/layout/flex/form';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
 import {InputFileImageOnly} from '@spinach/next/components/shared/common/input/file/image';
+import {useI18nApiErrorTranslator} from '@spinach/next/hooks/i18n/apiError/main';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {AccountAddBankState} from '@spinach/next/ui/account/bank/type';
 
@@ -35,6 +35,8 @@ export const AccountAddBankClient = () => {
 
   const t = useTranslations('UI.InPage.Account.Bank');
   const t2 = useTranslations('UI.Error.Input');
+
+  const translateApiError = useI18nApiErrorTranslator();
 
   const {errorMessage, data} = state;
   const {image, details} = data;

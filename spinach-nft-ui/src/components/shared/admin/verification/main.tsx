@@ -1,7 +1,5 @@
 import React from 'react';
 
-import {translateApiError} from '@spinach/common/utils/translate/apiError';
-
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {useAdminVerificationStateControl} from '@spinach/next/components/shared/admin/verification/hook';
 import {AdminVerificationPopup} from '@spinach/next/components/shared/admin/verification/popup/main';
@@ -11,6 +9,7 @@ import {AdminVerificationRowProps} from '@spinach/next/components/shared/admin/v
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {WindowedTable} from '@spinach/next/components/shared/common/table/windowed/main';
 import {WindowedTableProps} from '@spinach/next/components/shared/common/table/windowed/type';
+import {useI18nApiErrorTranslator} from '@spinach/next/hooks/i18n/apiError/main';
 
 
 type Props<TData> =
@@ -23,6 +22,8 @@ type Props<TData> =
 export const AdminVerification = <TData, >({data, ...props}: Props<TData>) => {
   const stateControls = useAdminVerificationStateControl<TData>();
   const {state} = stateControls;
+
+  const translateApiError = useI18nApiErrorTranslator();
 
   return (
     <Flex className="h-[70vh]">

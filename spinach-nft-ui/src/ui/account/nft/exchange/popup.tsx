@@ -1,12 +1,12 @@
 import React from 'react';
 
 import {ApiErrorCode} from '@spinach/common/types/api/error';
-import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
 import {Alert} from '@spinach/next/components/shared/common/alert';
+import {useI18nApiErrorTranslator} from '@spinach/next/hooks/i18n/apiError/main';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {NftExchangeMatchedModelAtClient} from '@spinach/next/types/nft';
 import {formatInt} from '@spinach/next/utils/number/format';
@@ -27,6 +27,8 @@ export const AccountNftExchangeConfirmPopup = ({show, setShow, match, onMatchCon
   const {act} = useUserDataActor();
 
   const t = useTranslations('UI.InPage.Account.Nft.Exchange');
+
+  const translateApiError = useI18nApiErrorTranslator();
 
   if (!act) {
     return null;

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {BankDetails} from '@spinach/common/types/data/user/bank';
-import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {clsx} from 'clsx';
 import {signIn} from 'next-auth/react';
 import {useTranslations} from 'next-intl';
@@ -15,6 +14,7 @@ import {InputFileImageOnly} from '@spinach/next/components/shared/common/input/f
 import {HorizontalSplitter} from '@spinach/next/components/shared/common/splitter';
 import {VerificationStatusUi} from '@spinach/next/components/shared/common/verified';
 import {getVerificationStatusTextStyleMap} from '@spinach/next/const/verification';
+import {useI18nApiErrorTranslator} from '@spinach/next/hooks/i18n/apiError/main';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {getToggleButtonClass} from '@spinach/next/styles/input';
 import {GoldExchangeConfirmSection} from '@spinach/next/ui/gold/confirm/common/section';
@@ -44,6 +44,8 @@ export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedB
   const t = useTranslations('UI.InPage.Gold.Confirm.TwBank');
   const t2 = useTranslations('UI.Account.BankAccounts');
   const t3 = useTranslations('UI.Error.Input');
+
+  const translateApiError = useI18nApiErrorTranslator();
 
   const {
     errorMessage,

@@ -8,7 +8,6 @@ import {
   SmsVerifyFinalizeResponseData,
 } from '@spinach/common/types/api/auth/verify/sms/finalize';
 import {SmsVerifyInitialRequest, SmsVerifyInitialResponse} from '@spinach/common/types/api/auth/verify/sms/initial';
-import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {clsx} from 'clsx';
 import {useTranslations} from 'next-intl';
 
@@ -18,6 +17,7 @@ import {FlexForm} from '@spinach/next/components/layout/flex/form';
 import {FlexLink} from '@spinach/next/components/layout/flex/link';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
+import {useI18nApiErrorTranslator} from '@spinach/next/hooks/i18n/apiError/main';
 import {AccountRegisterSmsVerificationState} from '@spinach/next/ui/account/register/sms/type';
 import {sendApiPost} from '@spinach/next/utils/api/common';
 
@@ -50,6 +50,8 @@ export const AccountRegisterSmsVerification = ({show, onPhoneVerified}: Props) =
   const t = useTranslations('UI.UserControl');
   const t2 = useTranslations('UI.InPage.Account.Register');
   const t3 = useTranslations('UI.Account');
+
+  const translateApiError = useI18nApiErrorTranslator();
 
   const onPhoneSubmitted = async () => {
     setState((original) => ({...original, loading: true}));

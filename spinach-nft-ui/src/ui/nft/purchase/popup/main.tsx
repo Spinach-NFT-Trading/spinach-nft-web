@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {ApiErrorCode} from '@spinach/common/types/api/error';
-import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {useRouter} from 'next/navigation';
 import {signIn} from 'next-auth/react';
 import {useTranslations} from 'next-intl';
@@ -10,6 +9,7 @@ import {SignIn} from '@spinach/next/components/auth/signIn';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
 import {Alert} from '@spinach/next/components/shared/common/alert';
+import {useI18nApiErrorTranslator} from '@spinach/next/hooks/i18n/apiError/main';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {NftPurchaseConfirmDisclaimer} from '@spinach/next/ui/nft/purchase/popup/disclaimer';
 
@@ -26,6 +26,8 @@ export const NftPurchaseConfirmPopup = ({nftId, show, setShow}: Props) => {
   const {replace} = useRouter();
 
   const t = useTranslations('UI.InPage.Nft.Purchase');
+
+  const translateApiError = useI18nApiErrorTranslator();
 
   if (!act) {
     return <SignIn/>;

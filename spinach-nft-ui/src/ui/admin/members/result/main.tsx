@@ -1,12 +1,12 @@
 import React from 'react';
 
 import {ApiErrorCode} from '@spinach/common/types/api/error';
-import {translateApiError} from '@spinach/common/utils/translate/apiError';
 
 import {Loading} from '@spinach/next/components/icons/loading';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {OverflowableTable} from '@spinach/next/components/shared/common/table/overflowable/main';
+import {useI18nApiErrorTranslator} from '@spinach/next/hooks/i18n/apiError/main';
 import {CommonUserData} from '@spinach/next/types/auth';
 import {ResponseOfAdminMemberList} from '@spinach/next/types/userData/lazyLoaded';
 import {AdminLookBackInputControl} from '@spinach/next/ui/admin/common/lookback/type';
@@ -41,6 +41,8 @@ export const AdminMembersResults = ({user, input, memberInfo, lookBackInputContr
     show: false,
     member: null,
   });
+
+  const translateApiError = useI18nApiErrorTranslator();
 
   const membersToShow = React.useMemo(() => members.filter((member) => (
     !value || member[key].includes(value)

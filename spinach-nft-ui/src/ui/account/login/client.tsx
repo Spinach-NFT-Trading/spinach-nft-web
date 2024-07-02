@@ -3,7 +3,6 @@ import React from 'react';
 
 import {passwordPattern, usernamePattern} from '@spinach/common/const/auth';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
-import {translateApiError} from '@spinach/common/utils/translate/apiError';
 import {signIn} from 'next-auth/react';
 import {useTranslations} from 'next-intl';
 
@@ -12,6 +11,7 @@ import {FlexForm} from '@spinach/next/components/layout/flex/form';
 import {FlexLink} from '@spinach/next/components/layout/flex/link';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {InputFloatingLabel} from '@spinach/next/components/shared/common/input/field';
+import {useI18nApiErrorTranslator} from '@spinach/next/hooks/i18n/apiError/main';
 import {AccountLoginInput} from '@spinach/next/ui/account/login/type';
 
 
@@ -27,6 +27,8 @@ export const AccountLoginClient = ({error}: Props) => {
   const {username, password} = input;
 
   const t = useTranslations('UI.UserControl');
+
+  const translateApiError = useI18nApiErrorTranslator();
 
   return (
     <Flex className="gap-2 self-center text-xl md:px-7">
