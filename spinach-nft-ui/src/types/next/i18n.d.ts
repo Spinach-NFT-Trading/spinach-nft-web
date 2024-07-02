@@ -236,6 +236,12 @@ declare global {
           Code: string,
           Account: string,
         },
+        IdType: {
+          IdFront: string,
+          IdBack: string,
+          Handheld: string,
+          SecondaryFront: string,
+        },
       },
       Gold: {
         ExchangeChannel: {

@@ -3,12 +3,13 @@ import React from 'react';
 import {accountIdVerificationType} from '@spinach/common/types/api/profile/id';
 import {UserInfo} from '@spinach/common/types/common/user/info';
 import {clsx} from 'clsx';
+import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {AdminVerificationDataCell} from '@spinach/next/components/shared/admin/verification/cell';
 import {AdminVerification} from '@spinach/next/components/shared/admin/verification/main';
 import {CopyButton} from '@spinach/next/components/shared/copy';
-import {accountIdVerificationTypeText} from '@spinach/next/const/account';
+import {accountIdVerificationTypeI18nId} from '@spinach/next/const/account';
 import {adminDataRowHeight} from '@spinach/next/ui/admin/const';
 import {useAdminVerifyFilteredData} from '@spinach/next/ui/admin/verify/common/hook/filteredData';
 import {AdminVerifyIdTxnRow} from '@spinach/next/ui/admin/verify/id/row';
@@ -32,6 +33,8 @@ export const AdminVerifyIdResults = ({data, input}: Props) => {
     }),
   });
 
+  const t = useTranslations('UI.Account.IdType');
+
   return (
     <AdminVerification
       header={<AdminVerifyIdTxnRow isTitle/>}
@@ -48,7 +51,7 @@ export const AdminVerifyIdResults = ({data, input}: Props) => {
             userId: id,
           },
         },
-        imageName: accountIdVerificationTypeText[type],
+        imageName: t(accountIdVerificationTypeI18nId[type]),
       }))}
       getConfirmPayload={(pass, data) => ({
         type: 'admin.verify.account',

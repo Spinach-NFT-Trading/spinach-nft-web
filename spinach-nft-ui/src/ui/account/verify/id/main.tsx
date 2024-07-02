@@ -9,6 +9,7 @@ export const AccountIdVerify = async () => {
   return (
     <ProfileLayout isValid={(session) => session?.user.status === 'rejected'}>
       <I18nProvider namespaces={[
+        'UI.Account.IdType',
         'UI.Component.AccountIdVerificationForm',
         'UI.InPage.Account.Verify.Id',
       ]}>

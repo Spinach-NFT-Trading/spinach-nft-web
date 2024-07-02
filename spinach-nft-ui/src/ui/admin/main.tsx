@@ -9,7 +9,10 @@ export const AdminPage = async () => {
   return (
     <AdminOrAgentPageLayout>
       {({user}) => (
-        <I18nProvider namespaces={['UI.VerificationStatus']}>
+        <I18nProvider namespaces={[
+          'UI.VerificationStatus',
+          'UI.Account.IdType',
+        ]}>
           <AdminPageClient user={user}/>
         </I18nProvider>
       )}

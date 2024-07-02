@@ -259,6 +259,12 @@
       "Name": "銀行帳號",
       "Code": "銀行代碼",
       "Account": "銀行帳號"
+    },
+    "IdType": {
+      "IdFront": "身份證正面",
+      "IdBack": "身份證反面",
+      "Handheld": "手持身份證自拍",
+      "SecondaryFront": "第二證件正面"
     }
   },
   "Gold": {

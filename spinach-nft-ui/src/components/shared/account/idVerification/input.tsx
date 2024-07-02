@@ -9,7 +9,7 @@ import {
   AccountIdVerificationState,
 } from '@spinach/next/components/shared/account/idVerification/type';
 import {InputFileImageOnly} from '@spinach/next/components/shared/common/input/file/image';
-import {accountIdVerificationTypeText} from '@spinach/next/const/account';
+import {accountIdVerificationTypeI18nId} from '@spinach/next/const/account';
 
 
 type Props = AccountIdVerificationCommonProps & {
@@ -26,11 +26,12 @@ export const AccountIdVerificationInput = ({
   const errorMessage = error[type];
 
   const t = useTranslations('UI.Error.Input');
+  const t2 = useTranslations('UI.Account.IdType');
 
   return (
     <InputFileImageOnly
       id={type}
-      title={`${accountIdVerificationTypeText[type]}${errorMessage ? ` - ${errorMessage}` : ''}`}
+      title={`${t2(accountIdVerificationTypeI18nId[type])}${errorMessage ? ` - ${errorMessage}` : ''}`}
       className={clsx(errorMessage && 'text-red-400')}
       onFileSelected={(data) => onSelected(type, data)}
       onFileTypeIncorrect={(type) => setState((original) => ({
