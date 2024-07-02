@@ -5,6 +5,7 @@ import ScaleIcon from '@heroicons/react/24/outline/ScaleIcon';
 import ShieldCheckIcon from '@heroicons/react/24/outline/ShieldCheckIcon';
 import TrophyIcon from '@heroicons/react/24/outline/TrophyIcon';
 import {clsx} from 'clsx';
+import {useTranslations} from 'next-intl';
 
 import {Grid} from '@spinach/next/components/layout/grid';
 import {HomeFooterIntroSection} from '@spinach/next/ui/home/footer/introSection';
@@ -12,6 +13,8 @@ import {HomeFooterSocial} from '@spinach/next/ui/home/footer/social';
 
 
 export const HomeFooter = () => {
+  const t = useTranslations('UI.InPage.Home.Pledge');
+
   return (
     <>
       <Grid center className={clsx(
@@ -20,23 +23,23 @@ export const HomeFooter = () => {
       )}>
         <HomeFooterIntroSection
           icon={<TrophyIcon/>}
-          title="用戶成長體系"
-          description="台灣首創，結合遊戲業常用的用戶成長體系納入交易所，積極互動即可享好康"
+          title={t('System.Title')}
+          description={t('System.Content')}
         />
         <HomeFooterIntroSection
           icon={<ShieldCheckIcon/>}
-          title="安全優先"
-          description="採國際級 DDoS 防禦機制及 AI 應用程式防火牆，最大化保護用戶資產"
+          title={t('Security.Title')}
+          description={t('Security.Content')}
         />
         <HomeFooterIntroSection
           icon={<ScaleIcon/>}
-          title="合法合規"
-          description="以金融機構最高標準開發產品及營運流程，恪守 KYC、AML 規範"
+          title={t('Legitimacy.Title')}
+          description={t('Legitimacy.Content')}
         />
         <HomeFooterIntroSection
           icon={<PencilSquareIcon/>}
-          title="量身訂製數位產品"
-          description="配置風險等級框架及客製化投資組合，提供量身打造的金融產品和購買 / 提款限額"
+          title={t('Customize.Title')}
+          description={t('Customize.Content')}
         />
       </Grid>
       <HomeFooterSocial/>

@@ -21,7 +21,8 @@ type Props = {
 };
 
 export const HomeHeader = ({session, currentFx}: Props) => {
-  const t = useTranslations('UI.UserControl');
+  const t = useTranslations('UI.InPage.Home.Stats');
+  const t2 = useTranslations('UI.UserControl');
 
   return (
     <Flex className="gap-2">
@@ -30,10 +31,10 @@ export const HomeHeader = ({session, currentFx}: Props) => {
           !session &&
           <Flex direction="row" noFullWidth className="absolute bottom-5 right-5 z-10 justify-end gap-5">
             <FlexLink href="/account/register" center className="button-clickable-bg w-20 p-2">
-              {t('Register')}
+              {t2('Register')}
             </FlexLink>
             <FlexLink href="/account/login" center className="button-clickable-border w-20 p-2">
-              {t('Logout')}
+              {t2('Logout')}
             </FlexLink>
           </Flex>
         }
@@ -44,9 +45,9 @@ export const HomeHeader = ({session, currentFx}: Props) => {
       <Grid center className={clsx(
         'grid-cols-1 gap-3 rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 p-4 md:grid-cols-4',
       )}>
-        <HomeStatsSection icon={<RocketLaunchIcon/>} value={100} title="已交易 NFT 數量"/>
-        <HomeStatsSection icon={<UsdtIcon/>} value={9E6} title="24 小時 USDT 交易量"/>
-        <HomeStatsSection icon={<CurrencyDollarIcon/>} value={2.7E7} title="24 小時 GOLD 購買量"/>
+        <HomeStatsSection icon={<RocketLaunchIcon/>} value={100} title={t('NftVolume')}/>
+        <HomeStatsSection icon={<UsdtIcon/>} value={9E6} title={t('UsdtVolume')}/>
+        <HomeStatsSection icon={<CurrencyDollarIcon/>} value={2.7E7} title={t('GoldVolume')}/>
         <HomeStatsSection icon={<BanknotesIcon/>} value={parseFloat(currentFx ?? '-')} title="USDT / TWD"/>
       </Grid>
     </Flex>

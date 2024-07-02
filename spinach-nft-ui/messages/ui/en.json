@@ -68,6 +68,32 @@
     }
   },
   "InPage": {
+    "Home": {
+      "PrivacyPolicy": "隱私權政策服務條款",
+      "Stats": {
+        "NftVolume": "已交易 NFT 數量",
+        "UsdtVolume": "24 小時 USDT 交易量",
+        "GoldVolume": "24 小時 GOLD 購買量"
+      },
+      "Pledge": {
+        "System": {
+          "Title": "用戶成長體系",
+          "Content": "台灣首創，結合遊戲業常用的用戶成長體系納入交易所，積極互動即可享好康"
+        },
+        "Security": {
+          "Title": "安全優先",
+          "Content": "採國際級 DDoS 防禦機制及 AI 應用程式防火牆，最大化保護用戶資產"
+        },
+        "Legitimacy": {
+          "Title": "合法合規",
+          "Content": "以金融機構最高標準開發產品及營運流程，恪守 KYC、AML 規範"
+        },
+        "Customize": {
+          "Title": "量身訂製數位產品",
+          "Content": "配置風險等級框架及客製化投資組合，提供量身打造的金融產品和購買 / 提款限額"
+        }
+      }
+    },
     "Account": {
       "Bank": {
         "Error": {

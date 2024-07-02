@@ -44,6 +44,32 @@ declare global {
         },
       },
       InPage: {
+        Home: {
+          PrivacyPolicy: string,
+          Stats: {
+            NftVolume: string,
+            UsdtVolume: string,
+            GoldVolume: string,
+          },
+          Pledge: {
+            System: {
+              Title: string,
+              Content: string,
+            },
+            Security: {
+              Title: string,
+              Content: string,
+            },
+            Legitimacy: {
+              Title: string,
+              Content: string,
+            },
+            Customize: {
+              Title: string,
+              Content: string,
+            },
+          },
+        },
         Account: {
           Bank: {
             Error: {
