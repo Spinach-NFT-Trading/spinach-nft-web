@@ -19,5 +19,5 @@ export const useLanguageSwitch = () => {
     });
   };
 
-  return {currentLocale, isPending, onLocaleSwitch};
+  return {currentLocale: currentLocale as Locale, isPending, onLocaleSwitch};
 };

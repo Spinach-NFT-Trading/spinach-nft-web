@@ -5,6 +5,7 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {FlexLink} from '@spinach/next/components/layout/flex/link';
 import {localStorageKeyOfNftPositionsMatched} from '@spinach/next/const/localStorage';
 import {getMatchedNftExchangeRequests} from '@spinach/next/controller/nft/request/match';
+import {LanguageSwitch} from '@spinach/next/ui/base/navbar/languageSwitch/main';
 import {UserAuthButton} from '@spinach/next/ui/base/navbar/user/auth';
 import {UserProfileButton} from '@spinach/next/ui/base/navbar/user/profile';
 import {UserControlCommonProps} from '@spinach/next/ui/base/navbar/user/type';
@@ -60,6 +61,7 @@ export const UserControlClient = (props: UserControlCommonProps) => {
         </FlexLink>
       }
       <UserProfileButton {...props}/>
+      <LanguageSwitch/>
       <UserAuthButton {...props}/>
     </Flex>
   );

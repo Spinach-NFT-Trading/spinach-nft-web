@@ -11,7 +11,7 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 type Props = {
   itemList: DropdownItemList,
   origin: DropdownExpandOrigin,
-  renderButton: (DropdownMenuButton: typeof Menu['Button']) => React.ReactNode,
+  renderButton: (DropdownMenuButton: typeof MenuButton) => React.ReactNode,
 };
 
 export const DropDown = ({renderButton, itemList, origin}: Props) => {
