@@ -5,6 +5,7 @@ import {Toaster} from 'react-hot-toast';
 import {Announcements} from '@spinach/next/components/announcement/main';
 import {LoadingFullScreen} from '@spinach/next/components/icons/loading';
 import {Flex} from '@spinach/next/components/layout/flex/common';
+import {Footer} from '@spinach/next/ui/base/footer/main';
 import {PageLayoutProps} from '@spinach/next/ui/base/layout/type';
 import {NavBar} from '@spinach/next/ui/base/navbar/main';
 import {NavBarProps} from '@spinach/next/ui/base/navbar/type';
@@ -24,6 +25,7 @@ export const PageLayout = ({announcement = true, children, ...props}: React.Prop
             {children}
           </div>
         </Flex>
+        <Footer/>
       </main>
     </React.Suspense>
   );

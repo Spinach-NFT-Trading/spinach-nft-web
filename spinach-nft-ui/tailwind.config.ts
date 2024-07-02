@@ -56,7 +56,8 @@ const config: Config = {
   },
   plugins: [
     require('@savvywombat/tailwindcss-grid-areas'),
-    plugin(({addUtilities}) => {
+    plugin(({addVariant, addUtilities}) => {
+      addVariant('not-last', '&:not(:last-child)');
       addUtilities(
         {
           '.filter-logo': {
