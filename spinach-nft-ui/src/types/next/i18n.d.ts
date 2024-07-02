@@ -139,6 +139,20 @@ declare global {
                 Failed: string,
               },
             },
+            Usdt: {
+              Field: {
+                Chain: string,
+                Address: string,
+              },
+              Message: {
+                UsdtOnly: string,
+              },
+              Note: {
+                NoOtherThanUsdt: string,
+                SecureDevice: string,
+                NoOtherContracts: string,
+              },
+            },
           },
         },
         Nft: {

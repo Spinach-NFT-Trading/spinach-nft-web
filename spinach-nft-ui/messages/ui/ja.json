@@ -162,6 +162,20 @@
             "Completed": "上傳完成",
             "Failed": "上傳失敗！"
           }
+        },
+        "Usdt": {
+          "Field": {
+            "Chain": "區塊鍊",
+            "Address": "充幣地址"
+          },
+          "Message": {
+            "UsdtOnly": "僅支援對該地址充值 USDT"
+          },
+          "Note": {
+            "NoOtherThanUsdt": "請勿向上述地址充值 USDT 外的資產，否則將會導致資產丟失。",
+            "SecureDevice": "請確保您行動裝置的安全，防止資訊被竄改或洩漏。",
+            "NoOtherContracts": "TRC20-USDT 僅支援轉傳功能，使用其他智能合約的轉帳充值暫時無法入帳，請您諒解。"
+          }
         }
       }
     },
