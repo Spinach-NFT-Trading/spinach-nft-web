@@ -143,6 +143,10 @@
         }
       },
       "Confirm": {
+        "Layout": {
+          "Type": "幣種",
+          "Amount": "充幣金額"
+        },
         "TwBank": {
           "Error": {
             "SelectWiringSource": "請選擇轉帳來源帳號。",

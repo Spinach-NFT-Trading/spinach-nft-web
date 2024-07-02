@@ -119,6 +119,10 @@ declare global {
             },
           },
           Confirm: {
+            Layout: {
+              Type: string,
+              Amount: string,
+            },
             TwBank: {
               Error: {
                 SelectWiringSource: string,

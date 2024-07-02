@@ -3,6 +3,7 @@ import React from 'react';
 import {GoldExchangeChannel} from '@spinach/common/types/data/gold/common';
 import {GoldWalletClientTypeMap} from '@spinach/common/types/data/gold/wallet';
 import {getServerSession} from 'next-auth';
+import {getTranslations} from 'next-intl/server';
 
 import {SignIn} from '@spinach/next/components/auth/signIn';
 import {Failed} from '@spinach/next/components/icons/failed';
@@ -28,9 +29,11 @@ export const GoldExchangeConfirmLayout = async <TChannel extends GoldExchangeCha
   const [
     session,
     wallet,
+    t,
   ] = await Promise.all([
     getServerSession(authOptions),
     getDepositWallet(channel),
+    getTranslations('UI.InPage.Gold.Confirm.Layout'),
   ]);
 
   if (!session) {
@@ -50,8 +53,14 @@ export const GoldExchangeConfirmLayout = async <TChannel extends GoldExchangeCha
       <Flex className="items-center">
         <Flex className="gap-2 md:w-1/2">
           <Flex className="info-section gap-2">
-            <GoldExchangeConfirmSection title="幣種" content={<GoldExchangeChannelUi channel={wallet.channel}/>}/>
-            <GoldExchangeConfirmSection title="充幣金額" content={amount ?? '-'}/>
+            <GoldExchangeConfirmSection
+              title={t('Type')}
+              content={<GoldExchangeChannelUi channel={wallet.channel}/>}
+            />
+            <GoldExchangeConfirmSection
+              title={t('Amount')}
+              content={amount ?? '-'}
+            />
             {children(wallet as GoldWalletClientTypeMap[TChannel])}
           </Flex>
         </Flex>
