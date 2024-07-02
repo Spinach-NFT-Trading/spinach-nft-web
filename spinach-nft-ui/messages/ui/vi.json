@@ -208,7 +208,17 @@
       }
     }
   },
+  "Layout": {
+    "Profile": {
+      "BuyGold": "購買 GOLD"
+    }
+  },
   "Account": {
+    "Assets": {
+      "Nft": "NFT 資產",
+      "Gold": "GOLD",
+      "Total": "總資產"
+    },
     "Info": {
       "UserId": "用戶 ID",
       "Email": "Email",

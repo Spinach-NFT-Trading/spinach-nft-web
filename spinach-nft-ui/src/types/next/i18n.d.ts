@@ -184,7 +184,17 @@ declare global {
           },
         },
       },
+      Layout: {
+        Profile: {
+          BuyGold: string,
+        },
+      },
       Account: {
+        Assets: {
+          Nft: string,
+          Gold: string,
+          Total: string,
+        },
         Info: {
           UserId: string,
           Email: string,
