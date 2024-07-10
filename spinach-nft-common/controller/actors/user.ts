@@ -45,14 +45,15 @@ type RecordBalanceAfterNftTxnOpts = {
 
 export const recordUserDataAfterNftTxn = async ({nftTxnId, nftTxn, session}: RecordBalanceAfterNftTxnOpts) => {
   await userBalanceCollection.insertMany([
-    {
-      ...(await getNewBalance({
-        accountId: nftTxn.from,
-        diff: nftTxn.price,
-      })),
-      type: 'nftSell',
-      nftTxnId,
-    },
+    // Not marking NFT sell because otherwise GOLD stays the same amount on the platform
+    // {
+    //   ...(await getNewBalance({
+    //     accountId: nftTxn.from,
+    //     diff: nftTxn.price,
+    //   })),
+    //   type: 'nftSell',
+    //   nftTxnId,
+    // },
     {
       ...(await getNewBalance({
         accountId: nftTxn.to,
