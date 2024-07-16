@@ -21,7 +21,7 @@ export const AdminMemberBalanceDailyRow = ({
   } = data;
 
   return (
-    <Flex direction="row" noFullWidth className="not-last:border-b border-b-slate-400 p-1.5">
+    <Flex direction="row" noFullWidth className="border-b-slate-400 p-1.5 not-last:border-b">
       <Flex center noFullWidth className="w-28 whitespace-nowrap">
         {dateString}
       </Flex>

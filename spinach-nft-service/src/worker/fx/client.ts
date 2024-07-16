@@ -1,4 +1,4 @@
-import WebSocket from 'ws';
+import {WebSocket} from 'ws';
 
 import {maxWebsocketUrl} from '@spinach/service/worker/fx/const';
 

@@ -45,7 +45,7 @@ export const AdminExchangeRequestsMatched = ({dataPromise}: Props) => {
         data={state.data}
         header={<AdminExchangeRequestsMatchedHeader/>}
         getKey={(data) => data?.requestUuid}
-        classOfRow="not-last:border-b w-max gap-1 border-b-slate-400 px-1 py-2"
+        classOfRow="w-max gap-1 border-b-slate-400 px-1 py-2 not-last:border-b"
         renderRow={({data}) => (
           <AdminExchangeRequestsMatchedRow data={data} bankDetailsMap={state.bankDetailsMap}/>
         )}

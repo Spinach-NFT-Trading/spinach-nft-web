@@ -25,7 +25,7 @@ export const AdminMemberBalanceDetailsRow = ({
   } = history;
 
   return (
-    <Flex direction="row" noFullWidth className="not-last:border-b border-b-slate-400 p-2">
+    <Flex direction="row" noFullWidth className="border-b-slate-400 p-2 not-last:border-b">
       <Flex center noFullWidth className="w-40 whitespace-nowrap">
         {format(epochMs, 'yyyy-MM-dd HH:mm:ss')}
       </Flex>
