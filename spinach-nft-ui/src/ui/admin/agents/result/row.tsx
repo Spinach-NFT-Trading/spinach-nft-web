@@ -8,7 +8,6 @@ import {clsx} from 'clsx';
 import {useTranslations} from 'next-intl';
 
 import {FlexButton} from '@spinach/next/components/layout/flex/button';
-import {Flex} from '@spinach/next/components/layout/flex/common';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {UserBalanceActivityMap} from '@spinach/next/types/mongo/balance';
 import {AdminAgentRowCommonProps} from '@spinach/next/ui/admin/agents/result/type';
@@ -44,10 +43,10 @@ export const AdminAgentRow = ({
     .filter(isNotNullish);
 
   return (
-    <Flex direction="row" noFullWidth className="gap-1">
-      <Flex noFullWidth className="w-52 justify-center">
+    <>
+      <td className="w-52 justify-center">
         <AdminAgentName agent={agent}/>
-      </Flex>
+      </td>
       <AdminMemberMonetaryCell value={getSumOfBalanceActivity({
         activities,
         getValue: ({currentBalance}) => currentBalance,
@@ -68,33 +67,37 @@ export const AdminAgentRow = ({
         activities,
         getValue: ({byTxnType}) => byTxnType['deposit.crypto'],
       })}/>
-      <AdminMemberCommissionSettingsCell
-        initial={{
-          buy: 0,
-          sell: 0,
-        }}
-        isAdmin={isAdmin}
-        disabled={status === 'processing'}
-        onUpload={async (commissionPercent) => {
-          if (!act) {
-            return;
-          }
+      <td>
+        <AdminMemberCommissionSettingsCell
+          initial={{
+            buy: 0,
+            sell: 0,
+          }}
+          isAdmin={isAdmin}
+          disabled={status === 'processing'}
+          onUpload={async (commissionPercent) => {
+            if (!act) {
+              return;
+            }
 
-          await act({
-            action: 'request',
-            options: {
-              type: 'admin.agent.update.commission',
-              data: {agentId: data.agentId, commissionPercent},
-            },
-          });
-        }}
-      />
-      <FlexButton onClick={onMemberListClick} className={clsx(
-        'button-clickable-bg items-center gap-1 whitespace-nowrap p-1',
-      )}>
-        <IdentificationIcon className="size-6"/>
-        <div>{t('LowerLevels')}</div>
-      </FlexButton>
-    </Flex>
+            await act({
+              action: 'request',
+              options: {
+                type: 'admin.agent.update.commission',
+                data: {agentId: data.agentId, commissionPercent},
+              },
+            });
+          }}
+        />
+      </td>
+      <td>
+        <FlexButton onClick={onMemberListClick} className={clsx(
+          'button-clickable-bg items-center gap-1 whitespace-nowrap p-1',
+        )}>
+          <IdentificationIcon className="size-6"/>
+          <div>{t('LowerLevels')}</div>
+        </FlexButton>
+      </td>
+    </>
   );
 };

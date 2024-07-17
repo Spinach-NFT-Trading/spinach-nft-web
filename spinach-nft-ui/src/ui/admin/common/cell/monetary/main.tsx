@@ -3,7 +3,6 @@ import React from 'react';
 import {Nullable} from '@spinach/common/types/common/typing';
 import {clsx} from 'clsx';
 
-import {Flex} from '@spinach/next/components/layout/flex/common';
 import {adminMemberMonetaryCellStyle} from '@spinach/next/ui/admin/common/cell/monetary/const';
 import {formatInt} from '@spinach/next/utils/number/format';
 
@@ -15,7 +14,7 @@ type Props = {
 
 export const AdminMemberMonetaryCell = ({value, applySignStyle}: Props) => {
   return (
-    <Flex direction="row" noFullWidth className={clsx(
+    <td className={clsx(
       value ? 'items-center justify-end gap-1' : 'justify-center',
       value && applySignStyle && value > 0 && 'text-green-300',
       value && applySignStyle && value < 0 && 'text-red-300',
@@ -27,6 +26,6 @@ export const AdminMemberMonetaryCell = ({value, applySignStyle}: Props) => {
           <span>G</span>
         </> :
         '-'}
-    </Flex>
+    </td>
   );
 };

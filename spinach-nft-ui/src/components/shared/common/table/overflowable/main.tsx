@@ -15,17 +15,18 @@ export const OverflowableTable = <TData, >({
 }: OverflowableTableProps<TData>) => {
   return (
     <Flex noFullWidth className="overflow-x-auto">
-      <Flex direction="row" noFullWidth className="w-max items-center [&>*]:shrink-0">
-        {header}
-      </Flex>
-      {data.map((entry) => (
-        <Flex key={getKey(entry)} direction="row" noFullWidth className={clsx(
-          'items-center [&>*]:shrink-0',
-          classOfRow,
-        )}>
-          {renderRow({data: entry})}
-        </Flex>
-      ))}
+      <table className="[&_td]:whitespace-nowrap [&_td]:p-2">
+        <thead className="w-max [&>*]:shrink-0">
+          {header}
+        </thead>
+        <tbody>
+          {data.map((entry) => (
+            <tr key={getKey(entry)} className={clsx('items-center [&>*]:shrink-0', classOfRow)}>
+              {renderRow({data: entry})}
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </Flex>
   );
 };

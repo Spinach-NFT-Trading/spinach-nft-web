@@ -9,7 +9,6 @@ import {UserInfo} from '@spinach/common/types/common/user/info';
 import {signIn} from 'next-auth/react';
 import {useTranslations} from 'next-intl';
 
-import {Flex} from '@spinach/next/components/layout/flex/common';
 import {VerificationStatusUi} from '@spinach/next/components/shared/common/verified';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {CommonUserData} from '@spinach/next/types/auth';
@@ -63,14 +62,14 @@ export const AdminMemberRow = ({
   const isPrivileged = isUserPrivileged(actor);
 
   return (
-    <Flex direction="row" noFullWidth className="gap-1">
-      <Flex noFullWidth className="w-52 justify-center">
+    <>
+      <td className="w-52 justify-center">
         {formatUserName(member)}
-      </Flex>
-      <Flex noFullWidth center className="w-20">
+      </td>
+      <td className="w-20">
         <VerificationStatusUi status={status}/>
-      </Flex>
-      <Flex noFullWidth center className="w-16">
+      </td>
+      <td className="w-16">
         <AdminMemberControlButton
           text={t('Agent')}
           isUpdatable={isPrivileged}
@@ -90,8 +89,8 @@ export const AdminMemberRow = ({
             },
           })}
         />
-      </Flex>
-      <Flex noFullWidth center className="w-16">
+      </td>
+      <td className="w-16">
         {
           !member.isAdmin &&
           <AdminMemberControlButton
@@ -116,7 +115,7 @@ export const AdminMemberRow = ({
             classOnInactive="text-green-300"
           />
         }
-      </Flex>
+      </td>
       <AdminMemberMonetaryCell value={balanceActivity?.currentBalance}/>
       <AdminMemberMonetaryCell applySignStyle value={balanceActivity?.byTxnType['nftBuy']}/>
       <AdminMemberMonetaryCell applySignStyle value={balanceActivity?.byTxnType['nftSell']}/>
@@ -125,30 +124,32 @@ export const AdminMemberRow = ({
       <AdminMemberMonetaryCell applySignStyle value={0}/>
       {
         actor.isAdmin &&
-        <AdminMemberCommissionSettingsCell
-          initial={commissionPercent}
-          isAdmin={isPrivileged}
-          disabled={controlDisabled}
-          onUpload={async (commissionPercent) => {
-            const session = await actorWithToast({
-              action: 'request',
-              options: {
-                type: 'admin.member.update.commission',
-                data: {targetId: id, commissionPercent},
-              },
-            });
+        <td>
+          <AdminMemberCommissionSettingsCell
+            initial={commissionPercent}
+            isAdmin={isPrivileged}
+            disabled={controlDisabled}
+            onUpload={async (commissionPercent) => {
+              const session = await actorWithToast({
+                action: 'request',
+                options: {
+                  type: 'admin.member.update.commission',
+                  data: {targetId: id, commissionPercent},
+                },
+              });
 
-            const error = session?.user.jwtUpdateError;
-            if (error) {
-              onUpdateError(error);
-              return;
-            }
+              const error = session?.user.jwtUpdateError;
+              if (error) {
+                onUpdateError(error);
+                return;
+              }
 
-            onUpdatedMember({...member, commissionPercent});
-          }}
-        />
+              onUpdatedMember({...member, commissionPercent});
+            }}
+          />
+        </td>
       }
       <AdminMemberSingleControls showPopup={showPopup}/>
-    </Flex>
+    </>
   );
 };

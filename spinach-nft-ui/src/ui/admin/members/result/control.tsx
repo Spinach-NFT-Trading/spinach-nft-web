@@ -21,23 +21,25 @@ export const AdminMemberSingleControls = ({
   const t = useTranslations('UI.InPage.Admin.Members.Control');
 
   return (
-    <Flex direction="row" noFullWidth className="gap-1 px-1">
-      <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('info')}>
-        <IdentificationIcon className="size-6"/>
-        <div>{t('AccountInfo')}</div>
-      </FlexButton>
-      <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('bankDetails')}>
-        <CurrencyDollarIcon className="size-6"/>
-        <div>{t('BankDetails')}</div>
-      </FlexButton>
-      <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('nftTxn')}>
-        <ArrowsRightLeftIcon className="size-6"/>
-        <div>{t('TxnHistory')}</div>
-      </FlexButton>
-      <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('balanceHistory')}>
-        <CurrencyDollarIcon className="size-6"/>
-        <div>{t('BalanceHistory')}</div>
-      </FlexButton>
-    </Flex>
+    <td className="gap-1 px-1">
+      <Flex direction="row" noFullWidth className="gap-1 px-1">
+        <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('info')}>
+          <IdentificationIcon className="size-6"/>
+          <div>{t('AccountInfo')}</div>
+        </FlexButton>
+        <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('bankDetails')}>
+          <CurrencyDollarIcon className="size-6"/>
+          <div>{t('BankDetails')}</div>
+        </FlexButton>
+        <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('nftTxn')}>
+          <ArrowsRightLeftIcon className="size-6"/>
+          <div>{t('TxnHistory')}</div>
+        </FlexButton>
+        <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('balanceHistory')}>
+          <CurrencyDollarIcon className="size-6"/>
+          <div>{t('BalanceHistory')}</div>
+        </FlexButton>
+      </Flex>
+    </td>
   );
 };

@@ -3,7 +3,6 @@ import React from 'react';
 import {NftExchangeMatchedData} from '@spinach/common/types/data/nft/match';
 import {BankDetailsMap} from '@spinach/common/types/data/user/bank';
 
-import {Flex} from '@spinach/next/components/layout/flex/common';
 import {CountUp} from '@spinach/next/components/shared/time/countUp';
 import {formatBankDetails} from '@spinach/next/utils/data/user';
 import {formatInt} from '@spinach/next/utils/number/format';
@@ -24,11 +23,11 @@ export const AdminExchangeRequestsMatchedRow = ({data, bankDetailsMap}: Props) =
   } = data;
 
   return (
-    <Flex direction="row" noFullWidth className="items-center gap-1">
-      <Flex center noFullWidth className="w-96">
+    <>
+      <td className="w-96">
         {requestUuid}
-      </Flex>
-      <Flex center noFullWidth className="w-40">
+      </td>
+      <td className="w-40">
         <CountUp
           date={new Date(matchedAtEpochMs)}
           getStyleClass={(totalSeconds) => {
@@ -43,20 +42,20 @@ export const AdminExchangeRequestsMatchedRow = ({data, bankDetailsMap}: Props) =
             return null;
           }}
         />
-      </Flex>
-      <Flex center noFullWidth className="w-20">
+      </td>
+      <td className="w-20">
         {formatInt(amount.requested)}
-      </Flex>
-      <Flex center noFullWidth className="w-20">
+      </td>
+      <td className="w-20">
         {formatInt(amount.matched)}
-      </Flex>
-      <Flex center noFullWidth className="w-20">
+      </td>
+      <td className="w-20">
         {formatInt(amount.refunded)}
-      </Flex>
-      <Flex center noFullWidth className="w-96">
+      </td>
+      <td className="w-96">
         {token}
-      </Flex>
-      <Flex center noFullWidth className="w-96">
+      </td>
+      <td className="w-96">
         {bankDetailsUuid.map((uuid) => {
           const bankDetails = bankDetailsMap[uuid];
           if (!bankDetails) {
@@ -65,7 +64,7 @@ export const AdminExchangeRequestsMatchedRow = ({data, bankDetailsMap}: Props) =
 
           return <span key={uuid}>{formatBankDetails(bankDetails)}</span>;
         })}
-      </Flex>
-    </Flex>
+      </td>
+    </>
   );
 };
