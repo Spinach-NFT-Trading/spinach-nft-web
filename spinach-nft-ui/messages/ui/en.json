@@ -253,6 +253,10 @@
           "ThisMonth": "this month",
           "LastMonth": "last month"
         },
+        "Commission": {
+          "Buy": "Buy",
+          "Sell": "sell"
+        },
         "Summary": {
           "TotalBalance": "total balance",
           "TotalNftBought": "Total NFT purchases",
@@ -263,6 +267,7 @@
         "NoAgent": "(no agent)"
       },
       "Agents": {
+        "Title": "Agent list",
         "Header": {
           "UserName": "Username",
           "TotalBalance": "Total offline balance",

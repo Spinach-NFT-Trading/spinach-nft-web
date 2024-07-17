@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {isNotNullish} from '@spinach/common/utils/type';
+import {useTranslations} from 'next-intl';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -33,11 +34,13 @@ export const AdminMemberAgent = ({isAdmin, onAgentSelected}: Props) => {
   });
   const {lazyLoaded} = inputControl;
 
+  const t = useTranslations('UI.InPage.Admin.Agents');
+
   const response = lazyLoaded?.adminAgentList;
 
   return (
     <Flex className="gap-2">
-      <div className="text-2xl">代理一覽</div>
+      <div className="text-2xl">{t('Title')}</div>
       <AdminDataSearchInputUi
         input={input}
         setInput={setInput}

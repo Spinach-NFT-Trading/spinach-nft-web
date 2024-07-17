@@ -253,6 +253,10 @@
           "ThisMonth": "tháng này",
           "LastMonth": "tháng trước"
         },
+        "Commission": {
+          "Buy": "Mua",
+          "Sell": "bán"
+        },
         "Summary": {
           "TotalBalance": "tổng số dư",
           "TotalNftBought": "Tổng số lần mua NFT",
@@ -263,6 +267,7 @@
         "NoAgent": "(không có đại lý)"
       },
       "Agents": {
+        "Title": "Danh sách đại lý",
         "Header": {
           "UserName": "tên tài khoản",
           "TotalBalance": "Tổng số dư ngoại tuyến",

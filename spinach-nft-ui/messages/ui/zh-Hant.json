@@ -253,6 +253,10 @@
           "ThisMonth": "本月",
           "LastMonth": "上月"
         },
+        "Commission": {
+          "Buy": "買",
+          "Sell": "賣"
+        },
         "Summary": {
           "TotalBalance": "總餘額",
           "TotalNftBought": "總 NFT 購買量",
@@ -263,6 +267,7 @@
         "NoAgent": "(無代理)"
       },
       "Agents": {
+        "Title": "代理一覽",
         "Header": {
           "UserName": "用戶名稱",
           "TotalBalance": "下線總餘額",

@@ -253,6 +253,10 @@
           "ThisMonth": "今月",
           "LastMonth": "先月"
         },
+        "Commission": {
+          "Buy": "買う",
+          "Sell": "売る"
+        },
         "Summary": {
           "TotalBalance": "総合収支",
           "TotalNftBought": "NFT購入総額",
@@ -263,6 +267,7 @@
         "NoAgent": "(代理店なし)"
       },
       "Agents": {
+        "Title": "エージェントリスト",
         "Header": {
           "UserName": "ユーザー名",
           "TotalBalance": "オフライン残高合計",
@@ -280,7 +285,7 @@
         }
       },
       "GlobalConfig": {
-        "RequestToken": "リクエストトークンの追加",
+        "RequestToken": "リクエストトークンを追加",
         "Updated": "更新する",
         "Deleted": "消去",
         "Cashback": {

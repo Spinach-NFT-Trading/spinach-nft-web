@@ -253,6 +253,10 @@
           "ThisMonth": "เดือนนี้",
           "LastMonth": "เดือนที่แล้ว"
         },
+        "Commission": {
+          "Buy": "ซื้อ",
+          "Sell": "ขาย"
+        },
         "Summary": {
           "TotalBalance": "ยอดรวม",
           "TotalNftBought": "การซื้อ NFT ทั้งหมด",
@@ -263,6 +267,7 @@
         "NoAgent": "(ไม่มีตัวแทน)"
       },
       "Agents": {
+        "Title": "รายชื่อตัวแทน",
         "Header": {
           "UserName": "ชื่อผู้ใช้",
           "TotalBalance": "ยอดออฟไลน์ทั้งหมด",

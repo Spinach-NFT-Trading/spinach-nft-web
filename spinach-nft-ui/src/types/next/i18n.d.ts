@@ -229,6 +229,10 @@ declare global {
               ThisMonth: string,
               LastMonth: string,
             },
+            Commission: {
+              Buy: string,
+              Sell: string,
+            },
             Summary: {
               TotalBalance: string,
               TotalNftBought: string,
@@ -239,6 +243,7 @@ declare global {
             NoAgent: string,
           },
           Agents: {
+            Title: string,
             Header: {
               UserName: string,
               TotalBalance: string,

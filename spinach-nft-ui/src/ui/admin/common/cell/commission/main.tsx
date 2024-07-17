@@ -2,6 +2,7 @@ import React from 'react';
 
 import CloudArrowUpIcon from '@heroicons/react/24/outline/CloudArrowUpIcon';
 import {UserCommissionPercent} from '@spinach/common/types/common/user/commission';
+import {useTranslations} from 'next-intl';
 
 import {FlexForm} from '@spinach/next/components/layout/flex/form';
 import {AdminMemberCommissionSettingsInput} from '@spinach/next/ui/admin/common/cell/commission/input';
@@ -25,12 +26,14 @@ export const AdminMemberCommissionSettingsCell = ({
     setCommissionPercent,
   ] = React.useState(initial);
 
+  const t = useTranslations('UI.InPage.Admin.Common.Commission');
+
   const actualDisabled= disabled || !isAdmin;
 
   return (
     <FlexForm direction="row" noFullWidth center className="w-60 gap-1">
       <AdminMemberCommissionSettingsInput
-        title="買"
+        title={t('Buy')}
         rate={commissionPercent.buy}
         onUpdated={(buy) => setCommissionPercent((original): UserCommissionPercent => ({
           ...original,
@@ -39,7 +42,7 @@ export const AdminMemberCommissionSettingsCell = ({
         disabled={actualDisabled}
       />
       <AdminMemberCommissionSettingsInput
-        title="賣"
+        title={t('Sell')}
         rate={commissionPercent.sell}
         onUpdated={(sell) => setCommissionPercent((original): UserCommissionPercent => ({
           ...original,
