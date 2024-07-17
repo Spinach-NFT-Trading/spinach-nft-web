@@ -7,6 +7,7 @@ import LockOpenIcon from '@heroicons/react/24/solid/LockOpenIcon';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {UserInfo} from '@spinach/common/types/common/user/info';
 import {signIn} from 'next-auth/react';
+import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {VerificationStatusUi} from '@spinach/next/components/shared/common/verified';
@@ -50,6 +51,7 @@ export const AdminMemberRow = ({
     isSuspended,
     commissionPercent,
   } = member;
+  const t = useTranslations('UI.InPage.Admin.Members.Control.Toggle');
 
   const {act: actorWithToast} = useUserDataActor({statusToast: true});
 
@@ -70,7 +72,7 @@ export const AdminMemberRow = ({
       </Flex>
       <Flex noFullWidth center className="w-16">
         <AdminMemberControlButton
-          text="代理"
+          text={t('Agent')}
           isUpdatable={isPrivileged}
           active={isAgent}
           disabled={controlDisabled}
@@ -93,7 +95,7 @@ export const AdminMemberRow = ({
         {
           !member.isAdmin &&
           <AdminMemberControlButton
-            text={isSuspended ? '停用' : '正常'}
+            text={isSuspended ? t('Suspended') : t('Normal')}
             isUpdatable={isPrivileged}
             active={isSuspended}
             disabled={controlDisabled}

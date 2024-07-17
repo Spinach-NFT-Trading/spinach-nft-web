@@ -10,8 +10,10 @@ export const AdminPage = async () => {
     <AdminOrAgentPageLayout>
       {({user}) => (
         <I18nProvider namespaces={[
+          'UI.InPage.Admin',
+          'UI.Account',
           'UI.VerificationStatus',
-          'UI.Account.IdType',
+          'UI.User.Balance.HistoryType',
         ]}>
           <AdminPageClient user={user}/>
         </I18nProvider>

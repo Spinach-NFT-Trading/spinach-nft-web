@@ -1,31 +1,35 @@
 import React from 'react';
 
+import {useTranslations} from 'next-intl';
+
 import {Flex} from '@spinach/next/components/layout/flex/common';
 
 
 export const AdminExchangeRequestsMatchedHeader = () => {
+  const t = useTranslations('UI.InPage.Admin.ExchangeRequest.Header');
+
   return (
     <Flex direction="row" noFullWidth className="items-center gap-1 bg-slate-900/90 px-1 py-2">
       <Flex center noFullWidth className="w-96">
-        要求 ID
+        {t('RequestId')}
       </Flex>
       <Flex center noFullWidth className="w-40">
-        請求成立經過時長
+        {t('TimePassed')}
       </Flex>
       <Flex center noFullWidth className="w-20">
-        金額 (要求)
+        {t('AmountRequested')}
       </Flex>
       <Flex center noFullWidth className="w-20">
-        金額 (實際)
+        {t('AmountActual')}
       </Flex>
       <Flex center noFullWidth className="w-20">
-        金額 (退還)
+        {t('AmountToRefund')}
       </Flex>
       <Flex center noFullWidth className="w-96">
-        來源 (Token)
+        {t('SourceToken')}
       </Flex>
       <Flex center noFullWidth className="w-96">
-        銀行帳號
+        {t('BankAccount')}
       </Flex>
     </Flex>
   );

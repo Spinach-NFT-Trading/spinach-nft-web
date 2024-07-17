@@ -1,6 +1,8 @@
 'use client';
 import React from 'react';
 
+import {useTranslations} from 'next-intl';
+
 import {useTabbedContentControl} from '@spinach/next/components/layout/tab/hook';
 import {TabbedContent} from '@spinach/next/components/layout/tab/main';
 import {CommonUserData} from '@spinach/next/types/auth';
@@ -24,6 +26,8 @@ export const AdminPageClient = ({user}: Props) => {
   const [agentId, setAgentId] = React.useState<string | null>(null);
   const tabControl = useTabbedContentControl<AdminPageTab>(user ? 'agents' : 'members');
 
+  const t = useTranslations('UI.InPage.Admin.Tabs');
+
   return (
     <AgentIdContext.Provider value={agentId}>
       <TabbedContent
@@ -36,13 +40,13 @@ export const AdminPageClient = ({user}: Props) => {
         })}
         control={tabControl}
         tabTitle={{
-          agents: '代理列表',
-          members: '會員列表',
-          exchangeRequests: 'NFT 交易請求',
-          verifyId: '驗證身分',
-          verifyBankAccount: '驗證銀行帳號',
-          verifyBankTxn: '驗證 GOLD 購買紀錄',
-          globalConfig: '全站設定',
+          agents: t('Agents'),
+          members: t('Members'),
+          exchangeRequests: t('ExchangeRequests'),
+          verifyId: t('VerifyId'),
+          verifyBankAccount: t('VerifyBankAccount'),
+          verifyBankTxn: t('VerifyBankTxn'),
+          globalConfig: t('GlobalConfig'),
         }}
         content={{
           agents: (

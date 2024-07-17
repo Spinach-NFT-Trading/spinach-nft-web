@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {useTranslations} from 'next-intl';
+
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {adminMemberMonetaryCellStyle} from '@spinach/next/ui/admin/common/cell/monetary/const';
 
@@ -9,42 +11,44 @@ type Props = {
 };
 
 export const AdminMemberSingleHeader = ({isAdmin}: Props) => {
+  const t = useTranslations('UI.InPage.Admin.Members.Header');
+
   return (
     <Flex direction="row" noFullWidth className="items-center gap-1 bg-slate-900/90 px-1 py-2">
       <Flex center noFullWidth className="w-52">
-        用戶名稱
+        {t('UserId')}
       </Flex>
       <Flex center noFullWidth className="w-20">
-        驗證狀態
+        {t('VerificationStatus')}
       </Flex>
       <Flex center noFullWidth className="w-16">
-        代理
+        {t('Agent')}
       </Flex>
       <Flex center noFullWidth className="w-16">
-        狀態
+        {t('Status')}
       </Flex>
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
-        目前餘額
+        {t('CurrentBalance')}
       </Flex>
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
-        NFT 購買量
+        {t('NftBought')}
       </Flex>
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
-        NFT 售出量
+        {t('NftSold')}
       </Flex>
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
-        入金 (台幣)
+        {t('DepositedTwd')}
       </Flex>
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
-        入金 (USDT)
+        {t('DepositedUsdt')}
       </Flex>
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
-        退傭
+        {t('Cashback')}
       </Flex>
       {
         isAdmin &&
         <Flex center noFullWidth className="w-60">
-          退傭設定
+          {t('CashbackSettings')}
         </Flex>
       }
       <Flex noFullWidth className="w-[42rem]"/>

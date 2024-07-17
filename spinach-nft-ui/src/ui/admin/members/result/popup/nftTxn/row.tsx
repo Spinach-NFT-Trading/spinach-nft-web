@@ -6,6 +6,7 @@ import {UserDataMap} from '@spinach/common/types/common/user/data';
 import {UserInfo} from '@spinach/common/types/common/user/info';
 import {clsx} from 'clsx';
 import {format} from 'date-fns/format';
+import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NftTxnModelClient} from '@spinach/next/types/mongo/nft';
@@ -26,6 +27,8 @@ export const AdminMemberNftTxnRow = ({
   const isSelling = txn.from === member.id;
   const isBuying = txn.to === member.id;
 
+  const t = useTranslations('UI.InPage.Admin.Members.Popup.NftTxn');
+
   return (
     <Flex direction="row" noFullWidth className="border-b-slate-400 p-2 not-last:border-b">
       <Flex center noFullWidth className="w-40">
@@ -40,14 +43,14 @@ export const AdminMemberNftTxnRow = ({
           isSelling &&
           <>
             <ArrowUpRightIcon className="size-5"/>
-            <span>販售</span>
+            <span>{t('Sell')}</span>
           </>
         }
         {
           isBuying &&
           <>
             <ArrowDownRightIcon className="size-5"/>
-            <span>購買</span>
+            <span>{t('Buy')}</span>
           </>
         }
       </Flex>

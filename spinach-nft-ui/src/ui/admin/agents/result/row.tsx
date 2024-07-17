@@ -5,6 +5,7 @@ import {UserData} from '@spinach/common/types/common/user/data';
 import {UserInfoListByAgent} from '@spinach/common/types/common/user/info';
 import {isNotNullish} from '@spinach/common/utils/type';
 import {clsx} from 'clsx';
+import {useTranslations} from 'next-intl';
 
 import {FlexButton} from '@spinach/next/components/layout/flex/button';
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -32,6 +33,8 @@ export const AdminAgentRow = ({
   onMemberListClick,
 }: Props) => {
   const {members} = data;
+
+  const t = useTranslations('UI.InPage.Admin.Agents');
 
   // Not re-using actor from lookback control because it doesn't show status toast
   const {act, status} = useUserDataActor({statusToast: true});
@@ -90,7 +93,7 @@ export const AdminAgentRow = ({
         'button-clickable-bg items-center gap-1 whitespace-nowrap p-1',
       )}>
         <IdentificationIcon className="size-6"/>
-        <div>下線列表</div>
+        <div>{t('LowerLevels')}</div>
       </FlexButton>
     </Flex>
   );

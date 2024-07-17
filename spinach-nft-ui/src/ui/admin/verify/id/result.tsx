@@ -34,6 +34,7 @@ export const AdminVerifyIdResults = ({data, input}: Props) => {
   });
 
   const t = useTranslations('UI.Account.IdType');
+  const t2 = useTranslations('UI.InPage.Admin.VerifyInfo.Info');
 
   return (
     <AdminVerification
@@ -78,12 +79,12 @@ export const AdminVerifyIdResults = ({data, input}: Props) => {
         return (
           <Flex className="gap-1.5 p-1">
             <Flex className="gap-1">
-              <AdminVerificationDataCell title="生日" info={birthday}/>
-              <AdminVerificationDataCell title="Email" info={email}/>
-              <AdminVerificationDataCell title="LINE ID" info={lineId}/>
+              <AdminVerificationDataCell title={t2('Birthday')} info={birthday}/>
+              <AdminVerificationDataCell title={t2('Email')} info={email}/>
+              <AdminVerificationDataCell title={t2('LineId')} info={lineId}/>
             </Flex>
             <AdminVerificationDataCell
-              title="錢包地址"
+              title={t2('Wallet')}
               info={
                 <Flex direction="row" noFullWidth center className={clsx(
                   'w-min gap-1 rounded-lg pl-2 ring-1 ring-slate-300',

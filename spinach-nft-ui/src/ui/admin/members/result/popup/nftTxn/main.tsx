@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {useTranslations} from 'next-intl';
+
 import {AdminLookBackResultContent} from '@spinach/next/ui/admin/members/result/popup/common/content';
 import {AdminLookBackResultLayout} from '@spinach/next/ui/admin/members/result/popup/common/layout';
 import {AdminMemberNftTxnHeader} from '@spinach/next/ui/admin/members/result/popup/nftTxn/header';
@@ -9,6 +11,8 @@ import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/popup
 
 export const AdminMemberNftTxnPopup = (props: AdminMemberPopupProps) => {
   const {member} = props;
+
+  const t = useTranslations('UI.InPage.Admin.Members.Popup.NftTxn.Content');
 
   return (
     <AdminLookBackResultLayout
@@ -31,8 +35,8 @@ export const AdminMemberNftTxnPopup = (props: AdminMemberPopupProps) => {
                 txn={txn}
               />
             )}
-            textOnLoading="NFT 交易紀錄"
-            textOnNoResult="無 NFT 交易紀錄"
+            textOnLoading={t('Loading')}
+            textOnNoResult={t('NoResult')}
           />
         );
       }}

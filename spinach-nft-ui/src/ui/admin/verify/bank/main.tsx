@@ -1,10 +1,12 @@
 'use client';
 import React from 'react';
 
+import {useTranslations} from 'next-intl';
+
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {UserDataLazyLoad} from '@spinach/next/components/shared/userData/lazyLoad';
 import {AdminDataSearchInputUi} from '@spinach/next/ui/admin/input/main';
-import {adminVerifyBankSearchKeyName} from '@spinach/next/ui/admin/verify/bank/const';
+import {adminVerifyBankSearchKeyI18nId} from '@spinach/next/ui/admin/verify/bank/const';
 import {AdminVerifyBankResults} from '@spinach/next/ui/admin/verify/bank/result';
 import {adminVerifyBankFilterBasis, AdminVerifyBankFilterInput} from '@spinach/next/ui/admin/verify/bank/type';
 
@@ -15,20 +17,22 @@ export const AdminVerifyBank = () => {
     value: '',
   });
 
+  const t = useTranslations('UI.InPage.Admin.VerifyInfo');
+
   return (
     <Flex className="gap-2">
-      <div className="text-2xl">待驗證銀行帳號</div>
+      <div className="text-2xl">{t('Title.Bank')}</div>
       <AdminDataSearchInputUi
         input={input}
         setInput={setInput}
         availableSearchKeys={[...adminVerifyBankFilterBasis]}
-        getSearchKeyName={(key) => adminVerifyBankSearchKeyName[key]}
+        getSearchKeyName={(key) => t(adminVerifyBankSearchKeyI18nId[key])}
       />
       <UserDataLazyLoad
         options={{
           type: 'adminUnverifiedBankDetails',
         }}
-        loadingText="待驗證銀行帳號"
+        loadingText={t('Title.Bank')}
         content={(data) => {
           const response = data?.adminUnverifiedBankDetails;
 

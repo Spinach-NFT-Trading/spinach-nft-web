@@ -1,6 +1,8 @@
 'use client';
 import React from 'react';
 
+import {useTranslations} from 'next-intl';
+
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {FlexLink} from '@spinach/next/components/layout/flex/link';
 import {localStorageKeyOfNftPositionsMatched} from '@spinach/next/const/localStorage';
@@ -16,6 +18,8 @@ export const UserControlClient = (props: UserControlCommonProps) => {
   const {session} = props;
 
   const [positionsMatched, setPositionsMatched] = React.useState(false);
+
+  const t = useTranslations('UI.Layout.Nav');
 
   const checkPositionsMatched = async () => {
     const executorUserId = session?.user.id;
@@ -57,7 +61,7 @@ export const UserControlClient = (props: UserControlCommonProps) => {
       {
         positionsMatched &&
         <FlexLink href="/account/nft/exchange" center className="bg-blink p-2">
-          有持倉售出
+          {t('PositionSold')}
         </FlexLink>
       }
       <UserProfileButton {...props}/>

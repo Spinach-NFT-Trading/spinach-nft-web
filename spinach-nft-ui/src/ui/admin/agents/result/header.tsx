@@ -1,32 +1,36 @@
 import React from 'react';
 
+import {useTranslations} from 'next-intl';
+
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {adminMemberMonetaryCellStyle} from '@spinach/next/ui/admin/common/cell/monetary/const';
 
 
 export const AdminAgentHeader = () => {
+  const t = useTranslations('UI.InPage.Admin.Agents.Header');
+
   return (
     <Flex direction="row" noFullWidth className="items-center gap-1 bg-slate-900/90 px-1 py-2">
       <Flex center noFullWidth className="w-52">
-        用戶名稱
+        {t('UserName')}
       </Flex>
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
-        下線總餘額
+        {t('TotalBalance')}
       </Flex>
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
-        NFT 購買量
+        {t('TotalNftBought')}
       </Flex>
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
-        NFT 售出量
+        {t('TotalNftSold')}
       </Flex>
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
-        入金 (台幣)
+        {t('DepositedTwd')}
       </Flex>
       <Flex center noFullWidth className={adminMemberMonetaryCellStyle}>
-        入金 (USDT)
+        {t('DepositedUsdt')}
       </Flex>
       <Flex center noFullWidth className="w-60">
-        退傭設定
+        {t('CashbackSettings')}
       </Flex>
       <Flex noFullWidth className="w-80"/>
     </Flex>

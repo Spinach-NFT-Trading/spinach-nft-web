@@ -135,7 +135,7 @@
         },
         "Completed": {
           "Message": "Đăng ký thành công! ",
-          "KYC": "Chuyển đến xác thực tên thật"
+          "KYC": "Đi tới xác thực tên thật"
         },
         "NextStep": "Bước tiếp theo",
         "AlreadyHaveAnAccount": "Bạn co săn san để tạo một tai khoản?"
@@ -164,7 +164,7 @@
         },
         "Popup": {
           "Title": "Xác nhận mua hàng",
-          "Message": "Bạn có chắc chắn muốn mua {vàng} VÀNG không?",
+          "Message": "Bạn có chắc chắn muốn mua {gold} VÀNG không?",
           "Button": "Xác nhận"
         }
       },
@@ -232,9 +232,195 @@
           "Content": "Tuyên bố từ chối trách nhiệm này chỉ có thể mô tả ngắn gọn một số vấn đề rủi ro có thể liên quan. Nó không thể liệt kê đầy đủ tất cả các rủi ro và các khía cạnh liên quan khác nhau liên quan đến quá trình mua, nắm giữ, mua và bán hoặc giao dịch. các yếu tố trước khi mua hàng, bao gồm nhưng không giới hạn ở mục đích mua hàng cá nhân và khả năng chấp nhận rủi ro, v.v.<br/><br/>Người mua NFT do dự án này phát hành nên hiểu rằng giá thị trường của hàng hóa blockchain và hàng hóa tiền điện tử cực kỳ biến động và không chắc chắn, đồng thời không phải tất cả mọi người đều phù hợp để mua, nắm giữ và giao dịch các hành vi liên quan. <br/><br/>Mua sản phẩm này không có nghĩa là bạn có quyền sở hữu độc quyền hoặc độc quyền đối với các tác phẩm liên quan đến sản phẩm này, cũng không có nghĩa là bạn đã được ủy quyền bởi bất kỳ quyền sở hữu trí tuệ nào của sản phẩm. Người mua đồng ý không sử dụng sản phẩm cho mục đích thương mại. mục đích. <br/><br/>Tất cả các dịch vụ thông tin do công ty và trang web này cung cấp có thể bị xâm phạm hoặc truy cập trái phép do tin tặc, vi rút hoặc các phương tiện khác. Trang web này sẽ cố gắng hết sức để kiểm soát rủi ro, nhưng không có gì đảm bảo rằng rủi ro có thể được giảm thiểu hoàn toàn. . <br/><br/>Công ty và các nhà cung cấp của Công ty sẽ không chịu trách nhiệm bồi thường hoặc trách nhiệm pháp lý khác đối với bất kỳ thiệt hại nào mà bạn phải chịu do sử dụng dịch vụ này, bao gồm nhưng không giới hạn lỗi của người dùng (như quên mật khẩu, lỗi giao dịch hoặc sai địa chỉ), lỗi máy chủ. hoặc mất dữ liệu, truy cập trái phép vào Ứng dụng, bất kỳ hoạt động trái phép nào của bên thứ ba, bao gồm nhưng không giới hạn việc sử dụng vi-rút, lừa đảo, hành vi man rợ hoặc các phương pháp tấn công trang web khác.<br/><br/>Công ty không chịu trách nhiệm về các trục trặc liên tục do lỗ hổng bảo mật hoặc bất kỳ loại trục trặc nào, hoạt động bất thường của phần mềm (như ví, hợp đồng thông minh), chuỗi khối hoặc bất kỳ chức năng nào khác của tài sản kỹ thuật số.<br/><br/>Người mua sản phẩm này nên chú ý đến luật pháp, trật tự công cộng và phong tục tập quán của quốc gia hoặc khu vực nơi họ sinh sống. Người mua nên chú ý và hiểu rõ liệu sản phẩm này hoặc các công trình liên quan đến sản phẩm này có vi phạm luật pháp hoặc trật tự công cộng hay không. phong tục tập quán tốt của quốc gia hoặc khu vực nơi họ đặt trụ sở Rủi ro nếu xảy ra bất kỳ vấn đề pháp lý hoặc rủi ro bất hợp pháp nào, người mua sẽ hoàn toàn chịu trách nhiệm.<br/><br/>Công ty có quyền thực hiện các thay đổi đối với tất cả các dịch vụ, quy tắc mua hàng, nội dung thông tin và tuyên bố được cung cấp và những thay đổi sẽ có hiệu lực ngay sau khi phát hành."
         }
       }
+    },
+    "Admin": {
+      "Tabs": {
+        "Agents": "danh sách proxy",
+        "Members": "Danh sách thành viên",
+        "ExchangeRequests": "Yêu cầu giao dịch NFT",
+        "VerifyId": "Xác minh danh tính",
+        "VerifyBankAccount": "Xác minh tài khoản ngân hàng",
+        "VerifyBankTxn": "Xác minh lịch sử mua VÀNG",
+        "GlobalConfig": "Cài đặt trên toàn trang web"
+      },
+      "Common": {
+        "LookBack": {
+          "StartDate": "Từ ngày)",
+          "EndDate": "ngày (kết thúc)",
+          "Today": "Hôm nay",
+          "Yesterday": "Hôm qua",
+          "ThisWeek": "Trong vòng 7 ngày",
+          "ThisMonth": "tháng này",
+          "LastMonth": "tháng trước"
+        },
+        "Summary": {
+          "TotalBalance": "tổng số dư",
+          "TotalNftBought": "Tổng số lần mua NFT",
+          "TotalNftSold": "Tổng số NFT đã bán",
+          "TotalDepositedUsdt": "Tổng số tiền gửi USDT",
+          "TotalDepositedTwd": "Tổng số tiền gửi NT$"
+        },
+        "NoAgent": "(không có đại lý)"
+      },
+      "Agents": {
+        "Header": {
+          "UserName": "tên tài khoản",
+          "TotalBalance": "Tổng số dư ngoại tuyến",
+          "TotalNftBought": "Khối lượng mua NFT",
+          "TotalNftSold": "Khối lượng bán NFT",
+          "DepositedTwd": "Tiền gửi (Đô la Đài Loan)",
+          "DepositedUsdt": "Tiền gửi (USDT)",
+          "CashbackSettings": "Cài đặt hoàn tiền hoa hồng"
+        },
+        "LowerLevels": "Danh sách ngoại tuyến",
+        "Search": {
+          "IdNumber": "Cỡ chữ CMND",
+          "Username": "Tên người dùng",
+          "Name": "tên thật"
+        }
+      },
+      "GlobalConfig": {
+        "RequestToken": "Thêm mã thông báo yêu cầu",
+        "Updated": "thay mới",
+        "Deleted": "xóa bỏ",
+        "Cashback": {
+          "Twd": "Đô la Đài Loan",
+          "Usdt": "USDT",
+          "ThirdParty": "Hoàn trả hoa hồng cho bên thứ ba"
+        }
+      },
+      "ExchangeRequest": {
+        "Tabs": {
+          "Queued": "giao dịch đang chờ xử lý",
+          "Matched": "Để được xác nhận",
+          "Completed": "hoàn thành"
+        },
+        "Header": {
+          "RequestId": "Yêu cầu ID",
+          "TimePassed": "Thời gian trôi qua kể từ khi yêu cầu được thiết lập",
+          "Amount": "Số lượng",
+          "AmountRequested": "Số tiền (bắt buộc)",
+          "AmountActual": "Số tiền (thực tế)",
+          "AmountToRefund": "Số tiền (hoàn tiền)",
+          "SourceToken": "Nguồn(Mã thông báo)",
+          "BankAccount": "số tài khoản ngân hàng"
+        },
+        "LastUpdated": "Cập nhật lần cuối vào"
+      },
+      "Members": {
+        "Title": "Thông tin thành viên",
+        "Control": {
+          "Toggle": {
+            "Agent": "diễn xuất",
+            "Normal": "Bình thường",
+            "Suspended": "vô hiệu hóa"
+          },
+          "AccountInfo": "Thông tin tài khoản",
+          "BankDetails": "Thông tin tài khoản ngân hàng",
+          "TxnHistory": "Lịch sử giao dịch",
+          "BalanceHistory": "Lịch sử số dư"
+        },
+        "Header": {
+          "UserId": "tên tài khoản",
+          "VerificationStatus": "Trạng thái xác minh",
+          "Agent": "diễn xuất",
+          "Status": "tình trạng",
+          "CurrentBalance": "Số dư hiện tại",
+          "NftBought": "Khối lượng mua NFT",
+          "NftSold": "Khối lượng bán NFT",
+          "DepositedTwd": "Tiền gửi (Đô la Đài Loan)",
+          "DepositedUsdt": "Tiền gửi (USDT)",
+          "Cashback": "Hoa hồng trả lại",
+          "CashbackSettings": "Cài đặt hoàn tiền hoa hồng"
+        },
+        "Info": {
+          "Id": "Số sê-ri của người dùng",
+          "IdNumber": "Cỡ chữ CMND",
+          "Username": "Tên người dùng",
+          "Name": "tên thật",
+          "Email": "E-mail",
+          "Birthday": "Sinh nhật",
+          "LineId": "SỐ DÒNG",
+          "Wallet": "ví điện tử",
+          "Recruiter": "ID đại lý trực tuyến"
+        },
+        "Popup": {
+          "Balance": {
+            "Daily": {
+              "Header": {
+                "Date": "ngày",
+                "EodBalance": "Số dư hàng ngày"
+              },
+              "Content": {
+                "Loading": "Lịch sử hoạt động hàng ngày",
+                "NoResult": "Không tìm thấy thông tin"
+              },
+              "Details": "Chi tiết"
+            },
+            "Details": {
+              "Header": {
+                "Time": "thời gian",
+                "Type": "Loại",
+                "Amount": "Số lượng",
+                "Balance": "THĂNG BẰNG"
+              },
+              "Content": {
+                "Loading": "Lịch sử số dư",
+                "NoResult": "Không có lịch sử số dư"
+              }
+            }
+          },
+          "NftTxn": {
+            "Header": {
+              "Time": "thời gian",
+              "NftId": "ID NFT",
+              "Counterparty": "Đối tượng giao dịch"
+            },
+            "Content": {
+              "Loading": "Hồ sơ giao dịch NFT",
+              "NoResult": "Không có hồ sơ giao dịch NFT"
+            },
+            "Sell": "doanh thu",
+            "Buy": "mua"
+          }
+        },
+        "Message": {
+          "NoAssociatedBanks": "Không có tài khoản ngân hàng liên kết"
+        }
+      },
+      "VerifyInfo": {
+        "Title": {
+          "Bank": "Tài khoản ngân hàng cần được xác minh",
+          "GoldPurchase": "Đang chờ xác minh hồ sơ mua VÀNG",
+          "PendingAccount": "Tài khoản cần được xác minh"
+        },
+        "Bank": {
+          "BankbookCover": "Ảnh bìa sổ tiết kiệm ngân hàng"
+        },
+        "GoldTxn": {
+          "TxnRecord": "Kỷ lục chuyển nhượng đô la Đài Loan",
+          "SourceBankCode": "Mã ngân hàng nguồn",
+          "SourceBankAccount": "Số tài khoản ngân hàng nguồn",
+          "TargetWallet": "Số tài khoản ngân hàng nguồn",
+          "Amount": "Số lượng"
+        },
+        "Info": {
+          "IdNumber": "Cỡ chữ CMND",
+          "Username": "Tên người dùng",
+          "Name": "tên thật",
+          "Birthday": "Sinh nhật",
+          "Email": "E-mail",
+          "LineId": "SỐ DÒNG",
+          "BankAccount": "số tài khoản ngân hàng",
+          "Wallet": "địa chỉ ví"
+        }
+      }
     }
   },
   "Layout": {
+    "Nav": {
+      "PositionSold": "Có một vị trí được bán"
+    },
     "Profile": {
       "BuyGold": "Mua VÀNG"
     }
@@ -246,6 +432,7 @@
       "Total": "Tổng tài sản"
     },
     "Info": {
+      "User": "người dùng",
       "UserId": "Tên người dùng",
       "Email": "E-mail",
       "LineId": "SỐ DÒNG",
@@ -262,9 +449,22 @@
     },
     "IdType": {
       "IdFront": "Mặt trước chứng minh nhân dân",
-      "IdBack": "Mặt sau CMND",
+      "IdBack": "mặt sau của CMND",
       "Handheld": "Selfie cầm CMND",
       "SecondaryFront": "Mặt trước ID thứ hai"
+    }
+  },
+  "User": {
+    "Balance": {
+      "HistoryType": {
+        "NftBuy": "Mua NFT",
+        "NftSell": "Bán NFT",
+        "NftSellRefund": "Bán NFT (hoàn tiền chênh lệch)",
+        "DepositTwd": "Tiền gửi (Đô la Đài Loan)",
+        "DepositTwdCashback": "Tiền thưởng gửi tiền (Đô la Đài Loan)",
+        "DepositCrypto": "Tiền gửi (USDT)",
+        "DepositCryptoCashback": "Tiền thưởng nạp tiền (USDT)"
+      }
     }
   },
   "Gold": {
@@ -303,7 +503,7 @@
       "GoldExchangeInProgress": "Quá trình mua VÀNG đang được tiến hành, vui lòng thử lại sau.",
       "GoldNotEnough": "Không đủ vàng.",
       "GoldTwBankTxnRecordFailed": "Không thể tải lên bản ghi chuyển khoản bằng đô la Đài Loan.",
-      "GoldTwBankTxnNotFound": "Không tìm thấy hồ sơ chuyển tiền đô la Đài Loan tương ứng.",
+      "GoldTwBankTxnNotFound": "Không tìm thấy hồ sơ chuyển nhượng đô la Đài Loan tương ứng.",
       "NftNotOnSale": "NFT không được bán.",
       "NftMatchRequestNotFound": "Không thể tìm thấy yêu cầu giao dịch NFT tương ứng.",
       "NftInfoNotFound": "Không thể tìm thấy thông tin NFT tương ứng.",
@@ -311,8 +511,8 @@
       "WalletNotExist": "Địa chỉ ví không tồn tại.",
       "SmsSendFailed": "Việc gửi SMS xác minh không thành công.",
       "SmsAlreadyRequested": "SMS xác minh đã được yêu cầu. Vui lòng thử lại sau {smsVerificationExpiryMin} phút.",
-      "SmsPhoneInvalid": "Việc xác minh số điện thoại di động không hợp lệ hoặc đã hết hạn.",
-      "SmsPhoneUsed": "Số điện thoại di động đã được sử dụng.",
+      "SmsPhoneInvalid": "Việc xác minh số điện thoại di động không hợp lệ hoặc đã hết hạn. ",
+      "SmsPhoneUsed": "Số điện thoại di động đã được sử dụng. ",
       "SmsPhoneRegistered": "Số điện thoại di động đã được đăng ký.",
       "SmsCodeInvalid": "Mã xác minh không hợp lệ.",
       "IdNumberInvalid": "Số ID không hợp lệ.",

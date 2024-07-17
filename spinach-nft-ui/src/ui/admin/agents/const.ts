@@ -1,8 +1,11 @@
+import {I18nMessageKeysOfNamespace} from '@spinach/next/types/i18n';
 import {AdminAgentsFilterBasis} from '@spinach/next/ui/admin/agents/type';
 
 
-export const adminAgentsSearchKeyName: {[key in AdminAgentsFilterBasis]: string} = {
-  idNumber: '身分證字號',
-  username: '使用者 ID',
-  name: '真實姓名',
+export const adminAgentsSearchKeyName: {
+  [key in AdminAgentsFilterBasis]: I18nMessageKeysOfNamespace<'UI.InPage.Admin.Agents.Search'>
+} = {
+  idNumber: 'IdNumber',
+  username: 'Username',
+  name: 'Name',
 };

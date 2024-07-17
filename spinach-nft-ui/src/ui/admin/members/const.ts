@@ -1,11 +1,14 @@
+import {I18nMessageKeysOfNamespace} from '@spinach/next/types/i18n';
 import {AdminMembersFilterBasis} from '@spinach/next/ui/admin/members/type';
 
 
-export const adminMembersSearchKeyName: {[key in AdminMembersFilterBasis]: string} = {
-  idNumber: '身分證字號',
-  username: '使用者 ID',
-  name: '真實姓名',
-  email: 'Email',
-  lineId: 'LINE ID',
-  wallet: '電子錢包',
+export const adminMembersSearchKeyI18nId: {
+  [key in AdminMembersFilterBasis]: I18nMessageKeysOfNamespace<'UI.InPage.Admin.Members'>
+} = {
+  idNumber: 'Info.IdNumber',
+  username: 'Info.Username',
+  name: 'Info.Name',
+  email: 'Info.Email',
+  lineId: 'Info.LineId',
+  wallet: 'Info.Wallet',
 };

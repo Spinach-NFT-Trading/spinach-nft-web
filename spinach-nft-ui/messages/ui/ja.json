@@ -72,7 +72,7 @@
       "PrivacyPolicy": "プライバシーポリシー 利用規約",
       "Stats": {
         "NftVolume": "取引されたNFTの数",
-        "UsdtVolume": "24時間USDT取引高",
+        "UsdtVolume": "24時間のUSDT取引高",
         "GoldVolume": "24時間のGOLD購入量"
       },
       "Pledge": {
@@ -232,9 +232,195 @@
           "Content": "この免責事項は、関係する可能性のあるリスク事項の一部を簡単に説明するものであり、購入、保有、売買、または取引プロセスに関わるすべてのリスクおよび関連するさまざまな側面を網羅的にリストすることはできません。個人の購入目的やリスク許容度などを含むがこれらに限定されない、購入前の要素。<br/><br/>このプロジェクトによって発行されたNFTの購入者は、ブロックチェーン商品と暗号通貨商品の市場価格は非常に不安定で不確実であり、すべての人が購入、保有、取引関連の行動に適しているわけではないことを理解する必要があります。<br/><br/>この製品を購入することは、この製品にリンクされている作品に対する排他的または排他的な所有権を有することを意味するものではなく、また、製品の知的財産権によって許可されたことを意味するものでもありません。購入者は、製品を商業目的で使用しないことに同意します。目的。<br/><br/>当社および当ウェブサイトが提供するすべての情報サービスは、悪意のあるハッカーやウイルス等により不正に侵入・アクセスされる可能性があります。当ウェブサイトは、そのリスクの管理に最善を尽くしますが、そのリスクを完全に軽減できるという保証はありません。 。<br/><br/>当社およびそのサプライヤーは、ユーザーエラー（パスワード忘れ、取引エラー、アドレス間違いなど）、サーバー障害などを含むがこれらに限定されない、本サービスの利用によりお客様が被った損害について、賠償その他の責任を負わないものとします。データの損失、アプリケーションへの不正アクセス、ウイルス、フィッシング、野蛮な行為、またはその他の Web サイト攻撃方法の使用を含むがこれらに限定されない、不正な第三者の活動。<br/><br/>当社は、脆弱性や何らかの種類の機能不全、ソフトウェア（ウォレット、スマートコントラクトなど）、ブロックチェーン、またはデジタル資産のその他の機能の異常な動作によって引き起こされる継続的な機能不全については責任を負いません。<br/><br/>本製品の購入者は、本製品または本製品にリンクされている作品が法律や公序良俗に違反していないか注意し、理解する必要があります。その結果、法的問題や違法なリスクが発生した場合、購入者が単独で責任を負います。<br/><br/>当社は、提供されるすべてのサービス、購入ルール、情報コンテンツ、ステートメントを変更する権利を留保し、変更はリリース後すぐに有効になります。"
         }
       }
+    },
+    "Admin": {
+      "Tabs": {
+        "Agents": "プロキシリスト",
+        "Members": "メンバーリスト",
+        "ExchangeRequests": "NFTトランザクションリクエスト",
+        "VerifyId": "身元を確認する",
+        "VerifyBankAccount": "銀行口座を確認する",
+        "VerifyBankTxn": "GOLDの購入履歴を確認する",
+        "GlobalConfig": "サイト全体の設定"
+      },
+      "Common": {
+        "LookBack": {
+          "StartDate": "デートから）",
+          "EndDate": "日付（終了）",
+          "Today": "今日",
+          "Yesterday": "昨日",
+          "ThisWeek": "7日以内",
+          "ThisMonth": "今月",
+          "LastMonth": "先月"
+        },
+        "Summary": {
+          "TotalBalance": "総合収支",
+          "TotalNftBought": "NFT購入総額",
+          "TotalNftSold": "NFTの総販売数",
+          "TotalDepositedUsdt": "USDT入金額合計",
+          "TotalDepositedTwd": "合計NT$入金額"
+        },
+        "NoAgent": "(代理店なし)"
+      },
+      "Agents": {
+        "Header": {
+          "UserName": "ユーザー名",
+          "TotalBalance": "オフライン残高合計",
+          "TotalNftBought": "NFT購入量",
+          "TotalNftSold": "NFT販売量",
+          "DepositedTwd": "デポジット（台湾ドル）",
+          "DepositedUsdt": "デポジット (USDT)",
+          "CashbackSettings": "コミッション返金設定"
+        },
+        "LowerLevels": "オフラインリスト",
+        "Search": {
+          "IdNumber": "IDカードのフォントサイズ",
+          "Username": "ユーザーID",
+          "Name": "本名"
+        }
+      },
+      "GlobalConfig": {
+        "RequestToken": "リクエストトークンの追加",
+        "Updated": "更新する",
+        "Deleted": "消去",
+        "Cashback": {
+          "Twd": "台湾ドル",
+          "Usdt": "USDT",
+          "ThirdParty": "第三者手数料の返金"
+        }
+      },
+      "ExchangeRequest": {
+        "Tabs": {
+          "Queued": "保留中のトランザクション",
+          "Matched": "確認予定",
+          "Completed": "完了しました"
+        },
+        "Header": {
+          "RequestId": "リクエストID",
+          "TimePassed": "リクエストが確立されてからの経過時間",
+          "Amount": "額",
+          "AmountRequested": "金額（必須）",
+          "AmountActual": "金額（実績）",
+          "AmountToRefund": "金額（返金額）",
+          "SourceToken": "ソース(トークン)",
+          "BankAccount": "銀行の口座番号"
+        },
+        "LastUpdated": "最終更新日"
+      },
+      "Members": {
+        "Title": "会員情報",
+        "Control": {
+          "Toggle": {
+            "Agent": "演技",
+            "Normal": "普通",
+            "Suspended": "非アクティブ化する"
+          },
+          "AccountInfo": "口座情報",
+          "BankDetails": "銀行口座情報",
+          "TxnHistory": "取引履歴",
+          "BalanceHistory": "残高履歴"
+        },
+        "Header": {
+          "UserId": "ユーザー名",
+          "VerificationStatus": "検証状況",
+          "Agent": "演技",
+          "Status": "状態",
+          "CurrentBalance": "経常収支",
+          "NftBought": "NFT購入量",
+          "NftSold": "NFT販売量",
+          "DepositedTwd": "デポジット（台湾ドル）",
+          "DepositedUsdt": "デポジット (USDT)",
+          "Cashback": "返品手数料",
+          "CashbackSettings": "コミッション返金設定"
+        },
+        "Info": {
+          "Id": "ユーザーシリアル番号",
+          "IdNumber": "IDカードのフォントサイズ",
+          "Username": "ユーザーID",
+          "Name": "本名",
+          "Email": "Eメール",
+          "Birthday": "誕生日",
+          "LineId": "LINE ID",
+          "Wallet": "電子ウォレット",
+          "Recruiter": "エージェントオンラインID"
+        },
+        "Popup": {
+          "Balance": {
+            "Daily": {
+              "Header": {
+                "Date": "日付",
+                "EodBalance": "毎日の残高"
+              },
+              "Content": {
+                "Loading": "毎日の活動履歴",
+                "NoResult": "情報が見つかりませんでした"
+              },
+              "Details": "詳細"
+            },
+            "Details": {
+              "Header": {
+                "Time": "時間",
+                "Type": "親切",
+                "Amount": "量",
+                "Balance": "バランス"
+              },
+              "Content": {
+                "Loading": "残高履歴",
+                "NoResult": "残高履歴がありません"
+              }
+            }
+          },
+          "NftTxn": {
+            "Header": {
+              "Time": "時間",
+              "NftId": "NFT ID",
+              "Counterparty": "トランザクションオブジェクト"
+            },
+            "Content": {
+              "Loading": "NFT取引記録",
+              "NoResult": "NFT取引記録なし"
+            },
+            "Sell": "セール",
+            "Buy": "買う"
+          }
+        },
+        "Message": {
+          "NoAssociatedBanks": "関連付けられた銀行口座がありません"
+        }
+      },
+      "VerifyInfo": {
+        "Title": {
+          "Bank": "銀行口座を確認する必要があります",
+          "GoldPurchase": "GOLD 購入記録の検証待ち",
+          "PendingAccount": "認証対象のアカウント"
+        },
+        "Bank": {
+          "BankbookCover": "銀行通帳表紙イメージ"
+        },
+        "GoldTxn": {
+          "TxnRecord": "台湾ドル送金実績",
+          "SourceBankCode": "ソースバンクコード",
+          "SourceBankAccount": "送金元の銀行口座番号",
+          "TargetWallet": "送金元の銀行口座番号",
+          "Amount": "額"
+        },
+        "Info": {
+          "IdNumber": "IDカードのフォントサイズ",
+          "Username": "ユーザーID",
+          "Name": "本名",
+          "Birthday": "誕生日",
+          "Email": "Eメール",
+          "LineId": "LINE ID",
+          "BankAccount": "銀行の口座番号",
+          "Wallet": "ウォレットアドレス"
+        }
+      }
     }
   },
   "Layout": {
+    "Nav": {
+      "PositionSold": "売られたポジションがあります"
+    },
     "Profile": {
       "BuyGold": "ゴールドを購入する"
     }
@@ -246,6 +432,7 @@
       "Total": "総資産"
     },
     "Info": {
+      "User": "ユーザー",
       "UserId": "ユーザーID",
       "Email": "Eメール",
       "LineId": "LINE ID",
@@ -262,9 +449,22 @@
     },
     "IdType": {
       "IdFront": "IDカードの表面",
-      "IdBack": "IDカード裏面",
+      "IdBack": "IDカードの裏面",
       "Handheld": "IDカードを持ったセルフィー",
       "SecondaryFront": "2番目のIDの前面"
+    }
+  },
+  "User": {
+    "Balance": {
+      "HistoryType": {
+        "NftBuy": "NFTを購入する",
+        "NftSell": "NFTの販売",
+        "NftSellRefund": "NFT販売（差額返金）",
+        "DepositTwd": "デポジット（台湾ドル）",
+        "DepositTwdCashback": "入金ボーナス（台湾ドル）",
+        "DepositCrypto": "デポジット (USDT)",
+        "DepositCryptoCashback": "入金ボーナス (USDT)"
+      }
     }
   },
   "Gold": {
@@ -312,7 +512,7 @@
       "SmsSendFailed": "確認SMSの配信に失敗しました。",
       "SmsAlreadyRequested": "確認 SMS が要求されました。{smsVerificationExpiryMin} 分以内にもう一度お試しください。",
       "SmsPhoneInvalid": "携帯電話番号認証が無効であるか、有効期限が切れています。",
-      "SmsPhoneUsed": "携帯電話番号はすでに使用されています。",
+      "SmsPhoneUsed": "携帯電話番号はすでに使用されています。 ",
       "SmsPhoneRegistered": "携帯電話番号が登録されました。",
       "SmsCodeInvalid": "確認コードが無効です。",
       "IdNumberInvalid": "無効なID番号です。",

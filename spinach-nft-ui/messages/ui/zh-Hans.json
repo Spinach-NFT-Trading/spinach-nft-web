@@ -18,7 +18,7 @@
         "Title": "新增银行帐号"
       },
       "Login": {
-        "Title": "登入"
+        "Title": "登录"
       },
       "Nft": {
         "Exchange": {
@@ -82,7 +82,7 @@
         },
         "Security": {
           "Title": "安全优先",
-          "Content": "采国际级 DDoS 防御机制及 AI 应用程序防火墙，最大化保护用户资产"
+          "Content": "采国际级 DDoS 防御机制及 AI 应用程式防火墙，最大化保护用户资产"
         },
         "Legitimacy": {
           "Title": "合法合规",
@@ -134,7 +134,7 @@
           "ClickForWalletCreation": "创建 MAX 帐号影片教学请点我"
         },
         "Completed": {
-          "Message": "注册成功！请加入官方 LINE 进行实名认证。",
+          "Message": "注册成功！",
           "KYC": "前往实名认证"
         },
         "NextStep": "下一步",
@@ -195,7 +195,7 @@
         },
         "Usdt": {
           "Field": {
-            "Chain": "区块鍊",
+            "Chain": "区块链",
             "Address": "充币地址"
           },
           "Message": {
@@ -203,7 +203,7 @@
           },
           "Note": {
             "NoOtherThanUsdt": "请勿向上述地址充值 USDT 外的资产，否则将会导致资产丢失。",
-            "SecureDevice": "请确保您行动装置的安全，防止资讯被窜改或洩漏。",
+            "SecureDevice": "请确保您行动装置的安全，防止资讯被窜改或泄漏。",
             "NoOtherContracts": "TRC20-USDT 仅支援转传功能，使用其他智能合约的转帐充值暂时无法入帐，请您谅解。"
           }
         }
@@ -229,12 +229,198 @@
         },
         "Disclaimer": {
           "Title": "免责声明",
-          "Content": "本免责声明仅能简要阐述所可能涉及的部分风险事项，无法穷尽列举所有在购买、持有、买卖或交易过程中所会涉及的所有风险及各种相关面向，建议在购买之前，必须考虑各种相关因素，包含但不限于个人购买目的及风险承受能力等。<br/><br/>针对本项目所发行 NFT 之购买者，应了解区块链商品及加密货币商品其市场价格具有极高之波动性及不确定性，并非所有大众都适合从事购买、持有、交易的相关行为。本商品初始规划设计目的并非金融商品或任何投资理财型商品作为投资之用，无论购入或交易出售本商品，为购买者自行决定且自行负责之行为，本公司无法预测或控制商品未来的价格变化，如有任何价格波动，皆与本公司无关，本公司对任何人因买卖或交易本商品所造成之获利或亏损，无任何的法律或财务上之责任。<br/><br/>购入本商品并不代表对于本商品所连结之作品具有排他或专属性的财产权，也不代表得到商品任何智慧财产权的授权，购买者同意不针对该商品作为商业用途使用。本公司并不保证持有、买卖或使用本商品，对于任何第三人之智慧财产权均不会构成任何侵害或侵权争议，购买者如因购入本商品，导致第三人对购买者主张智慧财产权等法律权利，本公司概不负责。<br/><br/>本公司与本网站所提供之所有资讯服务，都可能会基于恶意骇客、病毒或其他方式，而被入侵或遭未经授权进入，本网站会尽力控制风险，但无法保证可以完全减免风险。此外，本网站无法控制您访问我们网站所使用装置之安全性，您对于确保装置应随时处于安全状态一事，应自行负担全部责任。<br/><br/>本公司及其供应商不因您使用本服务而受之损害而承担赔偿或其他责任，包含但不限于因使用者错误（如忘记密码、交易错误或位址错误）、服务器故障或资料遗失、未经授权访问应用程序、任何未经授权之第三方活动，包含但不限于使用病毒、网路钓鱼、野蛮行为或其他攻击网站方式。<br/><br/>本公司不就漏洞或任何类型的故障、软体（如钱包、智能合约）、区块链或数位资产的任何其他功能的异常行为而造成持续功能异常负担责任。<br/><br/>本商品之购买者应自行注意其所在国家或地区之法令及公序良俗，对于本商品或本商品所连结之作品，是否有违反其所在地国家或地区之法令或公序良俗，购买者应自行注意并了解相关风险，如因此发生任何法律问题或违法风险，购买者需自行负责。<br/><br/>本公司有权对所有所提供之服务、购买规则、资讯内容、声明进行变更，变更内容于发布时即刻生效。"
+          "Content": "本免责声明仅能简要阐述所可能涉及的部分风险事项，无法穷尽列举所有在购买、持有、买卖或交易过程中所会涉及的所有风险及各种相关面向，建议在购买之前，必须考虑各种相关<br/><br/>针对本项目所发行 NFT 之购买者，应了解区块链商品及加密货币商品其市场价格具有极高之波动性及不确定性，并非所有大众都适合从事购买、持有、交易的相关行为。<br/><br/>购入本商品并不代表对于本商品所连结之作品具有排他或专属性的财产权，也不代表得到商品任何智慧财产权的授权，购买者同意不针对该商品作为商业用途使用。<br/><br/>本公司与本网站所提供之所有资讯服务，都可能会基于恶意骇客、病毒或其他方式，而被入侵或遭未经授权进入，本网站会尽力控制风险，但无法保证可以完全减免风险。<br/><br/>本公司及其供应商不因您使用本服务而受之损害而承担赔偿或其他责任，包含但不限于因使用者错误（如忘记密码、交易错误或位址错误）、伺服器故障或资料遗失<br/><br/>本公司不就漏洞或任何类型的故障、软体（如钱包、智能合约）、区块链或数位资产的任何其他功能的异常行为而造成持续功能异常负担责任。<br/><br/>本商品之购买者应自行注意其所在国家或地区之法令及公序良俗，对于本商品或本商品所连结之作品，是否有违反其所在地国家或地区之法令或公序良俗，购买者应自行注意并了解相关<br/><br/>本公司有权对所有所提供之服务、购买规则、资讯内容、声明进行变更，变更内容于发布时即刻生效。"
+        }
+      }
+    },
+    "Admin": {
+      "Tabs": {
+        "Agents": "代理列表",
+        "Members": "会员列表",
+        "ExchangeRequests": "NFT 交易请求",
+        "VerifyId": "验证身分",
+        "VerifyBankAccount": "验证银行帐号",
+        "VerifyBankTxn": "验证 GOLD 购买纪录",
+        "GlobalConfig": "全站设定"
+      },
+      "Common": {
+        "LookBack": {
+          "StartDate": "日期 (起)",
+          "EndDate": "日期 (讫)",
+          "Today": "今日",
+          "Yesterday": "昨日",
+          "ThisWeek": "7 日内",
+          "ThisMonth": "本月",
+          "LastMonth": "上月"
+        },
+        "Summary": {
+          "TotalBalance": "总余额",
+          "TotalNftBought": "总 NFT 购买量",
+          "TotalNftSold": "总 NFT 售出量",
+          "TotalDepositedUsdt": "总 USDT 入金量",
+          "TotalDepositedTwd": "总台币入金量"
+        },
+        "NoAgent": "(无代理)"
+      },
+      "Agents": {
+        "Header": {
+          "UserName": "用户名称",
+          "TotalBalance": "下线总余额",
+          "TotalNftBought": "NFT 购买量",
+          "TotalNftSold": "NFT 售出量",
+          "DepositedTwd": "入金 (台币)",
+          "DepositedUsdt": "入金 (USDT)",
+          "CashbackSettings": "退佣设定"
+        },
+        "LowerLevels": "下线列表",
+        "Search": {
+          "IdNumber": "身分证字号",
+          "Username": "使用者 ID",
+          "Name": "真实姓名"
+        }
+      },
+      "GlobalConfig": {
+        "RequestToken": "新增请求权杖",
+        "Updated": "更新",
+        "Deleted": "删除",
+        "Cashback": {
+          "Twd": "台币",
+          "Usdt": "USDT",
+          "ThirdParty": "第三方退佣"
+        }
+      },
+      "ExchangeRequest": {
+        "Tabs": {
+          "Queued": "待成交",
+          "Matched": "待确认",
+          "Completed": "已完成"
+        },
+        "Header": {
+          "RequestId": "要求 ID",
+          "TimePassed": "请求成立经过时长",
+          "Amount": "金额",
+          "AmountRequested": "金额 (要求)",
+          "AmountActual": "金额 (实际)",
+          "AmountToRefund": "金额 (退还)",
+          "SourceToken": "来源 (Token)",
+          "BankAccount": "银行帐号"
+        },
+        "LastUpdated": "最后更新于"
+      },
+      "Members": {
+        "Title": "会员资讯",
+        "Control": {
+          "Toggle": {
+            "Agent": "代理",
+            "Normal": "正常",
+            "Suspended": "停用"
+          },
+          "AccountInfo": "帐号资讯",
+          "BankDetails": "银行帐号资讯",
+          "TxnHistory": "交易纪录",
+          "BalanceHistory": "余额历史"
+        },
+        "Header": {
+          "UserId": "用户名称",
+          "VerificationStatus": "验证状态",
+          "Agent": "代理",
+          "Status": "状态",
+          "CurrentBalance": "目前余额",
+          "NftBought": "NFT 购买量",
+          "NftSold": "NFT 售出量",
+          "DepositedTwd": "入金 (台币)",
+          "DepositedUsdt": "入金 (USDT)",
+          "Cashback": "退佣",
+          "CashbackSettings": "退佣设定"
+        },
+        "Info": {
+          "Id": "使用者序号",
+          "IdNumber": "身分证字号",
+          "Username": "使用者 ID",
+          "Name": "真实姓名",
+          "Email": "Email",
+          "Birthday": "生日",
+          "LineId": "LINE ID",
+          "Wallet": "电子钱包",
+          "Recruiter": "代理上线 ID"
+        },
+        "Popup": {
+          "Balance": {
+            "Daily": {
+              "Header": {
+                "Date": "日期",
+                "EodBalance": "日结余额"
+              },
+              "Content": {
+                "Loading": "每日活动历史",
+                "NoResult": "查无资料"
+              },
+              "Details": "详细"
+            },
+            "Details": {
+              "Header": {
+                "Time": "时间",
+                "Type": "种类",
+                "Amount": "数量",
+                "Balance": "余额"
+              },
+              "Content": {
+                "Loading": "余额历史",
+                "NoResult": "无余额历史"
+              }
+            }
+          },
+          "NftTxn": {
+            "Header": {
+              "Time": "时间",
+              "NftId": "NFT ID",
+              "Counterparty": "交易对象"
+            },
+            "Content": {
+              "Loading": "NFT 交易纪录",
+              "NoResult": "无 NFT 交易纪录"
+            },
+            "Sell": "贩售",
+            "Buy": "购买"
+          }
+        },
+        "Message": {
+          "NoAssociatedBanks": "无相关银行帐号"
+        }
+      },
+      "VerifyInfo": {
+        "Title": {
+          "Bank": "待验证银行帐号",
+          "GoldPurchase": "待验证 GOLD 购买纪录",
+          "PendingAccount": "待验证帐号"
+        },
+        "Bank": {
+          "BankbookCover": "银行存折封面图"
+        },
+        "GoldTxn": {
+          "TxnRecord": "台币转帐纪录",
+          "SourceBankCode": "来源银行代码",
+          "SourceBankAccount": "来源银行帐号",
+          "TargetWallet": "来源银行帐号",
+          "Amount": "金额"
+        },
+        "Info": {
+          "IdNumber": "身分证字号",
+          "Username": "使用者 ID",
+          "Name": "真实姓名",
+          "Birthday": "生日",
+          "Email": "Email",
+          "LineId": "LINE ID",
+          "BankAccount": "银行帐号",
+          "Wallet": "钱包地址"
         }
       }
     }
   },
   "Layout": {
+    "Nav": {
+      "PositionSold": "有持仓售出"
+    },
     "Profile": {
       "BuyGold": "购买 GOLD"
     }
@@ -246,6 +432,7 @@
       "Total": "总资产"
     },
     "Info": {
+      "User": "使用者",
       "UserId": "用户 ID",
       "Email": "Email",
       "LineId": "LINE ID",
@@ -267,6 +454,19 @@
       "SecondaryFront": "第二证件正面"
     }
   },
+  "User": {
+    "Balance": {
+      "HistoryType": {
+        "NftBuy": "购买 NFT",
+        "NftSell": "贩卖 NFT",
+        "NftSellRefund": "贩卖 NFT (退差价)",
+        "DepositTwd": "入金 (台币)",
+        "DepositTwdCashback": "入金赠金 (台币)",
+        "DepositCrypto": "入金 (USDT)",
+        "DepositCryptoCashback": "入金赠金 (USDT)"
+      }
+    }
+  },
   "Gold": {
     "ExchangeChannel": {
       "Usdt": "USDT",
@@ -283,7 +483,7 @@
       "Account": "帐号",
       "Password": "密码"
     },
-    "Login": "登入",
+    "Login": "登录",
     "Logout": "登出",
     "Register": "注册"
   },
@@ -311,8 +511,8 @@
       "WalletNotExist": "钱包地址不存在。",
       "SmsSendFailed": "验证简讯传送失败。",
       "SmsAlreadyRequested": "已要求传送验证简讯，请于 {smsVerificationExpiryMin} 分钟后重试。",
-      "SmsPhoneInvalid": "手机号码验证无效或已失效。请重新验证手机号码。",
-      "SmsPhoneUsed": "手机号码已被使用。请于 {smsVerifiedExpiryMin} 分钟后重试。",
+      "SmsPhoneInvalid": "手机号码验证无效或已失效。",
+      "SmsPhoneUsed": "手机号码已被使用。",
       "SmsPhoneRegistered": "手机号码已注册。",
       "SmsCodeInvalid": "验证码无效。",
       "IdNumberInvalid": "无效的身份证字号。",

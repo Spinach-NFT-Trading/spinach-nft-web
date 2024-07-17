@@ -209,8 +209,194 @@ declare global {
             },
           },
         },
+        Admin: {
+          Tabs: {
+            Agents: string,
+            Members: string,
+            ExchangeRequests: string,
+            VerifyId: string,
+            VerifyBankAccount: string,
+            VerifyBankTxn: string,
+            GlobalConfig: string,
+          },
+          Common: {
+            LookBack: {
+              StartDate: string,
+              EndDate: string,
+              Today: string,
+              Yesterday: string,
+              ThisWeek: string,
+              ThisMonth: string,
+              LastMonth: string,
+            },
+            Summary: {
+              TotalBalance: string,
+              TotalNftBought: string,
+              TotalNftSold: string,
+              TotalDepositedUsdt: string,
+              TotalDepositedTwd: string,
+            },
+            NoAgent: string,
+          },
+          Agents: {
+            Header: {
+              UserName: string,
+              TotalBalance: string,
+              TotalNftBought: string,
+              TotalNftSold: string,
+              DepositedTwd: string,
+              DepositedUsdt: string,
+              CashbackSettings: string,
+            },
+            LowerLevels: string,
+            Search: {
+              IdNumber: string,
+              Username: string,
+              Name: string,
+            },
+          },
+          GlobalConfig: {
+            RequestToken: string,
+            Updated: string,
+            Deleted: string,
+            Cashback: {
+              Twd: string,
+              Usdt: string,
+              ThirdParty: string
+            }
+          },
+          ExchangeRequest: {
+            Tabs: {
+              Queued: string,
+              Matched: string,
+              Completed: string,
+            },
+            Header: {
+              RequestId: string,
+              TimePassed: string,
+              Amount: string,
+              AmountRequested: string,
+              AmountActual: string,
+              AmountToRefund: string,
+              SourceToken: string,
+              BankAccount: string,
+            },
+            LastUpdated: string,
+          },
+          Members: {
+            Title: string,
+            Control: {
+              Toggle: {
+                Agent: string,
+                Normal: string,
+                Suspended: string,
+              },
+              AccountInfo: string,
+              BankDetails: string,
+              TxnHistory: string,
+              BalanceHistory: string,
+            },
+            Header: {
+              UserId: string,
+              VerificationStatus: string,
+              Agent: string,
+              Status: string,
+              CurrentBalance: string,
+              NftBought: string,
+              NftSold: string,
+              DepositedTwd: string,
+              DepositedUsdt: string,
+              Cashback: string,
+              CashbackSettings: string,
+            },
+            Info: {
+              Id: string,
+              IdNumber: string,
+              Username: string,
+              Name: string,
+              Email: string,
+              Birthday: string,
+              LineId: string,
+              Wallet: string,
+              Recruiter: string,
+            },
+            Popup: {
+              Balance: {
+                Daily: {
+                  Header: {
+                    Date: string,
+                    EodBalance: string,
+                  },
+                  Content: {
+                    Loading: string,
+                    NoResult: string,
+                  },
+                  Details: string,
+                },
+                Details: {
+                  Header: {
+                    Time: string,
+                    Type: string,
+                    Amount: string,
+                    Balance: string,
+                  },
+                  Content: {
+                    Loading: string,
+                    NoResult: string,
+                  },
+                },
+              },
+              NftTxn: {
+                Header: {
+                  Time: string,
+                  NftId: string,
+                  Counterparty: string,
+                },
+                Content: {
+                  Loading: string,
+                  NoResult: string,
+                },
+                Sell: string,
+                Buy: string,
+              }
+            },
+            Message: {
+              NoAssociatedBanks: string,
+            },
+          },
+          VerifyInfo: {
+            Title: {
+              Bank: string,
+              GoldPurchase: string,
+              PendingAccount: string,
+            },
+            Bank: {
+              BankbookCover: string,
+            },
+            GoldTxn: {
+              TxnRecord: string,
+              SourceBankCode: string,
+              SourceBankAccount: string,
+              TargetWallet: string,
+              Amount: string,
+            },
+            Info: {
+              IdNumber: string,
+              Username: string,
+              Name: string,
+              Birthday: string,
+              Email: string,
+              LineId: string,
+              BankAccount: string,
+              Wallet: string,
+            }
+          },
+        },
       },
       Layout: {
+        Nav: {
+          PositionSold: string,
+        },
         Profile: {
           BuyGold: string,
         },
@@ -222,6 +408,7 @@ declare global {
           Total: string,
         },
         Info: {
+          User: string,
           UserId: string,
           Email: string,
           LineId: string,
@@ -241,6 +428,19 @@ declare global {
           IdBack: string,
           Handheld: string,
           SecondaryFront: string,
+        },
+      },
+      User: {
+        Balance: {
+          HistoryType: {
+            NftBuy: string,
+            NftSell: string,
+            NftSellRefund: string,
+            DepositTwd: string,
+            DepositTwdCashback: string,
+            DepositCrypto: string,
+            DepositCryptoCashback: string,
+          },
         },
       },
       Gold: {

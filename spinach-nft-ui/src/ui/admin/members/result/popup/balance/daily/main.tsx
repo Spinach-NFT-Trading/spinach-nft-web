@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {parse} from 'date-fns/parse';
+import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
@@ -21,6 +22,8 @@ export const AdminMemberBalanceDailyPopup = (props: AdminMemberPopupProps) => {
     show: false,
     date: new Date(),
   });
+
+  const t = useTranslations('UI.InPage.Admin.Members.Popup.Balance.Daily.Content');
 
   return (
     <>
@@ -58,8 +61,8 @@ export const AdminMemberBalanceDailyPopup = (props: AdminMemberPopupProps) => {
                   })}
                 />
               )}
-              textOnLoading="每日活動歷史"
-              textOnNoResult="查無資料"
+              textOnLoading={t('Loading')}
+              textOnNoResult={t('NoResult')}
             />
           );
         }}

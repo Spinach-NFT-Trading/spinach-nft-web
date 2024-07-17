@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {useTranslations} from 'next-intl';
+
 import {AdminVerification} from '@spinach/next/components/shared/admin/verification/main';
 import {ResponseOfUnverifiedBankDetails} from '@spinach/next/types/userData/lazyLoaded';
 import {adminDataRowHeight} from '@spinach/next/ui/admin/const';
@@ -16,6 +18,8 @@ type Props = {
 export const AdminVerifyBankResults = ({data, input}: Props) => {
   const {userDataMap, details} = data;
   const [bankDetails, setBankDetails] = React.useState(details);
+
+  const t = useTranslations('UI.InPage.Admin.VerifyInfo.Bank');
 
   const bankDetailsToShow = useAdminVerifyFilteredData({
     input,
@@ -57,7 +61,7 @@ export const AdminVerifyBankResults = ({data, input}: Props) => {
             type: 'adminImageOfBankDetails',
             opts: {uuid},
           },
-          imageName: '銀行存摺封面圖',
+          imageName: t('BankbookCover'),
         },
       ]}
       getConfirmPayload={(pass, data) => ({

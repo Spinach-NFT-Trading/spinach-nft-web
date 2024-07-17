@@ -232,9 +232,195 @@
           "Content": "This disclaimer can only briefly describe some of the risk matters that may be involved. It cannot exhaustively list all the risks and various related aspects involved in the purchase, holding, buying and selling or trading process. It is recommended that you must consider various related aspects before purchasing. <br/><br/>Purchasers of NFTs issued by this project should understand that the market prices of blockchain commodities and cryptocurrency commodities are extremely volatile and uncertain, and not all people are suitable for purchasing, holding, and trading related behaviors. <br/><br/>Purchasing this product does not mean that you have exclusive or exclusive property rights to the works linked to this product, nor does it mean that you have been authorized by any intellectual property rights of the product. The purchaser agrees not to use the product for commercial purposes. <br/><br/>All information services provided by the company and this website may be invaded or accessed without authorization due to malicious hackers, viruses or other means. This website will try its best to control the risk, but there is no guarantee that the risk can be completely reduced. <br/><br/>The Company and its suppliers will not be liable for compensation or other liability for any damage suffered by you due to your use of this service, including but not limited to user errors (such as forgotten passwords, transaction errors or wrong addresses), server failure or data loss. <br/><br/>The Company is not responsible for continued malfunctions caused by vulnerabilities or any type of malfunction, abnormal behavior of software (such as wallets, smart contracts), blockchain or any other function of digital assets.<br/><br/>Buyers of this product should pay attention to the laws and public order and good customs of the country or region where they are located. Buyers should pay attention to and understand whether this product or the works linked to this product violate the laws or public order and good customs of the country or region where they are located. <br/><br/>The company reserves the right to make changes to all services, purchase rules, information content, and statements provided, and the changes will take effect immediately upon release."
         }
       }
+    },
+    "Admin": {
+      "Tabs": {
+        "Agents": "proxy list",
+        "Members": "Member list",
+        "ExchangeRequests": "NFT transaction request",
+        "VerifyId": "Verify identity",
+        "VerifyBankAccount": "Verify bank account",
+        "VerifyBankTxn": "Verify GOLD purchase history",
+        "GlobalConfig": "Site-wide settings"
+      },
+      "Common": {
+        "LookBack": {
+          "StartDate": "Date (from)",
+          "EndDate": "date (end)",
+          "Today": "today",
+          "Yesterday": "yesterday",
+          "ThisWeek": "Within 7 days",
+          "ThisMonth": "this month",
+          "LastMonth": "last month"
+        },
+        "Summary": {
+          "TotalBalance": "total balance",
+          "TotalNftBought": "Total NFT purchases",
+          "TotalNftSold": "Total NFT sold",
+          "TotalDepositedUsdt": "Total USDT deposit amount",
+          "TotalDepositedTwd": "Total NT$ deposit amount"
+        },
+        "NoAgent": "(no agent)"
+      },
+      "Agents": {
+        "Header": {
+          "UserName": "Username",
+          "TotalBalance": "Total offline balance",
+          "TotalNftBought": "NFT purchase volume",
+          "TotalNftSold": "NFT sales volume",
+          "DepositedTwd": "Deposit (Taiwan Dollar)",
+          "DepositedUsdt": "Deposit (USDT)",
+          "CashbackSettings": "Commission refund settings"
+        },
+        "LowerLevels": "Offline list",
+        "Search": {
+          "IdNumber": "ID card font size",
+          "Username": "User ID",
+          "Name": "real name"
+        }
+      },
+      "GlobalConfig": {
+        "RequestToken": "Add request token",
+        "Updated": "renew",
+        "Deleted": "delete",
+        "Cashback": {
+          "Twd": "Taiwan dollar",
+          "Usdt": "USDT",
+          "ThirdParty": "Third party commission refund"
+        }
+      },
+      "ExchangeRequest": {
+        "Tabs": {
+          "Queued": "pending transaction",
+          "Matched": "To be confirmed",
+          "Completed": "completed"
+        },
+        "Header": {
+          "RequestId": "Request ID",
+          "TimePassed": "The time elapsed since the request was established",
+          "Amount": "Amount",
+          "AmountRequested": "Amount (required)",
+          "AmountActual": "Amount (actual)",
+          "AmountToRefund": "Amount (refund)",
+          "SourceToken": "Source(Token)",
+          "BankAccount": "bank account number"
+        },
+        "LastUpdated": "Last updated on"
+      },
+      "Members": {
+        "Title": "Member information",
+        "Control": {
+          "Toggle": {
+            "Agent": "acting",
+            "Normal": "normal",
+            "Suspended": "deactivate"
+          },
+          "AccountInfo": "Account information",
+          "BankDetails": "Bank account information",
+          "TxnHistory": "transaction history",
+          "BalanceHistory": "Balance history"
+        },
+        "Header": {
+          "UserId": "Username",
+          "VerificationStatus": "Verification status",
+          "Agent": "acting",
+          "Status": "condition",
+          "CurrentBalance": "Current balance",
+          "NftBought": "NFT purchase volume",
+          "NftSold": "NFT sales volume",
+          "DepositedTwd": "Deposit (Taiwan Dollar)",
+          "DepositedUsdt": "Deposit (USDT)",
+          "Cashback": "Return commission",
+          "CashbackSettings": "Commission refund settings"
+        },
+        "Info": {
+          "Id": "User serial number",
+          "IdNumber": "ID card font size",
+          "Username": "User ID",
+          "Name": "real name",
+          "Email": "Email",
+          "Birthday": "Birthday",
+          "LineId": "LINE ID",
+          "Wallet": "electronic wallet",
+          "Recruiter": "Agent online ID"
+        },
+        "Popup": {
+          "Balance": {
+            "Daily": {
+              "Header": {
+                "Date": "date",
+                "EodBalance": "Daily balance"
+              },
+              "Content": {
+                "Loading": "Daily activity history",
+                "NoResult": "No information found"
+              },
+              "Details": "Detailed"
+            },
+            "Details": {
+              "Header": {
+                "Time": "time",
+                "Type": "Kind",
+                "Amount": "quantity",
+                "Balance": "balance"
+              },
+              "Content": {
+                "Loading": "Balance history",
+                "NoResult": "No balance history"
+              }
+            }
+          },
+          "NftTxn": {
+            "Header": {
+              "Time": "time",
+              "NftId": "NFT ID",
+              "Counterparty": "Transaction object"
+            },
+            "Content": {
+              "Loading": "NFT transaction records",
+              "NoResult": "No NFT transaction record"
+            },
+            "Sell": "sale",
+            "Buy": "buy"
+          }
+        },
+        "Message": {
+          "NoAssociatedBanks": "No associated bank account"
+        }
+      },
+      "VerifyInfo": {
+        "Title": {
+          "Bank": "Bank account to be verified",
+          "GoldPurchase": "Pending verification of GOLD purchase record",
+          "PendingAccount": "Account to be verified"
+        },
+        "Bank": {
+          "BankbookCover": "Bank passbook cover image"
+        },
+        "GoldTxn": {
+          "TxnRecord": "Taiwan dollar transfer record",
+          "SourceBankCode": "Source bank code",
+          "SourceBankAccount": "Source bank account number",
+          "TargetWallet": "Source bank account number",
+          "Amount": "Amount"
+        },
+        "Info": {
+          "IdNumber": "ID card font size",
+          "Username": "User ID",
+          "Name": "real name",
+          "Birthday": "Birthday",
+          "Email": "Email",
+          "LineId": "LINE ID",
+          "BankAccount": "bank account number",
+          "Wallet": "wallet address"
+        }
+      }
     }
   },
   "Layout": {
+    "Nav": {
+      "PositionSold": "There is a position sold"
+    },
     "Profile": {
       "BuyGold": "Buy GOLD"
     }
@@ -246,6 +432,7 @@
       "Total": "total assets"
     },
     "Info": {
+      "User": "user",
       "UserId": "User ID",
       "Email": "Email",
       "LineId": "LINE ID",
@@ -262,9 +449,22 @@
     },
     "IdType": {
       "IdFront": "ID card front",
-      "IdBack": "ID card reverse side",
+      "IdBack": "reverse side of ID card",
       "Handheld": "Selfie holding ID card",
       "SecondaryFront": "Front of second ID"
+    }
+  },
+  "User": {
+    "Balance": {
+      "HistoryType": {
+        "NftBuy": "Buy NFTs",
+        "NftSell": "Selling NFTs",
+        "NftSellRefund": "Sell ​​NFT (refund the difference)",
+        "DepositTwd": "Deposit (Taiwan Dollar)",
+        "DepositTwdCashback": "Deposit Bonus (Taiwan Dollar)",
+        "DepositCrypto": "Deposit (USDT)",
+        "DepositCryptoCashback": "Deposit Bonus (USDT)"
+      }
     }
   },
   "Gold": {
@@ -311,8 +511,8 @@
       "WalletNotExist": "The wallet address does not exist.",
       "SmsSendFailed": "Verification SMS delivery failed.",
       "SmsAlreadyRequested": "A verification SMS has been requested. Please try again in {smsVerificationExpiryMin} minutes.",
-      "SmsPhoneInvalid": "The mobile phone number verification is invalid or has expired.",
-      "SmsPhoneUsed": "The mobile number is already in use. Please try again in {smsVerifiedExpiryMin} minutes.",
+      "SmsPhoneInvalid": "The mobile phone number verification is invalid or has expired. ",
+      "SmsPhoneUsed": "The mobile number is already in use. ",
       "SmsPhoneRegistered": "Mobile number has been registered.",
       "SmsCodeInvalid": "The verification code is invalid.",
       "IdNumberInvalid": "Invalid ID number.",

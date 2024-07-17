@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {useTranslations} from 'next-intl';
+
 import {generateDataLookBackRequestOfSameDay} from '@spinach/next/ui/admin/common/lookback/utils';
 import {AdminMemberBalanceDetailsHeader} from '@spinach/next/ui/admin/members/result/popup/balance/details/header';
 import {AdminMemberBalanceDetailsRow} from '@spinach/next/ui/admin/members/result/popup/balance/details/row';
@@ -13,6 +15,8 @@ type Props = AdminMemberPopupProps & {
 };
 
 export const AdminMemberBalanceDetailsPopup = ({initialDate, ...props}: Props) => {
+  const t = useTranslations('UI.InPage.Admin.Members.Popup.Balance.Details.Content');
+
   return (
     <AdminLookBackResultLayout
       requestType="adminMemberBalanceDetails"
@@ -30,8 +34,8 @@ export const AdminMemberBalanceDetailsPopup = ({initialDate, ...props}: Props) =
             renderEntry={(entry) => (
               <AdminMemberBalanceDetailsRow key={entry.id} history={entry}/>
             )}
-            textOnLoading="餘額歷史"
-            textOnNoResult="無餘額歷史"
+            textOnLoading={t('Loading')}
+            textOnNoResult={t('NoResult')}
           />
         );
       }}

@@ -5,6 +5,7 @@ import {NftExchangeTokenMap} from '@spinach/common/types/data/nft/token';
 import {isNotNullish} from '@spinach/common/utils/type';
 import {clsx} from 'clsx';
 import {signIn} from 'next-auth/react';
+import {useTranslations} from 'next-intl';
 
 import {FlexButton} from '@spinach/next/components/layout/flex/button';
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -19,6 +20,8 @@ export const AdminExchangeToken = () => {
   const [webhook, setWebhook] = React.useState('');
 
   const {act, status} = useUserDataActor({statusToast: true});
+
+  const t = useTranslations('UI.InPage.Admin.GlobalConfig');
 
   React.useEffect(() => {
     if (!act) {
@@ -69,7 +72,7 @@ export const AdminExchangeToken = () => {
           'button-clickable-border disabled:button-disabled-border w-fit shrink-0 items-center gap-1 p-1.5',
         )}>
           <PlusCircleIcon className="size-5"/>
-          <span>新增請求權杖</span>
+          <span>{t('RequestToken')}</span>
         </FlexButton>
       </FlexForm>
       <Flex className="info-section gap-1">

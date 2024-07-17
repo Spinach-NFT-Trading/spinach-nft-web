@@ -4,6 +4,7 @@ import CloudArrowUpIcon from '@heroicons/react/24/outline/CloudArrowUpIcon';
 import TrashIcon from '@heroicons/react/24/outline/TrashIcon';
 import {NftExchangeToken, NftExchangeTokenMap} from '@spinach/common/types/data/nft/token';
 import {clsx} from 'clsx';
+import {useTranslations} from 'next-intl';
 
 import {FlexButton} from '@spinach/next/components/layout/flex/button';
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -22,6 +23,8 @@ type Props = {
 
 export const AdminExchangeTokenSingle = ({act, status, tokenData, setTokenMap}: Props) => {
   const {token, webhook} = tokenData;
+
+  const t = useTranslations('UI.InPage.Admin.GlobalConfig');
 
   const updateExchangeToken = async () => {
     if (!act) {
@@ -62,7 +65,7 @@ export const AdminExchangeTokenSingle = ({act, status, tokenData, setTokenMap}: 
           'button-clickable-border disabled:button-disabled w-fit shrink-0 items-center gap-1 p-1',
         )}>
           <CloudArrowUpIcon className="size-5"/>
-          <span className="text-sm">更新</span>
+          <span className="text-sm">{t('Updated')}</span>
         </FlexButton>
         <FlexButton
           className="button-clickable-border disabled:button-disabled w-fit shrink-0 items-center gap-1 p-1"
@@ -85,7 +88,7 @@ export const AdminExchangeTokenSingle = ({act, status, tokenData, setTokenMap}: 
           }}
         >
           <TrashIcon className="size-5"/>
-          <span className="text-sm">刪除</span>
+          <span className="text-sm">{t('Deleted')}</span>
         </FlexButton>
       </FlexForm>
     </Flex>

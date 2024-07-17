@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {useTranslations} from 'next-intl';
+
 import {useTabbedContentControl} from '@spinach/next/components/layout/tab/hook';
 import {TabbedContent} from '@spinach/next/components/layout/tab/main';
 import {
@@ -12,6 +14,8 @@ import {adminExchangeRequestsTabs, AdminExchangeRequestsTabs} from '@spinach/nex
 
 
 export const AdminExchangeRequests = () => {
+  const t = useTranslations('UI.InPage.Admin.ExchangeRequest.Tabs');
+
   const tabControl = useTabbedContentControl<AdminExchangeRequestsTabs>('queued');
 
   return (
@@ -19,9 +23,9 @@ export const AdminExchangeRequests = () => {
       keys={[...adminExchangeRequestsTabs]}
       control={tabControl}
       tabTitle={{
-        queued: '待成交',
-        matched: '待確認',
-        completed: '已完成',
+        queued: t('Queued'),
+        matched: t('Matched'),
+        completed: t('Completed'),
       }}
       content={{
         queued: <AdminExchangeRequestsQueued/>,

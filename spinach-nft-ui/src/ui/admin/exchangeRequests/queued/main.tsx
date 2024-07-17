@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {format} from 'date-fns/format';
+import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {OverflowableTable} from '@spinach/next/components/shared/common/table/overflowable/main';
@@ -11,6 +12,8 @@ import {AdminExchangeRequestsQueuedState} from '@spinach/next/ui/admin/exchangeR
 
 
 export const AdminExchangeRequestsQueued = () => {
+  const t = useTranslations('UI.InPage.Admin.ExchangeRequest');
+
   const [state, setState] = React.useState<AdminExchangeRequestsQueuedState>({
     lastUpdated: new Date(),
     data: [],
@@ -32,7 +35,7 @@ export const AdminExchangeRequestsQueued = () => {
   return (
     <Flex className="gap-1">
       <Flex direction="row" className="justify-end gap-1">
-        <span>最後更新於</span>
+        <span>{t('LastUpdated')}</span>
         <span>{format(state.lastUpdated, 'yyyy-MM-dd HH:mm:ss')}</span>
       </Flex>
       <OverflowableTable

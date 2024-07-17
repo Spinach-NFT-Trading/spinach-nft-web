@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {useTranslations} from 'next-intl';
+
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {VerificationStatusUi} from '@spinach/next/components/shared/common/verified';
 import {AdminMemberDataCell} from '@spinach/next/ui/admin/common/cell';
@@ -20,18 +22,20 @@ export const AdminMemberInfoPopup = ({member}: AdminMemberPopupProps) => {
     wallet,
   } = member;
 
+  const t = useTranslations('UI.InPage.Admin.Members');
+
   return (
     <Flex center className="gap-1.5 p-1">
       <VerificationStatusUi status={status}/>
-      <AdminMemberDataCell title="使用者 ID" info={id}/>
-      <AdminMemberDataCell title="使用者 ID" info={username}/>
-      <AdminMemberDataCell title="真實姓名" info={name}/>
-      <AdminMemberDataCell title="身分證字號" info={idNumber}/>
-      <AdminMemberDataCell title="生日" info={birthday}/>
-      <AdminMemberDataCell title="Email" info={email}/>
-      <AdminMemberDataCell title="LINE ID" info={lineId}/>
-      <AdminMemberDataCell title="虛擬貨幣錢包" info={wallet}/>
-      {recruitedBy && <AdminMemberDataCell title="代理上線 ID" info={recruitedBy}/>}
+      <AdminMemberDataCell title={t('Info.Id')} info={id}/>
+      <AdminMemberDataCell title={t('Info.Username')} info={username}/>
+      <AdminMemberDataCell title={t('Info.Name')} info={name}/>
+      <AdminMemberDataCell title={t('Info.IdNumber')} info={idNumber}/>
+      <AdminMemberDataCell title={t('Info.Birthday')} info={birthday}/>
+      <AdminMemberDataCell title={t('Info.Email')} info={email}/>
+      <AdminMemberDataCell title={t('Info.LineId')} info={lineId}/>
+      <AdminMemberDataCell title={t('Info.Wallet')} info={wallet}/>
+      {recruitedBy && <AdminMemberDataCell title={t('Info.Recruiter')} info={recruitedBy}/>}
     </Flex>
   );
 };

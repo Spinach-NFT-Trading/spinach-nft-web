@@ -3,6 +3,7 @@ import React from 'react';
 import CloudArrowUpIcon from '@heroicons/react/24/outline/CloudArrowUpIcon';
 import {GlobalConfig} from '@spinach/common/types/data/global';
 import {signIn} from 'next-auth/react';
+import {useTranslations} from 'next-intl';
 
 import {Loading} from '@spinach/next/components/icons/loading';
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -13,6 +14,8 @@ import {AdminGlobalConfigNumberInput} from '@spinach/next/ui/admin/globalConfig/
 
 export const AdminGlobalConfigUi = () => {
   const [config, setConfig] = React.useState<GlobalConfig | null>(null);
+
+  const t = useTranslations('UI.InPage.Admin.GlobalConfig.Cashback');
 
   const {status, act} = useUserDataActor();
 
@@ -56,7 +59,7 @@ export const AdminGlobalConfigUi = () => {
       </Flex>
       <div className="info-section text-lg">返金 %</div>
       <AdminGlobalConfigNumberInput
-        title="台幣"
+        title={t('Twd')}
         value={cashbackPercent.twBank}
         onChange={(twBank) => setConfig({
           ...config,
@@ -64,7 +67,7 @@ export const AdminGlobalConfigUi = () => {
         })}
       />
       <AdminGlobalConfigNumberInput
-        title="USDT"
+        title={t('Usdt')}
         value={cashbackPercent.crypto}
         onChange={(crypto) => setConfig({
           ...config,
@@ -73,7 +76,7 @@ export const AdminGlobalConfigUi = () => {
       />
       <div className="info-section text-lg">其他</div>
       <AdminGlobalConfigNumberInput
-        title="第三方退傭"
+        title={t('ThirdParty')}
         value={thirdPartyCommissionPercent}
         onChange={(thirdPartyCommissionPercent) => setConfig({
           ...config,

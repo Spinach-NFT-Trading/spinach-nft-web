@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {useTranslations} from 'next-intl';
+
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {AdminVerificationDataCell} from '@spinach/next/components/shared/admin/verification/cell';
 import {AdminVerification} from '@spinach/next/components/shared/admin/verification/main';
@@ -28,6 +30,9 @@ export const AdminVerifyGoldTxnResults = ({data, input}: Props) => {
     unverified,
   } = data;
   const [twBankTxn, setTwBankTxn] = React.useState(unverified.twBank);
+
+  const t = useTranslations('UI.Account');
+  const t2 = useTranslations('UI.InPage.Admin.VerifyInfo.GoldTxn');
 
   const twBankTxnToShow = useAdminVerifyFilteredData({
     input,
@@ -70,7 +75,7 @@ export const AdminVerifyGoldTxnResults = ({data, input}: Props) => {
             type: 'adminImageOfGoldTxnTwBank',
             opts: {uuid},
           },
-          imageName: '台幣轉帳紀錄',
+          imageName: t2('TxnRecord'),
         },
       ]}
       getConfirmPayload={(pass, data) => ({
@@ -101,12 +106,15 @@ export const AdminVerifyGoldTxnResults = ({data, input}: Props) => {
 
         return (
           <Flex className="gap-1">
-            <AdminVerificationDataCell title="使用者 ID" info={userData?.username}/>
-            <AdminVerificationDataCell title="姓名" info={userData?.name}/>
-            <AdminVerificationDataCell title="來源銀行代碼" info={bankDetails?.code}/>
-            <AdminVerificationDataCell title="來源銀行帳號" info={bankDetails?.account}/>
-            <AdminVerificationDataCell title="目標錢包" info={targetWallet ? formatWallet(targetWallet) : '-'}/>
-            <AdminVerificationDataCell title="金額" info={formatInt(amount)}/>
+            <AdminVerificationDataCell title={t('Info.UserId')} info={userData?.username}/>
+            <AdminVerificationDataCell title={t('Info.Name')} info={userData?.name}/>
+            <AdminVerificationDataCell title={t2('SourceBankCode')} info={bankDetails?.code}/>
+            <AdminVerificationDataCell title={t2('SourceBankAccount')} info={bankDetails?.account}/>
+            <AdminVerificationDataCell
+              title={t2('TargetWallet')}
+              info={targetWallet ? formatWallet(targetWallet) : '-'}
+            />
+            <AdminVerificationDataCell title={t2('Amount')} info={formatInt(amount)}/>
           </Flex>
         );
       }}

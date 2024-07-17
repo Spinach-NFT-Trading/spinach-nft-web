@@ -2,6 +2,7 @@ import React from 'react';
 
 import {UserData} from '@spinach/common/types/common/user/data';
 import {BankDetails} from '@spinach/common/types/data/user/bank';
+import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {AdminVerifyDataRowCommonProps} from '@spinach/next/ui/admin/verify/common/type';
@@ -14,16 +15,18 @@ type Props = AdminVerifyDataRowCommonProps<{
 }>;
 
 export const AdminVerifyBankRow = ({isTitle, data}: Props) => {
+  const t = useTranslations('UI.Account');
+
   return (
     <>
       <Flex center noFullWidth className="w-52">
-        {isTitle ? '使用者' : formatUserName(data.user)}
+        {isTitle ? t('Info.User') : formatUserName(data.user)}
       </Flex>
       <Flex center noFullWidth className="w-16">
-        {isTitle ? '銀行代碼' : data.bankDetails.code}
+        {isTitle ? t('BankAccounts.Code') : data.bankDetails.code}
       </Flex>
       <Flex center noFullWidth className="w-52">
-        {isTitle ? '銀行帳號' : data.bankDetails.account}
+        {isTitle ? t('BankAccounts.Account') : data.bankDetails.account}
       </Flex>
     </>
   );

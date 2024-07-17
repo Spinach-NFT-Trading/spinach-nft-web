@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {useTranslations} from 'next-intl';
+
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {UserBalanceActivity} from '@spinach/next/types/mongo/balance';
 import {AdminMemberActivityCell} from '@spinach/next/ui/admin/common/summary/cell';
@@ -11,38 +13,40 @@ type Props = {
 };
 
 export const AdminMemberActivitySummary = ({activities}: Props) => {
+  const t = useTranslations('UI.InPage.Admin.Common.Summary');
+
   return (
     <Flex direction="row" className="gap-1">
       <AdminMemberActivityCell
-        title="總餘額"
+        title={t('TotalBalance')}
         value={getSumOfBalanceActivity({
           activities,
           getValue: ({currentBalance}) => currentBalance,
         })}
       />
       <AdminMemberActivityCell
-        title="總 NFT 購買量"
+        title={t('TotalNftBought')}
         value={getSumOfBalanceActivity({
           activities,
           getValue: ({byTxnType}) => byTxnType['nftBuy'],
         })}
       />
       <AdminMemberActivityCell
-        title="總 NFT 售出量"
+        title={t('TotalNftSold')}
         value={getSumOfBalanceActivity({
           activities,
           getValue: ({byTxnType}) => byTxnType['nftSell'],
         })}
       />
       <AdminMemberActivityCell
-        title="總 USDT 入金量"
+        title={t('TotalDepositedUsdt')}
         value={getSumOfBalanceActivity({
           activities,
           getValue: ({byTxnType}) => byTxnType['deposit.crypto'],
         })}
       />
       <AdminMemberActivityCell
-        title="總台幣入金量"
+        title={t('TotalDepositedTwd')}
         value={getSumOfBalanceActivity({
           activities,
           getValue: ({byTxnType}) => byTxnType['deposit.twBank'],
