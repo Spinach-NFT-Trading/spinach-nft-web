@@ -7,6 +7,12 @@ export const getBlobClient = async (opts: AzureBlobControlOpts) => {
   const enforcedOpts = enforceAzureBlobNaming(opts);
   const {container, name} = enforcedOpts;
 
+  if (!azureBlobClient) {
+    throw new Error(
+      'Azure Blob client not initialized. Need to set `AZURE_BLOB_URI` as environment variable.',
+    );
+  }
+
   const containerClient = azureBlobClient.getContainerClient(container.toLowerCase());
   await containerClient.createIfNotExists();
 
