@@ -105,7 +105,6 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
             ...original,
             wallet: target.value,
           } satisfies AccountRegisterInput))}
-          required
           pattern={walletPattern}
         />
         <a href="https://youtu.be/bkCavlothfY" target="_blank" className="text-link w-fit self-end text-sm">

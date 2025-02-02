@@ -1,7 +1,5 @@
 import React from 'react';
 
-import {fxMarket} from '@spinach/common/const/fx';
-import {getFxRate} from '@spinach/common/controller/actors/fx';
 import {getServerSession} from 'next-auth';
 import {getTranslations} from 'next-intl/server';
 
@@ -18,19 +16,17 @@ export const Home = async () => {
   const [
     session,
     nfts,
-    currentFx,
     t,
   ] = await Promise.all([
     getServerSession(authOptions),
     getNftListing(20),
-    getFxRate(fxMarket),
     getTranslations('UI.InPage.Home'),
   ]);
 
   return (
     <PageLayout>
       <Flex className="gap-2">
-        <HomeHeader session={session} currentFx={currentFx}/>
+        <HomeHeader session={session}/>
         <NftListing nftListings={nfts} isOnSale/>
         <HomeFooter/>
         <Flex className="text-right text-sm md:flex-row md:justify-between">

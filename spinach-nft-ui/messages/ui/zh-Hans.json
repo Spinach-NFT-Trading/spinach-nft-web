@@ -71,7 +71,7 @@
     "Home": {
       "PrivacyPolicy": "隐私权政策服务条款",
       "Stats": {
-        "NftVolume": "已交易 NFT 数量",
+        "NftVolume": "已交易遊戲點數数量",
         "UsdtVolume": "24 小时 USDT 交易量",
         "GoldVolume": "24 小时 GOLD 购买量"
       },

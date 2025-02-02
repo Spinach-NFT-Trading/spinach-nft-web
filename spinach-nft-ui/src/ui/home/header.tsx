@@ -1,6 +1,5 @@
 import React from 'react';
 
-import BanknotesIcon from '@heroicons/react/24/outline/BanknotesIcon';
 import CurrencyDollarIcon from '@heroicons/react/24/outline/CurrencyDollarIcon';
 import RocketLaunchIcon from '@heroicons/react/24/outline/RocketLaunchIcon';
 import {clsx} from 'clsx';
@@ -17,10 +16,9 @@ import {HomeStatsSection} from '@spinach/next/ui/home/stats';
 
 type Props = {
   session: Session | null,
-  currentFx: string | undefined,
 };
 
-export const HomeHeader = ({session, currentFx}: Props) => {
+export const HomeHeader = ({session}: Props) => {
   const t = useTranslations('UI.InPage.Home.Stats');
   const t2 = useTranslations('UI.UserControl');
 
@@ -43,12 +41,11 @@ export const HomeHeader = ({session, currentFx}: Props) => {
         </div>
       </Flex>
       <Grid center className={clsx(
-        'grid-cols-1 gap-3 rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 p-4 md:grid-cols-4',
+        'grid-cols-1 gap-3 rounded-lg bg-gradient-to-br from-slate-800 to-slate-900 p-4 md:grid-cols-3',
       )}>
         <HomeStatsSection icon={<RocketLaunchIcon/>} value={100} title={t('NftVolume')}/>
         <HomeStatsSection icon={<UsdtIcon/>} value={9E6} title={t('UsdtVolume')}/>
         <HomeStatsSection icon={<CurrencyDollarIcon/>} value={2.7E7} title={t('GoldVolume')}/>
-        <HomeStatsSection icon={<BanknotesIcon/>} value={parseFloat(currentFx ?? '-')} title="USDT / TWD"/>
       </Grid>
     </Flex>
   );
