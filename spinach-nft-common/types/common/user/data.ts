@@ -1,9 +1,8 @@
 import {Static, Type} from '@sinclair/typebox';
 
-import {lineIdPattern, namePattern, phonePattern} from '@spinach/common/const/auth';
+import {lineIdPattern, namePattern, phonePattern, walletPattern} from '@spinach/common/const/auth';
 import {IdNumberSchemaBase, UserIdSchemaBase, UsernameSchemaBase} from '@spinach/common/types/api/auth/common';
 import {IsoDateStringSchema} from '@spinach/common/types/common/date';
-import {WalletSchemaBase} from '@spinach/common/types/common/wallet';
 
 
 export const UserDataSchemaBase = {
@@ -13,7 +12,7 @@ export const UserDataSchemaBase = {
   email: Type.String({format: 'email'}),
   birthday: IsoDateStringSchema,
   lineId: Type.String({pattern: lineIdPattern}),
-  wallet: WalletSchemaBase,
+  wallet: Type.Union([Type.String({pattern: walletPattern}), Type.Null()]),
   phone: Type.String({pattern: phonePattern}),
   recruitedBy: Type.Union([UserIdSchemaBase, Type.Null()]),
 };

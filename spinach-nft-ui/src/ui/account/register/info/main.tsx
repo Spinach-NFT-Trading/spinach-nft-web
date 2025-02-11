@@ -100,7 +100,7 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
           id="wallet"
           placeholder={t('Info.WalletAddress')}
           type="text"
-          value={wallet}
+          value={wallet ?? ''}
           onChange={({target}) => setInput((original) => ({
             ...original,
             wallet: target.value,

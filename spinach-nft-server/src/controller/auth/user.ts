@@ -61,13 +61,15 @@ export const registerUser = async ({
     }
   }
 
-  const checkResult = await checkTrxAddress({wallet});
-  if ('message' in checkResult) {
-    return 'walletNotExist';
-  }
+  if (wallet) {
+    const checkResult = await checkTrxAddress({wallet});
+    if ('message' in checkResult) {
+      return 'walletNotExist';
+    }
 
-  if (checkResult.isToken || checkResult.isContract) {
-    return 'walletInvalid';
+    if (checkResult.isToken || checkResult.isContract) {
+      return 'walletInvalid';
+    }
   }
 
   const smsVerifyData = await getSmsVerifyFinalizedData(phoneVerificationKey);

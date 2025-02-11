@@ -45,7 +45,7 @@ export const AdminMembersResults = ({user, input, memberInfo, lookBackInputContr
   const translateApiError = useI18nApiErrorTranslator();
 
   const membersToShow = React.useMemo(() => members.filter((member) => (
-    !value || member[key].includes(value)
+    !value || member[key]?.includes(value)
   )), [memberInfo, input]);
 
   if (!act) {

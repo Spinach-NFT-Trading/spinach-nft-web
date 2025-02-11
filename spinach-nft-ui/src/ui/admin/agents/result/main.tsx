@@ -41,7 +41,7 @@ export const AdminAgentsResults = ({
       return false;
     }
 
-    return agentUserInfo[key].includes(value);
+    return agentUserInfo[key]?.includes(value);
   }), [data, input]);
 
   if (!act) {

@@ -83,17 +83,20 @@ export const AdminVerifyIdResults = ({data, input}: Props) => {
               <AdminVerificationDataCell title={t2('Email')} info={email}/>
               <AdminVerificationDataCell title={t2('LineId')} info={lineId}/>
             </Flex>
-            <AdminVerificationDataCell
-              title={t2('Wallet')}
-              info={
-                <Flex direction="row" noFullWidth center className={clsx(
-                  'w-min gap-1 rounded-lg pl-2 ring-1 ring-slate-300',
-                )}>
-                  <code className="truncate">{wallet}</code>
-                  <CopyButton data={wallet}/>
-                </Flex>
-              }
-            />
+            {
+              wallet &&
+              <AdminVerificationDataCell
+                title={t2('Wallet')}
+                info={
+                  <Flex direction="row" noFullWidth center className={clsx(
+                    'w-min gap-1 rounded-lg pl-2 ring-1 ring-slate-300',
+                  )}>
+                    <code className="truncate">{wallet}</code>
+                    <CopyButton data={wallet}/>
+                  </Flex>
+                }
+              />
+            }
           </Flex>
         );
       }}
