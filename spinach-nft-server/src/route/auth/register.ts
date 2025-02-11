@@ -39,6 +39,7 @@ export const addAuthRegister = () => {
   Server.post<{Body: UserRegisterRequest, Reply: UserRegisterResponse}>(
     apiPath.auth.register,
     {
+      bodyLimit: 20 * 1024 * 1024,
       schema: {
         body: UserRegisterRequestSchema,
         response: {
