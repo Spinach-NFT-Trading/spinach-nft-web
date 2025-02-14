@@ -1,1 +1,1 @@
-export const projectName = 'TG NFT Market';
+export const projectName = 'TG Market';

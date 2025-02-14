@@ -83,7 +83,7 @@ export const AdminGlobalConfigUi = () => {
           thirdPartyCommissionPercent,
         })}
       />
-      <div className="info-section text-lg">NFT 撮合請求權杖</div>
+      <div className="info-section text-lg">遊戲點數撮合請求權杖</div>
       <AdminExchangeToken/>
     </Flex>
   );
