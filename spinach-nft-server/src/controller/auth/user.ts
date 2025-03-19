@@ -45,7 +45,7 @@ export const registerUser = async ({
     return 'takenLineId';
   }
 
-  if (await userInfoCollection.findOne({wallet})) {
+  if (wallet && await userInfoCollection.findOne({wallet})) {
     return 'takenWallet';
   }
 
