@@ -22,10 +22,10 @@
       },
       "Nft": {
         "Exchange": {
-          "Title": "NFT 交易确认"
+          "Title": "游戏点数交易确认"
         },
         "Position": {
-          "Title": "NFT 持仓列表"
+          "Title": "游戏点数持有列表"
         }
       },
       "Profile": {
@@ -58,7 +58,7 @@
     },
     "Nft": {
       "Purchase": {
-        "Title": "购买 NFT"
+        "Title": "购买游戏点数"
       }
     }
   },
@@ -147,8 +147,8 @@
       },
       "Index": {
         "Profile": "会员资料",
-        "NftPositions": "NFT 持仓",
-        "NftExchangeConfirm": "确认 NFT 交易",
+        "NftPositions": "游戏点数持仓",
+        "NftExchangeConfirm": "确认游戏点数交易",
         "Admin": "会员管理"
       }
     },
@@ -212,8 +212,8 @@
     "Nft": {
       "Purchase": {
         "Error": {
-          "NotOnSale": "NFT 未上架",
-          "NotFound": "找不到对应 NFT"
+          "NotOnSale": "游戏点数未上架",
+          "NotFound": "找不到对应游戏点数"
         },
         "Info": {
           "Id": "ID",
@@ -224,7 +224,7 @@
         "Buy": "购买",
         "Popup": {
           "Title": "确认购买",
-          "Message": "确定要购买此 NFT 吗？",
+          "Message": "确定要购买此游戏点数吗？",
           "Button": "确认购买"
         },
         "Disclaimer": {
@@ -237,7 +237,7 @@
       "Tabs": {
         "Agents": "代理列表",
         "Members": "会员列表",
-        "ExchangeRequests": "NFT 交易请求",
+        "ExchangeRequests": "游戏点数交易请求",
         "VerifyId": "验证身分",
         "VerifyBankAccount": "验证银行帐号",
         "VerifyBankTxn": "验证 GOLD 购买纪录",
@@ -259,8 +259,8 @@
         },
         "Summary": {
           "TotalBalance": "总余额",
-          "TotalNftBought": "总 NFT 购买量",
-          "TotalNftSold": "总 NFT 售出量",
+          "TotalNftBought": "总游戏点数购买量",
+          "TotalNftSold": "总游戏点数售出量",
           "TotalDepositedUsdt": "总 USDT 入金量",
           "TotalDepositedTwd": "总台币入金量"
         },
@@ -271,8 +271,8 @@
         "Header": {
           "UserName": "用户名称",
           "TotalBalance": "下线总余额",
-          "TotalNftBought": "NFT 购买量",
-          "TotalNftSold": "NFT 售出量",
+          "TotalNftBought": "游戏点数购买量",
+          "TotalNftSold": "游戏点数售出量",
           "DepositedTwd": "入金 (台币)",
           "DepositedUsdt": "入金 (USDT)",
           "CashbackSettings": "退佣设定"
@@ -331,8 +331,8 @@
           "Agent": "代理",
           "Status": "状态",
           "CurrentBalance": "目前余额",
-          "NftBought": "NFT 购买量",
-          "NftSold": "NFT 售出量",
+          "NftBought": "游戏点数购买量",
+          "NftSold": "游戏点数售出量",
           "DepositedTwd": "入金 (台币)",
           "DepositedUsdt": "入金 (USDT)",
           "Cashback": "退佣",
@@ -378,12 +378,12 @@
           "NftTxn": {
             "Header": {
               "Time": "时间",
-              "NftId": "NFT ID",
+              "NftId": "游戏点数 ID",
               "Counterparty": "交易对象"
             },
             "Content": {
-              "Loading": "NFT 交易纪录",
-              "NoResult": "无 NFT 交易纪录"
+              "Loading": "游戏点数交易纪录",
+              "NoResult": "无游戏点数交易纪录"
             },
             "Sell": "贩售",
             "Buy": "购买"
@@ -432,7 +432,7 @@
   },
   "Account": {
     "Assets": {
-      "Nft": "NFT 资产",
+      "Nft": "游戏点数",
       "Gold": "GOLD",
       "Total": "总资产"
     },
@@ -462,9 +462,9 @@
   "User": {
     "Balance": {
       "HistoryType": {
-        "NftBuy": "购买 NFT",
-        "NftSell": "贩卖 NFT",
-        "NftSellRefund": "贩卖 NFT (退差价)",
+        "NftBuy": "购买游戏点数",
+        "NftSell": "贩卖游戏点数",
+        "NftSellRefund": "贩卖游戏点数 (退差价)",
         "DepositTwd": "入金 (台币)",
         "DepositTwdCashback": "入金赠金 (台币)",
         "DepositCrypto": "入金 (USDT)",
@@ -509,9 +509,9 @@
       "GoldNotEnough": "GOLD 不足。",
       "GoldTwBankTxnRecordFailed": "台币转帐纪录上传失败。",
       "GoldTwBankTxnNotFound": "没有找到对应的台币转帐纪录。",
-      "NftNotOnSale": "NFT 不在贩卖中。",
-      "NftMatchRequestNotFound": "找不到对应的 NFT 交易请求。",
-      "NftInfoNotFound": "找不到对应的 NFT 资讯。",
+      "NftNotOnSale": "游戏点数不在贩卖中。",
+      "NftMatchRequestNotFound": "找不到对应的游戏点数交易请求。",
+      "NftInfoNotFound": "找不到对应的游戏点数资讯。",
       "WalletInvalid": "钱包地址无效。",
       "WalletNotExist": "钱包地址不存在。",
       "SmsSendFailed": "验证简讯传送失败。",
