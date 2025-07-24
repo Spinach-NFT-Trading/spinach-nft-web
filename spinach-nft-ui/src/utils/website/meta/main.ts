@@ -37,7 +37,7 @@ export const generatePageMeta = ({
       capable: true,
       title: name,
       statusBarStyle: 'black',
-      startupImage: '/logo-half.png',
+      startupImage: '/icons/icon.png',
     },
     twitter: {
       card: 'summary',
@@ -53,35 +53,15 @@ export const generatePageMeta = ({
     icons: {
       icon: [
         {
-          url: '/icons/icon-72x72.png',
-          sizes: '72x72',
-          type: 'image/png',
-        },
-        {
-          url: '/icons/icon-150x150.png',
-          sizes: '150x150',
-          type: 'image/png',
-        },
-        {
-          url: '/icons/icon-180x180.png',
-          sizes: '180x180',
-          type: 'image/png',
-        },
-        {
-          url: '/icons/icon-192x192.png',
-          sizes: '192x192',
-          type: 'image/png',
-        },
-        {
-          url: '/icons/icon-512x512.png',
-          sizes: '512x512',
+          url: '/icons/icon.png',
+          sizes: '256x256',
           type: 'image/png',
         },
       ],
       shortcut: '/favicon.ico',
       apple: [
         {
-          url: '/icons/icon-180x180.png',
+          url: '/icons/icon.png',
           sizes: '180x180',
           type: 'image/png',
         },
@@ -98,7 +78,7 @@ export const generatePageMeta = ({
       'mobile-web-app-capable': 'yes',
       'msapplication-TileColor': '#97a8ff',
       'msapplication-tap-highlight': 'no',
-      'msapplication-TileImage': '/icons/icon-150x150.png',
+      'msapplication-TileImage': '/icons/icon.png',
     },
   };
 };
