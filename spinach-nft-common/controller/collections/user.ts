@@ -22,7 +22,10 @@ const initDbIndex = async () => {
     userInfoCollection.createIndex({idNumber: 1}, {unique: true}),
     userInfoCollection.createIndex({name: 1}, {unique: true}),
     userInfoCollection.createIndex({lineId: 1}, {unique: true}),
-    userInfoCollection.createIndex({wallet: 1}, {unique: true}),
+    userInfoCollection.createIndex(
+      {wallet: 1},
+      {unique: true, partialFilterExpression: {wallet: {$type: 'string'}}},
+    ),
     userBalanceCollection.createIndex({userId: 1}),
     userBalanceCollection.createIndex(
       {txnHash: 1},

@@ -9,18 +9,17 @@ import {checkTrxAddress} from '@spinach/common/utils/tron/address';
 import {ObjectId} from 'mongodb';
 
 import {RegisterUserResult} from '@spinach/server/controller/auth/type';
-import {getSmsVerifyFinalizedData} from '@spinach/server/controller/auth/verify/sms/finalize';
 import {RegisterAsAdminLineIdKey} from '@spinach/server/env';
 
 
 export const registerUser = async ({
-  phoneVerificationKey,
   idNumber,
   name,
   email,
   birthday,
   lineId,
   wallet,
+  phone,
   username,
   password,
   recruitedBy,
@@ -72,11 +71,6 @@ export const registerUser = async ({
     }
   }
 
-  const smsVerifyData = await getSmsVerifyFinalizedData(phoneVerificationKey);
-  if (!smsVerifyData) {
-    return 'smsPhoneInvalid';
-  }
-
   const model: UserModel = {
     idNumber,
     username,
@@ -86,7 +80,7 @@ export const registerUser = async ({
     birthday,
     lineId,
     wallet,
-    phone: smsVerifyData.phone,
+    phone,
     status: 'unverified',
     isAdmin: lineId === RegisterAsAdminLineIdKey,
     isMod: false,

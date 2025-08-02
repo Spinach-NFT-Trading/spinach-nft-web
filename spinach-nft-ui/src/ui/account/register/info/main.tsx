@@ -4,6 +4,7 @@ import {
   lineIdPattern,
   namePattern,
   passwordPattern,
+  phonePattern,
   usernamePattern,
   walletPattern,
 } from '@spinach/common/const/auth';
@@ -20,6 +21,7 @@ import {AccountRegisterCommonProps, AccountRegisterInput} from '@spinach/next/ui
 export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: AccountRegisterCommonProps) => {
   const {
     idNumber,
+    phone,
     name,
     email,
     birthday,
@@ -47,6 +49,19 @@ export const AccountRegisterBasicInfo = ({show, input, setInput, onComplete}: Ac
           } satisfies AccountRegisterInput))}
           required
           pattern={idNumberPattern}
+        />
+        <InputFloatingLabel
+          id="phone"
+          placeholder={t('Info.Phone')}
+          type="tel"
+          value={phone}
+          onChange={({target}) => setInput((original) => ({
+            ...original,
+            phone: target.value,
+          } satisfies AccountRegisterInput))}
+          autoComplete="tel"
+          required
+          pattern={phonePattern}
         />
         <InputFloatingLabel
           id="name"

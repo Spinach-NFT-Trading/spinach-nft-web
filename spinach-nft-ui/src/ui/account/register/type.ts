@@ -7,7 +7,7 @@ import {NextPageProps} from '@spinach/next/types/next/page';
 
 
 export type AccountRegisterInput = UserRegisterRequest & {
-  step: 'sms' | 'info' | 'idVerification' | 'completed',
+  step: 'info' | 'idVerification' | 'completed',
 };
 
 export type AccountRegisterCommonProps = {
