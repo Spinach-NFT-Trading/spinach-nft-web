@@ -9,7 +9,8 @@ export const usernamePattern = '[a-zA-Z0-9]{6,}';
 
 export const passwordPattern = '.{6,}';
 
-export const namePattern = '\\w+';
+// \u4E00-\u9FFF for CJK characters
+export const namePattern = '[\u4E00-\u9FFF\\w]+';
 
 export const phonePattern = '09[0-9]{8}';
 
