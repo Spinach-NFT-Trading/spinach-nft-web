@@ -32,7 +32,7 @@ export const HomeHeader = ({session}: Props) => {
               {t2('Register')}
             </FlexLink>
             <FlexLink href="/account/login" center className="button-clickable-border w-20 p-2">
-              {t2('Logout')}
+              {t2('Login')}
             </FlexLink>
           </Flex>
         }
