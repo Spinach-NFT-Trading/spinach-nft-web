@@ -275,7 +275,10 @@
           "TotalNftSold": "NFT sales volume",
           "DepositedTwd": "Deposit (Taiwan Dollar)",
           "DepositedUsdt": "Deposit (USDT)",
-          "CashbackSettings": "Commission refund settings"
+          "CashbackSettings": {
+            "Agent": "TODO",
+            "Member": "TODO"
+          }
         },
         "LowerLevels": "Offline list",
         "Search": {
@@ -336,7 +339,10 @@
           "DepositedTwd": "Deposit (Taiwan Dollar)",
           "DepositedUsdt": "Deposit (USDT)",
           "Cashback": "Return commission",
-          "CashbackSettings": "Commission refund settings"
+          "CashbackSettings": {
+            "Agent": "TODO",
+            "Member": "TODO"
+          }
         },
         "Info": {
           "Id": "User serial number",

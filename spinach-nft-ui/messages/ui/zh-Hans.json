@@ -275,7 +275,10 @@
           "TotalNftSold": "游戏点数售出量",
           "DepositedTwd": "入金 (台币)",
           "DepositedUsdt": "入金 (USDT)",
-          "CashbackSettings": "退佣设定"
+          "CashbackSettings": {
+            "Agent": "TODO",
+            "Member": "TODO"
+          }
         },
         "LowerLevels": "下线列表",
         "Search": {
@@ -336,7 +339,10 @@
           "DepositedTwd": "入金 (台币)",
           "DepositedUsdt": "入金 (USDT)",
           "Cashback": "退佣",
-          "CashbackSettings": "退佣设定"
+          "CashbackSettings": {
+            "Agent": "TODO",
+            "Member": "TODO"
+          }
         },
         "Info": {
           "Id": "使用者序号",

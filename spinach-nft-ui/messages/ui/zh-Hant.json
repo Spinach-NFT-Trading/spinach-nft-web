@@ -275,7 +275,10 @@
           "TotalNftSold": "遊戲點數售出量",
           "DepositedTwd": "入金 (台幣)",
           "DepositedUsdt": "入金 (USDT)",
-          "CashbackSettings": "退傭設定"
+          "CashbackSettings": {
+            "Agent": "代理退傭",
+            "Member": "會員退傭"
+          }
         },
         "LowerLevels": "下線列表",
         "Search": {
@@ -336,7 +339,10 @@
           "DepositedTwd": "入金 (台幣)",
           "DepositedUsdt": "入金 (USDT)",
           "Cashback": "退傭",
-          "CashbackSettings": "退傭設定"
+          "CashbackSettings": {
+            "Agent": "代理退傭",
+            "Member": "會員退傭"
+          }
         },
         "Info": {
           "Id": "使用者序號",

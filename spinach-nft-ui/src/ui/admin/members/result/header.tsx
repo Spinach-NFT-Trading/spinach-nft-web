@@ -47,7 +47,7 @@ export const AdminMemberSingleHeader = ({isAdmin}: Props) => {
       {
         isAdmin &&
         <td className="w-60">
-          {t('CashbackSettings')}
+          {t('CashbackSettings.Agent')}
         </td>
       }
       <td className="w-[42rem]"/>

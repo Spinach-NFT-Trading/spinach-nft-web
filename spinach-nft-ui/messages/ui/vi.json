@@ -275,7 +275,10 @@
           "TotalNftSold": "Khối lượng bán NFT",
           "DepositedTwd": "Tiền gửi (Đô la Đài Loan)",
           "DepositedUsdt": "Tiền gửi (USDT)",
-          "CashbackSettings": "Cài đặt hoàn tiền hoa hồng"
+          "CashbackSettings": {
+            "Agent": "TODO",
+            "Member": "TODO"
+          }
         },
         "LowerLevels": "Danh sách ngoại tuyến",
         "Search": {
@@ -336,7 +339,10 @@
           "DepositedTwd": "Tiền gửi (Đô la Đài Loan)",
           "DepositedUsdt": "Tiền gửi (USDT)",
           "Cashback": "Hoa hồng trả lại",
-          "CashbackSettings": "Cài đặt hoàn tiền hoa hồng"
+          "CashbackSettings": {
+            "Agent": "TODO",
+            "Member": "TODO"
+          }
         },
         "Info": {
           "Id": "Số sê-ri của người dùng",

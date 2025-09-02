@@ -251,7 +251,10 @@ declare global {
               TotalNftSold: string,
               DepositedTwd: string,
               DepositedUsdt: string,
-              CashbackSettings: string,
+              CashbackSettings: {
+                Agent: string,
+                Member: string,
+              },
             },
             LowerLevels: string,
             Search: {
@@ -312,7 +315,10 @@ declare global {
               DepositedTwd: string,
               DepositedUsdt: string,
               Cashback: string,
-              CashbackSettings: string,
+              CashbackSettings: {
+                Agent: string,
+                Member: string,
+              },
             },
             Info: {
               Id: string,

@@ -29,7 +29,7 @@ export const AdminAgentHeader = () => {
         {t('DepositedUsdt')}
       </td>
       <td className="w-60">
-        {t('CashbackSettings')}
+        {t('CashbackSettings.Agent')}
       </td>
       <td className="w-80"/>
     </tr>

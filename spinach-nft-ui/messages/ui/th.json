@@ -275,7 +275,10 @@
           "TotalNftSold": "ปริมาณการขาย NFT",
           "DepositedTwd": "เงินฝาก (ดอลลาร์ไต้หวัน)",
           "DepositedUsdt": "เงินฝาก (USDT)",
-          "CashbackSettings": "การตั้งค่าการคืนเงินค่าคอมมิชชั่น"
+          "CashbackSettings": {
+            "Agent": "TODO",
+            "Member": "TODO"
+          }
         },
         "LowerLevels": "รายการออฟไลน์",
         "Search": {
@@ -336,7 +339,10 @@
           "DepositedTwd": "เงินฝาก (ดอลลาร์ไต้หวัน)",
           "DepositedUsdt": "เงินฝาก (USDT)",
           "Cashback": "ค่าคอมมิชชั่นคืน",
-          "CashbackSettings": "การตั้งค่าการคืนเงินค่าคอมมิชชั่น"
+          "CashbackSettings": {
+            "Agent": "TODO",
+            "Member": "TODO"
+          }
         },
         "Info": {
           "Id": "หมายเลขซีเรียลของผู้ใช้",

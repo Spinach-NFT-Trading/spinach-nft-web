@@ -275,7 +275,10 @@
           "TotalNftSold": "NFT販売量",
           "DepositedTwd": "デポジット（台湾ドル）",
           "DepositedUsdt": "デポジット (USDT)",
-          "CashbackSettings": "コミッション返金設定"
+          "CashbackSettings": {
+            "Agent": "TODO",
+            "Member": "TODO"
+          }
         },
         "LowerLevels": "オフラインリスト",
         "Search": {
@@ -336,7 +339,10 @@
           "DepositedTwd": "デポジット（台湾ドル）",
           "DepositedUsdt": "デポジット (USDT)",
           "Cashback": "返品手数料",
-          "CashbackSettings": "コミッション返金設定"
+          "CashbackSettings": {
+            "Agent": "TODO",
+            "Member": "TODO"
+          }
         },
         "Info": {
           "Id": "ユーザーシリアル番号",
