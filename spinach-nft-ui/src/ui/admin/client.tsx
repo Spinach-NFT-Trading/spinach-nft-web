@@ -7,7 +7,7 @@ import {useTabbedContentControl} from '@spinach/next/components/layout/tab/hook'
 import {TabbedContent} from '@spinach/next/components/layout/tab/main';
 import {CommonUserData} from '@spinach/next/types/auth';
 import {AdminMemberAgent} from '@spinach/next/ui/admin/agents/main';
-import {adminTabsAdminOnly} from '@spinach/next/ui/admin/const';
+import {adminTabsPrivilegedOnly} from '@spinach/next/ui/admin/const';
 import {AgentIdContext} from '@spinach/next/ui/admin/context';
 import {AdminExchangeRequests} from '@spinach/next/ui/admin/exchangeRequests/main';
 import {AdminGlobalConfigUi} from '@spinach/next/ui/admin/globalConfig/main';
@@ -16,6 +16,7 @@ import {AdminPageTab, adminPageTabs} from '@spinach/next/ui/admin/type';
 import {AdminVerifyBank} from '@spinach/next/ui/admin/verify/bank/main';
 import {AdminVerifyGoldTxn} from '@spinach/next/ui/admin/verify/goldTxn/main';
 import {AdminVerifyId} from '@spinach/next/ui/admin/verify/id/main';
+import {isUserPrivileged} from '@spinach/next/utils/data/user';
 
 
 type Props = {
@@ -32,8 +33,8 @@ export const AdminPageClient = ({user}: Props) => {
     <AgentIdContext.Provider value={agentId}>
       <TabbedContent
         keys={[...adminPageTabs].filter((tab) => {
-          if (adminTabsAdminOnly[tab]) {
-            return user.isAdmin;
+          if (adminTabsPrivilegedOnly[tab]) {
+            return isUserPrivileged(user);
           }
 
           return true;

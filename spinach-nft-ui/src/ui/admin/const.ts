@@ -1,7 +1,7 @@
 import {AdminPageTab} from '@spinach/next/ui/admin/type';
 
 
-export const adminTabsAdminOnly: {[tab in AdminPageTab]: boolean} = {
+export const adminTabsPrivilegedOnly: {[tab in AdminPageTab]: boolean} = {
   agents: true,
   members: false,
   exchangeRequests: true,
