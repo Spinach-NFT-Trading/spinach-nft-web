@@ -64,7 +64,7 @@ export const AdminMembersResults = ({user, input, memberInfo, lookBackInputContr
       {error && <Alert>{translateApiError(error)}</Alert>}
       <OverflowableTable
         data={membersToShow}
-        header={<AdminMemberSingleHeader isAdmin={user.isAdmin}/>}
+        header={<AdminMemberSingleHeader permissionFlags={user}/>}
         getKey={(data) => data?.id}
         classOfRow="w-max gap-1 border-b-slate-400 p-1 not-last:border-b"
         renderRow={({data}) => (

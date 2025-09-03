@@ -7,14 +7,17 @@ import {DefaultJWT} from 'next-auth/jwt';
 import {UserDataAction, UserLazyLoadedData, UserPreloadedData} from '@spinach/next/types/userData/main';
 
 
-export type CommonUserData = {
-  id: string,
-  username: UserInfo['username'],
-  status: VerificationStatus,
+export type CommonUserPermissionFlags = {
   isAdmin: boolean,
   isMod: boolean,
   isAgent: boolean,
   isSuspended: boolean,
+};
+
+export type CommonUserData = CommonUserPermissionFlags & {
+  id: string,
+  username: UserInfo['username'],
+  status: VerificationStatus,
 };
 
 declare module 'next-auth' {

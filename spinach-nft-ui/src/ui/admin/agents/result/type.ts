@@ -1,7 +1,8 @@
+import {CommonUserData} from '@spinach/next/types/auth';
 import {AdminLookBackInputControl} from '@spinach/next/ui/admin/common/lookback/type';
 
 
 export type AdminAgentRowCommonProps = {
-  isAdmin: boolean,
+  actor: CommonUserData,
   lookBackInputControl: AdminLookBackInputControl,
 };

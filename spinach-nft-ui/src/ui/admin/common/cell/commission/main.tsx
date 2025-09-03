@@ -10,15 +10,15 @@ import {AdminMemberCommissionSettingsInput} from '@spinach/next/ui/admin/common/
 
 type Props = {
   initial: UserCommissionPercent,
-  isAdmin: boolean,
-  disabled: boolean,
+  isWritable: boolean,
+  isLoading: boolean,
   onUpload: (commissionPercent: UserCommissionPercent) => Promise<void>,
 };
 
 export const AdminMemberCommissionSettingsCell = ({
   initial,
-  isAdmin,
-  disabled,
+  isWritable,
+  isLoading,
   onUpload,
 }: Props) => {
   const [
@@ -28,7 +28,7 @@ export const AdminMemberCommissionSettingsCell = ({
 
   const t = useTranslations('UI.InPage.Admin.Common.Commission');
 
-  const actualDisabled= disabled || !isAdmin;
+  const actualDisabled = !isWritable || isLoading;
 
   return (
     <FlexForm direction="row" noFullWidth center className="w-60 gap-1">
@@ -50,13 +50,16 @@ export const AdminMemberCommissionSettingsCell = ({
         }))}
         disabled={actualDisabled}
       />
-      <button
-        className="button-clickable-bg rounded-lg p-1"
-        onClick={() => onUpload(commissionPercent)}
-        disabled={actualDisabled}
-      >
-        <CloudArrowUpIcon className="size-6"/>
-      </button>
+      {
+        isWritable &&
+        <button
+          className="button-clickable-bg rounded-lg p-1"
+          onClick={() => onUpload(commissionPercent)}
+          disabled={actualDisabled}
+        >
+          <CloudArrowUpIcon className="size-6"/>
+        </button>
+      }
     </FlexForm>
   );
 };

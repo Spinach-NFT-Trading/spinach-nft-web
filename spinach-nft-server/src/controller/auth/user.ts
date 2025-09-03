@@ -86,7 +86,11 @@ export const registerUser = async ({
     isMod: false,
     isAgent: false,
     isSuspended: false,
-    commissionPercent: {
+    commissionPercentMember: {
+      buy: 0,
+      sell: 0,
+    },
+    commissionPercentAgent: {
       buy: 0,
       sell: 0,
     },
@@ -130,7 +134,8 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     isMod,
     isAgent,
     isSuspended,
-    commissionPercent,
+    commissionPercentAgent,
+    commissionPercentMember,
     recruitedBy,
   } = info;
 
@@ -153,7 +158,8 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     isMod,
     isAgent,
     isSuspended,
-    commissionPercent,
+    commissionPercentAgent,
+    commissionPercentMember,
     recruitedBy,
   };
 };

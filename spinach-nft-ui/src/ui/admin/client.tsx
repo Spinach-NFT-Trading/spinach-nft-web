@@ -50,15 +50,13 @@ export const AdminPageClient = ({user}: Props) => {
         }}
         content={{
           agents: (
-            user ?
-              <AdminMemberAgent
-                isAdmin={user.isAdmin}
-                onAgentSelected={(agentId) => {
-                  setAgentId(agentId);
-                  tabControl.setCurrent('members');
-                }}
-              /> :
-              null
+            <AdminMemberAgent
+              user={user}
+              onAgentSelected={(agentId) => {
+                setAgentId(agentId);
+                tabControl.setCurrent('members');
+              }}
+            />
           ),
           members: <AdminMembers user={user}/>,
           exchangeRequests: <AdminExchangeRequests/>,

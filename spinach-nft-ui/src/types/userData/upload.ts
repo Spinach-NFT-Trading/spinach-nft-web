@@ -41,12 +41,6 @@ export type UserDataRequestOpts = {
   type: 'exchange.gold.twBank',
   data: RequestOfGoldExchangeTwBank,
 } | {
-  type: 'admin.agent.update.commission',
-  data: {
-    agentId: string | null,
-    commissionPercent: UserCommissionPercent,
-  },
-} | {
   type: 'admin.token.update',
   data: NftExchangeToken,
 } | {
@@ -67,7 +61,7 @@ export type UserDataRequestOpts = {
     isSuspended: boolean,
   },
 } | {
-  type: 'admin.member.update.commission',
+  type: 'admin.commission.update.agent' | 'admin.commission.update.member',
   data: {
     targetId: string,
     commissionPercent: UserCommissionPercent,

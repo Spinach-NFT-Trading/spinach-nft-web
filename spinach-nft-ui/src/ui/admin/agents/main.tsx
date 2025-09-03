@@ -5,6 +5,7 @@ import {useTranslations} from 'next-intl';
 
 import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/animated';
 import {Flex} from '@spinach/next/components/layout/flex/common';
+import {CommonUserData} from '@spinach/next/types/auth';
 import {adminAgentsSearchKeyName} from '@spinach/next/ui/admin/agents/const';
 import {AdminAgentsResults} from '@spinach/next/ui/admin/agents/result/main';
 import {adminAgentsFilterBasis, AdminAgentsFilterInput} from '@spinach/next/ui/admin/agents/type';
@@ -16,11 +17,11 @@ import {AdminDataSearchInputUi} from '@spinach/next/ui/admin/input/main';
 
 
 type Props = {
-  isAdmin: boolean,
+  user: CommonUserData,
   onAgentSelected: (agentId: string | null) => void,
 };
 
-export const AdminMemberAgent = ({isAdmin, onAgentSelected}: Props) => {
+export const AdminMemberAgent = ({user, onAgentSelected}: Props) => {
   const [input, setInput] = React.useState<AdminAgentsFilterInput>({
     key: 'username',
     value: '',
@@ -55,7 +56,7 @@ export const AdminMemberAgent = ({isAdmin, onAgentSelected}: Props) => {
         {
           response &&
           <AdminAgentsResults
-            isAdmin={isAdmin}
+            actor={user}
             lookBackInputControl={inputControl}
             input={input}
             data={response}

@@ -11,10 +11,7 @@ import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controll
 import {uploadIdVerification} from '@spinach/next/controller/user/info';
 import {markUserStatus} from '@spinach/next/controller/user/status';
 import {markUserAgent} from '@spinach/next/controller/user/update/agent';
-import {
-  updateUserCommissionPercent,
-  updateUserOfAgentCommissionPercent,
-} from '@spinach/next/controller/user/update/commissionPercent';
+import {updateUserCommissionPercent} from '@spinach/next/controller/user/update/commissionPercent';
 import {markUserSuspended} from '@spinach/next/controller/user/update/suspended';
 import {isSuspended} from '@spinach/next/controller/utils';
 import {UserDataRequestOpts} from '@spinach/next/types/userData/upload';
@@ -59,13 +56,6 @@ export const handleUserRequest = async ({
     return uploadIdVerification({userId: accountId, request: data});
   }
 
-  if (type === 'admin.agent.update.commission') {
-    return updateUserOfAgentCommissionPercent({
-      executorUserId: accountId,
-      ...data,
-    });
-  }
-
   if (type === 'admin.member.mark.agent') {
     return markUserAgent({
       executorUserId: accountId,
@@ -80,10 +70,25 @@ export const handleUserRequest = async ({
     });
   }
 
-  if (type === 'admin.member.update.commission') {
+  if (type === 'admin.commission.update.agent') {
+    const {targetId, commissionPercent} = data;
+
     return updateUserCommissionPercent({
       executorUserId: accountId,
-      ...data,
+      key: 'commissionPercentAgent',
+      targetId,
+      commissionPercent,
+    });
+  }
+
+  if (type === 'admin.commission.update.member') {
+    const {targetId, commissionPercent} = data;
+
+    return updateUserCommissionPercent({
+      executorUserId: accountId,
+      key: 'commissionPercentMember',
+      targetId,
+      commissionPercent,
     });
   }
 

@@ -19,6 +19,7 @@ import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/common/cell/moneta
 import {AdminMemberControlButton} from '@spinach/next/ui/admin/members/result/button';
 import {AdminMemberSingleControls} from '@spinach/next/ui/admin/members/result/control';
 import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/popup/type';
+import {isCommissionWritable} from '@spinach/next/ui/admin/members/result/utils';
 import {formatUserName, isUserPrivileged} from '@spinach/next/utils/data/user';
 
 
@@ -48,11 +49,11 @@ export const AdminMemberRow = ({
     status,
     isAgent,
     isSuspended,
-    commissionPercent,
+    commissionPercentMember,
   } = member;
   const t = useTranslations('UI.InPage.Admin.Members.Control.Toggle');
 
-  const {act: actorWithToast} = useUserDataActor({statusToast: true});
+  const {act: actorWithToast, status: userActorStatus} = useUserDataActor({statusToast: true});
 
   if (!actorWithToast) {
     void signIn();
@@ -122,33 +123,30 @@ export const AdminMemberRow = ({
       <AdminMemberMonetaryCell applySignStyle value={balanceActivity?.byTxnType['deposit.twBank']}/>
       <AdminMemberMonetaryCell applySignStyle value={balanceActivity?.byTxnType['deposit.crypto']}/>
       <AdminMemberMonetaryCell applySignStyle value={0}/>
-      {
-        actor.isAdmin &&
-        <td>
-          <AdminMemberCommissionSettingsCell
-            initial={commissionPercent}
-            isAdmin={isPrivileged}
-            disabled={controlDisabled}
-            onUpload={async (commissionPercent) => {
-              const session = await actorWithToast({
-                action: 'request',
-                options: {
-                  type: 'admin.member.update.commission',
-                  data: {targetId: id, commissionPercent},
-                },
-              });
+      <td>
+        <AdminMemberCommissionSettingsCell
+          initial={commissionPercentMember}
+          isWritable={isCommissionWritable({type: 'member', permissionFlags: actor})}
+          isLoading={userActorStatus === 'processing'}
+          onUpload={async (commissionPercentMember) => {
+            const session = await actorWithToast({
+              action: 'request',
+              options: {
+                type: 'admin.commission.update.member',
+                data: {targetId: id, commissionPercent: commissionPercentMember},
+              },
+            });
 
-              const error = session?.user.jwtUpdateError;
-              if (error) {
-                onUpdateError(error);
-                return;
-              }
+            const error = session?.user.jwtUpdateError;
+            if (error) {
+              onUpdateError(error);
+              return;
+            }
 
-              onUpdatedMember({...member, commissionPercent});
-            }}
-          />
-        </td>
-      }
+            onUpdatedMember({...member, commissionPercentMember});
+          }}
+        />
+      </td>
       <AdminMemberSingleControls showPopup={showPopup}/>
     </>
   );

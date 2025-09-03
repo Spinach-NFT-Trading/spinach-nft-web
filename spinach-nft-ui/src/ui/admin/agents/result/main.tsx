@@ -22,7 +22,7 @@ export const AdminAgentsResults = ({
   onAgentSelected,
   ...props
 }: Props) => {
-  const {lookBackInputControl} = props;
+  const {actor, lookBackInputControl} = props;
   const {key, value} = input;
   const {agentMemberList, agentInfo, balanceActivityMap} = data;
   const {act} = lookBackInputControl;
@@ -52,7 +52,7 @@ export const AdminAgentsResults = ({
     <Flex className="gap-2">
       <OverflowableTable
         data={infoListToShow}
-        header={<AdminAgentHeader/>}
+        header={<AdminAgentHeader permissionFlags={actor}/>}
         getKey={(data) => data?.agentId}
         classOfRow="w-max gap-1 border-b-slate-400 p-1 not-last:border-b"
         renderRow={({data}) => {

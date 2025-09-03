@@ -15,6 +15,7 @@ import {AdminAgentName} from '@spinach/next/ui/admin/common/agent';
 import {AdminMemberCommissionSettingsCell} from '@spinach/next/ui/admin/common/cell/commission/main';
 import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/common/cell/monetary/main';
 import {getSumOfBalanceActivity} from '@spinach/next/ui/admin/common/utils';
+import {isCommissionWritable} from '@spinach/next/ui/admin/members/result/utils';
 
 
 type Props = AdminAgentRowCommonProps & {
@@ -25,13 +26,13 @@ type Props = AdminAgentRowCommonProps & {
 };
 
 export const AdminAgentRow = ({
-  isAdmin,
+  actor,
   data,
   agent,
   balanceActivityMap,
   onMemberListClick,
 }: Props) => {
-  const {members} = data;
+  const {agentId, members, commissionPercent} = data;
 
   const t = useTranslations('UI.InPage.Admin.Agents');
 
@@ -68,27 +69,27 @@ export const AdminAgentRow = ({
         getValue: ({byTxnType}) => byTxnType['deposit.crypto'],
       })}/>
       <td>
-        <AdminMemberCommissionSettingsCell
-          initial={{
-            buy: 0,
-            sell: 0,
-          }}
-          isAdmin={isAdmin}
-          disabled={status === 'processing'}
-          onUpload={async (commissionPercent) => {
-            if (!act) {
-              return;
-            }
+        {
+          agentId != null &&
+          <AdminMemberCommissionSettingsCell
+            initial={commissionPercent}
+            isWritable={isCommissionWritable({type: 'agent', permissionFlags: actor})}
+            isLoading={status === 'processing'}
+            onUpload={async (commissionPercent) => {
+              if (!act) {
+                return;
+              }
 
-            await act({
-              action: 'request',
-              options: {
-                type: 'admin.agent.update.commission',
-                data: {agentId: data.agentId, commissionPercent},
-              },
-            });
-          }}
-        />
+              await act({
+                action: 'request',
+                options: {
+                  type: 'admin.commission.update.agent',
+                  data: {targetId: agentId, commissionPercent},
+                },
+              });
+            }}
+          />
+        }
       </td>
       <td>
         <FlexButton onClick={onMemberListClick} className={clsx(

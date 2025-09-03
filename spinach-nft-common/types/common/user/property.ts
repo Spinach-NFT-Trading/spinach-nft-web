@@ -1,7 +1,7 @@
 import {Type} from '@sinclair/typebox';
 
-import {commissionPercentLimit} from '@spinach/common/const/user';
 import {VerificationStatusSchema} from '@spinach/common/types/common/status';
+import {UserCommissionPercentSchema} from '@spinach/common/types/common/user/commission';
 
 
 export const UserPropertySchemaBase = {
@@ -10,11 +10,6 @@ export const UserPropertySchemaBase = {
   isMod: Type.Boolean(),
   isAgent: Type.Boolean(),
   isSuspended: Type.Boolean(),
-  commissionPercent: Type.Object(
-    {
-      buy: Type.Number({minimum: 0, maximum: commissionPercentLimit}),
-      sell: Type.Number({minimum: 0, maximum: commissionPercentLimit}),
-    },
-    {additionalProperties: false},
-  ),
+  commissionPercentAgent: UserCommissionPercentSchema,
+  commissionPercentMember: UserCommissionPercentSchema,
 };

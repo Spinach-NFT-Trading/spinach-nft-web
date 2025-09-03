@@ -2,14 +2,16 @@ import React from 'react';
 
 import {useTranslations} from 'next-intl';
 
+import {CommonUserPermissionFlags} from '@spinach/next/types/auth';
 import {adminMemberMonetaryCellStyle} from '@spinach/next/ui/admin/common/cell/monetary/const';
+import {isCommissionReadable} from '@spinach/next/ui/admin/members/result/utils';
 
 
 type Props = {
-  isAdmin: boolean,
+  permissionFlags: CommonUserPermissionFlags,
 };
 
-export const AdminMemberSingleHeader = ({isAdmin}: Props) => {
+export const AdminMemberSingleHeader = ({permissionFlags}: Props) => {
   const t = useTranslations('UI.InPage.Admin.Members.Header');
 
   return (
@@ -45,9 +47,9 @@ export const AdminMemberSingleHeader = ({isAdmin}: Props) => {
         {t('Cashback')}
       </td>
       {
-        isAdmin &&
+        isCommissionReadable({type: 'member', permissionFlags}) &&
         <td className="w-60">
-          {t('CashbackSettings.Agent')}
+          {t('CashbackSettings.Member')}
         </td>
       }
       <td className="w-[42rem]"/>

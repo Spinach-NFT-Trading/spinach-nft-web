@@ -38,7 +38,8 @@ export const toUserInfo = (model: WithId<UserModel>): UserInfo => {
     isMod,
     isAgent,
     isSuspended,
-    commissionPercent,
+    commissionPercentAgent,
+    commissionPercentMember,
     recruitedBy,
   } = model;
 
@@ -50,7 +51,8 @@ export const toUserInfo = (model: WithId<UserModel>): UserInfo => {
     isMod,
     isAgent,
     isSuspended,
-    commissionPercent,
+    commissionPercentAgent,
+    commissionPercentMember,
     recruitedBy,
   };
 };
