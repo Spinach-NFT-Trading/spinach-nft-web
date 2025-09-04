@@ -39,26 +39,35 @@ export const AccountRegisterForm = ({agent, setError}: AccountRegisterFormProps)
 
   const onSubmit = async () => {
     setUploading(true);
-    const response = await sendApiPost<UserRegisterResponse>({
-      path: apiPath.auth.register,
-      data: input,
-    });
-    setUploading(false);
+    try {
+      const response = await sendApiPost<UserRegisterResponse>({
+        path: apiPath.auth.register,
+        data: input,
+      });
 
-    if (response.success) {
-      setError(null);
+      if (response.success) {
+        setError(null);
+        setInput((original) => ({
+          ...original,
+          step: 'completed',
+        } satisfies AccountRegisterInput));
+        return;
+      }
+
+      setError(response.error);
       setInput((original) => ({
         ...original,
-        step: 'completed',
+        step: 'info',
       } satisfies AccountRegisterInput));
-      return;
-    }
+    } catch (e) {
+      if (e instanceof Error) {
+        alert(e.message);
+      }
 
-    setError(response.error);
-    setInput((original) => ({
-      ...original,
-      step: 'info',
-    } satisfies AccountRegisterInput));
+      alert(JSON.stringify(e));
+    } finally {
+      setUploading(false);
+    }
   };
 
   return (
