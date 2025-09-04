@@ -1,6 +1,7 @@
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
 import {UserInfo, UserInfoListByAgent} from '@spinach/common/types/common/user/info';
 import {UserModel} from '@spinach/common/types/data/user/data';
+import {toObject} from '@spinach/common/utils/object/make';
 import {isNotNullish} from '@spinach/common/utils/type';
 import {Document, Filter, ObjectId, WithId} from 'mongodb';
 
@@ -51,7 +52,7 @@ export const getUserInfoList = async ({executorUserId, agentId}: GetUserInfoList
 };
 
 type AggregatedAccountMemberList = {
-  _id: string,
+  _id: string | null,
   members: WithId<UserModel>[],
 };
 
@@ -63,43 +64,77 @@ export const getAccountMemberListByAgent = async ({
   const user = await throwIfNotElevated(executorUserId);
 
   const pipeline: Document[] = [];
+  let filterForAgentsToReturn: Filter<UserModel> = {isAgent: true};
   if (user.isAgent) {
-    pipeline.push({
-      $match: {recruitedBy: executorUserId} satisfies Filter<UserModel>,
-    });
+    filterForAgentsToReturn = {
+      ...filterForAgentsToReturn,
+      recruitedBy: executorUserId,
+    };
   }
 
-  const aggregated = await userInfoCollection.aggregate<AggregatedAccountMemberList>([
-    ...pipeline,
-    {
-      $group: {
-        _id: '$recruitedBy',
-        members: {
-          $push: '$$ROOT',
+  const [
+    aggregated,
+    agentsToReturn,
+  ] = await Promise.all([
+    userInfoCollection.aggregate<AggregatedAccountMemberList>([
+      ...pipeline,
+      {
+        $group: {
+          _id: '$recruitedBy',
+          members: {
+            $push: '$$ROOT',
+          },
         },
       },
-    },
-  ]).toArray();
+    ]).toArray(),
+    userInfoCollection.find(filterForAgentsToReturn).toArray(),
+  ]);
 
-  const commissionPercentAgentByUserId = Object.fromEntries(
-    (await userInfoCollection
-      .find({_id: {$in: aggregated.map(({_id}) => new ObjectId(_id))}})
-      .toArray())
-      .map((data) => [data._id, data.commissionPercentAgent]),
+  const commissionPercentAgentByUserId = toObject(
+    await userInfoCollection
+      .find({
+        _id: {
+          $in: aggregated
+            .map(({_id}) => _id != null ? new ObjectId(_id) : null)
+            .filter(isNotNullish),
+        },
+      })
+      .toArray(),
+    (data) => [data._id.toString(), data.commissionPercentAgent],
   );
 
-  return aggregated
-    .map<UserInfoListByAgent | null>(({_id, members}) => {
-      const commissionPercent = commissionPercentAgentByUserId[_id];
-      if (!commissionPercent) {
-        return null;
-      }
+  const membersByAgentId = new Map(
+    aggregated
+      .map(({_id, members}): [string | null, UserInfo[]] | null => {
+        if (_id == null) {
+          return [null, members.map(toUserInfo)];
+        }
 
+        const commissionPercent = commissionPercentAgentByUserId[_id];
+        if (!commissionPercent) {
+          return null;
+        }
+
+        return [_id, members.map(toUserInfo)];
+      })
+      .filter(isNotNullish),
+  );
+
+  return [...agentsToReturn, null].map((agent): UserInfoListByAgent => {
+    if (agent == null) {
       return {
-        agentId: _id,
-        commissionPercent,
-        members: members.map(toUserInfo),
+        agentId: null,
+        commissionPercent: null,
+        members: membersByAgentId.get(null) ?? [],
       };
-    })
-    .filter(isNotNullish);
+    }
+
+    const agentId = agent._id.toString();
+
+    return {
+      agentId,
+      commissionPercent: agent.commissionPercentAgent,
+      members: membersByAgentId.get(agentId) ?? [],
+    };
+  });
 };
