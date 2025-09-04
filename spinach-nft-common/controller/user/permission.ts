@@ -1,4 +1,4 @@
-import {getUserById} from '@spinach/next/controller/user/info';
+import {getUserById} from '@spinach/common/controller/user/info';
 
 
 const isAdmin = async (userId: string | undefined): Promise<boolean> => {

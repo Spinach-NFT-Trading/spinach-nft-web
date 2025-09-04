@@ -1,6 +1,8 @@
 import {getGlobalConfig} from '@spinach/common/controller/actors/global';
 import {azureContainer} from '@spinach/common/controller/blob/const';
 import {getImageBlob} from '@spinach/common/controller/blob/get';
+import {getUserInfoById} from '@spinach/common/controller/user/info';
+import {isSuspended} from '@spinach/common/controller/user/permission';
 import {toUnique} from '@spinach/common/utils/array';
 import {isNotNullish} from '@spinach/common/utils/type';
 import {ObjectId} from 'mongodb';
@@ -20,8 +22,7 @@ import {
   getVerifiedBankDetailsOfUser,
 } from '@spinach/next/controller/user/bankDetails';
 import {getUnverifiedUsers, getUserDataMap} from '@spinach/next/controller/user/info';
-import {getAccountMemberListByAgent, getUserInfoById, getUserInfoList} from '@spinach/next/controller/user/members';
-import {isSuspended} from '@spinach/next/controller/utils';
+import {getAccountMemberListByAgent, getUserInfoList} from '@spinach/next/controller/user/members';
 import {NftListingData} from '@spinach/next/types/nft';
 import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 import {UserLazyLoadedData} from '@spinach/next/types/userData/main';
@@ -93,6 +94,7 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
     const [agent, members] = await Promise.all([
       getUserInfoById({
         executorUserId: accountId,
+        requiresElevated: true,
         userId: options.opts.agentId,
       }),
       getUserInfoList({

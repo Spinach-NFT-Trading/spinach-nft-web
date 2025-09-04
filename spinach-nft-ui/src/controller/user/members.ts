@@ -1,33 +1,14 @@
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
+import {throwIfNotElevated} from '@spinach/common/controller/user/permission';
 import {UserInfo, UserInfoListByAgent} from '@spinach/common/types/common/user/info';
 import {UserModel} from '@spinach/common/types/data/user/data';
+import {toUserInfo} from '@spinach/common/utils/data/user';
 import {toObject} from '@spinach/common/utils/object/make';
 import {isNotNullish} from '@spinach/common/utils/type';
 import {Document, Filter, ObjectId, WithId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
-import {toUserInfo} from '@spinach/next/controller/user/utils';
-import {throwIfNotElevated} from '@spinach/next/controller/utils';
 
-
-export type GetUserInfoByIdOpts = ControllerRequireUserIdOpts & {
-  userId: string | null,
-};
-
-export const getUserInfoById = async ({executorUserId, userId}: GetUserInfoByIdOpts): Promise<UserInfo | null> => {
-  await throwIfNotElevated(executorUserId);
-
-  if (!userId) {
-    return null;
-  }
-
-  const userModel = await userInfoCollection.findOne({_id: new ObjectId(userId)});
-  if (!userModel) {
-    return null;
-  }
-
-  return toUserInfo(userModel);
-};
 
 export type GetUserInfoListOpts = ControllerRequireUserIdOpts & {
   agentId: string | null,

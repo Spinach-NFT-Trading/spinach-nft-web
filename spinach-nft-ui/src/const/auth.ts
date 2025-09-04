@@ -1,4 +1,5 @@
 import {apiPath} from '@spinach/common/const/path';
+import {getUserInfoById} from '@spinach/common/controller/user/info';
 import {UserLoginRequest, UserLoginResponse} from '@spinach/common/types/api/auth/login';
 import * as env from 'env-var';
 import {AuthOptions} from 'next-auth';
@@ -7,7 +8,6 @@ import credentialsProvider, {CredentialInput} from 'next-auth/providers/credenti
 import {handleUserLoad} from '@spinach/next/controller/act/load';
 import {getUserPreloadedData} from '@spinach/next/controller/act/preload';
 import {handleUserRequest} from '@spinach/next/controller/act/request';
-import {getUserInfoById} from '@spinach/next/controller/user/info';
 import {UserDataAction} from '@spinach/next/types/userData/main';
 
 
@@ -31,7 +31,10 @@ export const authOptions: AuthOptions = {
       // `user` is only available on the first call when a new session is created.
       // `user` will be unavailable for the subsequent calls.
       // https://next-auth.js.org/configuration/callbacks#jwt-callback
-      const userInfo = user ?? await getUserInfoById(accountId);
+      const userInfo = user ?? await getUserInfoById({
+        requiresElevated: false,
+        userId: accountId,
+      });
       if (!userInfo) {
         throw new Error('Failed to create JWT as `userInfo` is empty');
       }

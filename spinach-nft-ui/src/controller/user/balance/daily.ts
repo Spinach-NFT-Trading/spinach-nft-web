@@ -1,4 +1,5 @@
 import {userBalanceCollection} from '@spinach/common/controller/collections/user';
+import {throwIfNotPrivileged} from '@spinach/common/controller/user/permission';
 import {IsoDateString} from '@spinach/common/types/common/date';
 import {UserBalanceHistoryTxnType} from '@spinach/common/types/data/user/balance';
 import {ObjectId} from 'mongodb';
@@ -6,7 +7,6 @@ import {ObjectId} from 'mongodb';
 import {getUserBalanceAtDay} from '@spinach/next/controller/user/balance/atDay';
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {toIdRangeFromLookBackRequest} from '@spinach/next/controller/user/utils';
-import {throwIfNotPrivileged} from '@spinach/next/controller/utils';
 import {UserBalanceDailySummary} from '@spinach/next/types/mongo/balance';
 import {DataLookBackRequestOnUser} from '@spinach/next/types/userData/load';
 

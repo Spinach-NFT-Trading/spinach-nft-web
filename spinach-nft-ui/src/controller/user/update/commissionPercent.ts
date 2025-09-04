@@ -1,12 +1,12 @@
 import {commissionPercentLimit} from '@spinach/common/const/user';
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
+import {throwIfNotAdmin} from '@spinach/common/controller/user/permission';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {UserCommissionPercent} from '@spinach/common/types/common/user/commission';
 import {UserModel} from '@spinach/common/types/data/user/data';
 import {ObjectId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
-import {throwIfNotAdmin} from '@spinach/next/controller/utils';
 
 
 type UpdateUserCommissionPercentOpts = ControllerRequireUserIdOpts & {

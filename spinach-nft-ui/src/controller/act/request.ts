@@ -1,3 +1,4 @@
+import {isSuspended} from '@spinach/common/controller/user/permission';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {ObjectId} from 'mongodb';
 
@@ -13,7 +14,6 @@ import {markUserStatus} from '@spinach/next/controller/user/status';
 import {markUserAgent} from '@spinach/next/controller/user/update/agent';
 import {updateUserCommissionPercent} from '@spinach/next/controller/user/update/commissionPercent';
 import {markUserSuspended} from '@spinach/next/controller/user/update/suspended';
-import {isSuspended} from '@spinach/next/controller/utils';
 import {UserDataRequestOpts} from '@spinach/next/types/userData/upload';
 
 

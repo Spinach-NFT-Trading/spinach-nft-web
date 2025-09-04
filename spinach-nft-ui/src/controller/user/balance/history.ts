@@ -1,9 +1,9 @@
 import {userBalanceCollection} from '@spinach/common/controller/collections/user';
+import {throwIfNotElevated} from '@spinach/common/controller/user/permission';
 import {ObjectId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {toIdRangeFromLookBackRequest} from '@spinach/next/controller/user/utils';
-import {throwIfNotElevated} from '@spinach/next/controller/utils';
 import {UserBalanceHistoryModelClient} from '@spinach/next/types/mongo/balance';
 import {DataLookBackRequestOnUser} from '@spinach/next/types/userData/load';
 

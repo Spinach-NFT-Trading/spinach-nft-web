@@ -2,15 +2,15 @@ import {azureContainer} from '@spinach/common/controller/blob/const';
 import {uploadBlob} from '@spinach/common/controller/blob/upload';
 import {userBankDetailsCollection, userInfoCollection} from '@spinach/common/controller/collections/user';
 import {Mongo} from '@spinach/common/controller/const';
+import {getUserInfoById} from '@spinach/common/controller/user/info';
+import {throwIfNotPrivileged, throwIfNotElevated} from '@spinach/common/controller/user/permission';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {BankDetails, BankDetailsMap} from '@spinach/common/types/data/user/bank';
 import {ObjectId} from 'mongodb';
 import {v4} from 'uuid';
 
 import {getDataAsArray, getDataAsMap} from '@spinach/next/controller/common';
-import {getUserInfoById} from '@spinach/next/controller/user/info';
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
-import {throwIfNotPrivileged, throwIfNotElevated} from '@spinach/next/controller/utils';
 import {RequestOfUserBankDetails} from '@spinach/next/types/userData/upload';
 
 
@@ -28,7 +28,7 @@ export const getBankDetailsOfUser = async ({
 }: GetBankDetailsOfUserOpts): Promise<BankDetails[]> => {
   if (userId !== executorUserId) {
     const executor = await throwIfNotElevated(executorUserId);
-    const user = await getUserInfoById(userId);
+    const user = await getUserInfoById({executorUserId, userId, requiresElevated: true});
 
     if (executor.isAgent && user?.recruitedBy !== executorUserId) {
       throw new Error(`${executorUserId} attempted to get the bank details of ${userId} without permission`);
