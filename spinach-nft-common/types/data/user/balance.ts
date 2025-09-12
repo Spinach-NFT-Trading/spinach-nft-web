@@ -14,10 +14,10 @@ export type UserBalanceHistoryModel = UserBalanceHistoryModelRequired & ({
   type: 'deposit.twBank' | 'deposit.twBank.cashback',
   uuid: string,
 } | {
-  type: 'nftBuy',
+  type: 'nftBuy' | 'nftBuyCommissionMember' | 'nftBuyCommissionAgent',
   nftTxnId: ObjectId,
 } | {
-  type: 'nftSell' | 'nftSellRefund',
+  type: 'nftSell' | 'nftSellRefund' | 'nftSellCommissionMember' | 'nftSellCommissionAgent',
   nftTxnId: ObjectId,
 });
 
