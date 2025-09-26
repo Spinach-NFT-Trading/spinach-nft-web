@@ -534,7 +534,16 @@
       "BankDetailsNotFound": "銀行帳號不存在。",
       "BankDetailsAlreadyExist": "銀行帳號已存在。",
       "BankDetailsUploadFailed": "銀行帳號上傳失敗。",
-      "CommissionOverLimit": "超過退傭上限。"
+      "CommissionOverLimit": "超過退傭上限。",
+      "MultipartEmptyBody": "表單主體為空。",
+      "MultipartFieldEmpty": "表單欄位為空。",
+      "MultipartFieldNotFile": "表單欄位不是檔案。",
+      "MultipartFieldNotValue": "表單欄位不是值。",
+      "MultipartFieldValueCastFailed": "表單欄位值轉換失敗。",
+      "MultipartTooManyFiles": "表單檔案過多。",
+      "MultipartTooManyValues": "表單值過多。",
+      "FileUploadGrantActivationFailed": "檔案上傳授權失敗。",
+      "FileUploadMissingFile": "找不到要上傳的檔案。"
     },
     "Input": {
       "IncorrectFileType": "檔案種類不正確 - {type}"

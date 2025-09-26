@@ -9,11 +9,11 @@ import {buyNft} from '@spinach/next/controller/nft/action/buy';
 import {sellNft} from '@spinach/next/controller/nft/action/sell';
 import {deleteNftExchangeToken, updateNftExchangeToken} from '@spinach/next/controller/nft/request/token';
 import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
-import {uploadIdVerification} from '@spinach/next/controller/user/info';
 import {markUserStatus} from '@spinach/next/controller/user/status';
 import {markUserAgent} from '@spinach/next/controller/user/update/agent';
 import {updateUserCommissionPercent} from '@spinach/next/controller/user/update/commissionPercent';
 import {markUserSuspended} from '@spinach/next/controller/user/update/suspended';
+import {updateUserIdVerificationUploadIdMap} from '@spinach/next/controller/user/verification';
 import {UserDataRequestOpts} from '@spinach/next/types/userData/upload';
 
 
@@ -53,7 +53,7 @@ export const handleUserRequest = async ({
   }
 
   if (type === 'user.account.verify.id') {
-    return uploadIdVerification({userId: accountId, request: data});
+    return updateUserIdVerificationUploadIdMap({userId: accountId, request: data});
   }
 
   if (type === 'admin.member.mark.agent') {

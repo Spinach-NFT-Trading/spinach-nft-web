@@ -7,6 +7,9 @@ export const apiPath = {
       finalize: '/auth/sms/finalize',
     },
   },
+  file: {
+    upload: '/file/upload',
+  },
   nft: {
     exchange: '/nft/exchange',
   },

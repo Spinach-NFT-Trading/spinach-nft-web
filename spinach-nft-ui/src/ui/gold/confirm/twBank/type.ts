@@ -1,9 +1,9 @@
-import {BinaryData} from '@spinach/common/types/common/binary';
+import {FileRef} from '@spinach/next/types/input/fileRef';
 
 
 export type GoldExchangeConfirmTwBankInput = {
   sourceBankDetailsUuid: string | null,
-  txnProofImage: BinaryData | null,
+  txnProofImageFileRef: FileRef | null,
   errorMessage: string | null,
   bankDetailsSearch: string,
 };

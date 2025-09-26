@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 
-import {UserIdVerificationData} from '@spinach/common/types/api/auth/verify/id/main';
+import {UserIdVerificationUploadIdMap} from '@spinach/common/types/api/auth/register';
 import {useRouter} from 'next/navigation';
 import {signIn} from 'next-auth/react';
 import {useTranslations} from 'next-intl';
@@ -19,7 +19,7 @@ export const AccountIdVerifyClient = () => {
     form: initialAccountIdVerificationState,
     errorMessage: null,
   });
-  const [data, setData] = React.useState<UserIdVerificationData>({
+  const [uploadIdMap, setUploadIdMap] = React.useState<UserIdVerificationUploadIdMap>({
     idFront: null,
     idBack: null,
     handheld: null,
@@ -39,7 +39,7 @@ export const AccountIdVerifyClient = () => {
       action: 'request',
       options: {
         type: 'user.account.verify.id',
-        data,
+        data: uploadIdMap,
       },
     });
 
@@ -63,12 +63,12 @@ export const AccountIdVerifyClient = () => {
           ...original,
           form: getUpdated(form),
         }))}
-        onSelected={(type, data) => setData((original) => ({
+        onSelected={(type, fileRef) => setUploadIdMap((original) => ({
           ...original,
-          [type]: data,
-        } satisfies UserIdVerificationData))}
+          [type]: fileRef,
+        } satisfies UserIdVerificationUploadIdMap))}
         uploading={status === 'processing'}
-        isNotReady={Object.values(data).some((image) => !image)}
+        isNotReady={Object.values(uploadIdMap).some((image) => !image)}
         onComplete={onComplete}
         submitButtonText={t('Submit')}
         className="md:w-1/2 lg:w-1/3"

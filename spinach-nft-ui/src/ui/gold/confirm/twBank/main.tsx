@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {generateFileUploadGrant} from '@spinach/common/controller/actors/fileUpload';
+
 import {I18nProvider} from '@spinach/next/components/i18n/provider';
 import {GoldExchangeConfirmLayout} from '@spinach/next/ui/gold/confirm/common/layout';
 import {GoldExchangeConfirmPageProps} from '@spinach/next/ui/gold/confirm/common/type';
@@ -9,11 +11,13 @@ import {GoldExchangeConfirmTwBankClient} from '@spinach/next/ui/gold/confirm/twB
 export const GoldExchangeConfirmTwBank = async ({searchParams}: GoldExchangeConfirmPageProps) => {
   const amount = typeof searchParams?.amount !== 'string' ? null : parseFloat(searchParams.amount);
 
+  const fileUploadGrantId = await generateFileUploadGrant();
+
   return (
     <GoldExchangeConfirmLayout channel="twBank" amount={amount}>
       {(wallet) => (
         <I18nProvider>
-          <GoldExchangeConfirmTwBankClient wallet={wallet} amount={amount}/>
+          <GoldExchangeConfirmTwBankClient wallet={wallet} amount={amount} fileUploadGrantId={fileUploadGrantId}/>
         </I18nProvider>
       )}
     </GoldExchangeConfirmLayout>

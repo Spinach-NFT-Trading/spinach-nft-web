@@ -35,4 +35,10 @@ export const apiErrorI18nId: {[code in ApiErrorCode]: I18nMessageKeysOfNamespace
   bankDetailsAlreadyExist: 'BankDetailsAlreadyExist',
   bankDetailsUploadFailed: 'BankDetailsUploadFailed',
   commissionOverLimit: 'CommissionOverLimit',
+  multipartFieldEmpty: 'MultipartFieldEmpty',
+  multipartFieldNotValue: 'MultipartFieldNotValue',
+  multipartFieldValueCastFailed: 'MultipartFieldValueCastFailed',
+  multipartTooManyValues: 'MultipartTooManyValues',
+  fileUploadGrantActivationFailed: 'FileUploadGrantActivationFailed',
+  fileUploadMissingFile: 'FileUploadMissingFile',
 };

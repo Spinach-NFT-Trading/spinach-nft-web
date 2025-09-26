@@ -1,5 +1,4 @@
-import {UserIdVerificationData} from '@spinach/common/types/api/auth/verify/id/main';
-import {BinaryData} from '@spinach/common/types/common/binary';
+import {UserIdVerificationUploadIdMap} from '@spinach/common/types/api/auth/register';
 import {UserCommissionPercent} from '@spinach/common/types/common/user/commission';
 import {GlobalConfig} from '@spinach/common/types/data/global';
 import {NftExchangeToken} from '@spinach/common/types/data/nft/token';
@@ -7,13 +6,13 @@ import {BankDetails} from '@spinach/common/types/data/user/bank';
 
 
 export type RequestOfUserBankDetails = {
-  image: BinaryData,
-  details: Omit<BankDetails, 'uuid'>,
+  details: Omit<BankDetails, 'uuid' | 'imageUploadId'>,
+  imageUploadId: string,
 };
 
 export type RequestOfGoldExchangeTwBank = {
   sourceBankDetailsUuid: string,
-  txnProofImage: BinaryData,
+  txnProofImageId: string,
   targetWalletId: string,
   amount: number,
 };
@@ -33,7 +32,7 @@ export type UserDataRequestOpts = {
   data: RequestOfUserBankDetails,
 } | {
   type: 'user.account.verify.id',
-  data: UserIdVerificationData,
+  data: UserIdVerificationUploadIdMap,
 } | {
   type: 'exchange.gold.crypto',
   data: null,

@@ -1,6 +1,6 @@
 import {AccountIdVerificationType} from '@spinach/common/types/api/profile/id';
-import {BinaryData} from '@spinach/common/types/common/binary';
 
+import {FileRef} from '@spinach/next/types/input/fileRef';
 import {ReactStateUpdaterFromOriginal} from '@spinach/next/types/react';
 
 
@@ -11,5 +11,5 @@ export type AccountIdVerificationState = {
 export type AccountIdVerificationCommonProps = {
   state: AccountIdVerificationState,
   setState: ReactStateUpdaterFromOriginal<AccountIdVerificationState>,
-  onSelected: (type: AccountIdVerificationType, data: BinaryData | null) => void,
+  onSelected: (type: AccountIdVerificationType, fileRef: FileRef | null) => void,
 };

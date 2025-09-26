@@ -7,10 +7,9 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {useI18nApiErrorTranslator} from '@spinach/next/hooks/i18n/apiError/main';
 import {AccountRegisterForm} from '@spinach/next/ui/account/register/form';
-import {AccountRegisterSearchParams} from '@spinach/next/ui/account/register/type';
 
 
-export const AccountRegisterClient = (props: AccountRegisterSearchParams) => {
+export const AccountRegisterClient = () => {
   const [error, setError] = React.useState<ApiErrorCode | null>(null);
 
   const translateApiError = useI18nApiErrorTranslator();
@@ -18,7 +17,7 @@ export const AccountRegisterClient = (props: AccountRegisterSearchParams) => {
   return (
     <Flex className="gap-3 text-xl md:px-7">
       {error && <Alert>{translateApiError(error)}</Alert>}
-      <AccountRegisterForm setError={setError} {...props}/>
+      <AccountRegisterForm setError={setError}/>
     </Flex>
   );
 };

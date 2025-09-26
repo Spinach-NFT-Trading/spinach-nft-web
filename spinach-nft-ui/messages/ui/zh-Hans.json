@@ -534,7 +534,16 @@
       "BankDetailsNotFound": "银行帐号不存在。",
       "BankDetailsAlreadyExist": "银行帐号已存在。",
       "BankDetailsUploadFailed": "银行帐号上传失败。",
-      "CommissionOverLimit": "超过退佣上限。"
+      "CommissionOverLimit": "超过退佣上限。",
+      "MultipartEmptyBody": "表单主体为空。",
+      "MultipartFieldEmpty": "表单字段为空。",
+      "MultipartFieldNotFile": "表单字段不是文件。",
+      "MultipartFieldNotValue": "表单字段不是值。",
+      "MultipartFieldValueCastFailed": "表单字段值转换失败。",
+      "MultipartTooManyFiles": "表单文件过多。",
+      "MultipartTooManyValues": "表单值过多。",
+      "FileUploadGrantActivationFailed": "文件上传授权失败。",
+      "FileUploadMissingFile": "缺少要上传的目标文件。"
     },
     "Input": {
       "IncorrectFileType": "档案种类不正确 - {type}"

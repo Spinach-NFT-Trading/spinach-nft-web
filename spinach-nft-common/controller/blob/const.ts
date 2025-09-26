@@ -8,8 +8,5 @@ export const azureBlobClient = azureBlobConnectionString ?
   null;
 
 export const azureContainer = {
-  bankDetails: 'bankDetails',
-  goldPurchase: {
-    twBank: 'goldPurchaseTwBank',
-  },
-};
+  pool: 'pool',
+} as const;

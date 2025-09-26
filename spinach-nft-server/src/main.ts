@@ -13,7 +13,7 @@ import {runFastify} from '@spinach/server/run/server';
 
 
 (async () => {
-  initApp();
+  await initApp();
 
   await runFastify({server: Server, host: ApiHost, port: ApiPort});
 })().catch((error) => {

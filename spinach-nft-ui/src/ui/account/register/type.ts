@@ -1,13 +1,16 @@
 import React from 'react';
 
 import {UserRegisterRequest} from '@spinach/common/types/api/auth/register';
-import {ApiErrorCode} from '@spinach/common/types/api/error';
+import {AccountIdVerificationType} from '@spinach/common/types/api/profile/id';
 
+import {FileRef} from '@spinach/next/types/input/fileRef';
 import {NextPageProps} from '@spinach/next/types/next/page';
 
 
-export type AccountRegisterInput = UserRegisterRequest & {
+// Client-side input that uses FileReference for file handling
+export type AccountRegisterInput = Omit<UserRegisterRequest, 'imageUploadIdMap'> & {
   step: 'info' | 'idVerification' | 'completed',
+  imageFileRefs: {[type in AccountIdVerificationType]: FileRef | null},
 };
 
 export type AccountRegisterCommonProps = {
@@ -22,7 +25,3 @@ export type AccountRegisterSearchParams = {
 };
 
 export type AccountRegisterPageProps = NextPageProps<{}, AccountRegisterSearchParams>;
-
-export type AccountRegisterFormProps = AccountRegisterSearchParams & {
-  setError: (error: ApiErrorCode | null) => void,
-};

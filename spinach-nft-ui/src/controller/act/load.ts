@@ -1,13 +1,14 @@
 import {getGlobalConfig} from '@spinach/common/controller/actors/global';
-import {azureContainer} from '@spinach/common/controller/blob/const';
-import {getImageBlob} from '@spinach/common/controller/blob/get';
 import {getUserInfoById} from '@spinach/common/controller/user/info';
 import {isSuspended} from '@spinach/common/controller/user/permission';
 import {toUnique} from '@spinach/common/utils/array';
 import {isNotNullish} from '@spinach/common/utils/type';
 import {ObjectId} from 'mongodb';
 
-import {getUnverifiedGoldPurchaseTwBankRecordClient} from '@spinach/next/controller/gold/twBank';
+import {
+  getGoldPurchaseTwBankVerificationImage,
+  getUnverifiedGoldPurchaseTwBankRecordClient,
+} from '@spinach/next/controller/gold/twBank';
 import {getWalletClientMap} from '@spinach/next/controller/gold/wallet';
 import {generateNftExchangeToken, getNftExchangeTokenMap} from '@spinach/next/controller/nft/request/token';
 import {getNftTxnOfUser} from '@spinach/next/controller/nft/txn';
@@ -18,11 +19,13 @@ import {getUserBalanceActivityMap} from '@spinach/next/controller/user/balance/s
 import {
   getBankDetailsMap,
   getBankDetailsOfUser,
+  getBankDetailsVerificationImageByUuid,
   getUnverifiedBankDetails,
   getVerifiedBankDetailsOfUser,
 } from '@spinach/next/controller/user/bankDetails';
 import {getUnverifiedUsers, getUserDataMap} from '@spinach/next/controller/user/info';
 import {getAccountMemberListByAgent, getUserInfoList} from '@spinach/next/controller/user/members';
+import {getUserVerificationImage} from '@spinach/next/controller/user/verification';
 import {NftListingData} from '@spinach/next/types/nft';
 import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 import {UserLazyLoadedData} from '@spinach/next/types/userData/main';
@@ -156,23 +159,26 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
   }
 
   if (type === 'adminImageOfId') {
-    return await getImageBlob({
-      container: options.opts.type,
-      name: options.opts.userId,
+    const {userId, type} = options.opts;
+
+    return await getUserVerificationImage({
+      executorUserId: accountId,
+      userId,
+      type,
     }) satisfies UserLazyLoadedData['adminImageOfId'];
   }
 
   if (type === 'adminImageOfBankDetails') {
-    return await getImageBlob({
-      container: azureContainer.bankDetails,
-      name: options.opts.uuid,
+    return await getBankDetailsVerificationImageByUuid({
+      executorUserId: accountId,
+      uuid: options.opts.uuid,
     }) satisfies UserLazyLoadedData['adminImageOfBankDetails'];
   }
 
   if (type === 'adminImageOfGoldTxnTwBank') {
-    return await getImageBlob({
-      container: azureContainer.goldPurchase.twBank,
-      name: options.opts.uuid,
+    return await getGoldPurchaseTwBankVerificationImage({
+      executorUserId: accountId,
+      uuid: options.opts.uuid,
     }) satisfies UserLazyLoadedData['adminImageOfGoldTxnTwBank'];
   }
 

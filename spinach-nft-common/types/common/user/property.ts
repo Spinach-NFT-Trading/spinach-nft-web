@@ -1,5 +1,6 @@
 import {Type} from '@sinclair/typebox';
 
+import {UserIdVerificationUploadIdMapSchema} from '@spinach/common/types/api/auth/register';
 import {VerificationStatusSchema} from '@spinach/common/types/common/status';
 import {UserCommissionPercentSchema} from '@spinach/common/types/common/user/commission';
 
@@ -12,4 +13,5 @@ export const UserPropertySchemaBase = {
   isSuspended: Type.Boolean(),
   commissionPercentAgent: UserCommissionPercentSchema,
   commissionPercentMember: UserCommissionPercentSchema,
+  verificationImageUploadIdMap: UserIdVerificationUploadIdMapSchema,
 };

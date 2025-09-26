@@ -4,6 +4,7 @@ import {UserRegisterRequest} from '@spinach/common/types/api/auth/register';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {UserInfo} from '@spinach/common/types/common/user/info';
 import {UserModel} from '@spinach/common/types/data/user/data';
+import {toUserInfo} from '@spinach/common/utils/data/user';
 import {hashPassword, verifyPasswordOrThrow} from '@spinach/common/utils/secret';
 import {checkTrxAddress} from '@spinach/common/utils/tron/address';
 import {ObjectId} from 'mongodb';
@@ -23,6 +24,7 @@ export const registerUser = async ({
   username,
   password,
   recruitedBy,
+  imageUploadIdMap,
 }: UserRegisterRequest): Promise<ApiErrorCode | RegisterUserResult> => {
   if (await userInfoCollection.findOne({idNumber})) {
     return 'takenIdNumber';
@@ -95,6 +97,7 @@ export const registerUser = async ({
       sell: 0,
     },
     recruitedBy,
+    verificationImageUploadIdMap: imageUploadIdMap,
   };
   const result = await userInfoCollection.insertOne(model);
 
@@ -119,47 +122,5 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
     return 'passwordMismatch';
   }
 
-  const {
-    _id,
-    idNumber,
-    username,
-    name,
-    email,
-    birthday,
-    lineId,
-    wallet,
-    phone,
-    status,
-    isAdmin,
-    isMod,
-    isAgent,
-    isSuspended,
-    commissionPercentAgent,
-    commissionPercentMember,
-    recruitedBy,
-  } = info;
-
-  if (isSuspended) {
-    return 'accountDisabled';
-  }
-
-  return {
-    id: _id.toHexString(),
-    idNumber,
-    username,
-    name,
-    email,
-    birthday,
-    lineId,
-    wallet,
-    phone,
-    status,
-    isAdmin,
-    isMod,
-    isAgent,
-    isSuspended,
-    commissionPercentAgent,
-    commissionPercentMember,
-    recruitedBy,
-  };
+  return toUserInfo(info);
 };

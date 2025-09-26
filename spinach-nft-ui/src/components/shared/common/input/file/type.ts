@@ -1,10 +1,10 @@
-import {BinaryData} from '@spinach/common/types/common/binary';
+import {FileRef} from '@spinach/next/types/input/fileRef';
 
 
 export type InputFileCommonProps = {
   id: string,
   title: string,
-  onFileSelected: (data: BinaryData | null) => void,
+  onFileSelected: (data: FileRef | null) => void,
   onFileTypeIncorrect: (fileType: string) => void,
   className?: string,
   disabled?: boolean,

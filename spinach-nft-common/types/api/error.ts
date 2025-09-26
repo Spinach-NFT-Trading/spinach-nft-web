@@ -33,6 +33,12 @@ export const apiErrorCode = [
   'bankDetailsUploadFailed',
   'bankDetailsNotFound',
   'commissionOverLimit',
+  'multipartTooManyValues',
+  'multipartFieldEmpty',
+  'multipartFieldNotValue',
+  'multipartFieldValueCastFailed',
+  'fileUploadGrantActivationFailed',
+  'fileUploadMissingFile',
 ] as const;
 
 export interface TApiErrorCode extends TString {

@@ -16,13 +16,18 @@ import {InputFileImageOnly} from '@spinach/next/components/shared/common/input/f
 import {useI18nApiErrorTranslator} from '@spinach/next/hooks/i18n/apiError/main';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {AccountAddBankState} from '@spinach/next/ui/account/bank/type';
+import {uploadFile} from '@spinach/next/utils/api/fileUpload';
 
 
-export const AccountAddBankClient = () => {
+type Props = {
+  fileUploadGrantId: string
+};
+
+export const AccountAddBankClient = ({fileUploadGrantId}: Props) => {
   const [state, setState] = React.useState<AccountAddBankState>({
     errorMessage: null,
+    imageFileRef: null,
     data: {
-      image: null,
       details: {
         code: '',
         account: '',
@@ -38,8 +43,8 @@ export const AccountAddBankClient = () => {
 
   const translateApiError = useI18nApiErrorTranslator();
 
-  const {errorMessage, data} = state;
-  const {image, details} = data;
+  const {errorMessage, imageFileRef, data} = state;
+  const {details} = data;
   const uploading = status === 'processing';
 
   const onSubmit = async () => {
@@ -48,10 +53,23 @@ export const AccountAddBankClient = () => {
       return;
     }
 
-    if (!data.image) {
+    if (!imageFileRef) {
       setState((original) => ({
         ...original,
         errorMessage: t('Error.MissingBankbookPhoto'),
+      }));
+      return;
+    }
+
+    // Upload the image first to get upload ID
+    const uploadResponse = await uploadFile({
+      fileRef: imageFileRef,
+      grantId: fileUploadGrantId,
+    });
+    if (!uploadResponse.success) {
+      setState((original) => ({
+        ...original,
+        errorMessage: translateApiError(uploadResponse.error),
       }));
       return;
     }
@@ -61,8 +79,8 @@ export const AccountAddBankClient = () => {
       options: {
         type: 'user.bank',
         data: {
-          details: data.details,
-          image: data.image,
+          details,
+          imageUploadId: uploadResponse.data.uploadId,
         },
       },
     });
@@ -87,12 +105,9 @@ export const AccountAddBankClient = () => {
             id="note"
             title={t('InputField.BankbookPhoto')}
             className={clsx(errorMessage && 'text-red-400')}
-            onFileSelected={(image) => setState((original) => ({
+            onFileSelected={(imageFileRef) => setState((original) => ({
               ...original,
-              data: {
-                ...original.data,
-                image,
-              },
+              imageFileRef,
             } satisfies AccountAddBankState))}
             onFileTypeIncorrect={(type) => setState((original) => ({
               ...original,
@@ -141,7 +156,7 @@ export const AccountAddBankClient = () => {
         </Flex>
         <button
           type="submit" className="enabled:button-clickable-bg disabled:button-disabled w-full p-2"
-          disabled={uploading || !image || !details.account || !details.code}
+          disabled={uploading || !imageFileRef || !details.account || !details.code}
         >
           {uploading ? t('Uploading') : t('Upload')}
         </button>

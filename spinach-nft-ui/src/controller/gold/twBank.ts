@@ -1,10 +1,9 @@
 import {getGlobalConfig} from '@spinach/common/controller/actors/global';
 import {getNewBalance} from '@spinach/common/controller/actors/user';
 import {azureContainer} from '@spinach/common/controller/blob/const';
-import {uploadBlob} from '@spinach/common/controller/blob/upload';
+import {getImageBlob} from '@spinach/common/controller/blob/get';
 import {txnGoldPurchaseTwBankRecordCollection} from '@spinach/common/controller/collections/txn';
 import {userBalanceCollection, userInfoCollection} from '@spinach/common/controller/collections/user';
-import {Mongo} from '@spinach/common/controller/const';
 import {throwIfNotPrivileged} from '@spinach/common/controller/user/permission';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {GoldPurchaseTwBankRecordClient} from '@spinach/common/types/data/gold/purchase';
@@ -93,13 +92,10 @@ export const recordGoldPurchaseTwBankTxn = async ({
 }: RecordGoldPurchaseTwBankTxnOpts): Promise<ApiErrorCode | null> => {
   const {
     sourceBankDetailsUuid,
-    txnProofImage,
+    txnProofImageId,
     targetWalletId,
     amount,
   } = request;
-
-  const session = Mongo.startSession();
-  session.startTransaction();
 
   const userObjectId = new ObjectId(userId);
 
@@ -108,36 +104,36 @@ export const recordGoldPurchaseTwBankTxn = async ({
     return 'accountNotFound';
   }
 
-  const uuid = v4();
-  try {
-    await txnGoldPurchaseTwBankRecordCollection.insertOne({
-      accountId: userObjectId,
-      sourceBankDetailsUuid,
-      targetWalletId: new ObjectId(targetWalletId),
-      uuid,
-      amount,
-      status: 'unverified',
-    }, {session});
-  } catch (e) {
-    console.error('Failed to record Gold purchasing txn via TW bank (insert TxN)', e);
-    await session.abortTransaction();
-    await session.endSession();
-  }
+  await txnGoldPurchaseTwBankRecordCollection.insertOne({
+    accountId: userObjectId,
+    sourceBankDetailsUuid,
+    targetWalletId: new ObjectId(targetWalletId),
+    uuid: v4(),
+    amount,
+    status: 'unverified',
+    txnProofImageId,
+  });
 
-  try {
-    await uploadBlob({
-      container: azureContainer.goldPurchase.twBank,
-      name: uuid,
-      ...txnProofImage,
-    });
-  } catch (e) {
-    console.error('Failed to record Gold purchasing txn via TW bank (Upload)', e);
-    await session.abortTransaction();
-    await session.endSession();
-    return 'goldTwBankTxnRecordFailed';
-  }
-
-  await session.commitTransaction();
-  await session.endSession();
   return null;
+};
+
+type GetGoldPurchaseTwBankVerificationImageOpts = ControllerRequireUserIdOpts & {
+  uuid: string,
+};
+
+export const getGoldPurchaseTwBankVerificationImage = async ({
+  executorUserId,
+  uuid,
+}: GetGoldPurchaseTwBankVerificationImageOpts) => {
+  await throwIfNotPrivileged(executorUserId);
+
+  const txnRecord = await txnGoldPurchaseTwBankRecordCollection.findOne({uuid});
+  if (!txnRecord) {
+    return null;
+  }
+
+  return getImageBlob({
+    container: azureContainer.pool,
+    name: txnRecord.txnProofImageId,
+  });
 };

@@ -1,7 +1,6 @@
 import {azureContainer} from '@spinach/common/controller/blob/const';
-import {uploadBlob} from '@spinach/common/controller/blob/upload';
+import {getImageBlob} from '@spinach/common/controller/blob/get';
 import {userBankDetailsCollection, userInfoCollection} from '@spinach/common/controller/collections/user';
-import {Mongo} from '@spinach/common/controller/const';
 import {getUserInfoById} from '@spinach/common/controller/user/info';
 import {throwIfNotPrivileged, throwIfNotElevated} from '@spinach/common/controller/user/permission';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
@@ -36,6 +35,27 @@ export const getBankDetailsOfUser = async ({
   }
 
   return getDataAsArray(userBankDetailsCollection, {userId});
+};
+
+type GetBankDetailsByUuidOpts = ControllerRequireUserIdOpts & {
+  uuid: string,
+};
+
+export const getBankDetailsVerificationImageByUuid = async ({
+  executorUserId,
+  uuid,
+}: GetBankDetailsByUuidOpts) => {
+  await throwIfNotElevated(executorUserId);
+
+  const bankDetails = await userBankDetailsCollection.findOne({uuid});
+  if (bankDetails == null) {
+    return null;
+  }
+
+  return getImageBlob({
+    container: azureContainer.pool,
+    name: bankDetails.imageUploadId,
+  });
 };
 
 export const getVerifiedBankDetailsOfUser = (userId: string) => {
@@ -83,44 +103,19 @@ export const uploadBankDetails = async ({
   userId,
   request,
 }: UploadBankDetailsOpts): Promise<ApiErrorCode | null> => {
-  const {image, details} = request;
-
-  const session = Mongo.startSession();
-  session.startTransaction();
+  const {details, imageUploadId} = request;
 
   const userData = userInfoCollection.findOne({_id: new ObjectId(userId)});
   if (!userData) {
     return 'accountNotFound';
   }
 
-  const uuid = v4();
-  try {
-    await userBankDetailsCollection.insertOne({
-      userId,
-      uuid,
-      ...details,
-    }, {session});
-  } catch (e) {
-    console.error(`Failed to insert user bank details for ${userId}`, details, e);
-    await session.abortTransaction();
-    await session.endSession();
-    return 'bankDetailsAlreadyExist';
-  }
+  await userBankDetailsCollection.insertOne({
+    userId,
+    uuid: v4(),
+    imageUploadId,
+    ...details,
+  });
 
-  try {
-    await uploadBlob({
-      container: azureContainer.bankDetails,
-      name: uuid,
-      ...image,
-    });
-  } catch (e) {
-    console.error(`Failed to upload user bank details images of ${userId}`, details, e);
-    await session.abortTransaction();
-    await session.endSession();
-    return 'bankDetailsUploadFailed';
-  }
-
-  await session.commitTransaction();
-  await session.endSession();
   return null;
 };

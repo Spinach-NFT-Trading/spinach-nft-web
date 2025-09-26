@@ -534,7 +534,16 @@
       "BankDetailsNotFound": "Số tài khoản ngân hàng không tồn tại.",
       "BankDetailsAlreadyExist": "Tài khoản ngân hàng đã tồn tại.",
       "BankDetailsUploadFailed": "Tải lên tài khoản ngân hàng không thành công.",
-      "CommissionOverLimit": "Đã vượt quá giới hạn hoàn trả hoa hồng."
+      "CommissionOverLimit": "Đã vượt quá giới hạn hoàn trả hoa hồng.",
+      "MultipartEmptyBody": "Nội dung biểu mẫu trống.",
+      "MultipartFieldEmpty": "Trường biểu mẫu trống.",
+      "MultipartFieldNotFile": "Trường biểu mẫu không phải là tệp.",
+      "MultipartFieldNotValue": "Trường biểu mẫu không phải là giá trị.",
+      "MultipartFieldValueCastFailed": "Chuyển đổi giá trị trường biểu mẫu không thành công.",
+      "MultipartTooManyFiles": "Biểu mẫu có quá nhiều tệp.",
+      "MultipartTooManyValues": "Biểu mẫu có quá nhiều giá trị.",
+      "FileUploadGrantActivationFailed": "Tiêu thụ quyền tải lên tệp không thành công.",
+      "FileUploadMissingFile": "Thiếu tệp đích để tải lên."
     },
     "Input": {
       "IncorrectFileType": "Loại tệp không chính xác - {type}"

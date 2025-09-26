@@ -1,6 +1,7 @@
 import {ObjectId} from 'mongodb';
 
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
+import {ControllerOptionalElevationOpts} from '@spinach/common/controller/type';
 import {throwIfNotElevated} from '@spinach/common/controller/user/permission';
 import {UserInfo} from '@spinach/common/types/common/user/info';
 import {toUserInfo} from '@spinach/common/utils/data/user';
@@ -10,15 +11,9 @@ export const getUserById = (userId: string | undefined) => {
   return userInfoCollection.findOne({_id: new ObjectId(userId)});
 };
 
-export type GetUserInfoByIdOpts = {
+export type GetUserInfoByIdOpts = ControllerOptionalElevationOpts & {
   userId: string | null,
-} & ({
-  requiresElevated: true,
-  executorUserId: string,
-} | {
-  requiresElevated: false,
-  executorUserId?: never,
-});
+};
 
 export const getUserInfoById = async ({
   executorUserId,

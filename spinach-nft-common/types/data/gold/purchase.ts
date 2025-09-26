@@ -10,6 +10,7 @@ export type GoldPurchaseTwBankRecord = {
   uuid: string,
   amount: number,
   status: VerificationStatus,
+  txnProofImageId: string,
 };
 
 export type GoldPurchaseTwBankRecordClient = Omit<GoldPurchaseTwBankRecord, 'accountId' | 'targetWalletId'> & {

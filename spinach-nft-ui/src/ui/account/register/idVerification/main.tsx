@@ -29,13 +29,13 @@ export const AccountRegisterIdVerification = ({uploading, ...props}: Props) => {
         setState={setState}
         onSelected={(type, data) => setInput((original) => ({
           ...original,
-          image: {
-            ...original.image,
+          imageFileRefs: {
+            ...original.imageFileRefs,
             [type]: data,
           },
         } satisfies AccountRegisterInput))}
         uploading={uploading}
-        isNotReady={Object.values(input.image).some((data) => !data)}
+        isNotReady={Object.values(input.imageFileRefs).some((data) => !data)}
         onComplete={onComplete}
         submitButtonText={t('Register')}
       />

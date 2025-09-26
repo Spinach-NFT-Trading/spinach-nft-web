@@ -40,6 +40,7 @@ export const toUserInfo = (model: WithId<UserModel>): UserInfo => {
     commissionPercentAgent,
     commissionPercentMember,
     recruitedBy,
+    verificationImageUploadIdMap,
   } = model;
 
   return {
@@ -53,5 +54,6 @@ export const toUserInfo = (model: WithId<UserModel>): UserInfo => {
     commissionPercentAgent,
     commissionPercentMember,
     recruitedBy,
+    verificationImageUploadIdMap,
   };
 };

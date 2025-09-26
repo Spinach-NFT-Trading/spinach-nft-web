@@ -534,7 +534,16 @@
       "BankDetailsNotFound": "銀行口座番号が存在しません。",
       "BankDetailsAlreadyExist": "銀行口座はすでに存在します。",
       "BankDetailsUploadFailed": "銀行口座のアップロードに失敗しました。",
-      "CommissionOverLimit": "コミッションの返金限度額を超えています。"
+      "CommissionOverLimit": "コミッションの返金限度額を超えています。",
+      "MultipartEmptyBody": "空のフォーム本体。",
+      "MultipartFieldEmpty": "空のフォームフィールド。",
+      "MultipartFieldNotFile": "フォームフィールドがファイルではありません。",
+      "MultipartFieldNotValue": "フォームフィールドが値ではありません。",
+      "MultipartFieldValueCastFailed": "フォームフィールド値のキャストに失敗しました。",
+      "MultipartTooManyFiles": "フォームにファイルが多すぎます。",
+      "MultipartTooManyValues": "フォームに値が多すぎます。",
+      "FileUploadGrantActivationFailed": "ファイルアップロード拒否されました。",
+      "FileUploadMissingFile": "アップロードするターゲットファイルがありません。"
     },
     "Input": {
       "IncorrectFileType": "間違ったファイルタイプ - {type}"

@@ -11,6 +11,7 @@ export const BankDetailsSchemaBase = {
   account: Type.String({pattern: bankAccountPattern}),
   status: VerificationStatusSchema,
   uuid: UuidSchemaBase,
+  imageUploadId: UuidSchemaBase,
 };
 
 export const BankDetailsSchema = Type.Object(

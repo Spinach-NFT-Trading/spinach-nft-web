@@ -534,7 +534,16 @@
       "BankDetailsNotFound": "ไม่มีหมายเลขบัญชีธนาคาร",
       "BankDetailsAlreadyExist": "มีบัญชีธนาคารอยู่แล้ว",
       "BankDetailsUploadFailed": "การอัปโหลดบัญชีธนาคารล้มเหลว",
-      "CommissionOverLimit": "เกินขีดจำกัดการคืนเงินค่าคอมมิชชั่นแล้ว"
+      "CommissionOverLimit": "เกินขีดจำกัดการคืนเงินค่าคอมมิชชั่นแล้ว",
+      "MultipartEmptyBody": "เนื้อหาฟอร์มว่าง",
+      "MultipartFieldEmpty": "ฟิลด์ฟอร์มว่าง",
+      "MultipartFieldNotFile": "ฟิลด์ฟอร์มไม่ใช่ไฟล์",
+      "MultipartFieldNotValue": "ฟิลด์ฟอร์มไม่ใช่ค่า",
+      "MultipartFieldValueCastFailed": "การแปลงค่าฟิลด์ฟอร์มล้มเหลว",
+      "MultipartTooManyFiles": "ฟอร์มมีไฟล์มากเกินไป",
+      "MultipartTooManyValues": "ฟอร์มมีค่ามากเกินไป",
+      "FileUploadGrantActivationFailed": "การใช้สิทธิ์อัปโหลดไฟล์ล้มเหลว",
+      "FileUploadMissingFile": "ไฟล์เป้าหมายที่จะอัปโหลดหายไป"
     },
     "Input": {
       "IncorrectFileType": "ประเภทไฟล์ไม่ถูกต้อง - {type}"

@@ -534,7 +534,16 @@
       "BankDetailsNotFound": "Bank account number does not exist.",
       "BankDetailsAlreadyExist": "Bank account already exists.",
       "BankDetailsUploadFailed": "Bank account upload failed.",
-      "CommissionOverLimit": "The commission refund limit has been exceeded."
+      "CommissionOverLimit": "The commission refund limit has been exceeded.",
+      "MultipartEmptyBody": "Empty form body.",
+      "MultipartFieldEmpty": "Empty form field.",
+      "MultipartFieldNotFile": "Form field is not a file.",
+      "MultipartFieldNotValue": "Form field is not a value.",
+      "MultipartFieldValueCastFailed": "Form field value cast failed.",
+      "MultipartTooManyFiles": "Form has too many files.",
+      "MultipartTooManyValues": "Form has too many values.",
+      "FileUploadGrantActivationFailed": "File upload not granted.",
+      "FileUploadMissingFile": "Missing target file to upload."
     },
     "Input": {
       "IncorrectFileType": "Incorrect file type - {type}"

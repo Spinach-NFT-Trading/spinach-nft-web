@@ -31,12 +31,13 @@ export const requestNftExchangeSingle = async ({
     userId: nftSold.owner.toHexString(),
     status: 'verified',
   })
-    .map(({code, account, status, uuid}) => ({
+    .map(({code, account, status, uuid, imageUploadId}) => ({
       // Return whatever needed only
       code,
       account,
       status,
       uuid,
+      imageUploadId,
     }))
     .toArray();
 

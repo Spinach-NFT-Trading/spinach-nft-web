@@ -14,7 +14,7 @@ export const goldExchangeUploadStatusI18nId: {
 
 export const goldExchangeTwBankInitialInput: GoldExchangeConfirmTwBankInput = {
   sourceBankDetailsUuid: null,
-  txnProofImage: null,
+  txnProofImageFileRef: null,
   errorMessage: null,
   bankDetailsSearch: '',
 };

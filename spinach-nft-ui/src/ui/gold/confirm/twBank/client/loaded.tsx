@@ -24,6 +24,7 @@ import {
   goldExchangeUploadStatusI18nId,
 } from '@spinach/next/ui/gold/confirm/twBank/const';
 import {GoldExchangeConfirmTwBankInput} from '@spinach/next/ui/gold/confirm/twBank/type';
+import {uploadFile} from '@spinach/next/utils/api/fileUpload';
 import {formatBankDetails} from '@spinach/next/utils/data/user';
 
 
@@ -31,7 +32,12 @@ type Props = GoldExchangeConfirmTwBankClientCommonProps & {
   verifiedBankDetails: BankDetails[],
 };
 
-export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedBankDetails}: Props) => {
+export const GoldExchangeConfirmTwBankLoadedClient = ({
+  wallet,
+  amount,
+  fileUploadGrantId,
+  verifiedBankDetails,
+}: Props) => {
   const {code, account} = wallet;
   const [input, setInput] = React.useState<GoldExchangeConfirmTwBankInput>(
     goldExchangeTwBankInitialInput,
@@ -50,7 +56,7 @@ export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedB
   const {
     errorMessage,
     sourceBankDetailsUuid,
-    txnProofImage,
+    txnProofImageFileRef,
   } = input;
 
   const onSubmit = async () => {
@@ -67,7 +73,7 @@ export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedB
       return;
     }
 
-    if (!txnProofImage) {
+    if (!txnProofImageFileRef) {
       setInput((original): GoldExchangeConfirmTwBankInput => ({
         ...original,
         errorMessage: t('Error.AttachProof'),
@@ -83,13 +89,26 @@ export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedB
       return;
     }
 
+    // Upload the transaction proof image first to get upload data
+    const uploadResponse = await uploadFile({
+      fileRef: txnProofImageFileRef,
+      grantId: fileUploadGrantId,
+    });
+    if (!uploadResponse.success) {
+      setInput((original): GoldExchangeConfirmTwBankInput => ({
+        ...original,
+        errorMessage: translateApiError(uploadResponse.error),
+      }));
+      return;
+    }
+
     const session = await act({
       action: 'request',
       options: {
         type: 'exchange.gold.twBank',
         data: {
           sourceBankDetailsUuid,
-          txnProofImage,
+          txnProofImageId: uploadResponse.data.uploadId,
           targetWalletId: wallet.id,
           amount,
         },
@@ -157,9 +176,9 @@ export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedB
           <InputFileImageOnly
             id="transactionProof"
             title={t('Field.WiringProof')}
-            onFileSelected={(txnProofImage) => setInput((original) => ({
+            onFileSelected={(txnProofImageFileRef) => setInput((original) => ({
               ...original,
-              txnProofImage,
+              txnProofImageFileRef,
             } satisfies GoldExchangeConfirmTwBankInput))}
             onFileTypeIncorrect={(type) => setInput((original) => ({
               ...original,
@@ -170,7 +189,7 @@ export const GoldExchangeConfirmTwBankLoadedClient = ({wallet, amount, verifiedB
           <button
             type="submit"
             className="enabled:button-clickable-bg disabled:button-disabled p-2"
-            disabled={status === 'processing' || !sourceBankDetailsUuid || !txnProofImage}
+            disabled={status === 'processing' || !sourceBankDetailsUuid || !txnProofImageFileRef}
           >
             {t(goldExchangeUploadStatusI18nId[status])}
           </button>
