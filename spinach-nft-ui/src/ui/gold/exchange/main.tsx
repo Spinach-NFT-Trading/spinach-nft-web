@@ -17,10 +17,7 @@ export const GoldExchange = async () => {
 
   return (
     <PageLayout>
-      <I18nProvider namespaces={[
-        'UI.Gold.ExchangeChannel',
-        'UI.InPage.Gold.Exchange',
-      ]}>
+      <I18nProvider>
         <GoldExchangeClient usdtExchangeRate={parseFloat(currentFx || '0')}/>
       </I18nProvider>
     </PageLayout>

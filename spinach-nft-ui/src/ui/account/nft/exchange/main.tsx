@@ -25,7 +25,7 @@ export const AccountNftExchangeConfirm = async () => {
 
   return (
     <ProfileLayout>
-      <I18nProvider namespaces={['UI.InPage.Account.Nft.Exchange']}>
+      <I18nProvider>
         <AccountNftExchangeConfirmClient
           initialMatchedExchangeRequests={matchedExchangeRequests}
           nftInfoMap={nftInfoMap}

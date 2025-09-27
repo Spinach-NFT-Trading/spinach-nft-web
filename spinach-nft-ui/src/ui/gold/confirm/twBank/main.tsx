@@ -12,11 +12,7 @@ export const GoldExchangeConfirmTwBank = async ({searchParams}: GoldExchangeConf
   return (
     <GoldExchangeConfirmLayout channel="twBank" amount={amount}>
       {(wallet) => (
-        <I18nProvider namespaces={[
-          'UI.Account.BankAccounts',
-          'UI.InPage.Gold.Confirm.TwBank',
-          'UI.VerificationStatus',
-        ]}>
+        <I18nProvider>
           <GoldExchangeConfirmTwBankClient wallet={wallet} amount={amount}/>
         </I18nProvider>
       )}

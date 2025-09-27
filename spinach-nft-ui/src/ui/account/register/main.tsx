@@ -19,12 +19,7 @@ export const AccountRegister = async ({searchParams}: AccountRegisterPageProps) 
 
   return (
     <UserControlLayout disableHomePageLink>
-      <I18nProvider namespaces={[
-        'UI.Component.AccountIdVerificationForm',
-        'UI.InPage.Account.Register',
-        'UI.Account',
-        'UI.UserControl',
-      ]}>
+      <I18nProvider>
         <AccountRegisterClient {...searchParams}/>
       </I18nProvider>
     </UserControlLayout>

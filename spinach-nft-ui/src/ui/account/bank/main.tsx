@@ -8,7 +8,7 @@ import {ProfileLayout} from '@spinach/next/ui/base/layout/profile/main';
 export const AccountAddBank = () => {
   return (
     <ProfileLayout>
-      <I18nProvider namespaces={['UI']}>
+      <I18nProvider>
         <AccountAddBankClient/>
       </I18nProvider>
     </ProfileLayout>

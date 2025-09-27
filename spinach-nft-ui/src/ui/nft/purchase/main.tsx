@@ -58,7 +58,7 @@ export const NftPurchase = async ({params}: NextPageProps<PageParams>) => {
 
   return (
     <LoginRequiredPageLayout>
-      <I18nProvider namespaces={['UI.InPage.Nft.Purchase']}>
+      <I18nProvider>
         <Flex className="gap-2 md:flex-row">
           <NftPurchaseImage {...props}/>
           <Flex className="gap-2">

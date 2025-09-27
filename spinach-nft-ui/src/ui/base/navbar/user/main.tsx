@@ -11,7 +11,7 @@ export const UserControl = () => {
   const session = React.use(getServerSession(authOptions));
 
   return (
-    <I18nProvider namespaces={['UI.UserControl']}>
+    <I18nProvider>
       <UserControlClient session={session}/>
     </I18nProvider>
   );
