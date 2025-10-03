@@ -86,6 +86,11 @@ export const AccountRegisterForm = ({
 
       if (!uploadResponse.success) {
         setError(uploadResponse.error);
+
+        if (uploadResponse.error === 'fileUploadGrantActivationFailed') {
+          alert(fileUploadGrantId);
+        }
+
         setInput((original) => ({
           ...original,
           step: 'idVerification',
@@ -157,7 +162,7 @@ export const AccountRegisterForm = ({
         input={input}
         setInput={setInput}
         uploadStatus={uploadStatus}
-        onComplete={onSubmit}
+        onComplete={() => onSubmit().catch(alert)}
       />
       <AccountRegisterCompleted show={step === 'completed'}/>
     </Flex>
