@@ -13,6 +13,9 @@ export type AccountRegisterInput = Omit<UserRegisterRequest, 'imageUploadIdMap'>
   imageFileRefs: {[type in AccountIdVerificationType]: FileRef | null},
 };
 
+// Value of `true` indicates completed
+export type AccountRegisterVerificationUploadStatus = {[type in AccountIdVerificationType]: boolean};
+
 export type AccountRegisterCommonProps = {
   show: boolean,
   input: AccountRegisterInput,

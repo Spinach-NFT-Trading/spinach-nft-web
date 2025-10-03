@@ -6,14 +6,23 @@ import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/anim
 import {initialAccountIdVerificationState} from '@spinach/next/components/shared/account/idVerification/const';
 import {AccountIdVerificationForm} from '@spinach/next/components/shared/account/idVerification/main';
 import {AccountIdVerificationState} from '@spinach/next/components/shared/account/idVerification/type';
-import {AccountRegisterCommonProps, AccountRegisterInput} from '@spinach/next/ui/account/register/type';
+import {
+  AccountRegisterCommonProps,
+  AccountRegisterInput,
+  AccountRegisterVerificationUploadStatus,
+} from '@spinach/next/ui/account/register/type';
 
 
 type Props = AccountRegisterCommonProps & {
   uploading: boolean,
+  uploadStatus: AccountRegisterVerificationUploadStatus,
 };
 
-export const AccountRegisterIdVerification = ({uploading, ...props}: Props) => {
+export const AccountRegisterIdVerification = ({
+  uploading,
+  uploadStatus,
+  ...props
+}: Props) => {
   const {show, input, setInput, onComplete} = props;
 
   const t = useTranslations('UI.UserControl');
@@ -35,6 +44,7 @@ export const AccountRegisterIdVerification = ({uploading, ...props}: Props) => {
           },
         } satisfies AccountRegisterInput))}
         uploading={uploading}
+        uploadStatus={uploadStatus}
         isNotReady={Object.values(input.imageFileRefs).some((data) => !data)}
         onComplete={onComplete}
         submitButtonText={t('Register')}

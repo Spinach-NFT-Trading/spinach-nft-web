@@ -16,7 +16,15 @@ type Props = Omit<
   accept: MimeTypes[],
 };
 
-export const InputFile = ({id, title, accept, onFileSelected, onFileTypeIncorrect, ...props}: Props) => {
+export const InputFile = ({
+  id,
+  title,
+  accept,
+  onFileSelected,
+  onFileTypeIncorrect,
+  classOfTitle,
+  ...props
+}: Props) => {
   const {className} = props;
   const [filePath, setFilePath] = React.useState<string | null>(null);
 
@@ -24,7 +32,7 @@ export const InputFile = ({id, title, accept, onFileSelected, onFileTypeIncorrec
   // https://tailwindcss.com/docs/hover-focus-and-other-states#styling-based-on-sibling-state
   return (
     <Flex className={clsx('gap-0.5', className)}>
-      <div className="text-sm">{title}</div>
+      <div className={clsx('text-sm', classOfTitle)}>{title}</div>
       <input
         {...props}
         id={id}

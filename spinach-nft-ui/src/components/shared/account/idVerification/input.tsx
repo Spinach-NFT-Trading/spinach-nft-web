@@ -14,10 +14,12 @@ import {accountIdVerificationTypeI18nId} from '@spinach/next/const/account';
 
 type Props = AccountIdVerificationCommonProps & {
   type: AccountIdVerificationType,
+  isCompleted?: boolean,
 };
 
 export const AccountIdVerificationInput = ({
   type,
+  isCompleted,
   state,
   setState,
   onSelected,
@@ -33,6 +35,7 @@ export const AccountIdVerificationInput = ({
       id={type}
       title={`${t2(accountIdVerificationTypeI18nId[type])}${errorMessage ? ` - ${errorMessage}` : ''}`}
       className={clsx(errorMessage && 'text-red-400')}
+      classOfTitle={clsx(isCompleted && 'text-green-400')}
       onFileSelected={(data) => onSelected(type, data)}
       onFileTypeIncorrect={(type) => setState((original) => ({
         ...original,

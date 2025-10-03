@@ -11,7 +11,7 @@ import {AccountRegisterCompleted} from '@spinach/next/ui/account/register/comple
 import {useAccountRegisterContext} from '@spinach/next/ui/account/register/context/hook';
 import {AccountRegisterIdVerification} from '@spinach/next/ui/account/register/idVerification/main';
 import {AccountRegisterBasicInfo} from '@spinach/next/ui/account/register/info/main';
-import {AccountRegisterInput} from '@spinach/next/ui/account/register/type';
+import {AccountRegisterInput, AccountRegisterVerificationUploadStatus} from '@spinach/next/ui/account/register/type';
 import {sendApiPost} from '@spinach/next/utils/api/common';
 import {uploadFile} from '@spinach/next/utils/api/fileUpload';
 
@@ -46,6 +46,13 @@ export const AccountRegisterForm = ({
       secondaryFront: null,
       handheld: null,
     },
+  });
+
+  const [uploadStatus, setUploadStatus] = React.useState<AccountRegisterVerificationUploadStatus>({
+    idFront: false,
+    idBack: false,
+    secondaryFront: false,
+    handheld: false,
   });
 
   const {step} = input;
@@ -87,6 +94,10 @@ export const AccountRegisterForm = ({
       }
 
       imageUploadIdMap[verificationType] = uploadResponse.data.uploadId;
+      setUploadStatus((original) => ({
+        ...original,
+        [verificationType]: true,
+      }));
     }
 
     // Create registration payload with upload IDs
@@ -145,6 +156,7 @@ export const AccountRegisterForm = ({
         uploading={uploading}
         input={input}
         setInput={setInput}
+        uploadStatus={uploadStatus}
         onComplete={onSubmit}
       />
       <AccountRegisterCompleted show={step === 'completed'}/>

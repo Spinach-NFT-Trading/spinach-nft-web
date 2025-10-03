@@ -7,5 +7,6 @@ export type InputFileCommonProps = {
   onFileSelected: (data: FileRef | null) => void,
   onFileTypeIncorrect: (fileType: string) => void,
   className?: string,
+  classOfTitle?: string,
   disabled?: boolean,
 };
