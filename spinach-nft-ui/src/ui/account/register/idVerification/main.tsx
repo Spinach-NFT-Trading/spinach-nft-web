@@ -6,16 +6,13 @@ import {AnimatedCollapse} from '@spinach/next/components/layout/collapsible/anim
 import {initialAccountIdVerificationState} from '@spinach/next/components/shared/account/idVerification/const';
 import {AccountIdVerificationForm} from '@spinach/next/components/shared/account/idVerification/main';
 import {AccountIdVerificationState} from '@spinach/next/components/shared/account/idVerification/type';
-import {
-  AccountRegisterCommonProps,
-  AccountRegisterInput,
-  AccountRegisterVerificationUploadStatus,
-} from '@spinach/next/ui/account/register/type';
+import {AccountRegisterCommonProps, AccountRegisterInput} from '@spinach/next/ui/account/register/type';
+import {AccountVerificationUploadStatus} from '@spinach/next/ui/account/verificationUpload';
 
 
 type Props = AccountRegisterCommonProps & {
   uploading: boolean,
-  uploadStatus: AccountRegisterVerificationUploadStatus,
+  uploadStatus: AccountVerificationUploadStatus,
 };
 
 export const AccountRegisterIdVerification = ({

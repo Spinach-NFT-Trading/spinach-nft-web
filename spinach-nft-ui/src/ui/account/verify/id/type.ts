@@ -3,5 +3,6 @@ import {AccountIdVerificationState} from '@spinach/next/components/shared/accoun
 
 export type AccountIdVerifyState = {
   errorMessage: string | null,
+  fileUploadGrantId: string,
   form: AccountIdVerificationState,
 };

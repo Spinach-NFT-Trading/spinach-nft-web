@@ -1,20 +1,16 @@
 import React from 'react';
 
 import {UserRegisterRequest} from '@spinach/common/types/api/auth/register';
-import {AccountIdVerificationType} from '@spinach/common/types/api/profile/id';
 
-import {FileRef} from '@spinach/next/types/input/fileRef';
 import {NextPageProps} from '@spinach/next/types/next/page';
+import {AccountVerificationFileRefMap} from '@spinach/next/ui/account/verificationUpload';
 
 
 // Client-side input that uses FileReference for file handling
 export type AccountRegisterInput = Omit<UserRegisterRequest, 'imageUploadIdMap'> & {
   step: 'info' | 'idVerification' | 'completed',
-  imageFileRefs: {[type in AccountIdVerificationType]: FileRef | null},
+  imageFileRefs: AccountVerificationFileRefMap,
 };
-
-// Value of `true` indicates completed
-export type AccountRegisterVerificationUploadStatus = {[type in AccountIdVerificationType]: boolean};
 
 export type AccountRegisterCommonProps = {
   show: boolean,

@@ -8,4 +8,10 @@ export const initialAccountIdVerificationState: AccountIdVerificationState = {
     handheld: null,
     secondaryFront: null,
   },
+  fileRefs: {
+    idFront: null,
+    idBack: null,
+    handheld: null,
+    secondaryFront: null,
+  },
 };

@@ -11,7 +11,8 @@ import {AccountRegisterCompleted} from '@spinach/next/ui/account/register/comple
 import {useAccountRegisterContext} from '@spinach/next/ui/account/register/context/hook';
 import {AccountRegisterIdVerification} from '@spinach/next/ui/account/register/idVerification/main';
 import {AccountRegisterBasicInfo} from '@spinach/next/ui/account/register/info/main';
-import {AccountRegisterInput, AccountRegisterVerificationUploadStatus} from '@spinach/next/ui/account/register/type';
+import {AccountRegisterInput} from '@spinach/next/ui/account/register/type';
+import {AccountVerificationUploadStatus} from '@spinach/next/ui/account/verificationUpload';
 import {sendApiPost} from '@spinach/next/utils/api/common';
 import {uploadFile} from '@spinach/next/utils/api/fileUpload';
 
@@ -48,7 +49,7 @@ export const AccountRegisterForm = ({
     },
   });
 
-  const [uploadStatus, setUploadStatus] = React.useState<AccountRegisterVerificationUploadStatus>({
+  const [uploadStatus, setUploadStatus] = React.useState<AccountVerificationUploadStatus>({
     idFront: false,
     idBack: false,
     secondaryFront: false,

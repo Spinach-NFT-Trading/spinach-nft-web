@@ -8,12 +8,12 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {FlexForm} from '@spinach/next/components/layout/flex/form';
 import {AccountIdVerificationInput} from '@spinach/next/components/shared/account/idVerification/input';
 import {AccountIdVerificationCommonProps} from '@spinach/next/components/shared/account/idVerification/type';
-import {AccountRegisterVerificationUploadStatus} from '@spinach/next/ui/account/register/type';
+import {AccountVerificationUploadStatus} from '@spinach/next/ui/account/verificationUpload';
 
 
 type Props = AccountIdVerificationCommonProps & {
   uploading: boolean,
-  uploadStatus: AccountRegisterVerificationUploadStatus,
+  uploadStatus: AccountVerificationUploadStatus,
   isNotReady: boolean,
   onComplete: () => void,
   submitButtonText: string,
