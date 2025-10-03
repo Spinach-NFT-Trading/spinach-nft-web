@@ -55,14 +55,20 @@ export const AccountRegisterForm = ({
 
     // Can't send 4 file refs at once, or the `fetch()` call will stuck
     const imageUploadResultMap: {[type in AccountIdVerificationType]?: FileUploadResponse} = {};
-    await Promise.all(accountIdVerificationType.map(async (verificationType) => {
-      const fileRef = input.imageFileRefs[verificationType];
-      if (!fileRef) {
-        return;
-      }
+    try {
+      await Promise.all(accountIdVerificationType.map(async (verificationType) => {
+        const fileRef = input.imageFileRefs[verificationType];
+        if (!fileRef) {
+          return;
+        }
 
-      imageUploadResultMap[verificationType] = await uploadFile({fileRef, grantId: fileUploadGrantId});
-    }));
+        imageUploadResultMap[verificationType] = await uploadFile({fileRef, grantId: fileUploadGrantId});
+      }));
+    } catch (error) {
+      console.error('Failed to upload ID verification images:', error);
+      alert(error instanceof Error ? error.message : 'Failed to upload ID verification images');
+      throw error;
+    }
 
     const imageUploadIdMap: {[type in AccountIdVerificationType]?: string} = {};
     for (const verificationType of accountIdVerificationType) {
