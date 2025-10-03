@@ -162,7 +162,14 @@ export const AccountRegisterForm = ({
         input={input}
         setInput={setInput}
         uploadStatus={uploadStatus}
-        onComplete={() => onSubmit().catch(alert)}
+        onComplete={() => onSubmit().catch((error) => {
+          console.error(error);
+          if (error instanceof Error) {
+            alert(`${error.message}\n\nStack trace:\n${error.stack}`);
+          } else {
+            alert(String(error));
+          }
+        })}
       />
       <AccountRegisterCompleted show={step === 'completed'}/>
     </Flex>
