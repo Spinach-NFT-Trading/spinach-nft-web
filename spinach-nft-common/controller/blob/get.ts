@@ -13,7 +13,13 @@ export const getImageBlob = async (opts: AzureBlobControlOpts): Promise<BinaryDa
   }
 
   const {contentType, readableStreamBody} = await client.download();
-  if (!readableStreamBody || !contentType || !isMimeTypesOfImage(contentType)) {
+  if (!readableStreamBody || !contentType) {
+    console.warn(`Content type / readable stream body is null for blob: ${opts.container}/${opts.name}`);
+    return null;
+  }
+
+  if (!isMimeTypesOfImage(contentType)) {
+    console.warn(`Content type is not image for blob: ${opts.container}/${opts.name}`);
     return null;
   }
 
