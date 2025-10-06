@@ -526,6 +526,7 @@ declare global {
           FileUploadGrantActivationFailed: string,
           FileUploadMissingFile: string,
           FileUploadMissingContentType: string,
+          UserInfoNotFound: string,
         },
         Input: {
           IncorrectFileType: string,

@@ -40,6 +40,7 @@ export const apiErrorCode = [
   'fileUploadGrantActivationFailed',
   'fileUploadMissingFile',
   'fileUploadMissingContentType',
+  'userInfoNotFound',
 ] as const;
 
 export interface TApiErrorCode extends TString {

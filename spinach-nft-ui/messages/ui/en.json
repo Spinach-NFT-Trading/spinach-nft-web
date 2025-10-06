@@ -549,7 +549,8 @@
       "MultipartTooManyValues": "Form has too many values.",
       "FileUploadGrantActivationFailed": "File upload not granted.",
       "FileUploadMissingFile": "Missing target file to upload.",
-      "FileUploadMissingContentType": "Missing file content type."
+      "FileUploadMissingContentType": "Missing file content type.",
+      "UserInfoNotFound": "User info not found."
     },
     "Input": {
       "IncorrectFileType": "Incorrect file type - {type}"

@@ -42,4 +42,5 @@ export const apiErrorI18nId: {[code in ApiErrorCode]: I18nMessageKeysOfNamespace
   fileUploadGrantActivationFailed: 'FileUploadGrantActivationFailed',
   fileUploadMissingFile: 'FileUploadMissingFile',
   fileUploadMissingContentType: 'FileUploadMissingContentType',
+  userInfoNotFound: 'UserInfoNotFound',
 };

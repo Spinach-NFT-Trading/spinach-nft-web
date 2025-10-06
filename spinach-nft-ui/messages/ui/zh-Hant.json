@@ -549,7 +549,8 @@
       "MultipartTooManyValues": "表單值過多。",
       "FileUploadGrantActivationFailed": "檔案上傳授權失敗。",
       "FileUploadMissingFile": "找不到要上傳的檔案。",
-      "FileUploadMissingContentType": "找不到檔案 Content Type。"
+      "FileUploadMissingContentType": "找不到檔案 Content Type。",
+      "UserInfoNotFound": "沒有找到使用者資訊。"
     },
     "Input": {
       "IncorrectFileType": "檔案種類不正確 - {type}"

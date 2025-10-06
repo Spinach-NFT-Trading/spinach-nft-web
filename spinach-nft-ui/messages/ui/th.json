@@ -549,7 +549,8 @@
       "MultipartTooManyValues": "ฟอร์มมีค่ามากเกินไป",
       "FileUploadGrantActivationFailed": "การใช้สิทธิ์อัปโหลดไฟล์ล้มเหลว",
       "FileUploadMissingFile": "ไฟล์เป้าหมายที่จะอัปโหลดหายไป",
-      "FileUploadMissingContentType": "Missing file content type."
+      "FileUploadMissingContentType": "Missing file content type.",
+      "UserInfoNotFound": "User info not found."
     },
     "Input": {
       "IncorrectFileType": "ประเภทไฟล์ไม่ถูกต้อง - {type}"

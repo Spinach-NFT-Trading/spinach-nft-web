@@ -1,7 +1,7 @@
 import {getUserById} from '@spinach/common/controller/user/info';
 
 
-const isAdmin = async (userId: string | undefined): Promise<boolean> => {
+export const isAdmin = async (userId: string | undefined): Promise<boolean> => {
   const user = await getUserById(userId);
   if (!user) {
     return false;
