@@ -39,7 +39,7 @@ export const isCommissionWritable = ({
   }
 
   if (type === 'member') {
-    return false;
+    return isAdmin;
   }
 
   throw new Error(`Unhandled commission type for writable: ${type satisfies never}`);
