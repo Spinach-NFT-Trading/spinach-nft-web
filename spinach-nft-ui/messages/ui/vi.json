@@ -326,7 +326,8 @@
           "AccountInfo": "Thông tin tài khoản",
           "BankDetails": "Thông tin tài khoản ngân hàng",
           "TxnHistory": "Lịch sử giao dịch",
-          "BalanceHistory": "Lịch sử số dư"
+          "BalanceHistory": "Lịch sử số dư",
+          "ManualAdjust": "Manual Balance Adjustment"
         },
         "Header": {
           "UserId": "tên tài khoản",
@@ -393,6 +394,9 @@
             },
             "Sell": "doanh thu",
             "Buy": "mua"
+          },
+          "ManualAdjust": {
+            "Balance": "Amount"
           }
         },
         "Message": {
@@ -478,7 +482,8 @@
         "DepositTwd": "Tiền gửi (Đô la Đài Loan)",
         "DepositTwdCashback": "Tiền thưởng gửi tiền (Đô la Đài Loan)",
         "DepositCrypto": "Tiền gửi (USDT)",
-        "DepositCryptoCashback": "Tiền thưởng nạp tiền (USDT)"
+        "DepositCryptoCashback": "Tiền thưởng nạp tiền (USDT)",
+        "AdminAdjustment": "管理手動調整"
       }
     }
   },

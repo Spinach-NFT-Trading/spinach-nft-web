@@ -14,4 +14,5 @@ export const userBalanceHistoryTypeTextStyle: {[type in UserBalanceHistoryTxnTyp
   'deposit.twBank.cashback': clsx('text-sky-300'),
   'deposit.crypto': clsx('text-sky-300'),
   'deposit.crypto.cashback': clsx('text-sky-300'),
+  'adminAdjustment': clsx('text-purple-300'),
 };

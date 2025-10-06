@@ -303,6 +303,7 @@ declare global {
               BankDetails: string,
               TxnHistory: string,
               BalanceHistory: string,
+              ManualAdjust: string,
             },
             Header: {
               UserId: string,
@@ -369,7 +370,10 @@ declare global {
                 },
                 Sell: string,
                 Buy: string,
-              }
+              },
+              ManualAdjust: {
+                Balance: string,
+              },
             },
             Message: {
               NoAssociatedBanks: string,
@@ -455,6 +459,7 @@ declare global {
             DepositTwdCashback: string,
             DepositCrypto: string,
             DepositCryptoCashback: string,
+            AdminAdjustment: string,
           },
         },
       },

@@ -326,7 +326,8 @@
           "AccountInfo": "ข้อมูลเกี่ยวกับบัญชี",
           "BankDetails": "ข้อมูลบัญชีธนาคาร",
           "TxnHistory": "ประวัติการทำรายการ",
-          "BalanceHistory": "ประวัติยอดคงเหลือ"
+          "BalanceHistory": "ประวัติยอดคงเหลือ",
+          "ManualAdjust": "Manual Balance Adjustment"
         },
         "Header": {
           "UserId": "ชื่อผู้ใช้",
@@ -393,6 +394,9 @@
             },
             "Sell": "ขาย",
             "Buy": "ซื้อ"
+          },
+          "ManualAdjust": {
+            "Balance": "Amount"
           }
         },
         "Message": {
@@ -478,7 +482,8 @@
         "DepositTwd": "เงินฝาก (ดอลลาร์ไต้หวัน)",
         "DepositTwdCashback": "โบนัสเงินฝาก (ดอลลาร์ไต้หวัน)",
         "DepositCrypto": "เงินฝาก (USDT)",
-        "DepositCryptoCashback": "โบนัสเงินฝาก (USDT)"
+        "DepositCryptoCashback": "โบนัสเงินฝาก (USDT)",
+        "AdminAdjustment": "管理手動調整"
       }
     }
   },

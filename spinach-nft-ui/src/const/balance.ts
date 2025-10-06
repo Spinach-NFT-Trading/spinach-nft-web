@@ -17,4 +17,5 @@ export const userBalanceHistoryTypeText: {
   'deposit.twBank.cashback': 'DepositTwdCashback',
   'deposit.crypto': 'DepositCrypto',
   'deposit.crypto.cashback': 'DepositCryptoCashback',
+  'adminAdjustment': 'AdminAdjustment',
 };

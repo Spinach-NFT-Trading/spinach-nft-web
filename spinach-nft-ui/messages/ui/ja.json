@@ -326,7 +326,8 @@
           "AccountInfo": "口座情報",
           "BankDetails": "銀行口座情報",
           "TxnHistory": "取引履歴",
-          "BalanceHistory": "残高履歴"
+          "BalanceHistory": "残高履歴",
+          "ManualAdjust": "Manual Balance Adjustment"
         },
         "Header": {
           "UserId": "ユーザー名",
@@ -393,6 +394,9 @@
             },
             "Sell": "セール",
             "Buy": "買う"
+          },
+          "ManualAdjust": {
+            "Balance": "Amount"
           }
         },
         "Message": {
@@ -478,7 +482,8 @@
         "DepositTwd": "デポジット（台湾ドル）",
         "DepositTwdCashback": "入金ボーナス（台湾ドル）",
         "DepositCrypto": "デポジット (USDT)",
-        "DepositCryptoCashback": "入金ボーナス (USDT)"
+        "DepositCryptoCashback": "入金ボーナス (USDT)",
+        "AdminAdjustment": "管理手動調整"
       }
     }
   },

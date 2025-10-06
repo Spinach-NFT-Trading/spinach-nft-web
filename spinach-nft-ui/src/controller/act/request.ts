@@ -12,6 +12,7 @@ import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controll
 import {markUserStatus} from '@spinach/next/controller/user/status';
 import {markUserAgent} from '@spinach/next/controller/user/update/agent';
 import {updateUserCommissionPercent} from '@spinach/next/controller/user/update/commissionPercent';
+import {recordManualBalanceAdjustment} from '@spinach/next/controller/user/update/manualAdjust';
 import {markUserSuspended} from '@spinach/next/controller/user/update/suspended';
 import {updateUserIdVerificationUploadIdMap} from '@spinach/next/controller/user/verification';
 import {UserDataRequestOpts} from '@spinach/next/types/userData/upload';
@@ -54,6 +55,15 @@ export const handleUserRequest = async ({
 
   if (type === 'user.account.verify.id') {
     return updateUserIdVerificationUploadIdMap({userId: accountId, request: data});
+  }
+
+  if (type === 'admin.member.manualAdjust') {
+    await recordManualBalanceAdjustment({
+      executorUserId: accountId,
+      targetUserId: data.memberId,
+      amount: data.amount,
+    });
+    return null;
   }
 
   if (type === 'admin.member.mark.agent') {

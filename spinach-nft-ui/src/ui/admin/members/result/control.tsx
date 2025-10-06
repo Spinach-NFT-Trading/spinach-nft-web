@@ -39,6 +39,10 @@ export const AdminMemberSingleControls = ({
           <CurrencyDollarIcon className="size-6"/>
           <div>{t('BalanceHistory')}</div>
         </FlexButton>
+        <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => showPopup('manualAdjust')}>
+          <CurrencyDollarIcon className="size-6"/>
+          <div>{t('ManualAdjust')}</div>
+        </FlexButton>
       </Flex>
     </td>
   );
