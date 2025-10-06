@@ -525,6 +525,7 @@ declare global {
           MultipartTooManyValues: string,
           FileUploadGrantActivationFailed: string,
           FileUploadMissingFile: string,
+          FileUploadMissingContentType: string,
         },
         Input: {
           IncorrectFileType: string,

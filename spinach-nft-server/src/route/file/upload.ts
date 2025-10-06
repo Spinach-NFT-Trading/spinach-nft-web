@@ -7,6 +7,7 @@ import {v7} from 'uuid';
 
 import {Server} from '@spinach/server/const';
 import {validateFileUploadGrant} from '@spinach/server/route/file/utils';
+import {getMultipartValueAsString} from '@spinach/server/utils/multipart/value';
 
 
 export const addFileUploadAction = () => {
@@ -24,14 +25,26 @@ export const addFileUploadAction = () => {
       reply.code(400);
 
       let bufferToUpload: Buffer | null = null;
+      let contentType: string | null = null;
       for await (const part of request.parts()) {
-        if (part.type === 'field' && part.fieldname === fileUploadFormFieldNames.grant) {
-          // Handle file upload grant
-          const maybeGrantValidationError = await validateFileUploadGrant({
-            multipart: part,
-          });
-          if (typeof maybeGrantValidationError === 'string') {
-            return {success: false, error: maybeGrantValidationError};
+        if (part.type === 'field') {
+          if (part.fieldname === fileUploadFormFieldNames.grant) {
+            // Handle file upload grant
+            const maybeGrantValidationError = await validateFileUploadGrant({
+              multipart: part,
+            });
+            if (typeof maybeGrantValidationError === 'string') {
+              return {success: false, error: maybeGrantValidationError};
+            }
+          }
+
+          if (part.fieldname === fileUploadFormFieldNames.contentType) {
+            const maybeContentType = getMultipartValueAsString({multipart: part});
+            if (typeof maybeContentType === 'string') {
+              return {success: false, error: maybeContentType};
+            }
+
+            contentType = maybeContentType.casted;
           }
         } else if (part.type === 'file' && part.fieldname === fileUploadFormFieldNames.file) {
           // Handle file buffer upload
@@ -43,12 +56,17 @@ export const addFileUploadAction = () => {
         return {success: false, error: 'fileUploadMissingFile'};
       }
 
+      if (contentType == null) {
+        return {success: false, error: 'fileUploadMissingContentType'};
+      }
+
       const uploadId = v7();
 
       await uploadBlobBuffer({
         buffer: bufferToUpload,
         container: azureContainer.pool,
         name: uploadId,
+        contentType,
       });
 
       reply.code(200);

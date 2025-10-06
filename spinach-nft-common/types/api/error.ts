@@ -39,6 +39,7 @@ export const apiErrorCode = [
   'multipartFieldValueCastFailed',
   'fileUploadGrantActivationFailed',
   'fileUploadMissingFile',
+  'fileUploadMissingContentType',
 ] as const;
 
 export interface TApiErrorCode extends TString {

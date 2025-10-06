@@ -548,7 +548,8 @@
       "MultipartTooManyFiles": "表单文件过多。",
       "MultipartTooManyValues": "表单值过多。",
       "FileUploadGrantActivationFailed": "文件上传授权失败。",
-      "FileUploadMissingFile": "缺少要上传的目标文件。"
+      "FileUploadMissingFile": "缺少要上传的目标文件。",
+      "FileUploadMissingContentType": "Missing file content type."
     },
     "Input": {
       "IncorrectFileType": "档案种类不正确 - {type}"

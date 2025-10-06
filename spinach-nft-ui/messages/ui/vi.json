@@ -548,7 +548,8 @@
       "MultipartTooManyFiles": "Biểu mẫu có quá nhiều tệp.",
       "MultipartTooManyValues": "Biểu mẫu có quá nhiều giá trị.",
       "FileUploadGrantActivationFailed": "Tiêu thụ quyền tải lên tệp không thành công.",
-      "FileUploadMissingFile": "Thiếu tệp đích để tải lên."
+      "FileUploadMissingFile": "Thiếu tệp đích để tải lên.",
+      "FileUploadMissingContentType": "Missing file content type."
     },
     "Input": {
       "IncorrectFileType": "Loại tệp không chính xác - {type}"

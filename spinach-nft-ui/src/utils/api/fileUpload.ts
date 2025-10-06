@@ -15,7 +15,9 @@ export const uploadFile = async ({
   grantId,
 }: UploadFileOpts): Promise<FileUploadResponse> => {
   const formData = new FormData();
+
   formData.append(fileUploadFormFieldNames.file, fileRef.file);
+  formData.append(fileUploadFormFieldNames.contentType, fileRef.contentType);
   formData.append(fileUploadFormFieldNames.grant, grantId);
 
   const response = await fetch(

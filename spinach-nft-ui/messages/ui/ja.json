@@ -548,7 +548,8 @@
       "MultipartTooManyFiles": "フォームにファイルが多すぎます。",
       "MultipartTooManyValues": "フォームに値が多すぎます。",
       "FileUploadGrantActivationFailed": "ファイルアップロード拒否されました。",
-      "FileUploadMissingFile": "アップロードするターゲットファイルがありません。"
+      "FileUploadMissingFile": "アップロードするターゲットファイルがありません。",
+      "FileUploadMissingContentType": "Missing file content type."
     },
     "Input": {
       "IncorrectFileType": "間違ったファイルタイプ - {type}"
