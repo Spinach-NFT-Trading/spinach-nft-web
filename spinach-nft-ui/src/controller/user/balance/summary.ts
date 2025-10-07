@@ -9,12 +9,16 @@ import {UserBalanceActivity, UserBalanceActivityMap} from '@spinach/next/types/m
 import {DataLookBackRequest} from '@spinach/next/types/userData/load';
 
 
-type UserBalanceActivityAggregated = {
+type UserBalanceActivityAggregatedGroupByType = {
   _id: ObjectId,
   byTxnType: {
     type: UserBalanceHistoryTxnType,
     total: number,
   }[],
+};
+
+type UserBalanceActivityAggregatedCurrentBalance = {
+  _id: ObjectId,
   currentBalance: number,
 };
 
@@ -29,27 +33,39 @@ export const getUserBalanceActivityMap = async ({
 }: GetUserBalanceActivityOpts): Promise<UserBalanceActivityMap> => {
   await throwIfNotElevated(executorUserId);
 
-  const aggregated = userBalanceCollection.aggregate<UserBalanceActivityAggregated>([
+  const currentBalanceAggregated = await userBalanceCollection
+    .aggregate<UserBalanceActivityAggregatedCurrentBalance>([
+      {
+        $match: {
+          userId: {$in: userIdsToCheck},
+        },
+      },
+      {$sort: {_id: -1}},
+      {
+        $group: {
+          _id: '$userId',
+          currentBalance: {$first: '$current'},
+        },
+      },
+    ])
+    .toArray();
+
+  const currentBalanceMap = new Map(currentBalanceAggregated.map(({_id, currentBalance}) => [
+    _id.toHexString(),
+    currentBalance,
+  ]));
+
+  const aggregated = userBalanceCollection.aggregate<UserBalanceActivityAggregatedGroupByType>([
     {
       $match: {
         userId: {$in: userIdsToCheck},
         ...toIdRangeFromLookBackRequest(request),
       },
     },
-    {$sort: {_id: -1}},
     {
       $group: {
-        _id: '$userId',
-        txn: {$push: '$$ROOT'},
-        currentBalance: {$first: '$current'},
-      },
-    },
-    {$unwind: {path: '$txn'}},
-    {
-      $group: {
-        _id: {userId: '$_id', type: '$txn.type'},
-        txn: {$push: '$txn'},
-        currentBalance: {$first: '$currentBalance'},
+        _id: {userId: '$userId', type: '$type'},
+        total: {$sum: '$diff'},
       },
     },
     {
@@ -58,19 +74,18 @@ export const getUserBalanceActivityMap = async ({
         byTxnType: {
           $push: {
             type: '$_id.type',
-            total: {$sum: '$txn.diff'},
+            total: '$total',
           },
         },
-        currentBalance: {$first: '$currentBalance'},
       },
     },
   ]);
 
-  return Object.fromEntries(await aggregated.map(({_id, byTxnType, currentBalance}) => [
+  return Object.fromEntries(await aggregated.map(({_id, byTxnType}) => [
     _id.toHexString(),
     {
       byTxnType: Object.fromEntries(byTxnType.map(({type, total}) => [type, total])),
-      currentBalance,
+      currentBalance: currentBalanceMap.get(_id.toHexString()) ?? 0,
     } satisfies UserBalanceActivity,
   ]).toArray());
 };
