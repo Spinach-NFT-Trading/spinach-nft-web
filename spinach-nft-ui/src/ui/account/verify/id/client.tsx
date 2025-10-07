@@ -46,7 +46,13 @@ export const AccountIdVerifyClient = ({fileUploadGrantId}: Props) => {
       return;
     }
 
-    // Can't send 4 file refs at once, or the `fetch()` call will stuck
+    const localUploadIdMap: UserIdVerificationUploadIdMap = {
+      idFront: null,
+      idBack: null,
+      handheld: null,
+      secondaryFront: null,
+    };
+
     try {
       await Promise.all(accountIdVerificationType.map(async (verificationType) => {
         const fileRef = state.form.fileRefs[verificationType];
@@ -65,10 +71,8 @@ export const AccountIdVerifyClient = ({fileUploadGrantId}: Props) => {
           return;
         }
 
-        setUploadIdMap((original) => ({
-          ...original,
-          [verificationType]: response.data.uploadId,
-        }));
+        localUploadIdMap[verificationType] = response.data.uploadId;
+        setUploadIdMap(localUploadIdMap);
       }));
     } catch (error) {
       console.error('Failed to upload ID verification images:', error);
@@ -80,7 +84,7 @@ export const AccountIdVerifyClient = ({fileUploadGrantId}: Props) => {
       action: 'request',
       options: {
         type: 'user.account.verify.id',
-        data: uploadIdMap,
+        data: localUploadIdMap,
       },
     });
 
@@ -121,7 +125,7 @@ export const AccountIdVerifyClient = ({fileUploadGrantId}: Props) => {
             uploadIdMap[type] != null,
           ]),
         ) as AccountVerificationUploadStatus}
-        isNotReady={Object.values(uploadIdMap).some((image) => !image)}
+        isNotReady={Object.values(state.form.fileRefs).some((fileRef) => fileRef == null)}
         onComplete={onComplete}
         submitButtonText={t('Submit')}
         className="md:w-1/2 lg:w-1/3"

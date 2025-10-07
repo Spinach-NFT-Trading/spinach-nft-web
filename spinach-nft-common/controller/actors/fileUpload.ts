@@ -18,5 +18,5 @@ export const activateFileUploadGrant = async (grantId: string) => {
     {$set: {expiry: new Date(Date.now() + fileUploadGrantExpiryAfterActivatedSecs * 1000)}},
   );
 
-  return updateResult.modifiedCount === 1;
+  return updateResult.matchedCount === 1;
 };
