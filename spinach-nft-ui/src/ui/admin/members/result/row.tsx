@@ -20,7 +20,7 @@ import {AdminMemberControlButton} from '@spinach/next/ui/admin/members/result/bu
 import {AdminMemberSingleControls} from '@spinach/next/ui/admin/members/result/control';
 import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/popup/type';
 import {isCommissionWritable} from '@spinach/next/ui/admin/members/result/utils';
-import {formatUserName, isUserPrivileged} from '@spinach/next/utils/data/user';
+import {formatUserName, isUserPrivileged, isUserAdmin} from '@spinach/next/utils/data/user';
 
 
 type Props = {
@@ -60,8 +60,6 @@ export const AdminMemberRow = ({
     return null;
   }
 
-  const isPrivileged = isUserPrivileged(actor);
-
   return (
     <>
       <td className="w-52 justify-center">
@@ -73,7 +71,7 @@ export const AdminMemberRow = ({
       <td className="w-16">
         <AdminMemberControlButton
           text={t('Agent')}
-          isUpdatable={isPrivileged}
+          isUpdatable={isUserAdmin(actor)}
           active={isAgent}
           disabled={controlDisabled}
           icon={{
@@ -96,7 +94,7 @@ export const AdminMemberRow = ({
           !member.isAdmin &&
           <AdminMemberControlButton
             text={isSuspended ? t('Suspended') : t('Normal')}
-            isUpdatable={isPrivileged}
+            isUpdatable={isUserPrivileged(actor)}
             active={isSuspended}
             disabled={controlDisabled}
             icon={{

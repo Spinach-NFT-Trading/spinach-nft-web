@@ -1,5 +1,5 @@
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
-import {throwIfNotPrivileged} from '@spinach/common/controller/user/permission';
+import {throwIfNotAdmin} from '@spinach/common/controller/user/permission';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {ObjectId} from 'mongodb';
 
@@ -16,7 +16,7 @@ export const markUserAgent = async ({
   targetId,
   isAgent,
 }: MarkUserAgentOpts): Promise<ApiErrorCode | null> => {
-  await throwIfNotPrivileged(executorUserId);
+  await throwIfNotAdmin(executorUserId);
 
   const result = await userInfoCollection.updateOne(
     {_id: new ObjectId(targetId)},

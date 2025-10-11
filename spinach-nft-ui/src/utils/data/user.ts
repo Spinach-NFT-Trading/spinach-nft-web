@@ -43,6 +43,14 @@ export const isUserPrivileged = (user: Nullable<CommonUserData>): boolean => {
   return isAdmin || isMod;
 };
 
+export const isUserAdmin = (user: Nullable<CommonUserData>): boolean => {
+  if (!user) {
+    return false;
+  }
+
+  return user.isAdmin;
+};
+
 export const isUserElevated = (user: Nullable<CommonUserData>): boolean => {
   if (!user) {
     return false;
