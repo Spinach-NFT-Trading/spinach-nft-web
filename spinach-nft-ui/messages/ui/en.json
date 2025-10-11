@@ -323,6 +323,7 @@
             "Normal": "normal",
             "Suspended": "deactivate"
           },
+          "Settings": "設定",
           "AccountInfo": "Account information",
           "BankDetails": "Bank account information",
           "TxnHistory": "transaction history",

@@ -323,6 +323,7 @@
             "Normal": "正常",
             "Suspended": "停用"
           },
+          "Settings": "設定",
           "AccountInfo": "帐号资讯",
           "BankDetails": "银行帐号资讯",
           "TxnHistory": "交易纪录",

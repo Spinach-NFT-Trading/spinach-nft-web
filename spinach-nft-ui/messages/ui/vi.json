@@ -323,6 +323,7 @@
             "Normal": "Bình thường",
             "Suspended": "vô hiệu hóa"
           },
+          "Settings": "設定",
           "AccountInfo": "Thông tin tài khoản",
           "BankDetails": "Thông tin tài khoản ngân hàng",
           "TxnHistory": "Lịch sử giao dịch",

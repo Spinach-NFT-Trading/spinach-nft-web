@@ -299,6 +299,7 @@ declare global {
                 Normal: string,
                 Suspended: string,
               },
+              Settings: string,
               AccountInfo: string,
               BankDetails: string,
               TxnHistory: string,

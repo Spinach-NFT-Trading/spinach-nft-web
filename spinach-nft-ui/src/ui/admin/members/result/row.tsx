@@ -17,10 +17,10 @@ import {UserDataActor} from '@spinach/next/types/userData/main';
 import {AdminMemberCommissionSettingsCell} from '@spinach/next/ui/admin/common/cell/commission/main';
 import {AdminMemberMonetaryCell} from '@spinach/next/ui/admin/common/cell/monetary/main';
 import {AdminMemberControlButton} from '@spinach/next/ui/admin/members/result/button';
-import {AdminMemberSingleControls} from '@spinach/next/ui/admin/members/result/control';
+import {AdminMemberSingleControls} from '@spinach/next/ui/admin/members/result/control/main';
 import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/popup/type';
 import {isCommissionWritable} from '@spinach/next/ui/admin/members/result/utils';
-import {formatUserName, isUserPrivileged, isUserAdmin} from '@spinach/next/utils/data/user';
+import {formatUserName, isUserAdmin, isUserPrivileged} from '@spinach/next/utils/data/user';
 
 
 type Props = {
@@ -145,7 +145,9 @@ export const AdminMemberRow = ({
           }}
         />
       </td>
-      <AdminMemberSingleControls showPopup={showPopup}/>
+      <td>
+        <AdminMemberSingleControls showPopup={showPopup}/>
+      </td>
     </>
   );
 };

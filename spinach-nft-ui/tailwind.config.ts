@@ -67,6 +67,19 @@ const config: Config = {
         },
       );
     }),
+    plugin(({matchUtilities, theme}) => {
+      matchUtilities(
+        {
+          'grid-auto-width': (value) => ({
+            gridTemplateColumns: `repeat(auto-fill, minmax(min(${value}, 100%), 1fr))`,
+          }),
+        },
+        {
+          values: theme('spacing'),
+          supportsNegativeValues: false,
+        },
+      );
+    }),
   ],
 };
 

@@ -323,6 +323,7 @@
             "Normal": "ปกติ",
             "Suspended": "ปิดการใช้งาน"
           },
+          "Settings": "設定",
           "AccountInfo": "ข้อมูลเกี่ยวกับบัญชี",
           "BankDetails": "ข้อมูลบัญชีธนาคาร",
           "TxnHistory": "ประวัติการทำรายการ",
