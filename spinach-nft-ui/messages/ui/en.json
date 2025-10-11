@@ -328,7 +328,8 @@
           "BankDetails": "Bank account information",
           "TxnHistory": "transaction history",
           "BalanceHistory": "Balance history",
-          "ManualAdjust": "Manual Balance Adjustment"
+          "ManualAdjust": "Manual Balance Adjustment",
+          "IdVerificationImages": "Verification Images"
         },
         "Header": {
           "UserId": "Username",
@@ -399,6 +400,14 @@
           "ManualAdjust": {
             "Balance": "Amount"
           }
+        },
+        "IdVerificationImages": {
+          "idFront": "ID Front",
+          "idBack": "ID Back",
+          "handheld": "Handheld ID",
+          "secondaryFront": "Secondary ID Front",
+          "Loading": "Loading image...",
+          "NoImage": "No image available"
         },
         "Message": {
           "NoAssociatedBanks": "No associated bank account"

@@ -305,6 +305,7 @@ declare global {
               TxnHistory: string,
               BalanceHistory: string,
               ManualAdjust: string,
+              IdVerificationImages: string,
             },
             Header: {
               UserId: string,

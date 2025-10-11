@@ -328,7 +328,8 @@
           "BankDetails": "银行帐号资讯",
           "TxnHistory": "交易纪录",
           "BalanceHistory": "余额历史",
-          "ManualAdjust": "手動調整餘額"
+          "ManualAdjust": "手動調整餘額",
+          "IdVerificationImages": "身分驗證圖片"
         },
         "Header": {
           "UserId": "用户名称",
@@ -399,6 +400,14 @@
           "ManualAdjust": {
             "Balance": "調整金額"
           }
+        },
+        "IdVerificationImages": {
+          "idFront": "身份证正面",
+          "idBack": "身份证反面",
+          "handheld": "手持身份证",
+          "secondaryFront": "第二证件正面",
+          "Loading": "加载图片中...",
+          "NoImage": "无可用图片"
         },
         "Message": {
           "NoAssociatedBanks": "无相关银行帐号"

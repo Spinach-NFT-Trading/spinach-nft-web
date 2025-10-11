@@ -328,7 +328,8 @@
           "BankDetails": "Thông tin tài khoản ngân hàng",
           "TxnHistory": "Lịch sử giao dịch",
           "BalanceHistory": "Lịch sử số dư",
-          "ManualAdjust": "Manual Balance Adjustment"
+          "ManualAdjust": "Manual Balance Adjustment",
+          "IdVerificationImages": "身分驗證圖片"
         },
         "Header": {
           "UserId": "tên tài khoản",

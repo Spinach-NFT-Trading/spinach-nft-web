@@ -3,6 +3,7 @@ import React from 'react';
 import ArrowsRightLeftIcon from '@heroicons/react/24/outline/ArrowsRightLeftIcon';
 import CurrencyDollarIcon from '@heroicons/react/24/outline/CurrencyDollarIcon';
 import IdentificationIcon from '@heroicons/react/24/outline/IdentificationIcon';
+import PhotoIcon from '@heroicons/react/24/outline/PhotoIcon';
 import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -51,6 +52,10 @@ export const AdminMemberControlMenuSelection = ({
         <AdminMemberControlMenuButton onClick={() => onOptionClick('manualAdjust')}>
           <CurrencyDollarIcon className="size-6"/>
           <div>{t('ManualAdjust')}</div>
+        </AdminMemberControlMenuButton>
+        <AdminMemberControlMenuButton onClick={() => onOptionClick('idVerificationImages')}>
+          <PhotoIcon className="size-6"/>
+          <div>{t('IdVerificationImages')}</div>
         </AdminMemberControlMenuButton>
       </Flex>
     </Popup>

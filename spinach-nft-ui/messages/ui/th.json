@@ -328,7 +328,8 @@
           "BankDetails": "ข้อมูลบัญชีธนาคาร",
           "TxnHistory": "ประวัติการทำรายการ",
           "BalanceHistory": "ประวัติยอดคงเหลือ",
-          "ManualAdjust": "Manual Balance Adjustment"
+          "ManualAdjust": "Manual Balance Adjustment",
+          "IdVerificationImages": "身分驗證圖片"
         },
         "Header": {
           "UserId": "ชื่อผู้ใช้",

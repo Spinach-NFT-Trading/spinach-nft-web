@@ -328,7 +328,8 @@
           "BankDetails": "銀行口座情報",
           "TxnHistory": "取引履歴",
           "BalanceHistory": "残高履歴",
-          "ManualAdjust": "Manual Balance Adjustment"
+          "ManualAdjust": "Manual Balance Adjustment",
+          "IdVerificationImages": "身分驗證圖片"
         },
         "Header": {
           "UserId": "ユーザー名",
