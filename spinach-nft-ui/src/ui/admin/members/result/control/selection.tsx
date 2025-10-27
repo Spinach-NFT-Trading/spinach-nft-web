@@ -4,6 +4,7 @@ import ArrowsRightLeftIcon from '@heroicons/react/24/outline/ArrowsRightLeftIcon
 import CurrencyDollarIcon from '@heroicons/react/24/outline/CurrencyDollarIcon';
 import IdentificationIcon from '@heroicons/react/24/outline/IdentificationIcon';
 import PhotoIcon from '@heroicons/react/24/outline/PhotoIcon';
+import LockClosedIcon from '@heroicons/react/24/solid/LockClosedIcon';
 import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
@@ -56,6 +57,10 @@ export const AdminMemberControlMenuSelection = ({
         <AdminMemberControlMenuButton onClick={() => onOptionClick('idVerificationImages')}>
           <PhotoIcon className="size-6"/>
           <div>{t('IdVerificationImages')}</div>
+        </AdminMemberControlMenuButton>
+        <AdminMemberControlMenuButton onClick={() => onOptionClick('setPassword')}>
+          <LockClosedIcon className="size-6"/>
+          <div>{t('SetPassword')}</div>
         </AdminMemberControlMenuButton>
       </Flex>
     </Popup>

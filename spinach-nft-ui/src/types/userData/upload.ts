@@ -84,6 +84,12 @@ export type UserDataRequestOpts = {
     pass: boolean,
   },
 } | {
+  type: 'admin.member.setPassword',
+  data: {
+    memberId: string,
+    password: string,
+  },
+} | {
   type: 'admin.config.update',
   data: GlobalConfig,
 };

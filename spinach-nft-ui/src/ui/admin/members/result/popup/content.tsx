@@ -8,6 +8,7 @@ import {
 import {AdminMemberInfoPopup} from '@spinach/next/ui/admin/members/result/popup/info';
 import {AdminMemberManualAdjustPopup} from '@spinach/next/ui/admin/members/result/popup/manualAdjust/main';
 import {AdminMemberNftTxnPopup} from '@spinach/next/ui/admin/members/result/popup/nftTxn/main';
+import {AdminMemberSetPasswordPopup} from '@spinach/next/ui/admin/members/result/popup/setPassword';
 import {AdminMemberPopupContentProps} from '@spinach/next/ui/admin/members/result/popup/type';
 
 
@@ -35,6 +36,11 @@ export const AdminMemberPopupContent = ({type, ...props}: AdminMemberPopupConten
   if (type === 'idVerificationImages') {
     return <AdminMemberIdVerificationImagesPopup {...props}/>;
   }
+
+  if (type === 'setPassword') {
+    return <AdminMemberSetPasswordPopup {...props}/>;
+  }
+
 
   throw new Error(`Unhandled admin member popup content type: [${type satisfies never}]`);
 };

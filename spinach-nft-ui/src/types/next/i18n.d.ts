@@ -306,6 +306,7 @@ declare global {
               BalanceHistory: string,
               ManualAdjust: string,
               IdVerificationImages: string,
+              SetPassword: string,
             },
             Header: {
               UserId: string,
@@ -376,6 +377,11 @@ declare global {
               ManualAdjust: {
                 Balance: string,
               },
+              SetPassword: {
+                UserId: string,
+                Password: string,
+                Confirm: string,
+              }
             },
             Message: {
               NoAssociatedBanks: string,

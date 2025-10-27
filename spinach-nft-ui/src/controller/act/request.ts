@@ -13,6 +13,7 @@ import {markUserStatus} from '@spinach/next/controller/user/status';
 import {markUserAgent} from '@spinach/next/controller/user/update/agent';
 import {updateUserCommissionPercent} from '@spinach/next/controller/user/update/commissionPercent';
 import {recordManualBalanceAdjustment} from '@spinach/next/controller/user/update/manualAdjust';
+import {setUserPassword} from '@spinach/next/controller/user/update/password';
 import {markUserSuspended} from '@spinach/next/controller/user/update/suspended';
 import {updateUserIdVerificationUploadIdMap} from '@spinach/next/controller/user/verification';
 import {UserDataRequestOpts} from '@spinach/next/types/userData/upload';
@@ -149,6 +150,14 @@ export const handleUserRequest = async ({
     return setGlobalConfig({
       executorUserId: accountId,
       config: data,
+    });
+  }
+
+  if (type === 'admin.member.setPassword') {
+    return setUserPassword({
+      executorUserId: accountId,
+      targetUserId: data.memberId,
+      password: data.password,
     });
   }
 

@@ -329,7 +329,8 @@
           "TxnHistory": "取引履歴",
           "BalanceHistory": "残高履歴",
           "ManualAdjust": "Manual Balance Adjustment",
-          "IdVerificationImages": "身分驗證圖片"
+          "IdVerificationImages": "身分驗證圖片",
+          "SetPassword": "Set Password"
         },
         "Header": {
           "UserId": "ユーザー名",
@@ -399,6 +400,11 @@
           },
           "ManualAdjust": {
             "Balance": "Amount"
+          },
+          "SetPassword": {
+            "UserId": "User ID",
+            "Password": "Password",
+            "Confirm": "Confirm Changing the Password"
           }
         },
         "Message": {

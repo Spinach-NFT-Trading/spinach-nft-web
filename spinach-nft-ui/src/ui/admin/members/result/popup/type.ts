@@ -16,7 +16,8 @@ export type AdminMemberPopupType =
   'nftTxn' |
   'balanceHistory' |
   'manualAdjust' |
-  'idVerificationImages';
+  'idVerificationImages' |
+  'setPassword';
 
 export type AdminMemberPopupState = {
   type: AdminMemberPopupType,

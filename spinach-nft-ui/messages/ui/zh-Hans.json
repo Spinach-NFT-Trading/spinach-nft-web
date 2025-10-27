@@ -329,7 +329,8 @@
           "TxnHistory": "交易纪录",
           "BalanceHistory": "余额历史",
           "ManualAdjust": "手動調整餘額",
-          "IdVerificationImages": "身分驗證圖片"
+          "IdVerificationImages": "身分驗證圖片",
+          "SetPassword": "Set Password"
         },
         "Header": {
           "UserId": "用户名称",
@@ -399,6 +400,11 @@
           },
           "ManualAdjust": {
             "Balance": "調整金額"
+          },
+          "SetPassword": {
+            "UserId": "User ID",
+            "Password": "Password",
+            "Confirm": "Confirm Changing the Password"
           }
         },
         "IdVerificationImages": {

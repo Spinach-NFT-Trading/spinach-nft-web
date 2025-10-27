@@ -329,7 +329,8 @@
           "TxnHistory": "transaction history",
           "BalanceHistory": "Balance history",
           "ManualAdjust": "Manual Balance Adjustment",
-          "IdVerificationImages": "Verification Images"
+          "IdVerificationImages": "Verification Images",
+          "SetPassword": "Set Password"
         },
         "Header": {
           "UserId": "Username",
@@ -399,6 +400,11 @@
           },
           "ManualAdjust": {
             "Balance": "Amount"
+          },
+          "SetPassword": {
+            "UserId": "User ID",
+            "Password": "Password",
+            "Confirm": "Confirm Changing the Password"
           }
         },
         "IdVerificationImages": {
