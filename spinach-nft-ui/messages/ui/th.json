@@ -153,6 +153,7 @@
       "Index": {
         "Profile": "ข้อมูลสมาชิก",
         "NftPositions": "การถือครอง NFT",
+        "NftLimitedPositions": "การถือครอง NFT แบบจำกัด",
         "NftExchangeConfirm": "ยืนยันธุรกรรม NFT",
         "Admin": "การจัดการสมาชิก"
       }
@@ -245,8 +246,34 @@
     "NftPosition": {
       "Limited": {
         "Tabs": {
-          "Pending": "รอโอนเงิน",
-          "Completed": "ได้รับแล้ว"
+          "Unverified": "รอโอนเงิน",
+          "Pending": "รอการตรวจสอบ"
+        },
+        "Unverified": {
+          "Title": "NFT ที่ยังไม่ได้ตรวจสอบ",
+          "Empty": "ไม่มี NFT ที่ยังไม่ได้ตรวจสอบ",
+          "BankAccount": "บัญชีธนาคาร",
+          "ClickToUpload": "คลิกเพื่ออัปโหลดหลักฐานการโอนเงิน"
+        },
+        "Pending": {
+          "Title": "NFT ที่กำลังตรวจสอบ",
+          "Empty": "ไม่มี NFT ที่กำลังตรวจสอบ"
+        }
+      },
+      "LimitedProof": {
+        "Title": "อัปโหลดหลักฐานการโอนเงิน",
+        "BankAccount": "บัญชีธนาคาร",
+        "ChooseImage": "เลือกรูปภาพหลักฐานการโอนเงิน",
+        "Submit": "ส่ง",
+        "Submitting": "กำลังส่ง...",
+        "Cancel": "ยกเลิก",
+        "Success": "อัปโหลดหลักฐานการโอนเงินสำเร็จแล้ว!",
+        "Redirecting": "กำลังเปลี่ยนเส้นทาง...",
+        "Error": {
+          "InvalidNftId": "NFT ID ไม่ถูกต้อง",
+          "AlreadySubmitted": "หลักฐานการโอนเงินถูกส่งไปแล้ว",
+          "NoProof": "กรุณาอัปโหลดหลักฐานการโอนเงิน",
+          "InvalidFileType": "ประเภทไฟล์ไม่รองรับ"
         }
       }
     },
@@ -553,6 +580,7 @@
       "NftNotOnSale": "NFT จะไม่ถูกขาย",
       "NftMatchRequestNotFound": "ไม่พบคำขอธุรกรรม NFT ที่เกี่ยวข้อง",
       "NftInfoNotFound": "ไม่พบข้อมูล NFT ที่เกี่ยวข้อง",
+      "NftUnverifiedLimitedNotFound": "ไม่พบข้อมูลการยืนยัน NFT จำกัดที่เกี่ยวข้อง",
       "WalletInvalid": "ที่อยู่กระเป๋าเงินไม่ถูกต้อง",
       "WalletNotExist": "ไม่มีที่อยู่กระเป๋าเงิน",
       "SmsSendFailed": "การยืนยันการส่ง SMS ล้มเหลว",

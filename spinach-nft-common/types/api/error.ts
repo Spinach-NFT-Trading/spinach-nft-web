@@ -20,6 +20,7 @@ export const apiErrorCode = [
   'nftNotOnSale',
   'nftInfoNotFound',
   'nftMatchRequestNotFound',
+  'nftUnverifiedLimitedNotFound',
   'walletInvalid',
   'walletNotExist',
   'smsAlreadyRequested',

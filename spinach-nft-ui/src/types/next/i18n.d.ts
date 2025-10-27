@@ -127,6 +127,7 @@ declare global {
           Index: {
             Profile: string,
             NftPositions: string,
+            NftLimitedPositions: string,
             NftExchangeConfirm: string,
             Admin: string,
           },
@@ -219,8 +220,34 @@ declare global {
         NftPosition: {
           Limited: {
             Tabs: {
+              Unverified: string,
               Pending: string,
-              Completed: string,
+            },
+            Unverified: {
+              Title: string,
+              Empty: string,
+              BankAccount: string,
+              ClickToUpload: string,
+            },
+            Pending: {
+              Title: string,
+              Empty: string,
+            },
+          },
+          LimitedProof: {
+            Title: string,
+            BankAccount: string,
+            ChooseImage: string,
+            Submit: string,
+            Submitting: string,
+            Cancel: string,
+            Success: string,
+            Redirecting: string,
+            Error: {
+              InvalidNftId: string,
+              AlreadySubmitted: string,
+              NoProof: string,
+              InvalidFileType: string,
             },
           },
         },
@@ -527,6 +554,7 @@ declare global {
           NftNotOnSale: string,
           NftInfoNotFound: string,
           NftMatchRequestNotFound: string,
+          NftUnverifiedLimitedNotFound: string,
           WalletInvalid: string,
           WalletNotExist: string,
           SmsAlreadyRequested: string,

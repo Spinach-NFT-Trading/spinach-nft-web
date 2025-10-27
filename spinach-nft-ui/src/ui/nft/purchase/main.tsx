@@ -12,7 +12,7 @@ import {NftListingSingle} from '@spinach/next/components/shared/nft/single';
 import {authOptions} from '@spinach/next/const/auth';
 import {getNftInfo} from '@spinach/next/controller/nft/info';
 import {getNftOnSale} from '@spinach/next/controller/nft/onSale';
-import {getNftListing} from '@spinach/next/controller/nft/utils';
+import {getNftListingOfOnSale} from '@spinach/next/controller/nft/utils';
 import {NextPageProps} from '@spinach/next/types/next/page';
 import {LoginRequiredPageLayout} from '@spinach/next/ui/base/layout/loginRequired';
 import {NftPurchaseImage} from '@spinach/next/ui/nft/purchase/image';
@@ -39,7 +39,7 @@ export const NftPurchase = async ({params}: NextPageProps<PageParams>) => {
     t,
   ] = await Promise.all([
     getNftOnSale(nftId),
-    getNftListing(3),
+    getNftListingOfOnSale(3),
     getNftInfo(nftId),
     getTranslations('UI.InPage.Nft.Purchase.Error'),
   ]);

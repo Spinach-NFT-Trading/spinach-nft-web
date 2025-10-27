@@ -8,7 +8,10 @@ import {
   NftPriceTierModel,
   NftTxnModel,
 } from '@spinach/common/types/data/nft';
-import {NftLimitedPendingModel} from '@spinach/common/types/data/nft/limited';
+import {
+  NftLimitedUnverifiedModel,
+  NftLimitedPendingModel,
+} from '@spinach/common/types/data/nft/limited';
 import {NftExchangeMatchedModel} from '@spinach/common/types/data/nft/match';
 import {NftExchangeQueuedModel} from '@spinach/common/types/data/nft/queue';
 import {NftExchangeTokenModel} from '@spinach/common/types/data/nft/token';
@@ -19,6 +22,8 @@ const db = Mongo.db('nft');
 export const nftInfoCollection = db.collection<NftInfoModel>('info');
 
 export const nftOnSaleCollection = db.collection<NftOnSaleModel>('onSale');
+
+export const nftLimitedUnverifiedCollection = db.collection<NftLimitedUnverifiedModel>('limited/unverified');
 
 export const nftLimitedPendingCollection = db.collection<NftLimitedPendingModel>('limited/pending');
 
@@ -46,6 +51,8 @@ const initDbIndex = () => {
     nftTxnCollection.createIndex({to: 1}),
     nftImageCollection.createIndex({url: 1}, {unique: true}),
     nftPriceTierCollection.createIndex({price: 1}, {unique: true}),
+    nftLimitedUnverifiedCollection.createIndex({nftId: 1}, {unique: true}),
+    nftLimitedUnverifiedCollection.createIndex({buyer: 1}),
     nftLimitedPendingCollection.createIndex({nftId: 1}, {unique: true}),
     nftLimitedPendingCollection.createIndex({buyer: 1}),
     nftExchangeTokenCollection.createIndex({accountId: 1}),

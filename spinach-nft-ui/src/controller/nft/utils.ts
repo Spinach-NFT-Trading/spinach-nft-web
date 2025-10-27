@@ -1,6 +1,6 @@
 import {nftTxnCollection} from '@spinach/common/controller/collections/nft';
 import {userNftPositionCollection} from '@spinach/common/controller/collections/user';
-import {toSum} from '@spinach/common/utils/array';
+import {toNonNullishArray, toSum} from '@spinach/common/utils/array';
 import {ObjectId} from 'mongodb';
 
 import {getNftInfoMap, getNftInfoMultiple} from '@spinach/next/controller/nft/info';
@@ -9,19 +9,23 @@ import {NftPriceMap} from '@spinach/next/types/mongo/nft';
 import {NftListingData} from '@spinach/next/types/nft';
 
 
-export const getNftListing = async (limit: number): Promise<NftListingData[]> => {
+export const getNftListingOfOnSale = async (limit: number): Promise<NftListingData[]> => {
   const nftOnSale = await getNftOnSaleList(limit).toArray();
   const nftInfoMap = await getNftInfoMap(nftOnSale.map(({id}) => id));
 
-  return nftOnSale.map(({id, price}) => {
-    const idString = id.toString();
+  return toNonNullishArray(nftOnSale.map(({id, price}): NftListingData | null => {
+    const idString = id.toHexString();
+    const nftInfo = nftInfoMap[idString];
+    if (nftInfo == null) {
+      return null;
+    }
 
     return {
+      ...nftInfo,
       id: idString,
       price,
-      ...nftInfoMap[idString],
-    } satisfies NftListingData;
-  });
+    };
+  }));
 };
 
 export const getNftLastTradedPriceMap = async (nftIds: ObjectId[]): Promise<NftPriceMap> => {

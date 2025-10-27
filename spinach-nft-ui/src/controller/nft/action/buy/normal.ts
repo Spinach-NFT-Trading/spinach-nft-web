@@ -9,24 +9,19 @@ import {ObjectId} from 'mongodb';
 export type HandleNormalNftPurchaseOpts = {
   buyer: ObjectId,
   nftOnSale: NftOnSaleModel,
+  txn: NftTxnModel,
 };
 
 export const handleNormalNftPurchase = async ({
   buyer,
   nftOnSale,
+  txn,
 }: HandleNormalNftPurchaseOpts): Promise<ApiErrorCode | null> => {
   const balance = await getGoldAsset({userId: buyer});
 
   if (!balance || balance.current <= nftOnSale.price) {
     return 'goldNotEnough';
   }
-
-  const txn: NftTxnModel = {
-    nftId: nftOnSale.id,
-    from: nftOnSale.seller,
-    to: buyer,
-    price: nftOnSale.price,
-  };
 
   await Mongo.withSession(async (session) => {
     await session.withTransaction(async () => {

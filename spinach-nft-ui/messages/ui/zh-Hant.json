@@ -153,6 +153,7 @@
       "Index": {
         "Profile": "會員資料",
         "NftPositions": "持有遊戲點數",
+        "NftLimitedPositions": "持有遊戲點數 (限時)",
         "NftExchangeConfirm": "確認交易",
         "Admin": "會員管理"
       }
@@ -245,8 +246,34 @@
     "NftPosition": {
       "Limited": {
         "Tabs": {
-          "Pending": "待匯款",
-          "Completed": "已獲得"
+          "Unverified": "待匯款",
+          "Pending": "待審核"
+        },
+        "Unverified": {
+          "Title": "待匯款 NFT",
+          "Empty": "目前沒有待匯款的 NFT",
+          "BankAccount": "銀行帳號",
+          "ClickToUpload": "點擊上傳轉帳明細"
+        },
+        "Pending": {
+          "Title": "待審核 NFT",
+          "Empty": "目前沒有待審核的 NFT"
+        }
+      },
+      "LimitedProof": {
+        "Title": "上傳 NFT 購買轉帳明細",
+        "BankAccount": "銀行帳號",
+        "ChooseImage": "選擇轉帳明細圖片",
+        "Submit": "提交",
+        "Submitting": "上傳中...",
+        "Cancel": "取消",
+        "Success": "轉帳明細已上傳成功！",
+        "Redirecting": "正在返回限時 NFT 持倉頁面...",
+        "Error": {
+          "InvalidNftId": "無效的 NFT ID",
+          "AlreadySubmitted": "轉帳明細已提交",
+          "NoProof": "請上傳轉帳明細",
+          "InvalidFileType": "不支援的檔案類型"
         }
       }
     },
@@ -553,6 +580,7 @@
       "NftNotOnSale": "NFT 不在販賣中。",
       "NftMatchRequestNotFound": "找不到對應的遊戲點數交易請求。",
       "NftInfoNotFound": "找不到對應的 NFT 資訊。",
+      "NftUnverifiedLimitedNotFound": "找不到對應的限時 NFT 資訊。",
       "WalletInvalid": "錢包地址無效。",
       "WalletNotExist": "錢包地址不存在。",
       "SmsSendFailed": "驗證簡訊傳送失敗。",

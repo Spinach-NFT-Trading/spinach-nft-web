@@ -2,6 +2,10 @@ export type KeysOfType<T, KT> = {
   [K in keyof T]: T[K] extends KT ? K : never
 }[keyof T];
 
+export type OverwriteValueType<T, TValueOriginal, TValueNew> = {
+  [K in keyof T]: T[K] extends TValueOriginal ? TValueNew : T[K]
+};
+
 export type ValueOf<T> = T[keyof T];
 
 export type Indexable = number | string | symbol;

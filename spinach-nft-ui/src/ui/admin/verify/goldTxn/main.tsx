@@ -29,7 +29,7 @@ export const AdminVerifyGoldTxn = () => {
         input={input}
         setInput={setInput}
         availableSearchKeys={[...adminVerifyGoldTxnFilterBasis]}
-        getSearchKeyName={(key) => adminVerifyGoldTxnSearchKeyName[key]}
+        getSearchKeyName={(key) => t(adminVerifyGoldTxnSearchKeyName[key])}
       />
       <UserDataLazyLoad
         options={{

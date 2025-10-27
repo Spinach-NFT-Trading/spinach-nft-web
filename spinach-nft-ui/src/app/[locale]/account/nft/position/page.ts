@@ -1,4 +1,4 @@
-import {AccountNftPosition} from '@spinach/next/ui/account/nft/position/main';
+import {AccountNftPosition} from '@spinach/next/ui/account/nft/position/index/main';
 import {generatePageMeta} from '@spinach/next/utils/website/meta/main';
 
 

@@ -20,16 +20,23 @@ export const AccountNftExchangeConfirmClient = ({initialMatchedExchangeRequests,
 
   return (
     <Grid className="grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
-      {matchedExchangeRequests.map((matched) => (
-        <AccountNftExchangeConfirmPendingSingle
-          key={matched.requestUuid}
-          match={matched}
-          nft={nftInfoMap[matched.nftId]}
-          onMatchConfirmed={(confirmedRequestUuid) => setMatchedExchangeRequests((original) => (
-            original.filter(({requestUuid}) => requestUuid !== confirmedRequestUuid)
-          ))}
-        />
-      ))}
+      {matchedExchangeRequests.map((matched) => {
+        const nft = nftInfoMap[matched.nftId];
+        if (nft == null) {
+          return null;
+        }
+
+        return (
+          <AccountNftExchangeConfirmPendingSingle
+            key={matched.requestUuid}
+            match={matched}
+            nft={nft}
+            onMatchConfirmed={(confirmedRequestUuid) => setMatchedExchangeRequests((original) => (
+              original.filter(({requestUuid}) => requestUuid !== confirmedRequestUuid)
+            ))}
+          />
+        );
+      })}
     </Grid>
   );
 };

@@ -153,6 +153,7 @@
       "Index": {
         "Profile": "Member information",
         "NftPositions": "NFT holdings",
+        "NftLimitedPositions": "Limited NFT holdings",
         "NftExchangeConfirm": "Confirm NFT transaction",
         "Admin": "Member management"
       }
@@ -245,8 +246,34 @@
     "NftPosition": {
       "Limited": {
         "Tabs": {
-          "Pending": "Pending Payment",
-          "Completed": "Completed"
+          "Unverified": "Pending Payment",
+          "Pending": "Pending Verification"
+        },
+        "Unverified": {
+          "Title": "Unverified NFTs",
+          "Empty": "No unverified NFTs",
+          "BankAccount": "Bank Account",
+          "ClickToUpload": "Click to upload transfer proof"
+        },
+        "Pending": {
+          "Title": "NFTs Under Review",
+          "Empty": "No NFTs under review"
+        }
+      },
+      "LimitedProof": {
+        "Title": "Upload Transfer Proof",
+        "BankAccount": "Bank Account",
+        "ChooseImage": "Choose transfer proof image",
+        "Submit": "Submit",
+        "Submitting": "Submitting...",
+        "Cancel": "Cancel",
+        "Success": "Transfer proof uploaded successfully!",
+        "Redirecting": "Redirecting...",
+        "Error": {
+          "InvalidNftId": "Invalid NFT ID",
+          "AlreadySubmitted": "Transfer proof has already been submitted",
+          "NoProof": "Please upload transfer proof",
+          "InvalidFileType": "Unsupported file type"
         }
       }
     },
@@ -561,6 +588,7 @@
       "NftNotOnSale": "NFTs are not being sold.",
       "NftMatchRequestNotFound": "The corresponding NFT transaction request could not be found.",
       "NftInfoNotFound": "The corresponding NFT information could not be found.",
+      "NftUnverifiedLimitedNotFound": "The corresponding limited NFT verification information could not be found.",
       "WalletInvalid": "The wallet address is invalid.",
       "WalletNotExist": "The wallet address does not exist.",
       "SmsSendFailed": "Verification SMS delivery failed.",

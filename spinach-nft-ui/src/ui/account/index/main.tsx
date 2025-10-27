@@ -28,6 +28,7 @@ export const AccountIndex = async () => {
       <Grid className="gap-2 text-3xl lg:grid-cols-2">
         <TileLink link="/account/profile" text={t('Profile')} icon={<MagnifyingGlassIcon/>}/>
         <TileLink link="/account/nft/position" text={t('NftPositions')} icon={<InboxIcon/>}/>
+        <TileLink link="/account/nft/position/limited" text={t('NftLimitedPositions')} icon={<InboxIcon/>}/>
         <TileLink link="/account/nft/exchange" text={t('NftExchangeConfirm')} icon={<CheckCircleIcon/>}/>
         {isUserElevated(session?.user) && <TileLink link="/admin" text={t('Admin')} icon={<UserCircleIcon/>}/>}
       </Grid>

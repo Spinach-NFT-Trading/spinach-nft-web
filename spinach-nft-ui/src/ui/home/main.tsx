@@ -6,7 +6,7 @@ import {getTranslations} from 'next-intl/server';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NftListing} from '@spinach/next/components/shared/nft/main';
 import {authOptions} from '@spinach/next/const/auth';
-import {getNftListing} from '@spinach/next/controller/nft/utils';
+import {getNftListingOfOnSale} from '@spinach/next/controller/nft/utils';
 import {PageLayout} from '@spinach/next/ui/base/layout/base/common';
 import {HomeFooter} from '@spinach/next/ui/home/footer/main';
 import {HomeHeader} from '@spinach/next/ui/home/header';
@@ -19,7 +19,7 @@ export const Home = async () => {
     t,
   ] = await Promise.all([
     getServerSession(authOptions),
-    getNftListing(20),
+    getNftListingOfOnSale(20),
     getTranslations('UI.InPage.Home'),
   ]);
 

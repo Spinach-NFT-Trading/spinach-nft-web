@@ -2,6 +2,7 @@ import {getGlobalConfig} from '@spinach/common/controller/actors/global';
 import {getUserInfoById} from '@spinach/common/controller/user/info';
 import {isSuspended} from '@spinach/common/controller/user/permission';
 import {toUnique} from '@spinach/common/utils/array';
+import {toObject} from '@spinach/common/utils/object/make';
 import {isNotNullish} from '@spinach/common/utils/type';
 import {ObjectId} from 'mongodb';
 
@@ -10,9 +11,10 @@ import {
   getUnverifiedGoldPurchaseTwBankRecordClient,
 } from '@spinach/next/controller/gold/twBank';
 import {getWalletClientMap} from '@spinach/next/controller/gold/wallet';
+import {getNftListingData} from '@spinach/next/controller/nft/listing';
 import {generateNftExchangeToken, getNftExchangeTokenMap} from '@spinach/next/controller/nft/request/token';
 import {getNftTxnOfUser} from '@spinach/next/controller/nft/txn';
-import {getNftLastTradedPriceMap, getNftPositionInfo} from '@spinach/next/controller/nft/utils';
+import {getNftPositionInfo} from '@spinach/next/controller/nft/utils';
 import {getUserBalanceDailySummary} from '@spinach/next/controller/user/balance/daily';
 import {getUserBalanceHistory} from '@spinach/next/controller/user/balance/history';
 import {getUserBalanceActivityMap} from '@spinach/next/controller/user/balance/summary';
@@ -26,7 +28,6 @@ import {
 import {getUnverifiedUsers, getUserDataMap} from '@spinach/next/controller/user/info';
 import {getAccountMemberListByAgent, getUserInfoList} from '@spinach/next/controller/user/members';
 import {getUserVerificationImage} from '@spinach/next/controller/user/verification';
-import {NftListingData} from '@spinach/next/types/nft';
 import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 import {UserLazyLoadedData} from '@spinach/next/types/userData/main';
 
@@ -44,14 +45,16 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
   }
 
   if (type === 'nftPosition') {
-    const nftInfo = await (await getNftPositionInfo(new ObjectId(accountId))).toArray();
-    const nftPriceMap = await getNftLastTradedPriceMap(nftInfo.map(({_id}) => _id));
+    const nftInfoOfPositions = await (await getNftPositionInfo(new ObjectId(accountId))).toArray();
+    const nftInfoMap = toObject(
+      nftInfoOfPositions,
+      (nftInfo) => [nftInfo._id.toHexString(), nftInfo],
+    );
 
-    return nftInfo.map((data) => ({
-      id: data._id.toString(),
-      price: nftPriceMap[data._id.toString()],
-      ...data,
-    } satisfies NftListingData)) satisfies UserLazyLoadedData['nftPosition'];
+    return await getNftListingData(
+      nftInfoOfPositions.map(({_id}) => _id),
+      nftInfoMap,
+    ) satisfies UserLazyLoadedData['nftPosition'];
   }
 
   if (type === 'bankDetails') {

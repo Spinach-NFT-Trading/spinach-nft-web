@@ -153,6 +153,7 @@
       "Index": {
         "Profile": "会員情報",
         "NftPositions": "NFTホールディングス",
+        "NftLimitedPositions": "限定NFTホールディングス",
         "NftExchangeConfirm": "NFT取引の確認",
         "Admin": "会員管理"
       }
@@ -245,8 +246,34 @@
     "NftPosition": {
       "Limited": {
         "Tabs": {
-          "Pending": "送金待ち",
-          "Completed": "取得済み"
+          "Unverified": "送金待ち",
+          "Pending": "審査待ち"
+        },
+        "Unverified": {
+          "Title": "未確認 NFT",
+          "Empty": "未確認の NFT はありません",
+          "BankAccount": "銀行口座",
+          "ClickToUpload": "クリックして送金証明をアップロード"
+        },
+        "Pending": {
+          "Title": "審査中の NFT",
+          "Empty": "審査中の NFT はありません"
+        }
+      },
+      "LimitedProof": {
+        "Title": "送金証明をアップロード",
+        "BankAccount": "銀行口座",
+        "ChooseImage": "送金証明画像を選択",
+        "Submit": "送信",
+        "Submitting": "送信中...",
+        "Cancel": "キャンセル",
+        "Success": "送金証明が正常にアップロードされました！",
+        "Redirecting": "リダイレクト中...",
+        "Error": {
+          "InvalidNftId": "無効な NFT ID",
+          "AlreadySubmitted": "送金証明は既に提出されています",
+          "NoProof": "送金証明をアップロードしてください",
+          "InvalidFileType": "サポートされていないファイルタイプ"
         }
       }
     },
@@ -553,6 +580,7 @@
       "NftNotOnSale": "NFTは販売されていません。",
       "NftMatchRequestNotFound": "対応するNFTトランザクションリクエストが見つかりませんでした。",
       "NftInfoNotFound": "該当するNFT情報が見つかりませんでした。",
+      "NftUnverifiedLimitedNotFound": "対応する限定NFT検証情報が見つかりませんでした。",
       "WalletInvalid": "ウォレットアドレスが無効です。",
       "WalletNotExist": "ウォレットアドレスが存在しません。",
       "SmsSendFailed": "確認SMSの配信に失敗しました。",

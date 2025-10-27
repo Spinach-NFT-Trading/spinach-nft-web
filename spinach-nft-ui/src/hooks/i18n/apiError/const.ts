@@ -22,6 +22,7 @@ export const apiErrorI18nId: {[code in ApiErrorCode]: I18nMessageKeysOfNamespace
   nftNotOnSale: 'NftNotOnSale',
   nftMatchRequestNotFound: 'NftMatchRequestNotFound',
   nftInfoNotFound: 'NftInfoNotFound',
+  nftUnverifiedLimitedNotFound: 'NftUnverifiedLimitedNotFound',
   walletInvalid: 'WalletInvalid',
   walletNotExist: 'WalletNotExist',
   smsSendFailed: 'SmsSendFailed',

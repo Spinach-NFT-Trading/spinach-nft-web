@@ -13,9 +13,10 @@ import {formatInt} from '@spinach/next/utils/number/format';
 export type Props = {
   nft: NftListingData,
   isOnSale: boolean,
+  extraInfo?: React.ReactNode,
 };
 
-export const NftListingSingle = ({nft, isOnSale}: Props) => {
+export const NftListingSingle = ({nft, isOnSale, extraInfo}: Props) => {
   const {id, image, isLimited, seqId, price} = nft;
 
   return (
@@ -38,6 +39,7 @@ export const NftListingSingle = ({nft, isOnSale}: Props) => {
         <Flex className="whitespace-nowrap text-yellow-300">
           {formatInt(price)} GOLD
         </Flex>
+        {extraInfo}
       </Flex>
       {
         isOnSale &&

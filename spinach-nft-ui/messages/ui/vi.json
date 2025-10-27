@@ -153,6 +153,7 @@
       "Index": {
         "Profile": "Thông tin thành viên",
         "NftPositions": "nắm giữ NFT",
+        "NftLimitedPositions": "nắm giữ NFT giới hạn",
         "NftExchangeConfirm": "Xác nhận giao dịch NFT",
         "Admin": "Quản lý thành viên"
       }
@@ -245,8 +246,34 @@
     "NftPosition": {
       "Limited": {
         "Tabs": {
-          "Pending": "Chờ chuyển khoản",
-          "Completed": "Đã nhận được"
+          "Unverified": "Chờ chuyển khoản",
+          "Pending": "Đang xác minh"
+        },
+        "Unverified": {
+          "Title": "NFT chưa xác minh",
+          "Empty": "Không có NFT chưa xác minh",
+          "BankAccount": "Tài khoản ngân hàng",
+          "ClickToUpload": "Nhấp để tải lên bằng chứng chuyển khoản"
+        },
+        "Pending": {
+          "Title": "NFT đang được xem xét",
+          "Empty": "Không có NFT đang được xem xét"
+        }
+      },
+      "LimitedProof": {
+        "Title": "Tải lên bằng chứng chuyển khoản",
+        "BankAccount": "Tài khoản ngân hàng",
+        "ChooseImage": "Chọn hình ảnh bằng chứng chuyển khoản",
+        "Submit": "Gửi",
+        "Submitting": "Đang gửi...",
+        "Cancel": "Hủy",
+        "Success": "Bằng chứng chuyển khoản đã được tải lên thành công!",
+        "Redirecting": "Đang chuyển hướng...",
+        "Error": {
+          "InvalidNftId": "NFT ID không hợp lệ",
+          "AlreadySubmitted": "Bằng chứng chuyển khoản đã được gửi",
+          "NoProof": "Vui lòng tải lên bằng chứng chuyển khoản",
+          "InvalidFileType": "Loại tệp không được hỗ trợ"
         }
       }
     },
@@ -553,6 +580,7 @@
       "NftNotOnSale": "NFT không được bán.",
       "NftMatchRequestNotFound": "Không thể tìm thấy yêu cầu giao dịch NFT tương ứng.",
       "NftInfoNotFound": "Không thể tìm thấy thông tin NFT tương ứng.",
+      "NftUnverifiedLimitedNotFound": "Không thể tìm thấy thông tin xác minh NFT giới hạn tương ứng.",
       "WalletInvalid": "Địa chỉ ví không hợp lệ.",
       "WalletNotExist": "Địa chỉ ví không tồn tại.",
       "SmsSendFailed": "Việc gửi SMS xác minh không thành công.",

@@ -13,9 +13,10 @@ import {NftListingData} from '@spinach/next/types/nft';
 type Props = {
   nftListings: NftListingData[],
   isOnSale: boolean,
+  getExtraInfo?: (nft: NftListingData) => React.ReactNode,
 };
 
-export const NftListing = ({nftListings, isOnSale}: Props) => {
+export const NftListing = ({nftListings, isOnSale, getExtraInfo}: Props) => {
   const [priceSearch, setPriceSearch] = React.useState('');
   const [sort, setSort] = React.useState<NftListingSortType>('desc');
 
@@ -58,7 +59,6 @@ export const NftListing = ({nftListings, isOnSale}: Props) => {
             }
 
             const price = parseInt(target.value);
-
             if (isNaN(price)) {
               return;
             }
@@ -74,7 +74,7 @@ export const NftListing = ({nftListings, isOnSale}: Props) => {
       </Flex>
       <Grid className="grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-3">
         {filteredNftListings.map((nft) => (
-          <NftListingSingle key={nft.id} nft={nft} isOnSale={isOnSale}/>
+          <NftListingSingle key={nft.id} nft={nft} isOnSale={isOnSale} extraInfo={getExtraInfo?.(nft)}/>
         ))}
       </Grid>
     </Flex>

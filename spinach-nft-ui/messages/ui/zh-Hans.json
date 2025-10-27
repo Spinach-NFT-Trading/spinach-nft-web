@@ -153,6 +153,7 @@
       "Index": {
         "Profile": "会员资料",
         "NftPositions": "游戏点数持仓",
+        "NftLimitedPositions": "游戏点数持仓 (限时)",
         "NftExchangeConfirm": "确认游戏点数交易",
         "Admin": "会员管理"
       }
@@ -245,8 +246,34 @@
     "NftPosition": {
       "Limited": {
         "Tabs": {
-          "Pending": "待汇款",
-          "Completed": "已获得"
+          "Unverified": "待汇款",
+          "Pending": "待审核"
+        },
+        "Unverified": {
+          "Title": "待汇款 NFT",
+          "Empty": "目前没有待汇款的 NFT",
+          "BankAccount": "银行账号",
+          "ClickToUpload": "点击上传转账明细"
+        },
+        "Pending": {
+          "Title": "待审核 NFT",
+          "Empty": "目前没有待审核的 NFT"
+        }
+      },
+      "LimitedProof": {
+        "Title": "上传转账明细",
+        "BankAccount": "银行账号",
+        "ChooseImage": "选择转账明细图片",
+        "Submit": "提交",
+        "Submitting": "上传中...",
+        "Cancel": "取消",
+        "Success": "转账明细已上传成功！",
+        "Redirecting": "正在返回...",
+        "Error": {
+          "InvalidNftId": "无效的 NFT ID",
+          "AlreadySubmitted": "转账明细已经提交过了",
+          "NoProof": "请上传转账明细",
+          "InvalidFileType": "不支持的文件类型"
         }
       }
     },
@@ -561,6 +588,7 @@
       "NftNotOnSale": "游戏点数不在贩卖中。",
       "NftMatchRequestNotFound": "找不到对应的游戏点数交易请求。",
       "NftInfoNotFound": "找不到对应的游戏点数资讯。",
+      "NftUnverifiedLimitedNotFound": "找不到对应的限量 NFT 验证信息。",
       "WalletInvalid": "钱包地址无效。",
       "WalletNotExist": "钱包地址不存在。",
       "SmsSendFailed": "验证简讯传送失败。",

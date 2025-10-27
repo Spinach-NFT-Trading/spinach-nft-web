@@ -1,4 +1,5 @@
 import {ApiErrorCode} from '@spinach/common/types/api/error';
+import {NftTxnModel} from '@spinach/common/types/data/nft';
 import {ObjectId} from 'mongodb';
 
 import {getNftInfo} from '@spinach/next/controller/nft/info';
@@ -27,16 +28,17 @@ export const buyNft = async ({buyer, nftId}: BuyNftOpts): Promise<ApiErrorCode |
     return 'nftInfoNotFound';
   }
 
+  const txn: NftTxnModel = {
+    nftId: nftOnSale.id,
+    from: nftOnSale.seller,
+    to: buyer,
+    price: nftOnSale.price,
+  };
+
   if (nftInfo.isLimited) {
-    return handleLimitedNftPurchase({
-      buyer,
-      nftId: nftOnSale.id,
-    });
+    return handleLimitedNftPurchase({buyer, nftOnSale, txn});
   }
 
-  return handleNormalNftPurchase({
-    buyer,
-    nftOnSale,
-  });
+  return handleNormalNftPurchase({buyer, nftOnSale, txn});
 };
 
