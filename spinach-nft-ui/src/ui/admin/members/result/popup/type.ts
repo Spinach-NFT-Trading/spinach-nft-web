@@ -1,7 +1,10 @@
 import {UserInfo} from '@spinach/common/types/common/user/info';
 
+import {CommonUserData} from '@spinach/next/types/auth';
+
 
 export type AdminMemberPopupProps = {
+  actor: CommonUserData,
   member: UserInfo,
   setShow: (show: boolean) => void,
 };

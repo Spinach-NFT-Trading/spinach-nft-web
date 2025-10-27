@@ -499,7 +499,8 @@
         "DepositTwdCashback": "Deposit Bonus (Taiwan Dollar)",
         "DepositCrypto": "Deposit (USDT)",
         "DepositCryptoCashback": "Deposit Bonus (USDT)",
-        "AdminAdjustment": "管理手動調整"
+        "AdminAdjustment": "管理手動調整",
+        "TransferFromAgent": "代理贈與"
       }
     }
   },
@@ -566,7 +567,8 @@
       "FileUploadGrantActivationFailed": "File upload not granted.",
       "FileUploadMissingFile": "Missing target file to upload.",
       "FileUploadMissingContentType": "Missing file content type.",
-      "UserInfoNotFound": "User info not found."
+      "UserInfoNotFound": "User info not found.",
+      "Unauthorized": "Unauthorized."
     },
     "Input": {
       "IncorrectFileType": "Incorrect file type - {type}"

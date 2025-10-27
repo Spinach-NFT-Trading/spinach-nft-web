@@ -491,7 +491,8 @@
         "DepositTwdCashback": "入金ボーナス（台湾ドル）",
         "DepositCrypto": "デポジット (USDT)",
         "DepositCryptoCashback": "入金ボーナス (USDT)",
-        "AdminAdjustment": "管理手動調整"
+        "AdminAdjustment": "管理手動調整",
+        "TransferFromAgent": "代理贈與"
       }
     }
   },
@@ -558,7 +559,8 @@
       "FileUploadGrantActivationFailed": "ファイルアップロード拒否されました。",
       "FileUploadMissingFile": "アップロードするターゲットファイルがありません。",
       "FileUploadMissingContentType": "Missing file content type.",
-      "UserInfoNotFound": "User info not found."
+      "UserInfoNotFound": "User info not found.",
+      "Unauthorized": "Unauthorized."
     },
     "Input": {
       "IncorrectFileType": "間違ったファイルタイプ - {type}"

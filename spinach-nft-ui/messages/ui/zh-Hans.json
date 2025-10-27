@@ -499,7 +499,8 @@
         "DepositTwdCashback": "入金赠金 (台币)",
         "DepositCrypto": "入金 (USDT)",
         "DepositCryptoCashback": "入金赠金 (USDT)",
-        "AdminAdjustment": "管理手動調整"
+        "AdminAdjustment": "管理手動調整",
+        "TransferFromAgent": "代理贈與"
       }
     }
   },
@@ -566,7 +567,8 @@
       "FileUploadGrantActivationFailed": "文件上传授权失败。",
       "FileUploadMissingFile": "缺少要上传的目标文件。",
       "FileUploadMissingContentType": "Missing file content type.",
-      "UserInfoNotFound": "User info not found."
+      "UserInfoNotFound": "User info not found.",
+      "Unauthorized": "Unauthorized."
     },
     "Input": {
       "IncorrectFileType": "档案种类不正确 - {type}"

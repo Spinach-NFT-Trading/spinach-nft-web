@@ -1,3 +1,4 @@
+'use server';
 import {getNewBalance} from '@spinach/common/controller/actors/user';
 import {userBalanceCollection} from '@spinach/common/controller/collections/user';
 import {Mongo} from '@spinach/common/controller/const';
@@ -19,38 +20,56 @@ export const recordManualBalanceAdjustment = async ({
   targetUserId,
   amount,
 }: RecordManualBalanceAdjustmentOpts): Promise<ApiErrorCode | null> => {
-  // Only allow if:
-  // - the user is an admin
-  // - the target user is recruited by the executor
-  let authorized = false;
-
-  authorized ||= await isAdmin(executorUserId);
-
-  if (!authorized) {
-    const userInfo = await getUserInfoById({
-      requiresElevated: false,
-      userId: targetUserId,
+  if (await isAdmin(executorUserId)) {
+    // If the user is an admin, the executor can give the target user any amount of GOLD
+    await Mongo.withSession(async (session) => {
+      await session.withTransaction(async () => {
+        await userBalanceCollection.insertOne({
+          ...(await getNewBalance({
+            accountId: new ObjectId(targetUserId),
+            diff: amount,
+            session,
+          })),
+          type: 'adminAdjustment',
+        }, {session});
+      });
     });
-    if (!userInfo) {
-      return 'userInfoNotFound';
-    }
 
-    authorized ||= userInfo.recruitedBy === executorUserId;
+    return null;
   }
 
-  if (!authorized) {
-    throw new Error('Manual balance adjustment not authorized');
+  const userInfo = await getUserInfoById({
+    requiresElevated: false,
+    userId: targetUserId,
+  });
+  if (!userInfo) {
+    return 'userInfoNotFound';
+  }
+  if (userInfo.recruitedBy !== executorUserId) {
+    return 'unauthorized';
+  }
+
+  const balanceAfterAdjustment = await getNewBalance({
+    accountId: new ObjectId(executorUserId),
+    diff: -amount,
+  });
+  if (balanceAfterAdjustment.current < 0) {
+    return 'goldNotEnough';
   }
 
   await Mongo.withSession(async (session) => {
     await session.withTransaction(async () => {
+      await userBalanceCollection.insertOne({
+        ...balanceAfterAdjustment,
+        type: 'transferFromAgent',
+      }, {session});
       await userBalanceCollection.insertOne({
         ...(await getNewBalance({
           accountId: new ObjectId(targetUserId),
           diff: amount,
           session,
         })),
-        type: 'adminAdjustment',
+        type: 'transferFromAgent',
       }, {session});
     });
   });

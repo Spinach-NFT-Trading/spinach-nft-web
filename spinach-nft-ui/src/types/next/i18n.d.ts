@@ -468,6 +468,7 @@ declare global {
             DepositCrypto: string,
             DepositCryptoCashback: string,
             AdminAdjustment: string,
+            TransferFromAgent: string,
           },
         },
       },
@@ -535,6 +536,7 @@ declare global {
           FileUploadMissingFile: string,
           FileUploadMissingContentType: string,
           UserInfoNotFound: string,
+          Unauthorized: string,
         },
         Input: {
           IncorrectFileType: string,

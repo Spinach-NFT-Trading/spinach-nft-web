@@ -20,7 +20,7 @@ export type UserBalanceHistoryModel = UserBalanceHistoryModelRequired & ({
   type: 'nftSell' | 'nftSellRefund' | 'nftSellCommissionMember' | 'nftSellCommissionAgent',
   nftTxnId: ObjectId,
 } | {
-  type: 'adminAdjustment',
+  type: 'adminAdjustment' | 'transferFromAgent',
 });
 
 export type UserBalanceHistoryTxnType = UserBalanceHistoryModel['type'];

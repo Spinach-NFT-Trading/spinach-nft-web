@@ -55,6 +55,7 @@ export const AdminMembersResults = ({user, input, memberInfo, lookBackInputContr
   return (
     <Flex className="gap-2">
       <AdminMemberPopup
+        user={user}
         state={popup}
         setShow={(show) => setPopup((original) => ({
           ...original,

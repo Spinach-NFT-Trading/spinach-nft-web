@@ -491,7 +491,8 @@
         "DepositTwdCashback": "โบนัสเงินฝาก (ดอลลาร์ไต้หวัน)",
         "DepositCrypto": "เงินฝาก (USDT)",
         "DepositCryptoCashback": "โบนัสเงินฝาก (USDT)",
-        "AdminAdjustment": "管理手動調整"
+        "AdminAdjustment": "管理手動調整",
+        "TransferFromAgent": "代理贈與"
       }
     }
   },
@@ -558,7 +559,8 @@
       "FileUploadGrantActivationFailed": "การใช้สิทธิ์อัปโหลดไฟล์ล้มเหลว",
       "FileUploadMissingFile": "ไฟล์เป้าหมายที่จะอัปโหลดหายไป",
       "FileUploadMissingContentType": "Missing file content type.",
-      "UserInfoNotFound": "User info not found."
+      "UserInfoNotFound": "User info not found.",
+      "Unauthorized": "Unauthorized."
     },
     "Input": {
       "IncorrectFileType": "ประเภทไฟล์ไม่ถูกต้อง - {type}"

@@ -54,12 +54,6 @@ export type UserDataRequestOpts = {
     isAgent: boolean,
   },
 } | {
-  type: 'admin.member.manualAdjust',
-  data: {
-    memberId: string,
-    amount: number,
-  },
-} | {
   type: 'admin.member.mark.suspended',
   data: {
     targetId: string,

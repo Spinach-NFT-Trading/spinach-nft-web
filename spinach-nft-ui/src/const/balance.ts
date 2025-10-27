@@ -18,4 +18,5 @@ export const userBalanceHistoryTypeText: {
   'deposit.crypto': 'DepositCrypto',
   'deposit.crypto.cashback': 'DepositCryptoCashback',
   'adminAdjustment': 'AdminAdjustment',
+  'transferFromAgent': 'TransferFromAgent',
 };

@@ -41,6 +41,7 @@ export const apiErrorCode = [
   'fileUploadMissingFile',
   'fileUploadMissingContentType',
   'userInfoNotFound',
+  'unauthorized',
 ] as const;
 
 export interface TApiErrorCode extends TString {

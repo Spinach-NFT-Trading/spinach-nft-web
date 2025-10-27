@@ -491,7 +491,8 @@
         "DepositTwdCashback": "Tiền thưởng gửi tiền (Đô la Đài Loan)",
         "DepositCrypto": "Tiền gửi (USDT)",
         "DepositCryptoCashback": "Tiền thưởng nạp tiền (USDT)",
-        "AdminAdjustment": "管理手動調整"
+        "AdminAdjustment": "管理手動調整",
+        "TransferFromAgent": "代理贈與"
       }
     }
   },
@@ -558,7 +559,8 @@
       "FileUploadGrantActivationFailed": "Tiêu thụ quyền tải lên tệp không thành công.",
       "FileUploadMissingFile": "Thiếu tệp đích để tải lên.",
       "FileUploadMissingContentType": "Missing file content type.",
-      "UserInfoNotFound": "User info not found."
+      "UserInfoNotFound": "User info not found.",
+      "Unauthorized": "Unauthorized."
     },
     "Input": {
       "IncorrectFileType": "Loại tệp không chính xác - {type}"

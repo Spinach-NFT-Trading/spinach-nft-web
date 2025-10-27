@@ -43,4 +43,5 @@ export const apiErrorI18nId: {[code in ApiErrorCode]: I18nMessageKeysOfNamespace
   fileUploadMissingFile: 'FileUploadMissingFile',
   fileUploadMissingContentType: 'FileUploadMissingContentType',
   userInfoNotFound: 'UserInfoNotFound',
+  unauthorized: 'Unauthorized',
 };
