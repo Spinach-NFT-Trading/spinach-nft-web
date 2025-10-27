@@ -25,7 +25,7 @@ type Props = {
 
 export const AdminPageClient = ({user}: Props) => {
   const [agentId, setAgentId] = React.useState<string | null>(null);
-  const tabControl = useTabbedContentControl<AdminPageTab>(user ? 'agents' : 'members');
+  const tabControl = useTabbedContentControl<AdminPageTab>(user.isAgent ? 'members' : 'agents');
 
   const t = useTranslations('UI.InPage.Admin.Tabs');
 
