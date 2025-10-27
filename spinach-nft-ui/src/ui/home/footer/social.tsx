@@ -11,10 +11,8 @@ export const HomeFooterSocial = () => {
     <Flex className="relative">
       <Grid noFullWidth center className="absolute right-5 z-10 h-full">
         <Grid className="grid-rows-4 gap-4">
-          <HomeSocialButton href="#" text="LINE"/>
-          <HomeSocialButton href="#" text="Telegram"/>
-          <HomeSocialButton href="#" text="Twitter"/>
-          <HomeSocialButton href="#" text="Facebook"/>
+          <HomeSocialButton href="https://lin.ee/ycjqYCe" text="LINE"/>
+          <HomeSocialButton href="https://t.me/ttgg6868" text="Telegram"/>
         </Grid>
       </Grid>
       <div className="relative h-64 sm:h-96 xl:h-[30rem]">
