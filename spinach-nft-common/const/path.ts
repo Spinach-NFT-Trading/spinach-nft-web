@@ -12,5 +12,6 @@ export const apiPath = {
   },
   nft: {
     exchange: '/nft/exchange',
+    sell: '/nft/sell',
   },
 };

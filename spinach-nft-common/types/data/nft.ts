@@ -4,9 +4,11 @@ import {ObjectId} from 'mongodb';
 export type NftInfoLimitedMeta = {
   isLimited: false,
   bankAccount?: never,
+  requestedToken?: string,
 } | {
   isLimited: true,
   bankAccount: string,
+  requestedToken: string,
 };
 
 export type NftInfoModel = NftInfoLimitedMeta & {
