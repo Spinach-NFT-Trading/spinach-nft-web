@@ -4,16 +4,18 @@ import Cog6ToothIcon from '@heroicons/react/24/outline/Cog6ToothIcon';
 import {useTranslations} from 'next-intl';
 
 import {FlexButton} from '@spinach/next/components/layout/flex/button';
+import {CommonUserData} from '@spinach/next/types/auth';
 import {adminMemberSingleResultButtonStyle} from '@spinach/next/ui/admin/members/result/const';
 import {AdminMemberControlMenuSelection} from '@spinach/next/ui/admin/members/result/control/selection';
 import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/popup/type';
 
 
 type Props = {
+  actor: CommonUserData,
   showPopup: (type: AdminMemberPopupType) => void,
 };
 
-export const AdminMemberSingleControls = ({showPopup}: Props) => {
+export const AdminMemberSingleControls = ({actor, showPopup}: Props) => {
   const [show, setShow] = React.useState(false);
 
   const t = useTranslations('UI.InPage.Admin.Members.Control');
@@ -23,6 +25,7 @@ export const AdminMemberSingleControls = ({showPopup}: Props) => {
       <AdminMemberControlMenuSelection
         show={show}
         setShow={setShow}
+        actor={actor}
         onOptionSelect={(type) => showPopup(type)}
       />
       <FlexButton className={adminMemberSingleResultButtonStyle} onClick={() => setShow(true)}>
