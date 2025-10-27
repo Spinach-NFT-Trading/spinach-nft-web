@@ -12,15 +12,17 @@ import {Alert} from '@spinach/next/components/shared/common/alert';
 import {useI18nApiErrorTranslator} from '@spinach/next/hooks/i18n/apiError/main';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {NftPurchaseConfirmDisclaimer} from '@spinach/next/ui/nft/purchase/popup/disclaimer';
+import {NftPurchaseConfirmLimitedMessage} from '@spinach/next/ui/nft/purchase/popup/limitedMessage';
 
 
 type Props = {
   nftId: string,
+  isLimited: boolean,
   show: boolean,
   setShow: (show: boolean) => void,
 };
 
-export const NftPurchaseConfirmPopup = ({nftId, show, setShow}: Props) => {
+export const NftPurchaseConfirmPopup = ({nftId, isLimited, show, setShow}: Props) => {
   const [error, setError] = React.useState<ApiErrorCode | null>(null);
   const {act, status} = useUserDataActor();
   const {replace} = useRouter();
@@ -52,7 +54,7 @@ export const NftPurchaseConfirmPopup = ({nftId, show, setShow}: Props) => {
       return;
     }
 
-    replace('/account/nft/position');
+    replace(isLimited ? '/account/nft/position/limited' : '/account/nft/position');
   };
 
   return (
@@ -66,7 +68,7 @@ export const NftPurchaseConfirmPopup = ({nftId, show, setShow}: Props) => {
         <div>
           {t('Popup.Message')}
         </div>
-        <NftPurchaseConfirmDisclaimer/>
+        {isLimited ? <NftPurchaseConfirmLimitedMessage/> : <NftPurchaseConfirmDisclaimer/>}
         <button
           className="button-clickable-bg w-1/2 p-2"
           disabled={status === 'processing' || status === 'failed'}

@@ -207,6 +207,10 @@ declare global {
               Title: string,
               Content: string,
             },
+            LimitedMessage: {
+              Line1: string,
+              Line2: string,
+            },
           },
         },
         Admin: {

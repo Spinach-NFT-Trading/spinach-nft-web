@@ -38,7 +38,7 @@ export const NftPurchaseInfo = ({nftId, info, onSale, onSaleTimestamp}: Props) =
       <NftPurchaseInfoSection title={t('OnSaleTimestamp')} content={format(onSaleTimestamp, 'yyyy-MM-dd HH:mm:ss')}/>
       <NftPurchaseInfoSection title={t('Description')} content={`by ${info.maker}`}/>
       <NftPurchaseInfoSection title={t('Price')} content={`${onSale.price} GOLD`}/>
-      <NftPurchaseButton nftId={nftId}/>
+      <NftPurchaseButton nftId={nftId} isLimited={isLimited}/>
     </Flex>
   );
 };
