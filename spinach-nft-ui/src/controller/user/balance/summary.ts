@@ -5,7 +5,11 @@ import {ObjectId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {toIdRangeFromLookBackRequest} from '@spinach/next/controller/user/utils';
-import {UserBalanceActivity, UserBalanceActivityMap} from '@spinach/next/types/mongo/balance';
+import {
+  UserBalanceActivity,
+  UserBalanceActivityByTxnType,
+  UserBalanceActivityMap,
+} from '@spinach/next/types/mongo/balance';
 import {DataLookBackRequest} from '@spinach/next/types/userData/load';
 
 
@@ -55,7 +59,7 @@ export const getUserBalanceActivityMap = async ({
     currentBalance,
   ]));
 
-  const aggregated = userBalanceCollection.aggregate<UserBalanceActivityAggregatedGroupByType>([
+  const aggregated = await userBalanceCollection.aggregate<UserBalanceActivityAggregatedGroupByType>([
     {
       $match: {
         userId: {$in: userIdsToCheck},
@@ -79,13 +83,23 @@ export const getUserBalanceActivityMap = async ({
         },
       },
     },
-  ]);
+  ]).toArray();
 
-  return Object.fromEntries(await aggregated.map(({_id, byTxnType}) => [
+  const activityMap = new Map(aggregated.map(({_id, byTxnType}) => [
     _id.toHexString(),
-    {
-      byTxnType: Object.fromEntries(byTxnType.map(({type, total}) => [type, total])),
-      currentBalance: currentBalanceMap.get(_id.toHexString()) ?? 0,
-    } satisfies UserBalanceActivity,
-  ]).toArray());
+    Object.fromEntries(byTxnType.map(({type, total}) => [type, total])) as UserBalanceActivityByTxnType,
+  ]));
+
+  // Ensure all userIdsToCheck are included in the result
+  return Object.fromEntries(userIdsToCheck.map((userId) => {
+    const userIdStr = userId.toHexString();
+
+    return [
+      userIdStr,
+      {
+        byTxnType: activityMap.get(userIdStr) ?? {},
+        currentBalance: currentBalanceMap.get(userIdStr) ?? 0,
+      } satisfies UserBalanceActivity,
+    ];
+  }));
 };
