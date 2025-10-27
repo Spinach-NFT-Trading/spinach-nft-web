@@ -25,7 +25,12 @@
           "Title": "Xác nhận giao dịch NFT"
         },
         "Position": {
-          "Title": "Danh sách nắm giữ NFT"
+          "Base": {
+            "Title": "Danh sách nắm giữ NFT"
+          },
+          "Limited": {
+            "Title": "Vị trí NFT có thời hạn"
+          }
         }
       },
       "Profile": {
@@ -234,6 +239,14 @@
         "LimitedMessage": {
           "Line1": "Đây là NFT giới hạn thời gian. NFT giới hạn thời gian không thể mua bằng GOLD và phải thanh toán ngay sau khi xác nhận mua hàng.",
           "Line2": "Vui lòng xác nhận rằng bạn chấp nhận các điều kiện trên trước khi nhấp vào mua."
+        }
+      }
+    },
+    "NftPosition": {
+      "Limited": {
+        "Tabs": {
+          "Pending": "Chờ chuyển khoản",
+          "Completed": "Đã nhận được"
         }
       }
     },

@@ -25,7 +25,12 @@
           "Title": "NFT 交易確認"
         },
         "Position": {
-          "Title": "持有遊戲點數列表"
+          "Base": {
+            "Title": "持有遊戲點數列表"
+          },
+          "Limited": {
+            "Title": "限時 NFT 持倉"
+          }
         }
       },
       "Profile": {
@@ -234,6 +239,14 @@
         "LimitedMessage": {
           "Line1": "此NFT為限時NFT。限時NFT無法使用GOLD購買，並且確認購買後需要盡速付款。",
           "Line2": "請確認接受上述事項再點擊購買。"
+        }
+      }
+    },
+    "NftPosition": {
+      "Limited": {
+        "Tabs": {
+          "Pending": "待匯款",
+          "Completed": "已獲得"
         }
       }
     },

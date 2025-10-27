@@ -25,7 +25,12 @@
           "Title": "游戏点数交易确认"
         },
         "Position": {
-          "Title": "游戏点数持有列表"
+          "Base": {
+            "Title": "游戏点数持有列表"
+          },
+          "Limited": {
+            "Title": "限时 NFT 持仓"
+          }
         }
       },
       "Profile": {
@@ -234,6 +239,14 @@
         "LimitedMessage": {
           "Line1": "此NFT为限时NFT。限时NFT无法使用GOLD购买，并且确认购买后需要尽速付款。",
           "Line2": "请确认接受上述事项再点击购买。"
+        }
+      }
+    },
+    "NftPosition": {
+      "Limited": {
+        "Tabs": {
+          "Pending": "待汇款",
+          "Completed": "已获得"
         }
       }
     },

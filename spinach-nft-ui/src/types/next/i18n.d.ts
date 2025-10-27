@@ -18,7 +18,10 @@ declare global {
           Login: I18nPageMetadata,
           Nft: {
             Exchange: I18nPageMetadata,
-            Position: I18nPageMetadata,
+            Position: {
+              Base: I18nPageMetadata,
+              Limited: I18nPageMetadata,
+            },
           },
           Profile: I18nPageMetadata,
           Register: I18nPageMetadata,
@@ -210,6 +213,14 @@ declare global {
             LimitedMessage: {
               Line1: string,
               Line2: string,
+            },
+          },
+        },
+        NftPosition: {
+          Limited: {
+            Tabs: {
+              Pending: string,
+              Completed: string,
             },
           },
         },

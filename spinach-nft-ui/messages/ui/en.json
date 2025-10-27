@@ -25,7 +25,12 @@
           "Title": "NFT transaction confirmation"
         },
         "Position": {
-          "Title": "NFT holdings list"
+          "Base": {
+            "Title": "NFT holdings list"
+          },
+          "Limited": {
+            "Title": "Limited NFT Positions"
+          }
         }
       },
       "Profile": {
@@ -234,6 +239,14 @@
         "LimitedMessage": {
           "Line1": "This is a limited-time NFT. Limited-time NFTs cannot be purchased with GOLD, and payment must be made promptly after confirming the purchase.",
           "Line2": "Please confirm that you accept the above conditions before clicking purchase."
+        }
+      }
+    },
+    "NftPosition": {
+      "Limited": {
+        "Tabs": {
+          "Pending": "Pending Payment",
+          "Completed": "Completed"
         }
       }
     },

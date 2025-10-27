@@ -25,7 +25,12 @@
           "Title": "NFT取引確認"
         },
         "Position": {
-          "Title": "NFT保有リスト"
+          "Base": {
+            "Title": "NFT保有リスト"
+          },
+          "Limited": {
+            "Title": "期間限定NFTポジション"
+          }
         }
       },
       "Profile": {
@@ -234,6 +239,14 @@
         "LimitedMessage": {
           "Line1": "このNFTは期間限定NFTです。期間限定NFTはGOLDで購入することができず、購入確認後は速やかに支払いを行う必要があります。",
           "Line2": "上記の条件を承諾した上で購入をクリックしてください。"
+        }
+      }
+    },
+    "NftPosition": {
+      "Limited": {
+        "Tabs": {
+          "Pending": "送金待ち",
+          "Completed": "取得済み"
         }
       }
     },
