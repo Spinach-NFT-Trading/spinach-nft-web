@@ -1,12 +1,19 @@
 import {ObjectId} from 'mongodb';
 
 
-export type NftInfoModel = {
+export type NftInfoLimitedMeta = {
+  isLimited: false,
+  bankAccount?: never,
+} | {
+  isLimited: true,
+  bankAccount: string,
+};
+
+export type NftInfoModel = NftInfoLimitedMeta & {
   seqId: number,
   tokenId: number,
   maker: string,
   image: string,
-  isLimited: boolean,
 };
 
 export type NftOnSaleModel = {

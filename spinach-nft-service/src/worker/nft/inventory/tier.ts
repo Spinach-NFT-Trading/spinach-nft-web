@@ -1,7 +1,6 @@
 import {nftOnSaleCollection} from '@spinach/common/controller/collections/nft';
+import {listNft} from '@spinach/common/controller/nft/list/mint';
 import {NftPriceTierModel} from '@spinach/common/types/data/nft';
-
-import {listNft} from '@spinach/service/worker/nft/inventory/list';
 
 
 type EnsureInventoryOfTierOpts = {
@@ -15,5 +14,7 @@ export const ensureInventoryOfTier = async ({
 
   const nftOnSaleOfPrice = await nftOnSaleCollection.countDocuments({price});
 
-  await Promise.all([...Array(quantity - nftOnSaleOfPrice).keys()].map(() => listNft({price})));
+  await Promise.all([
+    ...Array(quantity - nftOnSaleOfPrice).keys()].map(() => listNft({price, isLimited: false})),
+  );
 };
