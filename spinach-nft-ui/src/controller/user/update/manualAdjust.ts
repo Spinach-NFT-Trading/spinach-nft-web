@@ -45,7 +45,7 @@ export const recordManualBalanceAdjustment = async ({
   if (!userInfo) {
     return 'userInfoNotFound';
   }
-  if (userInfo.recruitedBy !== executorUserId) {
+  if (userInfo.recruitedBy !== executorUserId || userInfo.isMod) {
     return 'unauthorized';
   }
 
