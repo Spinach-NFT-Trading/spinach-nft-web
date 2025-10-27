@@ -2,26 +2,20 @@ import {getGoldAsset, recordUserDataAfterNftTxn} from '@spinach/common/controlle
 import {nftOnSaleCollection, nftTxnCollection} from '@spinach/common/controller/collections/nft';
 import {Mongo} from '@spinach/common/controller/const';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
-import {NftTxnModel} from '@spinach/common/types/data/nft';
+import {NftOnSaleModel, NftTxnModel} from '@spinach/common/types/data/nft';
 import {ObjectId} from 'mongodb';
 
-import {getNftOnSale} from '@spinach/next/controller/nft/onSale';
 
-
-type BuyNftOpts = {
+export type HandleNormalNftPurchaseOpts = {
   buyer: ObjectId,
-  nftId: ObjectId,
+  nftOnSale: NftOnSaleModel,
 };
 
-export const buyNft = async ({buyer, nftId}: BuyNftOpts): Promise<ApiErrorCode | null> => {
-  const [balance, nftOnSale] = await Promise.all([
-    getGoldAsset({userId: buyer}),
-    getNftOnSale(nftId),
-  ]);
-
-  if (!nftOnSale) {
-    return 'nftNotOnSale';
-  }
+export const handleNormalNftPurchase = async ({
+  buyer,
+  nftOnSale,
+}: HandleNormalNftPurchaseOpts): Promise<ApiErrorCode | null> => {
+  const balance = await getGoldAsset({userId: buyer});
 
   if (!balance || balance.current <= nftOnSale.price) {
     return 'goldNotEnough';
@@ -51,3 +45,4 @@ export const buyNft = async ({buyer, nftId}: BuyNftOpts): Promise<ApiErrorCode |
 
   return null;
 };
+

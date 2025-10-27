@@ -5,7 +5,7 @@ import {ObjectId} from 'mongodb';
 import {setGlobalConfig} from '@spinach/next/controller/global/config';
 import {recordGoldPendingTxn} from '@spinach/next/controller/gold/pending';
 import {markGoldPurchaseTwBankRecord, recordGoldPurchaseTwBankTxn} from '@spinach/next/controller/gold/twBank';
-import {buyNft} from '@spinach/next/controller/nft/action/buy';
+import {buyNft} from '@spinach/next/controller/nft/action/buy/main';
 import {sellNft} from '@spinach/next/controller/nft/action/sell';
 import {deleteNftExchangeToken, updateNftExchangeToken} from '@spinach/next/controller/nft/request/token';
 import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
