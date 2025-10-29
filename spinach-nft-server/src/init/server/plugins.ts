@@ -1,24 +1,25 @@
 import {fastifyCors} from '@fastify/cors';
 import {fastifyHelmet} from '@fastify/helmet';
 import multipart, {FastifyMultipartBaseOptions} from '@fastify/multipart';
-import {FastifyInstance} from 'fastify';
 
+import {Server} from '@spinach/server/const';
 import {CorsAllowedOrigins} from '@spinach/server/env';
 
 
-export const registerPlugins = (server: FastifyInstance) => {
+export const registerPlugins = async () => {
   const logObj = {origins: CorsAllowedOrigins};
-  server.log.info(logObj, 'CORS allowed origins: %s', logObj.origins);
+  Server.log.info(logObj, 'CORS allowed origins: %s', logObj.origins);
 
-  server.register(fastifyHelmet);
-  server.register(
+  await Server.register(fastifyHelmet);
+  await Server.register(
     fastifyCors,
     {
       origin: CorsAllowedOrigins,
       methods: ['GET', 'POST'],
     },
   );
-  server.register(require('@fastify/swagger'), {
+  await Server.register(require('@fastify/swagger'), {
+    prefix: '/docs',
     openapi: {
       openapi: '3.0.0',
       info: {
@@ -51,7 +52,8 @@ export const registerPlugins = (server: FastifyInstance) => {
       },
     },
   });
-  server.register(
+  await Server.register(require('@fastify/swagger-ui'));
+  await Server.register(
     multipart,
     {
       limits: {

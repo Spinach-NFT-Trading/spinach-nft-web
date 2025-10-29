@@ -16,6 +16,7 @@ export const addSmsVerifyFinalize = () => {
     apiPath.auth.sms.finalize,
     {
       schema: {
+        hide: true,
         body: SmsVerifyFinalizeRequestSchema,
         response: {
           200: SmsVerifyFinalizeResponseSchema,

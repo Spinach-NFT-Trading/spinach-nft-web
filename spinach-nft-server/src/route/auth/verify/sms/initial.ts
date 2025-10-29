@@ -20,6 +20,7 @@ export const addSmsVerifyInitial = () => {
     apiPath.auth.sms.initial,
     {
       schema: {
+        hide: true,
         body: SmsVerifyInitialRequestSchema,
         response: {
           200: SmsVerifyInitialResponseSchema,

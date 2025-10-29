@@ -17,6 +17,7 @@ export const addAuthRegister = () => {
     apiPath.auth.register,
     {
       schema: {
+        hide: true,
         body: UserRegisterRequestSchema,
         response: {
           200: UserRegisterResponseSchema,

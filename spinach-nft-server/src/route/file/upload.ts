@@ -15,6 +15,7 @@ export const addFileUploadAction = () => {
     apiPath.file.upload,
     {
       schema: {
+        hide: true,
         response: {
           200: FileUploadResponseSchema,
         },

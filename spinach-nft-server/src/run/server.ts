@@ -11,6 +11,7 @@ type RunFastifyOpts = {
 
 export const runFastify = async ({server, host, port}: RunFastifyOpts) => {
   try {
+    await server.ready();
     await server.listen({host, port});
     const addresses = server.addresses();
 

@@ -15,6 +15,7 @@ export const addAuthLogin = () => {
     apiPath.auth.login,
     {
       schema: {
+        hide: true,
         body: UserLoginRequestSchema,
         response: {
           200: UserLoginResponseSchema,
