@@ -9,7 +9,7 @@ import {Alert} from '@spinach/next/components/shared/common/alert';
 import {useI18nApiErrorTranslator} from '@spinach/next/hooks/i18n/apiError/main';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {NftExchangeMatchedModelAtClient} from '@spinach/next/types/nft';
-import {formatInt} from '@spinach/next/utils/number/format';
+import {formatInt} from '@spinach/next/utils/number/format/regular';
 
 
 type Props = {

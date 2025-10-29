@@ -3,7 +3,7 @@ import React from 'react';
 import {NftExchangeQueuedData} from '@spinach/common/types/data/nft/queue';
 
 import {CountUp} from '@spinach/next/components/shared/time/countUp';
-import {formatInt} from '@spinach/next/utils/number/format';
+import {formatInt} from '@spinach/next/utils/number/format/regular';
 
 
 type Props = {

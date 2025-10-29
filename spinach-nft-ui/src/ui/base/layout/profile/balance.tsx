@@ -3,7 +3,7 @@ import React from 'react';
 import CurrencyDollarIcon from '@heroicons/react/24/outline/CurrencyDollarIcon';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
-import {formatFloat2} from '@spinach/next/utils/number/format';
+import {formatFloat2} from '@spinach/next/utils/number/format/regular';
 
 
 type Props = {

@@ -7,7 +7,7 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {NextImage} from '@spinach/next/components/shared/common/image/main';
 import {NftExchangeMatchedModelAtClient} from '@spinach/next/types/nft';
 import {AccountNftExchangeConfirmPopup} from '@spinach/next/ui/account/nft/exchange/popup';
-import {formatInt} from '@spinach/next/utils/number/format';
+import {formatInt} from '@spinach/next/utils/number/format/regular';
 
 
 type Props = {

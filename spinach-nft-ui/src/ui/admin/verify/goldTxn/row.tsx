@@ -8,7 +8,7 @@ import {useTranslations} from 'next-intl';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {AdminVerifyDataRowCommonProps} from '@spinach/next/ui/admin/verify/common/type';
 import {formatUserName} from '@spinach/next/utils/data/user';
-import {formatInt} from '@spinach/next/utils/number/format';
+import {formatInt} from '@spinach/next/utils/number/format/regular';
 
 
 type Props = AdminVerifyDataRowCommonProps<{

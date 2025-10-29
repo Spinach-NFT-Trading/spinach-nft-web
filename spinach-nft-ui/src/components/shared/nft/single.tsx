@@ -7,7 +7,7 @@ import {Flex} from '@spinach/next/components/layout/flex/common';
 import {FlexLink} from '@spinach/next/components/layout/flex/link';
 import {NextImage} from '@spinach/next/components/shared/common/image/main';
 import {NftListingData} from '@spinach/next/types/nft';
-import {formatInt} from '@spinach/next/utils/number/format';
+import {formatInt} from '@spinach/next/utils/number/format/regular';
 
 
 export type Props = {

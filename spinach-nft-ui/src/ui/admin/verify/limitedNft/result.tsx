@@ -13,7 +13,7 @@ import {
   AdminVerifyLimitedNftFilterData,
   AdminVerifyLimitedNftFilterInput,
 } from '@spinach/next/ui/admin/verify/limitedNft/type';
-import {formatInt} from '@spinach/next/utils/number/format';
+import {formatInt} from '@spinach/next/utils/number/format/regular';
 
 
 type Props = {

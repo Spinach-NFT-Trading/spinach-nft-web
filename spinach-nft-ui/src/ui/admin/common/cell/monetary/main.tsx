@@ -4,7 +4,7 @@ import {Nullable} from '@spinach/common/types/common/typing';
 import {clsx} from 'clsx';
 
 import {adminMemberMonetaryCellStyle} from '@spinach/next/ui/admin/common/cell/monetary/const';
-import {formatInt} from '@spinach/next/utils/number/format';
+import {formatInt} from '@spinach/next/utils/number/format/regular';
 
 
 type Props = {

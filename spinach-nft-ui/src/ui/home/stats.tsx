@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
-import {formatToAbbreviation} from '@spinach/next/utils/number/format';
+import {formatToAbbreviation} from '@spinach/next/utils/number/format/regular';
 
 
 type Props = {

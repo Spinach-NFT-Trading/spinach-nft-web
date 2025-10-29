@@ -11,7 +11,7 @@ import {goldExchangeChannelI18nId} from '@spinach/next/const/gold';
 import {GoldExchangeConfirmPopup} from '@spinach/next/ui/gold/exchange/confirm';
 import {GoldExchangeCryptoTutorial} from '@spinach/next/ui/gold/exchange/tutorial';
 import {ExchangeAmount} from '@spinach/next/ui/gold/exchange/type';
-import {formatFloat2, formatFloat3} from '@spinach/next/utils/number/format';
+import {formatFloat2, formatFloat3} from '@spinach/next/utils/number/format/regular';
 
 
 const defaultSource = 1000;
