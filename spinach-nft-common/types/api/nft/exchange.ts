@@ -2,7 +2,7 @@ import {Static, Type} from '@sinclair/typebox';
 
 import {UserIdSchemaBase} from '@spinach/common/types/api/auth/common';
 import {UuidSchemaBase} from '@spinach/common/types/common/uuid';
-import {BankDetailsSchema} from '@spinach/common/types/data/user/bank';
+import {BankPublicDetailsSchema} from '@spinach/common/types/data/user/bank';
 import {generateApiFailableSchema} from '@spinach/common/utils/api/schema';
 
 
@@ -31,7 +31,7 @@ export const NftExchangeResultOfFoundSchema = Type.Object(
       description: '配對到的交換對象使用者 ID。',
     },
     bankDetails: Type.Array(
-      BankDetailsSchema,
+      BankPublicDetailsSchema,
       {description: '配對到的交換對象銀行帳戶資訊清單。'},
     ),
   },

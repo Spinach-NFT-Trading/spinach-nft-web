@@ -8,7 +8,7 @@ import {requestNftExchangeGetNftSold} from '@spinach/common/controller/nft/excha
 import {requestNftExchangeSingleSendWebhook} from '@spinach/common/controller/nft/exchange/single/sendWebhook';
 import {RequestNftExchangeResult} from '@spinach/common/controller/nft/exchange/single/type';
 import {NftExchangeRequestCommonOpts} from '@spinach/common/controller/nft/exchange/type';
-import {BankDetails, BankPublicDetails} from '@spinach/common/types/data/user/bank';
+import {BankDetails} from '@spinach/common/types/data/user/bank';
 
 
 export const requestNftExchangeSingle = async ({
@@ -66,12 +66,7 @@ export const requestNftExchangeSingle = async ({
 
       await requestNftExchangeSingleSendWebhook({
         requestToken: tokenModel,
-        payload: {
-          requestUuid,
-          amount,
-          // Return public details only
-          bankDetails: bankDetails.map(({code, account}): BankPublicDetails => ({code, account})),
-        },
+        payload: {requestUuid, amount, bankDetails},
       });
     });
   });

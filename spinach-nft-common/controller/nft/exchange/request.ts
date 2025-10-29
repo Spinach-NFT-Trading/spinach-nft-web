@@ -5,6 +5,7 @@ import {requestNftExchangeSingle} from '@spinach/common/controller/nft/exchange/
 import {NftExchangeRequestCommonOpts} from '@spinach/common/controller/nft/exchange/type';
 import {NftExchangeRequest, NftExchangeResult} from '@spinach/common/types/api/nft/exchange';
 import {NftExchangeTokenModel} from '@spinach/common/types/data/nft/token';
+import {BankPublicDetails} from '@spinach/common/types/data/user/bank';
 
 
 const queueNftExchangeRequest = async ({
@@ -46,6 +47,6 @@ export const requestNftExchange = async ({
   return {
     result: 'found',
     userId: exchangeResult.nftSold.owner.toHexString(),
-    bankDetails: exchangeResult.bankDetails,
+    bankDetails: exchangeResult.bankDetails.map(({code, account}): BankPublicDetails => ({code, account})),
   };
 };
