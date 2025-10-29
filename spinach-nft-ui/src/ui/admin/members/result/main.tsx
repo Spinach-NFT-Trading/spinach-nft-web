@@ -25,12 +25,9 @@ type Props = {
 };
 
 export const AdminMembersResults = ({user, input, memberInfo, lookBackInputControl}: Props) => {
-  const {
-    key,
-    value,
-  } = input;
+  const {key, value} = input;
   const {members} = memberInfo;
-  const {act, status, setInputAndSend} = lookBackInputControl;
+  const {act, status, setInputAndSend, refetch} = lookBackInputControl;
 
   const [error, setError] = React.useState<ApiErrorCode | null>(null);
   const [
@@ -61,6 +58,7 @@ export const AdminMembersResults = ({user, input, memberInfo, lookBackInputContr
           ...original,
           show,
         }))}
+        refetch={refetch}
       />
       {error && <Alert>{translateApiError(error)}</Alert>}
       <OverflowableTable

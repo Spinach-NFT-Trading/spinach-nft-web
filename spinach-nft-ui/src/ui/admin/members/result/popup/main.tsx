@@ -11,15 +11,19 @@ type Props = {
   user: CommonUserData,
   state: AdminMemberPopupState,
   setShow: (show: boolean) => void,
+  refetch: () => void,
 };
 
-export const AdminMemberPopup = ({user, state, setShow}: Props) => {
+export const AdminMemberPopup = ({user, state, setShow, refetch}: Props) => {
   const {show, member} = state;
 
   return (
     <Popup show={show} setShow={setShow}>
       <Flex noFullWidth className="max-h-[70vh]">
-        {member && <AdminMemberPopupContent {...state} actor={user} member={member} setShow={setShow}/>}
+        {
+          member &&
+          <AdminMemberPopupContent {...state} actor={user} member={member} setShow={setShow} refetch={refetch}/>
+        }
       </Flex>
     </Popup>
   );

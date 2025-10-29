@@ -15,4 +15,5 @@ export type AdminLookBackInputControl = UseUserDataActorReturn & {
   state: AdminLookBackInputState,
   setState: React.Dispatch<React.SetStateAction<AdminLookBackInputState>>,
   setInputAndSend: (getState: (original: DataLookBackRequest) => DataLookBackRequest) => void,
+  refetch: () => void,
 };

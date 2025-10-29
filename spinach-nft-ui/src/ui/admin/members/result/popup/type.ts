@@ -7,6 +7,7 @@ export type AdminMemberPopupProps = {
   actor: CommonUserData,
   member: UserInfo,
   setShow: (show: boolean) => void,
+  refetch: () => void,
 };
 
 export type AdminMemberPopupContentProps = AdminMemberPopupProps & {

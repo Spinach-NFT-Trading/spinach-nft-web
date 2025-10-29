@@ -52,6 +52,18 @@ export const useAdminLookBackInput = ({
     });
   }, [state.timestamp]);
 
+  const refetch = () => {
+    if (!act) {
+      void signIn();
+      return;
+    }
+
+    void act({
+      action: 'load',
+      options: getDataLoadingOpts(state.control),
+    });
+  };
+
   const setInputAndSend = (
     getRequest: (original: DataLookBackRequest) => DataLookBackRequest,
   ) => setState((original) => {
@@ -64,5 +76,5 @@ export const useAdminLookBackInput = ({
     };
   });
 
-  return {...actorReturn, now, state, setState, setInputAndSend};
+  return {...actorReturn, now, state, setState, setInputAndSend, refetch};
 };

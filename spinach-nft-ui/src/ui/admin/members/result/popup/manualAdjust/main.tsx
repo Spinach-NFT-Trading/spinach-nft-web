@@ -5,6 +5,7 @@ import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
+import {FlexForm} from '@spinach/next/components/layout/flex/form';
 import {Alert} from '@spinach/next/components/shared/common/alert';
 import {InputBox} from '@spinach/next/components/shared/common/input/box';
 import {recordManualBalanceAdjustment} from '@spinach/next/controller/user/update/manualAdjust';
@@ -13,7 +14,7 @@ import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
 import {AdminMemberPopupProps} from '@spinach/next/ui/admin/members/result/popup/type';
 
 
-export const AdminMemberManualAdjustPopup = ({actor, member, setShow}: AdminMemberPopupProps) => {
+export const AdminMemberManualAdjustPopup = ({actor, member, setShow, refetch}: AdminMemberPopupProps) => {
   const {act, status} = useUserDataActor();
 
   const [value, setValue] = React.useState(0);
@@ -30,7 +31,20 @@ export const AdminMemberManualAdjustPopup = ({actor, member, setShow}: AdminMemb
   return (
     <Flex className="gap-1">
       {error && <Alert>{translateApiError(error)}</Alert>}
-      <Flex direction="row" className="items-center gap-1">
+      <FlexForm direction="row" className="items-center gap-1" onSubmit={async () => {
+        const result = await recordManualBalanceAdjustment({
+          executorUserId: actor.id,
+          targetUserId: member.id,
+          amount: value,
+        });
+        if (result == null) {
+          setShow(false);
+          refetch();
+          return;
+        }
+
+        setError(result);
+      }}>
         <span>{t('Balance')}</span>
         <InputBox
           value={value.toString()}
@@ -46,25 +60,13 @@ export const AdminMemberManualAdjustPopup = ({actor, member, setShow}: AdminMemb
           }}
         />
         <button
+          type="submit"
           className="button-clickable-bg ml-auto rounded-lg p-1"
-          onClick={async () => {
-            const result = await recordManualBalanceAdjustment({
-              executorUserId: actor.id,
-              targetUserId: member.id,
-              amount: value,
-            });
-            if (result == null) {
-              setShow(false);
-              return;
-            }
-
-            setError(result);
-          }}
           disabled={status === 'processing'}
         >
           <CloudArrowUpIcon className="size-6"/>
         </button>
-      </Flex>
+      </FlexForm>
     </Flex>
   );
 };
