@@ -7,7 +7,7 @@ import {useTranslations} from 'next-intl';
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {FlexForm} from '@spinach/next/components/layout/flex/form';
 import {Alert} from '@spinach/next/components/shared/common/alert';
-import {InputBox} from '@spinach/next/components/shared/common/input/box';
+import {NumberInput} from '@spinach/next/components/shared/common/input/number/main';
 import {recordManualBalanceAdjustment} from '@spinach/next/controller/user/update/manualAdjust';
 import {useI18nApiErrorTranslator} from '@spinach/next/hooks/i18n/apiError/main';
 import {useUserDataActor} from '@spinach/next/hooks/userData/actor';
@@ -45,19 +45,12 @@ export const AdminMemberManualAdjustPopup = ({actor, member, setShow, refetch}: 
 
         setError(result);
       }}>
-        <span>{t('Balance')}</span>
-        <InputBox
-          value={value.toString()}
-          type="number"
-          className="w-24 text-center"
-          onChange={({target}) => {
-            if (!target.value) {
-              setValue(0);
-              return;
-            }
-
-            setValue(parseFloat(target.value));
-          }}
+        <span className="whitespace-nowrap">{t('Balance')}</span>
+        <NumberInput
+          type="required"
+          value={value}
+          classOfInputWidth="w-full"
+          setValue={setValue}
         />
         <button
           type="submit"
