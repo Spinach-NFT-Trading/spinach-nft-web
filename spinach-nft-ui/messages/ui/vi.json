@@ -375,7 +375,8 @@
           "BalanceHistory": "Lịch sử số dư",
           "ManualAdjust": "Manual Balance Adjustment",
           "IdVerificationImages": "身分驗證圖片",
-          "SetPassword": "Set Password"
+          "SetPassword": "Set Password",
+          "SetRecruiter": "Đặt người giới thiệu"
         },
         "Header": {
           "UserId": "tên tài khoản",
@@ -450,7 +451,23 @@
             "UserId": "User ID",
             "Password": "Password",
             "Confirm": "Confirm Changing the Password"
+          },
+          "SetRecruiter": {
+            "CurrentRecruiter": "Người giới thiệu hiện tại",
+            "NoResults": "Không có",
+            "SearchUsername": "Tìm kiếm tên người dùng",
+            "ConfirmMessage": "Bạn có chắc chắn muốn thay đổi người giới thiệu thành:",
+            "Confirm": "Xác nhận",
+            "Cancel": "Hủy"
           }
+        },
+        "IdVerificationImages": {
+          "idFront": "Mặt trước ID",
+          "idBack": "Mặt sau ID",
+          "handheld": "Cầm ID",
+          "secondaryFront": "Mặt trước ID phụ",
+          "Loading": "Đang tải hình ảnh...",
+          "NoImage": "Không có hình ảnh"
         },
         "Message": {
           "NoAssociatedBanks": "Không có tài khoản ngân hàng liên kết"

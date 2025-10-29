@@ -9,6 +9,7 @@ import {AdminMemberInfoPopup} from '@spinach/next/ui/admin/members/result/popup/
 import {AdminMemberManualAdjustPopup} from '@spinach/next/ui/admin/members/result/popup/manualAdjust/main';
 import {AdminMemberNftTxnPopup} from '@spinach/next/ui/admin/members/result/popup/nftTxn/main';
 import {AdminMemberSetPasswordPopup} from '@spinach/next/ui/admin/members/result/popup/setPassword';
+import {AdminMemberSetRecruiterPopup} from '@spinach/next/ui/admin/members/result/popup/setRecruiter/main';
 import {AdminMemberPopupContentProps} from '@spinach/next/ui/admin/members/result/popup/type';
 
 
@@ -39,6 +40,10 @@ export const AdminMemberPopupContent = ({type, ...props}: AdminMemberPopupConten
 
   if (type === 'setPassword') {
     return <AdminMemberSetPasswordPopup {...props}/>;
+  }
+
+  if (type === 'setRecruiter') {
+    return <AdminMemberSetRecruiterPopup {...props}/>;
   }
 
 

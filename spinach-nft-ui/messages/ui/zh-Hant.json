@@ -375,7 +375,8 @@
           "BalanceHistory": "餘額歷史",
           "ManualAdjust": "手動調整餘額",
           "IdVerificationImages": "身分驗證圖片",
-          "SetPassword": "設定密碼"
+          "SetPassword": "設定密碼",
+          "SetRecruiter": "設定代理"
         },
         "Header": {
           "UserId": "用戶名稱",
@@ -450,6 +451,14 @@
             "UserId": "使用者 ID",
             "Password": "密碼",
             "Confirm": "確認更改密碼"
+          },
+          "SetRecruiter": {
+            "CurrentRecruiter": "目前代理",
+            "NoResults": "無結果",
+            "SearchUsername": "搜尋使用者 ID",
+            "ConfirmMessage": "確定要將代理更改為 <username></username> 嗎？",
+            "Confirm": "確認",
+            "Cancel": "取消"
           }
         },
         "Message": {

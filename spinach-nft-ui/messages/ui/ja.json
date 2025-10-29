@@ -375,7 +375,8 @@
           "BalanceHistory": "残高履歴",
           "ManualAdjust": "Manual Balance Adjustment",
           "IdVerificationImages": "身分驗證圖片",
-          "SetPassword": "Set Password"
+          "SetPassword": "Set Password",
+          "SetRecruiter": "リクルーターを設定"
         },
         "Header": {
           "UserId": "ユーザー名",
@@ -450,7 +451,23 @@
             "UserId": "User ID",
             "Password": "Password",
             "Confirm": "Confirm Changing the Password"
+          },
+          "SetRecruiter": {
+            "CurrentRecruiter": "現在のリクルーター",
+            "NoResults": "なし",
+            "SearchUsername": "ユーザー名を検索",
+            "ConfirmMessage": "リクルーターを次に変更してもよろしいですか:",
+            "Confirm": "確認",
+            "Cancel": "キャンセル"
           }
+        },
+        "IdVerificationImages": {
+          "idFront": "ID表面",
+          "idBack": "ID裏面",
+          "handheld": "手持ちID",
+          "secondaryFront": "第二ID表面",
+          "Loading": "画像を読み込んでいます...",
+          "NoImage": "画像がありません"
         },
         "Message": {
           "NoAssociatedBanks": "関連付けられた銀行口座がありません"

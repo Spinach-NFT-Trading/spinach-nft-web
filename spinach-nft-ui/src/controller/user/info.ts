@@ -1,8 +1,9 @@
+'use server';
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
 import {throwIfNotPrivileged} from '@spinach/common/controller/user/permission';
 import {UserDataMap} from '@spinach/common/types/common/user/data';
 import {UserInfo} from '@spinach/common/types/common/user/info';
-import {toUserData} from '@spinach/common/utils/data/user';
+import {toUserData, toUserInfo} from '@spinach/common/utils/data/user';
 import {ObjectId} from 'mongodb';
 
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
@@ -25,5 +26,28 @@ export const getUnverifiedUsers = async ({executorUserId}: GetUnverifiedUsersOpt
       ...data,
       id: _id.toHexString(),
     }))
+    .toArray();
+};
+
+type SearchAgentsByUsernameOpts = ControllerRequireUserIdOpts & {
+  selfUserId: string,
+  usernamePattern: string,
+};
+
+export const searchAgentsByUsername = async ({
+  executorUserId,
+  selfUserId,
+  usernamePattern,
+}: SearchAgentsByUsernameOpts): Promise<UserInfo[]> => {
+  await throwIfNotPrivileged(executorUserId);
+
+  return await userInfoCollection
+    .find({
+      _id: {$ne: new ObjectId(selfUserId)},
+      username: {$regex: usernamePattern, $options: 'i'},
+      isAgent: true,
+    })
+    .limit(10)
+    .map(toUserInfo)
     .toArray();
 };

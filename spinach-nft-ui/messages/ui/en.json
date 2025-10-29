@@ -375,7 +375,8 @@
           "BalanceHistory": "Balance history",
           "ManualAdjust": "Manual Balance Adjustment",
           "IdVerificationImages": "Verification Images",
-          "SetPassword": "Set Password"
+          "SetPassword": "Set Password",
+          "SetRecruiter": "Set Recruiter"
         },
         "Header": {
           "UserId": "Username",
@@ -450,6 +451,14 @@
             "UserId": "User ID",
             "Password": "Password",
             "Confirm": "Confirm Changing the Password"
+          },
+          "SetRecruiter": {
+            "CurrentRecruiter": "Current Recruiter",
+            "NoResults": "None",
+            "SearchUsername": "Search Username",
+            "ConfirmMessage": "Are you sure you want to change the recruiter to:",
+            "Confirm": "Confirm",
+            "Cancel": "Cancel"
           }
         },
         "IdVerificationImages": {

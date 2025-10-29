@@ -375,7 +375,8 @@
           "BalanceHistory": "ประวัติยอดคงเหลือ",
           "ManualAdjust": "Manual Balance Adjustment",
           "IdVerificationImages": "身分驗證圖片",
-          "SetPassword": "Set Password"
+          "SetPassword": "Set Password",
+          "SetRecruiter": "ตั้งค่าผู้แนะนำ"
         },
         "Header": {
           "UserId": "ชื่อผู้ใช้",
@@ -450,7 +451,23 @@
             "UserId": "User ID",
             "Password": "Password",
             "Confirm": "Confirm Changing the Password"
+          },
+          "SetRecruiter": {
+            "CurrentRecruiter": "ผู้แนะนำปัจจุบัน",
+            "NoResults": "ไม่มี",
+            "SearchUsername": "ค้นหาชื่อผู้ใช้",
+            "ConfirmMessage": "คุณแน่ใจหรือไม่ว่าต้องการเปลี่ยนผู้แนะนำเป็น:",
+            "Confirm": "ยืนยัน",
+            "Cancel": "ยกเลิก"
           }
+        },
+        "IdVerificationImages": {
+          "idFront": "บัตรประชาชนด้านหน้า",
+          "idBack": "บัตรประชาชนด้านหลัง",
+          "handheld": "ถือบัตรประชาชน",
+          "secondaryFront": "เอกสารสำรองด้านหน้า",
+          "Loading": "กำลังโหลดรูปภาพ...",
+          "NoImage": "ไม่มีรูปภาพ"
         },
         "Message": {
           "NoAssociatedBanks": "ไม่มีบัญชีธนาคารที่เกี่ยวข้อง"

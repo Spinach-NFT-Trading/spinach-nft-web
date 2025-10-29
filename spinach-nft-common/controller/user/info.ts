@@ -1,3 +1,4 @@
+'use server';
 import {ObjectId} from 'mongodb';
 
 import {userInfoCollection} from '@spinach/common/controller/collections/user';
@@ -7,7 +8,7 @@ import {UserInfo} from '@spinach/common/types/common/user/info';
 import {toUserInfo} from '@spinach/common/utils/data/user';
 
 
-export const getUserById = (userId: string | undefined) => {
+export const getUserById = async (userId: string | undefined) => {
   return userInfoCollection.findOne({_id: new ObjectId(userId)});
 };
 

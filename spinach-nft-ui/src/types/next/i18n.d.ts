@@ -350,6 +350,7 @@ declare global {
               ManualAdjust: string,
               IdVerificationImages: string,
               SetPassword: string,
+              SetRecruiter: string,
             },
             Header: {
               UserId: string,
@@ -424,6 +425,14 @@ declare global {
                 UserId: string,
                 Password: string,
                 Confirm: string,
+              },
+              SetRecruiter: {
+                CurrentRecruiter: string,
+                SearchUsername: string,
+                NoResults: string,
+                ConfirmMessage: string,
+                Confirm: string,
+                Cancel: string,
               }
             },
             Message: {

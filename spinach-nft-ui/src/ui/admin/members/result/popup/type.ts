@@ -21,7 +21,8 @@ export type AdminMemberPopupType =
   'balanceHistory' |
   'manualAdjust' |
   'idVerificationImages' |
-  'setPassword';
+  'setPassword' |
+  'setRecruiter';
 
 export type AdminMemberPopupState = {
   type: AdminMemberPopupType,

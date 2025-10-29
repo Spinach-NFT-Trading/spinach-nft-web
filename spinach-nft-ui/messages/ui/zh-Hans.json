@@ -375,7 +375,8 @@
           "BalanceHistory": "余额历史",
           "ManualAdjust": "手動調整餘額",
           "IdVerificationImages": "身分驗證圖片",
-          "SetPassword": "Set Password"
+          "SetPassword": "Set Password",
+          "SetRecruiter": "设定招募者"
         },
         "Header": {
           "UserId": "用户名称",
@@ -450,6 +451,14 @@
             "UserId": "User ID",
             "Password": "Password",
             "Confirm": "Confirm Changing the Password"
+          },
+          "SetRecruiter": {
+            "CurrentRecruiter": "目前招募者",
+            "NoResults": "无",
+            "SearchUsername": "搜寻使用者名称",
+            "ConfirmMessage": "确定要将招募者更改为:",
+            "Confirm": "确认",
+            "Cancel": "取消"
           }
         },
         "IdVerificationImages": {
