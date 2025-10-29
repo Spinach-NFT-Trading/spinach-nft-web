@@ -1,7 +1,7 @@
 import {Static, Type} from '@sinclair/typebox';
 
 import {UuidSchemaBase} from '@spinach/common/types/common/uuid';
-import {BankDetailsSchema} from '@spinach/common/types/data/user/bank';
+import {BankPublicDetailsSchema} from '@spinach/common/types/data/user/bank';
 
 
 export const NftExchangeRequestWebhookPayloadSchema = Type.Object(
@@ -15,7 +15,7 @@ export const NftExchangeRequestWebhookPayloadSchema = Type.Object(
       description: '購買請求匹配到的 NFT 售價。必為正整數。',
     }),
     bankDetails: Type.Array(
-      BankDetailsSchema,
+      BankPublicDetailsSchema,
       {description: 'NFT 持有人的銀行帳戶資訊清單。'},
     ),
   },
