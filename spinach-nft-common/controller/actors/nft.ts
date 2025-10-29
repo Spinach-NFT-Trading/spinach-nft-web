@@ -1,6 +1,9 @@
+import {ClientSession} from 'mongodb';
+
 import {defaultNftPriceTiers} from '@spinach/common/const/nft';
 import {nftPriceTierCollection} from '@spinach/common/controller/collections/nft';
-import {NftPriceTierModel} from '@spinach/common/types/data/nft';
+import {userNftPositionCollection} from '@spinach/common/controller/collections/user';
+import {NftPriceTierModel, NftTxnModel} from '@spinach/common/types/data/nft';
 
 
 export const getNftPriceTiers = async (): Promise<NftPriceTierModel[]> => {
@@ -13,4 +16,17 @@ export const getNftPriceTiers = async (): Promise<NftPriceTierModel[]> => {
   }
 
   return tiers;
+};
+
+type UpsertNftPositionOpts = {
+  nftTxn: NftTxnModel,
+  session: ClientSession;
+};
+
+export const upsertNftPosition = ({nftTxn, session}: UpsertNftPositionOpts) => {
+  return userNftPositionCollection.updateOne(
+    {nftId: nftTxn.nftId},
+    {$set: {owner: nftTxn.to, price: nftTxn.price}},
+    {upsert: true, session},
+  );
 };

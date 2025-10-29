@@ -1,6 +1,7 @@
 import {ClientSession, ObjectId} from 'mongodb';
 
-import {userBalanceCollection, userNftPositionCollection} from '@spinach/common/controller/collections/user';
+import {upsertNftPosition} from '@spinach/common/controller/actors/nft';
+import {userBalanceCollection} from '@spinach/common/controller/collections/user';
 import {getUserInfoById} from '@spinach/common/controller/user/info';
 import {NftTxnModel} from '@spinach/common/types/data/nft';
 import {UserBalanceHistoryModelRequired} from '@spinach/common/types/data/user/balance';
@@ -109,9 +110,5 @@ export const recordUserDataAfterNftTxn = async ({nftTxnId, nftTxn, session}: Rec
     });
   }
 
-  await userNftPositionCollection.updateOne(
-    {nftId: nftTxn.nftId},
-    {$set: {owner: nftTxn.to, price: nftTxn.price}},
-    {upsert: true, session},
-  );
+  await upsertNftPosition({nftTxn, session});
 };
