@@ -1,9 +1,9 @@
 import {nftExchangeTokenCollection} from '@spinach/common/controller/collections/nft';
+import {getDataAsMap} from '@spinach/common/controller/utils/common';
 import {NftExchangeToken, NftExchangeTokenMap} from '@spinach/common/types/data/nft/token';
 import {ObjectId} from 'mongodb';
 import {v4} from 'uuid';
 
-import {getDataAsMap} from '@spinach/next/controller/common';
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 
 

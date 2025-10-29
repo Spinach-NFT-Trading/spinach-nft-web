@@ -5,12 +5,12 @@ import {getImageBlob} from '@spinach/common/controller/blob/get';
 import {txnGoldPurchaseTwBankRecordCollection} from '@spinach/common/controller/collections/txn';
 import {userBalanceCollection, userInfoCollection} from '@spinach/common/controller/collections/user';
 import {throwIfNotPrivileged} from '@spinach/common/controller/user/permission';
+import {getDataAsArray} from '@spinach/common/controller/utils/common';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {GoldPurchaseTwBankRecordClient} from '@spinach/common/types/data/gold/purchase';
 import {ObjectId} from 'mongodb';
 import {v4} from 'uuid';
 
-import {getDataAsArray} from '@spinach/next/controller/common';
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {RequestOfGoldExchangeTwBank} from '@spinach/next/types/userData/upload';
 

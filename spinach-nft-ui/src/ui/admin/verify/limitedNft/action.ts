@@ -1,12 +1,12 @@
 'use server';
 import {nftLimitedPendingCollection} from '@spinach/common/controller/collections/nft';
 import {throwIfNotPrivileged} from '@spinach/common/controller/user/permission';
+import {getDataAsArray} from '@spinach/common/controller/utils/common';
 import {NftLimitedPendingModel, NftLimitedPendingModelClient} from '@spinach/common/types/data/nft/limited';
 import {toUnique} from '@spinach/common/utils/array';
 import {toObject} from '@spinach/common/utils/object/make';
 import {ObjectId} from 'mongodb';
 
-import {getDataAsArray} from '@spinach/next/controller/common';
 import {getNftInfoMap} from '@spinach/next/controller/nft/info';
 import {getNftTxnByIds} from '@spinach/next/controller/nft/txn';
 import {getUserDataMap} from '@spinach/next/controller/user/info';

@@ -1,5 +1,6 @@
-import {Indexable} from '@spinach/common/types/common/typing';
 import {Collection, Document, Filter, Sort, WithId} from 'mongodb';
+
+import {Indexable} from '@spinach/common/types/common/typing';
 
 
 export const getDataAsMap = async <TData extends Document>(

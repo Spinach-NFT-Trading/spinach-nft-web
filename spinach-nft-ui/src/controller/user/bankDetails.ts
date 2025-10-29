@@ -3,12 +3,12 @@ import {getImageBlob} from '@spinach/common/controller/blob/get';
 import {userBankDetailsCollection, userInfoCollection} from '@spinach/common/controller/collections/user';
 import {getUserInfoById} from '@spinach/common/controller/user/info';
 import {throwIfNotPrivileged, throwIfNotElevated} from '@spinach/common/controller/user/permission';
+import {getDataAsArray, getDataAsMap} from '@spinach/common/controller/utils/common';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {BankDetails, BankDetailsMap} from '@spinach/common/types/data/user/bank';
 import {ObjectId} from 'mongodb';
 import {v4} from 'uuid';
 
-import {getDataAsArray, getDataAsMap} from '@spinach/next/controller/common';
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 import {RequestOfUserBankDetails} from '@spinach/next/types/userData/upload';
 

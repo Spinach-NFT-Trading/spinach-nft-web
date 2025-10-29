@@ -9,6 +9,7 @@ import {
 } from '@spinach/common/controller/collections/nft';
 import {Mongo} from '@spinach/common/controller/const';
 import {throwIfNotPrivileged} from '@spinach/common/controller/user/permission';
+import {getDataAsArray} from '@spinach/common/controller/utils/common';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {
   NftLimitedPendingModel,
@@ -18,7 +19,6 @@ import {
 } from '@spinach/common/types/data/nft/limited';
 import {ObjectId} from 'mongodb';
 
-import {getDataAsArray} from '@spinach/next/controller/common';
 import {getNftTxnById} from '@spinach/next/controller/nft/txn';
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 

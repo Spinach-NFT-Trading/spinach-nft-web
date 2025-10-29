@@ -1,6 +1,7 @@
 'use server';
 import {nftExchangeMatchedCollection} from '@spinach/common/controller/collections/nft';
 import {userNftPositionCollection} from '@spinach/common/controller/collections/user';
+import {getDataAsArray} from '@spinach/common/controller/utils/common';
 import {
   NftExchangeMatchedBundle,
   NftExchangeMatchedData,
@@ -10,7 +11,6 @@ import {subDays} from 'date-fns/subDays';
 import {Filter, ObjectId} from 'mongodb';
 import {revalidatePath} from 'next/cache';
 
-import {getDataAsArray} from '@spinach/next/controller/common';
 import {recordSessionPoll} from '@spinach/next/controller/session/poll';
 import {getBankDetailsMap} from '@spinach/next/controller/user/bankDetails';
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
