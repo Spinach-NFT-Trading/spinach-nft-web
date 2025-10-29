@@ -2,7 +2,6 @@ import {Static, Type} from '@sinclair/typebox';
 
 import {phonePattern} from '@spinach/common/const/auth';
 import {SmsVerifyOtpSchemaBase} from '@spinach/common/types/api/auth/verify/sms/common';
-import {SmsVerifyInitialResponseDataSchema} from '@spinach/common/types/api/auth/verify/sms/initial';
 import {generateApiFailableSchema} from '@spinach/common/utils/api/schema';
 
 

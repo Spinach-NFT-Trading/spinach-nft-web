@@ -18,10 +18,17 @@ export const addNftSellRequest = () => {
     apiPath.nft.sell,
     {
       schema: {
+        description: '從平台上架限時 NFT。娛樂城需要在 HTTP Header 中提供平台給予娛樂城的 Token。',
         body: NftSellRequestSchema,
         response: {
-          200: NftSellResponseSchema,
-          403: ApiErrorResponseSchema,
+          200: {
+            ...NftSellResponseSchema,
+            description: '成功處理 NFT 出售請求。返回已建立的限時 NFT ID。',
+          },
+          403: {
+            ...ApiErrorResponseSchema,
+            description: '未經授權的請求。可能是授權權杖遺失或無效。詳情請見 API 錯誤碼。',
+          },
         },
       },
     },

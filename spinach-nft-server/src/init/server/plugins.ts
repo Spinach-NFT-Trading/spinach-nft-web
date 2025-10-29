@@ -24,6 +24,16 @@ export const registerPlugins = async () => {
       openapi: '3.0.0',
       info: {
         title: 'TG Market NFT 交易 API',
+        description: [
+          '# 初次使用',
+          '',
+          '娛樂城需要向平台獲取 API token，並且提供可以接收 HTTP POST (JSON) 的 Webhook 的網址。',
+          '',
+          '## 流程',
+          '',
+          '娛樂城可以透過文件中的各 API 端口主動使用 API。',
+          '另外，娛樂城發送 NFT 販賣請求後，平台如果成功撮合 NFT 交易，娛樂城提供的 Webhook 會收到通知。',
+        ].join('\n'),
         version: '1.0.0',
       },
       servers: [
