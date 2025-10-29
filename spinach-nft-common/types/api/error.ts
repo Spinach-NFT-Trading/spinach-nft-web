@@ -1,4 +1,6 @@
-import {Static, TString, Type} from '@sinclair/typebox';
+import {Static, Type} from '@sinclair/typebox';
+
+import {BoolFalseSchema} from '@spinach/common/types/typebox';
 
 
 export const apiErrorCode = [
@@ -45,13 +47,19 @@ export const apiErrorCode = [
   'unauthorized',
 ] as const;
 
-export interface TApiErrorCode extends TString {
-  static: typeof apiErrorCode[number];
-}
-
-export const ApiErrorCodeSchema = Type.Unsafe<Static<TApiErrorCode>>(Type.String({minLength: 1}));
+export const ApiErrorCodeSchema = Type.Union(
+  apiErrorCode.map((code) => Type.Literal(code)),
+);
 
 export type ApiErrorCode = Static<typeof ApiErrorCodeSchema>;
+
+export const ApiErrorResponseSchema = Type.Object(
+  {
+    success: BoolFalseSchema,
+    error: ApiErrorCodeSchema,
+  },
+  {additionalProperties: false},
+);
 
 export const isApiError = (error: unknown): error is ApiErrorCode => {
   return apiErrorCode.includes(error as ApiErrorCode);

@@ -1,5 +1,6 @@
 import {apiPath} from '@spinach/common/const/path';
 import {getNftExchangeToken} from '@spinach/common/controller/nft/exchange/token';
+import {ApiErrorResponseSchema} from '@spinach/common/types/api/error';
 import {
   NftSellRequest,
   NftSellRequestSchema,
@@ -20,7 +21,7 @@ export const addNftSellRequest = () => {
         body: NftSellRequestSchema,
         response: {
           200: NftSellResponseSchema,
-          403: NftSellResponseSchema,
+          403: ApiErrorResponseSchema,
         },
       },
     },
