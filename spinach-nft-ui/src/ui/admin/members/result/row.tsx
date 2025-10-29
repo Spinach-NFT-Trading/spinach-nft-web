@@ -146,7 +146,7 @@ export const AdminMemberRow = ({
         />
       </td>
       <td>
-        <AdminMemberSingleControls actor={actor} showPopup={showPopup}/>
+        <AdminMemberSingleControls showPopup={showPopup}/>
       </td>
     </>
   );

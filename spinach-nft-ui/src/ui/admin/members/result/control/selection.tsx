@@ -9,7 +9,6 @@ import {useTranslations} from 'next-intl';
 
 import {Flex} from '@spinach/next/components/layout/flex/common';
 import {Popup} from '@spinach/next/components/popup';
-import {CommonUserData} from '@spinach/next/types/auth';
 import {AdminMemberControlMenuButton} from '@spinach/next/ui/admin/members/result/control/button';
 import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/popup/type';
 
@@ -17,14 +16,12 @@ import {AdminMemberPopupType} from '@spinach/next/ui/admin/members/result/popup/
 type Props = {
   show: boolean,
   setShow: (show: boolean) => void,
-  actor: CommonUserData,
   onOptionSelect: (type: AdminMemberPopupType) => void,
 };
 
 export const AdminMemberControlMenuSelection = ({
   show,
   setShow,
-  actor,
   onOptionSelect,
 }: Props) => {
   const t = useTranslations('UI.InPage.Admin.Members.Control');
@@ -57,19 +54,14 @@ export const AdminMemberControlMenuSelection = ({
           <CurrencyDollarIcon className="size-6"/>
           <div>{t('ManualAdjust')}</div>
         </AdminMemberControlMenuButton>
-        {
-          actor.isAdmin &&
-          <>
-            <AdminMemberControlMenuButton onClick={() => onOptionClick('idVerificationImages')}>
-              <PhotoIcon className="size-6"/>
-              <div>{t('IdVerificationImages')}</div>
-            </AdminMemberControlMenuButton>
-            <AdminMemberControlMenuButton onClick={() => onOptionClick('setPassword')}>
-              <LockClosedIcon className="size-6"/>
-              <div>{t('SetPassword')}</div>
-            </AdminMemberControlMenuButton>
-          </>
-        }
+        <AdminMemberControlMenuButton onClick={() => onOptionClick('idVerificationImages')}>
+          <PhotoIcon className="size-6"/>
+          <div>{t('IdVerificationImages')}</div>
+        </AdminMemberControlMenuButton>
+        <AdminMemberControlMenuButton onClick={() => onOptionClick('setPassword')}>
+          <LockClosedIcon className="size-6"/>
+          <div>{t('SetPassword')}</div>
+        </AdminMemberControlMenuButton>
       </Flex>
     </Popup>
   );
