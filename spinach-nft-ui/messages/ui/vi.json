@@ -285,6 +285,7 @@
         "VerifyId": "Xác minh danh tính",
         "VerifyBankAccount": "Xác minh tài khoản ngân hàng",
         "VerifyBankTxn": "Xác minh lịch sử mua VÀNG",
+        "VerifyLimitedNft": "Xác minh mua NFT giới hạn",
         "GlobalConfig": "Cài đặt trên toàn trang web"
       },
       "Common": {
@@ -459,6 +460,7 @@
         "Title": {
           "Bank": "Tài khoản ngân hàng cần được xác minh",
           "GoldPurchase": "Đang chờ xác minh hồ sơ mua VÀNG",
+          "LimitedNft": "Đang chờ xác minh mua NFT giới hạn",
           "PendingAccount": "Tài khoản cần được xác minh"
         },
         "Bank": {
@@ -470,6 +472,12 @@
           "SourceBankAccount": "Số tài khoản ngân hàng nguồn",
           "TargetWallet": "Số tài khoản ngân hàng nguồn",
           "Amount": "Số lượng"
+        },
+        "LimitedNft": {
+          "TransferProof": "Bằng chứng chuyển khoản",
+          "Buyer": "Người mua",
+          "Amount": "Số lượng",
+          "BankAccount": "Tài khoản ngân hàng"
         },
         "Info": {
           "IdNumber": "Cỡ chữ CMND",
@@ -594,12 +602,9 @@
       "BankDetailsAlreadyExist": "Tài khoản ngân hàng đã tồn tại.",
       "BankDetailsUploadFailed": "Tải lên tài khoản ngân hàng không thành công.",
       "CommissionOverLimit": "Đã vượt quá giới hạn hoàn trả hoa hồng.",
-      "MultipartEmptyBody": "Nội dung biểu mẫu trống.",
       "MultipartFieldEmpty": "Trường biểu mẫu trống.",
-      "MultipartFieldNotFile": "Trường biểu mẫu không phải là tệp.",
       "MultipartFieldNotValue": "Trường biểu mẫu không phải là giá trị.",
       "MultipartFieldValueCastFailed": "Chuyển đổi giá trị trường biểu mẫu không thành công.",
-      "MultipartTooManyFiles": "Biểu mẫu có quá nhiều tệp.",
       "MultipartTooManyValues": "Biểu mẫu có quá nhiều giá trị.",
       "FileUploadGrantActivationFailed": "Tiêu thụ quyền tải lên tệp không thành công.",
       "FileUploadMissingFile": "Thiếu tệp đích để tải lên.",

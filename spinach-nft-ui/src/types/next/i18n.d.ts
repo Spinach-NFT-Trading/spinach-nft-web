@@ -259,6 +259,7 @@ declare global {
             VerifyId: string,
             VerifyBankAccount: string,
             VerifyBankTxn: string,
+            VerifyLimitedNft: string,
             GlobalConfig: string,
           },
           Common: {
@@ -434,6 +435,7 @@ declare global {
               Bank: string,
               GoldPurchase: string,
               PendingAccount: string,
+              LimitedNft: string,
             },
             Bank: {
               BankbookCover: string,
@@ -444,6 +446,12 @@ declare global {
               SourceBankAccount: string,
               TargetWallet: string,
               Amount: string,
+            },
+            LimitedNft: {
+              Buyer: string,
+              TransferProof: string,
+              Amount: string,
+              BankAccount: string,
             },
             Info: {
               IdNumber: string,
@@ -568,12 +576,9 @@ declare global {
           BankDetailsUploadFailed: string,
           BankDetailsNotFound: string,
           CommissionOverLimit: string,
-          MultipartEmptyBody: string,
           MultipartFieldEmpty: string,
-          MultipartFieldNotFile: string,
           MultipartFieldNotValue: string,
           MultipartFieldValueCastFailed: string,
-          MultipartTooManyFiles: string,
           MultipartTooManyValues: string,
           FileUploadGrantActivationFailed: string,
           FileUploadMissingFile: string,

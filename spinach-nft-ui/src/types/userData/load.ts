@@ -60,7 +60,7 @@ export type UserDataLoadingOpts = {
     userId: string,
   },
 } | {
-  type: 'adminImageOfBankDetails' | 'adminImageOfGoldTxnTwBank',
+  type: 'adminImageOfBankDetails' | 'adminImageOfGoldTxnTwBank' | 'adminImageOfLimitedNft',
   opts: {
     uuid: string,
   },

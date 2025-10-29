@@ -279,13 +279,14 @@
     },
     "Admin": {
       "Tabs": {
-        "Agents": "รายการพร็อกซี",
-        "Members": "รายชื่อสมาชิก",
-        "ExchangeRequests": "คำขอธุรกรรม NFT",
-        "VerifyId": "ยืนยันตัวตน",
+        "Agents": "รายการตัวแทน",
+        "Members": "รายการสมาชิก",
+        "ExchangeRequests": "คำขอธุรกรรมแต้มเกม",
+        "VerifyId": "ตรวจสอบตัวตน",
         "VerifyBankAccount": "ตรวจสอบบัญชีธนาคาร",
         "VerifyBankTxn": "ตรวจสอบประวัติการซื้อ GOLD",
-        "GlobalConfig": "การตั้งค่าทั่วทั้งไซต์"
+        "VerifyLimitedNft": "ตรวจสอบการซื้อ NFT แบบจำกัด",
+        "GlobalConfig": "การตั้งค่าทั้งไซต์"
       },
       "Common": {
         "LookBack": {
@@ -457,9 +458,10 @@
       },
       "VerifyInfo": {
         "Title": {
-          "Bank": "บัญชีธนาคารที่จะตรวจสอบ",
-          "GoldPurchase": "อยู่ระหว่างการตรวจสอบบันทึกการซื้อ GOLD",
-          "PendingAccount": "บัญชีที่จะตรวจสอบ"
+          "Bank": "บัญชีธนาคารที่จะได้รับการยืนยัน",
+          "GoldPurchase": "บันทึกการซื้อ GOLD ที่รอการตรวจสอบ",
+          "LimitedNft": "การซื้อ NFT แบบจำกัดที่รอการตรวจสอบ",
+          "PendingAccount": "บัญชีที่จะได้รับการยืนยัน"
         },
         "Bank": {
           "BankbookCover": "ภาพปกสมุดบัญชีธนาคาร"
@@ -470,6 +472,12 @@
           "SourceBankAccount": "เลขที่บัญชีธนาคารต้นทาง",
           "TargetWallet": "เลขที่บัญชีธนาคารต้นทาง",
           "Amount": "จำนวน"
+        },
+        "LimitedNft": {
+          "TransferProof": "หลักฐานการโอนเงิน",
+          "Buyer": "ผู้ซื้อ",
+          "Amount": "จำนวน",
+          "BankAccount": "บัญชีธนาคาร"
         },
         "Info": {
           "IdNumber": "ขนาดตัวอักษรของบัตรประจำตัวประชาชน",
@@ -594,12 +602,9 @@
       "BankDetailsAlreadyExist": "มีบัญชีธนาคารอยู่แล้ว",
       "BankDetailsUploadFailed": "การอัปโหลดบัญชีธนาคารล้มเหลว",
       "CommissionOverLimit": "เกินขีดจำกัดการคืนเงินค่าคอมมิชชั่นแล้ว",
-      "MultipartEmptyBody": "เนื้อหาฟอร์มว่าง",
       "MultipartFieldEmpty": "ฟิลด์ฟอร์มว่าง",
-      "MultipartFieldNotFile": "ฟิลด์ฟอร์มไม่ใช่ไฟล์",
       "MultipartFieldNotValue": "ฟิลด์ฟอร์มไม่ใช่ค่า",
       "MultipartFieldValueCastFailed": "การแปลงค่าฟิลด์ฟอร์มล้มเหลว",
-      "MultipartTooManyFiles": "ฟอร์มมีไฟล์มากเกินไป",
       "MultipartTooManyValues": "ฟอร์มมีค่ามากเกินไป",
       "FileUploadGrantActivationFailed": "การใช้สิทธิ์อัปโหลดไฟล์ล้มเหลว",
       "FileUploadMissingFile": "ไฟล์เป้าหมายที่จะอัปโหลดหายไป",

@@ -11,6 +11,7 @@ import {
   getUnverifiedGoldPurchaseTwBankRecordClient,
 } from '@spinach/next/controller/gold/twBank';
 import {getWalletClientMap} from '@spinach/next/controller/gold/wallet';
+import {getLimitedNftProofImage} from '@spinach/next/controller/nft/limited';
 import {getNftListingData} from '@spinach/next/controller/nft/listing';
 import {generateNftExchangeToken, getNftExchangeTokenMap} from '@spinach/next/controller/nft/request/token';
 import {getNftTxnOfUser} from '@spinach/next/controller/nft/txn';
@@ -183,6 +184,13 @@ const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
       executorUserId: accountId,
       uuid: options.opts.uuid,
     }) satisfies UserLazyLoadedData['adminImageOfGoldTxnTwBank'];
+  }
+
+  if (type === 'adminImageOfLimitedNft') {
+    return await getLimitedNftProofImage({
+      executorUserId: accountId,
+      uuid: options.opts.uuid,
+    }) satisfies UserLazyLoadedData['adminImageOfLimitedNft'];
   }
 
   if (type === 'adminUnverifiedBankDetails') {

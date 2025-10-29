@@ -3,7 +3,6 @@ import React from 'react';
 import {ByteArray} from '@spinach/common/types/common/binary';
 import {Nullable} from '@spinach/common/types/common/typing';
 
-import {AdminVerificationPopupData} from '@spinach/next/components/shared/admin/verification/popup/type';
 import {UserLazyLoadedContent} from '@spinach/next/types/userData/lazyLoaded';
 import {UserDataLoadingOpts} from '@spinach/next/types/userData/load';
 
@@ -22,6 +21,5 @@ export type AdminVerificationRowProps<TData> = {
   data: TData,
   getInfo: (data: TData) => React.ReactNode,
   getImageRequestPayload: (data: TData) => AdminVerificationImageRequestPayload[],
-  getPopupData: (data: TData) => AdminVerificationPopupData<TData> | null,
   hideOtherInfo?: boolean,
 };

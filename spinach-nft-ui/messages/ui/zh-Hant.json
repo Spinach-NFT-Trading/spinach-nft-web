@@ -285,6 +285,7 @@
         "VerifyId": "驗證身分",
         "VerifyBankAccount": "驗證銀行帳號",
         "VerifyBankTxn": "驗證 GOLD 購買紀錄",
+        "VerifyLimitedNft": "驗證限時 NFT 購買",
         "GlobalConfig": "全站設定"
       },
       "Common": {
@@ -459,6 +460,7 @@
         "Title": {
           "Bank": "待驗證銀行帳號",
           "GoldPurchase": "待驗證 GOLD 購買紀錄",
+          "LimitedNft": "待驗證限時 NFT 購買",
           "PendingAccount": "待驗證帳號"
         },
         "Bank": {
@@ -470,6 +472,12 @@
           "SourceBankAccount": "來源銀行帳號",
           "TargetWallet": "來源銀行帳號",
           "Amount": "金額"
+        },
+        "LimitedNft": {
+          "TransferProof": "轉帳證明",
+          "Buyer": "買家",
+          "Amount": "金額",
+          "BankAccount": "銀行帳號"
         },
         "Info": {
           "IdNumber": "身分證字號",
@@ -594,12 +602,9 @@
       "BankDetailsAlreadyExist": "銀行帳號已存在。",
       "BankDetailsUploadFailed": "銀行帳號上傳失敗。",
       "CommissionOverLimit": "超過退傭上限。",
-      "MultipartEmptyBody": "表單主體為空。",
       "MultipartFieldEmpty": "表單欄位為空。",
-      "MultipartFieldNotFile": "表單欄位不是檔案。",
       "MultipartFieldNotValue": "表單欄位不是值。",
       "MultipartFieldValueCastFailed": "表單欄位值轉換失敗。",
-      "MultipartTooManyFiles": "表單檔案過多。",
       "MultipartTooManyValues": "表單值過多。",
       "FileUploadGrantActivationFailed": "檔案上傳授權失敗。",
       "FileUploadMissingFile": "找不到要上傳的檔案。",

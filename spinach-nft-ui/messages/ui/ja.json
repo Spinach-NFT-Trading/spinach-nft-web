@@ -285,6 +285,7 @@
         "VerifyId": "身元を確認する",
         "VerifyBankAccount": "銀行口座を確認する",
         "VerifyBankTxn": "GOLDの購入履歴を確認する",
+        "VerifyLimitedNft": "限定NFT購入の確認",
         "GlobalConfig": "サイト全体の設定"
       },
       "Common": {
@@ -459,6 +460,7 @@
         "Title": {
           "Bank": "銀行口座を確認する必要があります",
           "GoldPurchase": "GOLD 購入記録の検証待ち",
+          "LimitedNft": "限定NFT購入の検証待ち",
           "PendingAccount": "認証対象のアカウント"
         },
         "Bank": {
@@ -470,6 +472,12 @@
           "SourceBankAccount": "送金元の銀行口座番号",
           "TargetWallet": "送金元の銀行口座番号",
           "Amount": "額"
+        },
+        "LimitedNft": {
+          "TransferProof": "振込証明",
+          "Buyer": "購入者",
+          "Amount": "額",
+          "BankAccount": "銀行口座"
         },
         "Info": {
           "IdNumber": "IDカードのフォントサイズ",
@@ -594,12 +602,9 @@
       "BankDetailsAlreadyExist": "銀行口座はすでに存在します。",
       "BankDetailsUploadFailed": "銀行口座のアップロードに失敗しました。",
       "CommissionOverLimit": "コミッションの返金限度額を超えています。",
-      "MultipartEmptyBody": "空のフォーム本体。",
       "MultipartFieldEmpty": "空のフォームフィールド。",
-      "MultipartFieldNotFile": "フォームフィールドがファイルではありません。",
       "MultipartFieldNotValue": "フォームフィールドが値ではありません。",
       "MultipartFieldValueCastFailed": "フォームフィールド値のキャストに失敗しました。",
-      "MultipartTooManyFiles": "フォームにファイルが多すぎます。",
       "MultipartTooManyValues": "フォームに値が多すぎます。",
       "FileUploadGrantActivationFailed": "ファイルアップロード拒否されました。",
       "FileUploadMissingFile": "アップロードするターゲットファイルがありません。",

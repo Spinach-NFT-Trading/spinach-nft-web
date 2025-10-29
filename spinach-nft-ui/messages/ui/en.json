@@ -285,6 +285,7 @@
         "VerifyId": "Verify identity",
         "VerifyBankAccount": "Verify bank account",
         "VerifyBankTxn": "Verify GOLD purchase history",
+        "VerifyLimitedNft": "Verify Limited NFT purchase",
         "GlobalConfig": "Site-wide settings"
       },
       "Common": {
@@ -467,6 +468,7 @@
         "Title": {
           "Bank": "Bank account to be verified",
           "GoldPurchase": "Pending verification of GOLD purchase record",
+          "LimitedNft": "Pending verification of Limited NFT purchase",
           "PendingAccount": "Account to be verified"
         },
         "Bank": {
@@ -478,6 +480,12 @@
           "SourceBankAccount": "Source bank account number",
           "TargetWallet": "Source bank account number",
           "Amount": "Amount"
+        },
+        "LimitedNft": {
+          "TransferProof": "Transfer proof",
+          "Buyer": "Buyer",
+          "Amount": "Amount",
+          "BankAccount": "Bank Account"
         },
         "Info": {
           "IdNumber": "ID card font size",
@@ -602,12 +610,9 @@
       "BankDetailsAlreadyExist": "Bank account already exists.",
       "BankDetailsUploadFailed": "Bank account upload failed.",
       "CommissionOverLimit": "The commission refund limit has been exceeded.",
-      "MultipartEmptyBody": "Empty form body.",
       "MultipartFieldEmpty": "Empty form field.",
-      "MultipartFieldNotFile": "Form field is not a file.",
       "MultipartFieldNotValue": "Form field is not a value.",
       "MultipartFieldValueCastFailed": "Form field value cast failed.",
-      "MultipartTooManyFiles": "Form has too many files.",
       "MultipartTooManyValues": "Form has too many values.",
       "FileUploadGrantActivationFailed": "File upload not granted.",
       "FileUploadMissingFile": "Missing target file to upload.",

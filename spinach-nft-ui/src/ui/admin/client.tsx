@@ -1,6 +1,7 @@
 'use client';
 import React from 'react';
 
+
 import {useTranslations} from 'next-intl';
 
 import {useTabbedContentControl} from '@spinach/next/components/layout/tab/hook';
@@ -16,6 +17,7 @@ import {AdminPageTab, adminPageTabs} from '@spinach/next/ui/admin/type';
 import {AdminVerifyBank} from '@spinach/next/ui/admin/verify/bank/main';
 import {AdminVerifyGoldTxn} from '@spinach/next/ui/admin/verify/goldTxn/main';
 import {AdminVerifyId} from '@spinach/next/ui/admin/verify/id/main';
+import {AdminVerifyLimitedNft} from '@spinach/next/ui/admin/verify/limitedNft/main';
 import {isUserPrivileged} from '@spinach/next/utils/data/user';
 
 
@@ -47,6 +49,7 @@ export const AdminPageClient = ({user}: Props) => {
           verifyId: t('VerifyId'),
           verifyBankAccount: t('VerifyBankAccount'),
           verifyBankTxn: t('VerifyBankTxn'),
+          verifyLimitedNft: t('VerifyLimitedNft'),
           globalConfig: t('GlobalConfig'),
         }}
         content={{
@@ -64,6 +67,7 @@ export const AdminPageClient = ({user}: Props) => {
           verifyId: <AdminVerifyId/>,
           verifyBankAccount: <AdminVerifyBank/>,
           verifyBankTxn: <AdminVerifyGoldTxn/>,
+          verifyLimitedNft: <AdminVerifyLimitedNft/>,
           globalConfig: <AdminGlobalConfigUi/>,
         }}
         getReactKey={(key) => key}

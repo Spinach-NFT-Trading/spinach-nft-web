@@ -46,7 +46,7 @@ export const AdminVerifyIdResults = ({data, input}: Props) => {
       getImageData={(data) => data?.adminImageOfId ?? null}
       getImageRequestPayload={({id}) => accountIdVerificationType.map((type) => ({
         opts: {
-          type: 'adminImageOfId',
+          type: 'adminImageOfId' as const,
           opts: {
             type,
             userId: id,
@@ -57,49 +57,36 @@ export const AdminVerifyIdResults = ({data, input}: Props) => {
       getConfirmPayload={(pass, data) => ({
         type: 'admin.verify.account',
         data: {
-          targetId: data.data.id,
+          targetId: data.id,
           pass,
         },
       })}
-      getPopupData={(data) => ({
-        userId: data.id,
-        data,
-      })}
       onVerified={(verified) => setUsers((original) => (
-        original.filter(({id}) => id !== verified.data.id)
+        original.filter(({id}) => id !== verified.id)
       ))}
-      renderOtherInfo={({data}) => {
-        const {
-          birthday,
-          email,
-          lineId,
-          wallet,
-        } = data;
-
-        return (
-          <Flex className="gap-1.5 p-1">
-            <Flex className="gap-1">
-              <AdminVerificationDataCell title={t2('Birthday')} info={birthday}/>
-              <AdminVerificationDataCell title={t2('Email')} info={email}/>
-              <AdminVerificationDataCell title={t2('LineId')} info={lineId}/>
-            </Flex>
-            {
-              wallet &&
-              <AdminVerificationDataCell
-                title={t2('Wallet')}
-                info={
-                  <Flex direction="row" noFullWidth center className={clsx(
-                    'w-min gap-1 rounded-lg pl-2 ring-1 ring-slate-300',
-                  )}>
-                    <code className="truncate">{wallet}</code>
-                    <CopyButton data={wallet}/>
-                  </Flex>
-                }
-              />
-            }
+      renderOtherInfo={({birthday, email, lineId, wallet}) => (
+        <Flex className="gap-1.5 p-1">
+          <Flex className="gap-1">
+            <AdminVerificationDataCell title={t2('Birthday')} info={birthday}/>
+            <AdminVerificationDataCell title={t2('Email')} info={email}/>
+            <AdminVerificationDataCell title={t2('LineId')} info={lineId}/>
           </Flex>
-        );
-      }}
+          {
+            wallet &&
+            <AdminVerificationDataCell
+              title={t2('Wallet')}
+              info={
+                <Flex direction="row" noFullWidth center className={clsx(
+                  'w-min gap-1 rounded-lg pl-2 ring-1 ring-slate-300',
+                )}>
+                  <code className="truncate">{wallet}</code>
+                  <CopyButton data={wallet}/>
+                </Flex>
+              }
+            />
+          }
+        </Flex>
+      )}
     />
   );
 };

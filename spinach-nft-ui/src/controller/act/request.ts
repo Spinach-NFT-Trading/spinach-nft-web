@@ -7,6 +7,7 @@ import {recordGoldPendingTxn} from '@spinach/next/controller/gold/pending';
 import {markGoldPurchaseTwBankRecord, recordGoldPurchaseTwBankTxn} from '@spinach/next/controller/gold/twBank';
 import {buyNft} from '@spinach/next/controller/nft/action/buy/main';
 import {sellNft} from '@spinach/next/controller/nft/action/sell';
+import {verifyLimitedNftPurchase} from '@spinach/next/controller/nft/limited';
 import {deleteNftExchangeToken, updateNftExchangeToken} from '@spinach/next/controller/nft/request/token';
 import {markBankDetailsVerified, uploadBankDetails} from '@spinach/next/controller/user/bankDetails';
 import {markUserStatus} from '@spinach/next/controller/user/status';
@@ -130,6 +131,14 @@ export const handleUserRequest = async ({
 
   if (type === 'admin.verify.gold.twBank') {
     return markGoldPurchaseTwBankRecord({
+      executorUserId: accountId,
+      uuid: data.targetUuid,
+      pass: data.pass,
+    });
+  }
+
+  if (type === 'admin.verify.limitedNft') {
+    return verifyLimitedNftPurchase({
       executorUserId: accountId,
       uuid: data.targetUuid,
       pass: data.pass,

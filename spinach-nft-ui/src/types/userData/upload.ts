@@ -72,7 +72,7 @@ export type UserDataRequestOpts = {
     pass: boolean,
   },
 } | {
-  type: 'admin.verify.bank' | 'admin.verify.gold.twBank',
+  type: 'admin.verify.bank' | 'admin.verify.gold.twBank' | 'admin.verify.limitedNft',
   data: {
     targetUuid: string,
     pass: boolean,

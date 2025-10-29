@@ -8,6 +8,7 @@ export const adminTabsPrivilegedOnly: {[tab in AdminPageTab]: boolean} = {
   verifyId: true,
   verifyBankAccount: true,
   verifyBankTxn: true,
+  verifyLimitedNft: true,
   globalConfig: true,
 };
 

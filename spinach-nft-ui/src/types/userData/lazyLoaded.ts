@@ -67,6 +67,7 @@ export type UserLazyLoadedContent = {
   adminImageOfId: BinaryData | null,
   adminImageOfBankDetails: BinaryData | null,
   adminImageOfGoldTxnTwBank: BinaryData | null,
+  adminImageOfLimitedNft: BinaryData | null,
 };
 
 // For checking if `UserLazyLoadedContent` implements every key of `UserDataLoadingOpts.type`

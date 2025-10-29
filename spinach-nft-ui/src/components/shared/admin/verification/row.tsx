@@ -14,11 +14,9 @@ export const AdminVerificationRow = <TData, >({
   data,
   getInfo,
   getImageRequestPayload,
-  getPopupData,
   hideOtherInfo,
 }: Props<TData>) => {
-  const payload = getPopupData(data);
-
+  const payload = data;
   if (!payload) {
     return null;
   }

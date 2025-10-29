@@ -72,7 +72,7 @@ export const AdminVerifyGoldTxnResults = ({data, input}: Props) => {
       getImageRequestPayload={({uuid}) => [
         {
           opts: {
-            type: 'adminImageOfGoldTxnTwBank',
+            type: 'adminImageOfGoldTxnTwBank' as const,
             opts: {uuid},
           },
           imageName: t2('TxnRecord'),
@@ -81,25 +81,12 @@ export const AdminVerifyGoldTxnResults = ({data, input}: Props) => {
       getConfirmPayload={(pass, data) => ({
         type: 'admin.verify.gold.twBank',
         data: {
-          targetUuid: data.data.uuid,
+          targetUuid: data.uuid,
           pass,
         },
       })}
-      getPopupData={(data) => ({
-        userId: data.accountId,
-        data,
-      })}
-      onVerified={(verified) => setTwBankTxn((original) => (
-        original.filter(({uuid}) => uuid !== verified.data.uuid)
-      ))}
-      renderOtherInfo={({data}) => {
-        const {
-          accountId,
-          sourceBankDetailsUuid,
-          targetWalletId,
-          amount,
-        } = data;
-
+      onVerified={(verified) => setTwBankTxn((original) => original.filter(({uuid}) => uuid !== verified.uuid))}
+      renderOtherInfo={({accountId, sourceBankDetailsUuid, targetWalletId, amount}) => {
         const userData = userDataMap[accountId];
         const bankDetails = bankDetailsMap[sourceBankDetailsUuid];
         const targetWallet = walletMap[targetWalletId];

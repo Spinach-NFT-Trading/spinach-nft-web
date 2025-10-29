@@ -285,6 +285,7 @@
         "VerifyId": "验证身分",
         "VerifyBankAccount": "验证银行帐号",
         "VerifyBankTxn": "验证 GOLD 购买纪录",
+        "VerifyLimitedNft": "验证限时 NFT 购买",
         "GlobalConfig": "全站设定"
       },
       "Common": {
@@ -467,6 +468,7 @@
         "Title": {
           "Bank": "待验证银行帐号",
           "GoldPurchase": "待验证 GOLD 购买纪录",
+          "LimitedNft": "待验证限时 NFT 购买",
           "PendingAccount": "待验证帐号"
         },
         "Bank": {
@@ -478,6 +480,12 @@
           "SourceBankAccount": "来源银行帐号",
           "TargetWallet": "来源银行帐号",
           "Amount": "金额"
+        },
+        "LimitedNft": {
+          "TransferProof": "转帐证明",
+          "Buyer": "买家",
+          "Amount": "金额",
+          "BankAccount": "银行帐号"
         },
         "Info": {
           "IdNumber": "身分证字号",
@@ -602,12 +610,9 @@
       "BankDetailsAlreadyExist": "银行帐号已存在。",
       "BankDetailsUploadFailed": "银行帐号上传失败。",
       "CommissionOverLimit": "超过退佣上限。",
-      "MultipartEmptyBody": "表单主体为空。",
       "MultipartFieldEmpty": "表单字段为空。",
-      "MultipartFieldNotFile": "表单字段不是文件。",
       "MultipartFieldNotValue": "表单字段不是值。",
       "MultipartFieldValueCastFailed": "表单字段值转换失败。",
-      "MultipartTooManyFiles": "表单文件过多。",
       "MultipartTooManyValues": "表单值过多。",
       "FileUploadGrantActivationFailed": "文件上传授权失败。",
       "FileUploadMissingFile": "缺少要上传的目标文件。",

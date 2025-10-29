@@ -53,6 +53,7 @@ const initDbIndex = () => {
     nftPriceTierCollection.createIndex({price: 1}, {unique: true}),
     nftLimitedUnverifiedCollection.createIndex({nftId: 1}, {unique: true}),
     nftLimitedUnverifiedCollection.createIndex({buyer: 1}),
+    nftLimitedPendingCollection.createIndex({uuid: 1}, {unique: true}),
     nftLimitedPendingCollection.createIndex({nftId: 1}, {unique: true}),
     nftLimitedPendingCollection.createIndex({buyer: 1}),
     nftExchangeTokenCollection.createIndex({accountId: 1}),

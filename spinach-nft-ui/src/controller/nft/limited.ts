@@ -1,19 +1,25 @@
 'use server';
+import {upsertNftPosition} from '@spinach/common/controller/actors/nft';
+import {azureContainer} from '@spinach/common/controller/blob/const';
+import {getImageBlob} from '@spinach/common/controller/blob/get';
 import {
-  nftLimitedUnverifiedCollection,
+  nftInfoCollection,
   nftLimitedPendingCollection,
+  nftLimitedUnverifiedCollection,
 } from '@spinach/common/controller/collections/nft';
 import {Mongo} from '@spinach/common/controller/const';
+import {throwIfNotPrivileged} from '@spinach/common/controller/user/permission';
 import {ApiErrorCode} from '@spinach/common/types/api/error';
 import {
-  NftLimitedUnverifiedModel,
-  NftLimitedUnverifiedModelClient,
   NftLimitedPendingModel,
   NftLimitedPendingModelClient,
+  NftLimitedUnverifiedModel,
+  NftLimitedUnverifiedModelClient,
 } from '@spinach/common/types/data/nft/limited';
 import {ObjectId} from 'mongodb';
 
 import {getDataAsArray} from '@spinach/next/controller/common';
+import {getNftTxnById} from '@spinach/next/controller/nft/txn';
 import {ControllerRequireUserIdOpts} from '@spinach/next/controller/user/type';
 
 
@@ -78,4 +84,77 @@ export const submitLimitedNftPurchaseProof = async ({
       return null;
     });
   });
+};
+
+type GetLimitedNftProofImageOpts = ControllerRequireUserIdOpts & {
+  uuid: string,
+};
+
+export const getLimitedNftProofImage = async ({
+  executorUserId,
+  uuid,
+}: GetLimitedNftProofImageOpts) => {
+  await throwIfNotPrivileged(executorUserId);
+
+  const pending = await nftLimitedPendingCollection.findOne({uuid});
+  if (!pending) {
+    return null;
+  }
+
+  return await getImageBlob({
+    container: azureContainer.pool,
+    name: pending.proofUploadId,
+  });
+};
+
+type VerifyLimitedNftPurchaseOpts = ControllerRequireUserIdOpts & {
+  uuid: string,
+  pass: boolean,
+};
+
+export const verifyLimitedNftPurchase = async ({
+  executorUserId,
+  uuid,
+  pass,
+}: VerifyLimitedNftPurchaseOpts): Promise<ApiErrorCode | null> => {
+  await throwIfNotPrivileged(executorUserId);
+
+  return await Mongo.withSession(async (session) => session.withTransaction(async (): Promise<ApiErrorCode | null> => {
+    const pending = await nftLimitedPendingCollection.findOne(
+      {uuid},
+      {session},
+    );
+    if (pending == null) {
+      return 'nftUnverifiedLimitedNotFound';
+    }
+
+    if (!pass) {
+      // Reject: Put the pending data back into unverified
+      await Promise.all([
+        nftLimitedPendingCollection.deleteOne({_id: pending._id}, {session}),
+        nftLimitedUnverifiedCollection.insertOne({
+          uuid: pending.uuid,
+          nftId: pending.nftId,
+          nftTxnId: pending.nftTxnId,
+          buyer: pending.buyer,
+        }, {session}),
+      ]);
+      return null;
+    }
+
+    const nftTxn = await getNftTxnById(pending.nftTxnId);
+    if (nftTxn == null) {
+      throw new Error(
+        `NFT TxN ${pending.nftTxnId.toHexString()} not found for unverified limited NFT purchase ${pending._id}`,
+      );
+    }
+
+    // Approve: Delete from pending, also change the NFT to normal and register the NFT to position
+    await Promise.all([
+      nftLimitedPendingCollection.deleteOne({_id: pending._id}, {session}),
+      upsertNftPosition({nftTxn, session}),
+      nftInfoCollection.updateOne({_id: pending.nftId}, {$set: {isLimited: false}}),
+    ]);
+    return null;
+  }));
 };

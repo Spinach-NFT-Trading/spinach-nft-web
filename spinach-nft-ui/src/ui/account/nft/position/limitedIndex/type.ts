@@ -1,7 +1,8 @@
 import {
-  NftLimitedUnverifiedModelClient,
   NftLimitedPendingModelClient,
+  NftLimitedUnverifiedModelClient,
 } from '@spinach/common/types/data/nft/limited';
+
 import {NftListingData} from '@spinach/next/types/nft';
 
 

@@ -5,6 +5,7 @@ export const adminPageTabs = [
   'verifyId',
   'verifyBankAccount',
   'verifyBankTxn',
+  'verifyLimitedNft',
   'globalConfig',
 ] as const;
 

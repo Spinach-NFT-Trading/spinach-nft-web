@@ -58,7 +58,7 @@ export const AdminVerifyBankResults = ({data, input}: Props) => {
       getImageRequestPayload={({uuid}) => [
         {
           opts: {
-            type: 'adminImageOfBankDetails',
+            type: 'adminImageOfBankDetails' as const,
             opts: {uuid},
           },
           imageName: t('BankbookCover'),
@@ -67,13 +67,12 @@ export const AdminVerifyBankResults = ({data, input}: Props) => {
       getConfirmPayload={(pass, data) => ({
         type: 'admin.verify.bank',
         data: {
-          targetUuid: data.data.uuid,
+          targetUuid: data.uuid,
           pass,
         },
       })}
-      getPopupData={(data) => ({userId: data.userId, data})}
       onVerified={(verified) => setBankDetails((original) => (
-        original.filter(({uuid}) => uuid !== verified.data.uuid)
+        original.filter(({uuid}) => uuid !== verified.uuid)
       ))}
       renderOtherInfo={() => null}
       hideOtherInfo
