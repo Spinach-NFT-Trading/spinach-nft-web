@@ -3,7 +3,7 @@ import {getEnvironment} from '@spinach/common/utils/env';
 import {fastify, FastifyInstance} from 'fastify';
 
 import {getLogOptions} from '@spinach/server/init/server/loggerOpts';
-import {registerMiddlewares} from '@spinach/server/init/server/middleware';
+import {registerPlugins} from '@spinach/server/init/server/plugins';
 
 
 type InitServerOpts = {
@@ -24,7 +24,7 @@ export const initServer = ({appName, logDir, afterBuild}: InitServerOpts) => {
   })
     .withTypeProvider<TypeBoxTypeProvider>();
 
-  registerMiddlewares(server);
+  registerPlugins(server);
   if (afterBuild) {
     afterBuild(server);
   }

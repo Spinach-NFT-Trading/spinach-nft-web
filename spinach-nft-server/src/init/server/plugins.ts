@@ -1,11 +1,12 @@
 import {fastifyCors} from '@fastify/cors';
 import {fastifyHelmet} from '@fastify/helmet';
+import multipart, {FastifyMultipartBaseOptions} from '@fastify/multipart';
 import {FastifyInstance} from 'fastify';
 
 import {CorsAllowedOrigins} from '@spinach/server/env';
 
 
-export const registerMiddlewares = (server: FastifyInstance) => {
+export const registerPlugins = (server: FastifyInstance) => {
   const logObj = {origins: CorsAllowedOrigins};
   server.log.info(logObj, 'CORS allowed origins: %s', logObj.origins);
 
@@ -50,4 +51,12 @@ export const registerMiddlewares = (server: FastifyInstance) => {
       },
     },
   });
+  server.register(
+    multipart,
+    {
+      limits: {
+        fileSize: 10 * 1024 * 1024, // 10 MB
+      },
+    } satisfies FastifyMultipartBaseOptions,
+  );
 };

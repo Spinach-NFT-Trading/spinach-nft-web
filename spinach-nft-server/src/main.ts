@@ -8,12 +8,12 @@ import {exit} from 'node:process';
 
 import {Logger, Server} from '@spinach/server/const';
 import {ApiHost, ApiPort} from '@spinach/server/env';
-import {initApp} from '@spinach/server/init/main';
+import {addRoutes} from '@spinach/server/route/main';
 import {runFastify} from '@spinach/server/run/server';
 
 
 (async () => {
-  await initApp();
+  addRoutes();
 
   await runFastify({server: Server, host: ApiHost, port: ApiPort});
 })().catch((error) => {
