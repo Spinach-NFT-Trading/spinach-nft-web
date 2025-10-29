@@ -1,5 +1,5 @@
 import {apiPath} from '@spinach/common/const/path';
-import {validateNftExchangeToken} from '@spinach/common/controller/nft/exchange/token';
+import {getNftExchangeToken} from '@spinach/common/controller/nft/exchange/token';
 import {
   NftSellRequest,
   NftSellRequestSchema,
@@ -36,8 +36,8 @@ export const addNftSellRequest = () => {
       }
 
       // Validate token against nftExchangeTokenCollection
-      const isValidToken = await validateNftExchangeToken({token: requestedToken});
-      if (!isValidToken) {
+      const tokenModel = await getNftExchangeToken({token: requestedToken});
+      if (tokenModel == null) {
         reply.code(403);
         return {
           success: false,

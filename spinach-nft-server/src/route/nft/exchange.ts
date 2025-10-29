@@ -1,5 +1,6 @@
 import {apiPath} from '@spinach/common/const/path';
 import {requestNftExchange} from '@spinach/common/controller/nft/exchange/request';
+import {getNftExchangeToken} from '@spinach/common/controller/nft/exchange/token';
 import {
   NftExchangeRequest,
   NftExchangeRequestSchema,
@@ -8,6 +9,7 @@ import {
 } from '@spinach/common/types/api/nft/exchange';
 
 import {Server} from '@spinach/server/const';
+import {getAuthorizationToken} from '@spinach/server/utils/auth';
 
 
 export const addNftExchangeRequest = () => {
@@ -21,9 +23,31 @@ export const addNftExchangeRequest = () => {
         },
       },
     },
-    async ({body}): Promise<NftExchangeResponse> => ({
-      success: true,
-      data: await requestNftExchange(body),
-    }),
+    async (request, reply): Promise<NftExchangeResponse> => {
+      // Extract token from authorization header
+      const {token: requestedToken} = getAuthorizationToken({request});
+      if (!requestedToken) {
+        reply.code(403);
+        return {
+          success: false,
+          error: 'unauthorized',
+        };
+      }
+
+      // Validate token against nftExchangeTokenCollection
+      const tokenModel = await getNftExchangeToken({token: requestedToken});
+      if (!tokenModel) {
+        reply.code(403);
+        return {
+          success: false,
+          error: 'unauthorized',
+        };
+      }
+
+      return {
+        success: true,
+        data: await requestNftExchange({requestBody: request.body, tokenModel}),
+      };
+    },
   );
 };

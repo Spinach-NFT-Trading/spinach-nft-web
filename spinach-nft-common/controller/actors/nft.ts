@@ -1,8 +1,9 @@
 import {ClientSession} from 'mongodb';
 
 import {defaultNftPriceTiers} from '@spinach/common/const/nft';
-import {nftPriceTierCollection} from '@spinach/common/controller/collections/nft';
+import {nftExchangeTokenCollection, nftPriceTierCollection} from '@spinach/common/controller/collections/nft';
 import {userNftPositionCollection} from '@spinach/common/controller/collections/user';
+import {getDataAsMap} from '@spinach/common/controller/utils/common';
 import {NftPriceTierModel, NftTxnModel} from '@spinach/common/types/data/nft';
 
 
@@ -28,5 +29,20 @@ export const upsertNftPosition = ({nftTxn, session}: UpsertNftPositionOpts) => {
     {nftId: nftTxn.nftId},
     {$set: {owner: nftTxn.to, price: nftTxn.price}},
     {upsert: true, session},
+  );
+};
+
+
+type GetNftExchangeTokenMapByIdsOpts = {
+  tokenIds: string[],
+};
+
+export const getNftExchangeTokenMapByIds = ({
+  tokenIds,
+}: GetNftExchangeTokenMapByIdsOpts) => {
+  return getDataAsMap(
+    nftExchangeTokenCollection,
+    ({token}) => token,
+    {token: {$in: tokenIds}},
   );
 };

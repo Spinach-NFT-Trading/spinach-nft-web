@@ -4,32 +4,39 @@ import {nftExchangeQueueCollection} from '@spinach/common/controller/collections
 import {requestNftExchangeSingle} from '@spinach/common/controller/nft/exchange/single/main';
 import {NftExchangeRequestCommonOpts} from '@spinach/common/controller/nft/exchange/type';
 import {NftExchangeRequest, NftExchangeResult} from '@spinach/common/types/api/nft/exchange';
+import {NftExchangeTokenModel} from '@spinach/common/types/data/nft/token';
 
 
 const queueNftExchangeRequest = async ({
+  requestBody,
   requestUuid,
-  token,
-  amount,
+  tokenModel,
 }: NftExchangeRequestCommonOpts) => {
   await nftExchangeQueueCollection.insertOne({
     requestUuid,
-    token,
-    amount,
+    token: tokenModel.token,
+    amount: requestBody.amount,
   });
 };
 
-export type RequestNftExchangeOpts = NftExchangeRequest;
+export type RequestNftExchangeOpts = {
+  requestBody: NftExchangeRequest,
+  tokenModel: NftExchangeTokenModel
+};
 
-export const requestNftExchange = async (opts: RequestNftExchangeOpts): Promise<NftExchangeResult> => {
+export const requestNftExchange = async ({
+  requestBody,
+  tokenModel,
+}: RequestNftExchangeOpts): Promise<NftExchangeResult> => {
   const requestUuid = v4();
 
   const commonOpts: NftExchangeRequestCommonOpts = {
+    requestBody,
     requestUuid,
-    ...opts,
+    tokenModel,
   };
 
   const exchangeResult = await requestNftExchangeSingle(commonOpts);
-
   if (!exchangeResult) {
     await queueNftExchangeRequest(commonOpts);
 

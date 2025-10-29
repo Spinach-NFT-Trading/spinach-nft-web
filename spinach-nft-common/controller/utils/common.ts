@@ -3,9 +3,9 @@ import {Collection, Document, Filter, Sort, WithId} from 'mongodb';
 import {Indexable} from '@spinach/common/types/common/typing';
 
 
-export const getDataAsMap = async <TData extends Document>(
+export const getDataAsMap = async <TData extends Document, TKey extends Indexable>(
   collection: Collection<TData>,
-  getKey: (data: WithId<TData>) => Indexable,
+  getKey: (data: WithId<TData>) => TKey,
   filter?: Filter<TData>,
 ) => {
   return Object.fromEntries((await collection

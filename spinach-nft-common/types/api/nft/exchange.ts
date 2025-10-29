@@ -8,7 +8,6 @@ import {generateApiFailableSchema} from '@spinach/common/utils/api/schema';
 
 export const NftExchangeRequestSchema = Type.Object(
   {
-    token: UuidSchemaBase,
     amount: Type.Integer({exclusiveMinimum: 0}),
   },
   {additionalProperties: false},

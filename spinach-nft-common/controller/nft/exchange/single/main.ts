@@ -1,7 +1,6 @@
 import {
   nftExchangeMatchedCollection,
   nftExchangeQueueCollection,
-  nftExchangeTokenCollection,
 } from '@spinach/common/controller/collections/nft';
 import {userBankDetailsCollection} from '@spinach/common/controller/collections/user';
 import {Mongo} from '@spinach/common/controller/const';
@@ -13,14 +12,12 @@ import {BankDetails} from '@spinach/common/types/data/user/bank';
 
 
 export const requestNftExchangeSingle = async ({
-  token,
-  amount,
+  requestBody,
   requestUuid,
+  tokenModel,
 }: NftExchangeRequestCommonOpts): Promise<RequestNftExchangeResult | null> => {
-  const requestToken = await nftExchangeTokenCollection.findOne({token});
-  if (!requestToken) {
-    throw new Error(`Invalid NFT exchange token: ${token}`);
-  }
+  const {amount} = requestBody;
+  const {token} = tokenModel;
 
   const nftSold = await requestNftExchangeGetNftSold({amount});
   if (!nftSold) {
@@ -68,7 +65,7 @@ export const requestNftExchangeSingle = async ({
       await nftExchangeQueueCollection.deleteOne({token});
 
       await requestNftExchangeSingleSendWebhook({
-        requestToken,
+        requestToken: tokenModel,
         payload: {requestUuid, amount, bankDetails},
       });
     });
