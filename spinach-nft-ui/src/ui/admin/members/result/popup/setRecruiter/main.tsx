@@ -50,10 +50,6 @@ export const AdminMemberSetRecruiterPopup = ({member, setShow, refetch}: AdminMe
     })));
   }, []);
 
-  if (state.recruiter == null) {
-    return null;
-  }
-
   return (
     <>
       <AdminMemberSetRecruiterConfirmDialog
