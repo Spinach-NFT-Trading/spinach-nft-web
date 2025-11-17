@@ -445,7 +445,9 @@
             "Buy": "購買"
           },
           "ManualAdjust": {
-            "Balance": "調整金額"
+            "Balance": "調整金額",
+            "Add": "追加",
+            "Subtract": "減少"
           },
           "SetPassword": {
             "UserId": "使用者 ID",

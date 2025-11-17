@@ -445,7 +445,9 @@
             "Buy": "mua"
           },
           "ManualAdjust": {
-            "Balance": "Amount"
+            "Balance": "Amount",
+            "Add": "Thêm",
+            "Subtract": "Giảm"
           },
           "SetPassword": {
             "UserId": "User ID",

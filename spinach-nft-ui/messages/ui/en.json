@@ -445,7 +445,9 @@
             "Buy": "buy"
           },
           "ManualAdjust": {
-            "Balance": "Amount"
+            "Balance": "Amount",
+            "Add": "Add",
+            "Subtract": "Subtract"
           },
           "SetPassword": {
             "UserId": "User ID",

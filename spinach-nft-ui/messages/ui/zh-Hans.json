@@ -445,7 +445,9 @@
             "Buy": "购买"
           },
           "ManualAdjust": {
-            "Balance": "調整金額"
+            "Balance": "调整金额",
+            "Add": "新增",
+            "Subtract": "减少"
           },
           "SetPassword": {
             "UserId": "User ID",

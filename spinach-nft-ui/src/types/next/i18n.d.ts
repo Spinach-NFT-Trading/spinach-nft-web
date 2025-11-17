@@ -420,6 +420,8 @@ declare global {
               },
               ManualAdjust: {
                 Balance: string,
+                Add: string,
+                Subtract: string,
               },
               SetPassword: {
                 UserId: string,

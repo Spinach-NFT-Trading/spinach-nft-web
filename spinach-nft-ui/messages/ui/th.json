@@ -445,7 +445,9 @@
             "Buy": "ซื้อ"
           },
           "ManualAdjust": {
-            "Balance": "Amount"
+            "Balance": "Amount",
+            "Add": "เพิ่ม",
+            "Subtract": "ลด"
           },
           "SetPassword": {
             "UserId": "User ID",
