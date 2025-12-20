@@ -11,7 +11,7 @@
     "build": "next build",
     "start": "next start",
     "tsc": "yarn g:tsc",
-    "lint": "next lint"
+    "lint": "eslint ."
   },
   "dependencies": {
     "next": "^16.1.0",
