@@ -14,7 +14,8 @@
     "spinach-nft-common",
     "spinach-nft-server",
     "spinach-nft-service",
-    "spinach-nft-ui"
+    "spinach-nft-ui",
+    "spinach-nft-admin"
   ],
   "scripts": {
     "g:devops": "node scripts/discord-webhook.js",

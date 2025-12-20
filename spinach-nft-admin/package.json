@@ -1,0 +1,31 @@
+{
+  "name": "spinach-nft-admin",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "^24.x",
+    "npm": "^9.5.1"
+  },
+  "scripts": {
+    "dev": "next dev -p 3006",
+    "build": "next build",
+    "start": "next start",
+    "tsc": "yarn g:tsc",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^16.1.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^20.19.27",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "^16.1.0",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
+  }
+}
