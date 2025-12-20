@@ -1,0 +1,17 @@
+apps:
+  - namespace: 'Spinach.NFT'
+    name: 'Spinach.NFT.Admin'
+    # Entry point
+    # `yarn run start` / `npm run start` won't work here - or additional work required
+    script: './node_modules/next/dist/bin/next'
+    args: 'start'
+    # Execution configs
+    exec_mode: 'cluster'
+    instances: 2
+    # Environments
+    env:
+      NODE_ENV: 'production'
+      NODE_OPTIONS: '--max-old-space-size=8192'
+      PORT: 5188
+    # Others
+    time: true  # Log timestamp in logs
