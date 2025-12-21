@@ -55,6 +55,7 @@ const config: Config = {
     },
   },
   plugins: [
+    /* eslint-disable @typescript-eslint/no-require-imports */
     require('@savvywombat/tailwindcss-grid-areas'),
     plugin(({addVariant, addUtilities}) => {
       addVariant('not-last', '&:not(:last-child)');

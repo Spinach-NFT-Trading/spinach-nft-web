@@ -1,6 +1,6 @@
 type SendApiPostOpts = {
   path: string,
-  data: any,
+  data: unknown,
 };
 
 export const sendApiPost = async <TResponse>({path, data}: SendApiPostOpts): Promise<TResponse> => {

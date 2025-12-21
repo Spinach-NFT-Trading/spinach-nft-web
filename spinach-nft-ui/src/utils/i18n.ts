@@ -1,7 +1,8 @@
-import {createTranslator} from 'next-intl';
+import {getTranslations} from 'next-intl/server';
 
 import {defaultLocale} from '@spinach/next/const/locale';
 import {I18nNamespaces} from '@spinach/next/types/i18n';
+import {I18nMessage} from '@spinach/next/types/next/i18n';
 import {locales, Locale} from '@spinach/next/types/next/locale';
 
 
@@ -27,11 +28,11 @@ export const getMessages = async (locale: string) => {
 
 export const getMessagesOfLocales = async <TLocale extends Locale>(
   locales: TLocale[],
-): Promise<{[locale in TLocale]: IntlMessages}> => {
+): Promise<{[locale in TLocale]: I18nMessage}> => {
   return Object.fromEntries(
     (await Promise.all(locales.map((locale) => getMessages(locale))))
       .map((messages) => [messages.Locale, messages]),
-  ) as {[locale in TLocale]: IntlMessages};
+  ) as {[locale in TLocale]: I18nMessage};
 };
 
 type GetI18nTranslatorOpts<TNamespace extends I18nNamespaces> = {
@@ -43,10 +44,5 @@ export const getI18nTranslator = async <TNamespace extends I18nNamespaces>({
   locale,
   namespace,
 }: GetI18nTranslatorOpts<TNamespace>) => {
-  const messages = await getMessages(locale);
-  return createTranslator<TNamespace>({
-    locale,
-    messages,
-    namespace,
-  });
+  return getTranslations({locale, namespace});
 };

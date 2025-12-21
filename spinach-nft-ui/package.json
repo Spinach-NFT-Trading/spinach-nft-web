@@ -13,7 +13,7 @@
     "build": "next build",
     "start": "next start",
     "tsc": "yarn g:tsc",
-    "lint": "next lint",
+    "lint": "eslint .",
     "lint:css": "stylelint **/*.css"
   },
   "dependencies": {
@@ -24,12 +24,12 @@
     "autoprefixer": "^10.4.19",
     "clsx": "^2.1.1",
     "lodash": "^4.17.21",
-    "next": "^14.2.4",
+    "next": "^16.1.0",
     "next-auth": "^4.24.7",
-    "next-intl": "^3.15.3",
+    "next-intl": "^4.6.1",
     "postcss": "^8.4.39",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "react-hot-toast": "^2.4.1",
     "react-timeago": "^7.2.0",
     "react-timer-hook": "^3.0.7",
@@ -40,16 +40,20 @@
     "uuid": "^10.0.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.2.0",
     "@types/lodash": "^4.17.6",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
     "@types/react-window": "^1.8.8",
     "@types/uuid": "^10.0.0",
-    "eslint-config-next": "^14.2.4",
-    "eslint-plugin-tailwindcss": "^3.17.4",
-    "stylelint": "^16.6.1",
+    "eslint": "^9.16.0",
+    "eslint-config-next": "^16.1.0",
+    "eslint-plugin-tailwindcss": "^3.17.5",
+    "eslint-plugin-unused-imports": "^4.1.4",
+    "stylelint": "^16.11.0",
     "stylelint-config-standard": "^36.0.1",
-    "stylelint-config-tailwindcss": "^0.0.7"
+    "stylelint-config-tailwindcss": "^0.0.7",
+    "typescript": "^5.7.2"
   },
   "peerDependencies": {
     "@types/node": "*",
@@ -58,11 +62,9 @@
     "date-fns": "*",
     "dotenv": "*",
     "env-var": "*",
-    "eslint": "*",
     "eslint-config-google": "*",
     "eslint-plugin-import": "*",
     "mongodb": "*",
-    "pm2": "*",
-    "typescript": "*"
+    "pm2": "*"
   }
 }

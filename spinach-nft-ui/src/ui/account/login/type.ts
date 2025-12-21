@@ -8,10 +8,9 @@ export type AccountLoginInput = {
   password: string,
 };
 
-export type AccountLoginPageProps = NextPageProps<
-  {},
-  {
-    error?: ApiErrorCode,
-    callbackUrl?: string,
-  }
->;
+export type AccountLoginSearchParams = {
+  error?: ApiErrorCode,
+  callbackUrl?: string,
+};
+
+export type AccountLoginPageProps = NextPageProps<object, AccountLoginSearchParams>;

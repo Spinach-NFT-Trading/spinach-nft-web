@@ -24,7 +24,7 @@ import {LoginRequiredPageLayout} from '@spinach/next/ui/base/layout/loginRequire
 
 
 export const NftPositionLimitedProofPage = async ({params}: NextPageProps<NftPositionLimitedProofPageParams>) => {
-  const {nftId} = params;
+  const {nftId} = await params;
   const t = await getTranslations('UI.InPage.NftPosition.LimitedProof.Error');
 
   if (!ObjectId.isValid(nftId)) {

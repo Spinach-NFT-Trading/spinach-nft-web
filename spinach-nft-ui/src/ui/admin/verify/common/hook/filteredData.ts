@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Nullable} from '@spinach/common/types/common/typing';
 import {isNotNullish} from '@spinach/common/utils/type';
 
@@ -23,24 +21,22 @@ export const useAdminVerifyFilteredData = <TKey extends string, TInput extends A
 }: UseAdminVerifyFilteredDataOpts<TKey, TInput, TData>): TData[] => {
   const {key, value} = input;
 
-  return React.useMemo(() => (
-    data
-      .map((entry) => {
-        const filterData = toFilterData(entry);
+  return data
+    .map((entry) => {
+      const filterData = toFilterData(entry);
 
-        if (!filterData) {
-          return null;
-        }
+      if (!filterData) {
+        return null;
+      }
 
-        return {
-          entry,
-          filterData,
-        };
-      })
-      .filter(isNotNullish)
-      .filter(({filterData}) => (
-        !value || filterData[key].includes(value)
-      ))
-      .map(({entry}) => entry)
-  ), [data, input]);
+      return {
+        entry,
+        filterData,
+      };
+    })
+    .filter(isNotNullish)
+    .filter(({filterData}) => (
+      !value || filterData[key].includes(value)
+    ))
+    .map(({entry}) => entry);
 };

@@ -3,7 +3,7 @@ import {nftExchangeQueueCollection} from '@spinach/common/controller/collections
 import {NftExchangeQueuedData} from '@spinach/common/types/data/nft/queue';
 
 
-export const getNftExchangeRequestsQueued = (): Promise<NftExchangeQueuedData[]> => (
+export const getNftExchangeRequestsQueued = async (): Promise<NftExchangeQueuedData[]> => (
   nftExchangeQueueCollection
     .find()
     .map(({_id, ...data}): NftExchangeQueuedData => ({

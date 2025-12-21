@@ -31,7 +31,8 @@ export const NftPurchase = async ({params}: NextPageProps<PageParams>) => {
     return <SignIn/>;
   }
 
-  const nftId = new ObjectId(params.id);
+  const resolvedParams = await params;
+  const nftId = new ObjectId(resolvedParams.id);
   const [
     onSale,
     recommendedNfts,

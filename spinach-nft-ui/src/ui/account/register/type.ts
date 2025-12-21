@@ -23,4 +23,4 @@ export type AccountRegisterSearchParams = {
   agent?: string,
 };
 
-export type AccountRegisterPageProps = NextPageProps<{}, AccountRegisterSearchParams>;
+export type AccountRegisterPageProps = NextPageProps<object, AccountRegisterSearchParams>;

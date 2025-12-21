@@ -58,7 +58,7 @@ export const getNftExchangeMatchedBundle = async (filter: Filter<NftExchangeMatc
   return {data, bankDetailsMap};
 };
 
-export const getNftExchangeRequestsMatched = (): Promise<NftExchangeMatchedBundle> => {
+export const getNftExchangeRequestsMatched = async (): Promise<NftExchangeMatchedBundle> => {
   return getNftExchangeMatchedBundle({completedAt: null});
 };
 

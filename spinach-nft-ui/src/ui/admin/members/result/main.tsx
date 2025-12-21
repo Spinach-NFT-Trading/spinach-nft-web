@@ -11,6 +11,7 @@ import {CommonUserData} from '@spinach/next/types/auth';
 import {ResponseOfAdminMemberList} from '@spinach/next/types/userData/lazyLoaded';
 import {AdminLookBackInputControl} from '@spinach/next/ui/admin/common/lookback/type';
 import {AdminMemberSingleHeader} from '@spinach/next/ui/admin/members/result/header';
+import {useAdminMembersFiltered} from '@spinach/next/ui/admin/members/result/hook';
 import {AdminMemberPopup} from '@spinach/next/ui/admin/members/result/popup/main';
 import {AdminMemberPopupState} from '@spinach/next/ui/admin/members/result/popup/type';
 import {AdminMemberRow} from '@spinach/next/ui/admin/members/result/row';
@@ -25,8 +26,6 @@ type Props = {
 };
 
 export const AdminMembersResults = ({user, input, memberInfo, lookBackInputControl}: Props) => {
-  const {key, value} = input;
-  const {members} = memberInfo;
   const {act, status, setInputAndSend, refetch} = lookBackInputControl;
 
   const [error, setError] = React.useState<ApiErrorCode | null>(null);
@@ -40,10 +39,7 @@ export const AdminMembersResults = ({user, input, memberInfo, lookBackInputContr
   });
 
   const translateApiError = useI18nApiErrorTranslator();
-
-  const membersToShow = React.useMemo(() => members.filter((member) => (
-    !value || member[key]?.includes(value)
-  )), [memberInfo, input]);
+  const membersToShow = useAdminMembersFiltered({memberInfo, input});
 
   if (!act) {
     return <Loading/>;

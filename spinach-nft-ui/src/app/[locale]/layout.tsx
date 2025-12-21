@@ -1,9 +1,8 @@
-/* eslint-disable new-cap, camelcase */
 import React from 'react';
 
 import {Noto_Sans} from 'next/font/google';
 import {notFound} from 'next/navigation';
-import {unstable_setRequestLocale} from 'next-intl/server';
+import {setRequestLocale} from 'next-intl/server';
 
 import {MainContext} from '@spinach/next/context/main';
 import {LocaleLayoutParams, LocaleLayoutProps} from '@spinach/next/types/next/layout';
@@ -30,7 +29,7 @@ const RootLayout = ({params, children}: React.PropsWithChildren<LocaleLayoutProp
     notFound();
   }
 
-  unstable_setRequestLocale(locale);
+  setRequestLocale(locale);
 
   return (
     <html lang={locale} className="h-full" suppressHydrationWarning>

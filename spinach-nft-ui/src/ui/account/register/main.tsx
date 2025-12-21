@@ -20,11 +20,12 @@ export const AccountRegister = async ({searchParams}: AccountRegisterPageProps) 
   }
 
   const fileUploadGrantId = await generateFileUploadGrant();
+  const resolvedSearchParams = await searchParams;
 
   return (
     <UserControlLayout disableHomePageLink>
       <I18nProvider>
-        <AccountRegisterProvider agent={searchParams?.agent ?? null} fileUploadGrantId={fileUploadGrantId}>
+        <AccountRegisterProvider agent={resolvedSearchParams?.agent ?? null} fileUploadGrantId={fileUploadGrantId}>
           <AccountRegisterClient/>
         </AccountRegisterProvider>
       </I18nProvider>

@@ -15,7 +15,7 @@ export const generateSiteManifest = async (): Promise<Manifest> => {
   });
 
   return {
-    start_url: metadataBase?.origin,
+    start_url: metadataBase?.toString(),
     id: 'spinach.nft',
     name,
     short_name: shortName,

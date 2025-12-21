@@ -1,5 +1,7 @@
 // noinspection BadExpressionStatementJS
 
+import {I18nMessage} from '@spinach/next/types/next/i18n';
+
 /**
  * This file is intend to trigger typescript json schema check only, therefore no export should happen here.
  */
@@ -11,9 +13,9 @@ import zhHansTranslations from '../../messages/ui/zh-Hans.json';
 import zhHantTranslations from '../../messages/ui/zh-Hant.json';
 
 
-zhHantTranslations satisfies IntlMessages['UI'];
-zhHansTranslations satisfies IntlMessages['UI'];
-enTranslations satisfies IntlMessages['UI'];
-jaTranslations satisfies IntlMessages['UI'];
-viTranslations satisfies IntlMessages['UI'];
-thTranslations satisfies IntlMessages['UI'];
+zhHantTranslations satisfies I18nMessage['UI'];
+zhHansTranslations satisfies I18nMessage['UI'];
+enTranslations satisfies I18nMessage['UI'];
+jaTranslations satisfies I18nMessage['UI'];
+viTranslations satisfies I18nMessage['UI'];
+thTranslations satisfies I18nMessage['UI'];

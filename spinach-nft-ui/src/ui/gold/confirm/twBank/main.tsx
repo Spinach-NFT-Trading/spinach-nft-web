@@ -9,7 +9,8 @@ import {GoldExchangeConfirmTwBankClient} from '@spinach/next/ui/gold/confirm/twB
 
 
 export const GoldExchangeConfirmTwBank = async ({searchParams}: GoldExchangeConfirmPageProps) => {
-  const amount = typeof searchParams?.amount !== 'string' ? null : parseFloat(searchParams.amount);
+  const resolvedSearchParams = await searchParams;
+  const amount = typeof resolvedSearchParams?.amount !== 'string' ? null : parseFloat(resolvedSearchParams.amount);
 
   const fileUploadGrantId = await generateFileUploadGrant();
 

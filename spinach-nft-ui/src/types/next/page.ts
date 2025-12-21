@@ -5,10 +5,12 @@ export type CommonPageParams = {
   locale: Locale,
 };
 
+export type NextSearchParamsObject = {[key in string]?: string | string[]};
+
 export type NextPageProps<
-  TExtraParams,
-  TSearchParams extends {[key: string]: string | string[] | undefined} = {}
+  TParams extends object = object,
+  TSearchParams extends NextSearchParamsObject = NextSearchParamsObject,
 > = {
-  params: TExtraParams & CommonPageParams,
-  searchParams?: TSearchParams,
+  params: Promise<TParams>,
+  searchParams?: Promise<TSearchParams>,
 };

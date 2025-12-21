@@ -12,9 +12,10 @@ import {GoldExchangeConfirmPageProps} from '@spinach/next/ui/gold/confirm/common
 
 export const GoldExchangeConfirmUsdt = async ({searchParams}: GoldExchangeConfirmPageProps) => {
   const t = await getTranslations('UI.InPage.Gold.Confirm.Usdt');
+  const resolvedSearchParams = await searchParams;
 
   return (
-    <GoldExchangeConfirmLayout channel="crypto" amount={searchParams?.amount}>
+    <GoldExchangeConfirmLayout channel="crypto" amount={resolvedSearchParams?.amount}>
       {({wallet}) => (
         <>
           <GoldExchangeConfirmSection title={t('Field.Chain')} content="TRC20 (Tron)"/>

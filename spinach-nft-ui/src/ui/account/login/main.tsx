@@ -11,16 +11,17 @@ import {UserControlLayout} from '@spinach/next/ui/base/layout/userControl';
 
 
 export const AccountLogin = async ({searchParams}: AccountLoginPageProps) => {
+  const resolved = await searchParams;
   const session = await getServerSession(authOptions);
 
   if (session) {
-    redirect(searchParams?.callbackUrl ?? '/');
+    redirect(resolved?.callbackUrl ?? '/');
   }
 
   return (
     <UserControlLayout>
       <I18nProvider>
-        <AccountLoginClient error={searchParams?.error}/>
+        <AccountLoginClient error={resolved?.error}/>
       </I18nProvider>
     </UserControlLayout>
   );

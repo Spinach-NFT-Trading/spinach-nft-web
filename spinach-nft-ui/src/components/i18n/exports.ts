@@ -1,11 +1,11 @@
-import {createSharedPathnamesNavigation} from 'next-intl/navigation';
+import {createNavigation} from 'next-intl/navigation';
 import {getLocale} from 'next-intl/server';
 
 import {Locale, locales} from '@spinach/next/types/next/locale';
 import {isLocale} from '@spinach/next/utils/i18n';
 
 
-export const {Link, redirect, usePathname, useRouter} = createSharedPathnamesNavigation({locales});
+export const {Link, redirect, usePathname, useRouter} = createNavigation({locales});
 
 export const getI18nLocale = async (): Promise<Locale> => {
   const locale = await getLocale();

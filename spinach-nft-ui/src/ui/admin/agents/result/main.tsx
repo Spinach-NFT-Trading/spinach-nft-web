@@ -27,7 +27,7 @@ export const AdminAgentsResults = ({
   const {agentMemberList, agentInfo, balanceActivityMap} = data;
   const {act} = lookBackInputControl;
 
-  const infoListToShow = React.useMemo(() => agentMemberList.filter(({agentId}) => {
+  const infoListToShow = agentMemberList.filter(({agentId}) => {
     if (!value) {
       return true;
     }
@@ -42,7 +42,7 @@ export const AdminAgentsResults = ({
     }
 
     return agentUserInfo[key]?.includes(value);
-  }), [data, input]);
+  });
 
   if (!act) {
     return <Loading/>;

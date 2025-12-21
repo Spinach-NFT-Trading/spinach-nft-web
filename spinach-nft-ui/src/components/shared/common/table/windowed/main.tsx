@@ -48,7 +48,7 @@ export const WindowedTable = <TData, >({
             }
 
             return (
-              <Flex direction="row" noFullWidth style={styleToUse} className={clsx(
+              <Flex direction="row" noFullWidth style={styleToUse as React.CSSProperties} className={clsx(
                 'items-center gap-1 p-2 [&>*]:shrink-0',
                 classOfRow,
               )}>
