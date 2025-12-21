@@ -14,7 +14,9 @@
     "start": "next start",
     "tsc": "yarn g:tsc",
     "lint": "eslint .",
-    "lint:css": "stylelint **/*.css"
+    "lint:fix": "eslint . --fix",
+    "lint:css": "stylelint **/*.css",
+    "lint:css:fix": "stylelint **/*.css --fix"
   },
   "dependencies": {
     "@headlessui/react": "^2.0.3",
