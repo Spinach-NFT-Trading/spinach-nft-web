@@ -1,7 +1,9 @@
 "use client";
-import {authClient} from "@/lib/auth-client";
+import clsx from "clsx";
 import {useRouter} from "next/navigation";
 import {useState} from "react";
+
+import {authClient} from "@/lib/auth-client";
 
 export default function SignIn() {
   const router = useRouter();
@@ -22,7 +24,7 @@ export default function SignIn() {
         // Better Auth requires email, but user doesn't need to know/enter it
         const generatedEmail = `${username}@admin.local`;
 
-        const { data, error } = await authClient.signUp.email({
+        const {data, error} = await authClient.signUp.email({
           email: generatedEmail,
           password,
           name,
@@ -37,7 +39,7 @@ export default function SignIn() {
         }
       } else {
         // Sign In with username
-        const { data, error } = await authClient.signIn.username({
+        const {data, error} = await authClient.signIn.username({
           username,
           password,
         });
@@ -57,22 +59,28 @@ export default function SignIn() {
     }
   };
 
+  const inputClassName = clsx(
+    "flex h-9 w-full rounded-md border border-input bg-transparent",
+    "px-3 py-1 text-sm shadow-sm transition-colors",
+    "placeholder:text-muted-foreground",
+    "focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none",
+    "disabled:cursor-not-allowed disabled:opacity-50",
+  );
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-background">
-      <div className="w-full max-w-md p-8 space-y-6 bg-card text-card-foreground border border-border rounded-lg shadow-xl">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background">
+      <div className="w-full max-w-md space-y-6 rounded-lg border border-border bg-card p-8 text-card-foreground shadow-xl">
         <div className="flex flex-col space-y-1">
-          <h1 className="text-3xl font-semibold tracking-tight text-center">
+          <h1 className="text-center text-3xl font-semibold tracking-tight">
             {isSignUp ? "建立帳戶" : "歡迎回來"}
           </h1>
-          <p className="text-sm text-center text-muted-foreground">
-            {isSignUp
-              ? "請輸入詳細資料以建立您的管理員帳戶"
-              : "請輸入您的登入資訊以存取管理面板"}
+          <p className="text-center text-sm text-muted-foreground">
+            {isSignUp ? "請輸入詳細資料以建立您的管理員帳戶" : "請輸入您的登入資訊以存取管理面板"}
           </p>
         </div>
 
         {error && (
-          <div className="p-3 text-sm text-red-400 bg-red-900/20 border border-red-800 rounded-md">
+          <div className="rounded-md border border-red-800 bg-red-900/20 p-3 text-sm text-red-400">
             {error}
           </div>
         )}
@@ -86,56 +94,53 @@ export default function SignIn() {
         >
           {isSignUp && (
             <div className="space-y-2">
-              <label className="text-sm font-medium leading-none">
-                顯示名稱
-              </label>
+              <label className="text-sm leading-none font-medium">顯示名稱</label>
               <input
                 type="text"
                 placeholder="王小明"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
-                className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                className={inputClassName}
                 autoComplete="name"
               />
             </div>
           )}
 
           <div className="space-y-2">
-            <label className="text-sm font-medium leading-none">
-              帳號
-            </label>
+            <label className="text-sm leading-none font-medium">帳號</label>
             <input
               type="text"
               placeholder="username123"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+              className={inputClassName}
               autoComplete="username"
             />
           </div>
 
           <div className="space-y-2">
-            <label className="text-sm font-medium leading-none">
-              密碼
-            </label>
+            <label className="text-sm leading-none font-medium">密碼</label>
             <input
               type="password"
               placeholder="••••••••"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+              className={inputClassName}
               autoComplete={isSignUp ? "new-password" : "current-password"}
             />
           </div>
 
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="inline-flex items-center justify-center w-full h-9 px-4 py-2 text-sm font-medium text-primary-foreground transition-colors rounded-md shadow bg-primary hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-          >
+          <button type="submit" disabled={isLoading} className={clsx(
+            "inline-flex h-9 w-full items-center justify-center rounded-md",
+            "bg-primary px-4 py-2 text-sm font-medium text-primary-foreground",
+            "shadow-sm transition-colors",
+            "hover:bg-primary/90",
+            "focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none",
+            "disabled:pointer-events-none disabled:opacity-50",
+          )}>
             {isLoading ? "處理中..." : isSignUp ? "註冊" : "登入"}
           </button>
         </form>
@@ -147,7 +152,7 @@ export default function SignIn() {
               setIsSignUp(!isSignUp);
               setError(null);
             }}
-            className="text-sm hover:underline text-muted-foreground"
+            className="text-sm text-muted-foreground hover:underline"
           >
             {isSignUp ? "已有帳戶？登入" : "沒有帳戶？註冊"}
           </button>
