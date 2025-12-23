@@ -1,12 +1,40 @@
 import {betterAuth} from "better-auth";
 import {mongodbAdapter} from "better-auth/adapters/mongodb";
-import {username} from "better-auth/plugins";
-import {Mongo} from "spinach-nft-common/controller/const";
+import {admin, username} from "better-auth/plugins";
+import {Mongo} from "@spinach/common/controller/const";
+
+const db = Mongo.db("admin_auth");
 
 export const auth = betterAuth({
-  database: mongodbAdapter(Mongo.db("admin_auth")),
+  database: mongodbAdapter(db),
   emailAndPassword: {
     enabled: true,
   },
-  plugins: [username()],
+  plugins: [
+    username(),
+    admin({
+      defaultRole: "user",
+      adminRoles: ["admin"],
+    }),
+  ],
+  databaseHooks: {
+    user: {
+      create: {
+        before: async (user) => {
+          // Check if this is the first user
+          const userCount = await db.collection("user").countDocuments({}, {limit: 1});
+          if (userCount === 0) {
+            // First user becomes admin
+            return {
+              data: {
+                ...user,
+                role: "admin",
+              },
+            };
+          }
+          return {data: user};
+        },
+      },
+    },
+  },
 });

@@ -14,13 +14,22 @@
   --color-primary-foreground: hsl(222.2 47.4% 11.2%);
 
   /* Muted - disabled states and subtle text */
+  --color-muted: hsl(217.2 32.6% 17.5%);
   --color-muted-foreground: hsl(215 20.2% 65.1%);
+
+  /* Accent - hover states for secondary buttons */
+  --color-accent: hsl(217.2 32.6% 25%);
+  --color-accent-foreground: hsl(210 40% 98%);
 
   /* UI elements */
   --color-border: hsl(217.2 32.6% 17.5%);
   --color-input: hsl(217.2 32.6% 17.5%);
   --color-ring: hsl(212.7 26.8% 83.9%);
   /* Focus ring */
+
+  /* Destructive - danger/delete actions */
+  --color-destructive: hsl(0 62.8% 30.6%);
+  --color-destructive-foreground: hsl(210 40% 98%);
 
   /* Border radius */
   --radius-lg: 0.5rem;
@@ -34,4 +43,65 @@
 
 body {
   @apply bg-background text-foreground;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes exit {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* Animations for Base UI components */
+[data-state="open"].animate-content {
+  animation: enter 0.2s ease-out forwards;
+}
+
+[data-state="closed"].animate-content {
+  animation: exit 0.15s ease-in forwards;
+}
+
+[data-state="open"].animate-overlay {
+  animation: fade-in 0.2s ease-out forwards;
+}
+
+[data-state="closed"].animate-overlay {
+  animation: fade-out 0.15s ease-in forwards;
 }

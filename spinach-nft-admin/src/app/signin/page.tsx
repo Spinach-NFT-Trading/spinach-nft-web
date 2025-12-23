@@ -1,27 +1,44 @@
 "use client";
+
 import clsx from "clsx";
 import {useRouter} from "next/navigation";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+ 
+import {Button} from "@/components/ui/button";
 
+import {checkHasUsersAction} from "@/controllers/user/action";
 import {authClient} from "@/lib/auth-client";
+
+type PageState = "loading" | "firstSetup" | "login";
 
 export default function SignIn() {
   const router = useRouter();
+  const [pageState, setPageState] = useState<PageState>("loading");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [isSignUp, setIsSignUp] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Check if any users exist
+    checkHasUsersAction()
+      .then((hasUsers) => {
+        setPageState(hasUsers ? "login" : "firstSetup");
+      })
+      .catch(() => {
+        // Default to login on error
+        setPageState("login");
+      });
+  }, []);
 
   const handleSubmit = async () => {
     setIsLoading(true);
     setError(null);
 
     try {
-      if (isSignUp) {
-        // Auto-generate a placeholder email from username
-        // Better Auth requires email, but user doesn't need to know/enter it
+      if (pageState === "firstSetup") {
+        // First user setup - create admin account
         const generatedEmail = `${username}@admin.local`;
 
         const {data, error} = await authClient.signUp.email({
@@ -32,13 +49,14 @@ export default function SignIn() {
         });
 
         if (error) {
-          setError(error.message || "註冊失敗，請再試一次");
+          setError(error.message || "建立管理員帳號失敗，請再試一次");
         } else if (data) {
-          // Registration successful, redirect to home
+          // Set the first user as admin
+          // This is handled by the API route after signup
           router.push("/");
         }
       } else {
-        // Sign In with username
+        // Normal login
         const {data, error} = await authClient.signIn.username({
           username,
           password,
@@ -47,7 +65,6 @@ export default function SignIn() {
         if (error) {
           setError(error.message || "登入失敗，請檢查您的帳號或密碼");
         } else if (data) {
-          // Login successful, redirect to home
           router.push("/");
         }
       }
@@ -67,15 +84,27 @@ export default function SignIn() {
     "disabled:cursor-not-allowed disabled:opacity-50",
   );
 
+  if (pageState === "loading") {
+    return (
+      <div className="flex min-h-screen flex-col items-center justify-center bg-background">
+        <div className="text-muted-foreground">載入中...</div>
+      </div>
+    );
+  }
+
+  const isFirstSetup = pageState === "firstSetup";
+
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-background">
       <div className="w-full max-w-md space-y-6 rounded-lg border border-border bg-card p-8 text-card-foreground shadow-xl">
         <div className="flex flex-col space-y-1">
           <h1 className="text-center text-3xl font-semibold tracking-tight">
-            {isSignUp ? "建立帳戶" : "歡迎回來"}
+            {isFirstSetup ? "建立管理員帳戶" : "歡迎回來"}
           </h1>
           <p className="text-center text-sm text-muted-foreground">
-            {isSignUp ? "請輸入詳細資料以建立您的管理員帳戶" : "請輸入您的登入資訊以存取管理面板"}
+            {isFirstSetup
+              ? "請輸入詳細資料以建立第一位管理員帳戶"
+              : "請輸入您的登入資訊以存取管理面板"}
           </p>
         </div>
 
@@ -92,7 +121,7 @@ export default function SignIn() {
           }}
           className="space-y-4"
         >
-          {isSignUp && (
+          {isFirstSetup && (
             <div className="space-y-2">
               <label className="text-sm leading-none font-medium">顯示名稱</label>
               <input
@@ -129,34 +158,20 @@ export default function SignIn() {
               onChange={(e) => setPassword(e.target.value)}
               required
               className={inputClassName}
-              autoComplete={isSignUp ? "new-password" : "current-password"}
+              autoComplete={isFirstSetup ? "new-password" : "current-password"}
             />
           </div>
 
-          <button type="submit" disabled={isLoading} className={clsx(
-            "inline-flex h-9 w-full items-center justify-center rounded-md",
-            "bg-primary px-4 py-2 text-sm font-medium text-primary-foreground",
-            "shadow-sm transition-colors",
-            "hover:bg-primary/90",
-            "focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none",
-            "disabled:pointer-events-none disabled:opacity-50",
-          )}>
-            {isLoading ? "處理中..." : isSignUp ? "註冊" : "登入"}
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="w-full"
+          >
+            <Button className="w-full" isLoading={isLoading}>
+              {isLoading ? "處理中..." : isFirstSetup ? "建立管理員帳戶" : "登入"}
+            </Button>
           </button>
         </form>
-
-        <div className="text-center">
-          <button
-            type="button"
-            onClick={() => {
-              setIsSignUp(!isSignUp);
-              setError(null);
-            }}
-            className="text-sm text-muted-foreground hover:underline"
-          >
-            {isSignUp ? "已有帳戶？登入" : "沒有帳戶？註冊"}
-          </button>
-        </div>
       </div>
     </div>
   );

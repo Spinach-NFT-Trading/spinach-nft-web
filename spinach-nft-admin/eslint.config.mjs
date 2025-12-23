@@ -3,6 +3,7 @@ import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import prettierConfig from "eslint-config-prettier";
 import betterTailwindcss from "eslint-plugin-better-tailwindcss";
+import noRelativeImportPaths from "eslint-plugin-no-relative-import-paths";
 
 export default defineConfig([
   ...nextVitals,
@@ -10,6 +11,7 @@ export default defineConfig([
   {
     plugins: {
       "better-tailwindcss": betterTailwindcss,
+      "no-relative-import-paths": noRelativeImportPaths,
     },
     settings: {
       "better-tailwindcss": {
@@ -29,6 +31,14 @@ export default defineConfig([
       // Correctness rules (as errors)
       "better-tailwindcss/no-unregistered-classes": "error",
       "better-tailwindcss/no-conflicting-classes": "error",
+      "no-relative-import-paths/no-relative-import-paths": [
+        "error",
+        {
+          allowSameFolder: false,
+          rootDir: "src",
+          prefix: "@",
+        },
+      ],
     },
   },
   prettierConfig,

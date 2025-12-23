@@ -9,3 +9,4 @@ Note: This document is specifically formatted for Gemini, so some formatting con
 - When running commands:
     - Use as little `|` pipe operators as possible.
     - Be aware of the OS you are running, which is most likely Windows. If you encounter any issues, check the OS first.
+    - Use `yarn` for package management instead of `npm`.
