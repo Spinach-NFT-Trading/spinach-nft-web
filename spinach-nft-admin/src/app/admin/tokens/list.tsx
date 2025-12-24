@@ -1,13 +1,7 @@
 import {useState} from "react";
 
 import {Button} from "@/components/ui/button";
-
-type Token = {
-  token: string;
-  webhook: string;
-  note?: string;
-  accountId: string;
-};
+import {Token} from "@/types/admin";
 
 type User = {
   id: string;
@@ -41,13 +35,14 @@ export function TokenList({tokens, users, onDelete, onEdit}: TokenListProps) {
   };
 
   return (
-    <div className="rounded-lg border border-border bg-card">
-      <table className="w-full">
+    <div className="overflow-x-auto rounded-lg border border-border bg-card">
+      <table className="w-full min-w-[800px]">
         <thead>
           <tr className="border-b border-border">
             <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">使用者</th>
             <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Token</th>
             <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Webhook</th>
+            <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">手續費 (轉入/轉出)</th>
             <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">備註</th>
             <th className="px-4 py-3 text-right text-sm font-medium text-muted-foreground">操作</th>
           </tr>
@@ -55,7 +50,7 @@ export function TokenList({tokens, users, onDelete, onEdit}: TokenListProps) {
         <tbody>
           {tokens.length === 0 ? (
             <tr>
-              <td colSpan={5} className="px-4 py-8 text-center text-muted-foreground">
+              <td colSpan={6} className="px-4 py-8 text-center text-muted-foreground">
                 尚無 Token
               </td>
             </tr>
@@ -79,6 +74,16 @@ export function TokenList({tokens, users, onDelete, onEdit}: TokenListProps) {
                 </td>
                 <td className="px-4 py-3 text-sm text-muted-foreground">
                   {token.webhook.length > 40 ? `${token.webhook.slice(0, 40)}...` : token.webhook}
+                </td>
+                <td className="px-4 py-3 text-sm text-muted-foreground">
+                  {token.fee ? (
+                    <div className="flex flex-col gap-1 text-xs">
+                      <span>轉入: {token.fee.inflow.rate}% + {token.fee.inflow.flat}</span>
+                      <span>轉出: {token.fee.outflow.rate}% + {token.fee.outflow.flat}</span>
+                    </div>
+                  ) : (
+                    "-"
+                  )}
                 </td>
                 <td className="px-4 py-3 text-sm text-muted-foreground">{token.note || "-"}</td>
                 <td className="px-4 py-3 text-right">

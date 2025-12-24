@@ -12,11 +12,9 @@ import {
   listTokensForUserAction,
   updateTokenAction,
 } from "@/controllers/token/action";
+import {Token, TokenFeeConfig} from "@/types/admin";
+import {TokenFeeInput} from "@/app/admin/tokens/forms/fee";
 
-type Token = {
-  token: string;
-  webhook: string;
-};
 
 type FormMode = "none" | "create" | "edit";
 
@@ -34,6 +32,10 @@ export function TokenManagementForUser({userId}: Props) {
 
   // Form states
   const [webhookValue, setWebhookValue] = useState("");
+  const [feeConfig, setFeeConfig] = useState<TokenFeeConfig>({
+    inflow: {rate: 0, flat: 0},
+    outflow: {rate: 0, flat: 0},
+  });
 
   // Delete confirmation state
   const [deleteConfirmOpen, setDeleteConfirmOpen] = useState(false);
@@ -68,9 +70,14 @@ export function TokenManagementForUser({userId}: Props) {
       await createTokenAction({
         userId,
         webhook: webhookValue,
+        fee: feeConfig,
       });
       setFormMode("none");
       setWebhookValue("");
+      setFeeConfig({
+        inflow: {rate: 0, flat: 0},
+        outflow: {rate: 0, flat: 0},
+      });
       await loadTokens();
     } catch (e) {
       setError("建立 Token 失敗");
@@ -91,10 +98,15 @@ export function TokenManagementForUser({userId}: Props) {
       await updateTokenAction({
         token: selectedToken.token,
         webhook: webhookValue,
+        fee: feeConfig,
       });
       setFormMode("none");
       setSelectedToken(null);
       setWebhookValue("");
+      setFeeConfig({
+        inflow: {rate: 0, flat: 0},
+        outflow: {rate: 0, flat: 0},
+      });
       await loadTokens();
     } catch (e) {
       setError("更新 Token 失敗");
@@ -150,7 +162,7 @@ export function TokenManagementForUser({userId}: Props) {
 
   return (
     <div className="space-y-6">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <h1 className="text-3xl font-bold text-foreground">使用者 Token 管理</h1>
         <Link href="/admin/users">
           <Button variant="outline">返回使用者管理</Button>
@@ -178,9 +190,10 @@ export function TokenManagementForUser({userId}: Props) {
               type="text"
               value={webhookValue}
               onChange={(e) => setWebhookValue(e.target.value)}
-              className={inputClassName}
-              placeholder="https://..."
             />
+          </div>
+          <div className="mb-4">
+            <TokenFeeInput value={feeConfig} onChange={setFeeConfig} />
           </div>
           <div className="flex gap-2">
             <Button
@@ -215,6 +228,9 @@ export function TokenManagementForUser({userId}: Props) {
               placeholder="https://..."
             />
           </div>
+          <div className="mb-4">
+            <TokenFeeInput value={feeConfig} onChange={setFeeConfig} />
+          </div>
           <div className="flex gap-2">
             <Button
               onClick={handleUpdateToken}
@@ -237,19 +253,20 @@ export function TokenManagementForUser({userId}: Props) {
       )}
 
       {/* Token List */}
-      <div className="rounded-lg border border-border bg-card">
-        <table className="w-full">
+      <div className="overflow-x-auto rounded-lg border border-border bg-card">
+        <table className="w-full min-w-200">
           <thead>
             <tr className="border-b border-border">
               <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Token</th>
               <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Webhook</th>
+              <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">手續費 (轉入/轉出)</th>
               <th className="px-4 py-3 text-right text-sm font-medium text-muted-foreground">操作</th>
             </tr>
           </thead>
           <tbody>
             {tokens.length === 0 ? (
               <tr>
-                <td colSpan={3} className="px-4 py-8 text-center text-muted-foreground">
+                <td colSpan={4} className="px-4 py-8 text-center text-muted-foreground">
                   此使用者尚無 Token
                 </td>
               </tr>
@@ -261,6 +278,16 @@ export function TokenManagementForUser({userId}: Props) {
                   </td>
                   <td className="px-4 py-3 text-sm text-muted-foreground">
                     {token.webhook.length > 50 ? `${token.webhook.slice(0, 50)}...` : token.webhook}
+                  </td>
+                  <td className="px-4 py-3 text-sm text-muted-foreground">
+                    {token.fee ? (
+                      <div className="flex flex-col gap-1 text-xs">
+                        <span>轉入: {token.fee.inflow.rate}% + {token.fee.inflow.flat}</span>
+                        <span>轉出: {token.fee.outflow.rate}% + {token.fee.outflow.flat}</span>
+                      </div>
+                    ) : (
+                      "-"
+                    )}
                   </td>
                   <td className="px-4 py-3 text-right">
                     <div className="flex justify-end gap-2">
@@ -278,6 +305,10 @@ export function TokenManagementForUser({userId}: Props) {
                         onClick={() => {
                           setSelectedToken(token);
                           setWebhookValue(token.webhook);
+                          setFeeConfig({
+                            inflow: token.fee?.inflow || {rate: 0, flat: 0},
+                            outflow: token.fee?.outflow || {rate: 0, flat: 0},
+                          });
                           setFormMode("edit");
                         }}
                         className="text-green-400 hover:bg-green-900/20 hover:text-green-300"

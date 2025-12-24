@@ -5,17 +5,20 @@ import {v4 as uuidv4} from "uuid";
 
 import {nftExchangeTokenCollection} from "@spinach/common/controller/collections/nft";
 import {getSession} from "@/lib/session";
+import {TokenFeeConfig} from "@/types/admin";
 
 type CreateTokenOpts = {
   userId: string;
   webhook: string;
   note?: string;
+  fee?: TokenFeeConfig;
 };
 
 type UpdateTokenOpts = {
   token: string;
   webhook: string;
   note?: string;
+  fee?: TokenFeeConfig;
 };
 
 async function requireAdmin() {
@@ -34,15 +37,24 @@ export async function createTokenAction(opts: CreateTokenOpts) {
     token,
     webhook: opts.webhook,
     note: opts.note,
+    fee: opts.fee,
   });
-  return {token, webhook: opts.webhook, note: opts.note};
+  return {token, webhook: opts.webhook, note: opts.note, fee: opts.fee};
 }
 
 export async function updateTokenAction(opts: UpdateTokenOpts) {
   await requireAdmin();
   await nftExchangeTokenCollection.updateOne(
     {token: opts.token},
-    {$set: {webhook: opts.webhook, note: opts.note}},
+    {$set: {webhook: opts.webhook, note: opts.note, fee: opts.fee}},
+  );
+}
+
+export async function batchUpdateTokenFeesAction(userId: string, fee: TokenFeeConfig) {
+  await requireAdmin();
+  await nftExchangeTokenCollection.updateMany(
+    {accountId: new ObjectId(userId)},
+    {$set: {fee}},
   );
 }
 
@@ -59,6 +71,7 @@ export async function listTokensForUserAction(userId: string) {
       webhook: string;
       note?: string;
       accountId: string;
+      fee?: TokenFeeConfig;
     }>([
       {$match: {accountId: new ObjectId(userId)}},
       {
@@ -68,6 +81,7 @@ export async function listTokensForUserAction(userId: string) {
           webhook: 1,
           note: 1,
           accountId: {$toString: "$accountId"},
+          fee: 1,
         },
       },
     ])
@@ -82,6 +96,7 @@ export async function listAllTokensAction() {
       webhook: string;
       note?: string;
       accountId: string;
+      fee?: TokenFeeConfig;
     }>([
       {
         $project: {
@@ -90,6 +105,7 @@ export async function listAllTokensAction() {
           webhook: 1,
           note: 1,
           accountId: {$toString: "$accountId"},
+          fee: 1,
         },
       },
     ])

@@ -2,18 +2,14 @@ import clsx from "clsx";
 import {useState} from "react";
 
 import {Button} from "@/components/ui/button";
-
-type Token = {
-  token: string;
-  webhook: string;
-  note?: string;
-  accountId: string;
-};
+import {Token, TokenFeeConfig} from "@/types/admin";
+import {TokenFeeInput} from "@/app/admin/tokens/forms/fee";
 
 export type UpdateTokenData = {
   token: string;
   webhook: string;
   note?: string;
+  fee: TokenFeeConfig;
 };
 
 type TokenEditFormProps = {
@@ -26,12 +22,17 @@ type TokenEditFormProps = {
 export function TokenEditForm({token, onSubmit, onCancel, isSubmitting}: TokenEditFormProps) {
   const [webhookValue, setWebhookValue] = useState(token.webhook);
   const [noteValue, setNoteValue] = useState(token.note || "");
+  const [feeConfig, setFeeConfig] = useState<TokenFeeConfig>({
+    inflow: token.fee?.inflow || {rate: 0, flat: 0},
+    outflow: token.fee?.outflow || {rate: 0, flat: 0},
+  });
 
   const handleSubmit = async () => {
     await onSubmit({
       token: token.token,
       webhook: webhookValue,
       note: noteValue || undefined,
+      fee: feeConfig,
     });
   };
 
@@ -68,6 +69,9 @@ export function TokenEditForm({token, onSubmit, onCancel, isSubmitting}: TokenEd
           className={inputClassName}
           placeholder="選填"
         />
+      </div>
+      <div className="mb-4">
+        <TokenFeeInput value={feeConfig} onChange={setFeeConfig} />
       </div>
       <div className="flex gap-2">
         <Button

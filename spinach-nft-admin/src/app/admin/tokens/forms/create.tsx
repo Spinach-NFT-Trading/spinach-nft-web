@@ -2,6 +2,8 @@ import clsx from "clsx";
 import {useState} from "react";
 
 import {Button} from "@/components/ui/button";
+import {TokenFeeConfig} from "@/types/admin";
+import {TokenFeeInput} from "@/app/admin/tokens/forms/fee";
 
 type User = {
   id: string;
@@ -13,6 +15,7 @@ export type CreateTokenData = {
   userId: string;
   webhook: string;
   note?: string;
+  fee: TokenFeeConfig;
 };
 
 type TokenCreateFormProps = {
@@ -26,12 +29,17 @@ export function TokenCreateForm({users, onSubmit, onCancel, isSubmitting}: Token
   const [selectedUserId, setSelectedUserId] = useState("");
   const [webhookValue, setWebhookValue] = useState("");
   const [noteValue, setNoteValue] = useState("");
+  const [feeConfig, setFeeConfig] = useState<TokenFeeConfig>({
+    inflow: {rate: 0, flat: 0},
+    outflow: {rate: 0, flat: 0},
+  });
 
   const handleSubmit = async () => {
     await onSubmit({
       userId: selectedUserId,
       webhook: webhookValue,
       note: noteValue || undefined,
+      fee: feeConfig,
     });
   };
 
@@ -45,7 +53,7 @@ export function TokenCreateForm({users, onSubmit, onCancel, isSubmitting}: Token
   return (
     <div className="space-y-4 rounded-lg border border-border bg-card p-6">
       <h2 className="text-xl font-semibold">新增 Token</h2>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div className="space-y-2">
           <label className="text-sm font-medium">使用者</label>
           <select
@@ -80,6 +88,9 @@ export function TokenCreateForm({users, onSubmit, onCancel, isSubmitting}: Token
             className={inputClassName}
             placeholder="選填"
           />
+        </div>
+        <div className="col-span-1 md:col-span-2">
+          <TokenFeeInput value={feeConfig} onChange={setFeeConfig} />
         </div>
       </div>
       <div className="flex gap-2">

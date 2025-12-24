@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 
 import {Button} from "@/components/ui/button";
 import {
+  batchUpdateTokenFeesAction,
   createTokenAction,
   deleteTokenAction,
   listAllTokensAction,
@@ -13,14 +14,10 @@ import {
 import {listUsersAction} from "@/controllers/user/action";
 import {CreateTokenData, TokenCreateForm} from "@/app/admin/tokens/forms/create";
 import {TokenEditForm, UpdateTokenData} from "@/app/admin/tokens/forms/edit";
+import {TokenBatchFeeForm} from "@/app/admin/tokens/forms/batch";
 import {TokenList} from "@/app/admin/tokens/list";
+import {Token, TokenFeeConfig} from "@/types/admin";
 
-type Token = {
-  token: string;
-  webhook: string;
-  note?: string;
-  accountId: string;
-};
 
 type User = {
   id: string;
@@ -28,7 +25,7 @@ type User = {
   username?: string;
 };
 
-type FormMode = "none" | "create" | "edit";
+type FormMode = "none" | "create" | "edit" | "batch";
 
 export function TokenManagementAll() {
   const [tokens, setTokens] = useState<Token[]>([]);
@@ -71,6 +68,7 @@ export function TokenManagementAll() {
         userId: data.userId,
         webhook: data.webhook,
         note: data.note,
+        fee: data.fee,
       });
       setFormMode("none");
       await loadData();
@@ -91,6 +89,7 @@ export function TokenManagementAll() {
         token: data.token,
         webhook: data.webhook,
         note: data.note,
+        fee: data.fee,
       });
       setFormMode("none");
       setSelectedToken(null);
@@ -118,6 +117,22 @@ export function TokenManagementAll() {
     }
   };
 
+  const handleBatchUpdate = async (userId: string, fee: TokenFeeConfig) => {
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      await batchUpdateTokenFeesAction(userId, fee);
+      setFormMode("none");
+      await loadData();
+    } catch (e) {
+      setError("批次更新 Token 失敗");
+      console.error(e);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   if (loading) {
     return <div className="text-muted-foreground">載入中...</div>;
   }
@@ -131,8 +146,11 @@ export function TokenManagementAll() {
       )}
 
       {/* Actions */}
-      <div className="flex gap-4">
+      <div className="flex flex-col gap-4 sm:flex-row">
         <Button onClick={() => setFormMode("create")}>新增 Token</Button>
+        <Button onClick={() => setFormMode("batch")} variant="outline">
+          批次更新手續費
+        </Button>
         <Link href="/admin/users">
           <Button variant="outline">返回使用者管理</Button>
         </Link>
@@ -143,6 +161,16 @@ export function TokenManagementAll() {
         <TokenCreateForm
           users={users}
           onSubmit={handleCreateToken}
+          onCancel={() => setFormMode("none")}
+          isSubmitting={isSubmitting}
+        />
+      )}
+
+      {/* Batch Update Form */}
+      {formMode === "batch" && (
+        <TokenBatchFeeForm
+          users={users}
+          onSubmit={handleBatchUpdate}
           onCancel={() => setFormMode("none")}
           isSubmitting={isSubmitting}
         />
