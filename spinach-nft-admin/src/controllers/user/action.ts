@@ -3,7 +3,7 @@
 import {ObjectId} from "mongodb";
 
 import {auth} from "@/lib/auth";
-import {getSession, getUserCollection, hasAnyUsers} from "@/lib/session";
+import {getUserCollection, hasAnyUsers, requireAdmin} from "@/lib/session";
 import {headers} from "next/headers";
 
 type CreateUserOpts = {
@@ -23,15 +23,7 @@ type UpdateUserNotesOpts = {
   notes: string;
 };
 
-async function requireAdmin() {
-  const session = await getSession();
-  if (!session || session.user.role !== "admin") {
-    throw new Error("Unauthorized: Admin access required");
-  }
-  return session;
-}
-
-export async function createUserAction(opts: CreateUserOpts) {
+export const createUserAction = async (opts: CreateUserOpts) => {
   await requireAdmin();
   const email = `${opts.username}@admin.local`;
   const result = await auth.api.createUser({
@@ -47,17 +39,17 @@ export async function createUserAction(opts: CreateUserOpts) {
   }
 
   return result;
-}
+};
 
-export async function changePasswordAction(opts: ChangePasswordOpts) {
+export const changePasswordAction = async (opts: ChangePasswordOpts) => {
   await requireAdmin();
   return auth.api.setUserPassword({
     body: {userId: opts.userId, newPassword: opts.newPassword},
     headers: await headers(),
   });
-}
+};
 
-export async function deleteUserAction(userId: string) {
+export const deleteUserAction = async (userId: string) => {
   await requireAdmin();
   console.log(`Deleting user: ${userId}`);
   try {
@@ -71,22 +63,22 @@ export async function deleteUserAction(userId: string) {
     console.error(`Failed to delete user ${userId}:`, error);
     throw error;
   }
-}
+};
 
-export async function updateUserNotesAction(opts: UpdateUserNotesOpts) {
+export const updateUserNotesAction = async (opts: UpdateUserNotesOpts) => {
   await requireAdmin();
   await getUserCollection().updateOne(
     {_id: new ObjectId(opts.userId)},
     {$set: {notes: opts.notes}},
   );
-}
+};
 
-export async function listUsersAction() {
+export const listUsersAction = async () => {
   await requireAdmin();
   return auth.api.listUsers({query: {}, headers: await headers()});
-}
+};
 
-export async function setUserRoleAction(userId: string, role: string) {
+export const setUserRoleAction = async (userId: string, role: string) => {
   await requireAdmin();
   const validRoles = ["user", "admin"];
   if (!validRoles.includes(role)) {
@@ -97,8 +89,8 @@ export async function setUserRoleAction(userId: string, role: string) {
     body: {userId, role: role as "user" | "admin"},
     headers: await headers(),
   });
-}
+};
 
-export async function checkHasUsersAction() {
+export const checkHasUsersAction = async () => {
   return hasAnyUsers();
-}
+};

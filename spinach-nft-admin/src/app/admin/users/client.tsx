@@ -28,7 +28,7 @@ type User = {
 
 type FormMode = "none" | "create" | "password" | "notes";
 
-export function UserManagement() {
+export const UserManagement = () => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

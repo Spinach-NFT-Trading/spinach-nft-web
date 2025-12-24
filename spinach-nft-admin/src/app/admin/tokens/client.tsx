@@ -27,7 +27,7 @@ type User = {
 
 type FormMode = "none" | "create" | "edit" | "batch";
 
-export function TokenManagementAll() {
+export const TokenManagementAll = () => {
   const [tokens, setTokens] = useState<Token[]>([]);
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
@@ -151,6 +151,9 @@ export function TokenManagementAll() {
         <Button onClick={() => setFormMode("batch")} variant="outline">
           批次更新手續費
         </Button>
+        <Link href="/admin/reports">
+          <Button variant="outline">交易報表</Button>
+        </Link>
         <Link href="/admin/users">
           <Button variant="outline">返回使用者管理</Button>
         </Link>

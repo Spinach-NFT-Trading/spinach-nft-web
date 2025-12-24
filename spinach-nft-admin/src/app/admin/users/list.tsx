@@ -20,13 +20,13 @@ type UserListProps = {
   onDelete: (userId: string) => void;
 };
 
-export function UserList({
+export const UserList = ({
   users,
   onSetRole,
   onChangePassword,
   onEditNotes,
   onDelete,
-}: UserListProps) {
+}: UserListProps) => {
   return (
     <div className="rounded-lg border border-border bg-card">
       <table className="w-full">

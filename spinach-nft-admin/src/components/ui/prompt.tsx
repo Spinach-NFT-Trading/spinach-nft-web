@@ -20,7 +20,7 @@ export type PromptProps = {
   isLoading?: boolean;
 };
 
-export function Prompt({
+export const Prompt = ({
   open,
   onOpenChange,
   title,
@@ -32,7 +32,7 @@ export function Prompt({
   requiredInput,
   inputPlaceholder,
   isLoading,
-}: PromptProps) {
+}: PromptProps) => {
   const [inputValue, setInputValue] = React.useState("");
 
   React.useEffect(() => {

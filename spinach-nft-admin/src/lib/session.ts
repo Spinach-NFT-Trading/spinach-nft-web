@@ -8,6 +8,14 @@ export const getSession = cache(async () => {
   return auth.api.getSession({headers: await headers()});
 });
 
+export const requireAdmin = async () => {
+  const session = await getSession();
+  if (!session || session.user.role !== "admin") {
+    throw new Error("Unauthorized");
+  }
+  return session;
+};
+
 export const getUserCollection = () => {
   return Mongo.db("admin_auth").collection("user");
 };

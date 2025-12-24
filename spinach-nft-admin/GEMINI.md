@@ -13,6 +13,9 @@
     - Good: `if (!selectedToken) { return; }`
 - **File Naming**: Directories should be nested if they represent the same category (e.g., `forms/create.tsx`). Do not use dashes in file names.
 - **Path Aliases**: Always use path aliases (`@/`) instead of relative paths (`./` or `../`), even for files in the same directory.
+- **No Lazy Imports**: Never use lazy imports (e.g., `await import()`).
+- **No forEach**: Never use `forEach()`. Use `for...of` or other iteration methods instead.
+- **Indentation**: Always use 2 spaces for indentation. Never use 4 spaces.
 
 ## Coding Style Guide
 

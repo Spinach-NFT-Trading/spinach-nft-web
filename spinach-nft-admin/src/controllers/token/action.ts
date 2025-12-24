@@ -4,7 +4,7 @@ import {ObjectId} from "mongodb";
 import {v4 as uuidv4} from "uuid";
 
 import {nftExchangeTokenCollection} from "@spinach/common/controller/collections/nft";
-import {getSession} from "@/lib/session";
+import {requireAdmin} from "@/lib/session";
 import {TokenFeeConfig} from "@/types/admin";
 
 type CreateTokenOpts = {
@@ -21,15 +21,7 @@ type UpdateTokenOpts = {
   fee?: TokenFeeConfig;
 };
 
-async function requireAdmin() {
-  const session = await getSession();
-  if (!session || session.user.role !== "admin") {
-    throw new Error("Unauthorized");
-  }
-  return session;
-}
-
-export async function createTokenAction(opts: CreateTokenOpts) {
+export const createTokenAction = async (opts: CreateTokenOpts) => {
   await requireAdmin();
   const token = uuidv4();
   await nftExchangeTokenCollection.insertOne({
@@ -40,30 +32,30 @@ export async function createTokenAction(opts: CreateTokenOpts) {
     fee: opts.fee,
   });
   return {token, webhook: opts.webhook, note: opts.note, fee: opts.fee};
-}
+};
 
-export async function updateTokenAction(opts: UpdateTokenOpts) {
+export const updateTokenAction = async (opts: UpdateTokenOpts) => {
   await requireAdmin();
   await nftExchangeTokenCollection.updateOne(
     {token: opts.token},
     {$set: {webhook: opts.webhook, note: opts.note, fee: opts.fee}},
   );
-}
+};
 
-export async function batchUpdateTokenFeesAction(userId: string, fee: TokenFeeConfig) {
+export const batchUpdateTokenFeesAction = async (userId: string, fee: TokenFeeConfig) => {
   await requireAdmin();
   await nftExchangeTokenCollection.updateMany(
     {accountId: new ObjectId(userId)},
     {$set: {fee}},
   );
-}
+};
 
-export async function deleteTokenAction(token: string) {
+export const deleteTokenAction = async (token: string) => {
   await requireAdmin();
   await nftExchangeTokenCollection.deleteOne({token});
-}
+};
 
-export async function listTokensForUserAction(userId: string) {
+export const listTokensForUserAction = async (userId: string) => {
   await requireAdmin();
   return nftExchangeTokenCollection
     .aggregate<{
@@ -86,9 +78,9 @@ export async function listTokensForUserAction(userId: string) {
       },
     ])
     .toArray();
-}
+};
 
-export async function listAllTokensAction() {
+export const listAllTokensAction = async () => {
   await requireAdmin();
   return nftExchangeTokenCollection
     .aggregate<{
@@ -110,4 +102,4 @@ export async function listAllTokensAction() {
       },
     ])
     .toArray();
-}
+};

@@ -16,7 +16,7 @@ type TokenListProps = {
   onEdit: (token: Token) => void;
 };
 
-export function TokenList({tokens, users, onDelete, onEdit}: TokenListProps) {
+export const TokenList = ({tokens, users, onDelete, onEdit}: TokenListProps) => {
   const [copiedToken, setCopiedToken] = useState<string | null>(null);
 
   const getUserName = (accountId: string) => {

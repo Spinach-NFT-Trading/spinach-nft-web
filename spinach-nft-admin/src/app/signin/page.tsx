@@ -11,7 +11,7 @@ import {authClient} from "@/lib/auth-client";
 
 type PageState = "loading" | "firstSetup" | "login";
 
-export default function SignIn() {
+const SignIn = () => {
   const router = useRouter();
   const [pageState, setPageState] = useState<PageState>("loading");
   const [username, setUsername] = useState("");
@@ -175,4 +175,6 @@ export default function SignIn() {
       </div>
     </div>
   );
-}
+};
+
+export default SignIn;
