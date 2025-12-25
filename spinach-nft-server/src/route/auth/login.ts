@@ -11,7 +11,7 @@ import {getUserInfo} from '@spinach/server/controller/auth/user';
 
 
 export const addAuthLogin = () => {
-  Server.post<{Body: UserLoginRequest, Reply: UserLoginResponse}>(
+  Server.post<{Body: UserLoginRequest; Reply: UserLoginResponse}>(
     apiPath.auth.login,
     {
       schema: {

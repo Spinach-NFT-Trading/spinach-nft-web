@@ -1,9 +1,9 @@
 "use client";
 
-import Link from "next/link";
 import {useEffect, useState} from "react";
 
-import {NftSellReportBundle} from "@/types/report";
+import {SellReportList} from "@/app/admin/reports/sell/list";
+import {SellReportSummary} from "@/app/admin/reports/sell/summary";
 import {Button} from "@/components/ui/button";
 import {DateRangePicker, DateRangeValue} from "@/components/ui/dateRange";
 import {
@@ -12,13 +12,13 @@ import {
   listAccountsWithTokensAction,
 } from "@/controllers/report/action";
 import {listUsersAction} from "@/controllers/user/action";
-import {SellReportList} from "@/app/admin/reports/sell/list";
-import {SellReportSummary} from "@/app/admin/reports/sell/summary";
+import {NftSellReportBundle} from "@/types/report";
+
 
 type User = {
-  id: string;
-  name: string;
-  username?: string;
+  id: string,
+  name: string,
+  username?: string,
 };
 
 const formatDateToYYYYMMDD = (date: Date): string => {
@@ -120,7 +120,10 @@ export const SellReportsClient = () => {
   return (
     <div className="space-y-6">
       {error && (
-        <div className="rounded-md border border-red-800 bg-red-900/20 p-3 text-sm text-red-400">
+        <div className={`
+          rounded-md border border-red-800 bg-red-900/20 p-3 text-sm
+          text-red-400
+        `}>
           {error}
         </div>
       )}
@@ -138,7 +141,10 @@ export const SellReportsClient = () => {
             id="account"
             value={selectedAccountId}
             onChange={(e) => setSelectedAccountId(e.target.value)}
-            className="rounded-md border border-input bg-background px-3 py-1.5 text-sm text-foreground"
+            className={`
+              rounded-md border border-input bg-background px-3 py-1.5 text-sm
+              text-foreground
+            `}
           >
             {accounts.length === 0 ? (
               <option value="">無帳戶資料</option>
@@ -153,7 +159,7 @@ export const SellReportsClient = () => {
         </div>
 
         {/* Date range picker */}
-        <DateRangePicker value={dateRange} onChange={setDateRange} />
+        <DateRangePicker value={dateRange} onChange={setDateRange}/>
 
         {/* Fetch button */}
         <div>
@@ -169,15 +175,15 @@ export const SellReportsClient = () => {
           <h2 className="text-lg font-semibold text-foreground">報表結果</h2>
 
           {/* Summary */}
-          <SellReportSummary summary={report.summary} />
+          <SellReportSummary summary={report.summary}/>
 
           {/* Detail list */}
           <div>
             <h3 className="mb-3 text-base font-medium text-foreground">上架明細</h3>
-            <SellReportList items={report.items} />
+            <SellReportList items={report.items}/>
           </div>
         </div>
       )}
     </div>
   );
-}
+};

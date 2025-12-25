@@ -2,7 +2,6 @@ import * as path from 'path';
 
 import {getEnvironment} from '@spinach/common/utils/env';
 import {FastifyLoggerOptions, FastifyServerOptions} from 'fastify';
-// eslint-disable-next-line import/no-unresolved
 import {PinoLoggerOptions} from 'fastify/types/logger';
 import {TransportTargetOptions} from 'pino';
 
@@ -34,7 +33,7 @@ const commonOptions: FastifyLoggerOptions & PinoLoggerOptions = {
 
       // Copied from `@newrelic/pino-enricher` because `formatters` is overridden by the above patch
       if (context.err) {
-        const err = context.err as {name: string, message: string, stack: string};
+        const err = context.err as {name: string; message: string; stack: string};
 
         context['error.message'] = err.message;
         context['error.stack'] = err.stack;

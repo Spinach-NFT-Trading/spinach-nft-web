@@ -14,7 +14,7 @@ import {getAuthorizationToken} from '@spinach/server/utils/auth';
 
 
 export const addNftSellRequest = () => {
-  Server.post<{Body: NftSellRequest, Reply: NftSellResponse}>(
+  Server.post<{Body: NftSellRequest; Reply: NftSellResponse}>(
     apiPath.nft.sell,
     {
       schema: {

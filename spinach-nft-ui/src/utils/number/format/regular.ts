@@ -34,7 +34,7 @@ export const formatInt = (num: Nullable<number>): string => {
 
 type FormatToAbbreviationOpts = {
   num: Nullable<number>,
-  decimals?: number
+  decimals?: number,
 };
 
 export const formatToAbbreviation = ({num, decimals}: FormatToAbbreviationOpts): string => {

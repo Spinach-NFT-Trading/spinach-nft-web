@@ -2,4 +2,3 @@ import {NftPositionLimitedData} from '@spinach/next/ui/account/nft/position/limi
 
 
 export type NftPositionLimitedContextContent = NftPositionLimitedData;
-

@@ -1,7 +1,8 @@
 import {redirect} from "next/navigation";
 
-import {getSession} from "@/lib/session";
 import {UserManagement} from "@/app/admin/users/client";
+import {getSession} from "@/lib/session";
+
 
 export default async function AdminUsersPage() {
   const session = await getSession();

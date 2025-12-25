@@ -3,21 +3,22 @@ import Link from "next/link";
 
 import {Button} from "@/components/ui/button";
 
+
 type User = {
-  id: string;
-  name: string;
-  email: string;
-  role: string;
-  username?: string;
-  notes?: string;
+  id: string,
+  name: string,
+  email: string,
+  role: string,
+  username?: string,
+  notes?: string,
 };
 
 type UserListProps = {
-  users: User[];
-  onSetRole: (userId: string, role: string) => void;
-  onChangePassword: (user: User) => void;
-  onEditNotes: (user: User) => void;
-  onDelete: (userId: string) => void;
+  users: User[],
+  onSetRole: (userId: string, role: string) => void,
+  onChangePassword: (user: User) => void,
+  onEditNotes: (user: User) => void,
+  onDelete: (userId: string) => void,
 };
 
 export const UserList = ({
@@ -32,16 +33,30 @@ export const UserList = ({
       <table className="w-full">
         <thead>
           <tr className="border-b border-border">
-            <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">帳號</th>
-            <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">名稱</th>
-            <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">角色</th>
-            <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">備註</th>
-            <th className="px-4 py-3 text-right text-sm font-medium text-muted-foreground">操作</th>
+            <th className={`
+              px-4 py-3 text-left text-sm font-medium text-muted-foreground
+            `}>帳號</th>
+            <th className={`
+              px-4 py-3 text-left text-sm font-medium text-muted-foreground
+            `}>名稱</th>
+            <th className={`
+              px-4 py-3 text-left text-sm font-medium text-muted-foreground
+            `}>角色</th>
+            <th className={`
+              px-4 py-3 text-left text-sm font-medium text-muted-foreground
+            `}>備註</th>
+            <th className={`
+              px-4 py-3 text-right text-sm font-medium text-muted-foreground
+            `}>操作</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.id} className="border-b border-border last:border-0 hover:bg-muted/30">
+            <tr key={user.id} className={`
+              border-b border-border
+              last:border-0
+              hover:bg-muted/30
+            `}>
               <td className="px-4 py-3 text-sm">{user.username || user.email}</td>
               <td className="px-4 py-3 text-sm">{user.name}</td>
               <td className="px-4 py-3 text-sm">
@@ -64,7 +79,10 @@ export const UserList = ({
                       variant="ghost"
                       size="sm"
                       onClick={() => onSetRole(user.id, "admin")}
-                      className="text-blue-400 hover:bg-blue-900/20 hover:text-blue-300"
+                      className={`
+                        text-blue-400
+                        hover:bg-blue-900/20 hover:text-blue-300
+                      `}
                     >
                       設為管理
                     </Button>
@@ -73,7 +91,10 @@ export const UserList = ({
                     variant="ghost"
                     size="sm"
                     onClick={() => onChangePassword(user)}
-                    className="text-blue-400 hover:bg-blue-900/20 hover:text-blue-300"
+                    className={`
+                      text-blue-400
+                      hover:bg-blue-900/20 hover:text-blue-300
+                    `}
                   >
                     改密碼
                   </Button>
@@ -81,7 +102,10 @@ export const UserList = ({
                     variant="ghost"
                     size="sm"
                     onClick={() => onEditNotes(user)}
-                    className="text-green-400 hover:bg-green-900/20 hover:text-green-300"
+                    className={`
+                      text-green-400
+                      hover:bg-green-900/20 hover:text-green-300
+                    `}
                   >
                     備註
                   </Button>
@@ -89,7 +113,10 @@ export const UserList = ({
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="text-purple-400 hover:bg-purple-900/20 hover:text-purple-300"
+                      className={`
+                        text-purple-400
+                        hover:bg-purple-900/20 hover:text-purple-300
+                      `}
                     >
                       Token
                     </Button>
@@ -99,7 +126,10 @@ export const UserList = ({
                       variant="ghost"
                       size="sm"
                       onClick={() => onDelete(user.id)}
-                      className="text-red-400 hover:bg-red-900/20 hover:text-red-300"
+                      className={`
+                        text-red-400
+                        hover:bg-red-900/20 hover:text-red-300
+                      `}
                     >
                       刪除
                     </Button>
@@ -112,4 +142,4 @@ export const UserList = ({
       </table>
     </div>
   );
-}
+};

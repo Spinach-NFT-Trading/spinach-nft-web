@@ -1,24 +1,25 @@
 "use server";
 
+import {nftExchangeTokenCollection} from "@spinach/common/controller/collections/nft";
 import {ObjectId} from "mongodb";
 import {v4 as uuidv4} from "uuid";
 
-import {nftExchangeTokenCollection} from "@spinach/common/controller/collections/nft";
 import {requireAdmin} from "@/lib/session";
 import {TokenFeeConfig} from "@/types/admin";
 
+
 type CreateTokenOpts = {
-  userId: string;
-  webhook: string;
-  note?: string;
-  fee?: TokenFeeConfig;
+  userId: string,
+  webhook: string,
+  note?: string,
+  fee?: TokenFeeConfig,
 };
 
 type UpdateTokenOpts = {
-  token: string;
-  webhook: string;
-  note?: string;
-  fee?: TokenFeeConfig;
+  token: string,
+  webhook: string,
+  note?: string,
+  fee?: TokenFeeConfig,
 };
 
 export const createTokenAction = async (opts: CreateTokenOpts) => {
@@ -59,12 +60,12 @@ export const listTokensForUserAction = async (userId: string) => {
   await requireAdmin();
   return nftExchangeTokenCollection
     .aggregate<{
-      token: string;
-      webhook: string;
-      note?: string;
-      accountId: string;
-      fee?: TokenFeeConfig;
-    }>([
+    token: string,
+    webhook: string,
+    note?: string,
+    accountId: string,
+    fee?: TokenFeeConfig,
+  }>([
       {$match: {accountId: new ObjectId(userId)}},
       {
         $project: {
@@ -84,12 +85,12 @@ export const listAllTokensAction = async () => {
   await requireAdmin();
   return nftExchangeTokenCollection
     .aggregate<{
-      token: string;
-      webhook: string;
-      note?: string;
-      accountId: string;
-      fee?: TokenFeeConfig;
-    }>([
+    token: string,
+    webhook: string,
+    note?: string,
+    accountId: string,
+    fee?: TokenFeeConfig,
+  }>([
       {
         $project: {
           _id: 0,

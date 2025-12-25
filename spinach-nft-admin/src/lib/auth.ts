@@ -1,7 +1,8 @@
+import {Mongo} from "@spinach/common/controller/const";
 import {betterAuth} from "better-auth";
 import {mongodbAdapter} from "better-auth/adapters/mongodb";
 import {admin, username} from "better-auth/plugins";
-import {Mongo} from "@spinach/common/controller/const";
+
 
 const db = Mongo.db("admin_auth");
 

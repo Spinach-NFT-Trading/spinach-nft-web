@@ -1,8 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import {useEffect, useState} from "react";
 
+import Link from "next/link";
+
+import {CreateUserData, UserCreateForm} from "@/app/admin/users/forms/create";
+import {UserNotesForm} from "@/app/admin/users/forms/notes";
+import {UserPasswordForm} from "@/app/admin/users/forms/password";
+import {UserList} from "@/app/admin/users/list";
 import {Button} from "@/components/ui/button";
 import {
   changePasswordAction,
@@ -12,18 +17,15 @@ import {
   setUserRoleAction,
   updateUserNotesAction,
 } from "@/controllers/user/action";
-import {CreateUserData, UserCreateForm} from "@/app/admin/users/forms/create";
-import {UserNotesForm} from "@/app/admin/users/forms/notes";
-import {UserPasswordForm} from "@/app/admin/users/forms/password";
-import {UserList} from "@/app/admin/users/list";
+
 
 type User = {
-  id: string;
-  name: string;
-  email: string;
-  role: string;
-  username?: string;
-  notes?: string;
+  id: string,
+  name: string,
+  email: string,
+  role: string,
+  username?: string,
+  notes?: string,
 };
 
 type FormMode = "none" | "create" | "password" | "notes";
@@ -158,7 +160,10 @@ export const UserManagement = () => {
   return (
     <div className="space-y-6">
       {error && (
-        <div className="rounded-md border border-red-800 bg-red-900/20 p-3 text-sm text-red-400">
+        <div className={`
+          rounded-md border border-red-800 bg-red-900/20 p-3 text-sm
+          text-red-400
+        `}>
           {error}
         </div>
       )}
@@ -223,4 +228,4 @@ export const UserManagement = () => {
       />
     </div>
   );
-}
+};

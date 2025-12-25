@@ -7,7 +7,7 @@ export const mimeTypesOfImage = [
 ] as const;
 
 interface TMimeTypesOfImage extends TString {
-  static: typeof mimeTypesOfImage[number];
+  static: typeof mimeTypesOfImage[number],
 }
 
 export const MimeTypesOfImageSchema = Type.Unsafe<Static<TMimeTypesOfImage>>(Type.String({minLength: 1}));

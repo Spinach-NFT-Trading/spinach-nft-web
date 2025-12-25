@@ -1,18 +1,20 @@
-import clsx from "clsx";
 import {useState} from "react";
+
+import clsx from "clsx";
 
 import {Button} from "@/components/ui/button";
 
+
 type User = {
-  id: string;
-  name: string;
+  id: string,
+  name: string,
 };
 
 type UserPasswordFormProps = {
-  user: User;
-  onSubmit: (password: string) => Promise<void>;
-  onCancel: () => void;
-  isSubmitting: boolean;
+  user: User,
+  onSubmit: (password: string) => Promise<void>,
+  onCancel: () => void,
+  isSubmitting: boolean,
 };
 
 export function UserPasswordForm({user, onSubmit, onCancel, isSubmitting}: UserPasswordFormProps) {
@@ -35,7 +37,10 @@ export function UserPasswordForm({user, onSubmit, onCancel, isSubmitting}: UserP
             "flex h-9 w-full rounded-md border border-input bg-transparent",
             "px-3 py-1 text-sm shadow-sm transition-colors",
             "placeholder:text-muted-foreground",
-            "focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none",
+            `
+              focus-visible:ring-1 focus-visible:ring-ring
+              focus-visible:outline-none
+            `,
           )}
           placeholder="輸入新密碼"
         />

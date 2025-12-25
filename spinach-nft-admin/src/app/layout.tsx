@@ -2,6 +2,7 @@ import type {Metadata} from "next";
 import {Noto_Sans_TC} from "next/font/google";
 import "@/app/globals.css";
 
+
 const notoSansTC = Noto_Sans_TC({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode,
 }>) {
   return (
     <html lang="zh-TW">

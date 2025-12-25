@@ -1,15 +1,17 @@
-import clsx from "clsx";
 import React from "react";
+
+import clsx from "clsx";
 
 // Define the variant types
 // Define the variant types
 export type ButtonVariant = "default" | "outline" | "destructive" | "ghost" | "link" | "ghostDestructive";
+
 export type ButtonSize = "default" | "sm" | "lg" | "icon";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: ButtonVariant;
-  size?: ButtonSize;
-  isLoading?: boolean;
+  variant?: ButtonVariant,
+  size?: ButtonSize,
+  isLoading?: boolean,
 }
 
 export const buttonVariants = {
@@ -32,7 +34,8 @@ export const buttonVariants = {
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({className, variant = "default", size = "default", isLoading, children, disabled, ...props}, ref) => {
     const baseStyles =
-      "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 cursor-pointer";
+      "inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none " +
+      "focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 cursor-pointer";
 
     return (
       <button
@@ -42,7 +45,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {isLoading && (
-          <span className="mr-2 size-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+          <span className={`
+            mr-2 size-4 animate-spin rounded-full border-2 border-current
+            border-t-transparent
+          `}/>
         )}
         {children}
       </button>

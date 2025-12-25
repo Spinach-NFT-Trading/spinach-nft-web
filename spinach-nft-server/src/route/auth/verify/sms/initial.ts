@@ -16,7 +16,7 @@ import {sendSms} from '@spinach/server/utils/sms/send';
 
 
 export const addSmsVerifyInitial = () => {
-  Server.post<{Body: SmsVerifyInitialRequest, Reply: SmsVerifyInitialResponse}>(
+  Server.post<{Body: SmsVerifyInitialRequest; Reply: SmsVerifyInitialResponse}>(
     apiPath.auth.sms.initial,
     {
       schema: {

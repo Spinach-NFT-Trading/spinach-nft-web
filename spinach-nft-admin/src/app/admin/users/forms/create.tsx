@@ -1,19 +1,21 @@
-import clsx from "clsx";
 import {useState} from "react";
+
+import clsx from "clsx";
 
 import {Button} from "@/components/ui/button";
 
+
 export type CreateUserData = {
-  username: string;
-  password: string;
-  name: string;
-  notes: string;
+  username: string,
+  password: string,
+  name: string,
+  notes: string,
 };
 
 type UserCreateFormProps = {
-  onSubmit: (data: CreateUserData) => Promise<void>;
-  onCancel: () => void;
-  isSubmitting: boolean;
+  onSubmit: (data: CreateUserData) => Promise<void>,
+  onCancel: () => void,
+  isSubmitting: boolean,
 };
 
 export function UserCreateForm({onSubmit, onCancel, isSubmitting}: UserCreateFormProps) {

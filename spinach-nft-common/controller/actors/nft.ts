@@ -21,7 +21,7 @@ export const getNftPriceTiers = async (): Promise<NftPriceTierModel[]> => {
 
 type UpsertNftPositionOpts = {
   nftTxn: NftTxnModel,
-  session: ClientSession;
+  session: ClientSession,
 };
 
 export const upsertNftPosition = ({nftTxn, session}: UpsertNftPositionOpts) => {

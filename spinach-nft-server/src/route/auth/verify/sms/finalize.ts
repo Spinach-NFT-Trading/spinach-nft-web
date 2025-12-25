@@ -12,7 +12,7 @@ import {recordSmsVerifyFinalized} from '@spinach/server/controller/auth/verify/s
 
 
 export const addSmsVerifyFinalize = () => {
-  Server.post<{Body: SmsVerifyFinalizeRequest, Reply: SmsVerifyFinalizeResponse}>(
+  Server.post<{Body: SmsVerifyFinalizeRequest; Reply: SmsVerifyFinalizeResponse}>(
     apiPath.auth.sms.finalize,
     {
       schema: {

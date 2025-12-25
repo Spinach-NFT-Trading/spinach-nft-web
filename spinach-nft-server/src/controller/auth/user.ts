@@ -118,7 +118,7 @@ export const getUserInfo = async (request: UserLoginRequest): Promise<UserInfo |
 
   try {
     await verifyPasswordOrThrow(request.password, info.passwordHash);
-  } catch (e) {
+  } catch {
     return 'passwordMismatch';
   }
 

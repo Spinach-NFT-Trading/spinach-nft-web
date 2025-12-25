@@ -21,7 +21,7 @@ type GetDateAfterDeltaOpts = {
 export const getDateAfterDelta = ({date, delta}: GetDateAfterDeltaOpts) => {
   const dateReturn = new Date(date);
 
-  if (!!delta.day) {
+  if (delta.day) {
     dateReturn.setDate(dateReturn.getDate() + delta.day);
   }
 

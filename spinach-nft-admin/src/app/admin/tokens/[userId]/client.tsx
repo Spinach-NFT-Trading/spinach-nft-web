@@ -1,9 +1,11 @@
 "use client";
 
-import clsx from "clsx";
-import Link from "next/link";
 import {useCallback, useEffect, useState} from "react";
 
+import clsx from "clsx";
+import Link from "next/link";
+
+import {TokenFeeInput} from "@/app/admin/tokens/forms/fee";
 import {Button} from "@/components/ui/button";
 import {Prompt} from "@/components/ui/prompt";
 import {
@@ -13,13 +15,12 @@ import {
   updateTokenAction,
 } from "@/controllers/token/action";
 import {Token, TokenFeeConfig} from "@/types/admin";
-import {TokenFeeInput} from "@/app/admin/tokens/forms/fee";
 
 
 type FormMode = "none" | "create" | "edit";
 
 type Props = {
-  userId: string;
+  userId: string,
 };
 
 export function TokenManagementForUser({userId}: Props) {
@@ -162,7 +163,10 @@ export function TokenManagementForUser({userId}: Props) {
 
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className={`
+        flex flex-col gap-4
+        sm:flex-row sm:items-center sm:justify-between
+      `}>
         <h1 className="text-3xl font-bold text-foreground">使用者 Token 管理</h1>
         <Link href="/admin/users">
           <Button variant="outline">返回使用者管理</Button>
@@ -170,7 +174,10 @@ export function TokenManagementForUser({userId}: Props) {
       </div>
 
       {error && (
-        <div className="rounded-md border border-red-800 bg-red-900/20 p-3 text-sm text-red-400">
+        <div className={`
+          rounded-md border border-red-800 bg-red-900/20 p-3 text-sm
+          text-red-400
+        `}>
           {error}
         </div>
       )}
@@ -193,7 +200,7 @@ export function TokenManagementForUser({userId}: Props) {
             />
           </div>
           <div className="mb-4">
-            <TokenFeeInput value={feeConfig} onChange={setFeeConfig} />
+            <TokenFeeInput value={feeConfig} onChange={setFeeConfig}/>
           </div>
           <div className="flex gap-2">
             <Button
@@ -229,7 +236,7 @@ export function TokenManagementForUser({userId}: Props) {
             />
           </div>
           <div className="mb-4">
-            <TokenFeeInput value={feeConfig} onChange={setFeeConfig} />
+            <TokenFeeInput value={feeConfig} onChange={setFeeConfig}/>
           </div>
           <div className="flex gap-2">
             <Button
@@ -257,22 +264,35 @@ export function TokenManagementForUser({userId}: Props) {
         <table className="w-full min-w-200">
           <thead>
             <tr className="border-b border-border">
-              <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Token</th>
-              <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">Webhook</th>
-              <th className="px-4 py-3 text-left text-sm font-medium text-muted-foreground">手續費 (轉入/轉出)</th>
-              <th className="px-4 py-3 text-right text-sm font-medium text-muted-foreground">操作</th>
+              <th className={`
+                px-4 py-3 text-left text-sm font-medium text-muted-foreground
+              `}>Token</th>
+              <th className={`
+                px-4 py-3 text-left text-sm font-medium text-muted-foreground
+              `}>Webhook</th>
+              <th className={`
+                px-4 py-3 text-left text-sm font-medium text-muted-foreground
+              `}>手續費 (轉入/轉出)</th>
+              <th className={`
+                px-4 py-3 text-right text-sm font-medium text-muted-foreground
+              `}>操作</th>
             </tr>
           </thead>
           <tbody>
             {tokens.length === 0 ? (
               <tr>
-                <td colSpan={4} className="px-4 py-8 text-center text-muted-foreground">
+                <td colSpan={4} className={`
+                  px-4 py-8 text-center text-muted-foreground
+                `}>
                   此使用者尚無 Token
                 </td>
               </tr>
             ) : (
               tokens.map((token) => (
-                <tr key={token.token} className="border-b border-border last:border-0">
+                <tr key={token.token} className={`
+                  border-b border-border
+                  last:border-0
+                `}>
                   <td className="px-4 py-3">
                     <code className="rounded-sm bg-muted px-2 py-1 text-xs">{token.token}</code>
                   </td>
@@ -295,7 +315,10 @@ export function TokenManagementForUser({userId}: Props) {
                         variant="ghost"
                         size="sm"
                         onClick={() => copyToClipboard(token.token)}
-                        className="text-blue-400 hover:bg-blue-900/20 hover:text-blue-300"
+                        className={`
+                          text-blue-400
+                          hover:bg-blue-900/20 hover:text-blue-300
+                        `}
                       >
                         複製
                       </Button>
@@ -311,7 +334,10 @@ export function TokenManagementForUser({userId}: Props) {
                           });
                           setFormMode("edit");
                         }}
-                        className="text-green-400 hover:bg-green-900/20 hover:text-green-300"
+                        className={`
+                          text-green-400
+                          hover:bg-green-900/20 hover:text-green-300
+                        `}
                       >
                         編輯
                       </Button>

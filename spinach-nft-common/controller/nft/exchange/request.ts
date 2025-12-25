@@ -22,7 +22,7 @@ const queueNftExchangeRequest = async ({
 
 export type RequestNftExchangeOpts = {
   requestBody: NftExchangeRequest,
-  tokenModel: NftExchangeTokenModel
+  tokenModel: NftExchangeTokenModel,
 };
 
 export const requestNftExchange = async ({

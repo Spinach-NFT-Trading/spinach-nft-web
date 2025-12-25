@@ -41,4 +41,3 @@ export const buyNft = async ({buyer, nftId}: BuyNftOpts): Promise<ApiErrorCode |
 
   return handleNormalNftPurchase({buyer, nftOnSale, txn});
 };
-

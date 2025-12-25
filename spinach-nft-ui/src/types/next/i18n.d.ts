@@ -92,7 +92,7 @@ export type I18nMessage = {
               Title: string,
               Message: string,
               Button: string,
-            }
+            },
           },
         },
         Profile: {
@@ -313,8 +313,8 @@ export type I18nMessage = {
           Cashback: {
             Twd: string,
             Usdt: string,
-            ThirdParty: string
-          }
+            ThirdParty: string,
+          },
         },
         ExchangeRequest: {
           Tabs: {
@@ -435,7 +435,7 @@ export type I18nMessage = {
               ConfirmMessage: string,
               Confirm: string,
               Cancel: string,
-            }
+            },
           },
           Message: {
             NoAssociatedBanks: string,
@@ -473,7 +473,7 @@ export type I18nMessage = {
             LineId: string,
             BankAccount: string,
             Wallet: string,
-          }
+          },
         },
       },
     },
@@ -606,6 +606,6 @@ export type I18nMessage = {
 
 declare module 'next-intl' {
   interface AppConfig {
-    Messages: I18nMessage;
+    Messages: I18nMessage,
   }
 }

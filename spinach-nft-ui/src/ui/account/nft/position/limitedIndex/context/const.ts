@@ -4,4 +4,3 @@ import {NftPositionLimitedContextContent} from '@spinach/next/ui/account/nft/pos
 
 
 export const NftPositionLimitedContext = React.createContext<NftPositionLimitedContextContent | null>(null);
-

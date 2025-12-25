@@ -18,4 +18,3 @@ export const NftPositionLimitedProofClient = ({fileUploadGrantId, nftListing}: P
     </NftPositionLimitedProofProvider>
   );
 };
-

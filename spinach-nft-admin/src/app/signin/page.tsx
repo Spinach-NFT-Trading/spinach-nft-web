@@ -1,13 +1,14 @@
 "use client";
 
+import {useEffect, useState} from "react";
+
 import clsx from "clsx";
 import {useRouter} from "next/navigation";
-import {useEffect, useState} from "react";
- 
-import {Button} from "@/components/ui/button";
 
+import {Button} from "@/components/ui/button";
 import {checkHasUsersAction} from "@/controllers/user/action";
 import {authClient} from "@/lib/auth-client";
+
 
 type PageState = "loading" | "firstSetup" | "login";
 
@@ -86,7 +87,9 @@ const SignIn = () => {
 
   if (pageState === "loading") {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-background">
+      <div className={`
+        flex min-h-screen flex-col items-center justify-center bg-background
+      `}>
         <div className="text-muted-foreground">載入中...</div>
       </div>
     );
@@ -95,8 +98,13 @@ const SignIn = () => {
   const isFirstSetup = pageState === "firstSetup";
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-background">
-      <div className="w-full max-w-md space-y-6 rounded-lg border border-border bg-card p-8 text-card-foreground shadow-xl">
+    <div className={`
+      flex min-h-screen flex-col items-center justify-center bg-background
+    `}>
+      <div className={`
+        w-full max-w-md space-y-6 rounded-lg border border-border bg-card p-8
+        text-card-foreground shadow-xl
+      `}>
         <div className="flex flex-col space-y-1">
           <h1 className="text-center text-3xl font-semibold tracking-tight">
             {isFirstSetup ? "建立管理員帳戶" : "歡迎回來"}
@@ -109,7 +117,10 @@ const SignIn = () => {
         </div>
 
         {error && (
-          <div className="rounded-md border border-red-800 bg-red-900/20 p-3 text-sm text-red-400">
+          <div className={`
+            rounded-md border border-red-800 bg-red-900/20 p-3 text-sm
+            text-red-400
+          `}>
             {error}
           </div>
         )}

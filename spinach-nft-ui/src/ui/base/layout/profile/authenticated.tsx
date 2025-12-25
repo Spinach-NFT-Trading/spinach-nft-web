@@ -33,4 +33,3 @@ export const ProfileLayoutAuthenticated = async ({session, children}: React.Prop
     </Flex>
   );
 };
-

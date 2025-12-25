@@ -1,28 +1,30 @@
-import clsx from "clsx";
 import {useState} from "react";
 
+import clsx from "clsx";
+
+import {TokenFeeInput} from "@/app/admin/tokens/forms/fee";
 import {Button} from "@/components/ui/button";
 import {TokenFeeConfig} from "@/types/admin";
-import {TokenFeeInput} from "@/app/admin/tokens/forms/fee";
+
 
 type User = {
-  id: string;
-  name: string;
-  username?: string;
+  id: string,
+  name: string,
+  username?: string,
 };
 
 export type CreateTokenData = {
-  userId: string;
-  webhook: string;
-  note?: string;
-  fee: TokenFeeConfig;
+  userId: string,
+  webhook: string,
+  note?: string,
+  fee: TokenFeeConfig,
 };
 
 type TokenCreateFormProps = {
-  users: User[];
-  onSubmit: (data: CreateTokenData) => Promise<void>;
-  onCancel: () => void;
-  isSubmitting: boolean;
+  users: User[],
+  onSubmit: (data: CreateTokenData) => Promise<void>,
+  onCancel: () => void,
+  isSubmitting: boolean,
 };
 
 export function TokenCreateForm({users, onSubmit, onCancel, isSubmitting}: TokenCreateFormProps) {
@@ -53,7 +55,10 @@ export function TokenCreateForm({users, onSubmit, onCancel, isSubmitting}: Token
   return (
     <div className="space-y-4 rounded-lg border border-border bg-card p-6">
       <h2 className="text-xl font-semibold">新增 Token</h2>
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+      <div className={`
+        grid grid-cols-1 gap-4
+        md:grid-cols-2
+      `}>
         <div className="space-y-2">
           <label className="text-sm font-medium">使用者</label>
           <select
@@ -89,8 +94,11 @@ export function TokenCreateForm({users, onSubmit, onCancel, isSubmitting}: Token
             placeholder="選填"
           />
         </div>
-        <div className="col-span-1 md:col-span-2">
-          <TokenFeeInput value={feeConfig} onChange={setFeeConfig} />
+        <div className={`
+          col-span-1
+          md:col-span-2
+        `}>
+          <TokenFeeInput value={feeConfig} onChange={setFeeConfig}/>
         </div>
       </div>
       <div className="flex gap-2">

@@ -1,19 +1,21 @@
-import clsx from "clsx";
 import {useState} from "react";
+
+import clsx from "clsx";
 
 import {Button} from "@/components/ui/button";
 
+
 type User = {
-  id: string;
-  name: string;
-  notes?: string;
+  id: string,
+  name: string,
+  notes?: string,
 };
 
 type UserNotesFormProps = {
-  user: User;
-  onSubmit: (notes: string) => Promise<void>;
-  onCancel: () => void;
-  isSubmitting: boolean;
+  user: User,
+  onSubmit: (notes: string) => Promise<void>,
+  onCancel: () => void,
+  isSubmitting: boolean,
 };
 
 export function UserNotesForm({user, onSubmit, onCancel, isSubmitting}: UserNotesFormProps) {
@@ -35,8 +37,11 @@ export function UserNotesForm({user, onSubmit, onCancel, isSubmitting}: UserNote
             "flex h-9 w-full rounded-md border border-input bg-transparent",
             "px-3 py-1 text-sm shadow-sm transition-colors",
             "placeholder:text-muted-foreground",
-            "focus-visible:ring-1 focus-visible:ring-ring focus-visible:outline-none",
-            "h-24 resize-none"
+            `
+              focus-visible:ring-1 focus-visible:ring-ring
+              focus-visible:outline-none
+            `,
+            "h-24 resize-none",
           )}
           placeholder="輸入備註"
         />

@@ -20,7 +20,7 @@ import {uploadFile} from '@spinach/next/utils/api/fileUpload';
 
 
 type Props = {
-  fileUploadGrantId: string
+  fileUploadGrantId: string,
 };
 
 export const AccountAddBankClient = ({fileUploadGrantId}: Props) => {

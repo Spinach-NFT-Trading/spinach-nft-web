@@ -62,4 +62,3 @@ export const AdminMemberSetPasswordPopup = ({member, setShow}: AdminMemberPopupP
     </FlexForm>
   );
 };
-

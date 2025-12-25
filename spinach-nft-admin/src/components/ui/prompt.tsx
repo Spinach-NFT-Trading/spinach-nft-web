@@ -1,23 +1,25 @@
 "use client";
 
+import * as React from "react";
+
 import {AlertDialog} from "@base-ui/react/alert-dialog";
 import {clsx} from "clsx";
-import * as React from "react";
 
 import {Button} from "@/components/ui/button";
 
+
 export type PromptProps = {
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-  title: string;
-  description?: string;
-  confirmText?: string;
-  cancelText?: string;
-  onConfirm: () => void;
-  onCancel?: () => void;
-  requiredInput?: string;
-  inputPlaceholder?: string;
-  isLoading?: boolean;
+  open: boolean,
+  onOpenChange: (open: boolean) => void,
+  title: string,
+  description?: string,
+  confirmText?: string,
+  cancelText?: string,
+  onConfirm: () => void,
+  onCancel?: () => void,
+  requiredInput?: string,
+  inputPlaceholder?: string,
+  isLoading?: boolean,
 };
 
 export const Prompt = ({
@@ -77,11 +79,20 @@ export const Prompt = ({
             "gap-4 border border-border bg-background p-6 shadow-lg",
             "rounded-lg",
             "transition-all duration-200 ease-in-out",
-            "data-[starting-style]:translate-y-[-40%] data-[starting-style]:scale-95 data-[starting-style]:opacity-0",
-            "data-[ending-style]:translate-y-[-40%] data-[ending-style]:scale-95 data-[ending-style]:opacity-0",
+            `
+              data-[starting-style]:translate-y-[-40%]
+              data-[starting-style]:scale-95 data-[starting-style]:opacity-0
+            `,
+            `
+              data-[ending-style]:translate-y-[-40%]
+              data-[ending-style]:scale-95 data-[ending-style]:opacity-0
+            `,
           )}
         >
-          <div className="flex flex-col space-y-2 text-center sm:text-left">
+          <div className={`
+            flex flex-col space-y-2 text-center
+            sm:text-left
+          `}>
             <AlertDialog.Title className="text-lg font-semibold">{title}</AlertDialog.Title>
             {description && (
               <AlertDialog.Description className="text-sm text-muted-foreground">
@@ -103,7 +114,10 @@ export const Prompt = ({
             </div>
           )}
 
-          <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end sm:gap-2">
+          <div className={`
+            flex flex-col-reverse gap-2
+            sm:flex-row sm:justify-end sm:gap-2
+          `}>
             <AlertDialog.Close
               render={<Button variant="outline" onClick={handleCancel}>{cancelText}</Button>}
             />
@@ -120,4 +134,4 @@ export const Prompt = ({
       </AlertDialog.Portal>
     </AlertDialog.Root>
   );
-}
+};

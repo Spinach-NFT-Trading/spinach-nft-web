@@ -1,3 +1,3 @@
 export type AnnouncementProps = {
-  larger?: boolean
+  larger?: boolean,
 };

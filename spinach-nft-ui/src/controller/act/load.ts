@@ -38,7 +38,7 @@ type GetUserLazyDataOpts = {
   options: UserDataLoadingOpts,
 };
 
-const loadData = async ({options, accountId} : GetUserLazyDataOpts) => {
+const loadData = async ({options, accountId}: GetUserLazyDataOpts) => {
   const type = options.type;
 
   if (await isSuspended(accountId)) {

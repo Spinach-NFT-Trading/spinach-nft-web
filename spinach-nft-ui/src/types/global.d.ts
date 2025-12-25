@@ -6,15 +6,15 @@ declare global {
 
   namespace NodeJS {
     interface ProcessEnv {
-      NODE_ENV: 'development' | 'production';
+      NODE_ENV: 'development' | 'production',
 
-      MONGODB_URI: string;
+      MONGODB_URI: string,
 
-      NEXTAUTH_URL: string;
-      NEXTAUTH_SECRET: string;
+      NEXTAUTH_URL: string,
+      NEXTAUTH_SECRET: string,
 
-      NEXT_PUBLIC_SERVER_API: string;
-      NEXT_PUBLIC_HOST: string;
+      NEXT_PUBLIC_SERVER_API: string,
+      NEXT_PUBLIC_HOST: string,
     }
   }
 }

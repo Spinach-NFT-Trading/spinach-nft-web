@@ -23,8 +23,8 @@
     "g:tsc": "cd $INIT_CWD && tsc --noemit",
     "g:build:common": "cd $INIT_CWD && tsc -p .",
     "g:build:process": "cd $INIT_CWD && tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
-    "g:lint": "cd $INIT_CWD && eslint src/ --ext .ts,.tsx",
-    "g:lint:fix": "cd $INIT_CWD && eslint src/ --ext .ts,.tsx --fix"
+    "g:lint": "cd $INIT_CWD && eslint .",
+    "g:lint:fix": "cd $INIT_CWD && eslint . --fix"
   },
   "dependencies": {
     "@fastify/type-provider-typebox": "^4.0.0",
@@ -37,6 +37,8 @@
     "mongodb": "^6.8.0"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
+    "@stylistic/eslint-plugin": "^5.6.1",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^22.10.2",
     "@typescript-eslint/eslint-plugin": "^8.18.0",
@@ -45,9 +47,10 @@
     "eslint-config-google": "^0.14.0",
     "eslint-config-next": "^16.1.0",
     "eslint-import-resolver-typescript": "^3.7.0",
-    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-tailwindcss": "^3.17.5",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "globals": "^16.5.0",
     "jest": "^29.7.0",
     "nodemon": "^3.1.9",
     "pm2": "^5.4.3",
@@ -57,7 +60,8 @@
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
     "tsc-alias": "^1.8.10",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.50.1"
   },
   "peerDependencies": {
     "date-fns": "*"

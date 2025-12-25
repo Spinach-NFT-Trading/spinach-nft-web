@@ -7,7 +7,7 @@ export const transactionSides = [
 ] as const;
 
 interface TTransactionSide extends TString {
-  static: typeof transactionSides[number];
+  static: typeof transactionSides[number],
 }
 
 export const TransactionSideSchema = Type.Unsafe<Static<TTransactionSide>>(Type.String({minLength: 1}));

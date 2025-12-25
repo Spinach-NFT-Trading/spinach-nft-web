@@ -55,7 +55,7 @@ export const updateNftExchangeToken = async ({
 };
 
 type DeleteNftExchangeTokenOpts = ControllerRequireUserIdOpts & {
-  token: string
+  token: string,
 };
 
 export const deleteNftExchangeToken = async ({

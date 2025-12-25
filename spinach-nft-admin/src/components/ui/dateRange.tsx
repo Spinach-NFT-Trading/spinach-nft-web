@@ -4,16 +4,17 @@ import {useState, useCallback} from "react";
 
 import {Button} from "@/components/ui/button";
 
+
 export type DateRangePreset = "today" | "7days" | "30days" | "custom";
 
 export type DateRangeValue = {
-  startDate: string; // YYYY-MM-DD format
-  endDate: string;   // YYYY-MM-DD format
+  startDate: string, // YYYY-MM-DD format
+  endDate: string,   // YYYY-MM-DD format
 };
 
 type DateRangePickerProps = {
-  value: DateRangeValue;
-  onChange: (value: DateRangeValue) => void;
+  value: DateRangeValue,
+  onChange: (value: DateRangeValue) => void,
 };
 
 const formatDateToYYYYMMDD = (date: Date): string => {
@@ -108,7 +109,10 @@ export const DateRangePicker = ({value, onChange}: DateRangePickerProps) => {
             type="date"
             value={value.startDate}
             onChange={handleStartDateChange}
-            className="rounded-md border border-input bg-background px-3 py-1.5 text-sm text-foreground"
+            className={`
+              rounded-md border border-input bg-background px-3 py-1.5 text-sm
+              text-foreground
+            `}
           />
         </div>
         <span className="text-muted-foreground">至</span>
@@ -121,10 +125,13 @@ export const DateRangePicker = ({value, onChange}: DateRangePickerProps) => {
             type="date"
             value={value.endDate}
             onChange={handleEndDateChange}
-            className="rounded-md border border-input bg-background px-3 py-1.5 text-sm text-foreground"
+            className={`
+              rounded-md border border-input bg-background px-3 py-1.5 text-sm
+              text-foreground
+            `}
           />
         </div>
       </div>
     </div>
   );
-}
+};

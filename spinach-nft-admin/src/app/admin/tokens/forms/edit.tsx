@@ -1,22 +1,24 @@
-import clsx from "clsx";
 import {useState} from "react";
 
+import clsx from "clsx";
+
+import {TokenFeeInput} from "@/app/admin/tokens/forms/fee";
 import {Button} from "@/components/ui/button";
 import {Token, TokenFeeConfig} from "@/types/admin";
-import {TokenFeeInput} from "@/app/admin/tokens/forms/fee";
+
 
 export type UpdateTokenData = {
-  token: string;
-  webhook: string;
-  note?: string;
-  fee: TokenFeeConfig;
+  token: string,
+  webhook: string,
+  note?: string,
+  fee: TokenFeeConfig,
 };
 
 type TokenEditFormProps = {
-  token: Token;
-  onSubmit: (data: UpdateTokenData) => Promise<void>;
-  onCancel: () => void;
-  isSubmitting: boolean;
+  token: Token,
+  onSubmit: (data: UpdateTokenData) => Promise<void>,
+  onCancel: () => void,
+  isSubmitting: boolean,
 };
 
 export function TokenEditForm({token, onSubmit, onCancel, isSubmitting}: TokenEditFormProps) {
@@ -71,7 +73,7 @@ export function TokenEditForm({token, onSubmit, onCancel, isSubmitting}: TokenEd
         />
       </div>
       <div className="mb-4">
-        <TokenFeeInput value={feeConfig} onChange={setFeeConfig} />
+        <TokenFeeInput value={feeConfig} onChange={setFeeConfig}/>
       </div>
       <div className="flex gap-2">
         <Button

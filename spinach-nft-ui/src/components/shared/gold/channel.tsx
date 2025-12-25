@@ -42,4 +42,3 @@ export const GoldExchangeChannelUi = ({channel}: Props) => {
 
   throw new Error(`Unhandled GOLD exchange channel [${channel satisfies never}]`);
 };
-

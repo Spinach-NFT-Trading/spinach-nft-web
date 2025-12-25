@@ -13,4 +13,3 @@ export const NextImageSquare = (props: NextImageProps) => {
     </div>
   );
 };
-

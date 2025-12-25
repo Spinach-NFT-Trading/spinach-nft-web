@@ -1,21 +1,23 @@
-import clsx from "clsx";
 import {useState} from "react";
 
+import clsx from "clsx";
+
+import {TokenFeeInput} from "@/app/admin/tokens/forms/fee";
 import {Button} from "@/components/ui/button";
 import {TokenFeeConfig} from "@/types/admin";
-import {TokenFeeInput} from "@/app/admin/tokens/forms/fee";
+
 
 type User = {
-  id: string;
-  name: string;
-  username?: string;
+  id: string,
+  name: string,
+  username?: string,
 };
 
 type TokenBatchFeeFormProps = {
-  users: User[];
-  onSubmit: (userId: string, fee: TokenFeeConfig) => Promise<void>;
-  onCancel: () => void;
-  isSubmitting: boolean;
+  users: User[],
+  onSubmit: (userId: string, fee: TokenFeeConfig) => Promise<void>,
+  onCancel: () => void,
+  isSubmitting: boolean,
 };
 
 export function TokenBatchFeeForm({users, onSubmit, onCancel, isSubmitting}: TokenBatchFeeFormProps) {
@@ -56,7 +58,7 @@ export function TokenBatchFeeForm({users, onSubmit, onCancel, isSubmitting}: Tok
       </div>
 
       <div className="mb-4">
-        <TokenFeeInput value={feeConfig} onChange={setFeeConfig} />
+        <TokenFeeInput value={feeConfig} onChange={setFeeConfig}/>
       </div>
 
       <div className="flex gap-2">

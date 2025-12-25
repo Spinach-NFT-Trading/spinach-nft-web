@@ -11,7 +11,7 @@ export const trackFxRateOnMax = () => {
       ws.send(JSON.stringify({
         action: 'sub',
         subscriptions: [
-          {'channel': 'trade', 'market': fxMarket},
+          {channel: 'trade', market: fxMarket},
         ],
         id: 'USDT-TWD FX check',
       }));

@@ -1,8 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import {useEffect, useState} from "react";
 
+import Link from "next/link";
+
+import {TokenBatchFeeForm} from "@/app/admin/tokens/forms/batch";
+import {CreateTokenData, TokenCreateForm} from "@/app/admin/tokens/forms/create";
+import {TokenEditForm, UpdateTokenData} from "@/app/admin/tokens/forms/edit";
+import {TokenList} from "@/app/admin/tokens/list";
 import {Button} from "@/components/ui/button";
 import {
   batchUpdateTokenFeesAction,
@@ -12,17 +17,13 @@ import {
   updateTokenAction,
 } from "@/controllers/token/action";
 import {listUsersAction} from "@/controllers/user/action";
-import {CreateTokenData, TokenCreateForm} from "@/app/admin/tokens/forms/create";
-import {TokenEditForm, UpdateTokenData} from "@/app/admin/tokens/forms/edit";
-import {TokenBatchFeeForm} from "@/app/admin/tokens/forms/batch";
-import {TokenList} from "@/app/admin/tokens/list";
 import {Token, TokenFeeConfig} from "@/types/admin";
 
 
 type User = {
-  id: string;
-  name: string;
-  username?: string;
+  id: string,
+  name: string,
+  username?: string,
 };
 
 type FormMode = "none" | "create" | "edit" | "batch";
@@ -140,13 +141,19 @@ export const TokenManagementAll = () => {
   return (
     <div className="space-y-6">
       {error && (
-        <div className="rounded-md border border-red-800 bg-red-900/20 p-3 text-sm text-red-400">
+        <div className={`
+          rounded-md border border-red-800 bg-red-900/20 p-3 text-sm
+          text-red-400
+        `}>
           {error}
         </div>
       )}
 
       {/* Actions */}
-      <div className="flex flex-col gap-4 sm:flex-row">
+      <div className={`
+        flex flex-col gap-4
+        sm:flex-row
+      `}>
         <Button onClick={() => setFormMode("create")}>新增 Token</Button>
         <Button onClick={() => setFormMode("batch")} variant="outline">
           批次更新手續費
@@ -205,4 +212,4 @@ export const TokenManagementAll = () => {
       />
     </div>
   );
-}
+};

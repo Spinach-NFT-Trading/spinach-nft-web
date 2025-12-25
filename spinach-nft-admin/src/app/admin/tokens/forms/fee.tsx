@@ -2,9 +2,10 @@ import clsx from "clsx";
 
 import {TokenFeeConfig} from "@/types/admin";
 
+
 type TokenFeeInputProps = {
-  value: TokenFeeConfig;
-  onChange: (value: TokenFeeConfig) => void;
+  value: TokenFeeConfig,
+  onChange: (value: TokenFeeConfig) => void,
 };
 
 export function TokenFeeInput({value, onChange}: TokenFeeInputProps) {
@@ -29,7 +30,10 @@ export function TokenFeeInput({value, onChange}: TokenFeeInputProps) {
   return (
     <div className="rounded-md border border-border p-4">
       <h3 className="mb-3 text-sm font-medium">手續費設定</h3>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className={`
+        grid grid-cols-1 gap-6
+        md:grid-cols-2
+      `}>
         <div className="space-y-2">
           <label className="text-sm font-medium text-muted-foreground">轉入 (充值)</label>
           <div className="grid grid-cols-2 gap-2">

@@ -13,7 +13,7 @@ import {isIdNumberValid} from '@spinach/server/utils/id';
 
 
 export const addAuthRegister = () => {
-  Server.post<{Body: UserRegisterRequest, Reply: UserRegisterResponse}>(
+  Server.post<{Body: UserRegisterRequest; Reply: UserRegisterResponse}>(
     apiPath.auth.register,
     {
       schema: {

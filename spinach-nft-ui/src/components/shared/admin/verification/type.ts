@@ -14,7 +14,7 @@ export type AdminVerificationImageRequestPayload = {
 
 export type AdminVerificationGetImageFromPayload = (
   data: Nullable<Partial<UserLazyLoadedContent>>,
-  payload: AdminVerificationImageRequestPayload
+  payload: AdminVerificationImageRequestPayload,
 ) => ByteArray | null | undefined;
 
 export type AdminVerificationRowProps<TData> = {

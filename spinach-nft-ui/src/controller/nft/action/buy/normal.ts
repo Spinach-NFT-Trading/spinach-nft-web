@@ -40,4 +40,3 @@ export const handleNormalNftPurchase = async ({
 
   return null;
 };
-

@@ -1,26 +1,27 @@
 "use server";
 
 import {ObjectId} from "mongodb";
+import {headers} from "next/headers";
 
 import {auth} from "@/lib/auth";
 import {getUserCollection, hasAnyUsers, requireAdmin} from "@/lib/session";
-import {headers} from "next/headers";
+
 
 type CreateUserOpts = {
-  username: string;
-  password: string;
-  name: string;
-  notes?: string;
+  username: string,
+  password: string,
+  name: string,
+  notes?: string,
 };
 
 type ChangePasswordOpts = {
-  userId: string;
-  newPassword: string;
+  userId: string,
+  newPassword: string,
 };
 
 type UpdateUserNotesOpts = {
-  userId: string;
-  notes: string;
+  userId: string,
+  notes: string,
 };
 
 export const createUserAction = async (opts: CreateUserOpts) => {
@@ -51,16 +52,13 @@ export const changePasswordAction = async (opts: ChangePasswordOpts) => {
 
 export const deleteUserAction = async (userId: string) => {
   await requireAdmin();
-  console.log(`Deleting user: ${userId}`);
   try {
     const result = await auth.api.removeUser({
       body: {userId},
       headers: await headers(),
     });
-    console.log(`Delete result for ${userId}:`, result);
     return result;
   } catch (error) {
-    console.error(`Failed to delete user ${userId}:`, error);
     throw error;
   }
 };

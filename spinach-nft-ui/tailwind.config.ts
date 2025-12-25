@@ -28,11 +28,11 @@ const config: Config = {
         'border-outer': '0 0 0.3rem',
       },
       width: {
-        '108': '28rem',
+        108: '28rem',
       },
       animation: {
-        'enter': 'fadeIn 300ms ease-out',
-        'leave': 'fadeOut 300ms ease-in forwards',
+        enter: 'fadeIn 300ms ease-out',
+        leave: 'fadeOut 300ms ease-in forwards',
       },
       keyframes: {
         fadeIn: {

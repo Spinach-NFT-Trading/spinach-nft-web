@@ -1,13 +1,13 @@
 "use server";
 
-import {ObjectId} from "mongodb";
-
 import {
   nftExchangeMatchedCollection,
   nftExchangeTokenCollection,
   nftInfoCollection,
   nftOnSaleCollection,
 } from "@spinach/common/controller/collections/nft";
+import {ObjectId} from "mongodb";
+
 import {requireAdmin} from "@/lib/session";
 import {
   NftExchangeReportBundle,
@@ -18,10 +18,11 @@ import {
   NftSellReportSummary,
 } from "@/types/report";
 
+
 export type GetExchangeReportsOpts = {
-  accountId: string;
-  startEpochMs: number;
-  endEpochMs: number;
+  accountId: string,
+  startEpochMs: number,
+  endEpochMs: number,
 };
 
 export const getExchangeReportsAction = async ({
@@ -88,8 +89,8 @@ export const getExchangeReportsAction = async ({
 };
 
 export type AccountWithTokens = {
-  accountId: string;
-  tokenCount: number;
+  accountId: string,
+  tokenCount: number,
 };
 
 export const listAccountsWithTokensAction = async (): Promise<AccountWithTokens[]> => {

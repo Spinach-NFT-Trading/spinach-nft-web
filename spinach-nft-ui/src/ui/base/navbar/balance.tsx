@@ -8,7 +8,7 @@ import {formatToAbbreviation} from '@spinach/next/utils/number/format/regular';
 
 
 type Props = {
-  session: Session | null;
+  session: Session | null,
 };
 
 export const NavBarBalance = ({session}: Props) => {

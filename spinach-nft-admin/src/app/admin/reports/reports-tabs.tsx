@@ -6,6 +6,7 @@ import {ExchangeReportsClient} from "@/app/admin/reports/exchange/client";
 import {SellReportsClient} from "@/app/admin/reports/sell/client";
 import {Button} from "@/components/ui/button";
 
+
 type ReportType = "exchange" | "sell";
 
 export const ReportsTabs = () => {
@@ -31,8 +32,8 @@ export const ReportsTabs = () => {
       </div>
 
       <div className="pt-4">
-        {activeTab === "exchange" ? <ExchangeReportsClient /> : <SellReportsClient />}
+        {activeTab === "exchange" ? <ExchangeReportsClient/> : <SellReportsClient/>}
       </div>
     </div>
   );
-}
+};

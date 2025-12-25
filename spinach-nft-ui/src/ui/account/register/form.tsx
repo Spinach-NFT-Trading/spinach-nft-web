@@ -150,7 +150,7 @@ export const AccountRegisterForm = ({
         show={step === 'info'}
         input={input}
         setInput={setInput}
-        onComplete={() =>(
+        onComplete={() => (
           setInput((original) => ({
             ...original,
             step: 'idVerification',

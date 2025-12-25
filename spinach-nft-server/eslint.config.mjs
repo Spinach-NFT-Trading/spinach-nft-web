@@ -1,13 +1,13 @@
-import path from 'node:path';
-import {fileURLToPath} from 'node:url';
+import path from 'path';
+import {fileURLToPath} from 'url';
 
 import {FlatCompat} from '@eslint/eslintrc';
+import js from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-import nextCoreWebVitals from 'eslint-config-next/core-web-vitals';
-import nextTypescript from 'eslint-config-next/typescript';
+import google from 'eslint-config-google';
 import unusedImports from 'eslint-plugin-unused-imports';
 import globals from 'globals';
+import tsEslint from 'typescript-eslint';
 
 
 const __filename = fileURLToPath(import.meta.url);
@@ -15,44 +15,59 @@ const __dirname = path.dirname(__filename);
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
+  recommendedConfig: js.configs.recommended,
+  allConfig: js.configs.all,
 });
 
-const config = [
-  ...nextTypescript,
-  ...nextCoreWebVitals,
-  ...compat.extends('plugin:tailwindcss/recommended'),
+export default tsEslint.config(
   {
-    ignores: ['.next/**', 'out/**', 'build/**', 'next-env.d.ts'],
+    ignores: ['dist/**', 'node_modules/**', 'coverage/**', '**/*.d.ts', '**/*.js'],
   },
+  js.configs.recommended,
+  {
+    rules: Object.keys(google.rules).reduce((acc, key) => {
+      if (key !== 'valid-jsdoc' && key !== 'require-jsdoc') {
+        acc[key] = google.rules[key];
+      }
+      return acc;
+    }, {}),
+  },
+  ...compat.extends('plugin:import/errors'),
+  ...compat.extends('plugin:import/warnings'),
+  ...compat.extends('plugin:import/typescript'),
   {
     files: ['**/*.{ts,tsx,js,jsx}'],
-    plugins: {
-      '@stylistic': stylistic,
-      'unused-imports': unusedImports,
-    },
     languageOptions: {
       globals: {
-        ...globals.browser,
         ...globals.node,
+        ...globals.es2022,
         Atomics: 'readonly',
         SharedArrayBuffer: 'readonly',
       },
-      parser: tsParser,
-      ecmaVersion: 'latest',
-      sourceType: 'module',
+      parser: tsEslint.parser,
       parserOptions: {
+        ecmaVersion: 2022,
+        sourceType: 'module',
         ecmaFeatures: {
           jsx: true,
         },
         project: './tsconfig.json',
       },
     },
+    plugins: {
+      '@typescript-eslint': tsEslint.plugin,
+      'unused-imports': unusedImports,
+      '@stylistic': stylistic,
+    },
     settings: {
-      react: {
-        version: 'detect',
+      'import/parsers': {
+        '@typescript-eslint/parser': ['.ts', '.tsx'],
       },
-      tailwindcss: {
-        classRegex: '^class(.*)?$',
+      'import/resolver': {
+        typescript: {
+          alwaysTryTypes: true,
+          project: './tsconfig.json',
+        },
       },
     },
     rules: {
@@ -69,9 +84,6 @@ const config = [
       'linebreak-style': ['error', 'unix'],
       'max-len': ['error', {
         code: 120,
-      }],
-      'no-console': ['error', {
-        allow: ['info', 'warn', 'error', 'debug'],
       }],
       'import/order': ['error', {
         'groups': ['builtin', 'external', 'internal'],
@@ -92,7 +104,21 @@ const config = [
       }],
       'import/no-relative-packages': 'error',
       'import/no-unresolved': 'error',
-      'no-multiple-empty-lines': ['error', { max: 2, maxEOF: 0, maxBOF: 0 }],
+      'object-curly-spacing': 'off',
+      'no-restricted-imports': ['error', {
+        'patterns': ['spinach-nft-*'],
+      }],
+      'padding-line-between-statements': [
+        'error',
+        {blankLine: 'always', prev: '*', next: 'cjs-export'},
+        {blankLine: 'always', prev: '*', next: 'export'},
+        {blankLine: 'always', prev: 'const', next: 'cjs-export'},
+        {blankLine: 'always', prev: '*', next: 'export'},
+      ],
+      'new-cap': ['error', {
+        'capIsNewExceptionPattern': '^Type\\.',
+      }],
+
       '@stylistic/object-curly-spacing': ['error', 'never'],
       '@stylistic/semi': ['error'],
       '@stylistic/member-delimiter-style': ['error', {
@@ -112,11 +138,6 @@ const config = [
         },
       }],
       'space-in-parens': ['error', 'never'],
-      'react/prop-types': 'off',
-      'react/jsx-tag-spacing': ['error', {
-        beforeSelfClosing: 'never',
-      }],
-      'react-hooks/exhaustive-deps': 'off',
       'quote-props': ['error', 'consistent-as-needed', {
         keywords: false,
         unnecessary: true,
@@ -141,27 +162,27 @@ const config = [
       }],
       '@stylistic/space-infix-ops': ['error'],
       'no-trailing-spaces': 'error',
-      'padding-line-between-statements': [
-        'error',
-        { blankLine: 'always', prev: '*', next: 'cjs-export' },
-        { blankLine: 'always', prev: '*', next: 'export' },
-        { blankLine: 'always', prev: 'const', next: 'cjs-export' },
-        { blankLine: 'always', prev: '*', next: 'export' },
-      ],
+      'valid-jsdoc': 'off',
+      'require-jsdoc': 'off',
     },
   },
   {
     files: ['**/*.config.{mjs,js,cjs}', 'eslint.config.mjs'],
+    plugins: {
+      '@stylistic': stylistic,
+    },
     languageOptions: {
       parserOptions: {
         project: null,
       },
     },
     rules: {
+      'indent': 'off',
+      '@stylistic/indent': ['error', 2],
+      'object-curly-spacing': 'off',
+      '@stylistic/object-curly-spacing': ['error', 'never'],
       'max-len': 'off',
       'import/no-unresolved': 'off',
     },
   },
-];
-
-export default config;
+);

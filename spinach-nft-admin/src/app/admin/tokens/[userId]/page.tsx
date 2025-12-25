@@ -1,10 +1,11 @@
 import {redirect} from "next/navigation";
 
-import {getSession} from "@/lib/session";
 import {TokenManagementForUser} from "@/app/admin/tokens/[userId]/client";
+import {getSession} from "@/lib/session";
+
 
 type Props = {
-  params: Promise<{userId: string}>;
+  params: Promise<{userId: string}>,
 };
 
 export default async function AdminUserTokensPage({params}: Props) {
@@ -18,7 +19,7 @@ export default async function AdminUserTokensPage({params}: Props) {
   return (
     <main className="min-h-screen bg-background p-8">
       <div className="mx-auto max-w-6xl">
-        <TokenManagementForUser userId={userId} />
+        <TokenManagementForUser userId={userId}/>
       </div>
     </main>
   );

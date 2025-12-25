@@ -27,5 +27,5 @@ export type UserBalanceDailySummaryOfDay = {
 
 export type UserBalanceDailySummary = {
   startingBalance: number,
-  dataByDate: {[date in IsoDateString]?: UserBalanceDailySummaryOfDay}
+  dataByDate: {[date in IsoDateString]?: UserBalanceDailySummaryOfDay},
 };

@@ -16,4 +16,3 @@ export const NftPositionLimitedProvider = ({data, children}: React.PropsWithChil
     </NftPositionLimitedContext.Provider>
   );
 };
-

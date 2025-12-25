@@ -1,9 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import {useEffect, useState} from "react";
 
-import {NftExchangeReportBundle} from "@/types/report";
+import Link from "next/link";
+
+import {ReportList} from "@/app/admin/reports/exchange/list";
+import {ReportSummary} from "@/app/admin/reports/exchange/summary";
 import {Button} from "@/components/ui/button";
 import {DateRangePicker, DateRangeValue} from "@/components/ui/dateRange";
 import {
@@ -12,13 +14,13 @@ import {
   listAccountsWithTokensAction,
 } from "@/controllers/report/action";
 import {listUsersAction} from "@/controllers/user/action";
-import {ReportList} from "@/app/admin/reports/exchange/list";
-import {ReportSummary} from "@/app/admin/reports/exchange/summary";
+import {NftExchangeReportBundle} from "@/types/report";
+
 
 type User = {
-  id: string;
-  name: string;
-  username?: string;
+  id: string,
+  name: string,
+  username?: string,
 };
 
 const formatDateToYYYYMMDD = (date: Date): string => {
@@ -120,7 +122,10 @@ export const ExchangeReportsClient = () => {
   return (
     <div className="space-y-6">
       {error && (
-        <div className="rounded-md border border-red-800 bg-red-900/20 p-3 text-sm text-red-400">
+        <div className={`
+          rounded-md border border-red-800 bg-red-900/20 p-3 text-sm
+          text-red-400
+        `}>
           {error}
         </div>
       )}
@@ -145,7 +150,10 @@ export const ExchangeReportsClient = () => {
             id="account"
             value={selectedAccountId}
             onChange={(e) => setSelectedAccountId(e.target.value)}
-            className="rounded-md border border-input bg-background px-3 py-1.5 text-sm text-foreground"
+            className={`
+              rounded-md border border-input bg-background px-3 py-1.5 text-sm
+              text-foreground
+            `}
           >
             {accounts.length === 0 ? (
               <option value="">無帳戶資料</option>
@@ -160,7 +168,7 @@ export const ExchangeReportsClient = () => {
         </div>
 
         {/* Date range picker */}
-        <DateRangePicker value={dateRange} onChange={setDateRange} />
+        <DateRangePicker value={dateRange} onChange={setDateRange}/>
 
         {/* Fetch button */}
         <div>
@@ -176,15 +184,15 @@ export const ExchangeReportsClient = () => {
           <h2 className="text-lg font-semibold text-foreground">報表結果</h2>
 
           {/* Summary */}
-          <ReportSummary summary={report.summary} />
+          <ReportSummary summary={report.summary}/>
 
           {/* Detail list */}
           <div>
             <h3 className="mb-3 text-base font-medium text-foreground">交易明細</h3>
-            <ReportList items={report.items} />
+            <ReportList items={report.items}/>
           </div>
         </div>
       )}
     </div>
   );
-}
+};
