@@ -3,7 +3,8 @@ apps:
     name: 'Spinach.NFT.UI'
     # Entry point
     # `yarn run start` / `npm run start` won't work here - or additional work required
-    script: './node_modules/next/dist/bin/next'
+    script: './spinach-nft-ui/server.js'
+    interpreter: 'bun'
     args: 'start'
     # Execution configs
     exec_mode: 'cluster'

@@ -21,8 +21,8 @@ const font = Noto_Sans({
   subsets: ['latin'],
 });
 
-const RootLayout = ({params, children}: React.PropsWithChildren<LocaleLayoutProps>) => {
-  const {locale} = params;
+const RootLayout = async ({params, children}: React.PropsWithChildren<LocaleLayoutProps>) => {
+  const {locale} = await params;
 
   // Show a 404 error if the user requests an unknown locale
   if (!isLocale(locale)) {

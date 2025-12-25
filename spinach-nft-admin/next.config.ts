@@ -1,8 +1,12 @@
-import type { NextConfig } from "next";
+import path from 'path';
+
+import type {NextConfig} from "next";
 
 
 const nextConfig: NextConfig = {
   transpilePackages: ['spinach-nft-common'],
+  output: 'standalone',
+  outputFileTracingRoot: path.join(__dirname, '../'),
 };
 
 export default nextConfig;

@@ -6,5 +6,5 @@ export type LocaleLayoutParams = {
 };
 
 export type LocaleLayoutProps = {
-  params: LocaleLayoutParams,
+  params: Promise<LocaleLayoutParams>,
 };

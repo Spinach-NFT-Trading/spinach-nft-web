@@ -12,7 +12,7 @@ export const generatePageMeta = ({
   key,
   values,
 }: GeneratePageMetaOpts): GenerateMetadata => async ({params}) => {
-  const {locale} = params;
+  const {locale} = await params;
   const {
     name,
     nameTemplate,
@@ -80,20 +80,5 @@ export const generatePageMeta = ({
       'msapplication-tap-highlight': 'no',
       'msapplication-TileImage': '/icons/icon.png',
     },
-  };
-};
-
-type generatePageMetaFromStringOpts = {
-  t: (key: I18nMessageKeysOfNamespace<'UI.Metadata'>) => string,
-  title: string,
-};
-
-export const generatePageMetaFromString = ({
-  t,
-  title,
-}: generatePageMetaFromStringOpts) => {
-  return {
-    title: `${title} | ${t('Site.Name')}`,
-    description: t('Site.Description'),
   };
 };

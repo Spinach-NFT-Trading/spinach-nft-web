@@ -8,7 +8,7 @@ export type NftPurchasePageParams = GenerateMetadataParams & {
 };
 
 export const generateMetadata: GenerateMetadata<NftPurchasePageParams> = async ({params}) => {
-  const {id} = params;
+  const {id} = await params;
 
   return generatePageMeta({key: 'Nft.Purchase.Title', values: {id}})({params});
 };

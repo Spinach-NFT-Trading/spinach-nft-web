@@ -6,7 +6,7 @@ import {CommonPageParams} from '@spinach/next/types/next/page';
 export type GenerateMetadataParams = CommonPageParams;
 
 export type GenerateMetadataOpts<P extends GenerateMetadataParams> = {
-  params: P,
+  params: Promise<P>,
 };
 
 export type GenerateMetadata<
