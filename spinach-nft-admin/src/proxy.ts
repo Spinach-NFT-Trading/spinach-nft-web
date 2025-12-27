@@ -1,7 +1,7 @@
 import {NextRequest, NextResponse} from "next/server";
 
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   // Protect /admin routes - check for session cookie presence
   // Full session validation is done in page components
   if (request.nextUrl.pathname.startsWith("/admin")) {
